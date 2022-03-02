@@ -4,6 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@e-faktury-ra4b/common": "2.0.0"
+    "@app/common": "2.0.0"
  }
 }

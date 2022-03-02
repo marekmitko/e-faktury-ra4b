@@ -1,2 +1,4 @@
-const commonFunction = require('@e-faktury-ra4b/common');
+const commonFunction = require('@app/common');
 commonFunction()
+
+// TODO dasdsad 

@@ -3,5 +3,5 @@
     "name": "e-faktury-ra4b",
     "version": "2.0.0",
     "description": "workspace for e-faktury-ra4b",
-    "workspaces": ["app", "common", "config", "packages/**"]
+    "workspaces": ["app/*", "packages/*"]
 }
