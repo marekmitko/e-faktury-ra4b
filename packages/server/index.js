@@ -1,5 +1,5 @@
-import commonFunction from '@app/common';
+const commonFunction = require('@app/common');
 commonFunction()
 
-// const commonFunction = require('@app/common');
+// import commonFunction from '@app/common';
 // commonFunction()

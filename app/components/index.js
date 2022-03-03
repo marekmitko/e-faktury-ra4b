@@ -1,9 +1,5 @@
-module.exports = () => {console.log("działa :D")};
 
+export const Dupa = () => {console.log("Dupa")};
 
-// import Welcome from "./Welcome";
-// const fnTestComponent = () => {console.log("działa :D")};
+export const fnTestComponent = () => {console.log("działa :D")};
 
-// const obj = {Welcome, fnTestComponent};
-
-// module.exports = () => {obj};

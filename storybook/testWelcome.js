@@ -1,7 +1,5 @@
-const fnTestComponent  = require("@app/components");
+// const c  = require("@app/components");
+import {Dupa} from "@app/components";
 
+Dupa();
 
-
-
-fnTestComponent();
-// import {fnTestComponent} from "@app/components";

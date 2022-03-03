@@ -3,6 +3,7 @@
     "name": "e-faktury-ra4b",
     "version": "2.0.0",
     "description": "workspace for e-faktury-ra4b",
+    "type": "module",
     "workspaces": [
         "app/**",
         "invoice-app/**",
