@@ -4,9 +4,10 @@
     "version": "2.0.0",
     "description": "workspace for e-faktury-ra4b",
     "workspaces": [
-        "app/*",
-        "packages/*",
-        "storybook/*"
+        "app/**",
+        "invoice-app/**",
+        "packages/**",
+        "storybook/**"
     ],
     "devDependencies": {
         "lerna": "^2.11.0"
