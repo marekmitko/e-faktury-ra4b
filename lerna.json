@@ -1,9 +1,10 @@
 {
-  "lerna": "2.5.1",
+  "lerna": "2.11.0",
   "useWorkspaces": true,
   "packages": [
     "app/*",
-    "packages/*"
+    "packages/*",
+    "storybook/*"
   ],
   "version": "e-faktury-ra4b",
   "npmClient": "yarn"

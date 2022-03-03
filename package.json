@@ -5,10 +5,11 @@
     "description": "workspace for e-faktury-ra4b",
     "workspaces": [
         "app/*",
-        "packages/*"
+        "packages/*",
+        "storybook/*"
     ],
     "devDependencies": {
-        "lerna": "^2.5.1"
+        "lerna": "^2.11.0"
     },
     "scripts": {
         "test": "lerna run test",
