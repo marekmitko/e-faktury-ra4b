@@ -1,0 +1,10 @@
+{
+  "lerna": "2.5.1",
+  "useWorkspaces": true,
+  "packages": [
+    "app/*",
+    "packages/*"
+  ],
+  "version": "e-faktury-ra4b",
+  "npmClient": "yarn"
+}

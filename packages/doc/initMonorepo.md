@@ -38,3 +38,17 @@
                                         "version": "4.0.0-beta.1.0"
                                     }
 ```
+
+- my obj in lerna.json 
+```json
+                            {
+                                "lerna": "2.5.1",
+                                "useWorkspaces": true,
+                                "packages": [
+                                    "app/*",
+                                    "packages/*"
+                                    ],
+                                "version": "e-faktury-ra4b",
+                                "npmClient": "yarn"
+                            }
+```

@@ -3,5 +3,16 @@
     "name": "e-faktury-ra4b",
     "version": "2.0.0",
     "description": "workspace for e-faktury-ra4b",
-    "workspaces": ["app/*", "packages/*"]
+    "workspaces": [
+        "app/*",
+        "packages/*"
+    ],
+    "devDependencies": {
+        "lerna": "^2.5.1"
+    },
+    "scripts": {
+        "test": "lerna run test",
+        "new-version": "lerna version --conventional-commits --yes",
+        "diff": "lerna diff"
+    }
 }
