@@ -4,6 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@app/common": "2.0.0"
- }
+    "@app/common": "2.0.0",
+    "concurrently": "^5.3.0",
+    "content-range": "^1.1.0",
+    "faker": "^5.5.3",
+    "json-server": "^0.16.2"
+ },
+ "scripts": {
+    "server": "json-server --watch db.json --port 5000 --middlewares ./range.js",
+    "client": "npm start --prefix client"
+  }
 }

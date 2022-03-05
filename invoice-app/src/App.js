@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Admin, Resource, ListGuesser, EditGuesser} from 'react-admin';
 import simpleRestProvider from 'ra-data-simple-rest';
-// import jsonServerProvider from 'ra-data-json-server';
+import jsonServerProvider from 'ra-data-json-server';
 
-const dataProvider = simpleRestProvider('https://jsonplaceholder.typicode.com');
-// const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const dataProvider = simpleRestProvider('http://localhost:5000');
+// const dataProvider = jsonServerProvider('http://localhost:5000');
 function App() {
     return (
         <Admin dataProvider={dataProvider} >
