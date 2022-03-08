@@ -1,3 +1,7 @@
-# e-faktury-ra4b
+# admin app monorepo ra
+1. Full init stock - monorepo 
+    -  react-admin version 4.0.0 beta.2 
+    -  react js ^17
+    -  mui 5 
 
-[project beta github link ](https://github.com/users/marekmitko/projects/7)
+
