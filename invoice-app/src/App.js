@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Admin, Resource, ListGuesser} from 'react-admin';
+import { Admin, Resource, ListGuesser, CreateGuesser } from 'react-admin';
 // import restProvider from 'ra-data-simple-rest';
 import simpleRestProvider from 'ra-data-simple-rest';
 
@@ -9,7 +9,10 @@ import { fetchJson } from "@app/config";
 // import { httpClient } from "@app/config";
 
 import PostIcon from '@mui/icons-material/Book';
-// import UserIcon from '@mui/icons-material/Group';
+import CustomerIcon from '@mui/icons-material/Group';
+import { CustomerList } from "./components/customers/CustomerList";
+import { CustomerEdit } from "./components/customers/CustomerEdit";
+import { CustomerCreate } from "./components/customers/CustomerCreate";
 
 // import { PostList } from "./components/posts/PostList";
 // import { PostEdit } from "./components/posts/PostEdit";
@@ -22,9 +25,10 @@ const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 function App() {
     return (
         <Admin dataProvider={dataProvider} >
-            <Resource name="users"   list={ListGuesser}    />   
+            <Resource name="issuedInvoices_list" icon={PostIcon} options={{ label: 'Invoices' }}  list={ListGuesser}   />  
+            <Resource name="tradePartners_list" icon={CustomerIcon}  options={{ label: 'Customers' }}   list={CustomerList} edit={CustomerEdit} create={CustomerCreate} />   
+            {/* <Resource name="tradePartners_list/create"   options={{ label: 'add Customer' }}   list={CustomerCreate}  />    */}
             {/* <Resource name="posts" icon={PostIcon} list={PostList} edit={PostEdit} create={PostCreate} />   */}
-            <Resource name="posts" icon={PostIcon} list={ListGuesser}   />  
         </Admin>
     );
 }
