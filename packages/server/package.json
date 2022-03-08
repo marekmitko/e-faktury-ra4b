@@ -12,7 +12,8 @@
     
  },
  "scripts": {
-    "server": "json-server --watch db.json --port 5000 --middlewares ./range.js",
+    "ra-server": "json-server --watch db_ra-v22 --port 5000 --middlewares ./range.js",
+    "inv21-server": "json-server --watch db_inv-v21.json --port 5000 --middlewares ./range.js",
     "client": "npm start --prefix client"
   }
 }
