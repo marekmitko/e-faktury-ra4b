@@ -1,24 +1,30 @@
 import * as React from "react";
-import { Admin, Resource, ListGuesser, EditGuesser} from 'react-admin';
+import { Admin, Resource, ListGuesser} from 'react-admin';
+// import restProvider from 'ra-data-simple-rest';
 import simpleRestProvider from 'ra-data-simple-rest';
-// import jsonServerProvider from 'ra-data-json-server';
+
+
+// import { httpClient } from 'ra-core';
+import { fetchJson } from "@app/config";
+// import { httpClient } from "@app/config";
 
 import PostIcon from '@mui/icons-material/Book';
-import UserIcon from '@mui/icons-material/Group';
+// import UserIcon from '@mui/icons-material/Group';
 
-import { PostList } from "./components/posts/PostList";
-import { PostEdit } from "./components/posts/PostEdit";
-import {PostCreate} from "./components/posts/PostCreate";
+// import { PostList } from "./components/posts/PostList";
+// import { PostEdit } from "./components/posts/PostEdit";
+// import {PostCreate} from "./components/posts/PostCreate";
 
-const dataProvider = simpleRestProvider('http://localhost:5000');
+const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 // const dataProvider = jsonServerProvider('http://localhost:5000');
 
 
 function App() {
     return (
         <Admin dataProvider={dataProvider} >
-            <Resource name="users" icon={UserIcon} list={ListGuesser} edit={EditGuesser}  />   
-            <Resource name="posts" icon={PostIcon} list={PostList} edit={PostEdit} create={PostCreate} />  
+            <Resource name="users"   list={ListGuesser}    />   
+            {/* <Resource name="posts" icon={PostIcon} list={PostList} edit={PostEdit} create={PostCreate} />   */}
+            <Resource name="posts" icon={PostIcon} list={ListGuesser}   />  
         </Admin>
     );
 }

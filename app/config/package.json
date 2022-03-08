@@ -2,5 +2,13 @@
   "name": "@app/config",
   "version": "2.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "ra-data-simple-rest": "^4.0.0-beta.2",
+    "react": "^17.0.2",
+    "react-admin": "4.0.0-beta.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0"
+  }
 }
