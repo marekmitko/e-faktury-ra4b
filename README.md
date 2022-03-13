@@ -4,3 +4,9 @@
 
 
 ### Taging 
+https://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+
+git push origin <tagname>
+
+git push origin --tags
