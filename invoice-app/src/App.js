@@ -16,6 +16,7 @@ import { CustomerEdit } from "./components/customers/CustomerEdit";
 import { CustomerCreate } from "./components/customers/CustomerCreate";
 import { InvoiceForm } from "./components/invoice-form/InvoiceForm";
 import {EditMyProfile} from "./components/users/EditMyProfile"
+import { MyProfilUserShow } from "./components/custom/my-show/MyProfilUserShow";
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 // const dataProvider = jsonServerProvider('http://localhost:5000');
 
@@ -31,7 +32,7 @@ function App() {
             <Resource name="profile" icon={PostIcon} options={{ label: '*3 Profilwe' }}  list={ListGuesser} edit={EditMyProfile}  />  
             {/* <Resource name="profile" icon={PostIcon} options={{ label: '4Inv.spec' }}  list={InvoiceForm}   />   */}
             <Resource name="myProfile/create" icon={PostIcon} options={{ label: '5 myProfile' }} list={InvoiceForm}    />  
-
+            <Resource name="profile2" icon={PostIcon} options={{ label: 'MyProfile' }}  show={MyProfilUserShow} />  
         </MyAdmin>
     );
 }

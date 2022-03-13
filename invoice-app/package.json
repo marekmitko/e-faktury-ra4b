@@ -21,7 +21,8 @@
     "web-vitals": "^2.1.4",
     "@e-faktury-ra4b/server": "2.0.0",
     "@app/config": "2.0.0",
-    "react-query": "3.34.16"
+    "react-query": "3.34.16",
+    "react-router-dom": "6.2.2"
 
   },
   "scripts": {
