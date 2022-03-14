@@ -30,9 +30,9 @@ function App() {
             <Resource name="tradePartners_list" icon={CustomerIcon}  options={{ label: '2 Customers' }}   list={CustomerList} edit={CustomerEdit} create={CustomerCreate} />   
             <Resource name="newInvoiceList" icon={PostIcon} options={{ label: '3 Inv.spec' }}  list={InvoiceForm}   />  
             <Resource name="profile" icon={PostIcon} options={{ label: '*3 Profilwe' }}  list={ListGuesser} edit={EditMyProfile}  />  
+            <Resource name="myProfile" icon={PostIcon} options={{ label: '5 myProfile' }} list={InvoiceForm}    />  
+            <Resource name="profile2" icon={PostIcon} options={{ label: 'ProfilTest' }}  show={MyProfilUserShow} />  
             {/* <Resource name="profile" icon={PostIcon} options={{ label: '4Inv.spec' }}  list={InvoiceForm}   />   */}
-            <Resource name="myProfile/create" icon={PostIcon} options={{ label: '5 myProfile' }} list={InvoiceForm}    />  
-            <Resource name="profile2" icon={PostIcon} options={{ label: 'MyProfile' }}  show={MyProfilUserShow} />  
         </MyAdmin>
     );
 }

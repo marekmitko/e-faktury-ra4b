@@ -8,11 +8,11 @@ import { Card, Stack, Typography } from '@mui/material';
 export const MyProfilUserShow = () => {
     const { id } = useParams(); // this component is rendered in the /profile/:id path
     const redirect = useRedirect();
-    const { data, isLoading } = useGetOne(
-        'profile',
-        { id },
+    const { data } = useGetOne(
+        'profile2',
+        { id: 'MyProfile' },
         // redirect to the list if the book is not found
-        { onError: () => redirect('/profile') }
+        { onError: () => redirect('/profile2') }
     );
     // if (isLoading) { return <Loading />; }
     return (
