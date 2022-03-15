@@ -9,17 +9,11 @@ import { Card } from '@mui/material';
 
 export const ShowSellerCard = ({ userResource, userId, actions, children }) => (
     <ShowBase  resource={userResource} id={userId}>
-        <div>
-            <Card>
-                <SimpleShowLayout>
-                    <TextField label="Title" source="title" />
-                    <TextField source="id" />
-                    <TextField source="fullName" />
-                    <TextField source="email" />
-                     {() => console.log("dasda",userResource)} 
-                    {children}
-                </SimpleShowLayout>
-            </Card>
-        </div>
+        <SimpleShowLayout>
+            <TextField label="company" source="company" />
+            <TextField label="name" source="fullName" />
+            <TextField label="NIP" source="nip" />
+            <TextField label="Street" source="address.street" />
+        </SimpleShowLayout>
     </ShowBase>
 );

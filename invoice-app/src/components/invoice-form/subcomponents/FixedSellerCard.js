@@ -18,15 +18,14 @@ export const FixedSellerCard = ({ userResource, userId, actions, children }) => 
     if (!profile) return null;
 
 return (
-    <div>
+        <div>
             {/*  <ShowBase  resource={userResource} id={userId}> */}
             <Card>
-                <center>
-                <p>{profile.id}</p>
-                <p>{profile.nickname}</p>
-                <p>{profile.email}</p>
+                <p>{profile.company}</p>
+                <p>{profile.fullName}</p>
+                <p>{profile.nip}</p>
+                <p>{profile.address.street}</p>
 
-                </center>
             </Card>
                     {/* </ShowBase> */}
         </div>

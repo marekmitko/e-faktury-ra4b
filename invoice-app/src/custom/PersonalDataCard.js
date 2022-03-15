@@ -6,6 +6,15 @@ import BuyerIcon from '@mui/icons-material/Contacts';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import PersonSearchSharpIcon from '@mui/icons-material/PersonSearchSharp';
 
+const bull = (
+    <Box
+        component="span"
+        sx={{ display: 'inline-block', mx: '2px',
+         transform: 'scale(0.8)' }}
+    >
+        •
+    </Box>
+);
 
 export const  PersonalDataCard = ({variant, headerTitle, headerIcon, children}) => (
 
@@ -16,8 +25,13 @@ export const  PersonalDataCard = ({variant, headerTitle, headerIcon, children}) 
                     mx: 0,  p: '2px', pl: '10px', pb: 0, pr: '5px', color: blue[600]}
             }
             avatar={headerIcon ? headerIcon : null} 
+            // avatar={
+            //     <Avatar sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', width: 32, height: 32, bgcolor: blue[500] }} aria-label="recipe">
+            //         M
+            //     </Avatar>
+            //     }
             action={
-                <IconButton aria-label="changeSeller">
+                <IconButton aria-label="settings">
                     <MoreVertIcon />
                 </IconButton>
                 }
@@ -31,19 +45,6 @@ export const  PersonalDataCard = ({variant, headerTitle, headerIcon, children}) 
             </CardActions>
         </Card>
 );
-
-
-
-// const bull = (
-//     <Box
-//         component="span"
-//         sx={{ display: 'inline-block', mx: '2px',
-//          transform: 'scale(0.8)' }}
-//     >
-//         •
-//     </Box>
-// );
-
 
 // export default function PersonalDataCard() {
 //     return (
