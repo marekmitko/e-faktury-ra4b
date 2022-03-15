@@ -16,6 +16,8 @@ import { CustomerEdit } from "./components/customers/CustomerEdit";
 import { CustomerCreate } from "./components/customers/CustomerCreate";
 import { InvoiceForm } from "./components/invoice-form/InvoiceForm";
 import {EditMyProfile} from "./components/users/EditMyProfile"
+import { PostShow } from "./components/show-test/PostShow";
+import { ShowSellerCard } from "./components/invoice-form/subcomponents/ShowSellerCard";
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 // const dataProvider = jsonServerProvider('http://localhost:5000');
 
@@ -24,8 +26,7 @@ function App() {
     return (
         <MyAdmin dataProvider={dataProvider} >
             <EditMyProfile/>
-
-            <Resource name="issuedInvoices_list" icon={PostIcon} options={{ label: '1 Invoices' }}  list={ListGuesser}   />  
+            <Resource name="issuedInvoices_list" show={()=>( <ShowSellerCard userResource={"profile"} userId={"MyProfile"} /> )} icon={PostIcon} options={{ label: '1 Invoices' }}  list={ListGuesser}   />  
             <Resource name="tradePartners_list" icon={CustomerIcon}  options={{ label: '2 Customers' }}   list={CustomerList} edit={CustomerEdit} create={CustomerCreate} />   
             <Resource name="newInvoiceList" icon={PostIcon} options={{ label: '3 Inv.spec' }}  list={InvoiceForm}   />  
             <Resource name="profile" icon={PostIcon} options={{ label: '*3 Profilwe' }}  list={ListGuesser} edit={EditMyProfile}  />  
