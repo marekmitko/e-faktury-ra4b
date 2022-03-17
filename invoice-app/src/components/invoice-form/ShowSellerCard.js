@@ -6,7 +6,7 @@ import { ShowSellerCard } from "../invoice-form/subcomponents/ShowSellerCard";
 import {   TextField   } from "react-admin";
 import { UserRecordWithGCC } from "../../../invoice-app/src/contexts/UserRecordContext";
 
-export const ShowSellerCard = (props) => (
+export const SPRShowSellerCard = (props) => (
 <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
             <UserRecordWithGCC >
                 <TextField label="company" source="company" />

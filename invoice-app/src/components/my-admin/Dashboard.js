@@ -1,12 +1,18 @@
 import * as React from "react";
 import { Card, CardContent, CardHeader, Box } from "@mui/material";
-import { FixedSellerCard } from "../invoice-form/subcomponents/FixedSellerCard";
+import { FixedSellerCard } from "../invoice-form/bin/FixedSellerCard";
 // import { PostShow } from "../show-test/PostShow";
 import {PersonalDataCard} from '../../custom/PersonalDataCard';
 import SellerIcon from '@mui/icons-material/ManageAccounts';
-import { ShowSellerCard } from "../invoice-form/subcomponents/ShowSellerCard";
-import { Create } from "react-admin";
+import { useResourceContext, TextField, ShowBase, SimpleShowLayout } from "react-admin";
+import { UserRecordWithGCC } from "../../contexts/UserRecordContext";
 
+
+
+const ResourceName = () => {
+    const resource = useResourceContext();
+    return <>{resource}</>;
+};
 
 const MyBox = ({children}) => (
         <Box
@@ -21,8 +27,22 @@ const MyBox = ({children}) => (
 // outlined
 // standard 
 export const Dashboard =  () => (
-    
-    <Card>
+    <>
+ 
+        
+        <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
+            <UserRecordWithGCC >
+                <TextField label="company" source="company" />
+                <TextField label="name" source="fullName" />
+                <TextField label="NIP" source="nip" />
+                <Box    sx={{ display: 'inline-block', p: '2px' }}  >
+                    <TextField  label="ZPI Code" source="address.ZIPCode" />
+                    <TextField  label="city" source="address.city" />
+                </Box>
+                <TextField label="Street" source="address.street" />
+            </UserRecordWithGCC>
+        </PersonalDataCard>
+        <Card>
         <MyBox>
         <Card>
             <PersonalDataCard  variant="standard" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
@@ -37,4 +57,5 @@ export const Dashboard =  () => (
         <CardHeader title="Welcome to the administration" />
         <CardContent>Lorem ipsum sic dolor amet...</CardContent>
     </Card>
+    </>
 );

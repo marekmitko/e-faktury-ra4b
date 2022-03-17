@@ -1,19 +1,24 @@
-import { ShowBase, SimpleShowLayout,  RecordContextProvider, TextField,  } from 'react-admin';
-import { Card } from '@mui/material';
+import * as React from "react";
+import {  Box } from "@mui/material";
+import {PersonalDataCard} from '../../../custom/PersonalDataCard';
+import SellerIcon from '@mui/icons-material/ManageAccounts';
+import {   TextField   } from "react-admin";
+import { UserRecordWithGCC } from "../../../contexts/UserRecordContext";
 
-// wywołuje useListController, umieszcza wynik w ListContext, a następnie renderuje jego dziecko.
-// sprawdź czy tak to może być - czy należy użyć ResourceContextProvider & RecordContextProvider
 
+// *see ShowSellerCard
 
-// Albo moge użyć useGetOne(...) 
-
-export const ShowSellerCard = ({ userResource, userId, actions, children }) => (
-    <ShowBase  resource={userResource} id={userId}>
-        <SimpleShowLayout>
+export const ShowSellerCard = (props) => (
+    <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
+        <UserRecordWithGCC >
             <TextField label="company" source="company" />
             <TextField label="name" source="fullName" />
             <TextField label="NIP" source="nip" />
+            <Box    sx={{ display: 'inline-block', p: '2px' }}  >
+                <TextField  label="ZPI Code" source="address.ZIPCode" />
+                <TextField  label="city" source="address.city" />
+            </Box>
             <TextField label="Street" source="address.street" />
-        </SimpleShowLayout>
-    </ShowBase>
+        </UserRecordWithGCC>
+    </PersonalDataCard>
 );

@@ -1,18 +1,27 @@
 import React from 'react';
-import { useGetOne, RecordContextProvider } from 'react-admin';
+import { useGetOne, RecordContextProvider, SimpleShowLayout } from 'react-admin';
 import GCV  from '../config/GLOBAL_CONFIG_CONST';
 
-// UserRecordFetcher
-export const UserRecordFetcher = ({ id, resource, children }) => {
+// *see UserRecordFetcher
+// Ver sprawdzić ten zapis  12-13 <SimpleShowLayout record={data}></SimpleShowLayout>
+const UserRecordFetcher = ({ id, resource, children }) => {
     const { data, isLoading, error } = useGetOne(resource, { id });
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
     return (
         <RecordContextProvider record={data}>
-            {children}
+            <SimpleShowLayout record={data}>
+                {children}
+            </SimpleShowLayout>
         </RecordContextProvider>
     );
 };
 // Global Configuration Constans  GCC
-export const UserRecordWithGCC =  () => (<UserRecordFetcher id={GCV.USER_ID} resource={GCV.USER_RESOURCE} />);
+
+// *see UserRecordWithGCC
+export const UserRecordWithGCC =  ({children}) =>  (
+        <UserRecordFetcher id={GCV.USER_ID} resource={GCV.USER_RESOURCE}  >
+            {children}
+        </UserRecordFetcher>
+); 
 
