@@ -6,6 +6,7 @@ import {PersonalDataCard} from '../../custom/PersonalDataCard';
 import SellerIcon from '@mui/icons-material/ManageAccounts';
 import { useResourceContext, TextField, ShowBase, SimpleShowLayout } from "react-admin";
 import { UserRecordWithGCC } from "../../contexts/UserRecordContext";
+import { ShowSellerCard } from "../invoice-form/personal-cards/ShowSellerCard";
 
 
 
@@ -28,10 +29,11 @@ const MyBox = ({children}) => (
 // standard 
 export const Dashboard =  () => (
     <>
- 
+ <ShowSellerCard />
         
         <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
             <UserRecordWithGCC >
+                <SimpleShowLayout>
                 <TextField label="company" source="company" />
                 <TextField label="name" source="fullName" />
                 <TextField label="NIP" source="nip" />
@@ -40,6 +42,7 @@ export const Dashboard =  () => (
                     <TextField  label="city" source="address.city" />
                 </Box>
                 <TextField label="Street" source="address.street" />
+                </SimpleShowLayout>
             </UserRecordWithGCC>
         </PersonalDataCard>
         <Card>

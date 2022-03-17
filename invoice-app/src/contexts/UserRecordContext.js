@@ -9,10 +9,11 @@ const UserRecordFetcher = ({ id, resource, children }) => {
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
     return (
-        <RecordContextProvider record={data}>
-            <SimpleShowLayout record={data}>
+        <RecordContextProvider value={data}>
+{/* 
+            <SimpleShowLayout  > */}
                 {children}
-            </SimpleShowLayout>
+            {/* </SimpleShowLayout> */}
         </RecordContextProvider>
     );
 };

@@ -5,7 +5,7 @@ import {
     SimpleForm,
     TextInput,
 } from 'react-admin';
-import { ShowSellerCard } from "./subcomponents/ShowSellerCard";
+import { ShowSellerCard } from "./personal-cards/ShowSellerCard";
 
 export const InvoiceCreate = (props) => (
     <Create {...props}>
