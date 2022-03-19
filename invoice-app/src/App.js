@@ -22,10 +22,10 @@ import { InvoiceCreate } from "./components/invoice-form/InvoiceCreate";
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 // const dataProvider = jsonServerProvider('http://localhost:5000');
 
-
+//  *see App
 function App() {
     return (
-        <MyAdmin dataProvider={dataProvider} >
+        <MyAdmin dataProvider={dataProvider}  >
             <EditMyProfile/>
             <Resource name="issuedInvoices_list"   icon={PostIcon} options={{ label: '1 Invoices' }}  list={ListGuesser}  create={InvoiceCreate} />  
             <Resource name="tradePartners_list" icon={CustomerIcon}  options={{ label: '2 Customers' }}   list={CustomerList} edit={CustomerEdit} create={CustomerCreate} />   

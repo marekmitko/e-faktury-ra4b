@@ -23,7 +23,7 @@ const MyTextField = ({ name, label }) => {
 // sx={{display: "inline-block", width: "5em"}}
 
 export const CityZipCodeField = (props) =>(
-        <MyTextField name="address.ZIPCode" label="ISBN" />
+        <MyTextField sx={{display: "inline-block", width: "5em"}} name="address.ZIPCode" label="ISBN" />
         // <MyTextField  name="fullName" label="longitude" />
 );
 

@@ -62,7 +62,7 @@
           "company": "Biuro Podróży Pawłowice",
           "name": "Nazwa Użytkownika",
           "fullName": "Marek Kowalski",
-          "fulllname": {
+          "fullname": {
             "forename": "Marek",
             "surname": "Kowalski"
             },
@@ -92,7 +92,7 @@
           "nickname": "Marek User",
           "company": "Biuro Podróży Pawłowice",
           "fullName": "Marek Kowalski",
-          "fulllname": {
+          "fullname": {
             "forename": "Marek",
             "surname": "Kowalski"
             },

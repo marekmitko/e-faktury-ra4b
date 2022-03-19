@@ -11,7 +11,7 @@ export const EditMyProfile = props => (
             <TextInput source="nickname" />
             <TextInput source="company" />
             <TextInput source="fullName" />
-            <TextInput source="fulllname.forename" />
+            <TextInput source="fullname.forename" />
             <ReferenceInput source="address_id" reference="addresses"><SelectInput optionText="id" /></ReferenceInput>
             <TextInput source="address.id" />
             <TextInput source="email" />

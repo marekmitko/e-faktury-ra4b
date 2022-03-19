@@ -1,12 +1,13 @@
 import * as React from "react";
-import { Card, CardContent, CardHeader, Box } from "@mui/material";
+import { Card, CardContent, CardHeader, Box, Stack } from "@mui/material";
 import { FixedSellerCard } from "../invoice-form/bin/FixedSellerCard";
 // import { PostShow } from "../show-test/PostShow";
 import {PersonalDataCard} from '../../custom/PersonalDataCard';
 import SellerIcon from '@mui/icons-material/ManageAccounts';
-import { useResourceContext, TextField, ShowBase, SimpleShowLayout } from "react-admin";
+import { useResourceContext, TextField, ShowBase, SimpleShowLayout, useRecordContext  } from "react-admin";
 import { UserRecordWithGCC } from "../../contexts/UserRecordContext";
 import { ShowSellerCard } from "../invoice-form/personal-cards/ShowSellerCard";
+import { ZipCityDualLabel, ZipCityDualTextField } from "../../custom/ZipCityDualTextField";
 
 
 
@@ -24,24 +25,70 @@ const MyBox = ({children}) => (
         </Box>
     );
 
+
+//##########################################
+const PersonFullNameTextField = (props) => {
+    const record = useRecordContext(props);
+    
+    return (
+        <>
+        { <div><strong>do sprawdzenia </strong> </div>}
+        <span>
+            {`${record.fullname.forename} ${record.fullname.surname}`}
+        </span>
+        </>
+    );
+}
+
+PersonFullNameTextField.defaultProps = {
+    label: 'Name',
+    addLabel: true,
+};
+
+
+
+//##########################################
+
+const TestCityZipCodeField = (defaultProps, props) => {
+    const {labelZipCode, labelCityName } = props;
+    // const record = useRecordContext(props);
+    defaultProps = {addLabel: true};
+
+    return (
+        <span>
+            <Stack direction="row" spacing={3}> 
+                <TextField sx={{display: "inline-block"} } source="address.ZIPCode" label={labelZipCode} />
+                <TextField addLabel source="address.city" label={labelCityName} />
+            </Stack>
+        </span>
+    );
+}
+
 // variant version
 // outlined
 // standard 
+
+
+
+// *see TestCityZipCodeField   
+const ZipCityCode = ({...props}, {addLabel}) => <TestCityZipCodeField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
+
+// *see Dashboard
 export const Dashboard =  () => (
     <>
- <ShowSellerCard />
+ {/* <ShowSellerCard /> */}
         
         <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
             <UserRecordWithGCC >
                 <SimpleShowLayout>
-                <TextField label="company" source="company" />
-                <TextField label="name" source="fullName" />
-                <TextField label="NIP" source="nip" />
-                <Box    sx={{ display: 'inline-block', p: '2px' }}  >
-                    <TextField  label="ZPI Code" source="address.ZIPCode" />
-                    <TextField  label="city" source="address.city" />
-                </Box>
-                <TextField label="Street" source="address.street" />
+                    <TextField label="Company Name" source="company" />
+                    <TextField label="Full Name" source="fullName" />
+                    <ZipCityDualTextField label={ <ZipCityDualLabel />} sourceZip="address.ZIPCode" sourceCity="address.city" />
+                    <TextField label="Street" source="address.street" />
+                    <TextField label="MVA Code" source="orgId.orgNumber" />
+                    <hr/>
+                    <ZipCityCode />
+                    <PersonFullNameTextField  />
                 </SimpleShowLayout>
             </UserRecordWithGCC>
         </PersonalDataCard>
