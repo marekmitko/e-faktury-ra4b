@@ -6,7 +6,7 @@ import {
     TextInput,
 } from 'react-admin';
 import { SellerCard } from "./personal-cards/seller/SellerCard";
-import { ShowSellerCard } from "./personal-cards/seller/ShowSellerCard";
+// import { ShowSellerCard } from "./personal-cards/seller/ShowSellerCard";
 
 export const InvoiceCreate = (props) => (
     <Create {...props} component="div">
