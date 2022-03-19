@@ -5,6 +5,7 @@ import SellerIcon from '@mui/icons-material/ManageAccounts';
 import {   TextField, SimpleShowLayout, DateField, Labeled   } from "react-admin";
 import { UserRecordWithGCC } from "../../../contexts/UserRecordContext";
 import { CityZipCodeField } from "./CityZipCodeField";
+import { CityZipCodeLabels } from "./CityZipCodeField";
  
 
 
@@ -17,7 +18,7 @@ export const ShowSellerCard = (props) => (
             <Grid item xs={12} sm={8}>
       
             <SimpleShowLayout>
-                    <CityZipCodeField {...props}/>
+                    <CityZipCodeField   />
                     <TextField sx={{display: "inline-flex"}} label="company" source="company" />
                     <TextField label="name" source="fullName" sx={{display: "inline-flex"}} />
                 <hr/>
@@ -25,6 +26,18 @@ export const ShowSellerCard = (props) => (
                     <TextField label="name" source="fullName" />
                     <TextField label="NIP" source="nip" />
                     {/* <Box    sx={{ display: 'inline-block', p: '2px' }}  > */}
+                    <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1, width: '25ch' },
+                        }}
+                        noValidate
+                        autoComplete="off"
+    >
+
+                        <TextField  label="ZPI Code" source="address" />
+                        <TextField  label="city" source="address" />
+    </Box>
                     <Stack direction="row" spacing={2}>
 
                         <TextField  label="ZPI Code" source="address" />
