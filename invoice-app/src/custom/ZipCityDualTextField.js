@@ -2,14 +2,14 @@ import * as React from "react";
 import { Stack } from "@mui/material";
 import { useResourceContext, TextField, useRecordContext  } from "react-admin";
 
-
+// *see ZipCityDualTextLabel 
 export const ZipCityDualLabel= () => (
     <Stack direction="row" spacing={2}>
         <span>ZIP Code</span>
         <span>City Name</span>
     </Stack>
 );
-
+// *see ZipCityDualTextField   
 // export const ZipCodeCityNameTextField = (props, defaultProps) => {
 export const ZipCityDualTextField = (props, defaultProps) => {
     const {labelZipCode, labelCityName, sourceCity, sourceZip } = props;
@@ -25,8 +25,8 @@ export const ZipCityDualTextField = (props, defaultProps) => {
 
 
 
-// *see TestCityZipCodeField   
-// const ZipCityCode = ({...props}, {addLabel}) => <TestCityZipCodeField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
+// BUG ZipCityCode   
+// export const ZipCityCode = ({...props}, {addLabel}) => <TestCityZipCodeField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
 // 
 
 // export const ZipCityDualTextField = (props, defaultProps) => {

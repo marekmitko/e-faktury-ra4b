@@ -5,11 +5,13 @@ import {
     SimpleForm,
     TextInput,
 } from 'react-admin';
-import { ShowSellerCard } from "./personal-cards/ShowSellerCard";
+import { SellerCard } from "./personal-cards/seller/SellerCard";
+import { ShowSellerCard } from "./personal-cards/seller/ShowSellerCard";
 
 export const InvoiceCreate = (props) => (
-    <Create {...props}>
-        <ShowSellerCard />
+    <Create {...props} component="div">
+            {/* <ShowSellerCard /> */}
+            <SellerCard />
     <div>
         <SimpleForm variant="outlined">
             <TextInput source="id" disabled />
