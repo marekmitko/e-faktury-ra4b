@@ -10,10 +10,8 @@ const UserRecordFetcher = ({ id, resource, children }) => {
     if (error) return <p>Error :(</p>;
     return (
         <RecordContextProvider value={data}>
-{/* 
-            <SimpleShowLayout  > */}
+
                 {children}
-            {/* </SimpleShowLayout> */}
         </RecordContextProvider>
     );
 };

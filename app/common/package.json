@@ -2,5 +2,7 @@
   "name": "@app/common",
   "version": "2.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "private": true
 }

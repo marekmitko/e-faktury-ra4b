@@ -2,14 +2,14 @@ import React from "react";
 import {Box, Card, CardActions, CardHeader, CardContent, Typography, Button, Avatar, IconButton} from "@mui/material";
 import { blue } from '@mui/material/colors';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-);
+// const bull = () => (
+//     <Box
+//         component="span"
+//         sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+//     >
+//         •
+//     </Box>
+// );
 
 const card = (
 
@@ -33,7 +33,7 @@ const card = (
                     Word of the Day
                 </Typography>
                 <Typography variant="h5" component="div">
-                    be{bull}nev{bull}o{bull}lent
+                    {/* be{bull}nev{bull}o{bull}lent */}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     adjective

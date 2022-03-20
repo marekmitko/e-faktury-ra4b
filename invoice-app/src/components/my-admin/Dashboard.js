@@ -8,8 +8,16 @@ import { useResourceContext, TextField, ShowBase, SimpleShowLayout, useRecordCon
 import { UserRecordWithGCC } from "../../contexts/UserRecordContext";
 import { ShowSellerCard } from "../invoice-form/personal-cards/ShowSellerCard";
 import { ZipCityDualLabel, ZipCityDualTextField } from "../../custom/ZipCityDualTextField";
+// const customComponent = require('@app/components');
 
 
+// import customComponent    from "@app/components";
+
+
+// const duapa = import("@app/components");
+// // const {XXXDashboard} = customComponent;
+
+// const {XXXDashboard} = commonFunction;
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -77,7 +85,7 @@ const ZipCityCode = ({...props}, {addLabel}) => <TestCityZipCodeField  addLabel=
 export const Dashboard =  () => (
     <>
  {/* <ShowSellerCard /> */}
-        
+        {/* <XXXDashboard /> */}
         <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
             <UserRecordWithGCC >
                 <SimpleShowLayout>
