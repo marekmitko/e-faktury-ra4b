@@ -2,30 +2,26 @@ import React from "react";
 import {Box, Card, CardActions, CardHeader, CardContent, Typography, TextField, Button, Avatar, IconButton} from "@mui/material";
 
 // ustawić w  Global Configuration Variable GCV - USER_DATA_PROVIDER_CONFIG
-import { blue, white } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { PROPERTY_VALUE_CSS_CONFIG } from "../config/GLOBAL_CONFIG_CONST";
 
+const {INVOICE_FORM} = PROPERTY_VALUE_CSS_CONFIG;
+const {...PersonalDataCard_GCPCSS} = INVOICE_FORM;
 
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px',
-            transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-);
 // *see  PersonalDataCard
 export const  PersonalDataCard = ({variant, headerTitle, headerIcon, children}) => (
-
-    <Card variant={variant} sx={{ minWidth: 250,  display: 'inline-block', mx: '2px',}}>
+    
+    <Card   variant={variant} 
+    // BUG  PROPERTY_VALUE_CSS_CONFIG sx={{ minWidth:  PersonalDataCard_GCPCSS.Card_minWidth_GCPCSS ,
+    // sx={{ minWidth:  PersonalDataCard_GCPCSS.Card_minWidth_GCPCSS , m: "1px", bgcolor: PersonalDataCard_GCPCSS.Card_minWidth_GCPCSS
+        sx={{ minWidth:  250 }}
+    >
         <CardHeader  
             sx={{fontWeight: 'bold', 
                     borderBottom: `2.5px solid ${blue[800]}`,
-                    mx: 0,  p: '2px', pl: '10px', pb: 0, pr: '5px', color: blue[600],
-                    
-                }
-            }
+                    m: 0,  py: '2px', px: '10px', color: blue[600]
+            }}
             avatar={headerIcon ? headerIcon : null} 
             // avatar={
             //     <Avatar sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', width: 32, height: 32, bgcolor: blue[500] }} aria-label="recipe">

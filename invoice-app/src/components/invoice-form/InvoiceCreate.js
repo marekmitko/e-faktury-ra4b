@@ -1,5 +1,5 @@
 import { Card , Grid} from "@mui/material";
-import { Box } from "@mui/system";
+import {Box} from '@mui/material';
 import * as React from "react";
 import {
     Create,
@@ -10,39 +10,26 @@ import { SellerCard } from "./personal-cards/seller/SellerCard";
 import { BuyerCard } from "./personal-cards/buyer/BuyerCard";
 // import { ShowSellerCard } from "./personal-cards/seller/ShowSellerCard";
 
-export const InvoiceCreate = (props) => (
-    <Create {...props} component="div">
-        {/* <Box component="div" sx={{ p: 2, border: '1px dashed grey' }}> */}
-        <Grid container spacing={1} sx={{   border: '1px dashed grey' }}>
-            <Grid item xs={6} 
-            // md={6}
-            >
+
+
+export const InvoiceCreate = (props) =>  (
+    <Create component="div" {...props}>
+        <SimpleForm >
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
+            <Grid item xs={12}  sm={6}>
                 <SellerCard />
             </Grid>
-            <Grid item xs={6} 
-            // md={6}
-            >
+            <Grid item xs={12}   sm={6} >
                 <BuyerCard />
             </Grid>
-        </Grid>
-        {/* </Box> */}
-            {/* <ShowSellerCard /> */}
-            
-    <div>
-        <SimpleForm variant="outlined">
-            <TextInput source="id" disabled />
-            <TextInput source="company" />
-            <TextInput source="fullname" />
-            <TextInput source="email" />
-            <TextInput source="address.street" />
-            <TextInput source="MVA" label="MVA" />
-            <TextInput source="telephoneNumber" />
-        <TextInput source="phone" />
-        
+        <Grid item xs={12} >
+
         <Card >
             <p> list </p>
             </Card>
+            </Grid>
+ 
+        </Grid>
         </SimpleForm>
-</div>
     </Create>
 );

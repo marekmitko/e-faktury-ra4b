@@ -1,23 +1,12 @@
 import * as React from "react";
 import { Card, CardContent, CardHeader, Box, Stack } from "@mui/material";
 import { FixedSellerCard } from "../invoice-form/bin/FixedSellerCard";
-// import { PostShow } from "../show-test/PostShow";
-import {PersonalDataCard} from '../../custom/PersonalDataCard';
+import { PersonalDataCard } from '../../custom/PersonalDataCard';
 import SellerIcon from '@mui/icons-material/ManageAccounts';
-import { useResourceContext, TextField, ShowBase, SimpleShowLayout, useRecordContext  } from "react-admin";
+import { useResourceContext, TextField, SimpleShowLayout, useRecordContext  } from "react-admin";
 import { UserRecordWithGCC } from "../../contexts/UserRecordContext";
-import { ShowSellerCard } from "../invoice-form/personal-cards/ShowSellerCard";
 import { ZipCityDualLabel, ZipCityDualTextField } from "../../custom/ZipCityDualTextField";
-// const customComponent = require('@app/components');
-
-
-// import customComponent    from "@app/components";
-
-
-// const duapa = import("@app/components");
-// // const {XXXDashboard} = customComponent;
-
-// const {XXXDashboard} = commonFunction;
+import { SellerCard } from "../invoice-form/personal-cards/seller/SellerCard";
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -72,10 +61,6 @@ const TestCityZipCodeField = (defaultProps, props) => {
     );
 }
 
-// variant version
-// outlined
-// standard 
-
 
 
 // *see TestCityZipCodeField   
@@ -84,36 +69,10 @@ const ZipCityCode = ({...props}, {addLabel}) => <TestCityZipCodeField  addLabel=
 // *see Dashboard
 export const Dashboard =  () => (
     <>
- {/* <ShowSellerCard /> */}
-        {/* <XXXDashboard /> */}
-        <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
-            <UserRecordWithGCC >
-                <SimpleShowLayout>
-                    <TextField label="Company Name" source="company" />
-                    <TextField label="Full Name" source="fullName" />
-                    <ZipCityDualTextField label={ <ZipCityDualLabel />} sourceZip="address.ZIPCode" sourceCity="address.city" />
-                    <TextField label="Street" source="address.street" />
-                    <TextField label="MVA Code" source="orgId.orgNumber" />
-                    <hr/>
-                    <ZipCityCode />
-                    <PersonFullNameTextField  />
-                </SimpleShowLayout>
-            </UserRecordWithGCC>
-        </PersonalDataCard>
+        <SellerCard />
         <Card>
-        <MyBox>
-        <Card>
-            <PersonalDataCard  variant="standard" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
-                {/* <ShowSellerCard userResource="data_user"  userId="user_123"  /> */}
-            </PersonalDataCard>
+            <CardHeader title="Welcome to the administration" />
+            <CardContent>Lorem ipsum sic dolor amet...</CardContent>
         </Card>
-        </MyBox>
-        {/* <PostShow /> */}
-        <MyBox>
-        <FixedSellerCard userResource="data_user" userId="user_123" />
-        </MyBox>
-        <CardHeader title="Welcome to the administration" />
-        <CardContent>Lorem ipsum sic dolor amet...</CardContent>
-    </Card>
     </>
 );

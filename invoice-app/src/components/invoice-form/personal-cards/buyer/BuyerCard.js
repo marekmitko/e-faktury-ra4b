@@ -1,22 +1,18 @@
 import React from 'react';
-import { SimpleForm, TextInput, RichTextInput, NumberInput, Grid } from 'react-admin';
+import { Card  } from '@mui/material';
+import { SimpleForm, TextInput, RichTextInput, NumberInput, } from 'react-admin';
 import { PersonalDataCard } from '../../../../custom/PersonalDataCard';
-// import { SellerDataShowLayout } from './SellerDataShowLayout'
-
-
-import SellerIcon from '@mui/icons-material/ManageAccounts';
+import BuyerIcon from '@mui/icons-material/Person';
+import { BuyerDataFromLayout } from './BuyerDataFormLayout';
+import InvoiceBuyerForm from './TestBuyerCard';
 
 
 // *see SellerCard
 export const BuyerCard = (props) => (
-    <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Nabywca">
-        <SimpleForm component='div'>
-            <TextInput source="title" />
-            <TextInput label="Company Name" source="company" />
-            <TextInput label="Full Name" source="fullName" />
-            <TextInput label="Street" source="address.street" />
-            <TextInput label="MVA Code" source="orgId.orgNumber" />
-            <NumberInput source="nb_views" />
+    <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle="Nabywca">
+        <SimpleForm toolbar="">
+        {/* <BuyerDataFromLayout /> */}
+        <InvoiceBuyerForm />
         </SimpleForm>
     </PersonalDataCard>
 );
