@@ -84,8 +84,8 @@ const dataBuyer = {};
                         <BoxTextInput label="ZIP Code" source="addres.ZIPCode" resource="buyer" mr="0.5em" />
                         <BoxTextInput label="City Name" flex={2} source="addres.city" resource="buyer"/>
                     </Box>
-                    <BoxTextInput flex={2} mt="0" mb="-1em" source="contact.email" resource="buyer" type="email" />
-                    <Box display="flex" mt="-1em" mb="-1.5em">
+                    {/* <BoxTextInput flex={2} mt="0" mb="-1em" source="contact.email" resource="buyer" type="email" /> */}
+                    <Box display="flex" mt="1em" mb="-1.5em">
                         <BoxTextInput label="MVA Code" mt="-0.75em"  mb="-1em"    source="buyerMVA"  initialValue={dataBuyer.noMVA}    mr="0.5em"  />
                         <BooleanInput label="MVA" 
                             // source={dataBuyer.noMVA} 
