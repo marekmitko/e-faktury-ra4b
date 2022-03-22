@@ -1,8 +1,7 @@
-import { Card  } from '@mui/material';
+import { Card,  Box } from '@mui/material';
 import React from 'react';
-import { SimpleForm, SimpleShowLayout, 
-    TextInput, 
-    RichTextInput, NumberInput, useRecordContext, RecordContextProvider } from 'react-admin';
+import { SimpleForm,    TextInput,   BooleanInput, NumberInput, useRecordContext, RecordContextProvider } from 'react-admin';
+import { SmallTextInput } from '../../../../custom/SmallTextInput';
 
 // import { Form, Field } from 'react-final-form';
 // import { useWarnWhenUnsavedChanges } from 'react-admin';
@@ -20,16 +19,29 @@ const BuyerRecordContext = ({children}) => {
 
 
 export const BuyerDataFromLayout = ( ) =>  (
-            <BuyerRecordContext>
-         
-                <TextInput source="title" variant="outlined" />
-                <TextInput label="Company Name" source="company" variant="outlined" />
-                <TextInput label="Full Name" source="fullName" variant="outlined" />
-                <TextInput label="Street" source="address.street" variant="outlined" />
-                <TextInput label="MVA Code" source="orgId.orgNumber" variant="outlined" />
-                {/* <NumberInput source="nb_views" /> */}
-  
-            </BuyerRecordContext>
+            // <BuyerRecordContext>
+                <SimpleForm toolbar="">
+                    <SmallTextInput  label="Company Name" source="title"  />
+                    <div>
+                        <SmallTextInput  label="First Name" source="fullname.forename" />
+                        <SmallTextInput    label="Last Name" source="fullname.surname"   />
+                    </div>
+                    <div>
+                        <SmallTextInput   label="Street Name" source="address.street"  />
+                        <SmallTextInput   label="Number" source="address.streetNumber"  />
+                    </div>
+                    <div>
+                        <SmallTextInput   label="ZIP Code" source="addres.ZIPCode"  />
+                        <SmallTextInput  label="City Name" flex={2} source="addres.city"   />
+                    </div>
+                    <div> 
+                        <SmallTextInput  label="MVA Code" mt="-0.75em"  mb="-1em"    source="buyerMVA"     mr="0.5em"  />
+                    <Box display="inline-block" >
+                        <BooleanInput  label="MVA"   />
+                    </Box>    
+                    </div> 
+                </SimpleForm>
+            // </BuyerRecordContext>
     );
 
 

@@ -8,11 +8,11 @@ const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel=
 
 
 export const SellerDataShowLayout = () => (
-    <SimpleShowLayout>
-        <TextField label="Company Name" source="company" />
-        <TextField label="Full Name" source="fullName" />
-        <ZipCityDualTextField label={<ZipCityDualLabel  />} sourceZip="address.ZIPCode" sourceCity="address.city" />
+<SimpleShowLayout>
+    <TextField label="Company Name" source="company" />
+    <TextField label="Full Name" source="fullName" />
         <TextField label="Street" source="address.street" />
+        <ZipCityDualTextField label={<ZipCityDualLabel  />} sourceZip="address.ZIPCode" sourceCity="address.city" />
         <TextField label="MVA Code" source="orgId.orgNumber" />
     </SimpleShowLayout>
 );

@@ -38,9 +38,9 @@ export const  PersonalDataCard = ({variant, headerTitle, headerIcon, children}) 
             <CardContent>
                 {children}
             </CardContent>
-            <CardActions>
+            {/* <CardActions>
                 <Button size="small">v more</Button>
-            </CardActions>
+            </CardActions> */}
         </Card>
 );
 

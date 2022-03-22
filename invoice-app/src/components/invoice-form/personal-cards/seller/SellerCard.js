@@ -13,13 +13,7 @@ import SellerIcon from '@mui/icons-material/ManageAccounts';
 export const SellerCard = (props) => (
     <PersonalDataCard  variant="outlined" headerIcon={<SellerIcon />} headerTitle="Sprzedawca">
         <UserRecordWithGCC>
-        {/* <Box  
-        component="div"
-        sx={{ display: 'flex',  justifyContent:"center", alignContent:"center",
-        transform: 'scale(1.1)' }}
-    > */}
             <SellerDataShowLayout />
-            {/* </Box> */}
         </UserRecordWithGCC>
     </PersonalDataCard>
 );

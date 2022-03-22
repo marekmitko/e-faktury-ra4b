@@ -1,4 +1,4 @@
-import { Card , Grid} from "@mui/material";
+import { autocompleteClasses, Card , Grid} from "@mui/material";
 import {Box} from '@mui/material';
 import * as React from "react";
 import {
@@ -8,8 +8,9 @@ import {
 } from 'react-admin';
 import { SellerCard } from "./personal-cards/seller/SellerCard";
 import { BuyerCard } from "./personal-cards/buyer/BuyerCard";
+import InvoiceBuyerForm from "./personal-cards/buyer/TestBuyerCard";
 // import { ShowSellerCard } from "./personal-cards/seller/ShowSellerCard";
-
+import {PersonalDataCard} from "../../custom/PersonalDataCard"
 
 
 export const InvoiceCreate = (props) =>  (
@@ -23,8 +24,15 @@ export const InvoiceCreate = (props) =>  (
                 <BuyerCard />
             </Grid>
         <Grid item xs={12} >
+            <Grid item xs={12}   sm={6} >
+                <PersonalDataCard  variant="outlined"  headerTitle="Nabywca">
+                    <InvoiceBuyerForm />
+                </PersonalDataCard>
+            </Grid>
+        </Grid>
+        <Grid item xs={12} >
 
-        <Card >
+        <Card>
             <p> list </p>
             </Card>
             </Grid>
