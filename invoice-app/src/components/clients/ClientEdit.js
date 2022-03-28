@@ -14,6 +14,6 @@ const ClientEdit = (props) => {
                 <NumberInput label="NUMER TELEFONU"source="telephoneNumber" />
             </SimpleForm>
         </Edit>
-    );
-};
+    )
+}
 export default ClientEdit;

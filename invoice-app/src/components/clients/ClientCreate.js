@@ -14,10 +14,10 @@ const ClientCreate = (props) => {
                     <TextInput label="IMIĘ I NAZWISKO"source="fullname" />
                     <TextInput label="ADRES EMAIL" source="email" />
                     <TextInput label="ADRES"source="address.street" />
-                    {/* <NumberInput label="MVA" source="MVA" />
-                    <NumberInput label="NUMER TELEFONU"source="telephoneNumber" /> */}
+                    <NumberInput label="MVA" source="MVA" />
+                    <NumberInput label="NUMER TELEFONU"source="telephoneNumber" />
             </SimpleForm>
         </Create>
-    );
-};
+    )
+}
 export default ClientCreate;

@@ -6,20 +6,26 @@ import {
     EmailField,
     EditButton,
     DeleteButton,
+    TextInput,
 } from 'react-admin';
+// import { filtersToClientList } from "./filtersToClientList";
 
 // reCSS ClientListIcon  
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 export const IconToClientList = SupervisorAccountIcon;
 
-// import ClientCreate from './ClientCreate';
-// export const ClientCreate = ClientCreate;
-// import ClientEdit from './ClientEdit';
-// export const ClientEdit = ClientEdit;
+// const filtersToClientList = [
+//     <TextInput source="q" label="Search" resource='dbclientlist' alwaysOn />,
+//     <TextInput label="NAZWA FIRMY" source="company"   />
+// ];
 
-const ClientList = (props) => {
-    return (
-        <List {...props}>
+
+const filtersToClientList = [
+    <TextInput source="q" label="Search" alwaysOn />,
+    <TextInput label="Company" source="company"   />
+];
+const ClientList = ( ) => (
+        <List filters={filtersToClientList}  >
             <Datagrid>
                 <TextField label="NAZWA FIRMY" source="company" />
                 <TextField label="PRZEDSTAWICIEL" source="fullname" />
@@ -31,8 +37,8 @@ const ClientList = (props) => {
                 <DeleteButton label="" basePath='/dbclientlist' />
             </Datagrid>
         </List>
-    );
-};
+);
+
 
 export default ClientList;
 
