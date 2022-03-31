@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { SimpleForm, DateField, TextInput, Create, ReferenceInput, Edit, useResourceContext, ResourceContextProvider, SelectInput } from 'react-admin';
+
+import ClientCreate from '../clients/ClientCreate';
 import { Aside } from '../invoice-form/Aside';
 
 
 export const EditMyProfile = props => (
+    < >
     <Edit aside={<Aside />} {...props}>
+    <ClientCreate />
         <SimpleForm>
         
             <TextInput source="id" />
@@ -19,4 +23,5 @@ export const EditMyProfile = props => (
             <ReferenceInput source="orgId" reference="orgs"><SelectInput optionText="id" /></ReferenceInput>
         </SimpleForm>
     </Edit>
+    </>
 );

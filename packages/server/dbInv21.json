@@ -2040,6 +2040,204 @@
     },
     {
       "id": 51
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 52
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 53
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 54
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 55
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 56
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 57
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 58
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 59
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 60
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 61
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 62
     }
   ],
   "tradePartners_list": [
@@ -2645,6 +2843,60 @@
       "telephoneNumber": "+48501066009",
       "phone": "5454",
       "id": "OgYp93q"
+    },
+    {
+      "company": "hwKmKwp",
+      "fullname": "Marek Mitko",
+      "email": "mitko.email@gmail.com",
+      "address": {
+        "street": "Sienkiewicza 125/7"
+      },
+      "id": "VnRxEsq"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "fullname": "Marek Mitko",
+      "email": "marekmitko@op.pl",
+      "address": {
+        "street": "Sienkiewicza"
+      },
+      "id": "yiXAOiw"
+    },
+    {
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "OWHs4f2"
+    },
+    {
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "zbJlnCp"
+    },
+    {
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "yCrhkVe"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "fullname": "Marek Mitko",
+      "email": "marekmitko@op.pl",
+      "address": {
+        "street": "Sienkiewicza"
+      },
+      "id": "SveCW5j"
     }
   ],
   "newInvoiceList": [
@@ -4881,6 +5133,111 @@
       },
       "telephoneNumber": 501066009,
       "id": "dIhOZtC"
+    },
+    {
+      "company": "sdsd",
+      "fullname": "dsd",
+      "email": "dsd",
+      "address": {
+        "street": "sd"
+      },
+      "id": "_L81tRw"
+    },
+    {
+      "company": "TEST 2  czw",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "ihod35w",
+      "MVA": "",
+      "telephoneNumber": ""
+    },
+    {
+      "company": "TEST 3 czw",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "j4vFoD-"
+    },
+    {
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "fw4yr2d"
+    },
+    {
+      "company": "TEST 2  czw",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "zSn64v8"
+    },
+    {
+      "company": "TEST 3 czw",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "yWiBlY3"
+    },
+    {
+      "company": "sdsd",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "ltLj_ZA"
+    },
+    {
+      "company": "sdsd",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "DcPG2dZ"
+    },
+    {
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "pWujWaL"
+    },
+    {
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "0aeL66S",
+      "MVA": "",
+      "telephoneNumber": ""
+    },
+    {
+      "company": "czxcxz",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "zi7scAk",
+      "MVA": "",
+      "telephoneNumber": ""
     }
   ]
 }

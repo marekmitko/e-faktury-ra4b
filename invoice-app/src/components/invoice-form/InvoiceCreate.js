@@ -21,15 +21,18 @@ export const InvoiceCreate = (props) =>  (
                 <SellerCard />
             </Grid>
             <Grid item xs={12}   sm={6} >
-                <BuyerCard />
+                <PersonalDataCard  variant="outlined"  headerTitle="Nabywca">
+                    <InvoiceBuyerForm />
+                </PersonalDataCard>
+                {/* <BuyerCard /> */}
             </Grid>
-        <Grid item xs={12} >
+        {/* <Grid item xs={12} >
             <Grid item xs={12}   sm={6} >
                 <PersonalDataCard  variant="outlined"  headerTitle="Nabywca">
                     <InvoiceBuyerForm />
                 </PersonalDataCard>
             </Grid>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} >
 
         <Card>
