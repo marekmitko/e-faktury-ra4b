@@ -2238,6 +2238,24 @@
       "myPhoneNo": "",
       "myEmail": "",
       "id": 62
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 63
     }
   ],
   "tradePartners_list": [
@@ -5238,6 +5256,15 @@
       "id": "zi7scAk",
       "MVA": "",
       "telephoneNumber": ""
+    },
+    {
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "id": "3aKf2iu"
     }
   ]
 }

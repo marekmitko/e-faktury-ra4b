@@ -10,7 +10,7 @@ import {Box} from '@mui/material';
 
     export const SmallTextInput = (props, defaultProps) => {
         defaultProps = {
-            variant: "outlined", 
+            variant: "filled", 
             size: "small",
             margin: "none" 
         };
