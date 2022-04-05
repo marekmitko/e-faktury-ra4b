@@ -9,13 +9,14 @@ import { InvoiceCreate } from "./components/invoice-form/InvoiceCreate";
 
 import clients from "./components/clients";
 import MyLayout from "./components/admin/MyLayout";
+import CustomLayout from "./components/admin/layout/CustomLayout.tsx";
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 
 
 //  *see App
 function App(props) {
     return (
-        <MyAdmin layout={MyLayout}   dataProvider={dataProvider}    >
+        <MyAdmin layout={CustomLayout}   dataProvider={dataProvider}    >
             <Resource name="issuedInvoices_list"   icon={PostIcon} options={{ label: 'Lista Faktur' }}  list={ListGuesser} create={InvoiceCreate}  />  
             <Resource options={{ label: 'Lista kontrahentów' }} name='dbclientlist' label="Kontrahenci"  {...clients} />
         </MyAdmin>

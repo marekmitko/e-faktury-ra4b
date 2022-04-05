@@ -2,7 +2,13 @@
     "name": "@e-faktury-ra4b/invoice-app",
     "version": "2.0.0",
     "private": true,
-
+    
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
     "dependencies": {
         "@emotion/react": "^11.8.1",
         "@emotion/styled": "^11.8.1",
@@ -25,18 +31,16 @@
         "react-query": "3.34.16",
         "react-hook-form": "7.28.0"
     },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
     "eslintConfig": {
         "extends": [
         "react-app",
         "react-app/jest"
         ]
     },
+    "eslintIgnore": [
+        "node_modules",
+        "build/*"
+      ],
     "browserslist": {
         "production": [
         ">0.2%",
