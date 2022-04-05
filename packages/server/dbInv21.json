@@ -2256,6 +2256,24 @@
       "myPhoneNo": "",
       "myEmail": "",
       "id": 63
+    },
+    {
+      "contact": {
+        "email": ""
+      },
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "addres": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "buyerMVA": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "id": 64
     }
   ],
   "tradePartners_list": [
