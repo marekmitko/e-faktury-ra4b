@@ -4841,6 +4841,17 @@
       "invoice_due_date": "2021-10-28",
       "nb_views": 0,
       "id": 49
+    },
+    {
+      "myNoBank": "",
+      "myCompany": "",
+      "myStreet": "",
+      "myZIPCode": "",
+      "myCity": "",
+      "myPhoneNo": "",
+      "myEmail": "",
+      "myMVA": "",
+      "id": 50
     }
   ],
   "data_user": [

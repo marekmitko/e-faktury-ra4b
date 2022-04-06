@@ -1,0 +1,21 @@
+0 silly input []
+1 silly flags {
+1 silly flags   _: [ 'bootstrap' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   args: []
+1 silly flags }
+2 verbose rootPath I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0
+3 info version 2.11.0
+4 silly existsSync I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\VERSION
+5 error EPACKAGES Errored while collecting packages and package graph
+6 error JSONError: Unexpected token } in JSON at position 1662 while parsing near '...": "^2.1.4",    },    "eslintConfi...' in invoice-app\package.json
+6 error     at module.exports (I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\node_modules\load-json-file\node_modules\parse-json\index.js:26:19)
+6 error     at parse (I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\node_modules\load-json-file\index.js:8:29)
+6 error     at Function.module.exports.sync (I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\node_modules\load-json-file\index.js:11:29)
+6 error     at Function.module.exports.sync (I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\node_modules\lerna\node_modules\read-pkg\index.js:40:25)
+6 error     at I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\node_modules\lerna\lib\PackageUtilities.js:138:47
+6 error     at Array.forEach (<anonymous>)
+6 error     at I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\node_modules\lerna\lib\PackageUtilities.js:132:86
+6 error     at Array.forEach (<anonymous>)
+6 error     at Function.getPackages (I:\dev\application-software\efremtid\e-faktury_no\proto_ra-v-4-0-0-beta\e-faktury_ra-4b_v-2-0-0\node_modules\lerna\lib\PackageUtilities.js:131:22)

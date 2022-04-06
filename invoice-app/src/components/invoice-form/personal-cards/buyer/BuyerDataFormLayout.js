@@ -37,7 +37,7 @@ export const BuyerDataFromLayout = ( ) =>  (
                     <div> 
                         <SmallTextInput  label="MVA Code" mt="-0.75em"  mb="-1em"    source="buyerMVA"     mr="0.5em"  />
                     <Box display="inline-block" >
-                        <BooleanInput  label="MVA"   />
+                        {/* <BooleanInput  label="MVA"   /> */}
                     </Box>    
                     </div> 
                 </SimpleForm>

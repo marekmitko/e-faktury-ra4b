@@ -1,6 +1,6 @@
+import * as React from "react";
 import { autocompleteClasses, Card , Grid} from "@mui/material";
 import {Box} from '@mui/material';
-import * as React from "react";
 import {
     Create,
     SimpleForm,
@@ -26,7 +26,7 @@ export const InvoiceCreate = (props) =>  (
                 </Grid>
                 <Grid item xs={12}   sm={6} >
                     <PersonalDataCard  variant="outlined"  headerTitle="Nabywca">
-                        <InvoiceBuyerForm />
+                        {/* <InvoiceBuyerForm /> */}
                     </PersonalDataCard>
                 </Grid>
                 <Grid item xs={12}   sm={6} >

@@ -37,7 +37,7 @@ export const BuyerDataFromLayout3 = ( ) =>  (
                     </Stack>
                     <Stack direction="row" gap={1} width="100%">
                         <TextInput   label="MVA Code" sx={{ width: '80%' }}    source="buyerMVA"     mr="0.5em"  />
-                        <BooleanInput  label="MVA"   />
+                        {/* <BooleanInput  label="MVA"   /> */}
                     </Stack>
                 </SimpleForm>
             // </BuyerRecordContext>
