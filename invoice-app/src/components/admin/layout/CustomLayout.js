@@ -1,20 +1,36 @@
 import * as React from 'react';
 // in src/MyLayout.js
 import { Layout, Sidebar } from 'react-admin';
-import SubmenuCreate from './navbars/SubmenuCreate';
-import {AppbarMenuCreate} from "./navbars/AppbarMenuCreate";
+import { CustomSidebar } from './sidebar/CustomSidebar';
+import SubmenuCreate from './sidebar/SubmenuCreate';
 // import MyAppBar from './MyAppBar';
 // import MyMenu from './MyMenu';
 // import MyNotification from './MyNotification';
 
-const CustomLayout = (props) => (
+export const CustomLayout = (props) => (
     <Layout
         {...props}
-        // appBar
-        menu={ AppbarMenuCreate }
+        sidebar={CustomSidebar}
+        dashboard={props.dashboard}
+        // menu={ AppbarMenuCreate }
         // notification
-    />
+       / >
+        
 
-)
+);
+    
 
-export default CustomLayout;
+// BUG Kiedy to children a kiedy nie ? //?ver spr kiedy prop.children 
+
+
+// export const CustomLayout = (props) => (
+//     <Layout
+//         {...props}
+//         sidebar={SubmenuCreate}
+//         // menu={ AppbarMenuCreate }
+//         // notification
+//     >
+//     {props.children}
+//     </Layout>
+//     );
+// export default CustomLayout;

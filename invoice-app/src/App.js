@@ -1,25 +1,24 @@
 import * as React from 'react';
-import { Admin, Resource, ListGuesser, ShowGuesser, EditGuesser, Create, SimpleForm, DateInput, TextInput} from 'react-admin';
+import { Resource, ListGuesser, ShowGuesser, EditGuesser,} from 'react-admin';
 import simpleRestProvider from 'ra-data-simple-rest';
 import { fetchJson } from "@app/config";
-// import { MyAdmin } from "./components/admin/MyAdmin";
+
+import { InvoiceCreate } from "./components/invoice-form/InvoiceCreate";
+import clients from "./components/clients";
+import MyAdmin from "./components/admin"
 
 import PostIcon from '@mui/icons-material/Book';
-import { InvoiceCreate } from "./components/invoice-form/InvoiceCreate";
-// import  {MyAdmin}  from "./components/admin/MyAdmin";
-import  { MyAdmin }  from "./components/my-admin/MyAdmin";
-import clients from "./components/clients";
-// import {MyLayout} from "./components/my-admin/MyLayout";
-import CustomLayout from './components/admin/layout/CustomLayout';
-// import CustomLayout from "./components/admin/layout/CustomLayout";
+import { CustomDashboard } from './components/admin/dashboard/CustomDashboard';
+
+// *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
-
-
 
 //  *see App
 function App(props) {
     return (
-        <MyAdmin layout={CustomLayout}  dataProvider={dataProvider}    > 
+        <MyAdmin 
+        dashboard={CustomDashboard}
+        dataProvider={dataProvider} > 
             <Resource name="issuedInvoices_list"   icon={PostIcon} options={{ label: 'Lista Faktur' }}  list={ListGuesser} create={InvoiceCreate}  />  
             <Resource options={{ label: 'Lista kontrahentów' }} name='dbclientlist' label="Kontrahenci"  {...clients} />
             <Resource options={{ label: 'L' }} name='newInvoiceList' label="Kontrahenci"  list={ListGuesser} edit={EditGuesser} />
