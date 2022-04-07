@@ -1,7 +1,7 @@
 import React from 'react';
 import { SimpleShowLayout } from 'react-admin';
-import { PersonalDataCard } from '../../../../custom/PersonalDataCard';
-import { UserRecordWithGCC } from '../../../../contexts/UserRecordContext';
+import { PersonalDataCard } from '../../../../../custom/PersonalDataCard';
+import { UserRecordWithGCC } from '../../../../../contexts/UserRecordContext';
 import { SellerDataShowLayout } from './SellerDataShowLayout';
 import {   Box   } from '@mui/material';
 

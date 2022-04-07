@@ -1,5 +1,14 @@
 import React from 'react'
 import { Edit, SimpleForm, TextInput, NumberInput } from 'react-admin'
+import { BuyerCard3 } from '../invoices/new-invoice-form/personal-cards/buyer/BuyerCard3';
+
+// const ClientEdit = (props) => { 
+//     return(
+//         <Edit title='Dodaj nowego kontrahenta' {...props}>
+//             <BuyerCard3 />
+//         </Edit>
+//     );
+// };
 
 const ClientEdit = (props) => {
     return (

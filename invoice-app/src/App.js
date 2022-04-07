@@ -3,7 +3,8 @@ import { Resource, ListGuesser, ShowGuesser, EditGuesser,} from 'react-admin';
 import simpleRestProvider from 'ra-data-simple-rest';
 import { fetchJson } from "@app/config";
 
-import { InvoiceCreate } from "./components/invoice-form/InvoiceCreate";
+// import  InvoiceCreate  from "./components/new-invoice-form/InvoiceCreate";
+import invoices from './components/invoices';
 import clients from "./components/clients";
 import MyAdmin from "./components/admin"
 
@@ -19,9 +20,9 @@ function App(props) {
         <MyAdmin 
         dashboard={CustomDashboard}
         dataProvider={dataProvider} > 
-            <Resource name="issuedInvoices_list"   icon={PostIcon} options={{ label: 'Lista Faktur' }}  list={ListGuesser} create={InvoiceCreate}  />  
-            <Resource options={{ label: 'Lista kontrahentów' }} name='dbclientlist' label="Kontrahenci"  {...clients} />
-            <Resource options={{ label: 'L' }} name='newInvoiceList' label="Kontrahenci"  list={ListGuesser} edit={EditGuesser} />
+            <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} />  
+            <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
+            {/* <Resource options={{ label: 'L' }} name='newInvoiceList' label="Kontrahenci"  list={ListGuesser} edit={EditGuesser} /> */}
         </MyAdmin>
     );
 }

@@ -1,7 +1,7 @@
 import { Card,  Box, Stack } from '@mui/material';
 import React from 'react';
 import { SimpleForm,    TextInput,   BooleanInput, NumberInput, useRecordContext, RecordContextProvider } from 'react-admin';
-import { SmallTextInput } from '../../../../custom/SmallTextInput';
+import { SmallTextInput } from '../../../../../custom/SmallTextInput';
 import MailIcon from '@mui/icons-material/MailOutline';
 // import { Form, Field } from 'react-final-form';
 // import { useWarnWhenUnsavedChanges } from 'react-admin';

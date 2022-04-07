@@ -2,7 +2,7 @@ import React from 'react'
 import { Create, SimpleForm, TextInput, NumberInput } from 'react-admin';
 
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { BuyerCard3 } from '../invoice-form/personal-cards/buyer/BuyerCard3';
+import { BuyerCard3 } from '../invoices/new-invoice-form/personal-cards/buyer/BuyerCard3';
 export const IconToCreateIcon = PersonAddIcon;
 
 

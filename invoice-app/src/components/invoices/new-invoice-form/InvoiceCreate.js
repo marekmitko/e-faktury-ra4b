@@ -10,11 +10,10 @@ import { SellerCard } from "./personal-cards/seller/SellerCard";
 import { BuyerCard } from "./personal-cards/buyer/BuyerCard";
 import InvoiceBuyerForm from "./personal-cards/buyer/TestBuyerCard";
 // import { ShowSellerCard } from "./personal-cards/seller/ShowSellerCard";
-import {PersonalDataCard} from "../../custom/PersonalDataCard"
+import {PersonalDataCard} from "../../../custom/PersonalDataCard"
 import { BuyerCard3 } from "./personal-cards/buyer/BuyerCard3";
 
-
-export const InvoiceCreate = (props) =>  (
+const InvoiceCreate = (props) =>  (
     <Create component="div" {...props}>
         <SimpleForm >
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
@@ -41,3 +40,5 @@ export const InvoiceCreate = (props) =>  (
         </SimpleForm>
     </Create>
 );
+
+export default InvoiceCreate;

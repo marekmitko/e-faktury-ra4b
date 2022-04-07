@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TextField, SimpleShowLayout, useRecordContext  } from "react-admin";
-import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../custom/ZipCityDualTextField";
+import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../custom/ZipCityDualTextField";
 
 
 // BUG // *see ZipCityCode
