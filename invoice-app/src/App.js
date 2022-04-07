@@ -9,7 +9,7 @@ import clients from "./components/clients";
 import MyAdmin from "./components/admin"
 
 import PostIcon from '@mui/icons-material/Book';
-import { CustomDashboard } from './components/admin/dashboard/CustomDashboard';
+import { CustomDashboard } from './components/admin/layout/dashboard/CustomDashboard';
 
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );

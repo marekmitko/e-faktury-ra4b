@@ -1,7 +1,7 @@
 import React from 'react';
 import { Admin, Menu  } from 'react-admin';
 import { CustomLayout } from './layout/CustomLayout';
-import { CustomDashboard } from './dashboard/CustomDashboard';
+import { CustomDashboard } from './layout/dashboard/CustomDashboard';
 import TestComponentLayout from "./layout/MyLayout"
 
 
@@ -10,16 +10,15 @@ import TestComponentLayout from "./layout/MyLayout"
 // BUG Spprawdź te props.children 
 // https://marmelab.com/react-admin/doc/4.0/Admin.html#layout
 
-const MyAdmin = (props) => (
+const MyAdmin = (  {children, upperDashboard, ...props} ) => (
     <Admin
         basename="/admin"
         disableTelemetry  
-        // dashboard={CustomDashboard}
+        // dashboard={null}
         layout={CustomLayout}
-        sidebar={Menu}
         {...props}  
     >
-        {props.children}
+        {children}
     </Admin>
 );
     

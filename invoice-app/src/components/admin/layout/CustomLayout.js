@@ -1,22 +1,43 @@
 import * as React from 'react';
 // in src/MyLayout.js
 import { Layout, Sidebar } from 'react-admin';
-import { CustomSidebar } from './sidebar/CustomSidebar';
-import SubmenuCreate from './sidebar/SubmenuCreate';
+import { CustomDashboard } from './dashboard/CustomDashboard';
+import SubmenuCreate from './menu/CreateSubMenuFragment';
+import { TopPartSidebarMenu } from './menu/TopPartSidebarMenu'
 // import MyAppBar from './MyAppBar';
 // import MyMenu from './MyMenu';
 // import MyNotification from './MyNotification';
 
 export const CustomLayout = (props) => (
-    <Layout
-        {...props}
-        sidebar={CustomSidebar}
-        dashboard={props.dashboard}
-        // menu={ AppbarMenuCreate }
-        // notification
-       / >
-        
-
+    <React.Fragment>
+        <Layout
+            {...props}
+            sidebar={TopPartSidebarMenu}
+            dashboard={null}
+            // menu 
+            // notification
+        >
+            <div>
+                <center>
+                    <strong>CentralCardHeader</strong>
+                </center>
+            </div>
+                {props.children}
+            <div>
+                <center>
+                    <strong>CentralCardFooter</strong>
+                </center>
+            </div>
+        </Layout>
+        <hr />
+        <footer>
+            <center>
+                <strong>CentralCardFooter</strong>
+                <br />
+                <small>to należy umieścić w części stałej public</small>
+            </center>
+        </footer>
+    </React.Fragment>
 );
     
 

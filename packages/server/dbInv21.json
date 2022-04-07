@@ -2286,6 +2286,9 @@
     },
     {
       "id": 68
+    },
+    {
+      "id": 69
     }
   ],
   "tradePartners_list": [
@@ -5306,6 +5309,20 @@
         "street": ""
       },
       "id": "3aKf2iu"
+    },
+    {
+      "id": "im_1eis",
+      "company": "",
+      "fullname": "",
+      "email": "",
+      "address": {
+        "street": ""
+      },
+      "MVA": "",
+      "telephoneNumber": ""
+    },
+    {
+      "id": "2Pi6J0l"
     }
   ]
 }

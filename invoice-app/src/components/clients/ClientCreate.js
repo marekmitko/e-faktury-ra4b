@@ -9,7 +9,9 @@ export const IconToCreateIcon = PersonAddIcon;
 const ClientCreate = (props) => { 
     return(
         <Create title='Dodaj nowego kontrahenta' {...props}>
-            <BuyerCard3 />
+            <SimpleForm>
+                <BuyerCard3 />
+            </SimpleForm>
         </Create>
     );
 };
