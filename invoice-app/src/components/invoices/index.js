@@ -1,5 +1,5 @@
-import React from "react";
-import list from "./InvoiceList";
+import * as React from "react";
+import list from "./invoice-list/InvoiceList";
 import create from "./new-invoice-form/InvoiceCreate";
 // import edit from "./ClientEdit";
 import IconToInvoiceCreate from '@mui/icons-material/PostAdd';

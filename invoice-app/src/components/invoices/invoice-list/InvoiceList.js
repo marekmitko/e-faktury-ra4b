@@ -1,8 +1,10 @@
 import * as React from "react";
 import { Datagrid, EditButton, List, TextField, DateField, DeleteButton } from "react-admin";
+// import { InvoiceSidebarFilters } from './InvoiceSidebarFilters';
 
 const InvoiceList = props => (
-    <List {...props}>
+    <List {...props} >
+    {/* <List {...props} aside={ <InvoiceSidebarFilters /> }> */}
         <Datagrid>
             <TextField label="NR" source="id" />
             <TextField label="NABYWCA" source="myCompany" />
