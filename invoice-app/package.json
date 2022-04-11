@@ -30,7 +30,8 @@
         "@app/components": "2.0.0",
         "@e-faktury-ra4b/server": "2.0.0",
         "react-query": "3.34.16",
-        "react-hook-form": "7.28.0"
+        "react-hook-form": "7.28.0",
+        "react-router-dom": "6.3.0"
     },
     "eslintConfig": {
         "extends": [

@@ -3,7 +3,7 @@ import { Admin, Layout} from 'react-admin';
 import { FooterLayoutFragment } from './FooterLayoutFragment';
 import { CustomDashboard } from './dashboard/CustomDashboard';
 import { SidebarTopPartMenu } from './menu/SidebarTopPartMenu';
-import { CustomAppBar } from './appbar/CustomAppBar';
+import { CustomAppBar } from './top-appbar/CustomAppBar';
 
 
 
