@@ -1,6 +1,6 @@
 import * as React from "react";
 import list from "./invoice-list/InvoiceList";
-import create from "./new-invoice-form/InvoiceCreate";
+import create from "./new-invoice/InvoiceCreate";
 // import edit from "./ClientEdit";
 import IconToInvoiceCreate from '@mui/icons-material/PostAdd';
 import IconToInvoiceList from '@mui/icons-material/FindInPage'

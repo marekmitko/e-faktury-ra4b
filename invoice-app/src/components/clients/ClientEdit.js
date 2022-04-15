@@ -1,7 +1,7 @@
 import React from 'react'
-import { Edit, SimpleForm, TextInput, NumberInput } from 'react-admin'
-import { BuyerCard3 } from '../invoices/new-invoice-form/personal-cards/buyer/BuyerCard3';
-
+import { Title, useRecordContext, Edit, SimpleForm, TextInput, NumberInput, TextField } from 'react-admin'
+import { BuyerCard } from '../invoices/new-invoice/personal-cards/buyer/BuyerCard';
+import Typography from '@mui/material/Typography';
 // const ClientEdit = (props) => { 
 //     return(
 //         <Edit title='Dodaj nowego kontrahenta' {...props}>
@@ -12,15 +12,10 @@ import { BuyerCard3 } from '../invoices/new-invoice-form/personal-cards/buyer/Bu
 
 const ClientEdit = (props) => {
     return (
-        <Edit title='Edytowanie danych Kontrahenta' {...props}>
+        <Edit component="div" title='Edytowanie danych Kontrahenta' { ...props}>
             <SimpleForm>
                 {/* <TextInput disabled source='id' /> */}
-                <TextInput label="NAZWA FIRMY" source="company" />
-                <TextInput label="IMIĘ I NAZWISKO"source="fullname" />
-                <TextInput label="ADRES EMAIL" type="email" source="email" />
-                <TextInput label="ADRES"source="address.street" />
-                <NumberInput label="MVA" source="MVA" />
-                <NumberInput label="NUMER TELEFONU"source="telephoneNumber" />
+                <BuyerCard headerTitle={<TextField  source='company' />} / >
             </SimpleForm>
         </Edit>
     );

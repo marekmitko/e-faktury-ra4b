@@ -6,7 +6,7 @@ import { fetchJson } from "@app/config";
 import invoices from './components/invoices';
 import clients from "./components/clients";
 import MyAdmin from "./components/admin"
-import { EditMyProfile } from './components/admin/users/EditMyProfile';
+import MyProfile  from './components/admin/users';
 
 
 // *see const dataProvider
@@ -16,13 +16,11 @@ const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 function App(props) {
     return (
         <MyAdmin dataProvider={dataProvider} > 
-            <Resource name="data_user"   />
             <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} />  
             <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
             <CustomRoutes>
-                <Route path="/data_user/user_123" element={<EditMyProfile />} />
+                <Route path="/data_user" element={<MyProfile />}/ >
             </CustomRoutes>
-            {/* <Resource options={{ label: 'L' }} name='newInvoiceList' label="Kontrahenci"  list={ListGuesser} edit={EditGuesser} /> */}
         </MyAdmin>
     );
 }

@@ -18,7 +18,7 @@ const BuyerRecordContext = ({children}) => {
 
 
 
-export const BuyerDataFromLayout = ( ) =>  (
+export const BuyerDataFromLayout3 = ( ) =>  (
             // <BuyerRecordContext>
                 <SimpleForm toolbar="">
                     <SmallTextInput  label="Company Name" source="title"  />
