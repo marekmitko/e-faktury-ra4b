@@ -3098,7 +3098,7 @@
       "address_id": "addres_123",
       "address": {
         "id": "addres_123dsadsa",
-        "street": "Widawska 128",
+        "street": "Widawska 128d",
         "city": "Wrocław",
         "ZIPCode": 44140
       },
