@@ -1,10 +1,10 @@
 import React from "react";
 import { MyProfileCardWrapper } from "../../../custom/users/MyProfileCardWrapper";
-import { MyProfileEdit } from "./MyProfileEdit";
+import UserEdit from "./UserEdit";
 
 const MyProfile = props => ( 
-    <MyProfileCardWrapper {...props}  >
-        <MyProfileEdit {...props}  />
+    <MyProfileCardWrapper component="div" {...props}  >
+        <UserEdit {...props} />
     </MyProfileCardWrapper>
 );
 

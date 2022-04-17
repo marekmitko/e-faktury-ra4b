@@ -3088,7 +3088,7 @@
   "data_user": [
     {
       "id": "user_123",
-      "company": "Mariański Sp. z o.o.",
+      "company": "Efremtid sp. zoo",
       "fullName": "Aleksander Mariański",
       "fullname": {
         "forename": "Aleksander",
@@ -3100,21 +3100,26 @@
         "id": "addres_123dsadsa",
         "street": "Widawska 128",
         "city": "Wrocław",
-        "ZIPCode": "58-202"
+        "ZIPCode": 44140
       },
       "email": "aleksander@marianski.com",
       "contact": {
         "email": "aleksander@marianski.com",
         "telephoneNumber": "5858585",
-        "faxNumber": "44475757575"
+        "faxNumber": "44475757575",
+        "phoneNumber": "500100441"
       },
       "orgId": {
         "orgNumber": "15032603596",
-        "mva": "true"
+        "mva": "true",
+        "MVA": false
       },
       "bank_account_number": "15114020040000320263908865",
       "bank_name": "mBankS",
-      "nickname": "DUPA"
+      "nickname": "Olek",
+      "user": {
+        "type": "admin"
+      }
     }
   ],
   "dbclientlist": [
@@ -3762,6 +3767,48 @@
         "phoneNumber": "+48501066009"
       },
       "id": "L75t-t7"
+    },
+    {
+      "company": "TEST 2  czw",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": "SBmtTRY"
+    },
+    {
+      "company": "TEST 2  czw",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": "IE32_d9"
     }
   ]
 }

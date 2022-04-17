@@ -1,14 +1,7 @@
 import React from 'react'
 import { Title, useRecordContext, Edit, SimpleForm, TextInput, NumberInput, TextField } from 'react-admin'
-import { BuyerCard } from '../invoices/new-invoice/personal-cards/buyer/BuyerCard';
+import { BuyerCard } from '../invoices/invoice-create/subcomponents/personal-cards/buyer/BuyerCard';
 import Typography from '@mui/material/Typography';
-// const ClientEdit = (props) => { 
-//     return(
-//         <Edit title='Dodaj nowego kontrahenta' {...props}>
-//             <BuyerCard3 />
-//         </Edit>
-//     );
-// };
 
 const ClientEdit = (props) => {
     return (
