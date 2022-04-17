@@ -38,7 +38,6 @@ NumberInput.defaultProps = {
 
 export const BuyerDataFromLayout = (props) =>  (
     <>
-        <TextInput label="Company Name" source="company" fullWidth />
         <FullNameDualInput sourceForename="fullname.forename" sourceSurname="fullname.surname"  />
         <Stack direction="row" spacing={2} width="100%" alignItems="center">
             <BooleanInput label="MVA" source="orgId.MVA" sx={{ alignItems: 'center' }} />

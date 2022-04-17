@@ -8,6 +8,9 @@ import { BuyerCard3 } from "./invoice-form/subcomponents/personal-cards/buyer/Bu
 import Header from "./invoice-form/subcomponents/invoice-headers";
 import { InvoiceForm } from "./invoice-form/InvoiceForm";
 
+// https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
+// const ProfileEdit = ({ staticContext, ...props }) => {
+
 const InvoiceCreate = (props) =>  (
     <Create redirect="list" component="div" {...props}>
         <InvoiceForm {...props} />

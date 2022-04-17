@@ -549,6 +549,28 @@
         "phoneNumber": ""
       },
       "id": 75
+    },
+    {
+      "nb_views": "",
+      "buyerCompany": "",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": 76
     }
   ],
   "tradePartners_list": [

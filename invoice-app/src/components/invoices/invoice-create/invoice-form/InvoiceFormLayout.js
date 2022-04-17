@@ -25,7 +25,7 @@ export const InvoiceFormLayout = (props) => (
                     <SellerCard />
                 </Grid>
                 <Grid item xs={12}  sm={6}>
-                    <BuyerCard />
+                    <BuyerCard selectSourceName="company" />
                 </Grid>
                 <Grid item xs={12} >
                     <Card>
