@@ -505,6 +505,50 @@
         "phoneNumber": ""
       },
       "id": 73
+    },
+    {
+      "nb_views": "",
+      "company": "",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "1",
+        "phoneNumber": ""
+      },
+      "id": 74
+    },
+    {
+      "nb_views": "",
+      "company": "Testo",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": 75
     }
   ],
   "tradePartners_list": [

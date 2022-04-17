@@ -2,18 +2,18 @@ import React from 'react'
 import { Create, SimpleForm, TextInput, NumberInput, Edit } from 'react-admin';
 
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { BuyerCard } from '../invoices/invoice-create/invoice-form/subcomponents/personal-cards/buyer/BuyerCard';
 export const IconToCreateIcon = PersonAddIcon;
 
 
-const ClientCreate = (props) => { 
+const UserCreate = (props) => { 
     return(
-        <Create component="div" redirect="list" title='Dodaj nowego kontrahenta' {...props}>
+        <Create component="div" redirect="list" title='Dodaj nowego kontrahenta' {...props}
+            // redirect="list" 
+        >
             <SimpleForm>
-                <BuyerCard />
             </SimpleForm>
         </Create>
     );
 };
 
-export default ClientCreate;
+export default UserCreate;
