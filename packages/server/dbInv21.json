@@ -571,6 +571,139 @@
         "phoneNumber": ""
       },
       "id": 76
+    },
+    {
+      "nb_views": "",
+      "buyerCompany": "",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": 77
+    },
+    {
+      "teaser": "757575725254522254254254254",
+      "id": 78
+    },
+    {
+      "teaser": "14142424242242420242424",
+      "teaser2": "144112414",
+      "id": 79
+    },
+    {
+      "teaser": "",
+      "teaser2": "",
+      "teadsser2": "535527272727",
+      "id": 80
+    },
+    {
+      "teaser": "s sdasdsaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "teaser2": "s aaaaaaaaaaaaaaaaaaaaaaaa",
+      "teadsser2": "dsadsadsadsadsaaaaaaaaaaaaaaaa",
+      "id": 81
+    },
+    {
+      "title": "",
+      "teaser": "",
+      "password": "",
+      "published_at": "2022-04-18",
+      "average_note": 36,
+      "commentable": true,
+      "views": "",
+      "id": 82
+    },
+    {
+      "title": "sf",
+      "teaser": "",
+      "password": "",
+      "average_note": "",
+      "views": "",
+      "id": 83
+    },
+    {
+      "password": "",
+      "average_note": "",
+      "views": "",
+      "buyerCompany": "sadsa",
+      "fullname": {
+        "forename": "dsadsa",
+        "surname": "dsads"
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "sa",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": 84
+    },
+    {
+      "password": "",
+      "average_note": "",
+      "views": "",
+      "buyerCompany": "asdsa test 13",
+      "fullname": {
+        "forename": "dasd",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": "asdas"
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": 85
+    },
+    {
+      "password": "",
+      "average_note": "",
+      "views": "",
+      "buyerCompany": "Marek test 12:50",
+      "fullname": {
+        "forename": "Test",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": 86
     }
   ],
   "tradePartners_list": [
@@ -3875,6 +4008,27 @@
         "phoneNumber": ""
       },
       "id": "IE32_d9"
+    },
+    {
+      "buyerCompany": "",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": true,
+        "orgNumber": "999999999999999999999"
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "id": "0nTFdRh"
     }
   ]
 }

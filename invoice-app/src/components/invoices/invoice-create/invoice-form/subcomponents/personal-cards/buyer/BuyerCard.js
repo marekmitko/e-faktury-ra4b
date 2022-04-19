@@ -14,6 +14,8 @@ import { BuyerDataFromLayout } from './BuyerDataFormLayout';
 
 // *see onCreate new tradePartner Select Input 
 // https://marmelab.com/react-admin/AutocompleteInput.html
+//  ra-3.19
+// https://marmelab.com/react-admin/doc/3.19/CreateEdit.html#customizing-the-form-layout
 const matchSuggestion = (filter, choice) => {
     return (
         choice.first_name.toLowerCase().includes(filter.toLowerCase())
@@ -25,7 +27,7 @@ const TradePartnerSelectInput = ({company}) => (
     <ReferenceInput 
         // label="Company Name" 
         source="buyerCompany" reference="dbclientlist"
-        sort={{ field: 'company', order: 'ASC' }}
+        // sort={{ field: 'company', order: 'ASC' }}
     >
         <AutocompleteInput 
             optionText={company} 
