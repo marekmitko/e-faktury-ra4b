@@ -1,8 +1,8 @@
 import { Stack, Typography } from "@mui/material";
 import * as React from "react";
 import { TextField, SimpleShowLayout } from "react-admin";
-import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../custom/ZipCityDualTextField";
-import { CodeAndNameCityDualField } from '../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
+import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
+import { CodeAndNameCityDualField } from '../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
 
 // BUG // *see ZipCityCode
 const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel='true' label={<ZipCityDualLabel  />} /> ;

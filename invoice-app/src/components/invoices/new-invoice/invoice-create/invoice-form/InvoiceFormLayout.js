@@ -4,6 +4,8 @@ import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useReso
 import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard'
 import { BuyerCard } from './subcomponents/personal-cards/buyer/BuyerCard'
+import LatLngInput from '../special-buttons/LatLngInput';
+import SexInput from '../special-buttons/SexInput';
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -30,9 +32,13 @@ export const InvoiceFormLayout = (props) => (
                 <Grid item xs={12} >
                     <Card>
                         <p> list </p>
+                        <hr />
                     </Card>
                 </Grid>
             </Grid>
+            {/* //*see https://marmelab.com/react-admin/Inputs.html#the-useinput-hook */}
+            <LatLngInput source="lang" onChange={() => console.log("latlng")} onBlur={() => console.log("blure")} />
+            <SexInput source="sex" />
     {/* </RecordContextProvider>
     </ResourceContext.Provider>*/}
     </>

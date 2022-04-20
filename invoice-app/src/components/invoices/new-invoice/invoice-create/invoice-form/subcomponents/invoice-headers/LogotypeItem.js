@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecordContext, Edit, SimpleForm, DateInput, TextInput, NumberInput, TextField } from 'react-admin'
 import { Stack } from '@mui/material';
-import { CompanyLogoAvatar } from '../../../../../admin/users/subcomponents/CompanyLogoAvatar';
+import { CompanyLogoAvatar } from '../../../../../../admin/users/subcomponents/CompanyLogoAvatar';
 
 export const LogotypeItem = (props) => (
     <Stack direction="row" spacing={2} width="100%" alignItems="center" justifyContent="space-around">

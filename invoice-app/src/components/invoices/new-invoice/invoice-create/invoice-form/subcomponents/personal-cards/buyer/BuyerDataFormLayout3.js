@@ -1,7 +1,7 @@
 import { Card,  Box } from '@mui/material';
 import React from 'react';
 import { SimpleForm,    TextInput,   BooleanInput, NumberInput, useRecordContext, RecordContextProvider } from 'react-admin';
-import { SmallTextInput } from '../../../../../../../custom/SmallTextInput';
+import { SmallTextInput } from '../../../../../../../../custom/SmallTextInput';
 
 // import { Form, Field } from 'react-final-form';
 // import { useWarnWhenUnsavedChanges } from 'react-admin';
@@ -40,6 +40,7 @@ export const BuyerDataFromLayout3 = ( ) =>  (
                         {/* <BooleanInput  label="MVA"   /> */}
                     </Box>    
                     </div> 
+                
                 </SimpleForm>
             // </BuyerRecordContext>
     );

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Title, useRecordContext, Edit, SimpleForm, TextInput, NumberInput, TextField } from 'react-admin'
-import { BuyerCard } from '../invoices/invoice-create/invoice-form/subcomponents/personal-cards/buyer/BuyerCard';
 import Typography from '@mui/material/Typography';
+import { BuyerCard } from '../invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/BuyerCard';
 
 const ClientEdit = (props) => {
     return (

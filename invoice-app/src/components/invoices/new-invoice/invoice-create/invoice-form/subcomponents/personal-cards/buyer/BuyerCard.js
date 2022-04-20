@@ -1,6 +1,6 @@
 import React from 'react';
 import { AutocompleteInput, Record, ReferenceInput, TextInput } from 'react-admin';
-import { PersonalDataCard } from '../../../../../../../custom/invoice/parsonal-cards/PersonalDataCard';
+import { PersonalDataCard } from '../../../../../../../../custom/invoice/parsonal-cards/PersonalDataCard';
 import BuyerIcon from '@mui/icons-material/Person';
 import { BuyerDataFromLayout } from './BuyerDataFormLayout';
 

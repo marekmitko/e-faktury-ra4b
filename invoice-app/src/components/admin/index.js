@@ -3,6 +3,7 @@ import { Admin } from 'react-admin';
 // import { CustomLayout } from './layout/FooterLayoutFragment';
 import { CustomDashboard } from './layout/dashboard/CustomDashboard';
 import MyLayout from './layout';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 // ?ver catchAll && title="e-faktury"  po cholere 
 
@@ -15,6 +16,7 @@ const MyAdmin = ( {children, ...props} ) => (
         disableTelemetry  
         dashboard={CustomDashboard}
         layout={MyLayout}
+        // layout={<MyLayout /> && <ReactQueryDevtools />}
         {...props}  
     >
         {children}

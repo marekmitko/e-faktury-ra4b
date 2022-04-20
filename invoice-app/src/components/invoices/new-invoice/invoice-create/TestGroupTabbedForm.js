@@ -1,6 +1,8 @@
-import { Stack } from "@mui/material";
+import { Stack, Button } from "@mui/material";
 import React from "react";
 import {
+    ListBase,
+    SaveButton,
     TabbedForm,
     FormTab,
     Edit,
@@ -17,9 +19,33 @@ import {
     Create,
     TabbedFormTabs,
     SimpleForm,
-    CreateBase
+    CreateBase,
+    useRecordContext
 } from 'react-admin';
+import { Link } from 'react-router-dom';
+
+
 import { BuyerCard } from "./invoice-form/subcomponents/personal-cards/buyer/BuyerCard";
+
+
+
+const CreateRelatedCommentButton = ({id, ...record} ) => {
+   
+    // const {record} = useRecordContext();
+    return (
+    <Button
+        component={Link}
+        to={{
+            pathname: '/dbclientlist/create',
+            state: { record: { post_id: record.id } },
+        }}
+    >
+        Write a comment for that post
+    </Button>
+);
+};
+
+
 
 export const TestGroupTabbedForm = () => (
     <Create>
@@ -40,28 +66,57 @@ export const TestGroupTabbedForm = () => (
                     <ReferenceManyField reference="dbclientlist" 
                     // target="id" 
                     label={false}>
-                        <CreateBase resource="dbclientlist/create">
-                            {/* <SimpleForm> */}
+                        <CreateBase 
+                            redirect={false}
+                            resource="dbclientlist">
+                            <SimpleForm id="client_create_form" >
 
                                 <TextField source="company" />
                                 <DateField source="created_at" />
                                 <BuyerCard />
-                            {/* </SimpleForm> */}
+                            </SimpleForm>
+                            <hr />
+                            <SaveButton formId="client_create_form" />
+                            <hr />
                         </CreateBase>
                     </ReferenceManyField>
                 </FormTab>
             </TabbedForm>
-
             <TabbedForm  syncWithLocation={false} >
                 <FormTab label="comments">
                     <ReferenceManyField reference="dbclientlist" target="id" label={false}>
+                        <ListBase>
                         <Datagrid>
                             <TextField source="company" />
                             <DateField source="created_at" />
                             <EditButton />
+                            <CreateRelatedCommentButton />
                         </Datagrid>
+                        </ListBase>
                     </ReferenceManyField>
                 </FormTab>
+            </TabbedForm>
+            <TabbedForm  syncWithLocation={false} >
+                <FormTab label="sadasd">
+                    <div>
+
+        <Create 
+                
+                redirect={false}
+                resource="dbclientlist">
+                            <SimpleForm 
+                            resource="dbclientlist/create" 
+                            toolbar={false} id="client_create_form" 
+                            >
+
+                                <BuyerCard />
+                            </SimpleForm>
+                            <hr />
+                            <hr />
+                            <SaveButton formId="client_create_form" />
+                        </Create>
+                </div>
+                </FormTab >
             </TabbedForm>
         </Stack>
     </Create>

@@ -10,8 +10,11 @@ import {
     Pagination,
     TextField,
     TextInput,
+    DateInput
 } from 'react-admin';
-import { Stack } from '@mui/material';
+import { Stack, Divider } from '@mui/material';
+import { lightBlue } from '@mui/material/colors';
+
 // import fakerestDataProvider from 'ra-data-fakerest';
 
 // export default { title: 'ra-ui-materialui/list/filter/FilterButton' };
@@ -19,6 +22,13 @@ import { Stack } from '@mui/material';
 const data = {
     posts: []
 };
+
+const invoiceFilters = [
+    <DateInput source="published_at_gte" label="Released after "  alwaysOn  />,
+    <DateInput source="published_at_lte" label="Released before"  alwaysOn />,
+    <DateInput source="dataTwoAdd14_gte" label="data due after "  alwaysOn  />,
+    <DateInput source="dataTwoAdd14_lte" label="data due before"  alwaysOn />,
+];
 
 const postFilters = [
     <TextInput label="Search" source="q" alwaysOn />,
@@ -30,12 +40,15 @@ const postFilters = [
 
 
 export const TopTestListToolbar = () => (
-    <Stack direction="row" justifyContent="space-between">
-        <FilterForm filters={postFilters} />
-        <div>
+    <Stack  direction="row" justifyContent="space-between" 
+        divider={<Divider orientation="vertical" flexItem />}
+        sx={{ bgcolor: lightBlue[50] }}
+    >
+        <FilterForm filters={invoiceFilters} />
+        {/* <div>
             <FilterButton filters={postFilters} />
             <CreateButton />
-        </div>
+        </div> */}
     </Stack>
 );
 

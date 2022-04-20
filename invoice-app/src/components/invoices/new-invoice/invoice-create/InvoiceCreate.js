@@ -13,7 +13,7 @@ import { TestGroupTabbedForm } from "./TestGroupTabbedForm";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 // const ProfileEdit = ({ staticContext, ...props }) => {
 
-const InvoiceCreate = (props) =>  (
+const TESTInvoiceCreate = (props) =>  (
     <>
     <Create redirect="list" component="div" {...props}>
         <InvoiceForm {...props} />
@@ -30,4 +30,4 @@ const InvoiceCreate = (props) =>  (
     </>
 );
 
-export default InvoiceCreate;
+export default TESTInvoiceCreate;
