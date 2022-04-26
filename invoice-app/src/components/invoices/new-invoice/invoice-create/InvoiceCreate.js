@@ -9,6 +9,7 @@ import Header from "./invoice-form/subcomponents/invoice-headers";
 import { InvoiceForm } from "./invoice-form/InvoiceForm";
 import { TestGroupFormContext } from "./TestGroupFormContext";
 import { TestGroupTabbedForm } from "./TestGroupTabbedForm";
+import { CommentCreate } from "../../invoice-list/invoice-filters/filters-bar-items/ReferenceInputTEST";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 // const ProfileEdit = ({ staticContext, ...props }) => {
@@ -17,6 +18,7 @@ const TESTInvoiceCreate = (props) =>  (
     <>
     <Create redirect="list" component="div" {...props}>
         <InvoiceForm {...props} />
+    <CommentCreate  />
 
     </Create>
         <TestGroupTabbedForm />

@@ -25,18 +25,36 @@ const matchSuggestion = (filter, choice) => {
 
 const TradePartnerSelectInput = ({company}) => (
     <ReferenceInput 
-        // label="Company Name" 
-        source="buyerCompany" reference="dbclientlist"
+        label="Company Name" 
+        source="id" reference="dbclientlist"
+        perPage='50000'
         // sort={{ field: 'company', order: 'ASC' }}
     >
         <AutocompleteInput 
             optionText={company} 
             filterToQuery  
+            label="Company Name" 
+            helperText={false}
         />
     </ReferenceInput>
 );
 
 
+// tip https://marmelab.com/react-admin/ListTutorial.html#uselistcontroller-handles-controller-logic
+// note Zauważ, że useListControllernie jest potrzebna nazwa zasobu 'books'
+//  — odgadnięcie jej opiera się na wartości ResourceContextustawionej przez <Resource> komponent.
+
+// tip // note https://marmelab.com/react-admin/List.html#disablesyncwithlocation
+// note https://marmelab.com/react-admin/List.html#debounce
+// UWAGA WAŻNE !!! // log https://marmelab.com/react-admin/ListTutorial.html#uselistcontext-accesses-the-list-context
+{/*
+Używanie <ListBase>komponentu ma jedną wadę: nie masz już dostępu do kontekstu listy ( data, totalitd.) w komponencie. 
+Zamiast tego musisz uzyskać do niego dostęp ListContextz poziomu useListContexthaka .
+Poniższy przykład ilustruje użycie useListContextz niestandardowym komponentem stronicowania:
+//https://marmelab.com/react-admin/ListTutorial.html#uselistcontext-accesses-the-list-context
+
+// note Budowanie niestandardowego iteratora // https://marmelab.com/react-admin/ListTutorial.html#building-a-custom-iterator
+*/}
 
 // *see BuyerCard
 export const BuyerCard = ({selectSourceName, headerTitle, children, ...props}) => {

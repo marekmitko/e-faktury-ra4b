@@ -14,6 +14,7 @@ import {
 } from 'react-admin';
 import { Stack, Divider } from '@mui/material';
 import { lightBlue } from '@mui/material/colors';
+import { QuickFilter } from './invoice-filters/filters-bar-items/QuickFilter';
 
 // import fakerestDataProvider from 'ra-data-fakerest';
 
@@ -28,6 +29,7 @@ const invoiceFilters = [
     <DateInput source="published_at_lte" label="Released before"  alwaysOn />,
     <DateInput source="dataTwoAdd14_gte" label="data due after "  alwaysOn  />,
     <DateInput source="dataTwoAdd14_lte" label="data due before"  alwaysOn />,
+    <QuickFilter source="company" label="company" defaultValue={true}  />,
 ];
 
 const postFilters = [
@@ -55,7 +57,7 @@ export const TopTestListToolbar = () => (
 const PostList = () => (
     <ListBase>
         <TopTestListToolbar />
-        <Datagrid>
+        <Datagrid> 
             <TextField source="id" />
             <TextField source="title" />
             <TextField source="body" />

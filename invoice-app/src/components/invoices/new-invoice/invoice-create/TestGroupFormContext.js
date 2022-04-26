@@ -35,8 +35,10 @@ export const TestGroupFormContext = () => {
     <Create>
    {/* <TextInput source="title" /> */}
         <SimpleForm>
-        <FormGroupsProvider name="testowo" >
-            { "context rejestracja danych"  }
+        <FormGroupsProvider value="testowo" >
+            { /* // tip tutaj jest value a nie name 
+                note  tutaj jest value a nie name
+            "context rejestracja danych"  */ }
             <TextInput source="teTEST"   />
         </FormGroupsProvider >
 
