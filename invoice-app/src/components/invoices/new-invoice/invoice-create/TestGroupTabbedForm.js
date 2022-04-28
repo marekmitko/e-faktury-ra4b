@@ -48,7 +48,7 @@ const CreateRelatedCommentButton = ({id, ...record} ) => {
 
 
 export const TestGroupTabbedForm = () => (
-    <Create>
+    <Create  title="">
         <Stack direction="row" spacing={2} width="100%" 
             alignItems="flex-start" justifyContent="space-around">
             <TabbedForm    >

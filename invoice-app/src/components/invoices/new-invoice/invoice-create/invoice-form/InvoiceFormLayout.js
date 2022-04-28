@@ -6,6 +6,7 @@ import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard'
 import { BuyerCard } from './subcomponents/personal-cards/buyer/BuyerCard'
 import LatLngInput from '../special-buttons/LatLngInput';
 import SexInput from '../special-buttons/SexInput';
+import { BuyerPartInvoiceForm } from './subcomponents/personal-cards/buyer/subform/BuyerPartInvoiceForm';
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -26,8 +27,11 @@ export const InvoiceFormLayout = (props) => (
                 <Grid item xs={12} sm={6}>
                     <SellerCard />
                 </Grid>
-                <Grid item xs={12}  sm={6}>
+                {/* <Grid item xs={12}  sm={6}>
                     <BuyerCard selectSourceName="company" />
+                </Grid> */}
+                <Grid item xs={12}  sm={6}>
+                    <BuyerPartInvoiceForm />
                 </Grid>
                 <Grid item xs={12} >
                     <Card>

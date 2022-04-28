@@ -7,8 +7,11 @@ import {
     EmailField,
     EditButton,
     DeleteButton,
+    ReferenceInput,
+    AutocompleteInput,
+    TextInput
 } from 'react-admin';
-import { Stack } from "@mui/material";
+import { Stack   } from "@mui/material";
 
 // reCSS ClientListIcon  
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
@@ -19,9 +22,26 @@ export const IconToClientList = SupervisorAccountIcon;
 // import ClientEdit from './ClientEdit';
 // export const ClientEdit = ClientEdit;
 
+const UserListFilter = [
+    <TextInput 
+        label="Company" source="company" 
+        // defaultValue="Hello, World!" 
+        alwaysOn 
+    />,
+    <ReferenceInput  alwaysOn 
+        source="company" 
+        reference='dbclientlist'
+        filter={{ company: true }}
+        // enableGetChoices={({ q }) => q.length >= 2}
+
+    >
+        <AutocompleteInput filterToQuery={search => ({ company: search })} />
+    </ReferenceInput>
+]
+
 const ClientList = (props) => {
     return (
-        <List {...props} >
+        <List filters={UserListFilter} {...props}  >
             <Datagrid>
                 <TextField label="NAZWA FIRMY" source="company" />
                 <WrapperField label="PRZEDSTAWICIEL" sortBy="fullname.surname">

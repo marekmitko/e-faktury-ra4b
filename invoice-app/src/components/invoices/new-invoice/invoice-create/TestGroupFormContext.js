@@ -32,7 +32,7 @@ const AccordionExpanded = ({children}) => (
 export const TestGroupFormContext = () => {
 
     return( 
-    <Create>
+    <Create  title="">
    {/* <TextInput source="title" /> */}
         <SimpleForm>
         <FormGroupsProvider value="testowo" >

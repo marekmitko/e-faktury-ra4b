@@ -14,6 +14,24 @@ import { CommentCreate } from "./invoice-filters/filters-bar-items/ReferenceInpu
 // *see https://mui.com/material-ui/react-divider/#vertical-divider 
 // TODO https://mui.com/material-ui/react-divider/#vertical-divider
 
+
+
+
+
+// TODO Zajebiste zacznij od tego 
+// https://marmelab.com/react-admin/ReferenceInput.html
+
+
+
+
+
+
+
+
+
+
+
+
 const SelectCompany = () => (
     <ReferenceInput source="company" label="company" reference="issuedInvoices_list"  >
         <SelectInput optionText="company" alwaysOn />,
