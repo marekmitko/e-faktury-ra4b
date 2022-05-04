@@ -27,9 +27,6 @@ export const InvoiceFormLayout = (props) => (
                 <Grid item xs={12} sm={6}>
                     <SellerCard />
                 </Grid>
-                {/* <Grid item xs={12}  sm={6}>
-                    <BuyerCard selectSourceName="company" />
-                </Grid> */}
                 <Grid item xs={12}  sm={6}>
                     <BuyerPartInvoiceForm />
                 </Grid>
@@ -39,6 +36,9 @@ export const InvoiceFormLayout = (props) => (
                         <hr />
                     </Card>
                 </Grid>
+                {/* <Grid item xs={12}  sm={6}>
+                    <BuyerCard selectSourceName="company" />
+                </Grid> */}
             </Grid>
             {/* //*see https://marmelab.com/react-admin/Inputs.html#the-useinput-hook */}
             <LatLngInput source="lang" onChange={() => console.log("latlng")} onBlur={() => console.log("blure")} />

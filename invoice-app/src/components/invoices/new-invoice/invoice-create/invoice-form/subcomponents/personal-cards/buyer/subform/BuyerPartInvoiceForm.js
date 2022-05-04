@@ -122,13 +122,14 @@ export const BuyerPartInvoiceForm = ({selectSourceName, headerTitle, children, .
     
     return(
         <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle={headerTitle? headerTitle : "Nabywca"} > 
-
             <ReferenceInput source="buyer_id" reference="buyers"
                 // enableGetChoices={({ q }) => q.length >= 2} 
                 // sort={{ field: 'company', order: 'ASC' }}
             >
                 <BuerTESTInput sx={{ bgcolor: 'rgba(194, 161, 163, 0.3)' }}  optionText="company" onCreate={ () => OnCreateBuyerFn()  }   />
             </ReferenceInput>
+
+            
             <ReferenceInput  source="buyer_id" reference="buyers">
                 <AutocompleteInput 
                     enableGetChoices={({ q }) => q.length >= 3} 
@@ -140,19 +141,15 @@ export const BuyerPartInvoiceForm = ({selectSourceName, headerTitle, children, .
                             setOpen(true)
                         };
                         return OnCreateBuyerFn();
-
-                        // setOpen(true);
                         }
                     }
                     fullWidth
                     sx={{ bgcolor: 'rgba(37, 255, 0, 0.2)' }}
-                    
                     // createLabel="Add"
                     // createItemLabel="+++"
                     // options={{ color: 'secondary', InputLabelProps: { shrink: true } }}
                 />
                 </ReferenceInput>
-                {/* <TextInput label="Company Name" source="buyerCompany" fullWidth /> */}
             <BuyerPartInvoiceFormLayout />
         </PersonalDataCard>
     );
