@@ -1,14 +1,108 @@
 import React from 'react';
 import { AutocompleteInput, useChoicesContext,
-    useCreate,
-    useCreateSuggestionContext,
-    Record, ReferenceInput, useRecordContext, useCreateContext, TextInput, useRedirect } from 'react-admin';
+    useCreate, useShowController, useGetOne, Loading, Error,
+    useCreateSuggestionContext, Show,
+    Record, ReferenceInput, useRecordContext, useCreateContext, TextInput, useRedirect, RecordContextProvider } from 'react-admin';
 import { PersonalDataCard } from '../../../../../../../../../custom/invoice/parsonal-cards/PersonalDataCard';
 import BuyerIcon from '@mui/icons-material/Person';
 import {FormControlLabel, Checkbox, hslToRgb} from '@mui/material';
 import { BuyerDataFromLayout } from '../BuyerDataFormLayout';
 import CreateNewBuyer from './CreateNewBuyer';
 import { BuyerPartInvoiceFormLayout } from './BuyerPartInvoiceFormLayout';
+import { BuyerDetailShowLayout } from './BuyerDetailShowLayout';
+import db_buyer from './db_empty_buyer';
+
+
+
+
+// https://marmelab.com/react-admin/Edit.html#queryoptions
+
+
+const BuyerIdShow = ({BuyerId}) => {
+    const controllerProps = useShowController({ resource: 'posts', id: BuyerId });
+    return <Show {...controllerProps} />;
+};
+
+
+// note  const BookDetail = ({ id }) => {
+// https://marmelab.com/react-admin/Upgrade.html#all-crud-views
+
+
+//https://marmelab.com/react-admin/useGetIdentity.html
+
+const BuyerId = ({ id }) => {
+    const { data, error, isLoading } = useGetOne('books', { id });
+    
+        if (isLoading) {
+            return <Loading />;
+        }
+        if (error) {
+            return <Error error={error} />;
+        }
+        if (!data) {
+            return null;
+        }
+        return (
+            <div>
+                <h1>{data.book.title}</h1>
+                <p>{data.book.author.name}</p>
+            </div>
+        );
+    };
+
+
+
+
+db_buyer.id = 1125542;
+
+    // *see BuyerPArtFromItem
+export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
+    const { data, isLoading, error } = useGetOne(resource, { id });
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+    return (
+        // <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle="Kupujący">
+            <RecordContextProvider value={data}>
+                {children}
+            </RecordContextProvider>
+        // </PersonalDataCard>
+    );
+};
+export const PreBuyerPartFormItem = ({children}) => (
+        <WrapperBuyerPartFormItem resource="buyers" id="2128">
+                {children}
+        </WrapperBuyerPartFormItem>
+);
+
+export const BuyerPartInvoiceFormTEST = ({resourceBuyer,  buyerId}) => (
+        <WrapperBuyerPartFormItem resource={"buyers"} id="2128">
+                <BuyerDetailShowLayout  />
+        </WrapperBuyerPartFormItem>
+);
+
+export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => (
+    <WrapperBuyerPartFormItem resource={resourceBuyer} id={buyerId}>
+            <BuyerDetailShowLayout  />
+    </WrapperBuyerPartFormItem>
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // https://marmelab.com/react-admin/useChoicesContext.html
@@ -103,23 +197,14 @@ const BuyerPartInvoiceForm = ({selectSourceName, headerTitle, children, ...props
 
             return {}
     };
-
-
-
-
-
     // source="author_id" choices={choices} optionText={optionRenderer}
-
     // if(selectSourceName) return(
     //     <BuyerLayout>
     //         {/* <TradePartnerSelectInput company={selectSourceName} /> */}
     //     </BuyerLayout>
     // );
-
     // https://marmelab.com/react-admin/AutocompleteInput.html
 
-
-    
     return(
         <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle={headerTitle? headerTitle : "Nabywca"} > 
             <ReferenceInput source="buyer_id" reference="buyers"
@@ -154,5 +239,3 @@ const BuyerPartInvoiceForm = ({selectSourceName, headerTitle, children, ...props
         </PersonalDataCard>
     );
 } 
-
-export default BuyerPartInvoiceForm;

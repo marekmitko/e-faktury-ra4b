@@ -4,17 +4,23 @@ import MailIcon from '@mui/icons-material/MailOutline';
 import DataContatctIcon from '@mui/icons-material/Wysiwyg';
 import { Stack, Typography, Box, Divider } from "@mui/material";
 import { TextField, SimpleShowLayout } from "react-admin";
-import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
-import { CodeAndNameCityDualField } from '../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
+// import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
+import { CodeAndNameCityDualField } from '../../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
 
 // BUG // *see ZipCityCode
-const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
+// const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
 
-
-export const SellerDataShowLayout = (props, propTypes) => (
-    <SimpleShowLayout>
+// infO https://marmelab.com/react-admin/Edit.html#queryoptions
+// export const BuyerDetailShowLayout = (props, propTypes) => (
+// export const BuyerDetailShowLayout = ({record}) => (
+    
+export const BuyerDetailShowLayout = () => (
+    <SimpleShowLayout  
+        // record={record} 
+    >
         <TextField label="Company Name" source="company" />
-        <TextField label="Issued by" source="fullName" />
+        
+        {/* <Box direction="row" gap={1} width="100%"> */}
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />
             <Box direction="row" gap={1} width="100%">
@@ -29,9 +35,20 @@ export const SellerDataShowLayout = (props, propTypes) => (
                 />
                 </Box>
         </Stack>
-        <TextField label="Street" source="address.street" />
-        <CodeAndNameCityDualField  sourceCode="address.ZIPCode" sourceName="address.city"   />
-        <TextField label="MVA Code" source="orgId.orgNumber" />
+        {/* </Box> */}
+        <TextField label="Street" 
+            // source="address.street"
+            source="address"
+        />
+        <CodeAndNameCityDualField
+            // sourceCode="address.ZIPCode" 
+            sourceCode="place" 
+            sourceName="address.city"   
+        />
+        <TextField label="MVA Code" 
+            // source="orgId.orgNumber" 
+            source="org_nr" 
+        />
         <Stack direction="row" gap={1} width="100%">
             <DataContatctIcon />
             <Box direction="row" gap={1} width="100%">
@@ -51,34 +68,15 @@ export const SellerDataShowLayout = (props, propTypes) => (
                 />
                 </Box>
         </Stack>
-        <TextField label="Full Name" source="fullName" />
-        <TextField label="email" 
+        {/* <Stack direction="row" gap={1} width="100%"> */}
+            <div><b>Dodawać?</b></div>
+            <TextField label="Full Name" source="fullName" />
+            <TextField label="email" 
                 // source="orgId.orgNumber" 
-                source="contact.email"  
-        />
+                source="email"  
+                />
+            <TextField label="test id " source="id" />
+        {/* </Stack> */}
     </SimpleShowLayout>
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-// export const SellerDataShowLayout = (props) => (
-// <SimpleShowLayout>
-//     <TextField label="Company Name" source="company" />
-//     <TextField label="Full Name" source="fullName" />
-//         <TextField label="Street" source="address.street" />
-//         <ZipCityDualTextField label={<ZipCityDualLabel  />} sourceZip="address.ZIPCode" sourceCity="address.city" />
-//         <TextField label="MVA Code" source="orgId.orgNumber" />
-
-//         <CodeAndNameCity  sourceCode="address.ZIPCode" sourceName="address.city"   />
-//     </SimpleShowLayout>
-// );

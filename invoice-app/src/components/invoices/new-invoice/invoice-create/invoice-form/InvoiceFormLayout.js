@@ -6,7 +6,10 @@ import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard'
 import { BuyerCard } from './subcomponents/personal-cards/buyer/BuyerCard'
 import LatLngInput from '../special-buttons/LatLngInput';
 import SexInput from '../special-buttons/SexInput';
-import { BuyerPartInvoiceForm } from './subcomponents/personal-cards/buyer/subform/BuyerPartInvoiceForm';
+import OLDBuyerPartInvoiceForm from './subcomponents/personal-cards/buyer/subform/BuyerPartInvoiceForm';
+import { BuyerPartInvoiceFormTEST  } from './subcomponents/personal-cards/buyer/buyer-part-form/BuyerPartInvoiceForm';
+import { BuyerDataShow } from './subcomponents/personal-cards/buyer/buyer-part-form/BuyerDataShow';
+import { BuyerTabForm } from './subcomponents/personal-cards/buyer/buyer-part-form/BuyerTabForm';
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -15,7 +18,9 @@ const ResourceName = () => {
 // https://react-admin-storybook-kfrs9egbf-marmelab.vercel.app/?path=/story/ra-ui-materialui-detail-simpleshowlayout--several-columns
 // 
 // https://react-admin-storybook-kfrs9egbf-marmelab.vercel.app/?path=/story/ra-ui-materialui-forms-simpleform--basic
-export const InvoiceFormLayout = (props) => ( 
+export const InvoiceFormLayout = (props) => 
+
+( 
     <>
     {/* <ResourceContext.Provider value="books">
         <RecordContextProvider value={record}> */}
@@ -27,8 +32,15 @@ export const InvoiceFormLayout = (props) => (
                 <Grid item xs={12} sm={6}>
                     <SellerCard />
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                    <BuyerTabForm />
+                </Grid>
+                <Grid item xs={12} >
+                    <hr /> 
+                </Grid>
                 <Grid item xs={12}  sm={6}>
-                    <BuyerPartInvoiceForm />
+                    <h3>OLD</h3>
+                    <OLDBuyerPartInvoiceForm />
                 </Grid>
                 <Grid item xs={12} >
                     <Card>

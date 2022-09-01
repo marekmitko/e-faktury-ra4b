@@ -1145,6 +1145,52 @@
       "lat": "dasdasdas",
       "lng": "dasdasd",
       "id": 103
+    },
+    {
+      "nb_views": "",
+      "created_at": "2022-05-05T14:39:23.304Z",
+      "payment_due": "2022-05-19T14:39:23.304Z",
+      "buyer_id": "n7YG_0_",
+      "fullname": {
+        "forename": "",
+        "surname": ""
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "address": {
+        "street": "",
+        "ZIPCode": "",
+        "city": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "lat": "dasd",
+      "lng": "das",
+      "id": 104
+    },
+    {
+      "fullname": {
+        "forename": "TESTY o 17.04",
+        "surname": "fdsfsd"
+      },
+      "orgId": {
+        "MVA": false,
+        "orgNumber": "sdfdsf"
+      },
+      "address": {
+        "street": "TESTY o 17.04",
+        "ZIPCode": 111111,
+        "city": "TESTY o 17.04"
+      },
+      "contact": {
+        "email": "fdsf",
+        "phoneNumber": "s"
+      },
+      "id": 105
     }
   ],
   "tradePartners_list": [
@@ -15782,6 +15828,146 @@
       "inkasso": "",
       "is_company": "",
       "id": "5Af24UA"
+    },
+    {
+      "company": "Test 16.39 czwaetek ",
+      "invoice_ids": "",
+      "user_id": "",
+      "kunde_nr": "",
+      "address": "",
+      "place": "",
+      "org_nr": "",
+      "mva": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "main_kunde_nr": "",
+      "lang": "",
+      "debt": "",
+      "remainder": "",
+      "inkasso": "",
+      "is_company": "",
+      "id": "n7YG_0_"
+    },
+    {
+      "company": "Nead",
+      "invoice_ids": "",
+      "user_id": "",
+      "kunde_nr": "",
+      "address": "",
+      "place": "",
+      "org_nr": "",
+      "mva": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "main_kunde_nr": "",
+      "lang": "",
+      "debt": "",
+      "remainder": "",
+      "inkasso": "",
+      "is_company": "",
+      "id": "Yt67wxC"
+    },
+    {
+      "company": "zxcczxczxc",
+      "invoice_ids": "",
+      "user_id": "",
+      "kunde_nr": "",
+      "address": "",
+      "place": "",
+      "org_nr": "",
+      "mva": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "main_kunde_nr": "",
+      "lang": "",
+      "debt": "",
+      "remainder": "",
+      "inkasso": "",
+      "is_company": "",
+      "id": "i11V1ki"
+    },
+    {
+      "company": "sadasd",
+      "invoice_ids": "",
+      "user_id": "",
+      "kunde_nr": "",
+      "address": "",
+      "place": "",
+      "org_nr": "",
+      "mva": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "main_kunde_nr": "",
+      "lang": "",
+      "debt": "",
+      "remainder": "",
+      "inkasso": "",
+      "is_company": "",
+      "id": "F6gKptk"
+    },
+    {
+      "company": "dasdasd",
+      "invoice_ids": "",
+      "user_id": "",
+      "kunde_nr": "",
+      "address": "",
+      "place": "",
+      "org_nr": "",
+      "mva": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "main_kunde_nr": "",
+      "lang": "",
+      "debt": "",
+      "remainder": "",
+      "inkasso": "",
+      "is_company": "",
+      "id": "kRtO1QI"
+    },
+    {
+      "company": "Teste",
+      "invoice_ids": "",
+      "user_id": "",
+      "kunde_nr": "",
+      "address": "",
+      "place": "",
+      "org_nr": "",
+      "mva": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "main_kunde_nr": "",
+      "lang": "",
+      "debt": "",
+      "remainder": "",
+      "inkasso": "",
+      "is_company": "",
+      "id": "yFjCLua"
+    },
+    {
+      "company": "Janusz",
+      "invoice_ids": "",
+      "user_id": "",
+      "kunde_nr": "",
+      "address": "",
+      "place": "",
+      "org_nr": "",
+      "mva": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "main_kunde_nr": "",
+      "lang": "",
+      "debt": "",
+      "remainder": "",
+      "inkasso": "",
+      "is_company": "",
+      "id": "RmcmfBN"
     }
   ],
   "invoicesMyCustom": [
