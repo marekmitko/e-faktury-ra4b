@@ -40,7 +40,7 @@ export const InvoiceFormLayout = (props) =>
                 </Grid>
                 <Grid item xs={12}  sm={6}>
                     <h3>OLD</h3>
-                    <OLDBuyerPartInvoiceForm />
+                    {/* <OLDBuyerPartInvoiceForm /> */}
                 </Grid>
                 <Grid item xs={12} >
                     <Card>
@@ -53,8 +53,8 @@ export const InvoiceFormLayout = (props) =>
                 </Grid> */}
             </Grid>
             {/* //*see https://marmelab.com/react-admin/Inputs.html#the-useinput-hook */}
-            <LatLngInput source="lang" onChange={() => console.log("latlng")} onBlur={() => console.log("blure")} />
-            <SexInput source="sex" />
+            {/* <LatLngInput source="lang" onChange={() => console.log("latlng")} onBlur={() => console.log("blure")} />
+            <SexInput source="sex" /> */}
     {/* </RecordContextProvider>
     </ResourceContext.Provider>*/}
     </>

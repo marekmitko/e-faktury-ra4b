@@ -51,15 +51,15 @@ export const TestGroupTabbedForm = () => (
     <Create  title="">
         <Stack direction="row" spacing={2} width="100%" 
             alignItems="flex-start" justifyContent="space-around">
-            <TabbedForm    >
-            {/* <TabbedForm  tabs={<TabbedFormTabs variant="scrollable" scrollButtons="auto" />} > */}
+            {/* <TabbedForm    >
+            {/* <TabbedForm  tabs={<TabbedFormTabs variant="scrollable" scrollButtons="auto" />} > 
                 <FormTab label="Miscellaneous">
                     <TextInput label="Password (if protected post)" source="password" type="password" />
                     <DateInput label="Publication date" source="published_at" />
                     <NumberInput source="average_note" 
                     // validate={[ number(), minValue(0) ]} 
                     />
-                    {/* <BooleanInput label="Allow comments?" source="commentable" defaultValue /> */}
+                    {/* <BooleanInput label="Allow comments?" source="commentable" defaultValue /> 
                     <TextInput disabled label="Nb views" source="views" />
                 </FormTab>
                 <FormTab label="dbclientlist">
@@ -81,9 +81,9 @@ export const TestGroupTabbedForm = () => (
                         </CreateBase>
                     </ReferenceManyField>
                 </FormTab>
-            </TabbedForm>
+            </TabbedForm> */}
             <TabbedForm  syncWithLocation={false} >
-                <FormTab label="comments">
+                <FormTab label="sales-table">
                     <ReferenceManyField reference="dbclientlist" target="id" label={false}>
                         <ListBase>
                         <Datagrid>
@@ -96,7 +96,7 @@ export const TestGroupTabbedForm = () => (
                     </ReferenceManyField>
                 </FormTab>
             </TabbedForm>
-            <TabbedForm  syncWithLocation={false} >
+            {/* <TabbedForm  syncWithLocation={false} >
                 <FormTab label="sadasd">
                     <div>
 
@@ -117,7 +117,7 @@ export const TestGroupTabbedForm = () => (
                         </Create>
                 </div>
                 </FormTab >
-            </TabbedForm>
+            </TabbedForm> */}
         </Stack>
     </Create>
 );
