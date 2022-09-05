@@ -1,7 +1,7 @@
 import { blue } from '@mui/material/colors';
 
 const _STYLE_sx_personal_data_card = {
-    sxCard: { minWidth:  250,  },
+    sxCard: { minWidth:  250, minHeight: 520 },
     sxCardHeader: {
         fontWeight: 'bold', 
         borderBottom: `2.5px solid ${blue[800]}`,

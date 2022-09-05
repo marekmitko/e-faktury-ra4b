@@ -80,11 +80,15 @@ export const BuyerPartInvoiceFormTEST = ({resourceBuyer,  buyerId}) => (
         </WrapperBuyerPartFormItem>
 );
 
-export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => (
-    <WrapperBuyerPartFormItem resource={resourceBuyer} id={buyerId}>
+export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => {
+    return(
+
+        <WrapperBuyerPartFormItem resource={resourceBuyer} id={buyerId}>
             <BuyerDetailShowLayout  />
-    </WrapperBuyerPartFormItem>
-);
+        </WrapperBuyerPartFormItem>
+    )
+};
+    // );
 
 
 

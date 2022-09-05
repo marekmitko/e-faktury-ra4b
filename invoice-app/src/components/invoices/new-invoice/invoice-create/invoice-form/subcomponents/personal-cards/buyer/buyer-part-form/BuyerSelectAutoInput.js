@@ -20,7 +20,7 @@ import { OnCreateNewBuyer } from './OnCreateNewBuyer';
 
 export const BuyerSelectAutoInput = ({open, setOpen, setBuyerId, ...props}) => {
 
-    const { onChange, onBlur, ...rest } = props;
+    // const { onChange, onBlur, ...rest } = props;
     // const { onChange, onBlur, ...rest } = props;
 
     // const {
@@ -66,6 +66,7 @@ export const BuyerSelectAutoInput = ({open, setOpen, setBuyerId, ...props}) => {
                     // label={props.label}
                     // error={(isTouched || isSubmitted) && invalid}
                     // required={isRequired}
+                    onChange={e => { console.log("change", e.target.checked); }}
                     // {...rest}
 
 

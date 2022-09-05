@@ -15,12 +15,8 @@ import { CodeAndNameCityDualField } from '../../../../../../../../../custom/invo
 // export const BuyerDetailShowLayout = ({record}) => (
     
 export const BuyerDetailShowLayout = () => (
-    <SimpleShowLayout  
-        // record={record} 
-    >
+    <SimpleShowLayout   >
         <TextField label="Company Name" source="company" />
-        
-        {/* <Box direction="row" gap={1} width="100%"> */}
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />
             <Box direction="row" gap={1} width="100%">
@@ -69,13 +65,13 @@ export const BuyerDetailShowLayout = () => (
                 </Box>
         </Stack>
         {/* <Stack direction="row" gap={1} width="100%"> */}
-            <div><b>Dodawać?</b></div>
+            {/* <div><b>Dodawać?</b></div> */}
             <TextField label="Full Name" source="fullName" />
             <TextField label="email" 
                 // source="orgId.orgNumber" 
                 source="email"  
                 />
-            <TextField label="test id " source="id" />
+            {/* <TextField label="test id " source="id" /> */}
         {/* </Stack> */}
     </SimpleShowLayout>
 );

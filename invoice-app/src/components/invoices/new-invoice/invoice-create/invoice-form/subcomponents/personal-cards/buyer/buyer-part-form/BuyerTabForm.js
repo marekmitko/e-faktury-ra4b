@@ -15,6 +15,7 @@ import { BuyerDataShowLayout } from './BuyerDataShowLayout';
 import { BuyerPartInputControl } from './BuyerPartInvoiceForm';
 import { BuyerDetailShowLayout } from './BuyerDetailShowLayout';
 import { ControlDataInputBuyerShow } from './ControlDataInputBuyerShow';
+import MyBuyerReferenceInput from './buyer-reference-autocomplete-input/MyBuyerReferenceInput';
 // import BuyerReferenceInput from './BuyerReferenceInput';
 
 // https://marmelab.com/react-admin/TabbedForm.html //*edu 
@@ -72,9 +73,13 @@ function ControlAutocompleteInput(
                 }
                 // id="controllable-states-demo"
                 options={allChoices? allChoices.map((option) => option.id) :  ("renderOptions.map((option) => option.id") }
-                renderOption={
-                    // optionsBuyer ? 
-                    () => optionsBuyer.map((option) => ( <li> { option.company}  </li>))
+                // renderOption={
+                //     // optionsBuyer ? 
+                //     () => optionsBuyer.map((option) => ( 
+                //         <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                //     <span> { option.company}  </span>
+                //     </Box>
+                //     ))
                     // <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} >
                     //     { option.company} + () {option.phone}
                     // </Box>)
@@ -93,7 +98,7 @@ function ControlAutocompleteInput(
                     //   {optionsBuyer.company} (+48) +{optionsBuyer.phone}
                     // </Box>
                     // )
-                }
+                // }
 
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Buyer Name" variant="standard" label="inputBuyerId" />}
@@ -133,9 +138,22 @@ export const BuyerTabForm = ( {selectSourceName, headerTitle, children, ...props
                 // sort={defaultSort}
             /> */}
             {/* <input value={buyerId} />   <input value={idBuyer} /> */}
-            <ReferenceInput  source="buyer_id" reference="buyers"  >
+            <ReferenceInput  perPage={100} source="buyer_id" reference="dbclientlist" {...props} >
                 <BuyerSelectAutoInput onBlur={() => console.log("blure")} setBuyerId={setBuyerId} open={open} setOpen={setOpen} />
             </ReferenceInput> 
+
+
+            <MyBuyerReferenceInput  label="Buyer" source="id" reference="buyers" >
+                <ControlAutocompleteInput 
+                    // renderOptions="company"
+                    // value={value} setValue={setValue}
+                    // inputValue={inputValue} setInputValue={setInputValue} 
+                />
+                
+            </MyBuyerReferenceInput>
+
+
+
             <ReferenceInput label="Buyer" source="id" reference="dbclientlist">
             {/* <ReferenceInput label="Buyer" source="buyer_id" reference="buyers"> */}
                 <AutocompleteInput 
@@ -147,7 +165,7 @@ export const BuyerTabForm = ( {selectSourceName, headerTitle, children, ...props
             </ReferenceInput>
             {/* OD TEGO MIEJSCA W DÓŁ  */}
             <hr />
-            <ReferenceInput source="buyer_id" reference="buyers" {...props} defaultValue="">
+            <ReferenceInput source="buyer_id" reference="dbclientlist" {...props} defaultValue="">
             {/* <SelectInput
                     fullWidth
                     optionText="company"

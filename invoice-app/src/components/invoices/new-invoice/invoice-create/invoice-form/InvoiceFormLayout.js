@@ -1,6 +1,6 @@
 import { Card, Grid } from '@mui/material';
 import React from 'react';
-import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider } from 'react-admin';
+import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider, ReferenceInput } from 'react-admin';
 import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard'
 import { BuyerCard } from './subcomponents/personal-cards/buyer/BuyerCard'
@@ -10,6 +10,9 @@ import OLDBuyerPartInvoiceForm from './subcomponents/personal-cards/buyer/subfor
 import { BuyerPartInvoiceFormTEST  } from './subcomponents/personal-cards/buyer/buyer-part-form/BuyerPartInvoiceForm';
 import { BuyerDataShow } from './subcomponents/personal-cards/buyer/buyer-part-form/BuyerDataShow';
 import { BuyerTabForm } from './subcomponents/personal-cards/buyer/buyer-part-form/BuyerTabForm';
+import ClientReferenceAutocompleteInput from './subcomponents/personal-cards/buyer/buyer-part-form/client-autocomplete-input/ClientReferenceAutocompleteInput';
+import ClientDataAutomaticShow from './subcomponents/personal-cards/buyer/buyer-part-form/client-autocomplete-input/ClientDataAutomaticShow';
+import ClientCard from './subcomponents/personal-cards/client/ClientCard';
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -33,14 +36,15 @@ export const InvoiceFormLayout = (props) =>
                     <SellerCard />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <BuyerTabForm />
+                    <ClientCard />  
                 </Grid>
                 <Grid item xs={12} >
                     <hr /> 
                 </Grid>
                 <Grid item xs={12}  sm={6}>
-                    <h3>OLD</h3>
-                    {/* <OLDBuyerPartInvoiceForm /> */}
+                    
+                    {/* <h3>OLD</h3>
+                    <OLDBuyerPartInvoiceForm /> */}
                 </Grid>
                 <Grid item xs={12} >
                     <Card>

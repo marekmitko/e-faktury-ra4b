@@ -18,6 +18,7 @@ export const BuerTESTInput = (props) => {
 
     const handleCheckboxChange = (event, checked) => {
         setFilters({ published: checked }, displayedFilters);
+        console.log(event.target.value);
     };
  
     return (
@@ -145,8 +146,8 @@ const BuyerPartInvoiceForm = ({selectSourceName, headerTitle, children, ...props
                     }
                     fullWidth
                     sx={{ bgcolor: 'rgba(37, 255, 0, 0.2)' }}
-                    // createLabel="Add"
-                    // createItemLabel="+++"
+                    createLabel="Add"
+                    createItemLabel="+++"
                     // options={{ color: 'secondary', InputLabelProps: { shrink: true } }}
                 />
                 </ReferenceInput>
