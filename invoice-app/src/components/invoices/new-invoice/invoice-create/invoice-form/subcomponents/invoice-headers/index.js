@@ -10,16 +10,18 @@ import { flexbox } from '@mui/system';
 
 // *see <NewInvoiceHeader />
 export const NewInvoiceHeader = (props) => (
-    <Grid container spacing={1} rowSpacing={2}>
-        <Grid item xs={12} sm={4}>
-            <Card sx={{ height:'100%', display: 'flex', alignContent: "center"}} >
-                <LogotypeItem />
-            </Card>
-        </Grid>
-        <Grid item xs={12} sm={8}>
-            <Card sx={{ pt: 3}} >
-                <DateInputPart />
-            </Card>
+    <Grid item xs={12} >
+        <Grid container spacing={1} rowSpacing={2}>
+            <Grid item xs={12} sm={4}>
+                <Card sx={{ height:'100%', display: 'flex', alignContent: "center"}} >
+                    <LogotypeItem />
+                </Card>
+            </Grid>
+            <Grid item xs={12} sm={8}>
+                <Card sx={{ pt: 3}} >
+                    <DateInputPart />
+                </Card>
+            </Grid>
         </Grid>
     </Grid>
         
