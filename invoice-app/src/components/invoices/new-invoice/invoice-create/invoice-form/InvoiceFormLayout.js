@@ -5,15 +5,16 @@ import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard';
 import { BuyerCard } from './subcomponents/personal-cards/buyer/BuyerCard';
 import ClientCard from './subcomponents/personal-cards/client/ClientCard';
-import SalesTable from './subcomponents/sales-table/SalesTable';
 import MyInputNumberRef from './subcomponents/sales-table/SalesItemRow';
 import { initial } from 'lodash';
 import { useEffect } from 'react';
-import RHFEasyItemRow from './subcomponents/sales-table/RHFEasyItemRow';
-import MYEasyItemRow from './subcomponents/sales-table/MYEasyItemRow';
-import MuiRHFEasyItemRow from './subcomponents/sales-table/MuiRHFEasyItemRow';
-import { TestMuiInput } from './subcomponents/sales-table/TestMuiRHFEasyItemRow';
-import { RaMuiRHFEasyItemRow } from './subcomponents/sales-table/RaMuiRHFEasyItemRow';
+import RHFEasyItemRow from './subcomponents/sales-table/old-component/RHFEasyItemRow';
+import MYEasyItemRow from './subcomponents/sales-table/old-component/MYEasyItemRow';
+import MuiRHFEasyItemRow from './subcomponents/sales-table/old-component/MuiRHFEasyItemRow';
+import { TestMuiInput } from './subcomponents/sales-table/old-component/TestMuiRHFEasyItemRow';
+import { RaMuiRHFEasyItemRow } from './subcomponents/sales-table/old-component/RaMuiRHFEasyItemRow';
+
+import SalesTable from './subcomponents/sales-table/SalesTable';
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -36,6 +37,8 @@ export const InvoiceFormLayout = (props) => {
             <Grid item xs={12} ><hr /></Grid>
             <Grid item xs={12} >
                 <Card>
+                    <SalesTable />
+                    <hr />  <hr />
                     <div>
                         <RHFEasyItemRow />
                         <MYEasyItemRow />
@@ -43,8 +46,8 @@ export const InvoiceFormLayout = (props) => {
                         <TestMuiInput /> */}
                         <hr />
                         <RaMuiRHFEasyItemRow />
+
                     </div>
-                    <SalesTable />
                     <p> list </p>
                     <hr />
                 </Card>

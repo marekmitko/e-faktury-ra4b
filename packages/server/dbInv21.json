@@ -1415,6 +1415,21 @@
       "buyer_id": "",
       "sales_list": [],
       "id": 113
+    },
+    {
+      "nb_views": null,
+      "created_at": "2022-09-18T14:36:16.459Z",
+      "payment_due": "2022-10-02T14:36:16.459Z",
+      "buyer_id": "",
+      "Price": null,
+      "Quantity": null,
+      "test": [
+        {
+          "value": "0",
+          "nestedArray": []
+        }
+      ],
+      "id": 114
     }
   ],
   "tradePartners_list": [
