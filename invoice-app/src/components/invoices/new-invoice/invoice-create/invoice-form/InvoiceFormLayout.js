@@ -3,15 +3,9 @@ import {useRef, useState } from 'react';
 import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider, ReferenceInput } from 'react-admin';
 import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard';
-import { BuyerCard } from './subcomponents/personal-cards/buyer/BuyerCard';
 import ClientCard from './subcomponents/personal-cards/client/ClientCard';
-import MyInputNumberRef from './subcomponents/sales-table/SalesItemRow';
-import { initial } from 'lodash';
-import { useEffect } from 'react';
 import RHFEasyItemRow from './subcomponents/sales-table/old-component/RHFEasyItemRow';
 import MYEasyItemRow from './subcomponents/sales-table/old-component/MYEasyItemRow';
-import MuiRHFEasyItemRow from './subcomponents/sales-table/old-component/MuiRHFEasyItemRow';
-import { TestMuiInput } from './subcomponents/sales-table/old-component/TestMuiRHFEasyItemRow';
 import { RaMuiRHFEasyItemRow } from './subcomponents/sales-table/old-component/RaMuiRHFEasyItemRow';
 
 import SalesTable from './subcomponents/sales-table/SalesTable';
@@ -42,8 +36,6 @@ export const InvoiceFormLayout = (props) => {
                     <div>
                         <RHFEasyItemRow />
                         <MYEasyItemRow />
-                        {/* <MuiRHFEasyItemRow />
-                        <TestMuiInput /> */}
                         <hr />
                         <RaMuiRHFEasyItemRow />
 
