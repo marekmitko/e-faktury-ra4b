@@ -4,9 +4,9 @@ import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useReso
 import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard';
 import ClientCard from './subcomponents/personal-cards/client/ClientCard';
-import RHFEasyItemRow from './subcomponents/sales-table/old-component/RHFEasyItemRow';
-import MYEasyItemRow from './subcomponents/sales-table/old-component/MYEasyItemRow';
-import { RaMuiRHFEasyItemRow } from './subcomponents/sales-table/old-component/RaMuiRHFEasyItemRow';
+import RHFEasyItemRow from './xold-component/RHFEasyItemRow';
+import MYEasyItemRow from './xold-component/MYEasyItemRow';
+import { RaMuiRHFEasyItemRow } from './xold-component/RaMuiRHFEasyItemRow';
 
 import SalesTable from './subcomponents/sales-table/SalesTable';
 
@@ -21,8 +21,7 @@ const ResourceName = () => {
 
 
 export const InvoiceFormLayout = (props) => {
-   
-
+    
     return( 
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
             <Header />
@@ -32,14 +31,6 @@ export const InvoiceFormLayout = (props) => {
             <Grid item xs={12} >
                 <Card>
                     <SalesTable />
-                    <hr />  <hr />
-                    <div>
-                        <RHFEasyItemRow />
-                        <MYEasyItemRow />
-                        <hr />
-                        <RaMuiRHFEasyItemRow />
-
-                    </div>
                     <p> list </p>
                     <hr />
                 </Card>
