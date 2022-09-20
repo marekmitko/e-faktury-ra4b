@@ -40,10 +40,8 @@ export const InvoiceFormLayout = (props) => {
                     <SalesTable />
                     <p> list </p>
                     <hr />
-                    <hr />
-                    <EnhancedSalesTable />
-                    <hr />
                 </Card>
+                    <EnhancedSalesTable />
             </Grid>
         </Grid>
     ) ; 
