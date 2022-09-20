@@ -9,6 +9,7 @@ import MYEasyItemRow from './xold-component/MYEasyItemRow';
 import { RaMuiRHFEasyItemRow } from './xold-component/RaMuiRHFEasyItemRow';
 
 import SalesTable from './subcomponents/sales-table/SalesTable';
+import EnhancedSalesTable from './subcomponents/sales-table/EnhancedSalesTable';
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -32,6 +33,9 @@ export const InvoiceFormLayout = (props) => {
                 <Card>
                     <SalesTable />
                     <p> list </p>
+                    <hr />
+                    <hr />
+                    <EnhancedSalesTable />
                     <hr />
                 </Card>
             </Grid>

@@ -15,7 +15,7 @@ import { ReferenceInput, SelectInput, useTranslate } from 'react-admin'; // esli
 import BuyerQuickCreate from './BuyerQuickCreate';
 import BuyerPreview from './BuyerPreview';
 
-const BuyerReferenceInput = props => {
+const BuyerReferenceInput = (props: any) => {
     const translate = useTranslate();
 
     const [showPreviewDialog, setShowPreviewDialog] = useState(false);

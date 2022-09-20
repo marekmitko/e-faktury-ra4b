@@ -19,7 +19,7 @@ import {
 
 import CancelButton from './BuyerQuickCreateCancelButton';
 
-const BuyerQuickCreate = props => {
+const BuyerQuickCreate = (props: any) => {
     const [create] = useCreate();
     const notify = useNotify();
 
@@ -33,7 +33,7 @@ const BuyerQuickCreate = props => {
                     onSuccess: data => {
                         onCreate(data);
                     },
-                    onError: (error) => {
+                    onError: (error: any) => {
                         notify(error.message, { type: 'error' });
                     },
                 }

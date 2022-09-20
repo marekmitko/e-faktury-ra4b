@@ -9,7 +9,7 @@ import { useTranslate } from 'react-admin';
 const BuyerQuickCreateCancelButton = ({
     onClick,
     label = 'ra.action.cancel',
-}) => {
+}: any) => {
     const translate = useTranslate();
 
     return (
