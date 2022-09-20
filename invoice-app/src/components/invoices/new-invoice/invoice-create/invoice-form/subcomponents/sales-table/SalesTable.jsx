@@ -2,34 +2,23 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import FieldArray from "./SalesTableBody";
 // import ReactDOM from "react-dom";
-
 // import "./styles.css";
-
-
-
-
-
 
 const defaultValues = {
     test: [
         {
-            qty: "1",
-            price: "0",
-
-            nestedArray: [{ value: "0" }]
-        },
-        {
-            qty: "1",
-            price: "0",
-
-            nestedArray: [{ value: "0" }]
-        }
+            item_id: "",
+            name: "",
+            type: "",
+            qty: 1,
+            netPrice: "",
+            taxValue: "",
+            grossPrice: "",
+            netValue: "",
+            grossValue: "",
+        } 
     ]
 };
-
-
-
-
 
 export default function SalesTable() {
     const {
@@ -44,8 +33,6 @@ export default function SalesTable() {
         defaultValues
     });
 
-    // const myObjRef = React.useRef(defaultValues);
-
     const onSubmit = (data) => console.log("data", data);
     console.log("dataLog", onSubmit());
     return (
@@ -55,12 +42,13 @@ export default function SalesTable() {
                 <table>
                     <thead>
                         <tr>
-                            <th style={{width: '5px !important'}} >No.</th>
+                            <th>No.</th>
                             <th>Name</th>
                             <th>Type</th>
                             <th>Quantity</th>
                             <th>Net Price</th>
                             <th>VAT</th>
+                            <th>Gross Price</th>
                             <th>Net Value</th>
                             <th>Gross Value</th>
                             <th>x</th>

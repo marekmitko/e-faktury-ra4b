@@ -10,6 +10,7 @@ import { RaMuiRHFEasyItemRow } from './xold-component/RaMuiRHFEasyItemRow';
 
 import SalesTable from './subcomponents/sales-table/SalesTable';
 import EnhancedSalesTable from './subcomponents/sales-table/EnhancedSalesTable';
+import SpanningSalesTable from './subcomponents/sales-table/SpanningSalesTable';
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -29,8 +30,13 @@ export const InvoiceFormLayout = (props) => {
             <SellerCard />
             <ClientCard />  
             <Grid item xs={12} ><hr /></Grid>
+            <Grid item xs={12}  >
+                <Card  sx={{   padding: '20px' }}>
+                    <SpanningSalesTable />
+                </Card>
+            </Grid>
             <Grid item xs={12} >
-                <Card>
+                <Card >
                     <SalesTable />
                     <p> list </p>
                     <hr />
