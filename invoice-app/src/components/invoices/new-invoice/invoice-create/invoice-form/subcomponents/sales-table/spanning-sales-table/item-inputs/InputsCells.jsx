@@ -27,7 +27,7 @@ export function ItemNameTextInput({control, name}) {
 
 
 
-export function QuantityNumberInput({control, name}) {
+export function QuantityNumberInput({control, name }) {
     return(
         <TableCell align="left">
         {/* {item.qty} */}
@@ -38,10 +38,12 @@ export function QuantityNumberInput({control, name}) {
                     sx={{ maxWidth: 75, p: 0  }}
                     size="small" variant="outlined" 
                         label="Quantity" 
-                    {...field}   helperText={false}/> 
+                    {...field}   helperText={false}
+                /> 
+                    
                 )}
             control={control}
-            // defaultValue={item.qty}
+            
         />
     </TableCell> 
     );

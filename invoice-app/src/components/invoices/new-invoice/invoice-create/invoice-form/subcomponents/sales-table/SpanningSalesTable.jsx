@@ -30,9 +30,20 @@ function createSalesItem( item_id, desc, type, qty, netPrice, taxValue) {
 }
 
 // NEW APPROACH
-const defaultValuesSalesItem = {}
+
 const TESTdefaultValuesSalesItem = createSalesItem(1, 'Paperclips (Box)', 'Services', 100, 10, 1500);
 // const defaultValues = { item_id: "",  itemName: "",  type: "",  qty: 1, netPrice: "",  taxValue: "",  grossPrice: ""}
+
+const defaultValuesSalesItem = {
+    item_id: "",
+    itemName: "",
+    type: "",
+    qty: "",
+    netPrice: "",
+    taxValue: "",
+    grossPrice: "",
+};
+
 const defaultValues = { 
     salesTableList: [
         {
@@ -88,34 +99,20 @@ export default function SpanningSalesTable() {
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="spanning table">
                     <TableHeader /> 
-                    {/* <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.desc}>
-                                <TableCell align="center" sx={{ maxWidth: 5, pr: 1 }} >{row.item_id}</TableCell>
-                                <TableCell>{row.desc}</TableCell>
-                                <TableCell>{row.type}</TableCell>
-                                <TableCell align="right">{row.qty}</TableCell>
-                                <TableCell align="right">{ccyFormat(row.netPrice)}</TableCell>
-                                <TableCell align="right">{`${(row.taxValue).toFixed(0)} %`}</TableCell>
-                                <TableCell align="right">{`${(row.grossPrice).toFixed(2)}`}</TableCell>
-                                <TableCell align="right">{"test"}</TableCell>
-                                <TableCell align="right">{"test"}</TableCell>
-                            </TableRow>
-                        ))}
-                        </TableBody> */}
-                        <SalesTableList
-                            {...{
-                                control,
-                                watch,
-                                register,
-                                defaultValues,
-                                getValues,
-                                setValue,
-                                errors,
-                            }}
-                        />
-                        <TableRow><TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}}> <hr/> </TableCell></TableRow>
-                        <TableTotalSum defaultValuesItem={TESTdefaultValuesSalesItem} />
+                    <SalesTableList defaultValuesSalesItem={defaultValuesSalesItem}
+                        {...{
+                            control,
+                            watch,
+                            register,
+                            defaultValues,
+                            getValues,
+                            setValue,
+                            errors,
+                            
+                        }}
+                    />
+                    <TableRow><TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}}> <hr/> </TableCell></TableRow>
+                    <TableTotalSum defaultValuesItem={TESTdefaultValuesSalesItem} />
                 </Table>
                 <input type="submit" />
             </TableContainer>
