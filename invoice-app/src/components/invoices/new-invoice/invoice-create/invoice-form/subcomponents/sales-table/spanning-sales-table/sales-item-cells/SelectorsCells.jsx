@@ -14,7 +14,7 @@ export function SelectItemSalesType({control, name}) {
                 name={name}
                 render={({ field }) => (
                     <Select
-                        sx={{ minWidth: 150, p: 0  }}
+                        sx={{ minWidth: 175, p: 0  }}
                         size="small" variant="outlined"  {...field}>
                         <MenuItem value={'Usługi'}>Usługi</MenuItem>
                         <MenuItem value={'Towar'}>Towar</MenuItem>

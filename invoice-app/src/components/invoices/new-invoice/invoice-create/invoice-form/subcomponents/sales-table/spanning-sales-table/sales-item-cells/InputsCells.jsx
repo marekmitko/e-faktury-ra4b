@@ -7,12 +7,13 @@ import { NumberInput } from "react-admin";
 
 export function ItemNameTextInput({control, name}) {
     return(
-        <TableCell   align="left">
+        <TableCell  >
             <Controller
                 name={name}
                 render={({field}) => ( 
                         <TextField
-                            sx={{ maxWidth: 50, p: 0  }}
+                            sx={{ minWidth: 250}}
+                            // sx={{ margin: 'auto' }}
                             size="small" variant="outlined" 
                             label="Item name" 
                             {...field}   
@@ -29,13 +30,13 @@ export function ItemNameTextInput({control, name}) {
 
 export function QuantityNumberInput({control, name }) {
     return(
-        <TableCell align="left">
+        <TableCell >
         {/* {item.qty} */}
         <Controller
             name={name}
             render={({field}) => ( 
                 <NumberInput 
-                sx={{ maxWidth: 75, p: 0  }}
+                // sx={{ maxWidth: 75, p: 0  }}
                 size="small" variant="outlined" 
                 label="Quantity" 
                 {...field}   helperText={false}
@@ -52,12 +53,12 @@ export function QuantityNumberInput({control, name }) {
 
 export function PriceNumberInput({control, name}) {
     return(
-        <TableCell align="left">
+        <TableCell  >
             <Controller
                 name={name}
                 render={({field}) => ( 
                     <NumberInput  
-                        sx={{ maxWidth: 150, p: 0  }}
+                        // sx={{ maxWidth: 150, p: 0  }}
                         size="small" variant="outlined" 
                             label="Net Price" 
                         {...field}   helperText={false}

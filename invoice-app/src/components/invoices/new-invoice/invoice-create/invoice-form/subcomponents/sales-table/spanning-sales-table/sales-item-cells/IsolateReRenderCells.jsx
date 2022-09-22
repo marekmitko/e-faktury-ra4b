@@ -1,4 +1,4 @@
-import { TableCell } from "@mui/material";
+import { TableCell, Grid } from "@mui/material";
 import React from "react";
 import { useWatch } from "react-hook-form";
 
@@ -22,7 +22,7 @@ function setNetValue(qty, netPrice) {
 }
 
 // outputCellsPart
-export function ItemRowOutputCells({control, nameSalesItem}){
+export function ItemRowOutputCells({control, nameSalesItem, sxItem}){
     const itemDatabase = useWatch({ control, name: nameSalesItem });
     
     let grossPrice = setGrossPrice(itemDatabase.taxValue, itemDatabase.netPrice)
@@ -30,9 +30,15 @@ export function ItemRowOutputCells({control, nameSalesItem}){
     let grossValue = +itemDatabase.qty * grossPrice;
     return (
         <>
+        <Grid item xs={sxItem}>
             <TableCell align="right">{grossPrice? grossPrice.toFixed(2) : ""}</TableCell> 
+        </Grid>
+        <Grid item xs={sxItem}>
             <TableCell align="right">{netValue? netValue.toFixed(2) : ""}</TableCell> 
+        </Grid>
+        <Grid item xs={sxItem}>
             <TableCell align="right">{grossValue? grossValue.toFixed(2) : ""}</TableCell> 
+        </Grid>
         </>
     );
 

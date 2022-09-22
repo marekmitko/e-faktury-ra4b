@@ -7,6 +7,10 @@ export default function TableTotalSum ({children}){
         <>
             <TableHead>
                 <TableRow>
+                    <TableCell colSpan={7} sx={{border: 0}}>
+                        ""
+                    </TableCell>
+                    <TableCell colSpan={5} sx={{border: 0}}/>
                     <TableCell colSpan={5} sx={{border: 0}}/>
                     <TableCell align="center"/> 
                     <TableCell align="center">NET</TableCell>
@@ -16,8 +20,12 @@ export default function TableTotalSum ({children}){
             </TableHead>
             <TableBody>
                 <TableRow >
+                    <TableCell colSpan={7} sx={{border: 0}} >
+                        ""
+                    </TableCell>
                     <TableCell colSpan={5} sx={{border: 0}}/>
-                    <TableCell align="right">Total Sum</TableCell>
+                    <TableCell colSpan={5} sx={{border: 0}}/>
+                    <TableCell variant="head" component="th" align="right">Total Sum</TableCell>
                     {children}
                 </TableRow>
                 {/* <TableRow>

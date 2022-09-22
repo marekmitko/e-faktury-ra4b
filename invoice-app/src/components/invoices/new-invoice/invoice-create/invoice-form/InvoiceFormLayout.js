@@ -8,8 +8,8 @@ import RHFEasyItemRow from './xold-component/RHFEasyItemRow';
 import MYEasyItemRow from './xold-component/MYEasyItemRow';
 import { RaMuiRHFEasyItemRow } from './xold-component/RaMuiRHFEasyItemRow';
 
-import SalesTable from './subcomponents/sales-table/SalesTable';
-import EnhancedSalesTable from './subcomponents/sales-table/EnhancedSalesTable';
+import SalesTable from './xold-component/SalesTable';
+import EnhancedSalesTable from './xold-component/EnhancedSalesTable';
 import SpanningSalesTable from './subcomponents/sales-table/SpanningSalesTable';
 
 const ResourceName = () => {

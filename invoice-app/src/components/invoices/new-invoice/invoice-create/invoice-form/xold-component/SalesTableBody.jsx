@@ -1,12 +1,12 @@
 import React from "react";
-import { Calc } from "./CalcTotal";
+import { Calc } from "../subcomponents/sales-table/CalcTotal";
 import { useFieldArray, useWatch, Controller} from "react-hook-form";
 import NestedArray from "./SalesListIterator";
-import { IsolateReRender } from "./sales-item-row/IsolateReRenderOutput";
+import { IsolateReRender } from "../subcomponents/sales-table/sales-item-row/IsolateReRenderOutput";
 // import { TextInput } from "react-admin";
 import { TextField, Select, MenuItem } from "@mui/material"
 import { NumberInput } from "react-admin"
-import { RaMuiRHFEasyItemRow } from "../../xold-component/RaMuiRHFEasyItemRow";
+import { RaMuiRHFEasyItemRow } from "./RaMuiRHFEasyItemRow";
 
 let renderCount = 0;
 
