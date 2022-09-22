@@ -38,8 +38,6 @@ export const InvoiceFormLayout = (props) => {
             <Grid item xs={12} >
                 <Card >
                     <SalesTable />
-                    <p> list </p>
-                    <hr />
                 </Card>
                     <EnhancedSalesTable />
             </Grid>

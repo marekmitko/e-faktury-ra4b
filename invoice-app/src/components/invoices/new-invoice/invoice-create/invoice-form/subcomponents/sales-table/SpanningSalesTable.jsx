@@ -57,7 +57,11 @@ export default function SpanningSalesTable() {
         <form onSubmit={handleSubmit(onSubmit)}>
 
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+                <Table 
+                    sx={{ minWidth: 700 }} 
+                    aria-label="spanning table"
+                    size='small'
+                >
                     <TableHeader /> 
                     <SalesTableList defaultValuesSalesItem={defaultValuesSalesItem}
                         {...{

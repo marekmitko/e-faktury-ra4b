@@ -59,7 +59,7 @@ export default function SalesTableList({ control, register, setValue, getValues,
                 ADD
             </Button>
                 {/* // <input type="button" value="+ADD" onClick={() => append(defaultValuesSalesItem)}    /> */}
-            <span className="counter">Render Count: {renderCount}</span>
+            <br /> <span className="counter">Render Count: {renderCount}</span>
             </div>
         </TableCell></TableRow>
         </>
