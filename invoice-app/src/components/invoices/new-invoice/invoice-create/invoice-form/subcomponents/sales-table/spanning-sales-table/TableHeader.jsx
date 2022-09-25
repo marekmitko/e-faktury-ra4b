@@ -4,7 +4,9 @@ import { blue, lightBlue, grey } from '@mui/material/colors';
 
 
 
-export default function TableHeader() {
+export default function TableHeader( {children, enabled, disabled} ) {
+    // const {enabled, disabled} = children;
+    children = [enabled, disabled]
     return(
         <TableHead 
             // sx={{ backgroundColor: grey[300] }}
@@ -23,14 +25,14 @@ export default function TableHeader() {
                 <Grid item xs={0.75}>
                     <TableCell>Qty.</TableCell>
                 </Grid>
-                <Grid item xs={1.5} >
-                    <TableCell>Net Price</TableCell>
-                </Grid>
-                <Grid item xs={1} >
+                <Grid item xs={.75} >
                     <TableCell>VAT</TableCell>
                 </Grid>
-                <Grid item xs={1} >
-                    <TableCell align="right">Gross Price</TableCell>
+                <Grid item xs={1.5} >
+                    {children[0] ? (enabled) : null}
+                </Grid>
+                <Grid item xs={1.5} >
+                    {children[1] ? (disabled) : null}
                 </Grid>
                 <Grid item xs={1} >
                     <TableCell align="right">Net Value</TableCell>

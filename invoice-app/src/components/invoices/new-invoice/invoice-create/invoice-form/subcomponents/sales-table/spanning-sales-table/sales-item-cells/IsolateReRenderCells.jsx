@@ -6,6 +6,13 @@ import { useWatch } from "react-hook-form";
 // *see SPRAWDZIĆ Z OLKIEM - inny warunek by nie byo 0.00 Brakuje znaku w grossPrice |!!!!
 //  lina 30 dlaczego nie działało tak ->    if(!qty && !netPrice) return "";
 // auxiliary function create item sales data 
+function setNetPrice(taxValue, grossPrice) {
+    let netPrice = null;
+    if(!(grossPrice && taxValue)) return "";
+    
+    netPrice = (+taxValue / +grossPrice)/100;
+    return  netPrice
+}
 function setGrossPrice(taxValue, netPrice) {
     let grossPrice = null;
     if(!(netPrice && taxValue)) return "";
@@ -21,28 +28,78 @@ function setNetValue(qty, netPrice) {
     return  netValue
 }
 
+
 // outputCellsPart
-export function ItemRowOutputCells({control, nameSalesItem, sxItem}){
+export function ItemRowOutputCells({control, nameSalesItem, sxItem, startGgrossPrice}){
     const itemDatabase = useWatch({ control, name: nameSalesItem });
+    let grossPrice; 
+
+    if(!startGgrossPrice) grossPrice = setGrossPrice(itemDatabase.taxValue, itemDatabase.netPrice)
     
-    let grossPrice = setGrossPrice(itemDatabase.taxValue, itemDatabase.netPrice)
     let netValue = setNetValue(itemDatabase.qty, itemDatabase.netPrice)
     let grossValue = +itemDatabase.qty * grossPrice;
-    return (
-        <>
-        <Grid item xs={sxItem}>
-            <TableCell align="right">{grossPrice? grossPrice.toFixed(2) : ""}</TableCell> 
-        </Grid>
-        <Grid item xs={sxItem}>
-            <TableCell align="right">{netValue? netValue.toFixed(2) : ""}</TableCell> 
-        </Grid>
-        <Grid item xs={sxItem}>
-            <TableCell align="right">{grossValue? grossValue.toFixed(2) : ""}</TableCell> 
-        </Grid>
-        </>
-    );
+    
+ 
+    let calnetPrice
 
+    if(startGgrossPrice)
+
+    if(startGgrossPrice)
+    calnetPrice = setNetPrice((itemDatabase.qty, itemDatabase.grossPrice));
+
+    // if(startGgrossPrice)
+
+
+    // if(!startGgrossPrice)
+    return (
+
+
+        !startGgrossPrice ? (<>
+            {/* <Grid item xs={sxItem}>
+                <TableCell align="right">{grossPrice? grossPrice.toFixed(2) : ""}</TableCell> 
+            </Grid> */}
+            <Grid item xs={sxItem}>
+                <TableCell align="right">{netValue? netValue.toFixed(2) : ""}</TableCell> 
+            </Grid>
+            <Grid item xs={sxItem}>
+                <TableCell align="right">{grossValue? grossValue.toFixed(2) : ""}</TableCell> 
+            </Grid>
+        </>) :  (<>
+                {/* <Grid item xs={sxItem}>
+                    <TableCell align="right">{grossPrice? grossPrice.toFixed(2) : ""}</TableCell> 
+                </Grid>  */}
+                {/* <Grid item xs={sxItem}>
+                    <TableCell align="right">{netValue? netValue.toFixed(2) : ""}</TableCell> 
+                </Grid> */}
+                <Grid item xs={sxItem}>
+                    <TableCell align="right">{calnetPrice? calnetPrice.toFixed(2) : ""}</TableCell> 
+                </Grid>
+                </>)
+    
+    );
 }
+
+
+    // let calnetPrice
+
+    // if(startGgrossPrice)
+    // calnetPrice = setNetPrice((itemDatabase.qty, itemDatabase.grossPrice));
+    
+    // if(startGgrossPrice)
+    // return (
+    //     <>
+    //         {/* <Grid item xs={sxItem}>
+    //             <TableCell align="right">{grossPrice? grossPrice.toFixed(2) : ""}</TableCell> 
+    //         </Grid> */}
+    //         <Grid item xs={sxItem}>
+    //             <TableCell align="right">{netValue? netValue.toFixed(2) : ""}</TableCell> 
+    //         </Grid>
+    //         <Grid item xs={sxItem}>
+    //             <TableCell align="right">{calnetPrice? calnetPrice.toFixed(2) : ""}</TableCell> 
+    //         </Grid>
+    //     </>
+    // );
+
 
 
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState }from 'react';
 import { useForm } from "react-hook-form";
 import TableHeader from './spanning-sales-table/TableHeader';
 import { Paper, TableContainer, Table, TableCell, TableRow, TableFooter, Grid } from '@mui/material';
@@ -6,6 +6,8 @@ import TableTotalSum from './spanning-sales-table/TableTotalSum';
 import SalesTableList from './spanning-sales-table/SalesTableList';
 import { SalesTotalSum } from './spanning-sales-table/total-sum-table/CalcTotalSum';
 import SalesTableToolbar from './spanning-sales-table/sales-table-panel/SalesTableToolbar';
+import { PriceNumberInput } from './spanning-sales-table/sales-item-cells/InputsCells';
+import { RefNumberInputTEST } from './spanning-sales-table/conditional-rerender/PriceInputRef';
 
 
 /**DEFAULT VALUES FOR THE SpanningSalesTable */
@@ -32,18 +34,21 @@ const defaultValuesSalesItem = {
     netPrice: "",
     taxValue: "",
     grossPrice: "",
+    TestRef: ""
 };
 
 const defaultValues = { 
+    priceCellLabel: "gross price",
     salesTableList: [
         {
             item_id: "",
             itemName: "",
             type: "",
             qty: "",
-            netPrice: "",
             taxValue: "",
+            netPrice: "",
             grossPrice: "",
+            TestRef: ""
         } 
     ]
 };
@@ -65,11 +70,20 @@ export default function SpanningSalesTable() {
     const record = { myComponent: "test netPrice" }; // my component 
 
 
+    const [toggelPrice, setToggelPrice] = useState({
+            checkedOption: false
+        });
+    // console.log("grossPrice", grossPrice)
     const onSubmit = (data) => console.log("data", data);
     console.log("dataLog", onSubmit());
+
+
+    // const priceCellLabel = register('priceCellLabel');
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-
+            <hr />
+       
             <TableContainer component={Paper}>
                 <SalesTableToolbar 
                     {...{
@@ -79,7 +93,9 @@ export default function SpanningSalesTable() {
                         setValue,
                         errors,
                         record,
-                        disabled
+                        disabled,
+                        toggelPrice,
+                        setToggelPrice,
                     }}
                 /> 
                 <Table 
@@ -88,7 +104,10 @@ export default function SpanningSalesTable() {
                     size='small'
                     padding="none"
                 >
-                    <TableHeader /> 
+                    <TableHeader {...{toggelPrice}} 
+                        enabled={ toggelPrice.checkedOption ? <td>GROSS PRICE</td> : <td>NET PRICE</td>} 
+                        disabled={ toggelPrice.checkedOption ? <td>NET PRICE</td> : <td>GROSS PRICE</td>} 
+                    />
                     <SalesTableList defaultValuesSalesItem={defaultValuesSalesItem}
                         {...{
                             control,
@@ -99,7 +118,8 @@ export default function SpanningSalesTable() {
                             setValue,
                             errors,
                             record,
-                            disabled
+                            disabled,
+                            toggelPrice
                         }}
                     />
                     <TableRow>

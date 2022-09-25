@@ -51,7 +51,7 @@ export function QuantityNumberInput({control, name }) {
 }
 
 
-export function PriceNumberInput({control, name}) {
+export function PriceNumberInput({control, name, labelName}) {
     return(
         <TableCell  >
             <Controller
@@ -60,7 +60,7 @@ export function PriceNumberInput({control, name}) {
                     <NumberInput  
                         // sx={{ maxWidth: 150, p: 0  }}
                         size="small" variant="outlined" 
-                            label="Net Price" 
+                            label={labelName} 
                         {...field}   helperText={false}
                     /> )}
                 control={control}

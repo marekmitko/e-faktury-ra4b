@@ -1,5 +1,6 @@
+import { useEffect, useMemo, useRef } from "react";
 import { TableBody, TableRow, TableCell, Grid} from "@mui/material";
-import { useFieldArray, useWatch, Controller} from "react-hook-form";
+import { useForm, useFieldArray, useWatch, Controller} from "react-hook-form";
 import { TextField, Select, MenuItem, IconButton, Button } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { NumberInput } from "react-admin";
@@ -7,6 +8,9 @@ import {SelectItemSalesType, SelectTaxSalesItem } from "./sales-item-cells/Selec
 import { ItemNameTextInput, PriceNumberInput, QuantityNumberInput } from "./sales-item-cells/InputsCells";
 import { IsolateReRenderCell, IsolateReRenderGrossPrice, IsolateReRenderGrossValue, IsolateReRenderNetValue, ItemRowOutputCells} from "./sales-item-cells/IsolateReRenderCells";
 import AddIcon from '@mui/icons-material/Add';
+import { RefNumberInputTEST } from "./conditional-rerender/PriceInputRef";
+import DependentInputsPrice from "./conditional-rerender/DependentInpunts";
+import { TogglePrice } from "./sales-table-panel/TogglePrice";
 //formatting functions
 // function ccyFormat(num) {
 //     const  result = `${num.toFixed(2)}`;
@@ -14,10 +18,9 @@ import AddIcon from '@mui/icons-material/Add';
 // }
 
 
-
 let renderCount = 0;
 
-export default function SalesTableList({ disabled, record, control, register, setValue, getValues, defaultValuesSalesItem }) {
+export default function SalesTableList({ disabled, record, control, register, setValue, getValues, defaultValuesSalesItem, toggelPrice}) {
     
     const { fields, append, remove } = useFieldArray({   // all props  prepend, swap, move, insert        
         control, // control props comes from useForm (optional: if you are using FormContext)
@@ -25,32 +28,26 @@ export default function SalesTableList({ disabled, record, control, register, se
     });
 
     // console.log("salesTableList", fields );
-    console.log("!!!!!disabled", disabled );
+    console.log("!!fields", fields );
 
     renderCount++;
+
+    // Istnieje pięć punktów przerwania siatki: xs, sm, md, lg i xl.
     return(
         <>
-        {/* <tr>
-
-        <td>
-            <label>view 1</label>
-            <td>{record.myComponent}</td>
-        </td>
-        <td>
-            <label>input 2</label>
-            <input name="input2" ref={register} readOnly={disabled} /> 
-        </td>
-        </tr> */}
         <TableBody>
             {fields.map((item, index) => { 
+
                 return(
                     <>
+                    <tr>
+                    <RefNumberInputTEST name={`salesTableList.${index}.TestRef`}  labelName="TestRef"   control={control}/>
+                    </tr>
                     <TableRow hover={true} key={item.id}>
                         <Grid container spacing={1} 
                             justifyContent="center"
-                            
-                            // alignItems="center" 
-                            >
+                            alignItems="center" 
+                        >
                             <Grid item xs="auto" >
                                 <TableCell align="center" sx={{ maxWidth: 25,  pr:0  }} >{index+1}</TableCell>
                             </Grid>
@@ -63,15 +60,18 @@ export default function SalesTableList({ disabled, record, control, register, se
                             <Grid item xs={0.75}>
                                 <QuantityNumberInput name={`salesTableList.${index}.qty`}       control={control} defaultValue={item.qty}/>
                             </Grid>
-            {/* SWITCHING PRICE */}
-                            <Grid item xs={1.5} >
-                                <PriceNumberInput name={`salesTableList.${index}.netPrice`}     control={control} />
-                            </Grid>
-            {/* END ==> SWITCHING PRICE */}
-                            <Grid item xs={1} >
+                            <Grid item xs="auto" >
                                 <SelectTaxSalesItem name={`salesTableList.${index}.taxValue`}   control={control} />
                             </Grid>
-                            <ItemRowOutputCells sxItem={1} nameSalesItem={`salesTableList.${index}`}     control={control} />
+            {/* SWITCHING PRICE */}
+                            <DependentInputsPrice toggelPrice={toggelPrice} index={index} control={control} />
+            {/* END ==> SWITCHING PRICE */}
+
+                                <ItemRowOutputCells control={control} nameSalesItem={`salesTableList.${index}`} sxItem={1} startGgrossPrice={toggelPrice.checkedOption} />
+                            <Grid item xs="auto" >
+                                {toggelPrice.checkedOption ? <td>"net price starty"</td> :  <td>"gross price starty"</td>}
+                            </Grid>
+
                             <Grid item xs={1} >
                                 <TableCell align="right">
                                     {/* <Button size="small" color="error" onClick={() => remove(index)} > */}
