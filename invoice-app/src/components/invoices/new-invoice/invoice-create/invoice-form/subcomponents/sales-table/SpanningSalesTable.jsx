@@ -1,5 +1,5 @@
 import { useState }from 'react';
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import TableHeader from './spanning-sales-table/TableHeader';
 import { Paper, TableContainer, Table, TableCell, TableRow, TableFooter, Grid } from '@mui/material';
 import TableTotalSum from './spanning-sales-table/TableTotalSum';
@@ -19,12 +19,6 @@ function createSalesItem( item_id, desc, type, qty, netPrice, taxValue) {
     return { item_id, desc, type, qty, netPrice, taxValue, grossPrice };
 }
 
-
-
-
-
-
-
 // refactoring -> see you -> https://codesandbox.io/s/yjgdx4?file=/demo.js
 const defaultValuesSalesItem = {
     item_id: "",
@@ -37,22 +31,6 @@ const defaultValuesSalesItem = {
     TestRef: ""
 };
 
-const defaultValues = { 
-    priceCellLabel: "gross price",
-    salesTableList: [
-        {
-            item_id: "",
-            itemName: "",
-            type: "",
-            qty: "",
-            taxValue: "",
-            netPrice: "",
-            grossPrice: "",
-            TestRef: ""
-        } 
-    ]
-};
-
 export default function SpanningSalesTable() {
     const {
         control,
@@ -61,8 +39,21 @@ export default function SpanningSalesTable() {
         getValues,
         errors,
         setValue,
-        watch
-    } = useForm({ defaultValues });
+        watch,
+        // defaultValues
+    } = useForm({ 
+            defaultValues:  {
+                salesTableList: [
+                    defaultValuesSalesItem,
+                ]
+            }
+        });
+
+    const { fields, append, remove } = useFieldArray({   // all props  prepend, swap, move, insert        
+        control, // control props comes from useForm (optional: if you are using FormContext)
+        name: "salesTableList" // unique name for your Field Array
+    });
+    
 
 // custom switch input 
     const disabled = watch("switch-form");
@@ -70,16 +61,30 @@ export default function SpanningSalesTable() {
     const record = { myComponent: "test netPrice" }; // my component 
 
 
+//control 1) visible/hidden collumn price   2) Change calc sum item 3) Change headers in sales table  
     const [toggelPrice, setToggelPrice] = useState({
             checkedOption: false
         });
+    
+    
+//control 1) visible/hidden collumn price   2) Change calc sum item 3) Change headers in sales table  
+    const [showGrossPrice, setShowGrossPrice] = useState(true);
+
     // console.log("grossPrice", grossPrice)
-    const onSubmit = (data) => console.log("data", data);
-    console.log("dataLog", onSubmit());
 
 
+    
+    
     // const priceCellLabel = register('priceCellLabel');
 
+
+
+
+    // *see ważne dla useForContext => https://codesandbox.io/embed/react-hook-form-conditional-fields-9iw0k
+    
+    
+    const onSubmit = (data) => console.log("dataForm", {...data});
+    console.log("dataLog", onSubmit());
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <hr />
@@ -96,6 +101,7 @@ export default function SpanningSalesTable() {
                         disabled,
                         toggelPrice,
                         setToggelPrice,
+                        
                     }}
                 /> 
                 <Table 
@@ -104,22 +110,24 @@ export default function SpanningSalesTable() {
                     size='small'
                     padding="none"
                 >
-                    <TableHeader {...{toggelPrice}} 
-                        enabled={ toggelPrice.checkedOption ? <td>GROSS PRICE</td> : <td>NET PRICE</td>} 
-                        disabled={ toggelPrice.checkedOption ? <td>NET PRICE</td> : <td>GROSS PRICE</td>} 
+                    <TableHeader toggelPrice={toggelPrice.checkedOption}
+                        // {...{toggelPrice}} 
+                        // enabled={ toggelPrice.checkedOption ? <td>GROSS PRICE</td> : <td>NET PRICE</td>} 
+                        // disabled={ toggelPrice.checkedOption ? <td>NET PRICE</td> : <td>GROSS PRICE</td>} 
                     />
                     <SalesTableList defaultValuesSalesItem={defaultValuesSalesItem}
                         {...{
                             control,
                             watch,
                             register,
-                            defaultValues,
+                            // defaultValues,
                             getValues,
                             setValue,
                             errors,
                             record,
                             disabled,
-                            toggelPrice
+                            toggelPrice,
+                            fields, append, remove
                         }}
                     />
                     <TableRow>
@@ -132,7 +140,7 @@ export default function SpanningSalesTable() {
                     </TableTotalSum>
                 </Table>
                 {/* <input type="submit" /> */}
-                <Table sx={{backgroundColor: "lightblue"}}>
+                {/* <Table sx={{backgroundColor: "lightblue"}}>
                 
                         <TableRow >
                     <Grid container spacing={3}>
@@ -147,9 +155,9 @@ export default function SpanningSalesTable() {
                             </Grid>
                     </Grid>
                         </TableRow>
-                </Table>
+                </Table> */}
             </TableContainer>
-                        
+                        <input type='button' value="▶🚀consol.log(data)" onClick={handleSubmit(onSubmit)}/>
         </form>
     );
 }

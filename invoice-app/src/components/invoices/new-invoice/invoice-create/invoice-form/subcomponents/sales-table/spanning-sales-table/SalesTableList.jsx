@@ -11,38 +11,40 @@ import AddIcon from '@mui/icons-material/Add';
 import { RefNumberInputTEST } from "./conditional-rerender/PriceInputRef";
 import DependentInputsPrice from "./conditional-rerender/DependentInpunts";
 import { TogglePrice } from "./sales-table-panel/TogglePrice";
-//formatting functions
-// function ccyFormat(num) {
-//     const  result = `${num.toFixed(2)}`;
-//     return result;
-// }
-
+import { SpecialOutputToGrossInput, SpecialOutputToNetInput } from "./special-cells-price/SpecialOutputPrice";
 
 let renderCount = 0;
 
-export default function SalesTableList({ disabled, record, control, register, setValue, getValues, defaultValuesSalesItem, toggelPrice}) {
+export default function SalesTableList({ 
+    disabled, record, control, register, setValue, getValues, defaultValuesSalesItem, toggelPrice,
+    fields, append, remove, 
+    }) {
     
-    const { fields, append, remove } = useFieldArray({   // all props  prepend, swap, move, insert        
-        control, // control props comes from useForm (optional: if you are using FormContext)
-        name: "salesTableList" // unique name for your Field Array
-    });
-
-    // console.log("salesTableList", fields );
-    console.log("!!fields", fields );
-
-    renderCount++;
-
-    // Istnieje pięć punktów przerwania siatki: xs, sm, md, lg i xl.
-    return(
-        <>
+        
+        
+        renderCount++;
+        
+        // Istnieje pięć punktów przerwania siatki: xs, sm, md, lg i xl.
+        return(
+            <>
         <TableBody>
             {fields.map((item, index) => { 
+            
+            // control net price or gross price 
+            const NetPriceInput = () => (
+                <PriceNumberInput name={`salesTableList.${index}.netPrice`}  labelName="Net Price"   control={control} 
+                    defaultValue={getValues(`salesTableList.${index}.netPrice`)}
+            />);
+            const GrossPriceInput = () => (
+                <PriceNumberInput name={`salesTableList.${index}.grossPrice`} labelName="Gross Price"  control={control} 
+                    defaultValue={getValues(`salesTableList.${index}.grossPrice`)}
+            />);
 
                 return(
                     <>
-                    <tr>
+                    {/* <tr>
                     <RefNumberInputTEST name={`salesTableList.${index}.TestRef`}  labelName="TestRef"   control={control}/>
-                    </tr>
+                    </tr> */}
                     <TableRow hover={true} key={item.id}>
                         <Grid container spacing={1} 
                             justifyContent="center"
@@ -64,14 +66,24 @@ export default function SalesTableList({ disabled, record, control, register, se
                                 <SelectTaxSalesItem name={`salesTableList.${index}.taxValue`}   control={control} />
                             </Grid>
             {/* SWITCHING PRICE */}
-                            <DependentInputsPrice toggelPrice={toggelPrice} index={index} control={control} />
-            {/* END ==> SWITCHING PRICE */}
-
-                                <ItemRowOutputCells control={control} nameSalesItem={`salesTableList.${index}`} sxItem={1} startGgrossPrice={toggelPrice.checkedOption} />
-                            <Grid item xs="auto" >
-                                {toggelPrice.checkedOption ? <td>"net price starty"</td> :  <td>"gross price starty"</td>}
+                            <Grid item xs={1.5} >
+                                {toggelPrice.checkedOption  ? (<GrossPriceInput />) : (<NetPriceInput />)}
                             </Grid>
+                            {/* <DependentInputsPrice toggelPrice={toggelPrice} index={index} control={control} /> */}
+            {/* END ==> SWITCHING PRICE */}
+            {/* //*see opracowa to z getValue i setValue */}
 
+                            {toggelPrice.checkedOption  
+                                ? (<SpecialOutputToGrossInput 
+                                    control={control} nameSalesItem={`salesTableList.${index}`} 
+                                    sxItem={1}  
+                                    />)
+                                : (<SpecialOutputToNetInput 
+                                    control={control} nameSalesItem={`salesTableList.${index}`} 
+                                    sxItem={1}  
+                                />)
+                            }
+                                {/* <ItemRowOutputCells control={control} nameSalesItem={`salesTableList.${index}`} sxItem={1} startGgrossPrice={toggelPrice.checkedOption} /> */}
                             <Grid item xs={1} >
                                 <TableCell align="right">
                                     {/* <Button size="small" color="error" onClick={() => remove(index)} > */}

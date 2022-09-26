@@ -4,7 +4,7 @@ import { blue, lightBlue, grey } from '@mui/material/colors';
 
 
 
-export default function TableHeader( {children, enabled, disabled} ) {
+export default function TableHeader( {children, enabled, disabled, toggelPrice } ) {
     // const {enabled, disabled} = children;
     children = [enabled, disabled]
     return(
@@ -29,10 +29,14 @@ export default function TableHeader( {children, enabled, disabled} ) {
                     <TableCell>VAT</TableCell>
                 </Grid>
                 <Grid item xs={1.5} >
-                    {children[0] ? (enabled) : null}
+                <TableCell>
+                    {toggelPrice ? 'GROSS PRICE' : 'NET PRICE '}
+                </TableCell>
+               {/* { toggelPrice ? <td>GROSS PRICE</td> : <td>NET PRICE</td> } */}
+                    {/* {children[0] ? (enabled) : null}
                 </Grid>
                 <Grid item xs={1.5} >
-                    {children[1] ? (disabled) : null}
+                    {children[1] ? (disabled) : null} */}
                 </Grid>
                 <Grid item xs={1} >
                     <TableCell align="right">Net Value</TableCell>

@@ -51,7 +51,7 @@ export function QuantityNumberInput({control, name }) {
 }
 
 
-export function PriceNumberInput({control, name, labelName}) {
+export function PriceNumberInput({control, name, labelName, defaultValue}) {
     return(
         <TableCell  >
             <Controller
@@ -64,7 +64,8 @@ export function PriceNumberInput({control, name, labelName}) {
                         {...field}   helperText={false}
                     /> )}
                 control={control}
-                // defaultValue={item.qty}
+                defaultValue={defaultValue}
+
             />
             {/* {ccyFormat(item.netPrice)} */}
         </TableCell>
