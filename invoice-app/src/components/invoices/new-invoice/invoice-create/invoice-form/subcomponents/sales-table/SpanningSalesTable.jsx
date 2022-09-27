@@ -8,6 +8,7 @@ import { SalesTotalSum } from './spanning-sales-table/total-sum-table/CalcTotalS
 import SalesTableToolbar from './spanning-sales-table/sales-table-panel/SalesTableToolbar';
 import { PriceNumberInput } from './spanning-sales-table/sales-item-cells/InputsCells';
 import { RefNumberInputTEST } from './spanning-sales-table/conditional-rerender/PriceInputRef';
+import { FormTab, SaveButton, TabbedForm } from 'react-admin';
 
 
 /**DEFAULT VALUES FOR THE SpanningSalesTable */
@@ -86,10 +87,16 @@ export default function SpanningSalesTable() {
     const onSubmit = (data) => console.log("dataForm", {...data});
     console.log("dataLog", onSubmit());
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <>
+        
+        <SaveButton form="invoice_sales_table" />
             <hr />
-       
+        <TabbedForm onSubmit={onSubmit} toolbar={false} id="invoice_sales_table" syncWithLocation={false}>
+        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+
+                <FormTab label="summary">
             <TableContainer component={Paper}>
+
                 <SalesTableToolbar 
                     {...{
                         control,
@@ -103,7 +110,7 @@ export default function SpanningSalesTable() {
                         setToggelPrice,
                         
                     }}
-                /> 
+                    /> 
                 <Table 
                     sx={{ minWidth: 700 }} 
                     aria-label="spanning table"
@@ -129,7 +136,7 @@ export default function SpanningSalesTable() {
                             toggelPrice,
                             fields, append, remove
                         }}
-                    />
+                        />
                     <TableRow>
                         <TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}} />
                     </TableRow>
@@ -145,19 +152,22 @@ export default function SpanningSalesTable() {
                         <TableRow >
                     <Grid container spacing={3}>
                             <Grid item xs="auto">
-                                <TableCell>variable width content</TableCell>
+                            <TableCell>variable width content</TableCell>
                             </Grid>
                             <Grid item xs={6}>
-                                <TableCell>xs=6</TableCell>
+                            <TableCell>xs=6</TableCell>
                             </Grid>
                             <Grid item xs>
-                                <TableCell>xs</TableCell>
+                            <TableCell>xs</TableCell>
                             </Grid>
                     </Grid>
                         </TableRow>
-                </Table> */}
+                    </Table> */}
             </TableContainer>
                         <input type='button' value="▶🚀consol.log(data)" onClick={handleSubmit(onSubmit)}/>
-        </form>
+        {/* </form> */}
+                    </FormTab>
+        </TabbedForm>
+                        </>
     );
 }

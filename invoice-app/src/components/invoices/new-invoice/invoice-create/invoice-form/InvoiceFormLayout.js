@@ -1,6 +1,6 @@
 import { Card, Grid } from '@mui/material';
 import {useRef, useState } from 'react';
-import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider, ReferenceInput } from 'react-admin';
+import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider, ReferenceInput, TabbedForm } from 'react-admin';
 import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard';
 import ClientCard from './subcomponents/personal-cards/client/ClientCard';
@@ -30,16 +30,11 @@ export const InvoiceFormLayout = (props) => {
             <SellerCard />
             <ClientCard />  
             <Grid item xs={12} ><hr /></Grid>
-            <Grid item xs={12}  >
-                <Card  sx={{   padding: '20px' }}>
-                    <SpanningSalesTable />
-                </Card>
+            <Grid item xs={12}  > 
+                <SpanningSalesTable />
             </Grid>
             <Grid item xs={12} >
-                <Card >
-                    <SalesTable />
-                </Card>
-                    <EnhancedSalesTable />
+            <EnhancedSalesTable />
             </Grid>
         </Grid>
     ) ; 
