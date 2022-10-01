@@ -1,6 +1,6 @@
-
+import {useEffect, useMemo } from "react";
 import {   TableCell} from "@mui/material";
-import {   Controller} from "react-hook-form";
+import {   Controller, useWatch} from "react-hook-form";
 import { TextField, Select, MenuItem } from "@mui/material";
 import { NumberInput } from "react-admin";
 
@@ -51,7 +51,38 @@ export function QuantityNumberInput({control, name }) {
 }
 
 
-export function PriceNumberInput({control, name, labelName, defaultValue}) {
+// const GrossValue = ({ control, register, setValue, itemNameRegister}) => {
+//     const dataItemValue = useWatch({
+//         control,
+//         name: `${itemNameRegister}`,
+//     });
+
+
+    // const netPriceInput = useMemo(() => {
+    //     if (grossPriceInput)
+    //       return (+grossPriceInput / (100 + +taxValueInput)) * 100 * +qty;
+    //     else return +startPrice * +qty;
+    // }, [grossPriceInput]);
+
+    // const grossValue = useMemo(
+    //   () => (parseFloat(value) * parseFloat(discountPercent)) / 100,
+
+    //     [value, discountPercent]
+    // );
+
+    // useEffect(() => {
+    //     if (!isNaN(grossValue)) {
+    //     setValue("grossValue", parseFloat(grossValue));
+    //     }
+    // }, [setValue, grossValue]);
+
+// };
+
+
+
+
+export function PriceNumberInput({control, name, labelName, defaultValue, setValue, entryPriceIsGross, itemNameRegister }) {
+
     return(
         <TableCell  >
             <Controller

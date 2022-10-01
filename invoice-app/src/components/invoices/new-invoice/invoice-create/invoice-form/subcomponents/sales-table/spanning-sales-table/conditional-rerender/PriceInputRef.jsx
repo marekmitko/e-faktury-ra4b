@@ -31,6 +31,7 @@ export function RefNumberInputTEST({control, name, labelName}) {
                         {...field}   helperText={false}
                     /> )}
                 control={control}
+                // onChange={(myClick())}
                 // defaultValue={item.qty}
             />
             <input type="button" value="change" onClick={myClick}/>

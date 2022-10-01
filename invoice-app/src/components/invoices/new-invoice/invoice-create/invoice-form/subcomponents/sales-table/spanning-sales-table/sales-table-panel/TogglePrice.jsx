@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { FormLabel, Typography, Stack, Switch, Grid} from "@mui/material"
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
@@ -47,10 +48,11 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
     }));
 
 export function TogglePrice({grossPrice, state, setState}) {
-    const handleChange = name => event => {
-        setState({ ...state, [name]: event.target.checked });
+
+    // BUG -> wyniesc do góry 
+    const handleChange = (event) => {
+        setState(event.target.checked);
     };
-// console.log("state", state);
     return (
         <div>
             <Grid component="label" container >
@@ -60,10 +62,10 @@ export function TogglePrice({grossPrice, state, setState}) {
                     <Grid item><Typography>NET</Typography></Grid>
                     <Grid item>
                         <CustomSwitch
-                            checked={state.checkedOption}
-                            onChange={handleChange("checkedOption")}
-                            value="checkedOption"
-                            />
+                            checked={state}
+                            onChange={handleChange}
+                            // value="checkedOption"
+                        />
                     </Grid>
                     <Grid item><Typography>GROSS</Typography></Grid>
                 </Grid>

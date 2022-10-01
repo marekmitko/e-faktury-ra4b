@@ -5,13 +5,13 @@ import { TogglePrice } from "./TogglePrice";
 
 
 
-export default function SalesTableToolbar({control, setValue, record, toggelPrice, setToggelPrice }){
+export default function SalesTableToolbar({control, setValue, record, entryPriceIsGross, setEntryPriceOnGross }){
     return(
         <Table> 
             <TableRow>
                 <TableCell variant="head" >OPTIONS:&nbsp;</TableCell>
                 <TableCell align="center">
-                    <TogglePrice state={toggelPrice} setState={setToggelPrice} />
+                    <TogglePrice state={entryPriceIsGross} setState={setEntryPriceOnGross} />
                 </TableCell>
                 <TableCell align="center"> rodzaj płatności  </TableCell>
                 <TableCell align="center"> <TextField size="small" />  </TableCell>

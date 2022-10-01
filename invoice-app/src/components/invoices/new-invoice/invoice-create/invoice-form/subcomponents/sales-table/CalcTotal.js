@@ -1,6 +1,32 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
 
+
+
+
+
+
+
+
+
+
+
+
+export function setGrossPriceItem(netPriceItem, taxValue){
+    return (netPriceItem*taxValue)/100;
+}
+export function setNetPriceItem(grossPriceInput, taxValue){
+    return (+grossPriceInput / (+taxValue)) * 100 ;
+}
+
+
+
+
+
+
+
+
+
 function totalCal(results) {
     let totalValue = 0;
 

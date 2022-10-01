@@ -9,7 +9,7 @@ import SalesTableToolbar from './spanning-sales-table/sales-table-panel/SalesTab
 import { PriceNumberInput } from './spanning-sales-table/sales-item-cells/InputsCells';
 import { RefNumberInputTEST } from './spanning-sales-table/conditional-rerender/PriceInputRef';
 import { FormTab, SaveButton, TabbedForm } from 'react-admin';
-
+import {setGrossPriceItem, setNetPriceItem} from './CalcTotal';
 
 /**DEFAULT VALUES FOR THE SpanningSalesTable */
 function setGrosssPriceSalesItem(netPrice, taxValue) {
@@ -19,7 +19,6 @@ function createSalesItem( item_id, desc, type, qty, netPrice, taxValue) {
     const grossPrice = setGrosssPriceSalesItem(netPrice, taxValue);
     return { item_id, desc, type, qty, netPrice, taxValue, grossPrice };
 }
-
 // refactoring -> see you -> https://codesandbox.io/s/yjgdx4?file=/demo.js
 const defaultValuesSalesItem = {
     item_id: "",
@@ -32,6 +31,10 @@ const defaultValuesSalesItem = {
     TestRef: ""
 };
 
+
+
+
+
 export default function SpanningSalesTable() {
     const {
         control,
@@ -41,6 +44,7 @@ export default function SpanningSalesTable() {
         errors,
         setValue,
         watch,
+        useWatch,
         // defaultValues
     } = useForm({ 
             defaultValues:  {
@@ -56,27 +60,49 @@ export default function SpanningSalesTable() {
     });
     
 
-// custom switch input 
+// custom switch input  // BUG -> place this in a bin
     const disabled = watch("switch-form");
     
     const record = { myComponent: "test netPrice" }; // my component 
-
 
 //control 1) visible/hidden collumn price   2) Change calc sum item 3) Change headers in sales table  
     const [toggelPrice, setToggelPrice] = useState({
             checkedOption: false
         });
+
+    const [entryPriceIsGross, setEntryPriceOnGross ] = useState(false);
+    console.info("entryPriceIsGross", entryPriceIsGross);
     
-    
-//control 1) visible/hidden collumn price   2) Change calc sum item 3) Change headers in sales table  
     const [showGrossPrice, setShowGrossPrice] = useState(true);
-
-    // console.log("grossPrice", grossPrice)
-
-
     
+    //control 1) visible/hidden collumn price   2) Change calc sum item 3) Change headers in sales table  
     
-    // const priceCellLabel = register('priceCellLabel');
+
+
+
+    const handleSetItemPrice = (index, getValueArr, setValueArr) => {
+        const itemTaxValue = getValueArr(`salesTableList.${index}.taxValue`);
+        let setPrice;
+        let keyNameDataItem = entryPriceIsGross ? (`salesTableList.${index}.grossPrice`)
+                                                : (`salesTableList.${index}.netPrice`);
+
+                                                
+        if(entryPriceIsGross)
+            return(setPrice = setNetPriceItem(100, itemTaxValue));
+            
+            if(!entryPriceIsGross)
+            return(setPrice = setGrossPriceItem(100, itemTaxValue));
+            
+            // return console.log("newPRICEItem",keyNameDataItem,);
+        // return setValueArr(keyNameDataItem, `${setPrice}`)
+        return console.log('dupa');
+    };
+
+
+
+
+
+
 
 
 
@@ -86,15 +112,11 @@ export default function SpanningSalesTable() {
     
     const onSubmit = (data) => console.log("dataForm", {...data});
     console.log("dataLog", onSubmit());
+    console.log("data fields", ...fields);
+    console.log("data fields", ...fields);
     return (
         <>
-        
-        <SaveButton form="invoice_sales_table" />
-            <hr />
-        <TabbedForm onSubmit={onSubmit} toolbar={false} id="invoice_sales_table" syncWithLocation={false}>
-        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-
-                <FormTab label="summary">
+        <form onSubmit={handleSubmit(onSubmit)}>
             <TableContainer component={Paper}>
 
                 <SalesTableToolbar 
@@ -106,18 +128,16 @@ export default function SpanningSalesTable() {
                         errors,
                         record,
                         disabled,
-                        toggelPrice,
-                        setToggelPrice,
-                        
+                        entryPriceIsGross, setEntryPriceOnGross,
                     }}
-                    /> 
+                /> 
                 <Table 
                     sx={{ minWidth: 700 }} 
                     aria-label="spanning table"
                     size='small'
                     padding="none"
                 >
-                    <TableHeader toggelPrice={toggelPrice.checkedOption}
+                    <TableHeader toggelPrice={entryPriceIsGross}
                         // {...{toggelPrice}} 
                         // enabled={ toggelPrice.checkedOption ? <td>GROSS PRICE</td> : <td>NET PRICE</td>} 
                         // disabled={ toggelPrice.checkedOption ? <td>NET PRICE</td> : <td>GROSS PRICE</td>} 
@@ -133,8 +153,11 @@ export default function SpanningSalesTable() {
                             errors,
                             record,
                             disabled,
-                            toggelPrice,
-                            fields, append, remove
+                            entryPriceIsGross,
+                            setEntryPriceOnGross,
+                            useWatch,
+                            fields, append, remove,
+                            handleSetItemPrice
                         }}
                         />
                     <TableRow>
@@ -165,9 +188,7 @@ export default function SpanningSalesTable() {
                     </Table> */}
             </TableContainer>
                         <input type='button' value="▶🚀consol.log(data)" onClick={handleSubmit(onSubmit)}/>
-        {/* </form> */}
-                    </FormTab>
-        </TabbedForm>
-                        </>
+        </form>
+        </>
     );
 }

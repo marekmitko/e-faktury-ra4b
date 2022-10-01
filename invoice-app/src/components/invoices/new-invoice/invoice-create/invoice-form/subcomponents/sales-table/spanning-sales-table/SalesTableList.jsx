@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 import { TableBody, TableRow, TableCell, Grid} from "@mui/material";
-import { useForm, useFieldArray, useWatch, Controller} from "react-hook-form";
+import { useForm, useFieldArray, useWatch,  Controller} from "react-hook-form";
 import { TextField, Select, MenuItem, IconButton, Button } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { NumberInput } from "react-admin";
@@ -15,36 +15,94 @@ import { SpecialOutputToGrossInput, SpecialOutputToNetInput } from "./special-ce
 
 let renderCount = 0;
 
+function setGrossPriceItem(netPriceItem, taxValue){
+    return (netPriceItem*taxValue)/100;
+}
+function setNetPriceItem(grossPriceInput, taxValue){
+    return (+grossPriceInput / (+taxValue)) * 100 ;
+}
+
 export default function SalesTableList({ 
-    disabled, record, control, register, setValue, getValues, defaultValuesSalesItem, toggelPrice,
-    fields, append, remove, 
+    disabled, record, control, register, setValue, getValues, defaultValuesSalesItem, 
+    entryPriceIsGross,
+    setEntryPriceOnGross, 
+    fields, append, remove, handleSetItemPrice 
     }) {
     
         
         
         renderCount++;
+        const dataItemValue = useWatch({ control, name: 'salesTableList' });
         
         // Istnieje pięć punktów przerwania siatki: xs, sm, md, lg i xl.
+        console.log('dupa') ;
+        console.log("dataItemValue", dataItemValue);
+        const dZIALA = () => console.log('DZOA:A!!!!');
+
+
+
+        // style={{ display: output[index]?.name === "bill" ? "block" : "none" }
+
+
+
         return(
             <>
         <TableBody>
             {fields.map((item, index) => { 
-            
+
+
+                
             // control net price or gross price 
             const NetPriceInput = () => (
                 <PriceNumberInput name={`salesTableList.${index}.netPrice`}  labelName="Net Price"   control={control} 
+                    setValue={setValue} entryPriceIsGross={entryPriceIsGross}
                     defaultValue={getValues(`salesTableList.${index}.netPrice`)}
+                    onChange={(event) => handleSetItemPrice(index, getValues,  setValue) } 
+                    // onChange={(event) => console.log('DZOA:A!!!!') } 
             />);
             const GrossPriceInput = () => (
                 <PriceNumberInput name={`salesTableList.${index}.grossPrice`} labelName="Gross Price"  control={control} 
+                    setValue={setValue} entryPriceIsGross={entryPriceIsGross}
                     defaultValue={getValues(`salesTableList.${index}.grossPrice`)}
+                    onChange={(event) => handleSetItemPrice(index, getValues,  setValue) } 
+                    // onClick={(event) => dZIALA() } 
             />);
+
+
+                    
+            console.log("data grossPrice", item.grossPrice.value);
+            console.log("data netPrice", item.netPrice);
+            console.log("data item", item);
+
+
+
+            const setItemPrice = (index, getValueArr, setValueArr) => {
+                const itemTaxValue = getValueArr(`salesTableList.${index}.taxValue`);
+                let setPrice;
+                let keyNameDataItem = entryPriceIsGross ? (`salesTableList.${index}.grossPrice`)
+                                                        : (`salesTableList.${index}.netPrice`);
+        
+                                                        
+                if(entryPriceIsGross)
+                    return(setPrice = setNetPriceItem(100, itemTaxValue));
+                    
+                    if(!entryPriceIsGross)
+                    return(setPrice = setGrossPriceItem(100, itemTaxValue));
+                    
+                    // return console.log("newPRICEItem",keyNameDataItem,);
+                // return setValueArr(keyNameDataItem, `${setPrice}`)
+                return console.log('dupa');
+            };
+
+
 
                 return(
                     <>
-                    {/* <tr>
+                    <tr>
                     <RefNumberInputTEST name={`salesTableList.${index}.TestRef`}  labelName="TestRef"   control={control}/>
-                    </tr> */}
+                    </tr>
+
+
                     <TableRow hover={true} key={item.id}>
                         <Grid container spacing={1} 
                             justifyContent="center"
@@ -62,18 +120,39 @@ export default function SalesTableList({
                             <Grid item xs={0.75}>
                                 <QuantityNumberInput name={`salesTableList.${index}.qty`}       control={control} defaultValue={item.qty}/>
                             </Grid>
+                            {/* <Grid item xs={0.75} sx={{ display: entryPriceIsGross ? "block" : "none" }} >
+                                <QuantityNumberInput name={`salesTableList.${index}.qty2`}       control={control} defaultValue={item.qty2}
+                                    style={{ display: entryPriceIsGross ? "block" : "none" }}
+                                
+                                />
+                            </Grid> */}
+                            <Grid item xs="auto"  >
+                                <SelectTaxSalesItem name={`salesTableList.${index}.taxValue`}   control={control} />
+                            </Grid>
                             <Grid item xs="auto" >
                                 <SelectTaxSalesItem name={`salesTableList.${index}.taxValue`}   control={control} />
                             </Grid>
             {/* SWITCHING PRICE */}
-                            <Grid item xs={1.5} >
-                                {toggelPrice.checkedOption  ? (<GrossPriceInput />) : (<NetPriceInput />)}
+                            <Grid item xs={1.5}  sx={{ display: entryPriceIsGross ? "block" : "none" }} >
+                                <GrossPriceInput     onClick={ (event) =>  console.log("dadsadasdam" ) }   />
                             </Grid>
+                            <Grid item xs={1.5}  sx={{ display: entryPriceIsGross ? "none" : "block" }} >
+                                <NetPriceInput     onClick={ (event) =>  console.log("dadsadasdam" ) }   />
+                            </Grid>
+                            {/* <Grid item xs={1.5} >
+                                {entryPriceIsGross ? (<GrossPriceInput 
+                                onClick={ (event) =>  console.log("dadsadasdam" ) } 
+                                />) 
+                                                    : (<NetPriceInput 
+                                                        // onChange={(event) => handleSetItemPrice(index, getValues,  setValue) } 
+                                                        />)
+                                                }
+                            </Grid> */}
                             {/* <DependentInputsPrice toggelPrice={toggelPrice} index={index} control={control} /> */}
             {/* END ==> SWITCHING PRICE */}
             {/* //*see opracowa to z getValue i setValue */}
 
-                            {toggelPrice.checkedOption  
+                            {entryPriceIsGross  
                                 ? (<SpecialOutputToGrossInput 
                                     control={control} nameSalesItem={`salesTableList.${index}`} 
                                     sxItem={1}  
