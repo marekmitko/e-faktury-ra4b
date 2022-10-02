@@ -5,7 +5,7 @@ import { TextField, Select, MenuItem, IconButton, Button } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { NumberInput } from "react-admin";
 import {SelectItemSalesType, SelectTaxSalesItem } from "./sales-item-cells/SelectorsCells";
-import { ItemNameTextInput, PriceNumberInput, QuantityNumberInput } from "./sales-item-cells/InputsCells";
+import { ItemNameTextInput, PriceInput, PriceNumberInput, QuantityNumberInput } from "./sales-item-cells/InputsCells";
 import { IsolateReRenderCell, IsolateReRenderGrossPrice, IsolateReRenderGrossValue, IsolateReRenderNetValue, ItemRowOutputCells} from "./sales-item-cells/IsolateReRenderCells";
 import AddIcon from '@mui/icons-material/Add';
 import { RefNumberInputTEST } from "./conditional-rerender/PriceInputRef";
@@ -134,10 +134,26 @@ export default function SalesTableList({
                             </Grid>
             {/* SWITCHING PRICE */}
                             <Grid item xs={1.5}  sx={{ display: entryPriceIsGross ? "block" : "none" }} >
-                                <GrossPriceInput     onClick={ (event) =>  console.log("dadsadasdam" ) }   />
+                                {/* <GrossPriceInput     onClick={ (event) =>  console.log("dadsadasdam" ) }   /> */}
+                                <PriceInput  
+                                        name={`salesTableList.${index}.grossPrice${index}`} labelName="Gross Price"  control={control} 
+                                        setValue={setValue} itemName={`salesTableList.${index}`} 
+                                        itemNameOpposite={`salesTableList.${index}.netPrice${index}`}
+                                        entryPriceIsGross={entryPriceIsGross} 
+                                        // myOnChange={setValue(`dataItemValue.${index}.netPrice`, '9999999')}
+                                   // onChange={e => console.log("czy działa?")}
+                                />
                             </Grid>
                             <Grid item xs={1.5}  sx={{ display: entryPriceIsGross ? "none" : "block" }} >
-                                <NetPriceInput     onClick={ (event) =>  console.log("dadsadasdam" ) }   />
+                                <PriceInput 
+                                            name={`salesTableList.${index}.netPrice${index}`} labelName="Net Price"  control={control} 
+                                            setValue={setValue} itemName={`salesTableList.${index}`}
+                                            entryPriceIsGross={entryPriceIsGross} 
+                                            itemNameOpposite={`salesTableList.${index}.grossPrice${index}`}
+                                            // myOnChange={setValue(`salesTableList.${index}.grossPrice${index}`, '9999999')}
+                                    // onChange={e => console.log("czy działa?")}
+                                />
+                                {/* <NetPriceInput     onClick={ (event) =>  console.log("dadsadasdam" ) }   /> */}
                             </Grid>
                             {/* <Grid item xs={1.5} >
                                 {entryPriceIsGross ? (<GrossPriceInput 
