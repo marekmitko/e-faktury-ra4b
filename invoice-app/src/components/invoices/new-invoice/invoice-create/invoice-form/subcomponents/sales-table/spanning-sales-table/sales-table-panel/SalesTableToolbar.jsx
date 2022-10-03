@@ -5,7 +5,7 @@ import { TogglePrice } from "./TogglePrice";
 
 
 
-export default function SalesTableToolbar({control, setValue, record, entryPriceIsGross, setEntryPriceOnGross }){
+export default function SalesTableToolbar({entryPriceIsGross, setEntryPriceOnGross }){
     return(
         <Table> 
             <TableRow>
@@ -15,26 +15,6 @@ export default function SalesTableToolbar({control, setValue, record, entryPrice
                 </TableCell>
                 <TableCell align="center"> rodzaj płatności  </TableCell>
                 <TableCell align="center"> <TextField size="small" />  </TableCell>
-                {/* <TableCell>
-                    <Controller
-                        control={control}
-                        name="switch-form"
-                        defaultValue={false}
-                        render={({ value: valueProp, onChange }) => {
-                        return (
-                            <Switch
-                            value={valueProp}
-                            onChange={(event, val) => {
-                                if (val) {
-                                setValue(`input2`, record.price);
-                                }
-                                return onChange(val);
-                            }}
-                            />
-                        );
-                        }}
-                    />
-                </TableCell> */}
                 <TableCell></TableCell>
                 <TableCell></TableCell>
                 <TableCell colSpan={5}></TableCell>
