@@ -21,11 +21,12 @@ function createSalesItem( item_id, desc, type, qty, netPrice, taxValue) {
 
 const obj = {
     _item_id: "",
-    _grossPrice: "0",
-    _netPrice: "0",
-    _qty: "1",
-    _salesItemName: "0",
-    _tax: "0",
+    _grossPrice: "",
+    _netPrice: "",
+    _qty: "",
+    _salesItemName: "Podaj",
+    _tax: "",
+    _typeItem: "",
 };
 
 const createNewItemObj = (obj, index) => Object.fromEntries(
@@ -37,12 +38,13 @@ const createNewItemObj = (obj, index) => Object.fromEntries(
 
 // refactoring -> see you -> https://codesandbox.io/s/yjgdx4?file=/demo.js
 const defaultValuesSalesItem = {
-    item_0_item_id: "",
-    item_0_grossPrice: null,
-    item_0_netPrice: null,
-    item_0_qty: "1",
-    item_0_salesItemName: null,
-    item_0_tax: null,
+    item_0_item_id: "",         
+    item_0_grossPrice: "",          
+    item_0_netPrice: "",          
+    item_0_qty: "",          
+    item_0_salesItemName: "Podaj",         
+    item_0_tax: "",         
+    item_0_type: "",         
 };
 
 let renderCount = 0;

@@ -1,4 +1,5 @@
-import {InputAdornment, Autocomplete, MenuItem, Select, Chip, Stack} from "@mui/material";
+import {useState} from "react";
+import {InputAdornment, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import QuestionMark from "@mui/icons-material/QuestionMark";
@@ -6,7 +7,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Visibility from "@mui/icons-material/Visibility";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import Box from "@mui/material/Box";
-import { Controller, useController } from "react-hook-form";
+import { Controller, useController, setValue } from "react-hook-form";
 import { NumberInput } from "react-admin";
 
 const options = ["A", "B", "C", "D"];
@@ -29,8 +30,11 @@ export default function InputBox ({control, arrayItemIdx, idx, entryPriceIsGross
     const taxItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_tax` });
     const netItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_netPrice` });
     const grossItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_grossPrice` });
+    const typeItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_typeItem` });
 
-    //   const [value, setValue] = React.useState(String(field.value));
+        // if(entryPriceIsGross)
+        //     useEffectsetValue('notRegisteredInput', 'value')
+
         return (
             <Box
                 className="App"
@@ -45,9 +49,10 @@ export default function InputBox ({control, arrayItemIdx, idx, entryPriceIsGross
                 </Stack>
                 <IconTextField 
                     {...salesItemName.field}
-                    label="First Name" iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} />} />
-                <SelectItemType />
-                <SelectItemTax />
+                    label="First Name" iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} />} 
+                />
+                <SelectSmallType {...typeItem.field} field={typeItem.field} />
+                <SelectSmallTax {...taxItem.field} field={taxItem.field} />
                 <IconTextNumber  {...qtyItem.field}  label="Quantity"  />
 {/* {display netPrice} */}
                 <IconTextNumber
@@ -66,12 +71,12 @@ export default function InputBox ({control, arrayItemIdx, idx, entryPriceIsGross
                     iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
                 />
 {/* {netSum} */}
-                <div>{ entryPriceIsGross ? "fsadsf" : null }</div>
+                <div>{ entryPriceIsGross    ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
+                                            : (+netItem.field.value * +qtyItem.field.value).toFixed(2) }</div>
 {/* {grossSum} */}
-                <div>{
-                
-                }</div>
-                <ErrorOutlineIcon sx={{   color: "red" }} />
+                <div>{ entryPriceIsGross    ? (+grossItem.field.value * +qtyItem.field.value).toFixed(2) 
+                                            : (setGrossPriceItem(+netItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)  }</div>
+                {/* <ErrorOutlineIcon sx={{   color: "red" }} /> */}
             </Box>
         );
     }
@@ -163,11 +168,11 @@ const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
 
 
 
-const SelectItemType = () => (
+const SelectItemType = ({...props}) => (
     <Select
-    // sx={{ minWidth: 175, p: 0  }}
+    // sx={{ minWidth: 175, py: 0  }}
     size="small" variant="standard"  
-    // {...field}
+    
     label="Type"
     >
     <MenuItem value={'Usługi'}>Usługi</MenuItem>
@@ -197,3 +202,71 @@ const SelectItemTax = () => (
             <MenuItem value={100}>0</MenuItem>
         </Select>
 );
+
+
+
+
+function SelectSmallType({field, ...props}) {
+        // const [age, setAge] = useState('');
+    
+        // const handleChange = (event) => {
+        // setAge(event.target.value);
+        // };
+    
+        return (
+        <FormControl 
+        {...props}
+        // sx={{ m: 1, minWidth: 120 }}
+         size="small">
+            <InputLabel id="demo-select-small-type">Item Type</InputLabel>
+            <Select
+            labelId="demo-select-small-type"
+            id="demo-select-small-type"
+            value={field.value}
+            label="Item Type"
+            onChange={field.onChange}
+            variant="standard"
+            >
+            <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value={'Usługi'}>Usługi</MenuItem>
+                <MenuItem value={'Towar'}>Towar</MenuItem>
+                <MenuItem value={'Wynajem'}>Wynajem</MenuItem>
+                <MenuItem value={'Prowizja'}>Prowizja</MenuItem>
+                <MenuItem value={'Sprzedaż'}>Sprzedaż</MenuItem>
+                <MenuItem value={'Sprzedaż 0% MVA'}>Sprzedaż 0% MVA</MenuItem>
+                <MenuItem value={"Zwolniona z MVA"}>Zwolniona z MVA</MenuItem>
+            </Select>
+        </FormControl>
+        );
+    }
+function SelectSmallTax({field, ...props}) {
+        // const [age, setAge] = useState('');
+    
+        // const handleChange = (event) => {
+        // setAge(event.target.value);
+        // };
+    
+        return (
+        <FormControl 
+        {...props}
+        // sx={{ m: 1, minWidth: 120 }}
+         size="small">
+            <InputLabel id="demo-select-small-tax">Item Tax</InputLabel>
+            <Select
+            labelId="demo-select-small-tax"
+            id="demo-select-small-tax"
+            value={field.value}
+            label="Item Tax"
+            onChange={field.onChange}
+            variant="standard"
+            >
+            <MenuItem value=""><em>None</em></MenuItem>
+            <MenuItem value={125}>25%</MenuItem>
+            <MenuItem value={115}>15%</MenuItem>
+            <MenuItem value={112}>12%</MenuItem>
+            <MenuItem value={106}>6%</MenuItem>
+            <MenuItem value={100}>0</MenuItem>
+            </Select>
+        </FormControl>
+        );
+    }
