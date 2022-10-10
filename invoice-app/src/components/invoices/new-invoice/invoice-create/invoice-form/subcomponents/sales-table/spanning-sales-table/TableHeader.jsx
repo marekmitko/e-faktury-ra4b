@@ -16,7 +16,7 @@ export default function TableHeader( {children, enabled, disabled, toggelPrice }
                 className="App"
                 sx={{
                     display: "grid",
-                    gridTemplateColumns: "25px auto 150px 50px 60px 125px 125px 125px 25px",
+                    gridTemplateColumns: "25px auto 150px 70px 60px 125px 125px 125px 50px",
                     gridGap: 10,
                     paddingBottom: "10px"
                 }}
@@ -39,8 +39,8 @@ export default function TableHeader( {children, enabled, disabled, toggelPrice }
                 <TableCell>
                     {toggelPrice ? 'GROSS PRICE' : 'NET PRICE '}
                 </TableCell>
-                    <TableCell align="center">NET VALUE</TableCell>
-                    <TableCell align="center">GROSS VALUE</TableCell>
+                    <TableCell align="right">NET VALUE</TableCell>
+                    <TableCell align="right">GROSS VALUE</TableCell>
                     <td align="center"> x </td>
             </Box>
             {/* </TableRow> */}

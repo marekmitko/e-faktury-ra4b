@@ -1,7 +1,8 @@
 import { useState, useRef, useMemo, useEffect } from 'react';
 import { useForm, useWatch, useFieldArray} from "react-hook-form";
 import TableHeader from './spanning-sales-table/TableHeader';
-import { Paper, TableContainer, Table, TableCell, TableRow, TableFooter, Grid, Button, TableBody } from '@mui/material';
+import { Paper, TableContainer, Table, TableCell, TableRow, TableFooter, Grid, Button, TableBody, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import TableTotalSum from './spanning-sales-table/TableTotalSum';
 import { SalesTotalSum } from './spanning-sales-table/total-sum-table/CalcTotalSum';
 import SalesTableToolbar from './spanning-sales-table/sales-table-panel/SalesTableToolbar';
@@ -10,6 +11,7 @@ import {setGrossPriceItem, setNetPriceItem} from './CalcTotal';
 import { SalesItemRow } from './spanning-sales-table/item-sales-row/SalesItemRow';
 import InputBox from './spanning-sales-table/item-sales-row/InputsCell';
 import DependentInputTest from './spanning-sales-table/item-sales-row/DependentInputTest';
+import { PriceDependentInput } from './change-input-test/PriceDependentInput';
 
 /**DEFAULT VALUES FOR THE SpanningSalesTable */
 function setGrosssPriceSalesItem(netPrice, taxValue) {
@@ -87,13 +89,6 @@ export default function SpanningSalesTable() {
 
     const [entryPriceIsGross, setEntryPriceOnGross ] = useState(false);
  
-
-    // const stateArray = watch("salesTableList");
-
-    // // useEffect( () => )
-
-
-
     // *see ważne dla useForContext => https://codesandbox.io/embed/react-hook-form-conditional-fields-9iw0k
     
 
@@ -113,14 +108,17 @@ export default function SpanningSalesTable() {
                     <TableBody>
                         {fields.map((field, index) => { 
                                 const id = `salesTableList.${index}.id`;
-                                // console.log("item", field);
-
                                 return(
                                     <div hover={true} key={field.id} >
                                         <InputBox  update={update} myField={field} entryPriceIsGross={entryPriceIsGross}
-                                            setValue={setValue} control={control} arrayItemIdx={`salesTableList.${index}`} idx={index} />
-                                    {/* <br />
-                                    <DependentInputTest entryPriceIsGross={entryPriceIsGross} /> */}
+                                            setValue={setValue} control={control} arrayItemIdx={`salesTableList.${index}`} idx={index} 
+                                        >
+                                            <IconButton  color="error"   aria-label="delete" size="small"
+                                            onClick={() => remove(index)} 
+                                            >
+                                            <DeleteIcon fontSize="small" />
+                                        </IconButton>
+                                        </InputBox>
                                     </div>
                             ); 
                         })}

@@ -56,9 +56,9 @@ export const SalesTotalSum = ({ control, setValue, nameSalesList }) => {
 
 function totalCal(results) {
         let totalValue = 0;
-        console.log("allkey", results)
+        // console.log("allkey", results)
         for (const key in results) {
-            console.log("key", key);
+            // console.log("key", key);
             for (const value in results[key]) {
                 if (typeof results[key][value] === "string") {
                     const output = parseInt(results[key][value], 10);

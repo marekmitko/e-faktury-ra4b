@@ -24,7 +24,7 @@ function setNetPriceItem(grossPriceInput, taxValue){
 }
 
 
-export default function InputBox ({update, control, arrayItemIdx, idx, entryPriceIsGross, setValue, myField}) {
+export default function InputBox ({ children, update, control, arrayItemIdx, idx, entryPriceIsGross, setValue, myField}) {
 
     const salesItemName = useController({ name: `${arrayItemIdx}.item_${idx}_salesItemName`, control, defaultValue: "", });
     const qtyItem = useController({ name: `${arrayItemIdx}.item_${idx}_qty`, control, defaultValue: "", });
@@ -49,11 +49,11 @@ export default function InputBox ({update, control, arrayItemIdx, idx, entryPric
 
     useEffect(() => {
                 if ( !isNaN(!parseFloat(newDependentValue)) && entryPriceIsGross ) {
-                    setValue(`${netItem.field.name}`, `${newDependentValue.toFixed(6)}`);
+                    setValue(`${netItem.field.name}`, `${newDependentValue.toFixed(2)}`);
                     // setValue( netPriceInput, `${newDependentValue.toFixed(6)}`);
                 }
                 if ( !isNaN(!parseFloat(newDependentValue)) && !entryPriceIsGross ){
-                    setValue( `${grossItem.field.name}`, `${newDependentValue.toFixed(6)}` );
+                    setValue( `${grossItem.field.name}`, `${newDependentValue.toFixed(2)}` );
                     // setValue( grossPriceInput, `${newDependentValue.toFixed(6)}` );
 
                 }
@@ -68,7 +68,7 @@ export default function InputBox ({update, control, arrayItemIdx, idx, entryPric
                 className="App"
                 sx={{
                     display: "grid",
-                    gridTemplateColumns: "25px auto 150px 50px 60px 125px 125px 125px 25px ",
+                    gridTemplateColumns: "25px auto 150px 70px 60px 125px 125px 125px 50px ",
                     gridGap: 10,
                     alignItems: "baseline"
                 }}
@@ -83,56 +83,51 @@ export default function InputBox ({update, control, arrayItemIdx, idx, entryPric
                 <SelectSmallType {...typeItem.field} field={typeItem.field} />
                 <SelectSmallTax {...taxItem.field} field={taxItem.field} />
                 <IconTextNumber  {...qtyItem.field}  label="Quantity"  />
-{/* {display netPrice} */}
-                <IconTextNumber
-                    {...netItem.field}
+
+{/* New concept */}
+                {/* <IconTextNumber  */}
+                <IconTextField 
+                    variant="standard"
+                    onChange={ event => {
+                        netItem.field.onChange(event.target.value)
+                        }
+                    } // send value to hook form 
+                    onBlur={netItem.field.onBlur} // notify when input is touched/blur
+                    value={netItem.field.value} // input value
+                    name={netItem.field.name} // send down the input name
+                    inputRef={netItem.field.ref} // send input ref, so we can focus on input when error appear
                     sx={{ display: entryPriceIsGross ? "none" : "block" }}
                     label="Net Price"
                     iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
                     iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
-
-                    // priceDefaultValue={netItem.field.value  ? `${parseFloat(netItem.field.value).toFixed(2)}`    : ""}
                 />
-                <IconTextNumber
-                    {...grossItem.field}
+                {/* <IconTextNumber  */}
+                <IconTextField
+                    variant="standard"
+                    onChange={ event => {
+                        grossItem.field.onChange(event.target.value)
+                        }
+                    } // send value to hook form 
+                    onBlur={grossItem.field.onBlur} // notify when input is touched/blur
+                    value={grossItem.field.value} // input value
+                    name={grossItem.field.name} // send down the input name
+                    inputRef={grossItem.field.ref} // send input ref, so we can focus on input when error appear
                     sx={{ display: entryPriceIsGross ? "block" : "none" }}
                     label="Gross Price"
                     iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
                     iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
                 />
-
-{/* Conditional (ternary) operator */}
-                {/* { !entryPriceIsGross ? (
-                <IconTextNumber
-                    {...netItem.field}
-                    // sx={{ display: entryPriceIsGross ? "none" : "block" }}
-                    label="Net Price"
-                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
-                    iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
-
-                    // priceDefaultValue={netItem.field.value  ? `${parseFloat(netItem.field.value).toFixed(2)}`    : ""}
-                    /> 
-                    ) :
-                    ( <IconTextNumber
-                    {...grossItem.field}
-                    // sx={{ display: entryPriceIsGross ? "block" : "none" }}
-                    label="Gross Price"
-                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
-                    iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
-                    /> )
-                } */}
 {/* {netSum} */}
                 <div align="right">{ entryPriceIsGross    ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
                                             : (+netItem.field.value * +qtyItem.field.value).toFixed(2) }</div>
 {/* {grossSum} */}
                 <div align="right">{ entryPriceIsGross    ? (+grossItem.field.value * +qtyItem.field.value).toFixed(2) 
                                             : (setGrossPriceItem(+netItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)  }</div>
-                <div align="right">
-                    <ErrorOutlineIcon sx={{   color: "red" }} />
+                <div align="center">
+                    {children ? children : null}
                 </div>
                 
             </Box>
-            <br />
             <div>{`net: ${(+netPriceInput).toFixed(2)} gross: ${(+grossPriceInput).toFixed(2)}`}</div>
             </>
         );
@@ -192,38 +187,6 @@ const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
         { value: 66, label: "B" },
         { value: 67, label: "C" }
     ];
-
-
-
-// const SelectInput = ({ field,  options,  ...props}) => {
-//         return (
-//     <Controller
-//     // control={control}
-//     name="auto-complete"
-//     defaultValue={options[0]}
-//     render={({ field: { ref, onChange, ...field } }) => (
-//         <Autocomplete
-//             options={options}
-//             defaultValue={options[0]}
-//             onChange={(_, data) => field.onChange(data)}
-//             renderInput={(params) => (
-//             <TextField
-//                 // {...field}
-//                 {...params}
-//                 fullWidth
-//                 // inputRef={field.ref}
-//                 variant="filled"
-//                 label="Auto-Complete"
-//             />
-//             )}
-//         />
-//     )}
-//     />
-
-//         );
-//     };
-
-
 
 
 const SelectItemType = ({...props}) => (
