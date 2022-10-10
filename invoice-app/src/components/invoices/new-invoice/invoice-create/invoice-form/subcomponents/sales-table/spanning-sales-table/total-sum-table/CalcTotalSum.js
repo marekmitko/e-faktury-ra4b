@@ -2,27 +2,46 @@ import React from "react";
 import { useWatch, setValue } from "react-hook-form";
 import TableCell from '@mui/material/TableCell';
 
-function setTotalSumNetValue(salesArr){
+function setTotalSumNetValue(results){
     let totalSum = 0;
-    for(let index = 0; index < salesArr.length; index++) {
-        totalSum += (salesArr[index].netPrice * salesArr[index].qty);
+
+    for(const key in results) {
+        // console.log("key in arr", results[key]);
+        // console.log("key", key);
+        // console.log("result[ket]", results[key]);
+        // console.log("qty", results[key][`item_${key}_qty`]);
+        // statingPrice?
+        if(results[key][`item_${key}_qty`] && results[key][`item_${key}_netPrice`])
+            totalSum += (results[key][`item_${key}_netPrice`] * results[key][`item_${key}_qty`]);
+
     }
+
     return totalSum;
 }
-function setTotalSum(salesArr){
+
+function setTotalSum(results){
     let totalSum = 0;
-    for(let index = 0; index < salesArr.length; index++) {
-        totalSum += ((+salesArr[index].taxValue * salesArr[index].netPrice)/100 * salesArr[index].qty);
+
+    for(const key in results) {
+        // statingGrossPrice?
+        if(results[key][`item_${key}_qty`] && results[key][`item_${key}_grossPrice`])
+            totalSum += (results[key][`item_${key}_grossPrice`] * results[key][`item_${key}_qty`]);
     }
+
     return totalSum;
 }
 // *see DOPRACOWAĆ Z OLKIEM - total tax total sum total net  |!!!!
 
 export const SalesTotalSum = ({ control, setValue, nameSalesList }) => {
-    const results = useWatch({ control, name: nameSalesList });
+    const results = useWatch({ control, name: `${nameSalesList}` });
 
+
+    // console.log("result", {...results});
+    // console.log("result", setTotalSumNetValue(results));
+    
     let totalSumNet = setTotalSumNetValue(results);
     let totalSum = setTotalSum(results)
+    // {/* <TableCell align="right" >{(totalSum && totalSumNet) ? `${(totalSum-totalSumNet).toFixed(2)} PLN` : ""}</TableCell> */}
     return (
         <>
             <TableCell align="right" >{`${totalSumNet.toFixed(2)} PLN`}</TableCell>

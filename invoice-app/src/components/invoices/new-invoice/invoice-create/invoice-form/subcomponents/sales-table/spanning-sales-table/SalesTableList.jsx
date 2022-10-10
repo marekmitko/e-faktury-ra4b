@@ -30,13 +30,13 @@ export default function SalesTableList({
     
         
         
-        renderCount++;
-        const dataItemValue = useWatch({ control, name: 'salesTableList' });
+        // renderCount++;
+        // const dataItemValue = useWatch({ control, name: 'salesTableList' });
         
-        // Istnieje pięć punktów przerwania siatki: xs, sm, md, lg i xl.
-        console.log('dupa') ;
-        console.log("dataItemValue", dataItemValue);
-        const dZIALA = () => console.log('DZOA:A!!!!');
+        // // Istnieje pięć punktów przerwania siatki: xs, sm, md, lg i xl.
+        // console.log('dupa') ;
+        // console.log("dataItemValue", dataItemValue);
+        // const dZIALA = () => console.log('DZOA:A!!!!');
 
 
 

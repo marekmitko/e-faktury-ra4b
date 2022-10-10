@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FormLabel, Typography, Stack, Switch, Grid} from "@mui/material"
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
+import { useWatch, replace } from 'react-hook-form';
 
 
 const CustomSwitch = styled(Switch)(({ theme }) => ({
@@ -47,7 +48,11 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
                 },
     }));
 
-export function TogglePrice({grossPrice, state, setState}) {
+export function TogglePrice({ state, setState}) {
+
+
+
+
 
     // BUG -> wyniesc do góry 
     const handleChange = (event) => {

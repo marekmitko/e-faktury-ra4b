@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState, useEffect, useMemo} from "react";
 import {InputAdornment, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
@@ -7,8 +7,9 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Visibility from "@mui/icons-material/Visibility";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import Box from "@mui/material/Box";
-import { Controller, useController, setValue } from "react-hook-form";
+import { Controller, useController, setValue, useWatch} from "react-hook-form";
 import { NumberInput } from "react-admin";
+import { SetDependentValue } from "./setDependentValue"
 
 const options = ["A", "B", "C", "D"];
 
@@ -23,25 +24,53 @@ function setNetPriceItem(grossPriceInput, taxValue){
 }
 
 
-export default function InputBox ({control, arrayItemIdx, idx, entryPriceIsGross}) {
+export default function InputBox ({update, control, arrayItemIdx, idx, entryPriceIsGross, setValue, myField}) {
 
-    const salesItemName = useController({ control, name: `${arrayItemIdx}.item_${idx}_salesItemName` });
-    const qtyItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_qty` });
-    const taxItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_tax` });
-    const netItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_netPrice` });
-    const grossItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_grossPrice` });
-    const typeItem = useController({ control, name: `${arrayItemIdx}.item_${idx}_typeItem` });
+    const salesItemName = useController({ name: `${arrayItemIdx}.item_${idx}_salesItemName`, control, defaultValue: "", });
+    const qtyItem = useController({ name: `${arrayItemIdx}.item_${idx}_qty`, control, defaultValue: "", });
+    const taxItem = useController({ name: `${arrayItemIdx}.item_${idx}_tax`, control, defaultValue: "", });
+    const netItem = useController({ name: `${arrayItemIdx}.item_${idx}_netPrice`, control, defaultValue: "", });
+    const grossItem = useController({ name: `${arrayItemIdx}.item_${idx}_grossPrice`, control, defaultValue: "", });
+    const typeItem = useController({ name: `${arrayItemIdx}.item_${idx}_typeItem`, control, defaultValue: "", });
 
-        // if(entryPriceIsGross)
-        //     useEffectsetValue('notRegisteredInput', 'value')
+    const netPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_netPrice` });
+    const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_grossPrice` });
+    
+
+    const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
+
+    const newDependentValue = useMemo(() => {
+        // if (!isNaN(parseFloat((enteryValue))) || !isNaN(parseFloat((taxItem.field.value))))  return "";
+        if (!entryPriceIsGross) //setGrossPriceItem
+            return (parseFloat(enteryValue) * (+taxItem.field.value)) / 100;
+        if (entryPriceIsGross) //setNetPriceItem
+            return (parseFloat(enteryValue) / (+taxItem.field.value)) * 100 ;
+        }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
+
+    useEffect(() => {
+                if ( !isNaN(!parseFloat(newDependentValue)) && entryPriceIsGross ) {
+                    setValue(`${netItem.field.name}`, `${newDependentValue.toFixed(6)}`);
+                    // setValue( netPriceInput, `${newDependentValue.toFixed(6)}`);
+                }
+                if ( !isNaN(!parseFloat(newDependentValue)) && !entryPriceIsGross ){
+                    setValue( `${grossItem.field.name}`, `${newDependentValue.toFixed(6)}` );
+                    // setValue( grossPriceInput, `${newDependentValue.toFixed(6)}` );
+
+                }
+                // }, [ grossPriceInput, taxValueInput]);
+            }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
+
+    // console.info("valueDEPENDENT:", newDependentValue); 
 
         return (
+            <>
             <Box
                 className="App"
                 sx={{
                     display: "grid",
-                    gridTemplateColumns: "25px auto 150px 50px 60px 150px 150px 100px 100px 25px ",
-                    gridGap: 10
+                    gridTemplateColumns: "25px auto 150px 50px 60px 125px 125px 125px 25px ",
+                    gridGap: 10,
+                    alignItems: "baseline"
                 }}
             >
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -61,8 +90,9 @@ export default function InputBox ({control, arrayItemIdx, idx, entryPriceIsGross
                     label="Net Price"
                     iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
                     iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
+
+                    // priceDefaultValue={netItem.field.value  ? `${parseFloat(netItem.field.value).toFixed(2)}`    : ""}
                 />
-{/* {display grossPrice} */}
                 <IconTextNumber
                     {...grossItem.field}
                     sx={{ display: entryPriceIsGross ? "block" : "none" }}
@@ -70,14 +100,41 @@ export default function InputBox ({control, arrayItemIdx, idx, entryPriceIsGross
                     iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
                     iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
                 />
+
+{/* Conditional (ternary) operator */}
+                {/* { !entryPriceIsGross ? (
+                <IconTextNumber
+                    {...netItem.field}
+                    // sx={{ display: entryPriceIsGross ? "none" : "block" }}
+                    label="Net Price"
+                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
+                    iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
+
+                    // priceDefaultValue={netItem.field.value  ? `${parseFloat(netItem.field.value).toFixed(2)}`    : ""}
+                    /> 
+                    ) :
+                    ( <IconTextNumber
+                    {...grossItem.field}
+                    // sx={{ display: entryPriceIsGross ? "block" : "none" }}
+                    label="Gross Price"
+                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
+                    iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
+                    /> )
+                } */}
 {/* {netSum} */}
-                <div>{ entryPriceIsGross    ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
+                <div align="right">{ entryPriceIsGross    ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
                                             : (+netItem.field.value * +qtyItem.field.value).toFixed(2) }</div>
 {/* {grossSum} */}
-                <div>{ entryPriceIsGross    ? (+grossItem.field.value * +qtyItem.field.value).toFixed(2) 
+                <div align="right">{ entryPriceIsGross    ? (+grossItem.field.value * +qtyItem.field.value).toFixed(2) 
                                             : (setGrossPriceItem(+netItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)  }</div>
-                {/* <ErrorOutlineIcon sx={{   color: "red" }} /> */}
+                <div align="right">
+                    <ErrorOutlineIcon sx={{   color: "red" }} />
+                </div>
+                
             </Box>
+            <br />
+            <div>{`net: ${(+netPriceInput).toFixed(2)} gross: ${(+grossPriceInput).toFixed(2)}`}</div>
+            </>
         );
     }
 
@@ -85,21 +142,22 @@ export default function InputBox ({control, arrayItemIdx, idx, entryPriceIsGross
 
 
 
-const IconTextNumber = ({ iconStart, iconEnd, InputProps, ...props }) => {
+const IconTextNumber = ( {inputRef, iconStart, iconEnd, InputProps, ...props }) => {
         return (
             <NumberInput 
-                {...props}
-                variant="standard"
-                size="small"
-                InputProps={{
-                    ...InputProps,
-                    startAdornment: iconStart ? (
-                        <InputAdornment    position="start">{iconStart}</InputAdornment>
+            {...props}
+            variant="standard"
+            size="small"
+            InputProps={{
+                ...InputProps,
+                startAdornment: iconStart ? (
+                    <InputAdornment    position="start">{iconStart}</InputAdornment>
                     ) : null,
                     endAdornment: iconEnd ? (
                         <InputAdornment    position="end">{iconEnd}</InputAdornment>
-                    ) : null
-                }}
+                        ) : null
+                    }}
+                // defaultValue={10}
             />
         );
     };
