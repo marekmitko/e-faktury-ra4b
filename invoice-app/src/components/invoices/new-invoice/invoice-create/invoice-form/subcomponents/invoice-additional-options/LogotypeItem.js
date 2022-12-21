@@ -5,9 +5,8 @@ import { CompanyLogoAvatar } from '../../../../../../admin/users/subcomponents/C
 
 export const LogotypeItem = (props) => (
     <Stack direction="row" spacing={2} width="100%" alignItems="center" justifyContent="space-around">
-        <NumberInput source="invoice_no" disabled />
-        {/* <CompanyLogoAvatar /> */}
-        {/* <p>Efremitd add lint resource</p> */}
+        <CompanyLogoAvatar />
+        <p>Efremitd add lint resource</p>
         {/* <TextField source="" defaultValue="Efremtit - add link" /> */}
     </Stack>
 );

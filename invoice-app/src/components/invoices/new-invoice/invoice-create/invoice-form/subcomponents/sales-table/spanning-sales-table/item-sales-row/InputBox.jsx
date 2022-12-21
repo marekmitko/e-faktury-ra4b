@@ -1,20 +1,41 @@
 import { useState, useEffect, useMemo} from "react";
-import {InputAdornment, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack} from "@mui/material";
+import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import QuestionMark from "@mui/icons-material/QuestionMark";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import Visibility from "@mui/icons-material/Visibility";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import Box from "@mui/material/Box";
 import { Controller, useController, setValue, useWatch} from "react-hook-form";
 import { NumberInput } from "react-admin";
 import { SetDependentValue } from "./setDependentValue"
+import { PriceInput } from "./input-box-component/PriceInput";
+import { MySelectInput } from "./input-box-component/MySelectInput";
+import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 
-const options = ["A", "B", "C", "D"];
+
+const optionCurrencies = [
+    {
+      value: 'USD',
+      label: '$',
+    },
+    {
+      value: 'EUR',
+      label: '€',
+    },
+    {
+      value: 'BTC',
+      label: '฿',
+    },
+    {
+      value: 'JPY',
+      label: '¥',
+    },
+  ];
+
+
 
 // Obcaaj https://codesandbox.io/s/react-hook-form-mui-forked-0xkhyk
-
 
 function setGrossPriceItem(netPriceItem, taxValue){
     return (netPriceItem*taxValue)/100;
@@ -23,8 +44,10 @@ function setNetPriceItem(grossPriceInput, taxValue){
     return (+grossPriceInput / (+taxValue)) * 100 ;
 }
 
-
-export default function InputBox ({ children, update, control, arrayItemIdx, idx, entryPriceIsGross, setValue, myField}) {
+export default function InputBox ({ 
+    // addItemOnFocusin, 
+    ButtonAddItem,
+    eventsOnItem, salesListLength, salesItemIndex, children, update, control, arrayItemIdx, idx, entryPriceIsGross, setValue, myField}) {
 
     const salesItemName = useController({ name: `${arrayItemIdx}.item_${idx}_salesItemName`, control, defaultValue: "", });
     const qtyItem = useController({ name: `${arrayItemIdx}.item_${idx}_qty`, control, defaultValue: "", });
@@ -36,11 +59,9 @@ export default function InputBox ({ children, update, control, arrayItemIdx, idx
     const netPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_netPrice` });
     const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_grossPrice` });
     
-
     const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
 
     const newDependentValue = useMemo(() => {
-        // if (!isNaN(parseFloat((enteryValue))) || !isNaN(parseFloat((taxItem.field.value))))  return "";
         if (!entryPriceIsGross) //setGrossPriceItem
             return (parseFloat(enteryValue) * (+taxItem.field.value)) / 100;
         if (entryPriceIsGross) //setNetPriceItem
@@ -60,60 +81,80 @@ export default function InputBox ({ children, update, control, arrayItemIdx, idx
                 // }, [ grossPriceInput, taxValueInput]);
             }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
 
-    // console.info("valueDEPENDENT:", newDependentValue); 
+
+
+
+
+
+
+
+        // // addItemOnFocusin ##############################
+            function addItemOnFocusin(event) {
+                // console.log("create");
+                console.log("createdsadssdsd");
+                if ( salesListLength === salesItemIndex + 1 &&
+                !event.currentTarget.contains(event.relatedTarget)
+                ) { return eventsOnItem();}
+            }
+
+
+
+
+            // console.log(salesItemName, salesItemIndex);
+
+            
 
         return (
             <>
-            <Box
+            <Box  
+                // onFocus={(event) => addItemOnFocusin(event)}
                 className="App"
                 sx={{
                     display: "grid",
-                    gridTemplateColumns: "25px auto 150px 70px 60px 125px 125px 125px 50px ",
+                    gridTemplateColumns: "50px auto 150px 70px 60px 125px 125px 125px 50px ",
                     gridGap: 10,
                     alignItems: "baseline"
                 }}
             >
-                <Stack direction="row" alignItems="center" spacing={1}>
-                    <Chip label={`${++idx}`} size="small" color="primary" variant="outlined" />
+                <Stack direction="row" 
+                    alignItems="right" component='span' sx={{ display: "flex", taxtAlign: "right", width: "100%" }} >
+                    {(salesListLength === salesItemIndex + 1) ? 
+                    
+                    <IconButton color="primary"  // aria-label="upload picture" component="label"
+                        // onClick={() => append(createNewItemObj(obj, fields.length))}
+                        sx={ {ml: "auto", mr: 0,} } 
+                        >
+                            
+                        {/* <ButtonAddItem />  */}
+                        <AddCircleRoundedIcon sx={ {ml: "auto", mr: 0,} }   />
+                    </IconButton>
+
+
+                    :
+                    <Chip label={`${++idx}`} size="normal" color="primary" variant="outlined" 
+                        sx={{ ml: "auto", mr: 0, border: "none", fontSize: '1em', fontWeight: 500, textAlign: 'right'  }}
+                        // clickable
+                    />
+                    }   
                 </Stack>
                 <IconTextField 
+                    onFocus={(event) => addItemOnFocusin(event)}
                     {...salesItemName.field}
-                    label="First Name" iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} />} 
+                    label="Product trade name" 
+                    // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
                 />
+                {/* <MySelectInput objController={typeItem} slectOptions={optionCurrencies} labelName="currencie" /> */}
                 <SelectSmallType {...typeItem.field} field={typeItem.field} />
                 <SelectSmallTax {...taxItem.field} field={taxItem.field} />
                 <IconTextNumber  {...qtyItem.field}  label="Quantity"  />
-
 {/* New concept */}
-                {/* <IconTextNumber  */}
-                <IconTextField 
-                    variant="standard"
-                    onChange={ event => {
-                        netItem.field.onChange(event.target.value)
-                        }
-                    } // send value to hook form 
-                    onBlur={netItem.field.onBlur} // notify when input is touched/blur
-                    value={netItem.field.value} // input value
-                    name={netItem.field.name} // send down the input name
-                    inputRef={netItem.field.ref} // send input ref, so we can focus on input when error appear
+                <PriceInput objController={netItem}   label="Net Price"
                     sx={{ display: entryPriceIsGross ? "none" : "block" }}
-                    label="Net Price"
                     iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
                     iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
                 />
-                {/* <IconTextNumber  */}
-                <IconTextField
-                    variant="standard"
-                    onChange={ event => {
-                        grossItem.field.onChange(event.target.value)
-                        }
-                    } // send value to hook form 
-                    onBlur={grossItem.field.onBlur} // notify when input is touched/blur
-                    value={grossItem.field.value} // input value
-                    name={grossItem.field.name} // send down the input name
-                    inputRef={grossItem.field.ref} // send input ref, so we can focus on input when error appear
+                <PriceInput objController={grossItem}   label="Gross Price"
                     sx={{ display: entryPriceIsGross ? "block" : "none" }}
-                    label="Gross Price"
                     iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
                     iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
                 />
@@ -126,9 +167,7 @@ export default function InputBox ({ children, update, control, arrayItemIdx, idx
                 <div align="center">
                     {children ? children : null}
                 </div>
-                
             </Box>
-            <div>{`net: ${(+netPriceInput).toFixed(2)} gross: ${(+grossPriceInput).toFixed(2)}`}</div>
             </>
         );
     }
@@ -138,6 +177,8 @@ export default function InputBox ({ children, update, control, arrayItemIdx, idx
 
 
 const IconTextNumber = ( {inputRef, iconStart, iconEnd, InputProps, ...props }) => {
+
+
         return (
             <NumberInput 
             {...props}
@@ -157,7 +198,6 @@ const IconTextNumber = ( {inputRef, iconStart, iconEnd, InputProps, ...props }) 
         );
     };
 
-
 const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
         return (
             <TextField 
@@ -176,69 +216,50 @@ const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
             />
         );
     };
-
-
     // *see SelectInput 
     // ->     https://codesandbox.io/s/react-hook-form-mui-forked-9ohh3s
 
 
-    const objOptions = [
-        { value: 65, label: "A" },
-        { value: 66, label: "B" },
-        { value: 67, label: "C" }
-    ];
 
 
-const SelectItemType = ({...props}) => (
-    <Select
-    // sx={{ minWidth: 175, py: 0  }}
-    size="small" variant="standard"  
-    
-    label="Type"
-    >
-    <MenuItem value={'Usługi'}>Usługi</MenuItem>
-    <MenuItem value={'Towar'}>Towar</MenuItem>
-    <MenuItem value={'Wynajem'}>Wynajem</MenuItem>
-    <MenuItem value={'Prowizja'}>Prowizja</MenuItem>
-    <MenuItem value={'Sprzedaż'}>Sprzedaż</MenuItem>
-    <MenuItem value={'Sprzedaż 0% MVA'}>Sprzedaż 0% MVA</MenuItem>
-    <MenuItem value={"Zwolniona z MVA"}>Zwolniona z MVA</MenuItem>
-</Select>
-);
+// const SelectItemType = ({...props}) => (
+//     <Select size="small" variant="standard" label="Type" >
+//         <MenuItem value={'Usługi'}>Usługi</MenuItem>
+//         <MenuItem value={'Towar'}>Towar</MenuItem>
+//         <MenuItem value={'Wynajem'}>Wynajem</MenuItem>
+//         <MenuItem value={'Prowizja'}>Prowizja</MenuItem>
+//         <MenuItem value={'Sprzedaż'}>Sprzedaż</MenuItem>
+//         <MenuItem value={'Sprzedaż 0% MVA'}>Sprzedaż 0% MVA</MenuItem>
+//         <MenuItem value={"Zwolniona z MVA"}>Zwolniona z MVA</MenuItem>
+//     </Select>
+// );
 
-
-const SelectItemTax = () => (
-        <Select  
-            sx={{ 
-                // minWidth: 80, 
-                p: 0  }}
-            size="small" variant="standard"  
-            // {...field}
-            label="VAT"
-            >
-            <MenuItem value={125}>25%</MenuItem>
-            <MenuItem value={115}>15%</MenuItem>
-            <MenuItem value={112}>12%</MenuItem>
-            <MenuItem value={106}>6%</MenuItem>
-            <MenuItem value={100}>0</MenuItem>
-        </Select>
-);
+// const SelectItemTax = () => (
+//         <Select  
+//             sx={{ 
+//                 // minWidth: 80, 
+//                 p: 0  }}
+//             size="small" variant="standard"  
+//             // {...field}
+//             label="VAT"
+//             >
+//             <MenuItem value={125}>25%</MenuItem>
+//             <MenuItem value={115}>15%</MenuItem>
+//             <MenuItem value={112}>12%</MenuItem>
+//             <MenuItem value={106}>6%</MenuItem>
+//             <MenuItem value={100}>0</MenuItem>
+//         </Select>
+// );
 
 
 
 
 function SelectSmallType({field, ...props}) {
-        // const [age, setAge] = useState('');
-    
-        // const handleChange = (event) => {
-        // setAge(event.target.value);
-        // };
-    
+
         return (
         <FormControl 
         {...props}
-        // sx={{ m: 1, minWidth: 120 }}
-         size="small">
+        size="small">
             <InputLabel id="demo-select-small-type">Item Type</InputLabel>
             <Select
             labelId="demo-select-small-type"
@@ -261,17 +282,12 @@ function SelectSmallType({field, ...props}) {
         );
     }
 function SelectSmallTax({field, ...props}) {
-        // const [age, setAge] = useState('');
-    
-        // const handleChange = (event) => {
-        // setAge(event.target.value);
-        // };
-    
+
         return (
         <FormControl 
         {...props}
         // sx={{ m: 1, minWidth: 120 }}
-         size="small">
+        size="small">
             <InputLabel id="demo-select-small-tax">Item Tax</InputLabel>
             <Select
             labelId="demo-select-small-tax"
@@ -281,12 +297,12 @@ function SelectSmallTax({field, ...props}) {
             onChange={field.onChange}
             variant="standard"
             >
-            <MenuItem value=""><em>None</em></MenuItem>
-            <MenuItem value={125}>25%</MenuItem>
-            <MenuItem value={115}>15%</MenuItem>
-            <MenuItem value={112}>12%</MenuItem>
-            <MenuItem value={106}>6%</MenuItem>
-            <MenuItem value={100}>0</MenuItem>
+                <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value={125}>25%</MenuItem>
+                <MenuItem value={115}>15%</MenuItem>
+                <MenuItem value={112}>12%</MenuItem>
+                <MenuItem value={106}>6%</MenuItem>
+                <MenuItem value={100}>0</MenuItem>
             </Select>
         </FormControl>
         );

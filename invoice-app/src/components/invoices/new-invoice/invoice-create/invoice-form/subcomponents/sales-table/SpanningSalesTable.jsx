@@ -9,9 +9,12 @@ import SalesTableToolbar from './spanning-sales-table/sales-table-panel/SalesTab
 import AddIcon from '@mui/icons-material/Add';
 import {setGrossPriceItem, setNetPriceItem} from './CalcTotal';
 import { SalesItemRow } from './spanning-sales-table/item-sales-row/SalesItemRow';
-import InputBox from './spanning-sales-table/item-sales-row/InputsCell';
+import InputBox from './spanning-sales-table/item-sales-row/InputBox';
 import DependentInputTest from './spanning-sales-table/item-sales-row/DependentInputTest';
 import { PriceDependentInput } from './change-input-test/PriceDependentInput';
+import OptionLine from '../option-line/OptionLine';
+import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import SwitchNetOrGross from './spanning-sales-table/sales-table-panel/SwitchNetOrGross';
 
 /**DEFAULT VALUES FOR THE SpanningSalesTable */
 function setGrosssPriceSalesItem(netPrice, taxValue) {
@@ -27,7 +30,7 @@ const obj = {
     _grossPrice: "",
     _netPrice: "",
     _qty: "",
-    _salesItemName: "Podaj",
+    _salesItemName: "",
     _tax: "",
     _typeItem: "",
 };
@@ -45,12 +48,15 @@ const defaultValuesSalesItem = {
     item_0_grossPrice: "",          
     item_0_netPrice: "",          
     item_0_qty: "",          
-    item_0_salesItemName: "Podaj",         
+    item_0_salesItemName: "",         
     item_0_tax: "",         
     item_0_type: "",         
 };
 
 let renderCount = 0;
+
+
+
 
 
 export default function SpanningSalesTable() {
@@ -69,7 +75,7 @@ export default function SpanningSalesTable() {
                     item_0_grossPrice: "",          
                     item_0_netPrice: "",          
                     item_0_qty: "",          
-                    item_0_salesItemName: "Podaj",         
+                    item_0_salesItemName: "",         
                     item_0_tax: "",         
                     item_0_type: "",
                 }]
@@ -82,6 +88,24 @@ export default function SpanningSalesTable() {
         control, // control props comes from useForm (optional: if you are using FormContext)
         name: "salesTableList" // unique name for your Field Array
     });
+
+    // // addItemOnFocusin ##############################
+    // const addItemOnFocusin = (salesListLength, slesItemIndex, eventsOnItem) => (event) => {
+    //     // console.log("create");
+    //     if ( salesListLength === slesItemIndex + 1 &&
+    //     !event.currentTarget.contains(event.relatedTarget)
+    //     ) { return eventsOnItem();}
+    // };
+    // const addItemOnFocusin = (salesListLength, slesItemIndex, eventsOnItem) => (event) => {
+    // const addItemOnFocusin = (event) = {
+    //     // console.log("create");
+    //     if ( salesListLength === slesItemIndex + 1 &&
+    //     !event.currentTarget.contains(event.relatedTarget)
+    //     ) { return eventsOnItem();}
+    // };
+    
+
+
 //*see SPRAWDZIĆ 
   /*  const record = useRecordContext(props); */
 
@@ -98,13 +122,20 @@ export default function SpanningSalesTable() {
     
     const onSubmit = (data) => console.log("dataForm", {...data});
 
+
+
     return (
         <>
         <form onSubmit={handleSubmit(onSubmit)}>
             <TableContainer component={Paper}>
-                <SalesTableToolbar    {...{  entryPriceIsGross, setEntryPriceOnGross }}  /> 
+                {/* <OptionLine> */}
+                    {/* <SalesTableToolbar    {...{  entryPriceIsGross, setEntryPriceOnGross }}  />  */}
+                {/* </OptionLine> */}
+                
                 <Table    sx={{ minWidth: 700 }}    aria-label="spanning table"  size='small'    padding="none"     >
-                    <TableHeader toggelPrice={entryPriceIsGross}  />
+                    <TableHeader toggelPrice={entryPriceIsGross}  >
+                        <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
+                    </TableHeader>
                     <TableBody>
                         {fields.map((field, index) => { 
                                 const id = `salesTableList.${index}.id`;
@@ -112,21 +143,29 @@ export default function SpanningSalesTable() {
                                     <div hover={true} key={field.id} >
                                         <InputBox  update={update} myField={field} entryPriceIsGross={entryPriceIsGross}
                                             setValue={setValue} control={control} arrayItemIdx={`salesTableList.${index}`} idx={index} 
+                                            salesListLength={fields.length}
+                                            salesItemIndex={index}
+                                            eventsOnItem={() => append(createNewItemObj(obj, fields.length))} 
+                                            // addItemOnFocusin={
+                                            //     console.log("da")
+                                            // //     // addItemOnFocusin(fields.length, index, append(createNewItemObj(obj, fields.length)) )
+                                            // }
+                                            ButtonAddItem={<AddCircleRoundedIcon />}
                                         >
-                                            <IconButton  color="error"   aria-label="delete" size="small"
-                                            onClick={() => remove(index)} 
-                                            >
-                                            <DeleteIcon fontSize="small" />
-                                        </IconButton>
+                                            <IconButton  color="error"   aria-label="delete" size="small"   onClick={() => remove(index)} >
+                                                <DeleteIcon fontSize="small" />
+                                            </IconButton>
                                         </InputBox>
                                     </div>
                             ); 
                         })}
                     </TableBody>
                     <TableRow><TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}}> 
-                    <Button onClick={() => append(createNewItemObj(obj, fields.length))} variant="contained" size="small" >
-                        <AddIcon/>
-                    </Button>
+                    {/* <IconButton color="primary"  // aria-label="upload picture" component="label"
+                        onClick={() => append(createNewItemObj(obj, fields.length))}
+                    >
+                        <AddCircleRoundedIcon sx={ {ml: "auto", mr: 0,} }   />
+                    </IconButton> */}
                     <div>
                     {/* // <input type="button" value="+ADD" onClick={() => append(defaultValuesSalesItem)}    /> */}
                     <br /> <span className="counter">Render Count: {renderCount}</span>

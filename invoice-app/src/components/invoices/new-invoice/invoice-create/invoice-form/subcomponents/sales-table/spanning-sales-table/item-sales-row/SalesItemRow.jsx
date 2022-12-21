@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Controller, useWatch } from "react-hook-form";
 import { NumberInput } from "react-admin";
-import InputBox from "./InputsCell";
+import InputBox from "./InputBox";
 
 
 // *see SPrawdzi 

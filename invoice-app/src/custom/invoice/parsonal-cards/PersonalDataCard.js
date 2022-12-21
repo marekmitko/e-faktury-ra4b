@@ -5,9 +5,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import sxCSS from './PersonalDataCard.style'
 
 // *see  PersonalDataCard
-export const  PersonalDataCard = ({variant, headerTitle, headerIcon, children, sxContent, sxCard }) => (
-    <Grid item xs={12} sm={6}>
-        <Card   variant={variant}   sx={{...sxCSS.sxCard, ...sxCard}}   >
+export const  PersonalDataCard = ({xs, sm, variant, headerTitle, headerIcon, children, sxContent, sxCard }) => (
+    <Grid item xs={xs? xs : 12} sm={sm? sm : 6}>
+        <Card   variant={variant}   sx={{...sxCSS.sxCard, ...sxCard, height: '100%' }}   >
             <CardHeader sx={sxCSS.sxCardHeader}
                 avatar={headerIcon ? headerIcon : null} 
                 action={

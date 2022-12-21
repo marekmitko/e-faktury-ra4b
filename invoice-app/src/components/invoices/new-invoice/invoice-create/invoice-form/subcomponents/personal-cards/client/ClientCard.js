@@ -3,19 +3,35 @@ import { PersonalDataCard } from "../../../../../../../../custom/invoice/parsona
 import BuyerIcon from '@mui/icons-material/Person';
 import ClientReferenceAutocompleteInput from "./ClientReferenceAutocompleteInput";
 import ClientDataAutomaticDisplay from "./ClientDataAutomaticDisplay";
+import CustomerSubForm from "./CustomerSubForm";
+import { ClientCreateButton } from "./create-client-subform/ClientCreateButton";
+import OldClientReferenceAutocompleteInput from "../buyer/buyer-part-form/client-autocomplete-input/ClientReferenceAutocompleteInput";
+import { ReferenceInput } from "react-admin";
+import { Stack } from "@mui/material";
+import SimpleDialogDemo from "./new-simple-modal-new-client/SimpleDialogCreateClient";
 
 
 
 
 export default function ClientCard(){
     const [valueBuyerId, setValueBuyerId] = React.useState("");
+
     return(
-        <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle="Kupujący">
-            <ClientReferenceAutocompleteInput 
-                source="buyer_id" reference="buyers" 
-                handleBuyerIdChange={setValueBuyerId}
-            />
-            <ClientDataAutomaticDisplay resourceBuyer="buyers" buyerId={valueBuyerId} />
+        <PersonalDataCard  headerIcon={<BuyerIcon />} headerTitle="Kupujący">
+            <Stack direction="row"  spacing={2} width="100%" >
+                <ClientReferenceAutocompleteInput 
+                    source="buyer_id" reference="dbclientlist" 
+                    handleBuyerIdChange={setValueBuyerId}
+                    // enableGetChoices={({ q }) =>  q.length ? (q.length >= 3) : null}
+                    />
+                <Stack alignItems="center" justifyContent="center" >
+                    <ClientCreateButton   /> 
+                </Stack>
+            </Stack>
+            <ClientDataAutomaticDisplay resourceBuyer="dbclientlist" buyerId={valueBuyerId} />
+
+            {/* <CustomerSubForm /> */}
+            {/* <SimpleDialogDemo /> */}
         </PersonalDataCard>
     );
 };

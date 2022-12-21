@@ -74,7 +74,7 @@ export const BuyerCard = ({selectSourceName, headerTitle, children, ...props}) =
 
     return(
         <BuyerLayout> 
-            <TextInput label="Company Name" source="buyerCompany" fullWidth />
+            <TextInput label="Company Name" source="company" fullWidth />
         </BuyerLayout>
     );
 };

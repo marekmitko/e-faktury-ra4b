@@ -10,9 +10,10 @@ export const DateInputPart = (props) => {
     const todayDate = new Date();
     const todayDateAdd14 = new Date(todayDate.getTime()+(14*24*60*60*1000));
     return(
-        <Stack direction="row" spacing={2} width="100%" alignItems="center" justifyContent="space-around">
-            <NumberInput source="nb_views" />
+        <Stack direction="row" spacing={2} width="100%"  sx={{ justifyItems: 'center', justi: "center" }}  alignItems="center" justifyContent="space-around">
+            {/* <NumberInput source="invoice_no" disabled /> */}
             <DateInput source="created_at" defaultValue={todayDate} />
+            {/* <DateInput source="sale_date" defaultValue={todayDate} /> */}
             <DateInput source="payment_due" defaultValue={todayDateAdd14} />
         </Stack>
     );

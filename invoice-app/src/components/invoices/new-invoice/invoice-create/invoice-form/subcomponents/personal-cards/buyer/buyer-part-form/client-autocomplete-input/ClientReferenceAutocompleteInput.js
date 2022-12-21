@@ -6,7 +6,7 @@ import { AutocompleteInput } from "react-admin";
 const options = ["Option 1", "Option 2"];
 const optionsTwo = ["2opt - 1", "2opt - 2"];
 
-export default function ClientReferenceAutocompleteInput({handleBuyerIdChange, choiceOptions, valueClientId, handleChange, valueClientDisplayName, handleInputChange  }) {
+export default function OldClientReferenceAutocompleteInput({handleBuyerIdChange, choiceOptions, valueClientId, handleChange, valueClientDisplayName, handleInputChange  }) {
     const [valueRAinput, setvalueRAinput] = React.useState("");
     
     console.log(typeof(valueRAinput), valueRAinput, "valueRAinput");
@@ -15,6 +15,7 @@ export default function ClientReferenceAutocompleteInput({handleBuyerIdChange, c
         <div>{`valueClientId: ${valueClientId !== null ? `'${valueClientId}'` : "null"}`}</div>
         <div>{`valueClientDisplayName: '${valueClientDisplayName}'`}</div>
         <br />
+
         <Autocomplete
             value={valueClientId}
             onChange={(event, newSelectedClientId) => handleChange(newSelectedClientId)}
@@ -26,7 +27,7 @@ export default function ClientReferenceAutocompleteInput({handleBuyerIdChange, c
                 bgcolor: 'rgba(24, 951, 900, 0.2)'
             }}
             renderInput={(params) => <TextField {...params} label="Client search" variant="standard"/>}
-        />
+            />
         <AutocompleteInput 
             // onChange={(event, hmm) =>  console.log(typeof(event), event, "event", hmm)}
             onChange={(event) =>  handleBuyerIdChange(event)}

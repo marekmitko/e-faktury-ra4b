@@ -33,12 +33,11 @@ export const BuyerDetailShowLayout = () => (
         </Stack>
         {/* </Box> */}
         <TextField label="Street" 
-            // source="address.street"
-            source="address"
+            source="address.street"
+            // source="address"
         />
         <CodeAndNameCityDualField
-            // sourceCode="address.ZIPCode" 
-            sourceCode="place" 
+            sourceCode="address.codeCity"
             sourceName="address.city"   
         />
         <TextField label="MVA Code" 

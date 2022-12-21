@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { FormLabel, Typography, Stack, Switch, Grid} from "@mui/material"
+import { grey} from "@mui/material/colors"
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import { useWatch, replace } from 'react-hook-form';
+import { RadioButtonGroupInput } from 'react-admin';
 
 
 const CustomSwitch = styled(Switch)(({ theme }) => ({
@@ -59,12 +61,19 @@ export function TogglePrice({ state, setState}) {
         setState(event.target.checked);
     };
     return (
-        <div>
-            <Grid component="label" container >
+        <span>
+            {/* <Grid component="label" container > */}
             {/* <FormLabel ><small>START WITH THE PRICE</small></FormLabel> */}
-                <Grid    ><small>START WITH THE PRICE</small></Grid>
+                {/* <Grid    ><small>START WITH THE PRICE</small></Grid> */}
                 <Grid   container alignItems="center" spacing={1} >
-                    <Grid item><Typography>NET</Typography></Grid>
+                    <Grid item align="center">
+                        <Typography sx={{ width: "30px",
+                            fontWeight:  state ?  "300" : "500",
+                            // display: "inline"
+                            // textDecoration: state ? "" : "underline",
+                        }} >
+                            { state ? <small>NET</small> : "NET" }
+                        </Typography></Grid>
                     <Grid item>
                         <CustomSwitch
                             checked={state}
@@ -72,10 +81,17 @@ export function TogglePrice({ state, setState}) {
                             // value="checkedOption"
                         />
                     </Grid>
-                    <Grid item><Typography>GROSS</Typography></Grid>
+                    <Grid item align="center">
+                        <Typography sx={{ width: "53px",
+                            fontWeight:  state ?  "500" : "300",
+                            // textDecoration: state ? "underline" : "",
+                        }} >
+                            { state ? "GROSS" : <small>GROSS</small>}
+                        </Typography>
+                    </Grid>
                 </Grid>
                         {/* </Stack> */}
-            </Grid>
-        </div>
+            {/* </Grid> */}
+        </span>
     );
 }

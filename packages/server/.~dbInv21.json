@@ -4731,6 +4731,31 @@
         "email": "",
         "phoneNumber": ""
       }
+    },
+    {
+      "id": "FiFrZhV",
+      "company": "Test",
+      "fullname": {
+        "forename": "yu",
+        "surname": ""
+      },
+      "email": "",
+      "address": {
+        "street": "",
+        "city": "",
+        "codeCity": "",
+        "ZIPCode": null
+      },
+      "MVA": "",
+      "telephoneNumber": "",
+      "orgId": {
+        "MVA": false,
+        "orgNumber": ""
+      },
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      }
     }
   ],
   "dbTEST_client_list": [
