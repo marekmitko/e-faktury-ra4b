@@ -17,12 +17,12 @@ const postDefaultValue = () => ({ created_at: new Date(), nb_views: 0 });
 const InvoiceCreateToolbar = props => (
     <Toolbar {...props}>
         <Stack direction="row" spacing={2} width="100%" alignItems="center" justifyContent="flex-start">
-            <SaveButton />
-            <SaveButton
+            {/* <SaveButton /> */}
+            {/* <SaveButton
                 label="dbclientlist.action.save_and_notify"
                 transform={data => ({ ...data, notify: true })}
                 type="button"
-            />
+            /> */}
             <CreateButton
                 // label="dbclientlist.action.save_and_notify"
                 transform={data => ({ ...data, notify: true })}

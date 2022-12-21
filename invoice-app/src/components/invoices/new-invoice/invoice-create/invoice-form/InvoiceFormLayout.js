@@ -1,6 +1,6 @@
 import { Card, Grid, Checkbox, FormControlLabel} from '@mui/material';
 import {useRef, useState } from 'react';
-import { useController, useWatch, Controller } from 'react-hook-form';
+import { useController, useWatch } from 'react-hook-form';
 import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider, ReferenceInput, TabbedForm } from 'react-admin';
 import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard';
@@ -36,12 +36,9 @@ export const InvoiceFormLayout = (props) => {
 
     return( 
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
-            <Header />
+            {/* <Header />
             <SellerCard />
             <ClientCard />  
-            {/* <Grid item xs={12} >
-                <OptionLine />
-            </Grid> */}
             <Grid item xs={12}  > 
                 <SpanningSalesTable />
             </Grid>
@@ -57,7 +54,7 @@ export const InvoiceFormLayout = (props) => {
                         checked={EHFCheckbox.field.value}
                     />}
                     />
-            </AdditionalOptions> 
+            </AdditionalOptions>  */}
         </Grid>
     ) ; 
 };
