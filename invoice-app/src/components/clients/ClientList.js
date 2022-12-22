@@ -43,16 +43,16 @@ const ClientList = (props) => {
     return (
         <List filters={UserListFilter} {...props}  >
             <Datagrid>
-                <TextField label="NAZWA FIRMY" source="company" />
-                <WrapperField label="PRZEDSTAWICIEL" sortBy="fullname.surname">
+                <TextField source="company_name" />
+                <WrapperField label="myroot.fullname" sortBy="fullname.surname">
                     <TextField source="fullname.surname" />
                     {" "}
                     <TextField source="fullname.forename" />
                 </WrapperField>
-                <EmailField label="EMAIL" source="contact.email" />
-                <TextField label="ADRES" source="address.street" />
-                <TextField label="MVA" source="orgId.orgNumber" />
-                <TextField label="TELEFON" source="contact.phoneNumber" />
+                <EmailField source="contact.email" />
+                <TextField  source="address.street" />
+                <TextField  source="orgId.orgNumber" />
+                <TextField  source="contact.phoneNumber" />
                 <Stack direction="row" alignItems="center"  width="50%" >
                     <EditButton   label="" basePath='/dbclientlist' />
                     <DeleteButton label="" basePath='/dbclientlist' />

@@ -5,7 +5,7 @@ import { UserDataFromLayout } from './UserDataFromLayout';
 import { CompanyLogoAvatar } from '../subcomponents/CompanyLogoAvatar';
 
 // *see UserCard
-export const UserCard = ({headerTitle,children, ...props}) => {
+export const UserCard = ({headerTitle, children, ...props}) => {
 
     return(
         <PersonalDataCard  variant="outlined" headerIcon={<CompanyLogoAvatar />} headerTitle={headerTitle? headerTitle : "Company Name"}>

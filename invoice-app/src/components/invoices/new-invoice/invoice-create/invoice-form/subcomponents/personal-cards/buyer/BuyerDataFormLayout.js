@@ -41,22 +41,22 @@ export const BuyerDataFromLayout = (props) =>  (
         {props.children}
         <FullNameDualInput sourceForename="fullname.forename" sourceSurname="fullname.surname"  />
         <Stack direction="row" spacing={2} width="100%" alignItems="center">
-            <BooleanInput label="MVA" source="orgId.MVA" sx={{ alignItems: 'center' }} />
-            <TextInput label="MVA Number"  source="orgId.orgNumber" fullWidth />
+            <BooleanInput  source="orgId.MVA" sx={{ alignItems: 'center' }} />
+            <TextInput  source="orgId.orgNumber" fullWidth />
         </Stack>
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />  <strong>ADRES NABYWCY</strong>
         </Stack>
-        <TextInput label="Street Name" source="address.street" fullWidth />
+        <TextInput source="address.street" fullWidth />
         <CodeAndNameCityDualInput sourceCode="address.ZIPCode" sourceName="address.city"  />
         <Stack direction="row" spacing={2} alignItems="center" width="100%">
             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                 <MailOutlineSharpIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
-                <TextInput label="Contact email" source="contact.email" fullWidth />
+                <TextInput  source="contact.email" fullWidth />
             </Stack>
             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                 <LocalPhoneIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
-                <TextInput label="Phone Number" source="contact.phoneNumber" fullWidth />
+                <TextInput source="contact.phoneNumber" fullWidth />
             
             </Stack>
             

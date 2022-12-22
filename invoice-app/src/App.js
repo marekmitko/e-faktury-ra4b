@@ -29,7 +29,7 @@ function App(props) {
         > 
             <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} />  
             <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
-            <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST" e  {...clients} create={TESTInvoiceCreate}/>
+            <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/>
             <CustomRoutes>
                 <Route path="/data_user" element={<MyProfile />}/ >
             </CustomRoutes>

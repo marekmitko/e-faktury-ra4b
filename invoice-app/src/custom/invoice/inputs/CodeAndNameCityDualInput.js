@@ -12,7 +12,7 @@ export const CodeAndNameCityDualInput = ({ labelCode, labelName, sourceCode, sou
         spacing={2}
         width="100%"
     >
-        <NumberInput sx={{minWidth: '25%'}} label={ labelCode ? labelCode : "ZIP Code"} source={sourceCode ? sourceCode : ""}    {...props } />
-        <TextInput   label={ labelName ? labelName : "City Name"} source={sourceName ? sourceName : ""}  {...props } fullWidth  />
+        <NumberInput sx={{minWidth: '25%'}}  source={sourceCode ? sourceCode : ""}    {...props } />
+        <TextInput    source={sourceName ? sourceName : ""}  {...props } fullWidth  />
     </Stack>
 );

@@ -13,8 +13,8 @@ const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel=
 
 export const SellerDataShowLayout = (props, propTypes) => (
     <SimpleShowLayout>
-        <TextField label="Company Name" source="company" />
-        <TextField label="Issued by" source="fullName" />
+        <TextField source="company" />
+        <TextField label="myroot.issuer" source="fullName" />
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />
             <Box direction="row" gap={1} width="100%">
@@ -29,7 +29,7 @@ export const SellerDataShowLayout = (props, propTypes) => (
                 />
                 </Box>
         </Stack>
-        <TextField label="Street" source="address.street" />
+        <TextField source="address.street" />
         <CodeAndNameCityDualField  sourceCode="address.ZIPCode" sourceName="address.city"   />
         <TextField label="MVA Code" source="orgId.orgNumber" />
         <Stack direction="row" gap={1} width="100%">
