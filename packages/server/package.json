@@ -18,5 +18,5 @@
         "content-range": "^1.1.0",
         "faker": "^5.5.3",
         "json-server": "^0.16.2"
- }
+    }
 }

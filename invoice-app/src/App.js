@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Resource, ListGuesser, ShowGuesser, EditGuesser, CustomRoutes } from 'react-admin';
 import { Route } from 'react-router-dom';
+import { i18nProvider } from './i18nProvider/i18nProvider';
 
 import simpleRestProvider from 'ra-data-simple-rest';
 import jsonServerProvider from 'ra-data-json-server' ;
@@ -22,7 +23,10 @@ const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
 //  *see App
 function App(props) {
     return (
-        <MyAdmin dataProvider={dbjsonProvider} > 
+        <MyAdmin 
+            dataProvider={dbjsonProvider}
+            i18nProvider={i18nProvider}
+        > 
             <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} />  
             <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
             <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST" e  {...clients} create={TESTInvoiceCreate}/>
