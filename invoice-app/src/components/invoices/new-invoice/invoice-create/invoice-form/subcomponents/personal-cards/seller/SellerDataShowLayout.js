@@ -2,10 +2,11 @@ import * as React from "react";
 import { blue, blueGrey } from '@mui/material/colors';
 import MailIcon from '@mui/icons-material/MailOutline';
 import DataContatctIcon from '@mui/icons-material/Wysiwyg';
-import { Stack, Typography, Box, Divider } from "@mui/material";
+import { Stack, Typography, Box, Divider, Tooltip } from "@mui/material";
 import { TextField, SimpleShowLayout } from "react-admin";
 import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
 import { CodeAndNameCityDualField } from '../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
+import SmsFailedOutlinedIcon from '@mui/icons-material/SmsFailedOutlined';
 
 // BUG // *see ZipCityCode
 const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
@@ -14,7 +15,16 @@ const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel=
 export const SellerDataShowLayout = (props, propTypes) => (
     <SimpleShowLayout>
         <TextField source="company" />
-        <TextField label="myroot.issuer" source="fullName" />
+        <Stack direction="row" gap={1} width="100%">
+            <TextField label="myroot.issuer" source="fullName" /> 
+            <Tooltip 
+                placement="top-start"
+                title="To jest poważny komercyjny projekt 💪🏻🚀❤⭐" 
+            arrow>
+                <SmsFailedOutlinedIcon sx={{color: blue, mt: -2 }}/>
+            </Tooltip>
+
+        </Stack>
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />
             <Box direction="row" gap={1} width="100%">
