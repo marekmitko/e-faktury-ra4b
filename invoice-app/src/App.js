@@ -16,6 +16,9 @@ import MyProfile  from './components/admin/users';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import TESTInvoiceCreate from './components/invoices/new-invoice/invoice-create/TESTInvoiceCreate';
 
+import { CssVarsProvider } from "@mui/joy/styles";
+
+
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
@@ -23,16 +26,21 @@ const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
 //  *see App
 function App(props) {
     return (
+        
+        
         <MyAdmin 
-            dataProvider={dbjsonProvider}
-            i18nProvider={i18nProvider}
+        theme={CssVarsProvider}
+        dataProvider={dbjsonProvider}
+        i18nProvider={i18nProvider}
         > 
+        {/* <CssVarsProvider> */}
             <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} />  
             <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
             <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/>
             <CustomRoutes>
                 <Route path="/data_user" element={<MyProfile />}/ >
             </CustomRoutes>
+        {/* </CssVarsProvider> */}
         </MyAdmin>
     );
 }

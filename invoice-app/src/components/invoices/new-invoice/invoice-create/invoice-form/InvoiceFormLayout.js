@@ -14,6 +14,7 @@ import EnhancedSalesTable from './xold-component/EnhancedSalesTable';
 import SpanningSalesTable from './subcomponents/sales-table/SpanningSalesTable';
 import AdditionalOptions from './subcomponents/invoice-additional-options';
 import OptionLine from './subcomponents/option-line/OptionLine';
+import CheckboxText from './checkbox-group-options/CheckboxTest';
 // import AdditionalOptions from './subcomponents/invoice-additional-options';
 
 const ResourceName = () => {
@@ -50,14 +51,15 @@ export const InvoiceFormLayout = (props) => {
                 label="Invoice EHF"
                 control={
                     <Checkbox {...EHFCheckbox.field}
-                        onChange={(e) => {
-                            // console.log(field);
-                            EHFCheckbox.field.onChange(e.target.checked)
-                        }}
-                        checked={EHFCheckbox.field.value}
+                    onChange={(e) => {
+                        // console.log(field);
+                        EHFCheckbox.field.onChange(e.target.checked)
+                    }}
+                    checked={EHFCheckbox.field.value}
                     />}
                     />
             </AdditionalOptions> 
+                    <CheckboxText />
         </Grid>
     ) ; 
 };

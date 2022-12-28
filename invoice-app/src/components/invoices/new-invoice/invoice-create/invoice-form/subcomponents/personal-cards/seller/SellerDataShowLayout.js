@@ -81,7 +81,7 @@ export const SellerDataShowLayout = (props, propTypes) => (
 
 
 
-// export const SellerDataShowLayout = (props) => (
+// export const SellerData6666444444444444464644444444444444444444444333343ShowLayout = (props) => (
 // <SimpleShowLayout>
 //     <TextField label="Company Name" source="company" />
 //     <TextField label="Full Name" source="fullName" />

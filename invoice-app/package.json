@@ -11,10 +11,13 @@
     },
     
     "dependencies": {
-        "@emotion/react": "^11.8.1",
-        "@emotion/styled": "^11.8.1",
-        "@mui/material": "^5.6.2",
-        "@mui/x-data-grid":"^5.17.3",
+        "@emotion/react": "latest",
+        "@emotion/styled": "latest",
+        "@mui/utils": "latest",
+        "@mui/material": "latest",
+        "@mui/x-data-grid":"latest",
+        "@mui/joy": "latest",
+        "@mui/icons-material": "latest",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^12.0.0",
         "@testing-library/user-event": "^13.2.1",
