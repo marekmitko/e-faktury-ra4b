@@ -10,6 +10,7 @@ export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...p
     return (
         <TextField 
             {...props}
+                // helperText={false}
             variant="standard"
             size="small"
             type="number"

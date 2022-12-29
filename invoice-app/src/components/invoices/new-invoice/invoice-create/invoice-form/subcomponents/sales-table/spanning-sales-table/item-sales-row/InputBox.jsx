@@ -182,6 +182,7 @@ const IconTextNumber = ( {inputRef, iconStart, iconEnd, InputProps, ...props }) 
         return (
             <NumberInput 
             {...props}
+            helperText={false}
             variant="standard"
             size="small"
             InputProps={{
@@ -204,6 +205,7 @@ const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
                 {...props}
                 variant="standard"
                 size="small"
+                // helperText={false}
                 InputProps={{
                     ...InputProps,
                     startAdornment: iconStart ? (

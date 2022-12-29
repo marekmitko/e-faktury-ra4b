@@ -44,7 +44,8 @@ export const InvoiceFormLayout = (props) => {
                 <OptionLine />
             </Grid> */}
             <Grid item xs={12}  > 
-                <SpanningSalesTable />
+            {props.children? (props.children) : null }
+                {/* <SpanningSalesTable /> */}
             </Grid>
             <AdditionalOptions moreDetailEHF={moreDetailEHF} >
             <FormControlLabel

@@ -20,7 +20,8 @@ import {
     TabbedFormTabs,
     SimpleForm,
     CreateBase,
-    useRecordContext
+    useRecordContext,
+    CreateButton
 } from 'react-admin';
 import { Link } from 'react-router-dom';
 
@@ -90,6 +91,7 @@ export const TestGroupTabbedForm = () => (
                             <TextField source="company" />
                             <DateField source="created_at" />
                             <EditButton />
+                            <CreateButton />
                             <CreateRelatedCommentButton />
                         </Datagrid>
                         </ListBase>
