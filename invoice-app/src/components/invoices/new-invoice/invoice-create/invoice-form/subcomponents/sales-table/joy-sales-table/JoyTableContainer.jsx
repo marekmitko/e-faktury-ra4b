@@ -22,11 +22,12 @@ export default function JoyTableContainer({children}) {
         >
             <h3 style={{ textAlign: "center" }}>Tabela Sprzedaży</h3>
             {/* <Box sx={{ width: "100%" }}>  */}
-            <Paper sx={{ width: "100%", mb: 2 }} >
+            <Paper sx={{ width: "100%", mb: 2, mx: 0 }} >
             {/* <EnhancedTableToolbar numSelected={selected.length} />  */}
                 <TableContainer   
                     sx={{ borderRadius: 5,
-                            // margin: "10px 10px", maxWidth: 950
+                        mx: 0, maxWidth: '100%'
+                            // margin: "10px 10px", 
                     }}
     >
                     <Table stickyHeader aria-label="sticky table"

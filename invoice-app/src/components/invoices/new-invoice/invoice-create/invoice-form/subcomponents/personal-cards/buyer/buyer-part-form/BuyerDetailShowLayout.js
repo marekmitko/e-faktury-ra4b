@@ -16,7 +16,7 @@ import { CodeAndNameCityDualField } from '../../../../../../../../../custom/invo
     
 export const BuyerDetailShowLayout = () => (
     <SimpleShowLayout   >
-        <TextField label="Company Name" source="company" />
+        <TextField source="company" />
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />
             <Box direction="row" gap={1} width="100%">
@@ -32,7 +32,7 @@ export const BuyerDetailShowLayout = () => (
                 </Box>
         </Stack>
         {/* </Box> */}
-        <TextField label="Street" 
+        <TextField
             source="address.street"
             // source="address"
         />
@@ -40,9 +40,9 @@ export const BuyerDetailShowLayout = () => (
             sourceCode="address.codeCity"
             sourceName="address.city"   
         />
-        <TextField label="MVA Code" 
+        <TextField 
             // source="orgId.orgNumber" 
-            source="org_nr" 
+            source="orgId.orgNumber" 
         />
         <Stack direction="row" gap={1} width="100%">
             <DataContatctIcon />
@@ -65,8 +65,8 @@ export const BuyerDetailShowLayout = () => (
         </Stack>
         {/* <Stack direction="row" gap={1} width="100%"> */}
             {/* <div><b>Dodawać?</b></div> */}
-            <TextField label="Full Name" source="fullName" />
-            <TextField label="email" 
+            <TextField  source="personName" />
+            <TextField  
                 // source="orgId.orgNumber" 
                 source="email"  
                 />

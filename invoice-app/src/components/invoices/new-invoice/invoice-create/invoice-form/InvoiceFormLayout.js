@@ -47,8 +47,9 @@ export const InvoiceFormLayout = (props) => {
             {props.children? (props.children) : null }
                 {/* <SpanningSalesTable /> */}
             </Grid>
-            <AdditionalOptions moreDetailEHF={moreDetailEHF} >
-            <FormControlLabel
+            {/* <AdditionalOptions moreDetailEHF={moreDetailEHF} > */}
+
+            {/* <FormControlLabel
                 label="Invoice EHF"
                 control={
                     <Checkbox {...EHFCheckbox.field}
@@ -58,9 +59,10 @@ export const InvoiceFormLayout = (props) => {
                     }}
                     checked={EHFCheckbox.field.value}
                     />}
-                    />
-            </AdditionalOptions> 
-                    <CheckboxText />
+            /> */}
+
+            {/* </AdditionalOptions>  */}
+                    {/* <CheckboxText /> */}
         </Grid>
     ) ; 
 };

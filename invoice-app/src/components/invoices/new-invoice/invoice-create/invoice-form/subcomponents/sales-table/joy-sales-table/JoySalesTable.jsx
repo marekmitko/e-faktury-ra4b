@@ -7,6 +7,7 @@ import { EnhancedTableHead } from "./EnhancedTableHead";
 import { FieldTitle } from "react-admin";
 import EnhancedRow from "./EnhancedRow";
 import Sheet from "@mui/joy/Sheet";
+import JoyInputBox from "../spanning-sales-table/item-sales-row/JoyInputBox";
 
 
 
@@ -88,6 +89,16 @@ console.log("usefxTable", usefxTable);
                         );
                         })} */}
             <TableRow>
+                {/* <JoyInputBox 
+                    update={null} myField={null} entryPriceIsGross={null}
+                    setValue={null} control={null} 
+                    arrayItemIdx={`salesTableList.${1}`} idx={1} 
+                    salesListLength={null}
+                    salesItemIndex={null}
+                    // eventsOnItem={() => append(createNewItemObj(obj, fields.length))} 
+                    eventsOnItem={null} 
+                
+                /> */}
                 <TableCell></TableCell>
                 <TableCell></TableCell>
                 <TableCell align="right">

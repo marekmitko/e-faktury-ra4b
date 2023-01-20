@@ -40,6 +40,8 @@ interface Data {
     vat: number;
     quantity: number;
     price: number;
+    net_sum: number;
+    gross_sum: number;
     item_id: string;
     item_idx: number;
   }
@@ -82,8 +84,20 @@ export const headCells: readonly HeadCell[] = [
       id: "price",
       numeric: true,
       disablePadding: false,
-      label: "Price (PLN)"
-    }
+      label: "Price"
+    },
+    {
+      id: "net_sum",
+      numeric: true,
+      disablePadding: false,
+      label: "Net"
+    },
+    {
+      id: "gross_sum",
+      numeric: true,
+      disablePadding: false,
+      label: "Gross"
+    } 
   ];
 
 

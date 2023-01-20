@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo} from "react";
-import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack, TextField} from "@mui/material";
-// import TextField from "@mui/material/TextField";
+import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack} from "@mui/material";
+import TextField from "@mui/material/TextField";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import QuestionMark from "@mui/icons-material/QuestionMark";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -12,6 +12,26 @@ import { SetDependentValue } from "./setDependentValue"
 import { PriceInput } from "./input-box-component/PriceInput";
 import { MySelectInput } from "./input-box-component/MySelectInput";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+
+
+
+
+
+import JoyTextField from '@mui/joy/TextField';
+import JoySelect from '@mui/joy/Select';
+import JoyOption from '@mui/joy/Option';
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const optionCurrencies = [
@@ -38,15 +58,13 @@ const optionCurrencies = [
 // Obcaaj https://codesandbox.io/s/react-hook-form-mui-forked-0xkhyk
 
 function setGrossPriceItem(netPriceItem, taxValue){
-    // if(netPriceItem)
     return (netPriceItem*taxValue)/100;
 }
 function setNetPriceItem(grossPriceInput, taxValue){
-    // if(+grossPriceInput)
     return (+grossPriceInput / (+taxValue)) * 100 ;
 }
 
-export default function InputBox ({ 
+export default function JoyInputBox ({ 
     // addItemOnFocusin, 
     ButtonAddItem,
     eventsOnItem, salesListLength, salesItemIndex, children, update, control, arrayItemIdx, idx, entryPriceIsGross, setValue, myField}) {
@@ -99,15 +117,18 @@ export default function InputBox ({
                 ) { return eventsOnItem();}
             }
 
+
+
+
+            // console.log(salesItemName, salesItemIndex);
+
+            
+
         return (
             <>
             <Box  
-                // onFocus={(event) => addItemOnFocusin(event)}
                 className="App"
                 sx={{
-                    mt: 0,
-                    pt: 0,
-                    pb: 1,
                     display: "grid",
                     gridTemplateColumns: "50px auto 150px 70px 60px 125px 125px 125px 50px ",
                     gridGap: 10,
@@ -135,48 +156,41 @@ export default function InputBox ({
                     />
                     }   
                 </Stack>
-                <IconTextField 
+
+{/* JoyTextField  */}
+                <JoyTextField 
                     onFocus={(event) => addItemOnFocusin(event)}
                     {...salesItemName.field}
                     // label="Product trade name" 
-                    label="Przedmiot sprzedaży" 
+                    color="primary" variant="plain" placeholder="Wprowadź produkt"
                     // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
                 />
+
+
+
                 {/* <MySelectInput objController={typeItem} slectOptions={optionCurrencies} labelName="currencie" /> */}
+                
+    <JoySelect defaultValue="dog">
+      <JoyOption value="dog">Dog</JoyOption>
+      <JoyOption value="cat">Cat</JoyOption >
+    </JoySelect>
+                
                 <SelectSmallType {...typeItem.field} field={typeItem.field} />
                 <SelectSmallTax {...taxItem.field} field={taxItem.field} />
-
-                <IconTextNumber 
-                    {...qtyItem.field}
-                    // label="Quantity" 
-                    label="Ilość" 
-                    objController={qtyItem}
-                    // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
-                />
-
-
+                <IconTextNumber  {...qtyItem.field}  label="Quantity"  />
 {/* New concept */}
-                <PriceInput objController={netItem}   
-                // label="Net Price"
-                label="Cena netto"
+                <PriceInput objController={netItem}   label="Net Price"
                     sx={{ display: entryPriceIsGross ? "none" : "block" }}
-                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: "1rem" }} />}
-                    // iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: "1rem"  }} />}
+                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
+                    iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
                 />
-                <PriceInput objController={grossItem}   
-                // label="Gross Price"
-                label="Cena brutto"
+                <PriceInput objController={grossItem}   label="Gross Price"
                     sx={{ display: entryPriceIsGross ? "block" : "none" }}
-                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: "1rem" }} />}
-                    // iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: "1rem"  }} />}
+                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: 18 }} />}
+                    iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: 18 }} />}
                 />
 {/* {netSum} */}
-                <div align="right" style={{ 
-                        // marginTop: "auto", marginBottom: 0 
-                        // borderBottom: '1px', border: "1px solid black"
-                    }}
-                >{ 
-                    entryPriceIsGross ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
+                <div align="right">{ entryPriceIsGross    ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
                                             : (+netItem.field.value * +qtyItem.field.value).toFixed(2) }</div>
 {/* {grossSum} */}
                 <div align="right">{ entryPriceIsGross    ? (+grossItem.field.value * +qtyItem.field.value).toFixed(2) 
@@ -193,13 +207,35 @@ export default function InputBox ({
 
 
 
+const IconTextNumber = ( {inputRef, iconStart, iconEnd, InputProps, ...props }) => {
+
+
+        return (
+            <NumberInput 
+            {...props}
+            helperText={false}
+            variant="standard"
+            size="small"
+            InputProps={{
+                ...InputProps,
+                startAdornment: iconStart ? (
+                    <InputAdornment    position="start">{iconStart}</InputAdornment>
+                    ) : null,
+                    endAdornment: iconEnd ? (
+                        <InputAdornment    position="end">{iconEnd}</InputAdornment>
+                        ) : null
+                    }}
+                // defaultValue={10}
+            />
+        );
+    };
 
 const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
         return (
             <TextField 
                 {...props}
                 variant="standard"
-                // size="small"
+                size="small"
                 // helperText={false}
                 InputProps={{
                     ...InputProps,
@@ -210,38 +246,6 @@ const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
                         <InputAdornment    position="end">{iconEnd}</InputAdornment>
                     ) : null
                 }}
-            />
-        );
-    };
-
-const IconTextNumber = ({ iconStart, iconEnd, InputProps, objController, ...props }) => {
-        return (
-            <TextField 
-                {...props}
-                variant="standard"
-                type="number"
-                // size="small"
-                // helperText={false}
-
-                InputProps={{
-                    inputMode: 'numeric',
-                    pattern: '[0-9]',
-                    ...InputProps,
-                    startAdornment: iconStart ? (
-                        <InputAdornment    position="start">{iconStart}</InputAdornment>
-                    ) : null,
-                    endAdornment: iconEnd ? (
-                        <InputAdornment    position="end">{iconEnd}</InputAdornment>
-                    ) : null
-                }}
-                onChange={ event => {
-                    var value = event.target.value.replace(/[^0-9\,\.]/ig,'');
-                    value = value.replace(/[,]/gi,'.');
-                    objController.field.onChange(value);
-                    // console.log('valuePrice', value);
-                    }
-                } // send value to hook form 
-            
             />
         );
     };
@@ -251,28 +255,54 @@ const IconTextNumber = ({ iconStart, iconEnd, InputProps, objController, ...prop
 
 
 
+// const SelectItemType = ({...props}) => (
+//     <Select size="small" variant="standard" label="Type" >
+//         <MenuItem value={'Usługi'}>Usługi</MenuItem>
+//         <MenuItem value={'Towar'}>Towar</MenuItem>
+//         <MenuItem value={'Wynajem'}>Wynajem</MenuItem>
+//         <MenuItem value={'Prowizja'}>Prowizja</MenuItem>
+//         <MenuItem value={'Sprzedaż'}>Sprzedaż</MenuItem>
+//         <MenuItem value={'Sprzedaż 0% MVA'}>Sprzedaż 0% MVA</MenuItem>
+//         <MenuItem value={"Zwolniona z MVA"}>Zwolniona z MVA</MenuItem>
+//     </Select>
+// );
+
+// const SelectItemTax = () => (
+//         <Select  
+//             sx={{ 
+//                 // minWidth: 80, 
+//                 p: 0  }}
+//             size="small" variant="standard"  
+//             // {...field}
+//             label="VAT"
+//             >
+//             <MenuItem value={125}>25%</MenuItem>
+//             <MenuItem value={115}>15%</MenuItem>
+//             <MenuItem value={112}>12%</MenuItem>
+//             <MenuItem value={106}>6%</MenuItem>
+//             <MenuItem value={100}>0</MenuItem>
+//         </Select>
+// );
+
+
+
+
 function SelectSmallType({field, ...props}) {
 
         return (
         <FormControl 
         {...props}
-        sx={{ minWidth: 120 }}
-        >
-            <InputLabel 
-// MASAKRA NO NIEWIERZ
-            id="demo-simple-select-autowidth-label"
-            variant="standard" 
-            >Typ</InputLabel>
+        size="small">
+            <InputLabel id="demo-select-small-type">Item Type</InputLabel>
             <Select
-                labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select-autowidth"
-                value={field.value}
-                label="Item Type"
-                onChange={field.onChange}
-                variant="standard"
-                autoWidth
+            labelId="demo-select-small-type"
+            id="demo-select-small-type"
+            value={field.value}
+            label="Item Type"
+            onChange={field.onChange}
+            variant="standard"
             >
-                <MenuItem value=""><em>None</em></MenuItem>
+            <MenuItem value=""><em>None</em></MenuItem>
                 <MenuItem value={'Usługi'}>Usługi</MenuItem>
                 <MenuItem value={'Towar'}>Towar</MenuItem>
                 <MenuItem value={'Wynajem'}>Wynajem</MenuItem>
@@ -289,21 +319,16 @@ function SelectSmallTax({field, ...props}) {
         return (
         <FormControl 
         {...props}
-        sx={{ minWidth: 25 }}
-        // size="small"
-        >
-            <InputLabel
-                id="demo-simple-select-autowidth-label"
-                variant="standard" 
-            >VAT</InputLabel>
+        // sx={{ m: 1, minWidth: 120 }}
+        size="small">
+            <InputLabel id="demo-select-small-tax">Item Tax</InputLabel>
             <Select
-                labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select-autowidth-tax"
-                value={field.value}
-                label="VAT"
-                onChange={field.onChange}
-                variant="standard"
-                autoWidth
+            labelId="demo-select-small-tax"
+            id="demo-select-small-tax"
+            value={field.value}
+            label="Item Tax"
+            onChange={field.onChange}
+            variant="standard"
             >
                 <MenuItem value=""><em>None</em></MenuItem>
                 <MenuItem value={125}>25%</MenuItem>

@@ -12,7 +12,6 @@ export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...p
             {...props}
                 // helperText={false}
             variant="standard"
-            size="small"
             type="number"
             InputProps={{
                 inputMode: 'numeric',
@@ -25,14 +24,11 @@ export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...p
                     <InputAdornment    position="end">{iconEnd}</InputAdornment>
                 ) : null
             }}
-
             onChange={ event => {
                 var value = event.target.value.replace(/[^0-9\,\.]/ig,'');
                 value = value.replace(/[,]/gi,'.');
                 objController.field.onChange(value);
-                // console.log('valuePrice', value);
-                }
-            } // send value to hook form 
+            }} // send value to hook form 
             onBlur={objController.field.onBlur} // notify when input is touched/blur
             value={objController.field.value} // input value
             name={objController.field.name} // send down the input name

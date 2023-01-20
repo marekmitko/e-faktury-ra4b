@@ -31,7 +31,8 @@ export const pl = {
                 },
                 contact: {
                     email: 'Adres email',
-                    phoneNumber: 'Numer telefonu'
+                    phoneNumber: 'Numer telefonu',
+                    personName: 'Przedstawiciel'
                 }
             },
         },
@@ -54,7 +55,8 @@ export const pl = {
                 },
                 contact: {
                     email: 'Adres email',
-                    phoneNumber: 'Numer telefonu'
+                    phoneNumber: 'Numer telefonu',
+                    personName: 'Przedstawiciel'
                 }
             },
         }

@@ -15,7 +15,6 @@ import { PriceDependentInput } from './change-input-test/PriceDependentInput';
 import OptionLine from '../option-line/OptionLine';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import SwitchNetOrGross from './spanning-sales-table/sales-table-panel/SwitchNetOrGross';
-import JoyInputBox from './spanning-sales-table/item-sales-row/JoyInputBox';
 
 /**DEFAULT VALUES FOR THE SpanningSalesTable */
 function setGrosssPriceSalesItem(netPrice, taxValue) {
@@ -89,6 +88,21 @@ export default function SpanningSalesTable() {
         control, // control props comes from useForm (optional: if you are using FormContext)
         name: "salesTableList" // unique name for your Field Array
     });
+
+    // // addItemOnFocusin ##############################
+    // const addItemOnFocusin = (salesListLength, slesItemIndex, eventsOnItem) => (event) => {
+    //     // console.log("create");
+    //     if ( salesListLength === slesItemIndex + 1 &&
+    //     !event.currentTarget.contains(event.relatedTarget)
+    //     ) { return eventsOnItem();}
+    // };
+    // const addItemOnFocusin = (salesListLength, slesItemIndex, eventsOnItem) => (event) => {
+    // const addItemOnFocusin = (event) = {
+    //     // console.log("create");
+    //     if ( salesListLength === slesItemIndex + 1 &&
+    //     !event.currentTarget.contains(event.relatedTarget)
+    //     ) { return eventsOnItem();}
+    // };
     
 
 
@@ -147,9 +161,15 @@ export default function SpanningSalesTable() {
                         })}
                     </TableBody>
                     <TableRow><TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}}> 
-                    {/* <div>
-                        <br /> <span className="counter">Render Count: {renderCount}</span>
-                    </div> */}
+                    {/* <IconButton color="primary"  // aria-label="upload picture" component="label"
+                        onClick={() => append(createNewItemObj(obj, fields.length))}
+                    >
+                        <AddCircleRoundedIcon sx={ {ml: "auto", mr: 0,} }   />
+                    </IconButton> */}
+                    <div>
+                    {/* // <input type="button" value="+ADD" onClick={() => append(defaultValuesSalesItem)}    /> */}
+                    <br /> <span className="counter">Render Count: {renderCount}</span>
+                    </div>
                 </TableCell></TableRow>
                     <TableRow>
                         <TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}} />
@@ -161,7 +181,7 @@ export default function SpanningSalesTable() {
                     </TableTotalSum>
                 </Table>
             </TableContainer>
-                        {/* <input type='button' value="▶🚀consol.log(data)" onClick={handleSubmit(onSubmit)}/> */}
+                        <input type='button' value="▶🚀consol.log(data)" onClick={handleSubmit(onSubmit)}/>
         </form>
         </>
     );

@@ -74,6 +74,8 @@ interface Data {
     vat: number;
     quantity: number;
     price: number;
+    gross_sum: number;
+    net_sum: number;
     item_id: string;
     item_idx: number;
   }
@@ -146,8 +148,8 @@ export function EnhancedTableHead(props: EnhancedTableProps) {
 
 
     return (
-    <TableHead >
-        <TableRow  >
+    <TableHead sx={{ width: '100%', px: 0, mx: 0  }} >
+        <TableRow sx={{ width: '100%', px: 0, mx: 0  }} >
         <StyledTableCell padding="checkbox"   
             // sx={{ borderRadius: '25px 0% 0% 0%' }} 
         >
@@ -162,7 +164,7 @@ export function EnhancedTableHead(props: EnhancedTableProps) {
             />
         </StyledTableCell>
         {headCells.map((headCell) => (
-            <StyledTableCell
+            <StyledTableCell 
             // sx={{
             //     fontWeight: "bold",
             //     backgroundColor: 'theme.palette.primary.dark',

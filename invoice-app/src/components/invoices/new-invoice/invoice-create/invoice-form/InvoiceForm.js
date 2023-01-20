@@ -9,6 +9,10 @@ import { JoySalesTable } from './subcomponents/sales-table/joy-sales-table/JoySa
 // import { PostShow } from '../show-test/PostShow';
 import { columns } from './subcomponents/sales-table/joy-sales-table/accessoryJoySalesTable';
 import { invoiceItems } from './subcomponents/sales-table/joy-sales-table/db_invoiceItem';
+import JoyOptionbox from './subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyOptionbox';
+import AdditionalOptions from './subcomponents/invoice-additional-options';
+import { AdditionalBox } from './subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
+import CheckboxText from './checkbox-group-options/CheckboxTest';
 const ResourceName = () => {
     const resource = useResourceContext();
     return <>{resource}</>;
@@ -45,14 +49,20 @@ const InvoiceCreateToolbar = props => (
 export const InvoiceForm = (props) => (
     <SimpleForm   toolbar={<InvoiceCreateToolbar />} >
         <InvoiceFormLayout {...props} >
-        <JoySalesTable
+            <SpanningSalesTable /> 
+            <br/>
+            <AdditionalBox />
+            <br/>
+            <CheckboxText />
+            {/* <JoyOptionbox /> */}
+            {/* <AdditionalOptions/> */}
+            
+        {/* <JoySalesTable
             columns={columns}
             data= {invoiceItems}
-        />
+            /> */}
         <>
-        <SpanningSalesTable />  
         <div>
-        <hr />
         {/* <Label for="tag">Local Address</Label>
                 <Controller
                   name="tag"
@@ -76,7 +86,8 @@ export const InvoiceForm = (props) => (
         </>
 
 
-        </InvoiceFormLayout>     
+        </InvoiceFormLayout>  
+
         
     </SimpleForm>
 )

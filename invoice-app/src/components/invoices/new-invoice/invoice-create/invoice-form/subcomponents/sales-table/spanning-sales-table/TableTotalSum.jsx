@@ -13,9 +13,9 @@ export default function TableTotalSum ({children}){
                     <TableCell colSpan={5} sx={{border: 0}}/>
                     <TableCell colSpan={5} sx={{border: 0}}/>
                     <TableCell align="right"/> 
-                    <TableCell align="right">NET</TableCell>
-                    <TableCell align="right">TAX</TableCell>
-                    <TableCell align="right">GROSS</TableCell>
+                    <TableCell align="right">NETTO</TableCell>
+                    <TableCell align="right">VAT</TableCell>
+                    <TableCell align="right">BRUTTO</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -25,7 +25,7 @@ export default function TableTotalSum ({children}){
                     </TableCell>
                     <TableCell colSpan={5} sx={{border: 0}}/>
                     <TableCell colSpan={5} sx={{border: 0}}/>
-                    <TableCell variant="head" component="th" align="right">Total Sum</TableCell>
+                    <TableCell variant="head" component="th" align="right">RAZEM</TableCell>
                     {children}
                 </TableRow>
             </TableBody>
