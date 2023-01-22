@@ -1,7 +1,7 @@
 import { Card, Grid, Checkbox, FormControlLabel} from '@mui/material';
 import {useRef, useState } from 'react';
 import { useController, useWatch, Controller } from 'react-hook-form';
-import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider, ReferenceInput, TabbedForm } from 'react-admin';
+import { Datagrid, DateField, TextField, Create, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider, ReferenceInput, TabbedForm, SimpleShowLayout } from 'react-admin';
 import Header from './subcomponents/invoice-headers';
 import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard';
 import ClientCard from './subcomponents/personal-cards/client/ClientCard';

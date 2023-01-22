@@ -75,7 +75,7 @@ export default function ClientReferenceAutocompleteInput(props) {
                 fullWidth
                 // onChange={event => db_buyer.company = event.target.value }
                 onChange={(event) => handleBuyerIdChange(event) }  
-                // value={value}
+       
                 optionText={<OptionRenderer   />}
                 optionValue='id' 
                 shouldRenderSuggestions={(val) => { return val.trim().length > 1 }}

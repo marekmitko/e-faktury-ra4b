@@ -1,6 +1,7 @@
 
 import polishMessages from 'ra-language-polish';
 
+
 // https://marmelab.com/react-admin/doc/4.3/TranslationTranslating.html#translating-custom-components
 
 // note i18n_PL
@@ -15,6 +16,9 @@ export const pl = {
             label: {
                 input: {
                     buyerAutocomplete: 'Kupujący',
+                    invoice_no: 'Numer faktury',
+                    created_at: 'Data Wystawienia',
+                    payment_due: 'Termin Płatności',
                 },
                 header: {
                     address: 'Adres',
@@ -51,6 +55,7 @@ export const pl = {
         },
         issuedInvoices_list: {
             name: 'Faktura |||| Faktury',
+            
             fields: {
                 company: 'Nazwa Firmy',
                 fullname: {
