@@ -53,7 +53,7 @@ export const InvoiceForm = (props) => (
             <br/>
             <AdditionalBox />
             <br/>
-            <CheckboxText />
+            {/* <CheckboxText /> */}
             {/* <JoyOptionbox /> */}
             {/* <AdditionalOptions/> */}
             

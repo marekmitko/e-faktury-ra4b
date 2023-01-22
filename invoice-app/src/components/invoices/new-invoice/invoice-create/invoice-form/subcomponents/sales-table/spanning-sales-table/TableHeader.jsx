@@ -60,7 +60,8 @@ export default function TableHeader( {children, enabled, disabled, toggelPrice }
                 <Grid item xs="auto">
                     <StyledTableCellClasses sx={{ minWidth: 250, border: 'none', }} >
                         <Stack justifyContent="flex-start" direction='row' > 
-                            POZYCJA SPRZEDAŻY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {children}
+                            POZYCJA SPRZEDAŻY 
+                            {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {children} */}
                         </Stack>
                     </StyledTableCellClasses>
                 </Grid>
@@ -75,7 +76,8 @@ export default function TableHeader( {children, enabled, disabled, toggelPrice }
                 </Grid>
                 {/* <StyledTableCellClasses  sx={{   border: 'none' }} > */}
                     <td>
-                        <PriceSwitchJoyButton />
+                        {/* <PriceSwitchJoyButton /> */}
+                        {children}
                     </td>
                     {/* {toggelPrice ? 'CENA BRUTTO' : 'CENA NETTO'} */}
                 {/* </StyledTableCellClasses> */}

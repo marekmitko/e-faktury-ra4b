@@ -160,14 +160,14 @@ export default function InputBox ({
                 // label="Net Price"
                 label="Cena netto"
                     sx={{ display: entryPriceIsGross ? "none" : "block" }}
-                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: "1rem" }} />}
+                    // iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: "1rem" }} />}
                     // iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: "1rem"  }} />}
                 />
                 <PriceInput objController={grossItem}   
                 // label="Gross Price"
                 label="Cena brutto"
                     sx={{ display: entryPriceIsGross ? "block" : "none" }}
-                    iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: "1rem" }} />}
+                    // iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: "1rem" }} />}
                     // iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: "1rem"  }} />}
                 />
 {/* {netSum} */}

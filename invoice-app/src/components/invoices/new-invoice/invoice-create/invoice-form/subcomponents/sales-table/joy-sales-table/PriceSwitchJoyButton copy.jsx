@@ -27,40 +27,56 @@ return (
         <FormHelperText sx={{ mt: 0 }}>All languages available.</FormHelperText>
     </Box> */}
     {/* <Tooltip title={{{checked? "Przełącz na brutto" : "Przełącz na netto" }}} > */}
-
-
     <JoyTooltip arrow placement="top" title={checked ? "Przełącz na brutto" : "Przełącz na netto"}>
         <JoySwitch
-        // variant="solid"
-        // color='white'
+        variant="solid"
+        color='primary'
         // color={blue[400]}
         checked={checked}
         onChange={(event) => setChecked(event.target.checked)}
-        variant="outlined"
-        startDecorator={checked ? "BRUTTO" : "NETTO"}
         slotProps={{
-          startDecorator: {
-            sx: {
-              minWidth: 24
+            track: {
+            children: (
+                <React.Fragment>
+                <JoyTypography
+                    component="span"
+                    level="inherit"
+                    sx={{ ml: "5px" }}
+                >
+                    {checked ? (
+                        <span style={{ fontWeight: "550", color: "white" }}>CENA NETTO</span>
+                    ) : (
+                    ""
+                    )}
+                </JoyTypography>
+                <JoyTypography
+                    component="span"
+                    level="inherit"
+                    sx={{ mr: "5px" }}
+                >
+                    {checked ? (
+                    ""
+                    ) : (
+                    <span style={{ fontWeight: "550", color: "white" }}>CENA BRUTTO</span>
+                    )}
+                </JoyTypography>
+                </React.Fragment>
+            )
             }
-          }
         }}
-
-       
         sx={{
             // '--Switch-thumb-size': '27px',
             // '--Switch-track-width': '64px',
-            "--Switch-track-height": "31px",
+            // "--Switch-track-height": "31px",
 
             "--Switch-track-radius": "2px",
-            "--Switch-track-width": "50px",
+            "--Switch-track-width": "115px",
             "--Switch-track-height": "20px",
             "--Switch-gap": "5px",
             "--Switch-thumb-size": "18px",
             "--Switch-thumb-radius": "2px",
             "--Switch-thumb-width": "7px",
-            "--Switch-thumb-offset": "1px",
-            color: '#fff'
+            "--Switch-thumb-offset": "1px"
         }}
         />
     </JoyTooltip>

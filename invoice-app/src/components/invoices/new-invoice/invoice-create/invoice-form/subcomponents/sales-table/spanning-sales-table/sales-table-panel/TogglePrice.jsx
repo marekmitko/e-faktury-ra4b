@@ -11,6 +11,7 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
             width: 30,
             height: 16,
             padding: 0,
+            // color: '#fff',
             display: 'flex',
                     '&:active': {
                     '& .MuiSwitch-thumb': {
@@ -35,6 +36,7 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
             },
             '& .MuiSwitch-thumb': { 
                     boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
+                    // color: 'white',
                     width: 12,
                     height: 12,
                     borderRadius: 6,
@@ -67,12 +69,12 @@ export function TogglePrice({ state, setState}) {
                 {/* <Grid    ><small>START WITH THE PRICE</small></Grid> */}
                 <Grid   container alignItems="center" spacing={1} >
                     <Grid item align="center">
-                        <Typography sx={{ width: "30px",
-                            fontWeight:  state ?  "300" : "500",
+                        <Typography sx={{ width: "30px", color: "#fff", paddingRight: '25px',
+                            // fontWeight:  state ?  "300" : "500",
                             // display: "inline"
                             // textDecoration: state ? "" : "underline",
                         }} >
-                            { state ? <small>NET</small> : "NET" }
+                            { state ? "BRUTTO" : "NETTO" }
                         </Typography></Grid>
                     <Grid item>
                         <CustomSwitch
@@ -81,14 +83,14 @@ export function TogglePrice({ state, setState}) {
                             // value="checkedOption"
                         />
                     </Grid>
-                    <Grid item align="center">
+                    {/* <Grid item align="center">
                         <Typography sx={{ width: "53px",
                             fontWeight:  state ?  "500" : "300",
                             // textDecoration: state ? "underline" : "",
                         }} >
                             { state ? "GROSS" : <small>GROSS</small>}
                         </Typography>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
                         {/* </Stack> */}
             {/* </Grid> */}
