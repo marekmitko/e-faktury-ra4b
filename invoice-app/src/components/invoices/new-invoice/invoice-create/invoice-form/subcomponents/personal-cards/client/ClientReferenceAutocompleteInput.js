@@ -21,7 +21,7 @@ import { ClientCreateButton } from "./create-client-subform/ClientCreateButton";
 
 const db_buyer =  {
     id: "",
-    company: "Test",
+    // company: "Test",
     fullname: "",
     email: "",
     address: {
@@ -88,6 +88,7 @@ export default function ClientReferenceAutocompleteInput(props) {
                 // createLabel="New"
                 // createItemLabel="Add a New Client"
                 matchSuggestion={matchSuggestion}
+                label="myroot.form.label.input.buyerAutocomplete"
             />
         </ReferenceInput>
         {/* <ClientCreateButton onClick={}/> */}
@@ -142,7 +143,7 @@ export const CreateNewClient = ({handleBuyerIdChange, onClose, selectedValue, op
                     {/* <BuyerCard /> */}
                     
                     <BuyerDataFromLayout>
-                        <TextInput default label="Company Name" source="company" fullWidth />
+                        <TextInput default  source="company" fullWidth />
                     </BuyerDataFromLayout >
             
                 </SimpleForm>

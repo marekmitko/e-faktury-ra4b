@@ -3,13 +3,26 @@ import polishMessages from 'ra-language-polish';
 
 // https://marmelab.com/react-admin/doc/4.3/TranslationTranslating.html#translating-custom-components
 
-
+// note i18n_PL
+// infO i18n_PL
 
 export const pl = {
     ...polishMessages,
     myroot: {
         fullname: 'Przedstawiciel',
-        issuer: 'Wystawca'
+        issuer: 'Wystawca',
+        form: {
+            label: {
+                input: {
+                    buyerAutocomplete: 'Kupujący',
+                },
+                header: {
+                    address: 'Adres',
+                    contact: 'Kontakt'
+                }
+            }
+        }
+
     },
     resources: {
         dbclientlist: {
@@ -26,20 +39,20 @@ export const pl = {
                 },
                 address: {
                     street: 'Ulica',
-                    ZIPCode: 'Kod pocztowy',
+                    ZIPCode: 'Kod Pocztowy',
                     city: 'Miasto'
                 },
                 contact: {
-                    email: 'Adres email',
-                    phoneNumber: 'Numer telefonu',
-                    personName: 'Przedstawiciel'
+                    email: 'Adres Email',
+                    phoneNumber: 'Numer Telefonu',
+                    companyRepresentative: 'Przedstawiciel'
                 }
             },
         },
         issuedInvoices_list: {
             name: 'Faktura |||| Faktury',
             fields: {
-                company: 'Nazwa firmy',
+                company: 'Nazwa Firmy',
                 fullname: {
                     surname: 'Imię',
                     forename: 'Nazwisko'
@@ -50,13 +63,13 @@ export const pl = {
                 },
                 address: {
                     street: 'Ulica',
-                    ZIPCode: 'Kod pocztowy',
+                    ZIPCode: 'Kod Pocztowy',
                     city: 'Miasto'
                 },
                 contact: {
-                    email: 'Adres email',
+                    email: 'Adres Email',
                     phoneNumber: 'Numer telefonu',
-                    personName: 'Przedstawiciel'
+                    companyRepresentative: 'Przedstawiciel'
                 }
             },
         }

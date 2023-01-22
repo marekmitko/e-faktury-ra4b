@@ -2,7 +2,7 @@ import norwegianMessages from 'ra-language-norwegian';
 
 // https://marmelab.com/react-admin/doc/4.3/TranslationTranslating.html#translating-custom-components
 
-
+// infO i18n_PL
 
 export const no = {
     ...norwegianMessages

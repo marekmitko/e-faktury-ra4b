@@ -3,7 +3,7 @@ import { blue, blueGrey } from '@mui/material/colors';
 import MailIcon from '@mui/icons-material/MailOutline';
 import DataContatctIcon from '@mui/icons-material/Wysiwyg';
 import { Stack, Typography, Box, Divider, Tooltip } from "@mui/material";
-import { TextField, SimpleShowLayout } from "react-admin";
+import { TextField, SimpleShowLayout, useTranslate } from "react-admin";
 import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
 import { CodeAndNameCityDualField } from '../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
 import SmsFailedOutlinedIcon from '@mui/icons-material/SmsFailedOutlined';
@@ -12,7 +12,9 @@ import SmsFailedOutlinedIcon from '@mui/icons-material/SmsFailedOutlined';
 const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
 
 
-export const SellerDataShowLayout = (props, propTypes) => (
+export const SellerDataShowLayout = (props, propTypes) => {
+    const translate = useTranslate();
+    return(
     <SimpleShowLayout>
         <TextField source="company" />
         <Stack direction="row" gap={1} width="100%">
@@ -29,7 +31,7 @@ export const SellerDataShowLayout = (props, propTypes) => (
             <MailIcon />
             <Box direction="row" gap={1} width="100%">
                 <Typography variant="button" display="block" gutterBottom>
-                    <strong>ADDRESS</strong>
+                    <strong>{translate('myroot.form.label.header.address')}</strong>
                 </Typography>
                 <Divider   flexItem 
                 sx={{
@@ -51,7 +53,7 @@ export const SellerDataShowLayout = (props, propTypes) => (
                         color: blueGrey[800]
                 }}     
                 >
-                    <strong>CONTACT</strong>
+                    <strong>{translate('myroot.form.label.header.contact')}</strong>
                 </Typography>
                 <Divider   flexItem 
                 sx={{
@@ -61,13 +63,11 @@ export const SellerDataShowLayout = (props, propTypes) => (
                 />
                 </Box>
         </Stack>
-        <TextField label="Full Name" source="fullName" />
-        <TextField label="email" 
-                // source="orgId.orgNumber" 
-                source="contact.email"  
-        />
+        <TextField source="contact.companyRepresentative" />
+        <TextField   source="contact.email"   />
     </SimpleShowLayout>
-);
+    );
+};
 
 
 
