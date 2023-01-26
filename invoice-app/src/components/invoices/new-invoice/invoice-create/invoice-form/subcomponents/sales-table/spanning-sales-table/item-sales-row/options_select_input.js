@@ -1,7 +1,23 @@
 // { id: 'placeholder', name: 'Wybierz produkt', value: "placeholder" }, 
 
-
-
+export const taxOptions = [
+    { id: 'placeholder',     name: 'Wybierz VAT',   value: "placeholder"        },   
+    { id: 'Usługi',    value: 125,   name: "25%"        },   
+    { id: 'Coś 1',     value: 115,   name: "15%"        },   
+    { id: 'Coś 2',     value: 112,   name: "12%"        },   
+    { id: 'Coś 3',     value: 106,   name: "6%"        },   
+    { id: 'Coś 4',     value: 100,   name: "0"        }
+];
+export const typeOptions = [
+    { id: 'placeholder',        value: "placeholder",  name: 'Wybierz rodzaj',         },   
+    { id: 'Usługi',             value: 125,   name: 'Usługi',              },   
+    { id: 'Towar',              value: 115,   name: 'Towar',               },   
+    { id: 'Wynajem',            value: 112,   name: 'Wynajem',             },   
+    { id: 'Prowizja',           value: 106,   name: 'Prowizja',            },   
+    { id: 'Sprzedaż',           value: 100,   name: 'Sprzedaż',            },
+    { id: 'Sprzedaż 0% MVA',    value: 100,   name:'Sprzedaż 0% MVA',     },
+    { id: 'Zwolniona z MVA',    value: 100,   name:'Zwolniona z MVA',     }
+];
 export const productOptions = [
     { id: 'placeholder',                                        name: 'Wybierz produkt',                        value: "placeholder"        },   
     { id: 'Catering',                                           name:  'Catering',                                               value: 1   },

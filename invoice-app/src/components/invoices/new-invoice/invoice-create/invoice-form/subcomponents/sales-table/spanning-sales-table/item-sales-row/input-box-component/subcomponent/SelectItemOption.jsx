@@ -1,10 +1,12 @@
 import { useState, useEffect, useMemo} from "react";
 import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack, TextField, Divider} from "@mui/material";
 import { amber } from "@mui/material/colors";
+import { useTranslate } from "react-admin";
 
 
 // function SelectItemOption({field, ...props}) {
-function SelectItemOption({field, options, label, variant, variantLabel, defaultValue, width,...props}) {
+function SelectItemOption({field, options, label, variant, variantLabel, defaultValue, sx,...props}) {
+    const translate = useTranslate();
     
     // https://stackoverflow.com/questions/66722593/how-to-set-defaultvalue-after-some-delay-on-react-select-with-react-hook-form
     // useEffect(() => {
@@ -17,12 +19,11 @@ function SelectItemOption({field, options, label, variant, variantLabel, default
     //     console.log("form_data", form_data);
     // };
     
-    console.log("logValu: ", field.value)
-
+    console.log("selected:", field.value)
     return (
-    <FormControl  {...props} sx={{ width: width? width : "100%" }}  >
-        <InputLabel variantLabel={ variantLabel ? variantLabel : "standard"}  id="demo-simple-select-autowidth-label">
-            {label}
+    <FormControl  {...props} sx={ sx }  >
+        <InputLabel variant={ variantLabel ? variantLabel : "standard"}  id="demo-simple-select-autowidth-label">
+            {translate(label)}
         </InputLabel>
         <Select
             defaultValue={defaultValue ? `${defaultValue}` : null}

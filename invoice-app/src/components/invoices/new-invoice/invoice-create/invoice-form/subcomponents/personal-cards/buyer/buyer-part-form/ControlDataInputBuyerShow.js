@@ -11,6 +11,7 @@ import CreateNewBuyer from './CreateNewBuyer';
 import { BuyerPartInvoiceFormLayout } from './BuyerPartInvoiceFormLayout';
 import { BuyerDetailShowLayout } from './BuyerDetailShowLayout';
 import db_buyer from './db_empty_buyer';
+import { SellerDataShowLayout } from '../../seller/SellerDataShowLayout';
 
 
 
@@ -37,7 +38,7 @@ const BuyerId = ({ id }) => {
             return <Loading />;
         }
         if (error) {
-            return <Error error={error} />;
+            return  <Error error={error} />;
         }
         if (!data) {
             return null;
@@ -59,7 +60,14 @@ db_buyer.id = 1125542;
 export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
     const { data, isLoading, error } = useGetOne(resource, { id });
     if (isLoading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+    if (error) { 
+        return ( <>
+            <p>Coś tu nie gra </p>
+        <RecordContextProvider value={data}>
+            { () => { return (<BuyerDetailShowLayout resource="dbclientlist" id="4a7883fc-6747-42f7-9bf5-35ac07d441ac" />) } }
+        </RecordContextProvider>
+        </>
+    ) };
     return (
         // <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle="Kupujący">
             <RecordContextProvider value={data}>

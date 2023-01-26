@@ -17,6 +17,16 @@ export const pl = {
                 notebox_invoice: 'Wprowadź własne adnotacje...',
             },
             label: {
+                inputbox_itemrow:{
+                    itemNameSelect: 'Wybierz produkt',
+                    itemNameField: 'Nazwa produktu',
+                    taxItem: 'VAT',
+                    typeItem: 'Typ',
+                    qtyItem: 'Ilość',
+                    netItem: 'Cena netto',
+                    grossItem: 'Cena brutto'
+
+                },
                 input: {
                     buyerAutocomplete: 'Kupujący',
                     invoice_no: 'Numer faktury',
