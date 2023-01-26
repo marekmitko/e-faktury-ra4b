@@ -18,7 +18,7 @@ const MyLayout = ( props ) => (
             // notification
         >
           <div>
-                <center><strong>CentralCardHeader</strong></center>
+                {/* <center><strong>CentralCardHeader</strong></center> */}
             </div>
                 {props.children}
             <div>

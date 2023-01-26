@@ -39,7 +39,7 @@ export const InvoiceFormLayout = (props) => {
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
             <Header />
             <SellerCard />
-            <ClientCard />  
+            {/* <ClientCard />   */}
             {/* <Grid item xs={12} >
                 <OptionLine />
             </Grid> */}

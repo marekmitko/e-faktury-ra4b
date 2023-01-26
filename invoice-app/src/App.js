@@ -40,7 +40,7 @@ function App(props) {
         {/* <CssVarsProvider> */}
             <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} list={ListGuesser} />  
             <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
-            <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  />
+            {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
             <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
                 list={ListGuesser} 
                 edit={EditGuesser}   

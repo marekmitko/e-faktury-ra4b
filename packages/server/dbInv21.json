@@ -4950,6 +4950,49 @@
         "email": "",
         "phoneNumber": ""
       }
+    },
+    {
+      "company_name": "Nowy test",
+      "fullname": {
+        "forename": "mARWEK",
+        "surname": "mAREAK"
+      },
+      "orgId": {
+        "MVA": true,
+        "orgNumber": "ASDASDSA"
+      },
+      "address": "DASD",
+      "contact": {
+        "email": "",
+        "phoneNumber": ""
+      },
+      "place": {
+        "ZIPCode": null,
+        "name": "78787",
+        "zip_code": 7758789
+      },
+      "phone": "78",
+      "email": "7878",
+      "id": "AdF9KH1"
+    },
+    {
+      "company_name": "Marek",
+      "fullname": {
+        "forename": "Mitkop",
+        "surname": "Marke"
+      },
+      "orgId": {
+        "MVA": true,
+        "orgNumber": "dadss"
+      },
+      "address": "sad",
+      "place": {
+        "zip_code": 44,
+        "name": "5524"
+      },
+      "email": "gsg",
+      "phone": "sdgs",
+      "id": "xyBOd-u"
     }
   ],
   "dbTEST_client_list": [

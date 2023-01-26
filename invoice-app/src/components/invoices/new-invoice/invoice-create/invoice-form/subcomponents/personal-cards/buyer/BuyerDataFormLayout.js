@@ -36,6 +36,34 @@ NumberInput.defaultProps = {
     margin: "none",
 };
 
+
+
+
+// "id": "2125",
+// "buyer_id": "2125",
+// ?? "user_id": "319",
+// ?? "kunde_nr": "1",
+                            // "company": "firma 1",
+// "address": "Kolorowa",  | address.street
+// "place": "34-567",      | place.zip_code   place.name
+
+
+ // note Omówić różnice  "orgId.orgNumber" "orgId.MVA"
+// "org_nr": "12345698",
+// "mva": "1",
+
+// Oki  "email": "",
+// Oki "phone": "",
+// BUG "fax": "",
+// ?? "main_kunde_nr": "0",
+// ?? "lang": "",
+// ?? "debt": "126188.10",
+// ??"remainder": "0",
+// ??"inkasso": "0",
+// ?? // note "is_company": "1
+
+
+
 export const BuyerDataFromLayout = (props) =>  (
     <>
         {props.children}
@@ -47,16 +75,16 @@ export const BuyerDataFromLayout = (props) =>  (
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />  <strong>ADRES NABYWCY</strong>
         </Stack>
-        <TextInput source="address.street" fullWidth />
-        <CodeAndNameCityDualInput sourceCode="address.ZIPCode" sourceName="address.city"  />
+        <TextInput source="address" fullWidth />
+        <CodeAndNameCityDualInput sourceCode="place.zip_code" sourceName="place.name"  />
         <Stack direction="row" spacing={2} alignItems="center" width="100%">
             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                 <MailOutlineSharpIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
-                <TextInput  source="contact.email" fullWidth />
+                <TextInput  source="email" fullWidth />
             </Stack>
             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                 <LocalPhoneIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
-                <TextInput source="contact.phoneNumber" fullWidth />
+                <TextInput source="phone" fullWidth />
             
             </Stack>
             

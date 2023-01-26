@@ -12,6 +12,14 @@ export const pl = {
     myroot: {
         fullname: 'Przedstawiciel',
         issuer: 'Wystawca',
+        sitebar : {
+            main_menu: {
+                header: {
+                    section_create: 'Dodaj nowy',
+                    section_list: 'Lista'
+                }
+            }
+        },
         form: {
             placeholder: {
                 notebox_invoice: 'Wprowadź własne adnotacje...',

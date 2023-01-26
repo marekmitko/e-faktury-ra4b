@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Menu,   ComponentPropType,   useSidebarState, MenuItemLink } from 'react-admin';
+import { Menu,   ComponentPropType,   useSidebarState, MenuItemLink, useTranslate} from 'react-admin';
 import { CreateSubMenuFragment } from './CreateSubMenuFragment';
 import { DashboardItemToSubMenu } from './DashboardItemToSubMenu';
 import Badge from '@mui/material/Badge';
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
+import Typography from '@mui/material/Typography';
+
 
 
 
@@ -30,7 +32,9 @@ import MarkAsUnreadIcon from '@mui/icons-material/MarkAsUnread';
 
 
 
-export const SidebarTopPartMenu  = ({children}) => (
+export const SidebarTopPartMenu  = ({children}) => {
+    const translate = useTranslate();
+    return  (
     <Menu>
         <Divider sx={{m: 1 }} >
             <small><b><MarkAsUnreadIcon /></b></small> 
@@ -45,14 +49,18 @@ export const SidebarTopPartMenu  = ({children}) => (
         <hr/>
             <DashboardItemToSubMenu  />
         <hr/>
-        <Divider sx={{m: 1}} >
-            <small><b>ADD</b></small> 
+        <Divider sx={{mb: 2, mt: 0, p: 0 }} >
+            <Chip  sx={{marginBottom: "-18px", fontWeight: 500, textTransform: 'uppercase' }} size="small" color="primary" variant='outlined' 
+                label={translate('myroot.sitebar.main_menu.header.section_create')} 
+            />
         </Divider>
         <CreateSubMenuFragment/>
-        <Divider sx={{m: 1 }} >
-            <small><b>LIST</b></small> 
+        <Divider sx={{mb: 2, mt: 0, p: 0 }} >
+            <Chip  sx={{marginBottom: "-18px", fontWeight: 500, textTransform: 'uppercase' }} size="small" color="primary" variant='outlined' 
+                    label={translate('myroot.sitebar.main_menu.header.section_list')} 
+                />
         </Divider>
         {children}
     </Menu>  
 );
-
+        };
