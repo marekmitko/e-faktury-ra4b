@@ -50,7 +50,7 @@ export const InvoiceForm = (props) => (
     <SimpleForm   toolbar={<InvoiceCreateToolbar />} >
         <InvoiceFormLayout {...props} >
             <SpanningSalesTable /> 
-            <br/>
+        
             <AdditionalBox />
             <br/>
             {/* <CheckboxText /> */}

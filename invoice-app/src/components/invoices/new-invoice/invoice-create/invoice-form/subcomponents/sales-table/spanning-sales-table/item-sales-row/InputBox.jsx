@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo} from "react";
-import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack, TextField} from "@mui/material";
+import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack, TextField, Divider} from "@mui/material";
 // import TextField from "@mui/material/TextField";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import QuestionMark from "@mui/icons-material/QuestionMark";
@@ -7,33 +7,15 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import Box from "@mui/material/Box";
 import { Controller, useController, setValue, useWatch} from "react-hook-form";
-import { NumberInput } from "react-admin";
+import { AutocompleteInput, NumberInput, ReferenceInput } from "react-admin";
 import { SetDependentValue } from "./setDependentValue"
 import { PriceInput } from "./input-box-component/PriceInput";
 import { MySelectInput } from "./input-box-component/MySelectInput";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-
-
-const optionCurrencies = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
-  ];
-
-
+import AutoItemCategoryInput from "./input-box-component/subcomponent/AutoItemCategoryInput";
+import SelectItemOption from "./input-box-component/subcomponent/SelectItemOption";
+import { productOptions }  from './options_select_input';
+import { TextInputItem } from "./input-box-component/subcomponent/TextInputItem";
 
 // Obcaaj https://codesandbox.io/s/react-hook-form-mui-forked-0xkhyk
 
@@ -57,6 +39,7 @@ export default function InputBox ({
     const netItem = useController({ name: `${arrayItemIdx}.item_${idx}_netPrice`, control, defaultValue: "", });
     const grossItem = useController({ name: `${arrayItemIdx}.item_${idx}_grossPrice`, control, defaultValue: "", });
     const typeItem = useController({ name: `${arrayItemIdx}.item_${idx}_typeItem`, control, defaultValue: "", });
+    const categoryItem = useController({ name: `${arrayItemIdx}.item_${idx}categoryItem`, control, defaultValue: "", });
 
     const netPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_netPrice` });
     const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_grossPrice` });
@@ -83,14 +66,7 @@ export default function InputBox ({
                 // }, [ grossPriceInput, taxValueInput]);
             }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
 
-
-
-
-
-
-
-
-        // // addItemOnFocusin ##############################
+     // addItemOnFocusin ##############################
             function addItemOnFocusin(event) {
                 // console.log("create");
                 console.log("createdsadssdsd");
@@ -126,23 +102,24 @@ export default function InputBox ({
                         {/* <ButtonAddItem />  */}
                         <AddCircleRoundedIcon sx={ {ml: "auto", mr: 0,} }   />
                     </IconButton>
-
-
                     :
                     <Chip label={`${++idx}`} size="normal" color="primary" variant="outlined" 
                         sx={{ ml: "auto", mr: 0, border: "none", fontSize: '1em', fontWeight: 500, textAlign: 'right'  }}
                         // clickable
                     />
                     }   
+
                 </Stack>
-                <IconTextField 
-                    onFocus={(event) => addItemOnFocusin(event)}
-                    {...salesItemName.field}
-                    // label="Product trade name" 
-                    label="Przedmiot sprzedaży" 
-                    // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
-                />
-                {/* <MySelectInput objController={typeItem} slectOptions={optionCurrencies} labelName="currencie" /> */}
+                <Stack direction="row" spacing={0} alignItems="flex-start" sx={{ paddingTop: 0, marginTop: '-15px', width: '100%' }}
+                        // divider={<Divider orientation="vertical" flexItem />}
+                >
+                    <SelectItemOption {...categoryItem.field} field={categoryItem.field} variantLabel="standard"
+                        width="40%" defaultValue="placeholder" options={productOptions} label="categoryItem" variant="standard" 
+                    />
+                    <TextInputItem {...salesItemName.field} onFocus={(event) => addItemOnFocusin(event)}  
+                        width="60%" label="Przedmiot sprzedaży"  // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
+                    />
+                </Stack>
                 <SelectSmallType {...typeItem.field} field={typeItem.field} />
                 <SelectSmallTax {...taxItem.field} field={taxItem.field} />
 
@@ -152,7 +129,7 @@ export default function InputBox ({
                     label="Ilość" 
                     objController={qtyItem}
                     // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
-                />
+                    />
 
 
 {/* New concept */}
@@ -194,9 +171,9 @@ export default function InputBox ({
 
 
 
-const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
+const IconTextField = ({ iconStart, iconEnd, InputProps, width, ...props }) => {
         return (
-            <TextField 
+            <TextField sx={{ width: width? width : "100%" }}
                 {...props}
                 variant="standard"
                 // size="small"
@@ -259,7 +236,7 @@ function SelectSmallType({field, ...props}) {
         sx={{ minWidth: 120 }}
         >
             <InputLabel 
-// MASAKRA NO NIEWIERZ
+// MASAKRA NO NIEWIERZE
             id="demo-simple-select-autowidth-label"
             variant="standard" 
             >Typ</InputLabel>

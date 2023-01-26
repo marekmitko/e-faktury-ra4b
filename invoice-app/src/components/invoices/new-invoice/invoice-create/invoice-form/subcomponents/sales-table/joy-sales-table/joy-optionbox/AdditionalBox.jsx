@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRecordContext, Edit, SimpleForm, TextInput, NumberInput, TextField } from 'react-admin'
-import { Card, Stack, Grid } from '@mui/material';
+import { Card, Stack, Grid, Paper, TableContainer } from '@mui/material';
 // import { OptionInputBox } from './OptionInputBox';
 // import { LogotypeItem } from './LogotypeItem';
 // import { flexbox } from '@mui/system';
@@ -14,25 +14,24 @@ import JoyOptionbox from './JoyOptionbox';
 
 // *see <NewInvoiceHeader />
 export const AdditionalBox = (props) => (
+    
+    <Card    sx={{  mt: 1 }} >
+    <Sheet
+        variant="plain"
+        sx={{
+            p: 2,
+                //  bgcolor: "background.body",
+                borderRadius: "sm",
+                // width: 360,
 
-<Sheet
-                    variant="outlined"
-                    sx={{
-                         p: 2,
-                         bgcolor: "background.body",
-                         borderRadius: "sm",
-                         // width: 360,
-
-                         maxWidth: "100%",
-                         display: "flex"
-                         // justifyContent: ""
-                         // flexDirection: "column",
-                         // justifyContent: "flex-start",
-                         // alignContent: "flex-start"
-                    }}
-               >
-
-
+                maxWidth: "100%",
+                display: "flex"
+                // justifyContent: ""
+                // flexDirection: "column",
+                // justifyContent: "flex-start",
+                // alignContent: "flex-start"
+        }}
+    > 
 
 
     <Grid item xs={12} >
@@ -45,7 +44,7 @@ export const AdditionalBox = (props) => (
                     </OptionInputBox>
                     <div>
                     {props.moreDetailEHF && ( 
-                // <div>
+                        // <div>
                 //     <label> Wystawca: </label>
                 //     <input type="text" 
                 //     // {...register("Interests")}
@@ -65,8 +64,10 @@ export const AdditionalBox = (props) => (
             </Grid>
         </Grid>
     </Grid>
-        
+
                 </Sheet>
+                    </Card>
+
 );
 
 export default AdditionalBox; 

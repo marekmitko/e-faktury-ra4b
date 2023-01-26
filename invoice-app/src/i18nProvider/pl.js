@@ -13,6 +13,9 @@ export const pl = {
         fullname: 'Przedstawiciel',
         issuer: 'Wystawca',
         form: {
+            placeholder: {
+                notebox_invoice: 'Wprowadź własne adnotacje...',
+            },
             label: {
                 input: {
                     buyerAutocomplete: 'Kupujący',
@@ -20,9 +23,17 @@ export const pl = {
                     created_at: 'Data Wystawienia',
                     payment_due: 'Termin Płatności',
                 },
+                checkbox: {
+                    send_invoice: 'Wyślij',
+                    payment_invoice: 'Forma płatności',
+                },
                 header: {
                     address: 'Adres',
-                    contact: 'Kontakt'
+                    contact: 'Kontakt',
+                    additional_note: 'Uwagi do faktury',
+                    optionbox_invoice: 'Opcje dodatkowe',
+                    payment_channel: 'Forma płatności',
+                    send_invoice: 'Prześlij dokument'
                 }
             }
         }

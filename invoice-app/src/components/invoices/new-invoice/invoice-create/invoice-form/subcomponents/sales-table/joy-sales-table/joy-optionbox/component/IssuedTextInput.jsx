@@ -12,8 +12,10 @@ export default function IssuedTextInput() {
     <Stack direction="column" spacing={0}>
       <TextField
         // disabled
+        variant="plain"
+        color="info"
         label=" "
-        placeholder="Wystawca"
+        placeholder="Aleksander Mariański"
         startDecorator={<PersonRoundedIcon />}
         endDecorator={
           <Chip size="sm" variant="solid" color="primary">
@@ -24,10 +26,10 @@ export default function IssuedTextInput() {
       <TextField
         // disabled
         // sx={{ backgroundColor: "white" }}
+        placeholder="Aleksander Mariański"
         color="primary"
         variant="soft"
         label=" "
-        placeholder="Odbiorca"
         // startDecorator={<EditIcon />}
         startDecorator={<People />}
         endDecorator={<CheckIcon />}

@@ -113,7 +113,7 @@ export default function SpanningSalesTable() {
     return (
         <>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} >
                 {/* <OptionLine> */}
                     {/* <SalesTableToolbar    {...{  entryPriceIsGross, setEntryPriceOnGross }}  />  */}
                 {/* </OptionLine> */}

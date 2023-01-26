@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Resource, ListGuesser, ShowGuesser, EditGuesser, CustomRoutes } from 'react-admin';
+import { Resource, 
+        ListGuesser, ShowGuesser, EditGuesser, 
+        CustomRoutes, 
+} from 'react-admin';
 import { Route } from 'react-router-dom';
 import { i18nProvider } from './i18nProvider/i18nProvider';
 
@@ -11,6 +14,7 @@ import httpClient from './config/providers/httpClient';
 
 import invoices from './components/invoices';
 import clients from "./components/clients";
+import salesitem from "./components/sale-item";
 import MyAdmin from "./components/admin"
 import MyProfile  from './components/admin/users';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -34,13 +38,27 @@ function App(props) {
         i18nProvider={i18nProvider}
         > 
         {/* <CssVarsProvider> */}
-            <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} />  
+            <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} list={ListGuesser} />  
             <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
-            <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/>
+            <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  />
+            <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
+                list={ListGuesser} 
+                edit={EditGuesser}   
+                show={ShowGuesser}   
+            />
+            <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
+                list={ListGuesser} 
+                edit={EditGuesser}   
+                show={ShowGuesser}   
+            />
+
+
+            {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
             <CustomRoutes>
                 <Route path="/data_user" element={<MyProfile />}/ >
             </CustomRoutes>
         {/* </CssVarsProvider> */}
+            <hr/>{"asdsad"}
         </MyAdmin>
     );
 }
