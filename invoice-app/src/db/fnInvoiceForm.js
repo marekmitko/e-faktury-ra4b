@@ -1,4 +1,3 @@
-import React from "react";
 
 
 
@@ -16,12 +15,6 @@ export const createPrefixObjectKeys = (prefix) => (source) => {
 
 return Object.fromEntries(prefixedSourceTuples);
 };
-
-// use
-// const prefixObjectShopping = createPrefixObjectKeys('shopping_');
-
-// where x is your object
-// const prefixed = prefixObjectShopping();
 
 
 

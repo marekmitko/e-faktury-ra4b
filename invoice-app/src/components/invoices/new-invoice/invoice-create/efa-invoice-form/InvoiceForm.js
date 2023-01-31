@@ -1,62 +1,23 @@
 import * as React from 'react';
-import { Toolbar, Resource, CreateButton, SaveButton, Datagrid, DateField, TextField, Create, DateInput, SimpleForm, List, Edit, useResourceContext, ResourceContextProvider } from 'react-admin';
 import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
-import { PostEdit } from '../TestGroupFormContext';
-import { Stack } from '@mui/material';
-import LatLngInput from '../special-buttons/LatLngInput';
-import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
-import { JoySalesTable } from '../invoice-form/subcomponents/sales-table/joy-sales-table/JoySalesTable';
-// import { PostShow } from '../show-test/PostShow';
-import { columns } from '../invoice-form/subcomponents/sales-table/joy-sales-table/accessoryJoySalesTable';
-import { invoiceItems } from '../invoice-form/subcomponents/sales-table/joy-sales-table/db_invoiceItem';
-import JoyOptionbox from '../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyOptionbox';
-import AdditionalOptions from '../invoice-form/subcomponents/invoice-additional-options';
 import { AdditionalBox } from '../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
-import CheckboxText from '../invoice-form/checkbox-group-options/CheckboxTest';
-import { useForm, FormProvider, useFormContext, useFormState } from "react-hook-form";
+import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
-import { ShowTestInvoice } from './efa-invoice-show/ShowTestInvoice';
-import { createPrefixObjectKeys } from '../../../../../db/transform/fnInvoiceForm';
-
-
-const user = {
-    "id": "user_123",
-    "user_company": "Efremtid sp. zoo",
-    "user_firstname": "Aleksander",
-    "user_lastname": "Mariański",
-    "user_street": "Widawska 128d",
-    "user_place": "Wrocław",
-    "user_zip_code": 44140,
-    "user_email": "aleksander@marianski.com",
-};
-
-{/* DefalutValues */}
-
-const prefixObjectUser = createPrefixObjectKeys('user_');
-const db_user = prefixObjectUser(user);
-// *edu Dopytać o id ????????
-// const invoiceDefaultValue = () => ({ id: uuid(), created_at: new Date(), nb_views: 0 });
-const invoiceDefaultValue = () => ({ created_at: new Date(), nb_views: 0 });
-
-const defaultValueForm = () => ({ ...db_user, ...invoiceDefaultValue });
+import {  SimpleForm,  useResourceContext} from 'react-admin';
+import { defaultValueForm }  from './defaultValuesInvoice';
 
 
 
 
 
 
-
-
-
-
-
-
-const MyComponent = () => (
-    <ResourceContextProvider value="comments">
-        <ResourceName /> {/* renders 'comments' */}
-        ...
-    </ResourceContextProvider>
-);
+// ResourceContextProvider  
+// const MyComponent = () => (
+//     <ResourceContextProvider value="comments">
+//         <ResourceName /> {/* renders 'comments' */}
+//         ...
+//     </ResourceContextProvider>
+// );
 
 
 
@@ -73,15 +34,17 @@ const ResourceName = () => {
 
 
 
-
+// const defaultValue = defaultValueForm;
 
 export const InvoiceForm = (props) => {
 
-
+console.log("defaultValueForm", defaultValueForm);
 
 
     return(
-        <SimpleForm   defaultValues={defaultValueForm} toolbar={<InvoiceCreateToolbar />} >
+        <SimpleForm  
+            defaultValues={defaultValueForm} 
+            toolbar={<InvoiceCreateToolbar />} >
             <InvoiceFormLayout titleForm={<ResourceName />}   >
                 <SpanningSalesTable /> 
             
