@@ -6,7 +6,7 @@ import { BuyerCard } from "./invoice-form/subcomponents/personal-cards/buyer/Buy
 
 import { BuyerCard3 } from "./invoice-form/subcomponents/personal-cards/buyer/BuyerCard3";
 import Header from "./invoice-form/subcomponents/invoice-headers";
-import { InvoiceForm } from "./invoice-form/InvoiceForm";
+import { InvoiceForm } from "./efa-invoice-form/InvoiceForm";
 import { TestGroupFormContext } from "./TestGroupFormContext";
 import { TestGroupTabbedForm } from "./TestGroupTabbedForm";
 

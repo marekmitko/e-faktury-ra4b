@@ -3,9 +3,9 @@ import { useRecordContext, Edit, SimpleForm, DateInput, NumberInput, TextField }
 import { Stack } from '@mui/material';
 import { CompanyLogoAvatar } from '../../../../../../admin/users/subcomponents/CompanyLogoAvatar';
 
-export const LogotypeItem = (props) => (
+export const LogotypeItem = ({titleForm}) => (
     <Stack direction="row" spacing={1} width="100%" alignItems="center" justifyContent="space-around">
-
+        {titleForm}
         {/* <CompanyLogoAvatar /> */}
         {/* <p>Efremitd add lint resource</p> */}
         {/* <TextField source="" defaultValue="Efremtit - add link" /> */}

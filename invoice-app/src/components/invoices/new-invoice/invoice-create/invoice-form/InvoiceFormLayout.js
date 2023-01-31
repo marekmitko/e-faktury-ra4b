@@ -15,6 +15,7 @@ import SpanningSalesTable from './subcomponents/sales-table/SpanningSalesTable';
 import AdditionalOptions from './subcomponents/invoice-additional-options';
 import OptionLine from './subcomponents/option-line/OptionLine';
 import CheckboxText from './checkbox-group-options/CheckboxTest';
+import { BuyerDataFromLayout } from './subcomponents/personal-cards/buyer/BuyerDataFormLayout';
 // import AdditionalOptions from './subcomponents/invoice-additional-options';
 
 const ResourceName = () => {
@@ -37,9 +38,10 @@ export const InvoiceFormLayout = (props) => {
 
     return( 
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
-            <Header />
+            <Header titleForm={props.titleForm }/>
+            
             <SellerCard />
-            {/* <ClientCard />   */}
+            <ClientCard />  
             {/* <Grid item xs={12} >
                 <OptionLine />
             </Grid> */}

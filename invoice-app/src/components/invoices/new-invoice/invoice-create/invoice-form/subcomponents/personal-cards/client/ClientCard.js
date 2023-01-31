@@ -20,7 +20,7 @@ export default function ClientCard(){
         <PersonalDataCard  headerIcon={<BuyerIcon />} headerTitle="Kupujący">
             <Stack direction="row"  spacing={2} width="100%" >
                 <ClientReferenceAutocompleteInput 
-                    source="buyer_id" reference="dbclientlist" 
+                    source="buyer_id" reference="buyersEfaktury" 
                     handleBuyerIdChange={setValueBuyerId}
                     // enableGetChoices={({ q }) =>  q.length ? (q.length >= 3) : null}
                     />
@@ -28,7 +28,7 @@ export default function ClientCard(){
                     <ClientCreateButton   /> 
                 </Stack>
             </Stack>
-            <ClientDataAutomaticDisplay resourceBuyer="dbclientlist" buyerId={valueBuyerId} />
+            <ClientDataAutomaticDisplay resourceBuyer="buyersEfaktury" buyerId={valueBuyerId} />
 
             {/* <CustomerSubForm /> */}
             {/* <SimpleDialogDemo /> */}

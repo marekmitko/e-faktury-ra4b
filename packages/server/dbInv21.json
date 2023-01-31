@@ -1779,6 +1779,62 @@
       "payment_due": "2023-02-09T19:05:59.712Z",
       "buyer_id": "2Dg0e_S",
       "id": 133
+    },
+    {
+      "TestSTContext": "",
+      "invoiceEHF": false,
+      "invoice_no": "00000",
+      "created_at": "2023-01-30T16:00:36.166Z",
+      "payment_due": "2023-02-13T16:00:36.166Z",
+      "buyer_id": "2Dg0e_S",
+      "mva": false,
+      "org_nr": "",
+      "address": "",
+      "zip_code": null,
+      "place": "",
+      "forename": "",
+      "surname": "",
+      "email": "",
+      "phone": "",
+      "id": 134
+    },
+    {
+      "invoiceEHF": false,
+      "invoice_no": "00000",
+      "created_at": "2023-01-30T16:31:44.447Z",
+      "payment_due": "2023-02-13T16:31:44.447Z",
+      "buyer_id": "0bc002b3-402d-4f2f-b938-d737a6a48e67",
+      "mva": false,
+      "org_nr": "",
+      "address": "das",
+      "zip_code": null,
+      "place": "",
+      "forename": "",
+      "surname": "",
+      "email": "",
+      "phone": "",
+      "TestSTContext": "",
+      "notify": true,
+      "id": 135
+    },
+    {
+      "invoiceEHF": false,
+      "invoice_no": "00000",
+      "created_at": "2023-01-30T16:35:01.567Z",
+      "payment_due": "2023-02-13T16:35:01.567Z",
+      "buyer_id": "",
+      "TestSTContext": "TEST 17.35",
+      "mva": false,
+      "org_nr": "",
+      "address": "",
+      "zip_code": null,
+      "place": "",
+      "forename": "",
+      "surname": "",
+      "email": "",
+      "phone": "",
+      "notify": true,
+      "id": 136
     }
   ],
   "tradePartners_list": [
@@ -4361,40 +4417,18 @@
   ],
   "data_user": [
     {
-      "id": "user_123",
-      "company": "Efremtid sp. zoo",
-      "fullName": "Aleksander Mariański",
-      "fullname": {
-        "forename": "Aleksander",
-        "surname": "Mariański"
-      },
-      "nip": "8971722740",
-      "address_id": "addres_123",
-      "address": {
-        "id": "addres_123dsadsa",
-        "street": "Widawska 128d",
-        "city": "Wrocław",
-        "ZIPCode": 44140
-      },
-      "email": "aleksander@marianski.com",
-      "contact": {
-        "email": "aleksander@marianski.com",
-        "telephoneNumber": "5858585",
-        "faxNumber": "44475757575",
-        "phoneNumber": "500100441"
-      },
-      "orgId": {
-        "orgNumber": "15032603596",
-        "mva": "true",
-        "MVA": false
-      },
-      "bank_account_number": "15114020040000320263908865",
-      "bank_name": "mBankS",
-      "nickname": "Olek",
-      "user": {
-        "type": "admin"
-      }
-    }
+        "id": "user_123",
+        "user_company": "Efremtid sp. zoo",
+        "user_firstname": "Aleksander",
+        "user_lastname": "Mariański",
+        "user_address": "Widawska 128d",
+        "user_place": "Wrocław",
+        "user_zip_code": 44140,
+        "user_email": "aleksander@marianski.com",
+        "user_phone": "500100441",
+        "user_org_nr": 15032603596,
+        "user_mva": "true",
+      } 
   ],
   "dbclientlist": [
     {
@@ -4777,222 +4811,6 @@
         "email": "Test22 18:35",
         "phoneNumber": "Test22 18:35"
       }
-    },
-    {
-      "id": "xlFNxnr",
-      "company": "Test22 18:35",
-      "fullname": {
-        "forename": "Test22 18:35",
-        "surname": "Test22 18:35"
-      },
-      "email": "",
-      "address": [
-        {
-          "street": "",
-          "city": "",
-          "codeCity": ""
-        }
-      ],
-      "MVA": "",
-      "telephoneNumber": "",
-      "orgId": {
-        "MVA": false,
-        "orgNumber": "Test22 18:35"
-      },
-      "contact": {
-        "email": "Test22 18:35",
-        "phoneNumber": "Test22 18:35"
-      }
-    },
-    {
-      "id": "Hf_mMFC",
-      "company": "Testdsa",
-      "fullname": {
-        "forename": "",
-        "surname": ""
-      },
-      "email": "",
-      "address": [
-        {
-          "street": "",
-          "city": "",
-          "codeCity": ""
-        }
-      ],
-      "MVA": "",
-      "telephoneNumber": "",
-      "orgId": {
-        "MVA": false,
-        "orgNumber": ""
-      },
-      "contact": {
-        "email": "",
-        "phoneNumber": ""
-      }
-    },
-    {
-      "id": "S_V5jH_",
-      "company": "Marek 19-42",
-      "fullname": {
-        "forename": "Marek 19-42",
-        "surname": "Marek 19-42"
-      },
-      "email": "",
-      "address": [
-        {
-          "street": "",
-          "city": "",
-          "codeCity": ""
-        }
-      ],
-      "MVA": "",
-      "telephoneNumber": "",
-      "orgId": {
-        "MVA": false,
-        "orgNumber": "Marek 19-42"
-      },
-      "contact": {
-        "email": "Marek 19-42",
-        "phoneNumber": "Marek 19-42"
-      }
-    },
-    {
-      "company": "Kowalski Company",
-      "fullname": {
-        "forename": "Jan",
-        "surname": "Kowalski"
-      },
-      "orgId": {
-        "MVA": true,
-        "orgNumber": "1111111111111111"
-      },
-      "address": {
-        "street": "Aleja Kasztanowa 125",
-        "ZIPCode": 50320,
-        "city": "Gliwice"
-      },
-      "contact": {
-        "email": "kowalski@mail.pl",
-        "phoneNumber": "500500500"
-      },
-      "id": "TRKXHIU"
-    },
-    {
-      "id": "WVL9UKw",
-      "company": "Nowak Kompany",
-      "fullname": {
-        "forename": "Andrzej",
-        "surname": "Nowak"
-      },
-      "email": "",
-      "address": {
-        "street": "Krucza 135",
-        "city": "Kraków",
-        "codeCity": "5456"
-      },
-      "MVA": "488548488",
-      "telephoneNumber": "",
-      "orgId": {
-        "MVA": true,
-        "orgNumber": "444555"
-      },
-      "contact": {
-        "email": "nowak@mail.com",
-        "phoneNumber": "550055500"
-      }
-    },
-    {
-      "id": "tGyAdrQ",
-      "company": "Test",
-      "fullname": {
-        "forename": "ds",
-        "surname": ""
-      },
-      "email": "",
-      "address": {
-        "street": "",
-        "city": "",
-        "codeCity": "",
-        "ZIPCode": null
-      },
-      "MVA": "",
-      "telephoneNumber": "",
-      "orgId": {
-        "MVA": false,
-        "orgNumber": ""
-      },
-      "contact": {
-        "email": "",
-        "phoneNumber": ""
-      }
-    },
-    {
-      "id": "iF6D-6a",
-      "company": "Test",
-      "fullname": {
-        "forename": "yu",
-        "surname": ""
-      },
-      "email": "",
-      "address": {
-        "street": "",
-        "city": "",
-        "codeCity": "",
-        "ZIPCode": null
-      },
-      "MVA": "",
-      "telephoneNumber": "",
-      "orgId": {
-        "MVA": false,
-        "orgNumber": ""
-      },
-      "contact": {
-        "email": "",
-        "phoneNumber": ""
-      }
-    },
-    {
-      "company_name": "Nowy test",
-      "fullname": {
-        "forename": "mARWEK",
-        "surname": "mAREAK"
-      },
-      "orgId": {
-        "MVA": true,
-        "orgNumber": "ASDASDSA"
-      },
-      "address": "DASD",
-      "contact": {
-        "email": "",
-        "phoneNumber": ""
-      },
-      "place": {
-        "ZIPCode": null,
-        "name": "78787",
-        "zip_code": 7758789
-      },
-      "phone": "78",
-      "email": "7878",
-      "id": "AdF9KH1"
-    },
-    {
-      "company_name": "Marek",
-      "fullname": {
-        "forename": "Mitkop",
-        "surname": "Marke"
-      },
-      "orgId": {
-        "MVA": true,
-        "orgNumber": "dadss"
-      },
-      "address": "sad",
-      "place": {
-        "zip_code": 44,
-        "name": "5524"
-      },
-      "email": "gsg",
-      "phone": "sdgs",
-      "id": "xyBOd-u"
     }
   ],
   "dbTEST_client_list": [
@@ -70028,66 +69846,6 @@
   ],
   "buyersEfaktury": [
     {
-      "id": "2125",
-      "buyer_id": "2125",
-      "user_id": "319",
-      "kunde_nr": "1",
-      "company": "firma 1",
-      "address": "Kolorowa",
-      "place": "34-567",
-      "org_nr": "12345698",
-      "mva": "1",
-      "email": "",
-      "phone": "",
-      "fax": "",
-      "main_kunde_nr": "0",
-      "lang": "",
-      "debt": "126188.10",
-      "remainder": "0",
-      "inkasso": "0",
-      "is_company": "1"
-    },
-    {
-      "id": "2128",
-      "buyer_id": "2128",
-      "user_id": "319",
-      "kunde_nr": "2",
-      "company": "Firma test",
-      "address": "Songveien 2",
-      "place": "0671 oslo",
-      "org_nr": "232345432",
-      "mva": "0",
-      "email": "",
-      "phone": "323454322",
-      "fax": "",
-      "main_kunde_nr": "0",
-      "lang": "",
-      "debt": "126968.78",
-      "remainder": "0",
-      "inkasso": "0",
-      "is_company": "1"
-    },
-    {
-      "id": "2129",
-      "buyer_id": "2129",
-      "user_id": "319",
-      "kunde_nr": "3",
-      "company": "Oslo bygg",
-      "address": "Storgata 23",
-      "place": "0110 oslo",
-      "org_nr": "765345634",
-      "mva": "0",
-      "email": "",
-      "phone": "",
-      "fax": "",
-      "main_kunde_nr": "0",
-      "lang": "",
-      "debt": "74550.00",
-      "remainder": "0",
-      "inkasso": "0",
-      "is_company": "1"
-    },
-    {
       "id": "2145",
       "buyer_id": "2145",
       "user_id": "319",
@@ -70146,6 +69904,34 @@
       "remainder": "0",
       "inkasso": "0",
       "is_company": "1"
+    },
+    {
+      "company": "Test",
+      "mva": false,
+      "org_nr": "4254245",
+      "address": "dfsadf",
+      "zip_code": 54354,
+      "place": "54354",
+      "forename": "5434",
+      "surname": "45354",
+      "email": "543",
+      "phone": "5435",
+      "id": "gPigWeR"
+    },
+    {
+      "company": "meetco.dev Marek Mitko",
+      "mva": true,
+      "org_nr": "987456321",
+      "address": "Księcia Witolda 49",
+      "zip_code": 50202,
+      "place": "Wrocław",
+      "forename": "Marek",
+      "surname": "Mitko",
+      "email": "studio@meetco.dev",
+      "phone": "500555502",
+      "id": "bElyxvi",
+      "firstname": "Marek",
+      "lastname": "Mitko"
     }
   ],
   "invoicesEfaktury": [
@@ -123401,6 +123187,166 @@
       "buyer_ref": "",
       "buyer_order_no": "",
       "additional_html": ""
+    },
+    {
+      "title": "dfds",
+      "views": "sdfds",
+      "id": "59gGxZR"
+    },
+    {
+      "title": "assddsad",
+      "views": "dsadassadas",
+      "id": "4NBTabY"
+    },
+    {
+      "id": "wxT7PXu"
+    },
+    {
+      "id": "dOI1O9d"
+    },
+    {
+      "id": "tahC98K"
+    },
+    {
+      "id": "Dl7DgWA"
+    },
+    {
+      "id": "0tPo9rC"
+    },
+    {
+      "id": "zLsSN8N"
+    },
+    {
+      "id": "OvHr5jw"
+    },
+    {
+      "id": "bb6hjeu"
+    },
+    {
+      "id": "PKk9wgi"
+    },
+    {
+      "id": "MGZkqHx"
+    },
+    {
+      "id": "Cei5lZp"
+    },
+    {
+      "id": "80PgHa7"
+    },
+    {
+      "id": "UtxSy7S"
+    },
+    {
+      "id": "-q8K5JG"
+    },
+    {
+      "id": "DopX2oR"
+    },
+    {
+      "id": "U_8u_bx"
+    },
+    {
+      "id": "EwFS1_5"
+    },
+    {
+      "id": "JAZ_yFh"
+    },
+    {
+      "id": "wmiAvnc"
+    },
+    {
+      "id": "LSLkTLx"
+    },
+    {
+      "id": "VK6Q1u6"
+    },
+    {
+      "id": "mM47Rbu"
+    },
+    {
+      "id": "hlBA1pQ"
+    },
+    {
+      "id": "ntT5Yn2"
+    },
+    {
+      "id": "N2MjYCM"
+    },
+    {
+      "id": "Lh0iR-z"
+    },
+    {
+      "id": "WRIEAXf"
+    },
+    {
+      "id": "5daI20z"
+    },
+    {
+      "id": "7hSJVCl"
+    },
+    {
+      "id": "oXYVj8k"
+    },
+    {
+      "id": "7ScI10F"
+    },
+    {
+      "id": "lxbaiNO"
+    },
+    {
+      "id": "oEWiVkT"
+    },
+    {
+      "id": "ptbjAv4"
+    },
+    {
+      "id": "WQI-0Bg"
+    },
+    {
+      "id": "yLi9jy_"
+    },
+    {
+      "id": "aO_whl4"
+    },
+    {
+      "id": "GeMOgtC"
+    },
+    {
+      "id": "XyeBslt"
+    },
+    {
+      "id": "ns1WGBn"
+    },
+    {
+      "id": "ctr20s7"
+    },
+    {
+      "id": "zYt6SA8"
+    },
+    {
+      "id": "xhOxh8r"
+    },
+    {
+      "id": "stsSRpw"
+    },
+    {
+      "id": "pE3tpdA"
+    },
+    {
+      "id": "lvmAfow"
+    },
+    {
+      "id": "uVYF1ws"
+    },
+    {
+      "id": "l-Jj9nF"
+    },
+    {
+      "id": "Y-lQSSB"
+    },
+    {
+      "id": "3UTD4jZ"
     }
   ]
 }

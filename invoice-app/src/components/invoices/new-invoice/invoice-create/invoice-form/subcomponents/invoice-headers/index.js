@@ -14,7 +14,7 @@ export const NewInvoiceHeader = (props) => (
         <Grid container spacing={1} rowSpacing={1}>
             <Grid item xs={12} sm={4}>
                 <Card sx={{ height:'100%', display: 'flex', alignContent: "center"}} >
-                    <LogotypeItem />
+                    <LogotypeItem titleForm={props.titleForm} />
                 </Card>
             </Grid>
             <Grid item xs={12} sm={8}>

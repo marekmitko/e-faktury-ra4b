@@ -21,6 +21,11 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import TESTInvoiceCreate from './components/invoices/new-invoice/invoice-create/TESTInvoiceCreate';
 
 import { CssVarsProvider } from "@mui/joy/styles";
+import { BuyerDataFromLayout } from './components/invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/BuyerDataFormLayout';
+import EfaClientCreate from './components/clients/CLIENT-e-faktury/EfaClientCreate';
+import EfaClientList from './components/clients/CLIENT-e-faktury/EfaClientList';
+import EfaClientEdit from './components/clients/CLIENT-e-faktury/EfaClientEdit';
+import { PostCreate } from './components/invoices/invoice-list/INVOICE-e-faktury/EfaInvoiceCreate';
 
 
 // *see const dataProvider
@@ -43,16 +48,16 @@ function App(props) {
             {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
             <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
                 list={ListGuesser} 
-                edit={EditGuesser}   
+                edit={PostCreate}   
                 show={ShowGuesser}   
             />
             <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
-                list={ListGuesser} 
-                edit={EditGuesser}   
-                show={ShowGuesser}   
+                list={EfaClientList} 
+                edit={EfaClientEdit}   
+                show={ShowGuesser}
+                create={EfaClientCreate}  
+                // recordRepresentation={(record) => `${record.company} Masło`}
             />
-
-
             {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
             <CustomRoutes>
                 <Route path="/data_user" element={<MyProfile />}/ >

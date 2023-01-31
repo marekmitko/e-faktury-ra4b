@@ -2,6 +2,36 @@
 import polishMessages from 'ra-language-polish';
 
 
+ // note Omówić różnice  "orgId.orgNumber" "orgId.MVA"
+// "org_nr": "12345698",
+// "mva": "1",
+
+// Oki  "email": "",
+// Oki "phone": "",
+// BUG "fax": "",
+// ?? "main_kunde_nr": "0",
+// ?? "lang": "",
+// ?? "debt": "126188.10",
+// ??"remainder": "0",
+// ??"inkasso": "0",
+// ?? // note "is_company": "1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // https://marmelab.com/react-admin/doc/4.3/TranslationTranslating.html#translating-custom-components
 
 // note i18n_PL
@@ -54,14 +84,57 @@ export const pl = {
                     send_invoice: 'Prześlij dokument'
                 }
             }
+        },
+        myBuyersEfaktury: {
+            header: {
+                addres_section: "Dane Adresowe",
+                contact_section: "Dane Kontaktowe"
+            },
+            show: {
+                fields: {
+                    company: 'Nazwa Firmy',
+                    surname: 'Imię',
+                    forename: 'Nazwisko',
+                    firstname: 'Imię',
+                    lastname: 'Nazwisko',
+                    org_nr: 'Numer organizacyjny',
+                    address: 'Ulica',
+                    zip_code: 'Kod Pocztowy',
+                    place: 'Miasto',
+                    email: 'Adres Email',
+                    phone: 'Numer Telefonu',
+                    companyRepresentative: 'Przedstawiciel'
+                }
+            }
+
         }
 
+    
     },
-    resources: {
+    resources: { 
+        buyersEfaktury: {
+            name: 'e-Kontrahent |||| e-Kontrahenci',
+            contact: "Kontakt",
+            fields: {
+                company: 'Nazwa Firmy',
+                surname: 'Imię',
+                forename: 'Nazwisko',
+                firstname: 'Imię',
+                lastname: 'Nazwisko',
+                org_nr: 'Numer organizacyjny',
+                address: 'Ulica',
+                zip_code: 'Kod Pocztowy',
+                place: 'Miasto',
+                email: 'Adres Email',
+                phone: 'Numer Telefonu',
+                companyRepresentative: 'Przedstawiciel'
+            },
+        },
         dbclientlist: {
             name: 'Kontrahent |||| Kontrahenci',
             fields: {
                 company_name: 'Nazwa Firmy',
+                company: 'Nazwa Firmy',
                 fullname: {
                     surname: 'Imię',
                     forename: 'Nazwisko'
@@ -90,16 +163,16 @@ export const pl = {
                 fullname: {
                     surname: 'Imię',
                     forename: 'Nazwisko'
+                
                 },
-                orgId: {
-                    MVA: 'MVA',
-                    orgNumber: 'Numer MVA'
-                },
+                mva: 'MVA',
+                org_nr: 'Numer MVA',
                 address: {
                     street: 'Ulica',
                     ZIPCode: 'Kod Pocztowy',
                     city: 'Miasto'
                 },
+                place: 'Miejscowość',
                 contact: {
                     email: 'Adres Email',
                     phoneNumber: 'Numer telefonu',

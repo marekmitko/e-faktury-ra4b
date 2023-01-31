@@ -11,7 +11,7 @@ import CreateNewBuyer from './CreateNewBuyer';
 import { BuyerPartInvoiceFormLayout } from './BuyerPartInvoiceFormLayout';
 import { BuyerDetailShowLayout } from './BuyerDetailShowLayout';
 import db_buyer from './db_empty_buyer';
-import { SellerDataShowLayout } from '../../seller/SellerDataShowLayout';
+// import { SellerDataShowLayout } from '../../seller/SellerDataShowLayout';
 
 
 
@@ -31,27 +31,27 @@ const BuyerIdShow = ({BuyerId}) => {
 
 //https://marmelab.com/react-admin/useGetIdentity.html
 
-const BuyerId = ({ id }) => {
-    const { data, error, isLoading } = useGetOne('books', { id });
+// const BuyerId = ({ id }) => {
+//     const { data, error, isLoading } = useGetOne('books', { id });
     
-        if (isLoading) {
-            return <Loading />;
-        }
-        if (error) {
-            return  <Error error={error} />;
-        }
-        if (!data) {
-            return null;
-        }
-        return (
-            <div>
-                <h1>{data.book.title}</h1>
-                <p>{data.book.author.name}</p>
-            </div>
-        );
-    };
+//         if (isLoading) {
+//             return <Loading />;
+//         }
+//         if (error) {
+//             return <Error error={error} />;
+//         }
+//         if (!data) {
+//             return null;
+//         }
+//         return (
+//             <div>
+//                 <h1>{data.book.title}</h1>
+//                 <p>{data.book.author.name}</p>
+//             </div>
+//         );
+//     };
 
-
+{/* <BuyerDataFromLayout /> */}
 
 
 db_buyer.id = 1125542;
@@ -60,14 +60,7 @@ db_buyer.id = 1125542;
 export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
     const { data, isLoading, error } = useGetOne(resource, { id });
     if (isLoading) return <p>Loading...</p>;
-    if (error) { 
-        return ( <>
-            <p>Coś tu nie gra </p>
-        <RecordContextProvider value={data}>
-            { () => { return (<BuyerDetailShowLayout resource="dbclientlist" id="4a7883fc-6747-42f7-9bf5-35ac07d441ac" />) } }
-        </RecordContextProvider>
-        </>
-    ) };
+    if (error) return <BuyerDataFromLayout />;
     return (
         // <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle="Kupujący">
             <RecordContextProvider value={data}>
@@ -92,6 +85,7 @@ export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => {
     return(
 
         <WrapperBuyerPartFormItem resource={resourceBuyer} id={buyerId}>
+            {/* <BuyerDataFromLayout /> */}
             <BuyerDetailShowLayout  />
         </WrapperBuyerPartFormItem>
     )

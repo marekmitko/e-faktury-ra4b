@@ -1,6 +1,6 @@
 import { Card,  Box, Stack } from '@mui/material';
 import React from 'react';
-import {  TextInput,   BooleanInput , NumberInput, useRecordContext, RecordContextProvider } from 'react-admin';
+import {  useTranslate, TextInput,   BooleanInput , NumberInput, useRecordContext, RecordContextProvider } from 'react-admin';
 import MailIcon from '@mui/icons-material/MailOutline';
 // import { useWarnWhenUnsavedChanges } from 'react-admin';
 import { CodeAndNameCityDualInput } from '../../../../../../../../custom/invoice/inputs/CodeAndNameCityDualInput';
@@ -64,33 +64,98 @@ NumberInput.defaultProps = {
 
 
 
-export const BuyerDataFromLayout = (props) =>  (
+export const BuyerDataFromLayout = (props) =>  { 
+    const translate = useTranslate();
+    return (
     <>
         {props.children}
-        <FullNameDualInput sourceForename="fullname.forename" sourceSurname="fullname.surname"  />
         <Stack direction="row" spacing={2} width="100%" alignItems="center">
-            <BooleanInput  source="orgId.MVA" sx={{ alignItems: 'center' }} />
-            <TextInput  source="orgId.orgNumber" fullWidth />
+            <BooleanInput  source="mva" sx={{ alignItems: 'center' }} />
+            <TextInput  source="org_nr" fullWidth               variant="standard"   />
         </Stack>
         <Stack direction="row" gap={1} width="100%">
-            <MailIcon />  <strong>ADRES NABYWCY</strong>
+            <MailIcon />  <strong>{translate('myroot.myBuyersEfaktury.header.addres_section')}</strong>
         </Stack>
-        <TextInput source="address" fullWidth />
-        <CodeAndNameCityDualInput sourceCode="place.zip_code" sourceName="place.name"  />
+        <TextInput source="address" fullWidth                   variant="standard"   />
+        <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            spacing={2}
+            width="100%"
+        >
+            <NumberInput sx={{minWidth:'25%'}} source="zip_code"  variant="standard" />
+            <TextInput    source="place"  fullWidth  variant="standard" />
+        </Stack>
+        <Stack direction="row" gap={1} width="100%">
+            <MailIcon />  <strong>{translate('myroot.myBuyersEfaktury.header.contact_section')}</strong>
+        </Stack>
+        <Stack direction="row"  spacing={2} width="100%" >
+            <TextInput  source="firstname"  fullWidth variant="standard" />
+            <TextInput source="lastname"  fullWidth  variant="standard"/>
+        </Stack>
         <Stack direction="row" spacing={2} alignItems="center" width="100%">
             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                 <MailOutlineSharpIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
-                <TextInput  source="email" fullWidth />
+                <TextInput  source="email" fullWidth variant="standard" />
             </Stack>
             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                 <LocalPhoneIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
-                <TextInput source="phone" fullWidth />
+                <TextInput source="phone" fullWidth variant="standard" />
             
             </Stack>
             
         </Stack>
     </ >
 );
+}
 
 
+// OLD
+//**  
+// export const BuyerDataFromLayout = (props) =>  { 
+//     const translate = useTranslate();
+//     return (
+//     <>
+//         {props.children}
+//         <Stack direction="row"  spacing={2} width="100%" >
+//         {/* <FullNameDualInput sourceForename="fullname.forename" sourceSurname="fullname.surname"
+//           /> */} 
+//             <TextInput  source="forename"  fullWidth  />
+//             <TextInput source="surname"  fullWidth  />
+//         </Stack>
+//         <Stack direction="row" spacing={2} width="100%" alignItems="center">
+//             <BooleanInput  source="mva" sx={{ alignItems: 'center' }} />
+//             <TextInput  source="org_nr" fullWidth />
+//         </Stack>
+//         <Stack direction="row" gap={1} width="100%">
+//             <MailIcon />  <strong>{translate('myroot.myBuyersEfaktury.header.addres_section')}</strong>
+//         </Stack>
+//         <TextInput source="address" fullWidth />
+//         {/* <CodeAndNameCityDualInput sourceCode="place.zip_code" sourceName="place.name"  /> */}
+//         <Stack
+//             direction="row"
+//             justifyContent="space-between"
+//             alignItems="center"
+//             spacing={2}
+//             width="100%"
+//         >
+//             <NumberInput sx={{minWidth: '25%'}}  source="zip_code"/>
+//             <TextInput    source="place"  fullWidth  />
+//         </Stack>
+//         <Stack direction="row" spacing={2} alignItems="center" width="100%">
+//             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
+//                 <MailOutlineSharpIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
+//                 <TextInput  source="email" fullWidth />
+//             </Stack>
+//             <Stack direction="row"spacing={2} alignItems="center" width="100%" >
+//                 <LocalPhoneIcon sx={{ transform: 'scale(1.2)',  mb: 2 }}  />
+//                 <TextInput source="phone" fullWidth />
+            
+//             </Stack>
+            
+//         </Stack>
+//     </ >
+// );
+// }
 

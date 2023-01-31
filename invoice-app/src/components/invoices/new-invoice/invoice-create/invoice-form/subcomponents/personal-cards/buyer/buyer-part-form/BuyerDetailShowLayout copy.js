@@ -2,8 +2,8 @@ import * as React from "react";
 import { blue, blueGrey } from '@mui/material/colors';
 import MailIcon from '@mui/icons-material/MailOutline';
 import DataContatctIcon from '@mui/icons-material/Wysiwyg';
-import { Stack, Typography, Box, Divider, TableCell } from "@mui/material";
-import { TextField,useRecordContext, SimpleShowLayout, useTranslate, WrapperField  } from "react-admin";
+import { Stack, Typography, Box, Divider } from "@mui/material";
+import { TextField, SimpleShowLayout, useTranslate   } from "react-admin";
 // import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
 import { CodeAndNameCityDualField } from '../../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
 import { BuyerDataFromLayout } from "../BuyerDataFormLayout";
@@ -22,10 +22,7 @@ import { BuyerDataFromLayout } from "../BuyerDataFormLayout";
 //         : undefined;
 
 
-const PurpleTextField = ({ source }) => {
-    const record = useRecordContext();
-    return (<span style={{ color: 'purple' }}>{record && record[source]}</span>);
-};
+
 
 
 // const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel='true' label={<ZipCityDualLabel  />} /> ;
@@ -39,6 +36,8 @@ export const BuyerDetailShowLayout = (props) => {
     return (
         <>
         <SimpleShowLayout   >
+        <BuyerDataFromLayout {...props} />
+
             {/* <BuyerDataFromLayout /> */}
             <TextField source="company" />
             <Stack direction="row" gap={1} width="100%">
@@ -60,17 +59,14 @@ export const BuyerDetailShowLayout = (props) => {
                 source="address"
                 // source="address"
             />
-                    <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            spacing={2}
-            width="100%"
-        >
-            <TextField sx={{minWidth:'25%'}} source="zip_code"  variant="standard" />
-        </Stack>
-            <TextField    source="place"  fullWidth  variant="standard" />
-            <TextField  source="org_nr"  label={translate('myroot.myBuyersEfaktury.show.fields.org_nr')} />
+            <CodeAndNameCityDualField
+                sourceCode="address.codeCity"
+                sourceName="address.city"   
+            />
+            <TextField 
+                // source="orgId.orgNumber" 
+                source="orgId.orgNumber" 
+            />
             <Stack direction="row" gap={1} width="100%">
                 <DataContatctIcon />
                 <Box direction="row" gap={1} width="100%">
@@ -92,17 +88,8 @@ export const BuyerDetailShowLayout = (props) => {
             </Stack>
             {/* <Stack direction="row" gap={1} width="100%"> */}
                 {/* <div><b>Dodawać?</b></div> */}
-                <WrapperField label="myroot.fullname" >
-                     <TableCell>
-                        <TextField  source="firstname" label="myroot.myBuyersEfaktury.show.fields.firstname" /> {" "} <TextField  source="lastname" />
-                    </TableCell>
-                    <TableCell >
-                        <TextField    source="email"     /> 
-                    </TableCell>  
-                    <TableCell >
-                        <TextField    source="phone"     />
-                    </TableCell>  
-                </WrapperField>
+                <TextField  source="contact.companyRepresentative" />
+                <TextField    source="email"     />
         </SimpleShowLayout>
                     </>
     );
