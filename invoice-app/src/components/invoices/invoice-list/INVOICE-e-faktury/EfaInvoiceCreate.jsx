@@ -1,4 +1,4 @@
-import { Create, Form, useCreate, CreateBase, useCreateContext, SimpleForm, TextInput, useRecordContext } from 'react-admin';
+import { Create, Form, useCreate, DateField , CreateBase, useCreateContext, SimpleForm, TextInput, useRecordContext } from 'react-admin';
 import { useForm, FormProvider, useFormContext, Controller} from "react-hook-form";
 // export const PostCreate = ({ id, record }) => { 
     
@@ -34,18 +34,22 @@ export const PostCreate = (props) => {
     const myMethods = useForm();
 const [create] = useCreate();
 const postSave = (data) => {
-    create('invoicesEfaktury', { data }
+    create('issuedInvoices_list', { data }
     );
     console.log(data);
 };
 return (
-    <Create  >
+    <Create  component="div" >
         {/* <FormProvider {...myMethods}> */}
-
+        <br />
         <Form onSubmit={postSave}    >
-                <TextInput source="title" />
-                <TextInput source="views" />
+                <TextInput source="payment_amount" />
+                <br />
+                <DateField  source="date_payment" />
                 <input value="wyślij" type="submit" onClick={ postSave} />
+
+
+
                 {/* <input value="wyśsadslij" type="button" onClick={ () => console.log(myMethods.handleSubmit((data) => console.log(data)))} /> */}
 
 {/* <NewInvoiceContext/> */}

@@ -15,6 +15,7 @@ const ZipCityCode = ({...props}, {addLabel}) => <ZipCityDualTextField  addLabel=
 export const SellerDataShowLayout = (props, propTypes) => {
     const translate = useTranslate();
     return(
+    
     <SimpleShowLayout>
         <Stack>
 

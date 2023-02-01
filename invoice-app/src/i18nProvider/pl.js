@@ -157,28 +157,23 @@ export const pl = {
         },
         issuedInvoices_list: {
             name: 'Faktura |||| Faktury',
-            
             fields: {
+                buyer_company: "Nabywca",
+                date_submit: 'Data wystawienia',
+                date_payment: 'Termin płatności',
                 company: 'Nazwa Firmy',
-                fullname: {
-                    surname: 'Imię',
-                    forename: 'Nazwisko'
-                
-                },
+                firstname: 'Imię',
+                lastname: 'Nazwisko',
                 mva: 'MVA',
                 org_nr: 'Numer MVA',
-                address: {
-                    street: 'Ulica',
-                    ZIPCode: 'Kod Pocztowy',
-                    city: 'Miasto'
-                },
+                address: 'Ulica',
+                zip_code: 'Kod Pocztowy',
                 place: 'Miejscowość',
-                contact: {
-                    email: 'Adres Email',
-                    phoneNumber: 'Numer telefonu',
-                    companyRepresentative: 'Przedstawiciel'
-                }
-            },
+                email: 'Adres Email',
+                phone: 'Numer telefonu',
+                payment_amount: 'Kwota',
+                date_paid: "Wpłacono"
+            }
         }
     }
 };

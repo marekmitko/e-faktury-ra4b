@@ -26,6 +26,7 @@ import EfaClientCreate from './components/clients/CLIENT-e-faktury/EfaClientCrea
 import EfaClientList from './components/clients/CLIENT-e-faktury/EfaClientList';
 import EfaClientEdit from './components/clients/CLIENT-e-faktury/EfaClientEdit';
 import { PostCreate } from './components/invoices/invoice-list/INVOICE-e-faktury/EfaInvoiceCreate';
+import { EditSimpleList } from './components/invoices/invoice-list/INVOICE-e-faktury/EditSimpleList';
 
 
 // *see const dataProvider
@@ -43,7 +44,7 @@ function App(props) {
         i18nProvider={i18nProvider}
         > 
         {/* <CssVarsProvider> */}
-            <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices} list={ListGuesser} />  
+            <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
             <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
             {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
             <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  

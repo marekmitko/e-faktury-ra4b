@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo} from "react";
 import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack, TextField, Divider} from "@mui/material";
 import Box from "@mui/material/Box";
-import { Controller, useController, setValue, useWatch} from "react-hook-form";
+import { Controller, useFormContext, useController, setValue, useWatch} from "react-hook-form";
 import {  useTranslate } from "react-admin";
 import { PriceInput } from "./input-box-component/PriceInput";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
@@ -10,14 +10,17 @@ import SelectItemOption from "./input-box-component/subcomponent/SelectItemOptio
 import { TextInputItem } from "./input-box-component/subcomponent/TextInputItem";
 import { productOptions, taxOptions, typeOptions }  from './options_select_input';
 
+
 // Obcaaj https://codesandbox.io/s/react-hook-form-mui-forked-0xkhyk
 
 function setGrossPriceItem(netPriceItem, taxValue){
-    // if(netPriceItem)
+    // if(!isNaN(!parseFloat(taxValue))) return "";
+    if(netPriceItem)
     return (netPriceItem*taxValue)/100;
 }
 function setNetPriceItem(grossPriceInput, taxValue){
-    // if(+grossPriceInput)
+    if(!isNaN(!parseFloat(taxValue))) return "";
+    if(+grossPriceInput)
     return (+grossPriceInput / (+taxValue)) * 100 ;
 }
 
@@ -28,23 +31,24 @@ export default function InputBox ({
 
     const translate = useTranslate();
 
-    const salesItemName = useController({ name: `${arrayItemIdx}.item_${idx}_salesItemName`, control, defaultValue: "", });
-    const qtyItem = useController({ name: `${arrayItemIdx}.item_${idx}_qty`, control, defaultValue: "", });
-    const taxItem = useController({ name: `${arrayItemIdx}.item_${idx}_tax`, control, defaultValue: "", });
-    const netItem = useController({ name: `${arrayItemIdx}.item_${idx}_netPrice`, control, defaultValue: "", });
-    const grossItem = useController({ name: `${arrayItemIdx}.item_${idx}_grossPrice`, control, defaultValue: "", });
-    const typeItem = useController({ name: `${arrayItemIdx}.item_${idx}_typeItem`, control, defaultValue: "", });
-    const categoryItem = useController({ name: `${arrayItemIdx}.item_${idx}categoryItem`, control, defaultValue: "", });
+    const salesItemName = useController({ name: `${arrayItemIdx}._${idx}_product_name`, control, defaultValue: "", });
+    const qtyItem = useController({ name: `${arrayItemIdx}._${idx}_product_count`, control, defaultValue: "", });
+    const taxItem = useController({ name: `${arrayItemIdx}._${idx}_product_vat`, control, defaultValue: "", });
+    const netItem = useController({ name: `${arrayItemIdx}._${idx}_product_price_netto`, control, defaultValue: "", });
+    const grossItem = useController({ name: `${arrayItemIdx}._${idx}_product_price_brutto`, control, defaultValue: "", });
+    const typeItem = useController({ name: `${arrayItemIdx}._${idx}_product_type`, control, defaultValue: "", });
+    const categoryItem = useController({ name: `${arrayItemIdx}._${idx}_product_name_selected`, control, defaultValue: "", });
 
-    const netPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_netPrice` });
-    const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}.item_${idx}_grossPrice` });
+    const netPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_netto` });
+    const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_brutto` });
     
     const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
 
     const newDependentValue = useMemo(() => {
-        if (!entryPriceIsGross) //setGrossPriceItem
+    
+        if (!entryPriceIsGross  ) //setGrossPriceItem
             return (parseFloat(enteryValue) * (+taxItem.field.value)) / 100;
-        if (entryPriceIsGross) //setNetPriceItem
+        if (entryPriceIsGross  ) //setNetPriceItem
             return (parseFloat(enteryValue) / (+taxItem.field.value)) * 100 ;
         }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
 
@@ -64,7 +68,7 @@ export default function InputBox ({
      // addItemOnFocusin ##############################
             function addItemOnFocusin(event) {
                 // console.log("create");
-                console.log("createdsadssdsd");
+                console.log("inItemOnFocusin");
                 if ( salesListLength === salesItemIndex + 1 &&
                 !event.currentTarget.contains(event.relatedTarget)
                 ) { return eventsOnItem();}
@@ -132,7 +136,7 @@ export default function InputBox ({
                 <div align="right" style={{   // marginTop: "auto", marginBottom: 0    // borderBottom: '1px', border: "1px solid black"
                     }}
                 >{ 
-                    entryPriceIsGross ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
+                    (entryPriceIsGross ) ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
                                             : (+netItem.field.value * +qtyItem.field.value).toFixed(2) }</div>
 {/* {grossSum} */}
                 <div align="right">{ entryPriceIsGross    ? (+grossItem.field.value * +qtyItem.field.value).toFixed(2) 
@@ -178,14 +182,4 @@ const IconTextNumber = ({ iconStart, iconEnd, InputProps, objController, ...prop
     };
     // *see SelectInput 
     // ->     https://codesandbox.io/s/react-hook-form-mui-forked-9ohh3s
-
-// Input icons
-    
-// {/* New concept */}
-// <PriceInput objController={netItem}   
-// // label="Net Price"
-// label={translate('myroot.form.label.inputbox_itemrow.netItem')}
-//     sx={{ display: entryPriceIsGross ? "none" : "block" }}
-//     // iconStart={<AttachMoneyIcon sx={{ color: "green", fontSize: "1rem" }} />}
-//     // iconEnd={<QuestionMark sx={{ color: "#0089ff", fontSize: "1rem"  }} />}
-// />
+ 

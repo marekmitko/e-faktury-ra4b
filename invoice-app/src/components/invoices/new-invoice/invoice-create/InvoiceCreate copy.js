@@ -15,7 +15,10 @@ const InvoiceCreate = (props) => {
 
     return(
     <>
-        <Create redirect="list" component="div"  {...props} >
+        <Create 
+        // redirect="list"
+
+        component="div"  {...props} >
             {/* <FormProvider {...myMethods}> */}
                 <InvoiceForm {...props} />
     
