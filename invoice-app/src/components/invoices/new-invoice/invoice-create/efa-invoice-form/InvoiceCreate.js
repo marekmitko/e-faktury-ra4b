@@ -10,6 +10,7 @@ import { AdditionalBox } from '../invoice-form/subcomponents/sales-table/joy-sal
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm,  Create, useResourceContext, useCreateController, useGetOne, useUpdate, Title, useCreate } from 'react-admin';
+import { transformArrayProducts } from '../../../../../db/fnInvoiceForm';
 // import { defaultValueInvoice, product }  from './defaultValuesInvoice';
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
@@ -56,36 +57,7 @@ const InvoiceCreate = (props) => {
     // };
     // if (isLoading) return null;
         
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     // { handleSubmit, reset, control } 
     const methods = useForm({ 
         defaultValues: { 
@@ -126,13 +98,15 @@ const InvoiceCreate = (props) => {
 
     const [create, { isLoading, error }] = useCreate();
 
-    const onSubmit = (data) => {
+    const onSubmit = (data) => { 
+        const productsArr = transformArrayProducts(data.products);
+        data.products = productsArr;
         create(
             "issuedInvoices_list",
             {  data },
             { onSuccess: () => {
                     // navigate('/issuedInvoices_list');
-                    console.log('dataTEst', data);
+                    console.log('dataTest', data, 'dataArr', data.products,);
                 } }
         );
     };
@@ -193,9 +167,12 @@ const InvoiceCreate = (props) => {
             
             {/* </SimpleForm> */}
             {/* <input type="submit" value="DB TEST" />  */}
+            <span>
             <Button type="submit" >
               Save
             </Button>
+                <InvoiceCreateToolbar />
+            </span>
 
         </form>
     </FormProvider>

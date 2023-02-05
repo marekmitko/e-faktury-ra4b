@@ -1,7 +1,6 @@
 
 
 
-
 // https://stackoverflow.com/questions/72873880/how-to-add-prefix-to-object-keys-in-javascript
 
 export const createPrefixObjectKeys = (prefix) => (source) => {
@@ -17,13 +16,30 @@ return Object.fromEntries(prefixedSourceTuples);
 };
 
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+// key.replace(/([0-9]|[1-9][0-9])/, '').replace('_pro__','')
+
+export const removePrefixObjectKeys = (source) => {
+    
+    const prefixedSourceTuples = Object.entries(source).map(
+        ([key, value]) => { 
+            const newKey = key.replace(/([0-9]|[1-9][0-9])/, '').replace('__', '');
+            return ([`${newKey}`, value ]); 
+        }
+    );
+
+return Object.fromEntries(prefixedSourceTuples);
+};
 
 
+export const transformArrayProducts = (arrProducts) => {
+    if(arrProducts.length === 0) return null;
+    const newArray = [];
+    arrProducts.map((obj, idx) => newArray.push(removePrefixObjectKeys(obj)));
+    
+    return newArray;
 
-
-
-
-
+};
 
 
 

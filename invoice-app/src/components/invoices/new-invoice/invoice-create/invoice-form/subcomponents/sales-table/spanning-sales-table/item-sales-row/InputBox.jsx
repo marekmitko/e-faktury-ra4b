@@ -9,6 +9,7 @@ import AutoItemCategoryInput from "./input-box-component/subcomponent/AutoItemCa
 import SelectItemOption from "./input-box-component/subcomponent/SelectItemOption";
 import { TextInputItem } from "./input-box-component/subcomponent/TextInputItem";
 import { productOptions, taxOptions, typeOptions }  from './options_select_input';
+import JoyComboInputSelect from "./input-box-component/subcomponent/JoyComboInputSelect";
 
 
 // Obcaaj https://codesandbox.io/s/react-hook-form-mui-forked-0xkhyk
@@ -19,7 +20,7 @@ function setGrossPriceItem(netPriceItem, taxValue){
     return (netPriceItem*taxValue)/100;
 }
 function setNetPriceItem(grossPriceInput, taxValue){
-    if(!isNaN(!parseFloat(taxValue))) return "";
+    // if(!isNaN(!parseFloat(taxValue))) return "";
     if(+grossPriceInput)
     return (+grossPriceInput / (+taxValue)) * 100 ;
 }
@@ -115,6 +116,8 @@ export default function InputBox ({
                         label="myroot.form.label.inputbox_itemrow.itemNameField" 
                     />
                 </Stack>
+{/* <td> <JoyComboInputSelect /> </td> */}
+{/* <AutoItemCategoryInput /> */}
                 <SelectItemOption {...typeItem.field} field={typeItem.field} variant="standard"
                     label="myroot.form.label.inputbox_itemrow.typeItem" 
                     sx={{ minWidth: 120 }} defaultValue="placeholder" options={typeOptions}  

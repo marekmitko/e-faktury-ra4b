@@ -2,6 +2,9 @@ import React from "react";
 import {InputAdornment,  TextField, Divider} from "@mui/material";
 import { useTranslate } from "react-admin";
 
+
+
+
 export const TextInputItem = ({ iconStart, iconEnd, InputProps, width, variant, label, ...props }) => {
     const translate = useTranslate();
     return (
@@ -23,3 +26,5 @@ export const TextInputItem = ({ iconStart, iconEnd, InputProps, width, variant, 
         />
     );
 };
+
+
