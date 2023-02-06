@@ -24,7 +24,7 @@ const invoiceDefaultValues = () => ({ "invoice_id": null, "date_submit": new Dat
 // invoiceDefaultValues.date_payment =  invoiceDefaultValues.date_submit.getTime()+(14*24*60*60*1000);
 
 const prefixObjectUser = createPrefixObjectKeys('user_');
-const user_db = prefixObjectUser(user);
+export const user_db = prefixObjectUser(user);
 
 
 

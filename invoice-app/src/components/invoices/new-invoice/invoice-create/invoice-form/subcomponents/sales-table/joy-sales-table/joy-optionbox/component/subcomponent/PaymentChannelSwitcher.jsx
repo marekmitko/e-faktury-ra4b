@@ -13,9 +13,10 @@ import AccountBalanceWallet from "@mui/icons-material/AccountBalanceWallet";
 import PaymentIcon from "@mui/icons-material/Payments";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 
-    export default function PaymentChannelSwitcher() {
-    const [row, setRow] = React.useState(true);
+    export default function PaymentChannelSwitcher({register}) {
+    const [form, setForm] = React.useState({payment_form: 'transfer'});
     const translate = useTranslate();
+    const { onChange, onBlur, name, ref } = register('payment_form'); 
 
     return (
         <Box sx={{ minWidth: 240, pb:2}}>
@@ -51,14 +52,17 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
         <List
             component="div"
             variant="solid"
-            row={row}
+            row={form}
             sx={{
             borderRadius: 'sm',
             boxShadow: 'sm',
             bgcolor: 'background.body',
             }}
         >
-        {['Przelew', 'Gotówka'].map((value, index) => (
+            {[
+                {id: 'transfer', value: 'transfer', label: translate('myroot.form.label.checkbox.transfer') }, 
+                {id: 'cash', value: 'cash', label: translate('myroot.form.label.checkbox.cash') }
+            ].map((item, index) => (
             <ListItem>
             <ListItemDecorator 
                 sx={{
@@ -67,14 +71,16 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
             >
                 {[<PaymentIcon />, <AccountBalanceWallet />][index]}
             </ListItemDecorator>
-                <React.Fragment key={value}>
+                <React.Fragment key={item.id}>
                 {index !== 0 && <ListDivider />}
                     <Radio 
                         variant="outlined" 
-                        id={value} 
-                        value={value} 
+                        id={item.id} 
+                        value={item.value} 
                         color="info"
-                        label={value} />
+                        label={item.label } 
+                        {...register('payment_form')}
+                    />
                 </React.Fragment>
                 </ListItem>
             ))}

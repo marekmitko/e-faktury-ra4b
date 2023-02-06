@@ -33,7 +33,7 @@ export default function JoyOptionbox() {
     return (
         <Grid item xs={12} sm={9}>
             <Sheet
-                variant="neutral"
+                // variant="neutral"
                 sx={{
                     pl:1,
                     bgcolor: "background.body",

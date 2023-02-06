@@ -1,40 +1,28 @@
 import * as React from "react";
-import List from "@mui/joy/List";
-import ListItem from "@mui/joy/ListItem";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import Radio from "@mui/joy/Radio";
-import RadioGroup from "@mui/joy/RadioGroup";
-import Person from "@mui/icons-material/Person";
-import People from "@mui/icons-material/People";
-import Apartment from "@mui/icons-material/Apartment";
-import PaymentIcon from "@mui/icons-material/Payment";
-import Checkbox, { checkboxClasses } from "@mui/joy/Checkbox";
-import Typography from "@mui/joy/Typography";
-import Box from "@mui/joy/Box";
-import Sheet from "@mui/joy/Sheet";
 import { Card, Stack, Grid } from '@mui/material';
 import { useTranslate } from "react-admin";
 import PaymantSwitch from "./subcomponent/PaymantSwitch";
 import PaymentChannelSwitcher from "./subcomponent/PaymentChannelSwitcher";
 import SendInvoiceCheckbox from "./subcomponent/SendInvoiceCheckbox";
+import { useFormContext } from 'react-hook-form';
 
 export default function InvoiceAdditionalCheckbox() {
+    const { register } = useFormContext();
+    // const [members, setMembers] = React.useState([false, true, false]);
+    // const toggleMember = (index) => (event) => {
+    //         const newMembers = [...members];
+    //     newMembers[index] = event.target.checked;
+    //     setMembers(newMembers);
+    // };
 
-    const [members, setMembers] = React.useState([false, true, false]);
-    const toggleMember = (index) => (event) => {
-            const newMembers = [...members];
-        newMembers[index] = event.target.checked;
-        setMembers(newMembers);
-    };
-
-    // console.log("members", ....members);
-    console.log("members", members[1]);
+    // // console.log("members", ....members);
+    // console.log("members", members[1]);
     const translate = useTranslate();
 
     return (
         <Grid item xs={12} sm={9}>
-            <PaymentChannelSwitcher />
-            <SendInvoiceCheckbox />
+            <PaymentChannelSwitcher register={register} />
+            <SendInvoiceCheckbox register={register} />
                  
                     {/* </RadioGroup> */}
             {/* </Sheet> */}

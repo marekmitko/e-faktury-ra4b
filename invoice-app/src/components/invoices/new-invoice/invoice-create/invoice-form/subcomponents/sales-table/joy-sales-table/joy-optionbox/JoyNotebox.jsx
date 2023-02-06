@@ -15,8 +15,9 @@ import JoyTextarea from '@mui/joy/Textarea';
 {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}> */}
 
 // *see <NewInvoiceHeader />
-export const JoyNotebox = (props) => {
+export const JoyNotebox = ({register}) => {
     const translate = useTranslate();
+    const { onChange, onBlur, name, ref } = register('comments'); 
     return(
 
             <Grid item xs={12} sm={3}>
@@ -43,6 +44,7 @@ export const JoyNotebox = (props) => {
                         sx={{
                             backgroundColor: "aliceblue"
                         }}
+                        {...register('comments')}
                     />
                 {/* </Card> */}
             </Grid>

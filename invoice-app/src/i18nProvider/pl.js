@@ -74,6 +74,10 @@ export const pl = {
                 checkbox: {
                     send_invoice: 'Wyślij',
                     payment_invoice: 'Forma płatności',
+                    postmail: 'Tradycyjną pocztą',
+                    inv_email: 'Na adres email',
+                    transfer: 'Przelewem',
+                    cash: 'Gotówką',
                 },
                 header: {
                     address: 'Adres',

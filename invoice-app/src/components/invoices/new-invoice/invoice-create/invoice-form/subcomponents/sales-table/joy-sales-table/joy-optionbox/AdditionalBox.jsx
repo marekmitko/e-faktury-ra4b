@@ -8,14 +8,18 @@ import { Card, Stack, Grid, Paper, TableContainer } from '@mui/material';
 import { JoyNotebox } from './JoyNotebox';
 import Sheet from "@mui/joy/Sheet";
 import JoyOptionbox from './JoyOptionbox';
+import { useFormContext } from 'react-hook-form';
 
 // TODO Added props sx + spacing 
 {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}> */}
 
 // *see <NewInvoiceHeader />
-export const AdditionalBox = (props) => (
-    
-    <Card    sx={{  mt: 1 }} >
+export const AdditionalBox = (props) => {
+    const { register } = useFormContext();
+    return(
+
+        
+        <Card    sx={{  mt: 1 }} >
     <Sheet
         variant="plain"
         sx={{
@@ -36,7 +40,7 @@ export const AdditionalBox = (props) => (
 
     <Grid item xs={12} >
         <Grid container spacing={1} rowSpacing={2} >
-            <JoyNotebox />
+            <JoyNotebox register={register} />
             <JoyOptionbox />
             <Grid item xs={12} sm={6}>
                     {/* <OptionInputBox >
@@ -68,6 +72,7 @@ export const AdditionalBox = (props) => (
                 </Sheet>
                     </Card>
 
-);
+    );
+};
 
 export default AdditionalBox; 

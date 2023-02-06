@@ -21,8 +21,8 @@ export const DataTestContext = () => {
 
     console.log("objprevDataForm", objprevDataForm);
     return (<>
-        <input {...myMethods.register("TestSTContext")} />;
-        <input style={{ padding: "25px", backgroundColor: "#40E0D0" }} value="db TEST" type="button" onClick={ () => console.log('dbPref',myMethods.getValues(), 'dbTrans', removePrixInObj, "newArr", newArraProducts)} />
+        {/* <input {...myMethods.register("TestSTContext")} />; */}
+        <input style={{ padding: "15px", backgroundColor: "#40E0D0" }} value="db TEST" type="button" onClick={ () => console.log('dbPref',myMethods.getValues(), 'dbTrans', removePrixInObj, "newArr", newArraProducts)} />
         <input value="state" type="button" onClick={ () => console.log(myState.getValues())} />
     </>)
 };

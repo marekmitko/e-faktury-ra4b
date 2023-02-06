@@ -11,7 +11,7 @@ import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/Spanni
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm,  Create, useResourceContext, useCreateController, useGetOne, useUpdate, Title, useCreate } from 'react-admin';
 import { transformArrayProducts } from '../../../../../db/fnInvoiceForm';
-// import { defaultValueInvoice, product }  from './defaultValuesInvoice';
+import { user_db }  from './defaultValuesInvoice';
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
@@ -47,7 +47,7 @@ const InvoiceCreate = (props) => {
     //     { onSuccess: (data) => reset(data) }
     // );
     // const [update, { isLoading: isSubmitting }] = useUpdate();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const onSubmit = (data) => {
     //     update(
     //         "books",
@@ -69,6 +69,7 @@ const InvoiceCreate = (props) => {
             comments:"", 
             postmail: 0,  
             inv_email: 0,
+            ...user_db,
             products: [{
                 _0_product_name:             "",         
                 _0_product_count:            "",          
@@ -101,11 +102,12 @@ const InvoiceCreate = (props) => {
     const onSubmit = (data) => { 
         const productsArr = transformArrayProducts(data.products);
         data.products = productsArr;
+
         create(
             "issuedInvoices_list",
-            {  data },
+            {  data, user_db },
             { onSuccess: () => {
-                    // navigate('/issuedInvoices_list');
+                    navigate('/issuedInvoices_list');
                     console.log('dataTest', data, 'dataArr', data.products,);
                 } }
         );
@@ -125,24 +127,7 @@ const InvoiceCreate = (props) => {
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <InvoiceFormLayout titleForm={<ResourceName />} /  >  
                     <SpanningSalesTable />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <AdditionalBox />
                     {/* <SimpleForm  
                         // defaultValues={defaultValueInvoice} 
                         toolbar={<InvoiceCreateToolbar />} >
@@ -150,7 +135,6 @@ const InvoiceCreate = (props) => {
                         <InvoiceFormLayout titleForm={<ResourceName />}   > */}
                         
                 
-                    {/* <AdditionalBox /> */}
                     <br/>
           
                 <>
@@ -169,7 +153,7 @@ const InvoiceCreate = (props) => {
             {/* <input type="submit" value="DB TEST" />  */}
             <span>
             <Button type="submit" >
-              Save
+                Save
             </Button>
                 <InvoiceCreateToolbar />
             </span>
