@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, TextField, Button, Stack, MenuItem } from "@mui/material";
+import { Button } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useForm, FormProvider, useFormContext, Controller} from "react-hook-form";
@@ -9,9 +9,10 @@ import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
 import { AdditionalBox } from '../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm,  Create, useResourceContext, useCreateController, useGetOne, useUpdate, Title, useCreate } from 'react-admin';
+import {  SimpleForm,  Create, useResourceContext, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
 import { transformArrayProducts } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
+import InvoiceShowModal from "./efa-invoice-show/InvoiceShowModal";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
@@ -67,16 +68,16 @@ const InvoiceCreate = (props) => {
             user_ref: "", 
             buyer_order_no: "",
             comments:"", 
-            postmail: 0,  
-            inv_email: 0,
+            postmail: false,  
+            inv_email: false,
             ...user_db,
             products: [{
                 _0_product_name:             "",         
-                _0_product_count:            "",          
-                _0_product_price_brutto:     "",          
-                _0_product_price_netto:      "",          
+                _0_product_count:            1,          
+                _0_product_price_brutto:     "",        
+                _0_product_price_netto:      "",         
                 _0_product_name_selected:    "",         
-                _0_product_vat:              "",         
+                _0_product_vat:              125,         
                 _0_product_type:             ""      
             } ]
         }
@@ -103,10 +104,16 @@ const InvoiceCreate = (props) => {
         const productsArr = transformArrayProducts(data.products);
         data.products = productsArr;
 
+
         create(
             "issuedInvoices_list",
-            {  data, user_db },
+            {  data },
             { onSuccess: () => {
+                    // const invoice_id = 
+                    // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
+                    // const refcord = useRecordContext();
+
+                    console.log("DATA!!!!:", data);
                     navigate('/issuedInvoices_list');
                     console.log('dataTest', data, 'dataArr', data.products,);
                 } }
@@ -125,37 +132,22 @@ const InvoiceCreate = (props) => {
             <FormProvider {...methods}>
                 {/* <form onSubmit={save} record={data}> */}
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
-                    <InvoiceFormLayout titleForm={<ResourceName />} /  >  
-                    <SpanningSalesTable />
-                    <AdditionalBox />
-                    {/* <SimpleForm  
-                        // defaultValues={defaultValueInvoice} 
-                        toolbar={<InvoiceCreateToolbar />} >
-                            
-                        <InvoiceFormLayout titleForm={<ResourceName />}   > */}
-                        
-                
+                    <InvoiceFormLayout titleForm={<ResourceName />} >
+                        <SpanningSalesTable />
+                    </InvoiceFormLayout>  
+                    {/* <AdditionalBox /> */}
                     <br/>
-          
-                <>
-                <div>
-          
-                </div>
-                
-                </>
-
-
-            {/* </InvoiceFormLayout>   */}
-
-
-            
-            {/* </SimpleForm> */}
-            {/* <input type="submit" value="DB TEST" />  */}
             <span>
             <Button type="submit" >
-                Save
+                Wystaw
             </Button>
-                <InvoiceCreateToolbar />
+            <InvoiceShowModal>
+                <hr/>
+                <Button type="submit" >
+                    Wystaw
+                </Button>
+            </InvoiceShowModal>
+                {/* <InvoiceCreateToolbar /> */}
             </span>
 
         </form>

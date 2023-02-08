@@ -22,7 +22,7 @@ export default function InvoiceAdditionalCheckbox() {
     return (
         <Grid item xs={12} sm={9}>
             <PaymentChannelSwitcher register={register} />
-            <SendInvoiceCheckbox register={register} />
+            
                  
                     {/* </RadioGroup> */}
             {/* </Sheet> */}

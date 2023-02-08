@@ -78,6 +78,7 @@ export const pl = {
                     inv_email: 'Na adres email',
                     transfer: 'Przelewem',
                     cash: 'Gotówką',
+                    ehf: 'Faktura EHF'
                 },
                 header: {
                     address: 'Adres',
@@ -85,7 +86,8 @@ export const pl = {
                     additional_note: 'Uwagi do faktury',
                     optionbox_invoice: 'Opcje dodatkowe',
                     payment_channel: 'Forma płatności',
-                    send_invoice: 'Prześlij dokument'
+                    send_invoice: 'Prześlij dokument',
+                    efa: 'Wystaw fakturę EHF'
                 }
             }
         },

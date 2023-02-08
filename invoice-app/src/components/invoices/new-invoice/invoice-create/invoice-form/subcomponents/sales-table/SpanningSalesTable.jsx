@@ -1,7 +1,7 @@
 import { useState, useRef, useMemo, useEffect } from 'react';
 import { useForm, useWatch, useFieldArray, useFormContext} from "react-hook-form";
 import TableHeader from './spanning-sales-table/TableHeader';
-import { Paper, TableContainer, Table, TableCell, TableRow, TableFooter, Grid, Button, TableBody, IconButton } from '@mui/material';
+import { Paper, TableContainer, Table, TableCell, TableRow, TableFooter, Grid, Box, Button, TableBody, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TableTotalSum from './spanning-sales-table/TableTotalSum';
 import { SalesTotalSum } from './spanning-sales-table/total-sum-table/CalcTotalSum';
@@ -17,10 +17,15 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import SwitchNetOrGross from './spanning-sales-table/sales-table-panel/SwitchNetOrGross';
 import JoyInputBox from './spanning-sales-table/item-sales-row/JoyInputBox';
 import { useRecordContext } from 'react-admin';
+import JoyNotebox2 from './joy-sales-table/joy-optionbox/JoyNotebox2';
+
+
 
 /**DEFAULT VALUES FOR THE SpanningSalesTable */
 function setGrosssPriceSalesItem(netPrice, taxValue) {
-    return ((netPrice * ((taxValue/100)+1)));
+    if(netPrice) return ((netPrice * ((taxValue/100)+1)));
+    if(!netPrice) return "";
+
 }
 function createSalesItem( item_id, desc, type, qty, netPrice, taxValue) {
     const grossPrice = setGrosssPriceSalesItem(netPrice, taxValue);
@@ -29,11 +34,11 @@ function createSalesItem( item_id, desc, type, qty, netPrice, taxValue) {
 
 const obj = {
     _product_name:             "",         
-    _product_count:            "",          
+    _product_count:            1,          
     _product_price_brutto:     "",          
     _product_price_netto:      "",          
     _product_name_selected:    "",         
-    _product_vat:              "",         
+    _product_vat:              125,         
     _product_type:             ""
 };
 
@@ -47,11 +52,11 @@ const createNewItemObj = (obj, index) => Object.fromEntries(
 // refactoring -> see you -> https://codesandbox.io/s/yjgdx4?file=/demo.js
 const defaultValuesSalesItem = {
     _0_product_name:             "",         
-    _0_product_count:            "",          
+    _0_product_count:            1,          
     _0_product_price_brutto:     "",          
     _0_product_price_netto:      "",          
     _0_product_name_selected:    "",         
-    _0_product_vat:              "",         
+    _0_product_vat:              125,         
     _0_product_type:             ""       
 };
 
@@ -61,7 +66,7 @@ let renderCount = 0;
 
 
 export default function SpanningSalesTable(props) {
-    const { control, getValues, setValue } = useFormContext();
+    const { control, getValues,   setValue     } = useFormContext();
     const { fields, append, remove, update } = useFieldArray({   // all props  prepend, swap, move, insert        
         control, // control props comes from useForm (optional: if you are using FormContext)
         name: "products" // unique name for your Field Array
@@ -118,7 +123,7 @@ export default function SpanningSalesTable(props) {
     return (
         <>
          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
-        
+         {/* "50px auto 150px 70px 60px 125px 125px 125px 50px " */}
         <Grid item xs={12}  >
         {/* <form onSubmit={handleSubmit(onSubmit)} {...props}> */}
             <TableContainer component={Paper} >
@@ -131,8 +136,11 @@ export default function SpanningSalesTable(props) {
                                 const id = `products.${index}.id`;
                                 return(
                                     <div hover={true} key={field.id} >
-                                        <InputBox  update={update} myField={field} entryPriceIsGross={entryPriceIsGross}
-                                            setValue={setValue} control={control} arrayItemIdx={`products.${index}`} idx={index} 
+                                        <InputBox  
+                                            setCellGridTemplateRowItem="50px auto 150px 70px 60px 125px 125px 125px 50px"
+                                            update={update} myField={field} entryPriceIsGross={entryPriceIsGross}
+                                            setValue={setValue} 
+                                            control={control} arrayItemIdx={`products.${index}`} idx={index} 
                                             salesListLength={fields.length}
                                             salesItemIndex={index}
                                             eventsOnItem={() => append(createNewItemObj(obj, fields.length))} 
@@ -157,11 +165,30 @@ export default function SpanningSalesTable(props) {
                         <TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}} />
                     </TableRow>
                 </Table>
-                <Table>
+                
+                
+                    {/* <JoyNotebox register={()=>{}}/> */}
+                    <Box  
+                // onFocus={(event) => addItemOnFocusin(event)}
+                className="App"
+                sx={{
+                    mt: 0,
+                    pt: 0,
+                    pb: 1,
+                    display: "grid",
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gridGap: 10,
+                    alignItems: "baseline"
+                }}
+                
+            >
+                <JoyNotebox2 register={ () => {} }/>
+                <Table size="small"  >
                     <TableTotalSum>
-                        <SalesTotalSum nameSalesList="products" setValue={setValue} control={control} />
+                        <SalesTotalSum nameSalesList="products"  control={control} />
                     </TableTotalSum>
                 </Table>
+                </Box>
             </TableContainer>
                         {/* <input type='button' value="▶🚀consol.log(data)" onClick={handleSubmit(onSubmit)}/> */}
         {/* </form> */}

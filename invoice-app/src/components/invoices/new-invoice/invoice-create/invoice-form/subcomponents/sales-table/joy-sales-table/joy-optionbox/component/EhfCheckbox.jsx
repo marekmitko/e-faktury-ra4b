@@ -7,7 +7,7 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Person from "@mui/icons-material/Person";
 import People from "@mui/icons-material/People";
 import Apartment from "@mui/icons-material/Apartment";
-import Checkbox, { checkboxClasses } from "@mui/joy/Checkbox";
+import JoyCheckbox, { checkboxClasses } from "@mui/joy/Checkbox";
 import Typography from "@mui/joy/Typography";
 import Box from "@mui/joy/Box";
 import Sheet from "@mui/joy/Sheet";
@@ -19,180 +19,166 @@ import IssuedTextInput from "./IssuedTextInput";
 import Chip from "@mui/joy/Chip";
 import NumberInvoiceIcon from "@mui/icons-material/Pin";
 import TextFieldDecorator from "./subcomponent/TextFieldDecorator";
+import Close from '@mui/icons-material/Close';
+import { useFormContext, Controller, useWatch, useController } from "react-hook-form";
+import { useTranslate } from "react-admin";
+import { FormControlLabel } from "@mui/material";
+import { EfaInputBox } from "./subcomponent/EhfInputBox";
 
-export default function EhfCheckbox() {
-    const [members, setMembers] = React.useState([false, true, false]);
-    const toggleMember = (index) => (event) => {
-        const newMembers = [...members];
-        newMembers[index] = event.target.checked;
-        setMembers(newMembers);
-    };
 
-    // console.log("members", ....members);
-    console.log("members", members[1]);
 
+
+
+function IconsCheckbox({label, options, name, control  }) {
+    const { field } = useController({  control, name });
+    const [value, setValue] = React.useState(field.value || []);
     return (
         <>
+
+        
+        {options.map((option, index) => (
+
+
+            <JoyCheckbox 
+                sx={{ flexDirection: "row-reverse", gap: 1.5 }}
+                label={label} 
+                uncheckedIcon={<Close />}
+                onChange={(e) => {
+                    const valueCopy = [...value];
+                    // update checkbox value
+                    valueCopy[index] = e.target.checked ? e.target.value : null;
+                    // send data to react hook form
+                    field.onChange(valueCopy);
+                    // update local state
+                    setValue(valueCopy);
+                }}
+                key={option}
+                checked={value.includes(option)}
+                type="checkbox"
+                value={option}
+            />
+            ))}
+            {value[0] && ( <EfaInputBox checked={value[0]} /> )}
+        </>
+    );
+};
+
+
+
+const Input = ({ name, control, register, index }) => {
+    const value = useWatch({
+        control,
+        name
+    });
+    return <input {...register(`test.${index}.age`)} defaultValue={value} />;
+    };
+
+
+
+
+
+
+export default function EhfCheckbox() {
+    const translate = useTranslate();
+    const [show, setShow] = React.useState(true);
+    const { register, control, getValues, handleSubmit } = useFormContext();
+
+
+
+    return (
+        <Box sx={{ minWidth: 200 }}>
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+            }}
+        >
+        <Typography
+            id="example-payment-channel-label"
+            // level="body5"
+            textTransform="uppercase"
+            // fontWeight="xl"
+            sx={{ 
+                fontSize: "xs1",
+                letterSpacing: "xs",
+                fontWeight: "lg",
+                color: "text.secondary",
+                pb: 0,
+            }}
+        >
+        {translate('myroot.form.label.header.efa')}
+        </Typography>
+    </Box>
             <Sheet
                     variant="neutral"
                     sx={{
-                        p: 2,
+                        p: 1,
                         bgcolor: "background.body",
                         borderRadius: "sm",
                         width: 660,
                         maxWidth: "100%"
                     }}
-            >
-                    <Box role="group" aria-labelledby="member">
-                        <List
-                            sx={{
-                                minWidth: 560,
-                                "--List-gap": "0.5rem",
-                                "--List-item-paddingY": "1rem",
-                                "--List-item-radius": "8px",
-                                "--List-decorator-size": "32px",
+            > 
 
-                                [`& .${checkboxClasses.root}`]: {
-                                        mr: "auto",
-                                        flexGrow: 1,
-                                        alignItems: "center",
-                                        flexDirection: "row-reverse",
-                                        gap: 1.5
-                                }
+                    <IconsCheckbox 
+                        {...register('uncontrolled')}
+                            // nameCheck="ehf"
+                          // { ...register('postmail')  }
+                            label={translate('myroot.form.label.checkbox.ehf')}
+                            // onChange={handleChangePostmail }
+                            // checked={checkedPostmail}
+                            onClick={() => { console.log(show)
+                                setShow(!show);
                             }}
-                        >
-                            {/* {["Send", "Team", "Enterprise"].map((item, index) => ( */}
-                            {["Faktura EHF"].map((item, index) => (
-                                <ListItem
-                                        variant="outlined"
-                                        key={item}
-                                        sx={{
-                                            boxShadow: "sm",
-                                            bgcolor: "background.body"
-                                        }}
-                                        // sx={{ boxShadow: "sm", bgcolor: "blue" }}
-                                        {...(members[1] && {
-                                            variant: "soft",
-                                            color: "primary"
-                                        })}
-                                >
-                                        <ListItemDecorator>
-                                            {
-                                                [
-                                                    <InvoiceEHFOutlined />
-                                                    // <InvoiceEHFRounded />
-                                                    // <People />,
-                                                    // <Apartment />
-                                                ][index]
-                                            }
-                                        </ListItemDecorator>
-                                        {/* <Radio
-                                            overlay
-                                            value={item}
-                                            label={item}
-                                            sx={{ flexGrow: 1, flexDirection: "row-reverse" }}
-                                            slotProps={{
-                                                action: ({ checked }) => ({
-                                                    sx: (theme) => ({
-                                                            ...(checked && {
-                                                                inset: -1,
-                                                                border: "2px solid",
-                                                                borderColor: theme.vars.palette.primary[500]
-                                                            })
-                                                    })
-                                                })
-                                            }}
-                                        /> */}
-                                        {/* <Sheet variant="outlined" sx={{ bgcolor: "background.body" }}> */}
+                            options={["a"]}
+                            control={control}
+                            name="efa"
+                        />
+                        {/* <section>
+                            <button
+                            type="button"
+                            onClick={() => {
+                                setShow(!show);
+                            }}
+                            >
+                            Hide
+                            </button>
+                        </section>
 
-                                        <Checkbox
-                                            overlay
-                                            // Force the outline to appear in the demo. Usually, you don't need this in your project.
-                                            slotProps={{
-                                                action: ({ checked }) => ({
-                                                    sx: (theme) => ({
-                                                            ...(members[1] && {
-                                                                inset: -1,
-                                                                border: "2px solid",
-                                                                borderColor: `rgba(${theme.vars.palette.primary.mainChannel} / 0.5)`
-                                                                // bgcolor: `rgba(${theme.vars.palette.primary.mainChannel} / 0.05)`
-                                                                // backgroundColor: theme.vars.palette.primary[500]
-                                                            })
-                                                    })
-                                                })
-                                            }}
-                                            // slotProps={
-                                            //      {
-                                            //           // action: { className: checkboxClasses.focusVisible }
-                                            //      }
-                                            // }
-                                            label={
-                                                <React.Fragment>
-                                                    {/* Adeline O&apos;Reilly{" "} */}
-                                                    Faktura EHF
-                                                    {members[1] && (
-                                                            <Typography
-                                                                aria-hidden="true"
-                                                                sx={{
-                                                                    // display: "block",
-                                                                    fontSize: "sm",
-                                                                    color: "neutral.500"
-                                                                }}
-                                                            >
-                                                                <Box
-                                                                    sx={{
-                                                                        display: "inline-block",
-                                                                        ml: 1
-                                                                        // mr: ,
-                                                                        // alignText: "right",
-                                                                        // gap: 1
-                                                                        // alignItems: "center"
-                                                                    }}
-                                                                >
-                                                                    <Typography
-                id="example-payment-channel-label"
-                // level="body5"
-                textTransform="uppercase"
-                // fontWeight="xl"
-                sx={{ 
-                    fontSize: "xs2",
-                    letterSpacing: "xs",
-                    fontWeight: "lg",
-                    color: "text.secondary",
-                    mt: '-10',
-                }}
-            >
-               {"ZAMÓWIENIE NR:"}
-            {/* {translate('myroot.form.label.header.send_invoice')} */}
-            </Typography>
-                                                                    <Chip
-                                                                        size="sm"
-                                                                        // variant="solid"
-                                                                        variant="solid"
-                                                                        color="primary"
-                                                                        startDecorator={<NumberInvoiceIcon />}
-                                                                    >
-                                                                        <b> 01/12/2022 </b>
-                                                                    </Chip>
-                                                                </Box>
-                                                                <br />
-                                                                {/* This user is your friend. */}
-                                                                {/* <IssuedTextInput /> */}
-                                                                <TextFieldDecorator />
-                                                            </Typography>
-                                                    )}
-                                                </React.Fragment>
-                                            }
-                                            checked={members[1]}
-                                            onChange={toggleMember(1)}
-                                            sx={{ color: "inherit" }}
-                                        />
-                                        {/* </Sheet> */}
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Box>
+
+                        {show && (
+                                <ul>
+                                    <li>"dupa:"</li>
+                                        return ( 
+                                        <li key={'firstIt'}>
+                                            <input
+                                            defaultValue={getValues(`test.efa.firstName`)}
+                                            {...register(`test.efa.firstName`)}
+                                            />
+
+                                            <Controller
+                                            render={({ field }) => <input {...field} />}
+                                            control={control}
+                                            name={`test.efa.lastName`}
+                                            defaultValue={getValues(`test.efa.lastName`)}
+                                            />
+
+                                            <Input
+                                            register={register}
+                                            control={control}
+                                            index="efa"
+                                            name={`test.efa.age`}
+                                            />
+
+                                            <button type="button" onClick={() => console.log("removed....")}>
+                                            Delete
+                                            </button>
+                                        </li>
+                                      
+                                </ul>
+                            )} */}
             </Sheet>
-        </>
+            </Box>
     );
 }

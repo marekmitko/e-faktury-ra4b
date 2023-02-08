@@ -18,16 +18,6 @@ import { useTranslate } from "react-admin";
 import InvoiceAdditionalCheckbox from "./component/InvoiceAdditionalCheckbox";
 
 export default function JoyOptionbox() {
-
-    const [members, setMembers] = React.useState([false, true, false]);
-    // const toggleMember = (index) => (event) => {
-    //         const newMembers = [...members];
-    //     newMembers[index] = event.target.checked;
-    //     setMembers(newMembers);
-    // };
-
-    // // console.log("members", ....members);
-    // console.log("members", members[1]);
     const translate = useTranslate();
 
     return (
@@ -35,12 +25,12 @@ export default function JoyOptionbox() {
             <Sheet
                 // variant="neutral"
                 sx={{
-                    pl:1,
-                    bgcolor: "background.body",
-                    borderRadius: "sm",
-                    // width: 360,
-                    maxWidth: "100%",
-                    display: "flex"
+                //     pl:1,
+                //     bgcolor: "background.body",
+                //     borderRadius: "sm",
+                //     // width: 360,
+                //     maxWidth: "100%",
+                //     display: "flex"
                 }}
             >
                 <InvoiceAdditionalCheckbox />

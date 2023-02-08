@@ -15,12 +15,12 @@ import JoyTextarea from '@mui/joy/Textarea';
 {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}> */}
 
 // *see <NewInvoiceHeader />
-export const JoyNotebox = ({register}) => {
+export const JoyNotebox2 = ({register}) => {
     const translate = useTranslate();
-    const { onChange, onBlur, name, ref } = register('comments'); 
+    // const { onChange, onBlur, name, ref } = register('comments'); 
     return(
 
-            <Grid item xs={12}>
+            <Grid item xs={12} p="1" m="1" >
                 {/* <Card sx={{ p: 0.5, height:'100%', display: 'flex', alignContent: "flex-start" }} > */}
                 <JoyTypography
                     // id="example-payment-channel-label"
@@ -32,7 +32,7 @@ export const JoyNotebox = ({register}) => {
                         letterSpacing: "xs",
                         fontWeight: "lg",
                         color: "text.secondary",
-                        pb: 1,
+                        ml: 2
                     }}
                 >
             {translate('myroot.form.label.header.additional_note')}
@@ -42,6 +42,7 @@ export const JoyNotebox = ({register}) => {
                         minRows={5} 
                         color="text.secondary"
                         sx={{
+                            m: 2, mt: 1,
                             backgroundColor: "aliceblue"
                         }}
                         {...register('comments')}
@@ -51,4 +52,4 @@ export const JoyNotebox = ({register}) => {
     );
 };
 
-export default JoyNotebox; 
+export default JoyNotebox2; 

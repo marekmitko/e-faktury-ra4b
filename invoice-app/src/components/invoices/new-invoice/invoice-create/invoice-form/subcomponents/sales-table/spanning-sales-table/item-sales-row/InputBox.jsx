@@ -1,15 +1,15 @@
 import { useState, useEffect, useMemo} from "react";
-import {InputAdornment, IconButton, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack, TextField, Divider} from "@mui/material";
+import {InputAdornment, IconButton,   Chip, Stack, TextField,  } from "@mui/material";
 import Box from "@mui/material/Box";
-import { Controller, useFormContext, useController, setValue, useWatch} from "react-hook-form";
+import {   useController, useWatch } from "react-hook-form";
 import {  useTranslate } from "react-admin";
 import { PriceInput } from "./input-box-component/PriceInput";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import AutoItemCategoryInput from "./input-box-component/subcomponent/AutoItemCategoryInput";
+// import AutoItemCategoryInput from "./input-box-component/subcomponent/AutoItemCategoryInput";
 import SelectItemOption from "./input-box-component/subcomponent/SelectItemOption";
 import { TextInputItem } from "./input-box-component/subcomponent/TextInputItem";
 import { productOptions, taxOptions, typeOptions }  from './options_select_input';
-import JoyComboInputSelect from "./input-box-component/subcomponent/JoyComboInputSelect";
+// import JoyComboInputSelect from "./input-box-component/subcomponent/JoyComboInputSelect";
 
 
 // Obcaaj https://codesandbox.io/s/react-hook-form-mui-forked-0xkhyk
@@ -27,8 +27,8 @@ function setNetPriceItem(grossPriceInput, taxValue){
 
 export default function InputBox ({ 
     // addItemOnFocusin, 
-    ButtonAddItem,
-    eventsOnItem, salesListLength, salesItemIndex, children, update, control, arrayItemIdx, idx, entryPriceIsGross, setValue, myField}) {
+    ButtonAddItem, setCellGridTemplateRowItem, setValue,
+    eventsOnItem, salesListLength, salesItemIndex, children, update, control, arrayItemIdx, idx, entryPriceIsGross, myField}) {
 
     const translate = useTranslate();
 
@@ -40,26 +40,29 @@ export default function InputBox ({
     const typeItem = useController({ name: `${arrayItemIdx}._${idx}_product_type`, control, defaultValue: "", });
     const categoryItem = useController({ name: `${arrayItemIdx}._${idx}_product_name_selected`, control, defaultValue: "", });
 
-    const netPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_netto` });
-    const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_brutto` });
+    // const netPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_netto` });
+    // const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_brutto` });
     
     const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
 
     const newDependentValue = useMemo(() => {
-    
+        // if (!enteryValue) return "";
         if (!entryPriceIsGross  ) //setGrossPriceItem
             return (parseFloat(enteryValue) * (+taxItem.field.value)) / 100;
-        if (entryPriceIsGross  ) //setNetPriceItem
+        if (entryPriceIsGross ) //setNetPriceItem
             return (parseFloat(enteryValue) / (+taxItem.field.value)) * 100 ;
         }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
 
+
+    // React Hook useEffect has missing dependencies: 'grossItem.field.name', 'netItem.field.name', 'newDependentValue', and 'setValue'. Either include them or remove the dependency array. If 'setValue' changes too often, find the parent component that defines it and wrap that definition in useCallback.eslintreact-hooks/exhaustive-deps
+    //  Chyba umyślnie to tak tutaj było 🙈
     useEffect(() => {
                 if ( !isNaN(!parseFloat(newDependentValue)) && entryPriceIsGross ) {
-                    setValue(`${netItem.field.name}`, `${newDependentValue.toFixed(2)}`);
+                    setValue(`${netItem.field.name}`, `${newDependentValue.toFixed(2) ? newDependentValue.toFixed(2) : "" }`);
                     // setValue( netPriceInput, `${newDependentValue.toFixed(6)}`);
                 }
                 if ( !isNaN(!parseFloat(newDependentValue)) && !entryPriceIsGross ){
-                    setValue( `${grossItem.field.name}`, `${newDependentValue.toFixed(2)}` );
+                    setValue( `${grossItem.field.name}`, `${newDependentValue.toFixed(2) ? newDependentValue.toFixed(2) : "" }` );
                     // setValue( grossPriceInput, `${newDependentValue.toFixed(6)}` );
 
                 }
@@ -85,7 +88,7 @@ export default function InputBox ({
                     pt: 0,
                     pb: 1,
                     display: "grid",
-                    gridTemplateColumns: "50px auto 150px 70px 60px 125px 125px 125px 50px ",
+                    gridTemplateColumns: setCellGridTemplateRowItem,
                     gridGap: 10,
                     alignItems: "baseline"
                 }}
@@ -140,10 +143,14 @@ export default function InputBox ({
                     }}
                 >{ 
                     (entryPriceIsGross ) ? (setNetPriceItem(+grossItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)
-                                            : (+netItem.field.value * +qtyItem.field.value).toFixed(2) }</div>
+                                            : (( +netItem.field.value ) ?  (+netItem.field.value * +qtyItem.field.value).toFixed(2)
+                                                : "")
+                                        }</div>
 {/* {grossSum} */}
-                <div align="right">{ entryPriceIsGross    ? (+grossItem.field.value * +qtyItem.field.value).toFixed(2) 
-                                            : (setGrossPriceItem(+netItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2)  }</div>
+                <div align="right">{ (entryPriceIsGross) ? ( +grossItem.field.value * +qtyItem.field.value).toFixed(2) 
+                                            : ( +netItem.field.value ? ((setGrossPriceItem(+netItem.field.value, taxItem.field.value) * +qtyItem.field.value).toFixed(2))  
+                                                : "" )
+                                        }</div>
                 <div align="center">
                     {children ? children : null}
                 </div>

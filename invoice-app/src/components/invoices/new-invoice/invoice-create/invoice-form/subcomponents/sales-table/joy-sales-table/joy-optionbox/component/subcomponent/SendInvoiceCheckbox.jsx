@@ -20,33 +20,44 @@ import JoyListItemDecorator from '@mui/joy/ListItemDecorator'
 import CustomJoySheet, { sheetClasses } from '@mui/joy/Sheet'
 import JoyCheckbox from '@mui/joy/Checkbox';
 import Close from '@mui/icons-material/Close';
+import { useFormContext } from 'react-hook-form';
 
-function IconsCheckbox({label}) {
+function IconsCheckbox({label, nameCheck}) {
+    const { register } = useFormContext();
+    // const { onChange, onBlur, name, ref } = register(`${nameCheck}`);
+    const registerInput = register(`${nameCheck}`);
     return (
         <JoyCheckbox 
             sx={{ flexDirection: "row-reverse", gap: 1.5 }}
             label={label} 
-            uncheckedIcon={<Close />} 
+            uncheckedIcon={<Close />}
+            onChange={registerInput.onChange}
+            ref={registerInput.ref}
+            name={registerInput.name}
+
         />
     );
 };
 
 
-export default function SendInvoiceCheckbox({ register }) {
-    const [checkedPostmail, setCheckedPostmail] = React.useState(false);
-    const [checkedSendEmail, setCheckedSendEmail] = React.useState(false);
-    const inv_email = register('inv_email');
-    const postmail = register('postmail');
+export default function SendInvoiceCheckbox( ) {
+    // const {control, register} = useFormContext();
+
+
+    // const [checkedPostmail, setCheckedPostmail] = React.useState(false);
+    // const [checkedSendEmail, setCheckedSendEmail] = React.useState(false);
+    // // const inv_email = register('inv_email');
+    // // const postmail = register('postmail');
     const translate = useTranslate();
 
-    const handleChangePostmail = (event) => {
-        setCheckedPostmail(event.target.checked);
-        console.log('statePost: ', checkedPostmail);
-    };
-    const handleChangeSendEmail = (event) => {
-        setCheckedSendEmail(event.target.checked);
-        console.log('stateEmail: ', checkedSendEmail);
-    };
+    // const handleChangePostmail = (event) => {
+    //     setCheckedPostmail(event.target.checked);
+    //     console.log('statePost: ', checkedPostmail);
+    // };
+    // const handleChangeSendEmail = (event) => {
+    //     setCheckedSendEmail(event.target.checked);
+    //     console.log('stateEmail: ', checkedSendEmail);
+    // };
 
     return (
         <Box sx={{ minWidth: 240 }}>
@@ -101,10 +112,11 @@ export default function SendInvoiceCheckbox({ register }) {
                     </JoyListItemDecorator>
                     <JoyListItemContent htmlFor="postmail" component="label">
                         <IconsCheckbox 
-                            { ...register('postmail')  }
+                            nameCheck="postmail"
+                          // { ...register('postmail')  }
                             label={translate('myroot.form.label.checkbox.postmail')}
-                            onChange={postmail.register.onChange = (event) => handleChangePostmail(event) }
-                            checked={checkedPostmail}
+                            // onChange={postmail.register.onChange = (event) => handleChangePostmail(event) }
+                            // checked={checkedPostmail}
                         />
                     </JoyListItemContent>
                 </JoyListItem>
@@ -117,10 +129,11 @@ export default function SendInvoiceCheckbox({ register }) {
                     </JoyListItemDecorator>
                     <JoyListItemContent htmlFor="inv_email" component="label">
                         <IconsCheckbox 
-                            { ...register('inv_email')  }
+                            nameCheck="inv_email"
+                            // { ...register('inv_email')  }
                             label={translate('myroot.form.label.checkbox.inv_email')}
-                            onChange={handleChangeSendEmail}    
-                            checked={checkedSendEmail} 
+                            // onChange={handleChangeSendEmail}    
+                            // checked={checkedSendEmail} 
                         />
                     </JoyListItemContent>
                 </JoyListItem>

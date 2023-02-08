@@ -1,5 +1,5 @@
 import React from "react";
-import { useWatch, setValue } from "react-hook-form";
+import { useWatch } from "react-hook-form";
 import TableCell from '@mui/material/TableCell';
 
 function setTotalSumNetValue(results){
@@ -11,11 +11,9 @@ function setTotalSumNetValue(results){
         // console.log("result[ket]", results[key]);
         // console.log("qty", results[key][`item_${key}_qty`]);
         // statingPrice?
-        if(results[key][`item_${key}_qty`] && results[key][`item_${key}_netPrice`])
-            totalSum += (results[key][`item_${key}_netPrice`] * results[key][`item_${key}_qty`]);
-
+        if(results[key][`_${key}_product_count`] && results[key][`_${key}_product_price_netto`])
+            totalSum += (results[key][`_${key}_product_price_netto`] * results[key][`_${key}_product_count`]);
     }
-
     return totalSum;
 }
 
@@ -24,21 +22,17 @@ function setTotalSum(results){
 
     for(const key in results) {
         // statingGrossPrice?
-        if(results[key][`item_${key}_qty`] && results[key][`item_${key}_grossPrice`])
-            totalSum += (results[key][`item_${key}_grossPrice`] * results[key][`item_${key}_qty`]);
+        if(results[key][`_${key}_product_count`] && results[key][`_${key}_product_price_brutto`])
+            totalSum += (results[key][`_${key}_product_price_brutto`] * results[key][`_${key}_product_count`]);
     }
 
     return totalSum;
 }
 // *see DOPRACOWAĆ Z OLKIEM - total tax total sum total net  |!!!!
 
-export const SalesTotalSum = ({ control, setValue, nameSalesList }) => {
+export const SalesTotalSum = ({ control, nameSalesList }) => {
     const results = useWatch({ control, name: `${nameSalesList}` });
 
-
-    // console.log("result", {...results});
-    // console.log("result", setTotalSumNetValue(results));
-    
     let totalSumNet = setTotalSumNetValue(results);
     let totalSum = setTotalSum(results)
     // {/* <TableCell align="right" >{(totalSum && totalSumNet) ? `${(totalSum-totalSumNet).toFixed(2)} PLN` : ""}</TableCell> */}
@@ -72,10 +66,9 @@ function totalCal(results) {
         return totalValue;
     }
     
-export const CalcMultiplication = ({control, setValue, nameInput}) => {
+export const CalcMultiplication = ({control, nameInput}) => {
         const results = useWatch({ control, name: `${nameInput}` });
         const output = [];
-    
-        console.log('CalMLP', results);
+        // console.log('CalMLP', results);
         return(<p>sum cost: {output}</p>)
     }
