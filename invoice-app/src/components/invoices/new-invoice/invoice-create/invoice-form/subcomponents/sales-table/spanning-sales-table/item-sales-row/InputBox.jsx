@@ -48,8 +48,8 @@ export default function InputBox ({
     const newDependentValue = useMemo(() => {
         // if (!enteryValue) return "";
         if (!entryPriceIsGross  ) //setGrossPriceItem
-            return (parseFloat(enteryValue) * (+taxItem.field.value)) / 100;
-        if (entryPriceIsGross ) //setNetPriceItem
+            return ((!isNaN(enteryValue)) ? (parseFloat(enteryValue)  * (+taxItem.field.value)) : "0.00" ) / 100;
+        if (entryPriceIsGross) //setNetPriceItem
             return (parseFloat(enteryValue) / (+taxItem.field.value)) * 100 ;
         }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
 

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect } from "react";
 import { Button } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -9,8 +9,8 @@ import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
 import { AdditionalBox } from '../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm,  Create, useResourceContext, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
-import { transformArrayProducts } from '../../../../../db/fnInvoiceForm';
+import {  SimpleForm,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
+import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
 import InvoiceShowModal from "./efa-invoice-show/InvoiceShowModal";
 
@@ -93,16 +93,86 @@ const InvoiceCreate = (props) => {
     // const like = { postId: record.id };
     // const [create, { isLoading, error }] = useCreate();
     // const handleClick = () => {
-    //     create('likes', { data: like })
-    // }
-    const { handleSubmit, reset, control } = useForm();
+        //     create('likes', { data: like })
+        // }
+        const { handleSubmit, reset, control } = useForm();
+        
+        
+        const [create, { isLoading, error }] = useCreate();
+        const myTest_dataProvider = useDataProvider();
 
 
-    const [create, { isLoading, error }] = useCreate();
+        const currentBuyerId= methods.getValues('buyer_id');
+
+            useEffect(() => {
+                myTest_dataProvider.getOne('buyersEfaktury', { id: currentBuyerId })
+                    .then(({ data }) => {
+                        console.log("test_dbClient", data);
+                        // setUser(data);
+                        // setLoading(false);
+                    })
+                    .catch(error => {
+                        console.log("ERROR: ", error );
+                        // setError(error);
+                        // setLoading(false);
+                    })
+            }, []);
+
+            // if (loading) return <Loading />;
+            // if (error) return <Error />;
+            // if (!user) return null;
+
+
+
+
+
+
+
 
     const onSubmit = (data) => { 
+
+
+
+
+        const currentDataForm = methods.getValues();
+        const currentBuyerId= methods.getValues('buyer_id');
+        console.log('getValues: ', currentDataForm );
+        console.log('getBuyerId: ', currentBuyerId );
+        
+        
+
+
+
+
         const productsArr = transformArrayProducts(data.products);
         data.products = productsArr;
+        const prefix_buyer = createPrefixObjectKeys("buyer_");
+        const db_buyer = prefix_buyer(data.dbBuyers);
+        console.log("dbBuyerNetwork", db_buyer);
+        data.dbBuyers = ""
+        data = {...data, ...db_buyer};
+
+
+        // PRZEKSZTAŁĆ NA TO => https://marmelab.com/react-admin/useGetOne.html //*edu
+        // to jest to co teraz robie   =>  https://marmelab.com/react-admin/useDataProvider.html
+        const { data: clientDBtest } = myTest_dataProvider.getOne('buyersEfaktury', { id: `${currentBuyerId}` }).then(({ data }) => {
+            console.log("test_dbClient", data);
+            console.log("0000", clientDBtest);
+            // setUser(data);
+            // setLoading(false);
+        });
+
+
+
+
+        console.log('_________clientDBtest: ', clientDBtest );
+        
+
+        // const dataClient = () => useGetOne(
+            
+        //     'buyersEfaktury', { id: `${currentBuyerId}`}
+        // );
+
 
 
         create(

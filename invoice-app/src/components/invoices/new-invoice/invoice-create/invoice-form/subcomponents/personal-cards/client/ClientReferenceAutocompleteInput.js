@@ -50,7 +50,7 @@ const OptionRenderer = () => {
 
 
 export default function ClientReferenceAutocompleteInput(props) {
-    const {handleBuyerIdChange, source, reference} = props;
+    const {handleBuyerIdChange, valueBuyerId, setValueForm, source, reference} = props;
  
     // const record = useRecordContext();
     // const inputText = choices => `${choices.company} ${choices.id}`;
@@ -62,7 +62,7 @@ export default function ClientReferenceAutocompleteInput(props) {
             || choices.id.toLowerCase().includes(filter.toLowerCase()) 
         ) : null;
     };
-
+console.log("valueBuyerId", valueBuyerId);
     return (
         <>
         <ReferenceInput 
@@ -74,7 +74,12 @@ export default function ClientReferenceAutocompleteInput(props) {
             <AutocompleteInput 
                 fullWidth
                 // onChange={event => db_buyer.company = event.target.value }
-                onChange={(event) => handleBuyerIdChange(event) }  
+                // onChange={(event) => handleBuyerIdChange(  console.log(event)  }  
+                onChange={(event) => {
+                    setValueForm('buyer_id', `${event}`);
+                    handleBuyerIdChange(event);
+                    }
+                }  
        
                 optionText={<OptionRenderer   />}
                 optionValue='id' 

@@ -26,7 +26,7 @@ function setTotalSum(results){
             totalSum += (results[key][`_${key}_product_price_brutto`] * results[key][`_${key}_product_count`]);
     }
 
-    return totalSum;
+    return (totalSum);
 }
 // *see DOPRACOWAĆ Z OLKIEM - total tax total sum total net  |!!!!
 
@@ -38,9 +38,9 @@ export const SalesTotalSum = ({ control, nameSalesList }) => {
     // {/* <TableCell align="right" >{(totalSum && totalSumNet) ? `${(totalSum-totalSumNet).toFixed(2)} PLN` : ""}</TableCell> */}
     return (
         <>
-            <TableCell align="right" >{`${totalSumNet.toFixed(2)} PLN`}</TableCell>
-            <TableCell align="right" >{`${(totalSum-totalSumNet).toFixed(2)} PLN`}</TableCell>
-            <TableCell align="right" >{`${totalSum.toFixed(2)} PLN`}</TableCell>
+            <TableCell align="right" >{`${!isNaN(totalSumNet.toFixed(2)) ? totalSumNet.toFixed(2) : ""} PLN`}</TableCell>
+            <TableCell align="right" >{`${!isNaN((totalSum-totalSumNet).toFixed(2)) ? (totalSum-totalSumNet).toFixed(2) : "" } PLN`}</TableCell>
+            <TableCell align="right" >{`${!isNaN(totalSum.toFixed(2))? totalSum.toFixed(2) : "" } PLN`}</TableCell>
         </>
     );
 };

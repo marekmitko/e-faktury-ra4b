@@ -11,10 +11,10 @@ export default function InvoiceShowModal({ children }) {
 const [open, setOpen] = React.useState(false);
 const myMethods = useFormContext();
 const dataForm = myMethods.getValues();
-console.log(dataForm);
+console.info("DATA_Form:", dataForm);
 return (
         <React.Fragment>
-        <JoyButton variant="outlined" color="neutral" onClick={() => setOpen(true) && console.log(...dataForm)}>
+        <JoyButton variant="outlined" color="neutral" onClick={() => {setOpen(true); console.log( dataForm ); } }>
             Utwórz
         </JoyButton>
         <JoyModal

@@ -9,11 +9,13 @@ import OldClientReferenceAutocompleteInput from "../buyer/buyer-part-form/client
 import { ReferenceInput } from "react-admin";
 import { Stack } from "@mui/material";
 import SimpleDialogDemo from "./new-simple-modal-new-client/SimpleDialogCreateClient";
+import { useFormContext } from "react-hook-form";
 
 
 
 
 export default function ClientCard(){
+    const{ setValue } = useFormContext();
     const [valueBuyerId, setValueBuyerId] = React.useState("");
 
     return(
@@ -22,6 +24,8 @@ export default function ClientCard(){
                 <ClientReferenceAutocompleteInput 
                     source="buyer_id" reference="buyersEfaktury" 
                     handleBuyerIdChange={setValueBuyerId}
+                    valueBuyerId={valueBuyerId}
+                    setValueForm={setValue}
                     // enableGetChoices={({ q }) =>  q.length ? (q.length >= 3) : null}
                     />
                 <Stack alignItems="center" justifyContent="center" >

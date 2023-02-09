@@ -3,10 +3,11 @@ import { blue, blueGrey } from '@mui/material/colors';
 import MailIcon from '@mui/icons-material/MailOutline';
 import DataContatctIcon from '@mui/icons-material/Wysiwyg';
 import { Stack, Typography, Box, Divider, TableCell } from "@mui/material";
-import { TextField,useRecordContext, SimpleShowLayout, useTranslate, WrapperField  } from "react-admin";
+import { TextField,useRecordContext, SimpleShowLayout, useTranslate, WrapperField, useGetOne, useGetMany } from "react-admin";
 // import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
 import { CodeAndNameCityDualField } from '../../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
 import { BuyerDataFromLayout } from "../BuyerDataFormLayout";
+import { useFormContext } from "react-hook-form";
 
 // BUG // *see Zapytać 
 // BUG // note a. 1 Przenieść do stanu ? 
@@ -36,11 +37,30 @@ const PurpleTextField = ({ source }) => {
     
 export const BuyerDetailShowLayout = (props) => {
     const translate = useTranslate();
+    const { register } = useFormContext();
+    const record = useRecordContext();
+    const { data: buyer  } = useGetOne('buyersEfaktury', { id: record.id });
+
+    // const { data: buyerTest, isLoading, error } = useGetMany('buyersEfaktury', { id: '2145' });
+    // console.log("buyerTest:", buyerTest);
+
+
+
+
+    const dbBuyer = register('dbBuyers', { value: buyer})
+    // clientValue = buyer;
+
+// console.log("BUYER:", buyer);
+
     return (
         <>
         <SimpleShowLayout   >
             {/* <BuyerDataFromLayout /> */}
-            <TextField source="company" />
+            {/* { {...clientValue}} */}
+            <Box direction="row" gap={1} width="100%">
+                <TextField source="company" />
+                <TextField  source="org_nr"  label={translate('myroot.myBuyersEfaktury.show.fields.org_nr')} />
+            </Box>
             <Stack direction="row" gap={1} width="100%">
                 <MailIcon />
                 <Box direction="row" gap={1} width="100%">
@@ -56,21 +76,11 @@ export const BuyerDetailShowLayout = (props) => {
                     </Box>
             </Stack>
             {/* </Box> */}
-            <TextField
-                source="address"
-                // source="address"
-            />
-                    <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            spacing={2}
-            width="100%"
-        >
-            <TextField sx={{minWidth:'25%'}} source="zip_code"  variant="standard" />
-        </Stack>
-            <TextField    source="place"  fullWidth  variant="standard" />
-            <TextField  source="org_nr"  label={translate('myroot.myBuyersEfaktury.show.fields.org_nr')} />
+            <Box direction="row" sx={{ border: 0 }}gap={1} width="100%">
+                <TableCell sx={{ border: 0 }} >
+                    <small>Ulica: </small> <TextField    source="address" /> {", "}&nbsp; <TextField    source="place"     /> <TextField  source="zip_code" />
+                </TableCell>  
+            </Box>
             <Stack direction="row" gap={1} width="100%">
                 <DataContatctIcon />
                 <Box direction="row" gap={1} width="100%">
