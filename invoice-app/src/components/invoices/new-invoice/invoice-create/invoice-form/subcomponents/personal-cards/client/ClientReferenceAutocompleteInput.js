@@ -15,8 +15,8 @@ import { SaveButton, TextInput, useRecordContext, AutocompleteInput, ReferenceIn
 import { BuyerDataFromLayout } from "../buyer/BuyerDataFormLayout";
 import { BuyerCard } from "../buyer/BuyerCard";
 import { PersonalDataCard } from "../../../../../../../../custom/invoice/parsonal-cards/PersonalDataCard";
-import { BuyerDataFromLayout3 } from "../buyer/BuyerDataFormLayout3";
-import { ClientCreateButton } from "./create-client-subform/ClientCreateButton";
+// import { BuyerDataFromLayout3 } from "../buyer/BuyerDataFormLayout3";
+// import { ClientCreateButton } from "./create-client-subform/ClientCreateButton";
 
 
 const db_buyer =  {
@@ -72,15 +72,12 @@ console.log("valueBuyerId", valueBuyerId);
             {...props} 
         >
             <AutocompleteInput 
-                fullWidth
-                // onChange={event => db_buyer.company = event.target.value }
-                // onChange={(event) => handleBuyerIdChange(  console.log(event)  }  
+                fullWidth 
                 onChange={(event) => {
                     setValueForm('buyer_id', `${event}`);
                     handleBuyerIdChange(event);
                     }
                 }  
-       
                 optionText={<OptionRenderer   />}
                 optionValue='id' 
                 shouldRenderSuggestions={(val) => { return val.trim().length > 1 }}
@@ -110,7 +107,7 @@ export const CreateNewClient = ({handleBuyerIdChange, onClose, selectedValue, op
     const postSave = (data) => {
         // event.preventDefault();
         // data.company = value;
-        create('dbclientlist', {  data    },
+        create('buyersEfaktury', {  data    },
         {
             onSuccess: (data) => {
                 setValue('');

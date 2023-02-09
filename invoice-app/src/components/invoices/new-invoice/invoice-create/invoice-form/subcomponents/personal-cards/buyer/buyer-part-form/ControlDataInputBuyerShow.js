@@ -51,11 +51,7 @@ const BuyerIdShow = ({BuyerId}) => {
 //         );
 //     };
 
-{/* <BuyerDataFromLayout /> */}
-
-
-db_buyer.id = 1125542;
-
+// {/* <BuyerDataFromLayout /> */}
     // *see BuyerPArtFromItem
 export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
     const { data, isLoading, error } = useGetOne(resource, { id });
@@ -69,28 +65,14 @@ export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
         // </PersonalDataCard>
     );
 };
-export const PreBuyerPartFormItem = ({children}) => (
-        <WrapperBuyerPartFormItem resource="buyers" id="2128">
-                {children}
-        </WrapperBuyerPartFormItem>
-);
-
-export const BuyerPartInvoiceFormTEST = ({resourceBuyer,  buyerId}) => (
-        <WrapperBuyerPartFormItem resource={"buyers"} id="2128">
-                <BuyerDetailShowLayout  />
-        </WrapperBuyerPartFormItem>
-);
-
 export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => {
     return(
-
         <WrapperBuyerPartFormItem resource={resourceBuyer} id={buyerId}>
             {/* <BuyerDataFromLayout /> */}
             <BuyerDetailShowLayout  />
         </WrapperBuyerPartFormItem>
     )
 };
-    // );
 
 
 

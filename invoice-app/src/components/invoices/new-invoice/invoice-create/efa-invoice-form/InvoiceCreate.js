@@ -9,7 +9,7 @@ import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
 import { AdditionalBox } from '../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
+import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
 import InvoiceShowModal from "./efa-invoice-show/InvoiceShowModal";
@@ -61,6 +61,37 @@ const InvoiceCreate = (props) => {
     // if (isLoading) return null;
         
 
+
+
+
+
+    // https://react-hook-form.com/api/useform
+    // function App() {
+    //     const values = useFetch('/api');
+        
+    //     useForm({
+    //       defaultValues: {
+    //         firstName: '',
+    //         lastName: '',
+    //       },
+    //       values, // will get updated once values returns
+    //     })
+    //   }
+
+
+
+
+
+
+        const record = {
+            ...user_db, recordTEST: "dziala"
+        };
+
+
+
+
+
+
     // { handleSubmit, reset, control } 
     const methods = useForm({ 
         defaultValues: { 
@@ -101,24 +132,24 @@ const InvoiceCreate = (props) => {
         
         
         const [create, { isLoading, error }] = useCreate();
-        const myTest_dataProvider = useDataProvider();
+        const myDataProvider = useDataProvider();
 
 
         const currentBuyerId= methods.getValues('buyer_id');
-
-            useEffect(() => {
-                myTest_dataProvider.getOne('buyersEfaktury', { id: currentBuyerId })
-                    .then(({ data }) => {
-                        console.log("test_dbClient", data);
-                        // setUser(data);
-                        // setLoading(false);
-                    })
-                    .catch(error => {
-                        console.log("ERROR: ", error );
-                        // setError(error);
-                        // setLoading(false);
-                    })
-            }, []);
+        //*edu - OMÓWIĆ Z OLKIEM 
+            // useEffect(() => {
+            //     myTest_dataProvider.getOne('buyersEfaktury', { id: currentBuyerId })
+            //         .then(({ data }) => {
+            //             console.log("test_dbClient", data);
+            //             // setUser(data);
+            //             // setLoading(false);
+            //         })
+            //         .catch(error => {
+            //             console.log("ERROR: ", error );
+            //             // setError(error);
+            //             // setLoading(false);
+            //         })
+            // }, []);
 
             // if (loading) return <Loading />;
             // if (error) return <Error />;
@@ -134,6 +165,19 @@ const InvoiceCreate = (props) => {
     const onSubmit = (data) => { 
 
 
+        // https://react-hook-form.com/api/useform
+        const output = {
+            ...data,
+            others: "others"
+          }
+
+
+
+
+
+
+
+
 
 
         const currentDataForm = methods.getValues();
@@ -141,25 +185,20 @@ const InvoiceCreate = (props) => {
         console.log('getValues: ', currentDataForm );
         console.log('getBuyerId: ', currentBuyerId );
         
-        
-
-
-
-
         const productsArr = transformArrayProducts(data.products);
         data.products = productsArr;
+
         const prefix_buyer = createPrefixObjectKeys("buyer_");
         const db_buyer = prefix_buyer(data.dbBuyers);
-        console.log("dbBuyerNetwork", db_buyer);
         data.dbBuyers = ""
         data = {...data, ...db_buyer};
 
 
         // PRZEKSZTAŁĆ NA TO => https://marmelab.com/react-admin/useGetOne.html //*edu
         // to jest to co teraz robie   =>  https://marmelab.com/react-admin/useDataProvider.html
-        const { data: clientDBtest } = myTest_dataProvider.getOne('buyersEfaktury', { id: `${currentBuyerId}` }).then(({ data }) => {
+        // https://marmelab.com/react-admin/useGetOne.html //*edu sprawdić to!!!
+        const { data: db_buyerId } = myDataProvider.getOne('buyersEfaktury', { id: `${currentBuyerId}` }).then(({ data }) => {
             console.log("test_dbClient", data);
-            console.log("0000", clientDBtest);
             // setUser(data);
             // setLoading(false);
         });
@@ -167,13 +206,25 @@ const InvoiceCreate = (props) => {
 
 
 
-        console.log('_________clientDBtest: ', clientDBtest );
-        
+    //    const WrapperBuyerTest = ({ id, resource, children }) => {
+    //         const { data, isLoading, error } = useGetOne(resource, { id });
+    //         if (isLoading) return <p>Loading...</p>;
+    //         if (error) return <p>Error</p>;
+    //         return (
+                // <RecordContextProvider value={data}>
+                //     {children}
+                // </RecordContextProvider>
+    //         );
+    //     };
 
-        // const dataClient = () => useGetOne(
-            
-        //     'buyersEfaktury', { id: `${currentBuyerId}`}
-        // );
+
+
+
+
+
+
+
+
 
 
 
@@ -201,6 +252,7 @@ const InvoiceCreate = (props) => {
     {/* <Create 
         redirect="show"
         component="div"  {...props} > */}
+        <RecordContextProvider value={record}>
             <FormProvider {...methods}>
                 {/* <form onSubmit={save} record={data}> */}
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -226,6 +278,7 @@ const InvoiceCreate = (props) => {
     </FormProvider>
         {/* </Create> */}
     {/* <TestGroupTabbedForm /> */}
+    </RecordContextProvider>
     </>
 );
 };
