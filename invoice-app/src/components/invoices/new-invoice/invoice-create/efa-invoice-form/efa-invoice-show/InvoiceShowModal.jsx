@@ -6,14 +6,80 @@ import JoyTypography from '@mui/joy/Typography';
 import JoySheet from '@mui/joy/Sheet';
 import JoyCard from '@mui/joy/Card';
 import { useFormContext } from 'react-hook-form';
+import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../../db/fnInvoiceForm';
+import MyButton from '@mui/material/Button';
+import { useRedirect } from 'react-admin';
+import BuyerModalShow from '../../invoice-confirm-modal/components/BuyerModalShow';
+import { Grid } from '@mui/material';
+import PaymentModalShow from '../../invoice-confirm-modal/components/PaymentModalShow';
 
-export default function InvoiceShowModal({ children }) {
-const [open, setOpen] = React.useState(false);
-const myMethods = useFormContext();
-const dataForm = myMethods.getValues();
+
+
+export default function InvoiceShowModal({ children, open, setOpen, create, navigate}) {
+
+const methods = useFormContext();
+const dataForm = methods.getValues();
 console.info("DATA_Form:", dataForm);
+
+
+
+const redirect = useRedirect();
+
+const onSubmit = (data) => { 
+    const currentDataForm = methods.getValues();
+    const currentBuyerId= methods.getValues('buyer_id');
+    console.log('getValues: ', currentDataForm );
+    console.log('getBuyerId: ', currentBuyerId );
+    const productsArr = transformArrayProducts(data.products);
+    data.products = productsArr;
+
+    const prefix_buyer = createPrefixObjectKeys("buyer_");
+    const db_buyer = prefix_buyer(data.dbBuyers);
+    data.dbBuyers = ""
+    data = {...data, ...db_buyer};
+
+
+    // PRZEKSZTAŁĆ NA TO => https://marmelab.com/react-admin/useGetOne.html //*edu
+    // to jest to co teraz robie   =>  https://marmelab.com/react-admin/useDataProvider.html
+    // https://marmelab.com/react-admin/useGetOne.html //*edu sprawdić to!!!
+
+
+    // const { data: db_buyerId } = myDataProvider.getOne('buyersEfaktury', { id: `${currentBuyerId}` }).then(({ data }) => {
+    //     console.log("test_dbClient", data);
+    //     // setUser(data);
+    //     // setLoading(false);
+    // });
+
+
+
+    create(
+        "issuedInvoices_list",
+        {  data },
+        { onSuccess: () => {
+                // const invoice_id = 
+                // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
+                // const refcord = useRecordContext
+                navigate('/issuedInvoices_list');
+            } }
+    );
+};
+// if (error) { return <p>ERROR</p>; }
+// return <button disabled={isLoading} onClick={() =>{} }>Like</button>;
+
+// if (isLoading) return null;
+
+
+
+
+
+
+
+
 return (
-        <React.Fragment>
+   
+<React.Fragment>
+
+
         <JoyButton variant="outlined" color="neutral" onClick={() => {setOpen(true); console.log( dataForm ); } }>
             Utwórz
         </JoyButton>
@@ -28,9 +94,10 @@ return (
             variant="solid"
             sx={{
                 maxWidth: 500,
+                // minWidth: '80%',
                 borderRadius: 'md',
                 p: 3,
-                boxShadow: 'lg',
+                // boxShadow: 'lg',
 
             }}
             >
@@ -44,7 +111,7 @@ return (
                 bgcolor: 'background.body',
                 }}
             />
-            <JoyCard variant="standard" sx={{ bgcolor: '#0ff', marginBottom: '5px', p: 1 }} >
+            <JoyCard variant="standard" sx={{ bgcolor: '#0ff', marginBottom: '5px', p: 1, mr: 5}} >
             <JoyTypography
                 component="h2"
                 id="modal-title"
@@ -53,15 +120,38 @@ return (
                 fontWeight="lg"
                 mb={1}
             >
-                Faktura nr: ....         Odbiorca: .... 
+                Faktura dla:  {dataForm.buyer_order_no} Jan Kowaliski
+                <br/>
+                <small>MVA: 451381816153 | adres: ul. Coś tam </small>
             </JoyTypography>
             </JoyCard>
-
             <JoyCard variant="outlined" sx={{ bgcolor: '#fff'}} >
+                    {/* <PaymentModalShow /> */}
+                    <BuyerModalShow />
+                    <PaymentModalShow />
+          
             <JoyTypography id="modal-desc" textColor="text.tertiary">
-                Make sure to use <code>aria-labelledby</code> on the modal dialog with an
-                optional <code>aria-describedby</code> attribute.
+                {dataForm.user_company}{" "}  {dataForm.buyer_company}<br/>
+                {dataForm.user_ref}{" "}  {dataForm.buyer_ref}<br/>
+                
+                <hr/>
+                {dataForm.products? dataForm.products.map( (item, index, arr) => {
+                    console.log("lenght", dataForm.products.length );
+                    if(dataForm.products.length  === (index+1 )) return (<p>koniec</p>);
+                    return( 
+                    <div> <span> {item[`_${index}_product_name`]} {" | "} {item[`_${index}_product_count`]} </span></div>
+                    )
+                }
+
+                ) : null
+                }
+
             </JoyTypography>
+            <div>
+        <MyButton type="submit">
+                    Wystaw
+        </MyButton>  
+        </div>
             </JoyCard>
                 {children ? children : null }
             </JoySheet>

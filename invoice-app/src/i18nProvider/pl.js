@@ -82,12 +82,17 @@ export const pl = {
                 },
                 header: {
                     address: 'Adres',
-                    contact: 'Kontakt',
+                    contact: 'Dane Kontaktowe',
                     additional_note: 'Uwagi do faktury',
                     optionbox_invoice: 'Opcje dodatkowe',
                     payment_channel: 'Forma płatności',
                     send_invoice: 'Prześlij dokument',
                     efa: 'Wystaw fakturę EHF'
+                },
+                title: {
+                    street: 'Ulica',
+                    place: 'Miejscowość',
+                    mva: 'MVA'
                 }
             }
         },
@@ -133,7 +138,9 @@ export const pl = {
                 place: 'Miasto',
                 email: 'Adres Email',
                 phone: 'Numer Telefonu',
-                companyRepresentative: 'Przedstawiciel'
+                companyRepresentative: 'Przedstawiciel',
+                is_company: 'Entreprenoren er et selskap?',
+                mva: "MVA",
             },
         },
         dbclientlist: {

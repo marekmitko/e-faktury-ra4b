@@ -9,10 +9,17 @@ import { Card, Grid,
 import { JoyNotebox } from './JoyNotebox';
 import Sheet from "@mui/joy/Sheet";
 import JoyOptionbox from './JoyOptionbox';
-import { useFormContext } from 'react-hook-form';
+import { useController, useFormContext, useWatch} from 'react-hook-form';
 import InvoiceAdditionalCheckbox from './component/InvoiceAdditionalCheckbox';
 import EhfCheckbox from './component/EhfCheckbox';
 import SendInvoiceCheckbox from './component/subcomponent/SendInvoiceCheckbox';
+import { EhfOptionbox } from '../../../../../efa-invoice-form/invoice-ehf-box/EhfOptionbox';
+import { useTranslate } from 'react-admin';
+import { Chip } from '@mui/joy';
+import JoyInput  from "@mui/joy/Input";
+import TextFieldDecorator from './component/subcomponent/TextFieldDecorator';
+import EhfBuyerTextInput from './component/subcomponent/EhfBuyerTextInput';
+import EhfUserTextInput from './component/subcomponent/EhfUserTextInput';
 
 // TODO Added props sx + spacing 
 {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}> */}
@@ -20,6 +27,12 @@ import SendInvoiceCheckbox from './component/subcomponent/SendInvoiceCheckbox';
 // *see <NewInvoiceHeader />
 export const AdditionalBox = (props) => {
     const { register } = useFormContext();
+    const ehf = useWatch({ name: "ehf" });
+    const translate = useTranslate(); 
+
+
+    const EHFCheckbox  = useController({ name: 'ehf', defaultValue: false, });
+
     return(
         <Grid item xs={12} >
             <Grid container spacing={1} rowSpacing={1}>
@@ -55,7 +68,24 @@ export const AdditionalBox = (props) => {
                                         <SendInvoiceCheckbox />
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
-                                        <EhfCheckbox />
+                                        <div>
+                                        <EhfOptionbox  label={translate('myroot.form.label.checkbox.ehf')} >
+                                           
+                                        {  ehf ?  
+                                            ehf && (
+                                                <Chip   sx={{ paddingLeft: '45px', marginTop: '-70px', height: '25px'}} variant="soft"> 
+                                                    <small> ZAMÓWIENIE NR: </small>  
+                                                    <JoyInput sx={{ display: 'inline', p:1 }} variant="plain"   placeholder="Podaj numer"   
+                                                    {...register('buyer_order_no')}/>
+                                                </Chip>
+                                                )  
+                                            : (" ")
+                                        }
+                                        </EhfOptionbox>
+                                        {ehf && (
+                                        <div style={{marginTop: '-20px'}}>  <EhfBuyerTextInput /> <EhfUserTextInput />   </div>
+                                        )}
+                                        </div>
                                     </Grid>
                                             {/* 
                                     <Grid item xs={12} sm={8}>

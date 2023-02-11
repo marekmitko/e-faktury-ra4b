@@ -6,11 +6,18 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import { useRecordContext } from 'react-admin';
-import { useFormContext, Controller } from 'react-hook-form';
+import { useFormContext, Controller, useWatch } from 'react-hook-form';
 
-export default function TextFieldDecorator(props) {
+export default function EhfBuyerTextInput(props) {
   const record = useRecordContext();
-  const { control } = useFormContext();
+  const { control, getValues } = useFormContext();
+  const changeBuyer = useWatch({ name: 'buyer_id' });
+
+  const db_buyer = getValues('dbBuyers');
+
+  
+
+  console.log("DBBUYER!!!", "cjanme", changeBuyer);
 
   return (
     <Stack direction="column" spacing={0}>
@@ -22,14 +29,8 @@ export default function TextFieldDecorator(props) {
                 fieldState: { invalid, isTouched, isDirty, error },
                 formState,
             }) => (
-                // <Checkbox
-                // onBlur={onBlur} // notify when input is touched
-                // onChange={onChange} // send value to hook form
-                // checked={value}
-                // inputRef={ref}
-                // />
                 <JoyTextField
-                // defaultValue={`${record.buyer_ref}`}
+                defaultValue={`${ db_buyer ? db_buyer.company : "" }`}
                 variant='soft'
                 // name={name}
                 onBlur={onBlur} // notify when input is touched

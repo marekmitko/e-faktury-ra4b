@@ -23,6 +23,6 @@ export const DataTestContext = () => {
     return (<>
         {/* <input {...myMethods.register("TestSTContext")} />; */}
         <input style={{ padding: "15px", backgroundColor: "#40E0D0" }} value="db TEST" type="button" onClick={ () => console.log('dbPref',myMethods.getValues(), 'dbTrans', removePrixInObj, "newArr", newArraProducts)} />
-        <input value="state" type="button" onClick={ () => console.log(myState.getValues())} />
+       t <input value="stae" type="button" onClick={ () => console.log(myState.getValues())} />
     </>)
 };

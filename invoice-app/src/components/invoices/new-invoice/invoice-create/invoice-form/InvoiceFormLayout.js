@@ -7,6 +7,7 @@ import { SellerCard } from './subcomponents/personal-cards/seller/SellerCard';
 import ClientCard from './subcomponents/personal-cards/client/ClientCard';
 import JoyNotebox2 from './subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNotebox2';
 import AdditionalBox from './subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
+import { EhfOptionbox } from '../efa-invoice-form/invoice-ehf-box/EhfOptionbox';
 
 // import AdditionalOptions from './subcomponents/invoice-additional-options';
 
@@ -21,17 +22,15 @@ const ResourceName = () => {
 
 
 export const InvoiceFormLayout = (props) => {
-    const EHFCheckbox  = useController({ name: 'invoiceEHF', defaultValue: false, });
+    // const EHFCheckbox  = useController({ name: 'TESTinvoiceEHF', defaultValue: false, });
     // const [isEHFEnabled, setIsEHFEnabled] = useState(false);
     // const moreDetailEHF = watch("moreDetailEHF");
 
-    const moreDetailEHF = useWatch({ name: "invoiceEHF" });
+    // const moreDetailEHF = useWatch({ name: "invoiceEHF" });
     // console.log("EHFCheckbox", moreDetailEHF);
 
 
-    const myRecord = useRecordContext();
-
-    console.log("myRecord", myRecord);
+    // console.log("myRecord", myRecord);
     return( 
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
             <Header titleForm={props.titleForm }/>     
@@ -41,13 +40,12 @@ export const InvoiceFormLayout = (props) => {
             {props.children? (props.children) : null }
             </Grid>
             {/* <AdditionalOptions moreDetailEHF={moreDetailEHF} > */}
-
             {/* <FormControlLabel
                 label="Invoice EHF"
                 control={
                     <Checkbox {...EHFCheckbox.field}
                     onChange={(e) => {
-                        // console.log(field);
+                        console.log(EHFCheckbox.field);
                         EHFCheckbox.field.onChange(e.target.checked)
                     }}
                     checked={EHFCheckbox.field.value}

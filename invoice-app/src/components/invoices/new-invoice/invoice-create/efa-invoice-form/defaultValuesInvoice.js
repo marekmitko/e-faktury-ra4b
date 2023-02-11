@@ -9,9 +9,9 @@ const user = {
     "lastname": "Mariański",
     "address": "Widawska 128d",
     "place": "Wrocław",
-    "zip_code": "",
+    "zip_code": "50345",
     "email": "aleksander@marianski.com",
-    "mva": true,
+    "mva": 1,
     "foretaksregistret": 0,
 };
 
@@ -34,7 +34,6 @@ export const defaultValueInvoice = {
     ehf: 0, 
     buyer_ref: null, 
     // / "user_ref": user_db.user_company.value, 
-    user_ref: "", 
     buyer_order_no: "",
     comments:"", 
     postmail: 0,  

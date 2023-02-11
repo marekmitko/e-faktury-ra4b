@@ -1,18 +1,18 @@
 import { Card,  Box, Stack } from '@mui/material';
 import React from 'react';
-import {  useTranslate, TextInput,   BooleanInput , NumberInput, useRecordContext, RecordContextProvider } from 'react-admin';
+import {  useTranslate, TextInput,   BooleanInput , NumberInput, useRecordContext, RecordContextProvider, NullableBooleanInput } from 'react-admin';
 import MailIcon from '@mui/icons-material/MailOutline';
 // import { useWarnWhenUnsavedChanges } from 'react-admin';
-import { CodeAndNameCityDualInput } from '../../../../../../../../custom/invoice/inputs/CodeAndNameCityDualInput';
-import { FullNameDualInput } from '../../../../../../../../custom/invoice/inputs/FullNameDualInput';
-import EmailIcon from '@mui/icons-material/Email';
-import ContactMailSharpIcon from '@mui/icons-material/ContactMailSharp';
+// import { CodeAndNameCityDualInput } from '../../../../../../../../custom/invoice/inputs/CodeAndNameCityDualInput';
+// import { FullNameDualInput } from '../../../../../../../../custom/invoice/inputs/FullNameDualInput';
+// import EmailIcon from '@mui/icons-material/Email';
+// import ContactMailSharpIcon from '@mui/icons-material/ContactMailSharp';
 import MailOutlineSharpIcon from '@mui/icons-material/MailOutlineSharp';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 // import MarkAsUnreadIcon from '@mui/icons-material/MarkAsUnread';
-import HomeIcon from '@mui/icons-material/Home';
-import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
-import MarkAsUnreadIcon from '@mui/icons-material/MarkAsUnread';
+// import HomeIcon from '@mui/icons-material/Home';
+// import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
+// import MarkAsUnreadIcon from '@mui/icons-material/MarkAsUnread';
 
 
 const BuyerRecordContext = ({children}) => {
@@ -69,9 +69,11 @@ export const BuyerDataFromLayout = (props) =>  {
     return (
     <>
         {props.children}
+        <BooleanInput  source="is_company" sx={{ alignItems: 'flex-start', p: 0, mt: '-15px' }} />
+        {/* <NullableBooleanInput source="is_company" sx={{ alignItems: 'flex-start', p: 0, mt: '-15px' }} /> */}
         <Stack direction="row" spacing={2} width="100%" alignItems="center">
-            <BooleanInput  source="mva" sx={{ alignItems: 'center' }} />
             <TextInput  source="org_nr" fullWidth               variant="standard"   />
+            <BooleanInput  source="mva" sx={{ alignItems: 'center' }} />
         </Stack>
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />  <strong>{translate('myroot.myBuyersEfaktury.header.addres_section')}</strong>

@@ -66,6 +66,7 @@ export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
     );
 };
 export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => {
+    
     return(
         <WrapperBuyerPartFormItem resource={resourceBuyer} id={buyerId}>
             {/* <BuyerDataFromLayout /> */}

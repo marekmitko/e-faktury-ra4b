@@ -21,10 +21,10 @@ import NumberInvoiceIcon from "@mui/icons-material/Pin";
 import TextFieldDecorator from "./subcomponent/TextFieldDecorator";
 import Close from '@mui/icons-material/Close';
 import { useFormContext, Controller, useWatch, useController } from "react-hook-form";
-import { useTranslate } from "react-admin";
+import { useRecordContext, useTranslate } from "react-admin";
 import { FormControlLabel } from "@mui/material";
-import { EfaInputBox } from "./subcomponent/EhfInputBox";
-
+import { EfaInputBox } from "./EhfInputBox";
+import JoyInput  from "@mui/joy/Input";
 
 
 
@@ -32,6 +32,11 @@ import { EfaInputBox } from "./subcomponent/EhfInputBox";
 function IconsCheckbox({label, options, name, control  }) {
     const { field } = useController({  control, name });
     const [value, setValue] = React.useState(field.value || []);
+    const record = useRecordContext();
+
+    const { register } = useFormContext();
+    const { ref } =  register('buyer_order_no'); 
+
     return (
         <>
 
@@ -41,7 +46,7 @@ function IconsCheckbox({label, options, name, control  }) {
 
             <JoyCheckbox 
                 sx={{ flexDirection: "row-reverse", gap: 1.5 }}
-                label={label} 
+                label={<span>{label} </span>} 
                 uncheckedIcon={<Close />}
                 onChange={(e) => {
                     const valueCopy = [...value];
@@ -56,22 +61,30 @@ function IconsCheckbox({label, options, name, control  }) {
                 checked={value.includes(option)}
                 type="checkbox"
                 value={option}
-            />
-            ))}
-            {value[0] && ( <EfaInputBox checked={value[0]} /> )}
+               
+           />
+           ))}
+            {value[0] && (  
+                <>
+                <Chip size="sm" sx={{ paddingLeft: '150px', marginTop: '-100px'}} variant="soft"> ZAMÓWIENIE NR:  
+                    <JoyInput sx={{ display: 'inline', p:1 }} variant="plain" size="sm" placeholder="Podaj numer" inputRef={ref}  {...register('buyer_order_no')}/></Chip>
+            
+            <EfaInputBox checked={value[0]} /> 
+                </>
+            )}
         </>
     );
 };
 
 
 
-const Input = ({ name, control, register, index }) => {
-    const value = useWatch({
-        control,
-        name
-    });
-    return <input {...register(`test.${index}.age`)} defaultValue={value} />;
-    };
+// const Input = ({ name, control, register, index }) => {
+//     const value = useWatch({
+//         control,
+//         name
+//     });
+//     return <input {...register(`test.${index}.age`)} defaultValue={value} />;
+//     };
 
 
 
@@ -134,6 +147,7 @@ export default function EhfCheckbox() {
                             options={["a"]}
                             control={control}
                             name="efa"
+                            
                         />
                         {/* <section>
                             <button

@@ -8,7 +8,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useRecordContext } from 'react-admin';
 import { useFormContext, Controller } from 'react-hook-form';
 
-export default function TextFieldDecorator(props) {
+export default function EhfUserTextInput(props) {
   const record = useRecordContext();
   const { control } = useFormContext();
 
@@ -22,26 +22,20 @@ export default function TextFieldDecorator(props) {
                 fieldState: { invalid, isTouched, isDirty, error },
                 formState,
             }) => (
-                // <Checkbox
-                // onBlur={onBlur} // notify when input is touched
-                // onChange={onChange} // send value to hook form
-                // checked={value}
-                // inputRef={ref}
-                // />
                 <JoyTextField
-                // defaultValue={`${record.buyer_ref}`}
-                variant='soft'
-                // name={name}
-                onBlur={onBlur} // notify when input is touched
-                onChange={onChange} // send value to hook form
-                checked={value}
-                inputRef={ref}
-                placeholder="Wpisz Nabywcę"
-                startDecorator={<EditIcon />} 
-                endDecorator={
-                    <Chip size="sm" variant="soft">
-                    NABYWCA
-                </Chip> 
+                    defaultValue={`${record.user_ref ? record.user_ref : null }`}
+                    variant='soft'
+                    // name={name}
+                    onBlur={onBlur} // notify when input is touched
+                    onChange={onChange} // send value to hook form
+                    checked={value}
+                    inputRef={ref}
+                    placeholder="Wpisz Wystawcę"
+                    startDecorator={<PersonRoundedIcon />}
+                    endDecorator={
+                        <Chip size="sm" variant="soft">
+                            WYSTAWCA
+                        </Chip> 
             }
             
             />

@@ -15,15 +15,16 @@ import InvoiceEHFPersonalIcon from "@mui/icons-material/ContactPageRounded";
 import ContactPageOutlinedIcon from "@mui/icons-material/ContactPageOutlined";
 import InvoiceEHFRounded from "@mui/icons-material/SummarizeRounded";
 import InvoiceEHFOutlined from "@mui/icons-material/SummarizeOutlined";
-import IssuedTextInput from "../IssuedTextInput";
+import IssuedTextInput from "./IssuedTextInput";
 import Chip from "@mui/joy/Chip";
 import JoyListItemContent from '@mui/joy/ListItemContent';
 import NumberInvoiceIcon from "@mui/icons-material/Pin";
-import TextFieldDecorator from "./TextFieldDecorator";
+import TextFieldDecorator from "./subcomponent/TextFieldDecorator";
 import Close from '@mui/icons-material/Close';
 import { useFormContext, Controller, useWatch, useController } from "react-hook-form";
-import { useTranslate } from "react-admin";
+import { useTranslate, useRecordContext} from "react-admin";
 import { FormControlLabel } from "@mui/material";
+
 
 
 
@@ -40,15 +41,17 @@ export const EfaInputBox = ({checked}) => {
         setMembers(newMembers);
     };
 
+    const record = useRecordContext();
     return( 
         <Box role="group" aria-labelledby="member">
                         <List
                             sx={{
+                                marginTop: '-25px',
                                 minWidth: 360,
                                 "--List-gap": "0.5rem",
-                                "--List-item-paddingY": "1rem",
+                                "--List-item-paddingY": "0.5rem",
                                 "--List-item-radius": "8px",
-                                "--List-decorator-size": "32px",
+                                "--List-decorator-size": "30px",
 
                                 [`& .${checkboxClasses.root}`]: {
                                         mr: "auto",
@@ -79,7 +82,7 @@ export const EfaInputBox = ({checked}) => {
                                                     color: "neutral.500"
                                                 }}
                                             >
-                                                <Box
+                                                {/* <Box
                                                     sx={{
                                                         display: "flex",
                                                         ml: 1,
@@ -105,18 +108,18 @@ export const EfaInputBox = ({checked}) => {
                                                     >
                                                     {"ZAMÓWIENIE NR:"}
                                                     {/* {translate('myroot.form.label.header.send_invoice')} */}
-                                                    </Typography>
-                                                    <Chip
+                                                    {/* </Typography> */}
+                                                    {/* <Chip
                                                         size="sm"
                                                         // variant="solid"
                                                         variant="solid"
                                                         color="primary"
                                                         startDecorator={<NumberInvoiceIcon />}
                                                     >
-                                                        <b> 01/12/2022 </b>
-                                                    </Chip>
-                                                </Box>
-                                                <br />
+                                                        
+                                                    </Chip> 
+                                                </Box> */}
+                                               
                                                 {/* This user is your friend. */}
                                                 {/* <IssuedTextInput /> */}
                                                 <TextFieldDecorator />

@@ -5,8 +5,8 @@ import ClientReferenceAutocompleteInput from "./ClientReferenceAutocompleteInput
 import ClientDataAutomaticDisplay from "./ClientDataAutomaticDisplay";
 import CustomerSubForm from "./CustomerSubForm";
 import { ClientCreateButton } from "./create-client-subform/ClientCreateButton";
-import OldClientReferenceAutocompleteInput from "../buyer/buyer-part-form/client-autocomplete-input/ClientReferenceAutocompleteInput";
-import { ReferenceInput } from "react-admin";
+// import OldClientReferenceAutocompleteInput from "../buyer/buyer-part-form/client-autocomplete-input/ClientReferenceAutocompleteInput";
+// import { ReferenceInput } from "react-admin";
 import { Stack } from "@mui/material";
 import SimpleDialogDemo from "./new-simple-modal-new-client/SimpleDialogCreateClient";
 import { useFormContext } from "react-hook-form";
@@ -33,9 +33,6 @@ export default function ClientCard(){
                 </Stack>
             </Stack>
             <ClientDataAutomaticDisplay resourceBuyer="buyersEfaktury" buyerId={valueBuyerId} />
-
-            {/* <CustomerSubForm /> */}
-            {/* <SimpleDialogDemo /> */}
         </PersonalDataCard>
     );
 };
