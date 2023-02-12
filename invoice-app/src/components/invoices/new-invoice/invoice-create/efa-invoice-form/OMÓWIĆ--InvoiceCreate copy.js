@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -6,13 +6,14 @@ import { useForm, FormProvider, useFormContext, Controller} from "react-hook-for
 import { TestGroupTabbedForm } from "../mix-component/TestGroupTabbedForm";
 import { CommentCreate } from "../../../invoice-list/invoice-filters/filters-bar-items/ReferenceInputTEST";
 import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
-import { AdditionalBox } from '../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
-import InvoiceShowModal from "./efa-invoice-show/InvoiceShowModal";
+import InvoiceShowModal, { InvoiceShowModal2 } from "./efa-invoice-show/InvoiceShowModal";
+import { ConfirmButton } from "./efa-invoice-show/ConfirmButton";
+import { set } from "lodash";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
@@ -82,15 +83,8 @@ const InvoiceCreate = (props) => {
 
 
 
-
-        const record = {
-            ...user_db, recordTEST: "dziala"
-        };
-
-
-
-
-
+    const {user_company} = user_db;
+    const record = { user_db, user_ref: user_company };
 
     // { handleSubmit, reset, control } 
     const methods = useForm({ 
@@ -98,11 +92,11 @@ const InvoiceCreate = (props) => {
             buyer_id: "", 
             ehf: 0, 
             buyer_ref: "", 
-            user_ref: "", 
             buyer_order_no: "",
             comments:"", 
             postmail: false,  
             inv_email: false,
+            user_ref: user_db.user_company,
             ...user_db,
             products: [{
                 _0_product_name:             "",         
@@ -161,24 +155,15 @@ const InvoiceCreate = (props) => {
 
 
 
-
     const onSubmit = (data) => { 
 
 
         // https://react-hook-form.com/api/useform
-        const output = {
-            ...data,
-            others: "others"
-          }
-
-
-
-
-
-
-
-
-
+        // const output = {
+        //     ...data,
+        //     others: "others"
+        //   }
+        console.log("RECORD!!!:", record);
 
         const currentDataForm = methods.getValues();
         const currentBuyerId= methods.getValues('buyer_id');
@@ -197,6 +182,8 @@ const InvoiceCreate = (props) => {
         // PRZEKSZTAŁĆ NA TO => https://marmelab.com/react-admin/useGetOne.html //*edu
         // to jest to co teraz robie   =>  https://marmelab.com/react-admin/useDataProvider.html
         // https://marmelab.com/react-admin/useGetOne.html //*edu sprawdić to!!!
+
+
         const { data: db_buyerId } = myDataProvider.getOne('buyersEfaktury', { id: `${currentBuyerId}` }).then(({ data }) => {
             console.log("test_dbClient", data);
             // setUser(data);
@@ -234,11 +221,8 @@ const InvoiceCreate = (props) => {
             { onSuccess: () => {
                     // const invoice_id = 
                     // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
-                    // const refcord = useRecordContext();
-
-                    console.log("DATA!!!!:", data);
+                    // const refcord = useRecordContext
                     navigate('/issuedInvoices_list');
-                    console.log('dataTest', data, 'dataArr', data.products,);
                 } }
         );
     };
@@ -246,6 +230,9 @@ const InvoiceCreate = (props) => {
     // return <button disabled={isLoading} onClick={() =>{} }>Like</button>;
 
     // if (isLoading) return null;
+    const [open, setOpen] =  useState(false);
+
+
 
     return(
     <>
@@ -255,25 +242,23 @@ const InvoiceCreate = (props) => {
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
                 {/* <form onSubmit={save} record={data}> */}
-                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                <form onSubmit={methods.handleSubmit(onSubmit)} >
                     <InvoiceFormLayout titleForm={<ResourceName />} >
                         <SpanningSalesTable />
                     </InvoiceFormLayout>  
-                    {/* <AdditionalBox /> */}
                     <br/>
             <span>
-            <Button type="submit" >
-                Wystaw
-            </Button>
-            <InvoiceShowModal>
-                <hr/>
-                <Button type="submit" >
-                    Wystaw
-                </Button>
+            <InvoiceShowModal  
+                create={create} open={open} setOpen={setOpen} navigate={navigate}
+            >
+                <ConfirmButton /> 
             </InvoiceShowModal>
                 {/* <InvoiceCreateToolbar /> */}
             </span>
 
+                <Button type="submit" >
+                    Wystaw
+                </Button> 
         </form>
     </FormProvider>
         {/* </Create> */}

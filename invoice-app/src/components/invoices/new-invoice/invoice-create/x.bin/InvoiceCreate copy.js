@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { useForm, FormProvider, useFormContext, Controller} from "react-hook-form";
 import {   Create,   SimpleForm,   TextInput, useRecordContext  } from 'react-admin';
 import { InvoiceForm } from "./efa-invoice-form/InvoiceForm";
-import { TestGroupTabbedForm } from "./TestGroupTabbedForm";
-import { CommentCreate } from "../../invoice-list/invoice-filters/filters-bar-items/ReferenceInputTEST";
+import { TestGroupTabbedForm } from "../mix-component/TestGroupTabbedForm";
+import { CommentCreate } from "../../../invoice-list/invoice-filters/filters-bar-items/ReferenceInputTEST";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 

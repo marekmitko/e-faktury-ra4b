@@ -122,7 +122,25 @@ export const pl = {
 
     
     },
-    resources: { 
+    resources: {
+        dbclientlist: {
+            name: 'Kontrahent |||| Kontrahenci',
+            contact: "Kontakt",
+            fields: {
+                company: 'Nazwa Firmy',
+                firstname: 'Imię',
+                lastname: 'Nazwisko',
+                org_nr: 'Numer organizacyjny',
+                address: 'Ulica',
+                zip_code: 'Kod Pocztowy',
+                place: 'Miasto',
+                email: 'Adres Email',
+                phone: 'Numer Telefonu',
+                companyRepresentative: 'Przedstawiciel',
+                is_company: 'Entreprenoren er et selskap?',
+                mva: "MVA",
+            }
+        },
         buyersEfaktury: {
             name: 'e-Kontrahent |||| e-Kontrahenci',
             contact: "Kontakt",
@@ -141,32 +159,7 @@ export const pl = {
                 companyRepresentative: 'Przedstawiciel',
                 is_company: 'Entreprenoren er et selskap?',
                 mva: "MVA",
-            },
-        },
-        dbclientlist: {
-            name: 'Kontrahent |||| Kontrahenci',
-            fields: {
-                company_name: 'Nazwa Firmy',
-                company: 'Nazwa Firmy',
-                fullname: {
-                    surname: 'Imię',
-                    forename: 'Nazwisko'
-                },
-                orgId: {
-                    MVA: 'MVA',
-                    orgNumber: 'Numer MVA'
-                },
-                address: {
-                    street: 'Ulica',
-                    ZIPCode: 'Kod Pocztowy',
-                    city: 'Miasto'
-                },
-                contact: {
-                    email: 'Adres Email',
-                    phoneNumber: 'Numer Telefonu',
-                    companyRepresentative: 'Przedstawiciel'
-                }
-            },
+            }
         },
         issuedInvoices_list: {
             name: 'Faktura |||| Faktury',

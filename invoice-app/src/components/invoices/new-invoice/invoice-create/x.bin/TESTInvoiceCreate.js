@@ -1,14 +1,14 @@
 import * as React from "react";
 import { autocompleteClasses, Card , Grid} from "@mui/material";
 import {    Create,   SimpleForm,   TextInput  } from 'react-admin';
-import { SellerCard } from "./invoice-form/subcomponents/personal-cards/seller/SellerCard";
-import { BuyerCard } from "./invoice-form/subcomponents/personal-cards/buyer/BuyerCard";
+import { SellerCard } from "../invoice-form/subcomponents/personal-cards/seller/SellerCard";
+import { BuyerCard } from "../invoice-form/subcomponents/personal-cards/buyer/BuyerCard";
 
-import { BuyerCard3 } from "./invoice-form/subcomponents/personal-cards/buyer/BuyerCard3";
-import Header from "./invoice-form/subcomponents/invoice-headers";
+import { BuyerCard3 } from "../invoice-form/subcomponents/personal-cards/buyer/BuyerCard3";
+import Header from "../invoice-form/subcomponents/invoice-headers";
 // import { InvoiceForm } from "./efa-invoice-form/InvoiceForm";
-import { TestGroupFormContext } from "./TestGroupFormContext";
-import { TestGroupTabbedForm } from "./TestGroupTabbedForm";
+import { TestGroupFormContext } from "../mix-component/TestGroupFormContext";
+import { TestGroupTabbedForm } from "../mix-component/TestGroupTabbedForm";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 // const ProfileEdit = ({ staticContext, ...props }) => {

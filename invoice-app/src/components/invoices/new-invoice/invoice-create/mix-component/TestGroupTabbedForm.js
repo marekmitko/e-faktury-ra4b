@@ -26,7 +26,7 @@ import {
 import { Link } from 'react-router-dom';
 
 
-import { BuyerCard } from "./invoice-form/subcomponents/personal-cards/buyer/BuyerCard";
+import { BuyerCard } from "../invoice-form/subcomponents/personal-cards/buyer/BuyerCard";
 
 
 

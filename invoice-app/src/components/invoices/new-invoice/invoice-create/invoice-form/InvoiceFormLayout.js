@@ -32,27 +32,36 @@ export const InvoiceFormLayout = (props) => {
 
     // console.log("myRecord", myRecord);
     return( 
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
-            <Header titleForm={props.titleForm }/>     
-            <SellerCard />
-            <ClientCard />  
-            <Grid item xs={12}  > 
-            {props.children? (props.children) : null }
-            </Grid>
-            {/* <AdditionalOptions moreDetailEHF={moreDetailEHF} > */}
-            {/* <FormControlLabel
-                label="Invoice EHF"
-                control={
-                    <Checkbox {...EHFCheckbox.field}
-                    onChange={(e) => {
-                        console.log(EHFCheckbox.field);
-                        EHFCheckbox.field.onChange(e.target.checked)
-                    }}
-                    checked={EHFCheckbox.field.value}
-                    />}
-            /> */}
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }} sx={{   border: '1px dashed grey' }}>
 
+            <Grid item xs={12}  >
+                <Header titleForm={props.titleForm }/>     
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={6} >
+                <SellerCard />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={6} >
+                <ClientCard />  
+            </Grid>
+            <Grid item xs={12}  > 
+                {props.children? (props.children) : null }
+            </Grid>
+                                    {/* <AdditionalOptions moreDetailEHF={moreDetailEHF} > */}
+                                    {/* <FormControlLabel
+                                        label="Invoice EHF"
+                                        control={
+                                            <Checkbox {...EHFCheckbox.field}
+                                            onChange={(e) => {
+                                                console.log(EHFCheckbox.field);
+                                                EHFCheckbox.field.onChange(e.target.checked)
+                                            }}
+                                            checked={EHFCheckbox.field.value}
+                                            />}
+                                    /> */}
+
+                    <Grid item xs={12}  > 
             <AdditionalBox />
+        </Grid>
             {/* <JoyNotebox2 register={()=>{}}/> */}
                     {/* <CheckboxText /> */}
         </Grid>

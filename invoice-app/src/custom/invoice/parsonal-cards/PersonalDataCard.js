@@ -6,7 +6,7 @@ import sxCSS from './PersonalDataCard.style'
 
 // *see  PersonalDataCard
 export const  PersonalDataCard = ({xs, sm, variant, headerTitle, headerIcon, children, sxContent, sxCard }) => (
-    <Grid item xs={xs? xs : 12} sm={sm? sm : 6}>
+    // <Grid item xs={xs? xs : 12} sm={sm? sm : 6} md={sm? sm : 6} >
         <Card   variant={variant}   sx={{...sxCSS.sxCard, ...sxCard, height: '100%' }}   >
             <CardHeader sx={sxCSS.sxCardHeader}
                 avatar={headerIcon ? headerIcon : null} 
@@ -21,7 +21,7 @@ export const  PersonalDataCard = ({xs, sm, variant, headerTitle, headerIcon, chi
                     {children}
                 </CardContent>
         </Card>
-    </Grid>
+    // </Grid>
 );
 
 

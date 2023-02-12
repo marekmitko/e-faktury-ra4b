@@ -66,6 +66,7 @@ NumberInput.defaultProps = {
 
 export const BuyerDataFromLayout = (props) =>  { 
     const translate = useTranslate();
+    // const record = useRecordContext();
     return (
     <>
         {props.children}
@@ -78,7 +79,8 @@ export const BuyerDataFromLayout = (props) =>  {
         <Stack direction="row" gap={1} width="100%">
             <MailIcon />  <strong>{translate('myroot.myBuyersEfaktury.header.addres_section')}</strong>
         </Stack>
-        <TextInput source="address" fullWidth                   variant="standard"   />
+        {/* <TextInput record={record} source="user_address" fullWidth                   variant="standard"   /> */}
+        <TextInput  source="address" fullWidth                   variant="standard"   />
         <Stack
             direction="row"
             justifyContent="space-between"

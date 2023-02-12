@@ -3,17 +3,18 @@ import { Button } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useForm, FormProvider, useFormContext, Controller} from "react-hook-form";
-import { TestGroupTabbedForm } from "../TestGroupTabbedForm";
-import { CommentCreate } from "../../../invoice-list/invoice-filters/filters-bar-items/ReferenceInputTEST";
-import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
-import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
-import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
+import { TestGroupTabbedForm } from "./mix-component/TestGroupTabbedForm";
+import { CommentCreate } from "../../invoice-list/invoice-filters/filters-bar-items/ReferenceInputTEST";
+import { InvoiceFormLayout } from './invoice-form/InvoiceFormLayout';
+import SpanningSalesTable from './invoice-form/subcomponents/sales-table/SpanningSalesTable';
+import { InvoiceCreateToolbar } from './efa-invoice-form/subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
-import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
-import { user_db }  from './defaultValuesInvoice';
-import InvoiceShowModal, { InvoiceShowModal2 } from "./efa-invoice-show/InvoiceShowModal";
-import { ConfirmButton } from "./efa-invoice-show/ConfirmButton";
+import { transformArrayProducts, createPrefixObjectKeys } from '../../../../db/fnInvoiceForm';
+import { user_db }  from './efa-invoice-form/defaultValuesInvoice';
+import InvoiceShowModal, { InvoiceShowModal2 } from "./efa-invoice-form/efa-invoice-show/InvoiceShowModal";
+import { ConfirmButton } from "./efa-invoice-form/efa-invoice-show/ConfirmButton";
 import { set } from "lodash";
+import { onSubmitModal } from "./onSubmitModal";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
@@ -23,66 +24,10 @@ const ResourceName = () => {
     return <>{resource}</>;
 }
 
-// <Resource
-//     name="users"
-//     list={UserList}
-//     recordRepresentation={(record) => `${record.first_name} ${record.last_name}`}
-// />
-
-
-
-// const defaultValueForm = {...defaultValueInvoice};
-
-// *edu info 
-// https://codesandbox.io/s/react-hook-form-usefieldarray-defaultvalues-forked-qhd7wb?file=/src/index.js:477-587
-
-
 const InvoiceCreate = (props) => {
     
-    // https://codesandbox.io/s/react-hook-form-usefieldarray-defaultvalues-forked-422tgi?file=/src/index.js:691-698       vs.  sprawdzić to https://marmelab.com/react-admin/SimpleForm.html
-    // const { register, handleSubmit } = methods;
-    
-
-    // const { id } = useParams();
-    // const { handleSubmit, reset, control } = useForm();
-    // const { isLoading } = useGetOne(
-    //     "books",
-    //     { id },
-    //     { onSuccess: (data) => reset(data) }
-    // );
-    // const [update, { isLoading: isSubmitting }] = useUpdate();
     const navigate = useNavigate();
-    // const onSubmit = (data) => {
-    //     update(
-    //         "books",
-    //         { id, data },
-    //         { onSuccess: () => { navigate('/books'); } }
-    //     );
-    // };
-    // if (isLoading) return null;
-        
-
-
-
-
-
-    // https://react-hook-form.com/api/useform
-    // function App() {
-    //     const values = useFetch('/api');
-        
-    //     useForm({
-    //       defaultValues: {
-    //         firstName: '',
-    //         lastName: '',
-    //       },
-    //       values, // will get updated once values returns
-    //     })
-    //   }
-
-
-
-
-
+   
     const {user_company} = user_db;
     const record = { user_db, user_ref: user_company };
 
@@ -109,22 +54,6 @@ const InvoiceCreate = (props) => {
             } ]
         }
     });
-    // const onSubmit = data => console.log(data);
-    // const { save } = useCreateController({ resource: 'issuedInvoices_list' });
-    // <SimpleForm onSubmit={save} record={{}} >  
-    //  <SimpleForm record={data} onSubmit={onSubmit}>
-
-    // { data: {Object}, meta: {Object} }
-
-    // const record = useRecordContext();
-    // const like = { postId: record.id };
-    // const [create, { isLoading, error }] = useCreate();
-    // const handleClick = () => {
-        //     create('likes', { data: like })
-        // }
-        const { handleSubmit, reset, control } = useForm();
-        
-        
         const [create, { isLoading, error }] = useCreate();
         const myDataProvider = useDataProvider();
 
@@ -149,26 +78,33 @@ const InvoiceCreate = (props) => {
             // if (error) return <Error />;
             // if (!user) return null;
 
+ 
+            //   const onSubmit = async (data) => {
+            //     await sleep(2000);
+            //     if (data.username === "bill") {
+            //       alert(JSON.stringify(data));
+            //     } else {
+            //       alert("There is an error");
+            //     }
+            //   };
+            
+            //   console.log(errors);
+
+           
 
 
 
 
 
 
-    const onSubmit = (data) => { 
-
-
+    const onSubmit =  (data) => { 
         // https://react-hook-form.com/api/useform
         // const output = {
         //     ...data,
         //     others: "others"
         //   }
-        console.log("RECORD!!!:", record);
-
         const currentDataForm = methods.getValues();
         const currentBuyerId= methods.getValues('buyer_id');
-        console.log('getValues: ', currentDataForm );
-        console.log('getBuyerId: ', currentBuyerId );
         
         const productsArr = transformArrayProducts(data.products);
         data.products = productsArr;
@@ -177,7 +113,8 @@ const InvoiceCreate = (props) => {
         const db_buyer = prefix_buyer(data.dbBuyers);
         data.dbBuyers = ""
         data = {...data, ...db_buyer};
-
+        console.log("fullDATA:", data);
+        
 
         // PRZEKSZTAŁĆ NA TO => https://marmelab.com/react-admin/useGetOne.html //*edu
         // to jest to co teraz robie   =>  https://marmelab.com/react-admin/useDataProvider.html
@@ -190,31 +127,6 @@ const InvoiceCreate = (props) => {
             // setLoading(false);
         });
 
-
-
-
-    //    const WrapperBuyerTest = ({ id, resource, children }) => {
-    //         const { data, isLoading, error } = useGetOne(resource, { id });
-    //         if (isLoading) return <p>Loading...</p>;
-    //         if (error) return <p>Error</p>;
-    //         return (
-                // <RecordContextProvider value={data}>
-                //     {children}
-                // </RecordContextProvider>
-    //         );
-    //     };
-
-
-
-
-
-
-
-
-
-
-
-
         create(
             "issuedInvoices_list",
             {  data },
@@ -226,6 +138,8 @@ const InvoiceCreate = (props) => {
                 } }
         );
     };
+
+
     // if (error) { return <p>ERROR</p>; }
     // return <button disabled={isLoading} onClick={() =>{} }>Like</button>;
 
@@ -233,6 +147,7 @@ const InvoiceCreate = (props) => {
     const [open, setOpen] =  useState(false);
 
 
+const onSubmit2 = onSubmitModal(methods, record);
 
     return(
     <>
@@ -242,7 +157,7 @@ const InvoiceCreate = (props) => {
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
                 {/* <form onSubmit={save} record={data}> */}
-                <form onSubmit={methods.handleSubmit(onSubmit)} >
+                <form onSubmit={methods.handleSubmit(onSubmit2)} >
                     <InvoiceFormLayout titleForm={<ResourceName />} >
                         <SpanningSalesTable />
                     </InvoiceFormLayout>  

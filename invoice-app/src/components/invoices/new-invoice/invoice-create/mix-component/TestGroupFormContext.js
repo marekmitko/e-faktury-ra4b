@@ -1,7 +1,7 @@
 import { Edit, SimpleForm, TextInput, FormGroupContextProvider, FormGroupsProvider, useFormGroup, useFormGroups, minLength, Create } from 'react-admin';
 import { Accordion, AccordionDetails, AccordionSummary, Typography, Stack  } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import LatLngInput from './special-buttons/LatLngInput';
+import LatLngInput from '../special-buttons/LatLngInput';
 const collapseDisable = { 
     "& .MuiAccordionSummary-root":  {
         pointerEvents: 'none',

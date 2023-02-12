@@ -38,47 +38,25 @@ export const AdditionalBox = (props) => {
             <Grid container spacing={1} rowSpacing={1}>
                 <Grid item xs={12}  >
                 {/* <Grid item xs={xs? xs : 12} sm={sm? sm : 6}> */}
-                {/* <Grid item xs={12} sm={6}> */}
                     <Card    sx={{  mt: 0 }} >
-                        {/* <Sheet
-                            // variant="plain"
-                            sx={{
-                                p: 2,
-                                    //  bgcolor: "background.body",
-                                    borderRadius: "sm",
-                                    // width: 360,
-
-                                    maxWidth: "100%",
-                                    display: "flex"
-                                    // justifyContent: ""
-                                    // flexDirection: "column",
-                                    // justifyContent: "flex-start",
-                                    // alignContent: "flex-start"
-                            }}
-                        >  */}
-                            {/* <Grid item xs={12} > */}
-                                <Grid  xs={12} container spacing={1} rowSpacing={2} >
-                                    {/* <Grid item xs={12} sm={4}>
-                                        <JoyNotebox register={register} />
-                                    </Grid> */}
-                                    <Grid item xs={12} sm={4}>
+                                {/* <Grid  xs={12} container spacing={1} rowSpacing={2} > */}
+                                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3}} sx={{   border: '1px dashed grey' }}> 
+                                    <Grid item xs={12} sm={3}  md={4}>
                                         <InvoiceAdditionalCheckbox />
                                     </Grid>
-                                    <Grid item xs={12} sm={4}>
+                                    <Grid item xs={12} sm={3}  md={4}>
                                         <SendInvoiceCheckbox />
                                     </Grid>
-                                    <Grid item xs={12} sm={4}>
+                                    <Grid item xs={12} sm={6}  md={4}>
                                         <div>
                                         <EhfOptionbox  label={translate('myroot.form.label.checkbox.ehf')} >
-                                           
                                         {  ehf ?  
                                             ehf && (
                                                 <Chip   sx={{ paddingLeft: '45px', marginTop: '-70px', height: '25px'}} variant="soft"> 
                                                     <small> ZAMÓWIENIE NR: </small>  
                                                     <JoyInput sx={{ display: 'inline', p:1 }} 
-                                                    
                                                     // variant="plain"
-                                                       placeholder="Podaj numer"   
+                                                    placeholder="Podaj numer"   
                                                     {...register('buyer_order_no')}/>
                                                 </Chip>
                                                 )  

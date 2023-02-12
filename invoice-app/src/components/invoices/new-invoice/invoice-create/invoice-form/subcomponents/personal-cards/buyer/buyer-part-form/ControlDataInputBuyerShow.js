@@ -54,9 +54,15 @@ const BuyerIdShow = ({BuyerId}) => {
 // {/* <BuyerDataFromLayout /> */}
     // *see BuyerPArtFromItem
 export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
+
     const { data, isLoading, error } = useGetOne(resource, { id });
     if (isLoading) return <p>Loading...</p>;
-    if (error) return <BuyerDataFromLayout />;
+    if (error)  return (
+                    <>
+                    <p><b>DOPYTAĆ</b></p>
+                    <BuyerDataFromLayout />
+                    </>
+                );
     return (
         // <PersonalDataCard  variant="outlined" headerIcon={<BuyerIcon />} headerTitle="Kupujący">
             <RecordContextProvider value={data}>

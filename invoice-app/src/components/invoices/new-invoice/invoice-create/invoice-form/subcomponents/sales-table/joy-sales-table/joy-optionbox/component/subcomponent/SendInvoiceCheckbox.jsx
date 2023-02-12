@@ -41,23 +41,7 @@ function IconsCheckbox({label, nameCheck}) {
 
 
 export default function SendInvoiceCheckbox( ) {
-    // const {control, register} = useFormContext();
-
-
-    // const [checkedPostmail, setCheckedPostmail] = React.useState(false);
-    // const [checkedSendEmail, setCheckedSendEmail] = React.useState(false);
-    // // const inv_email = register('inv_email');
-    // // const postmail = register('postmail');
     const translate = useTranslate();
-
-    // const handleChangePostmail = (event) => {
-    //     setCheckedPostmail(event.target.checked);
-    //     console.log('statePost: ', checkedPostmail);
-    // };
-    // const handleChangeSendEmail = (event) => {
-    //     setCheckedSendEmail(event.target.checked);
-    //     console.log('stateEmail: ', checkedSendEmail);
-    // };
 
     return (
         <Box sx={{ minWidth: 240 }}>
@@ -106,24 +90,23 @@ export default function SendInvoiceCheckbox( ) {
         >
                 <JoyListItem>
                     <JoyListItemDecorator>
-                        <CustomJoySheet variant="solid" color="primary">
+                        <CustomJoySheet color="primary">
                             <Apartment />
                         </CustomJoySheet>
                     </JoyListItemDecorator>
                     <JoyListItemContent htmlFor="postmail" component="label">
                         <IconsCheckbox 
                             nameCheck="postmail"
-                          // { ...register('postmail')  }
                             label={translate('myroot.form.label.checkbox.postmail')}
                             // onChange={postmail.register.onChange = (event) => handleChangePostmail(event) }
                             // checked={checkedPostmail}
                         />
                     </JoyListItemContent>
                 </JoyListItem>
-                <JoyListDivider inset="startContent" />
+                {/* <JoyListDivider inset="startContent" /> */}
                 <JoyListItem>
                     <JoyListItemDecorator>
-                        <CustomJoySheet variant="solid" color="primary">
+                        <CustomJoySheet color="primary"  >
                             <ForwardToInboxIcon />
                         </CustomJoySheet>
                     </JoyListItemDecorator>

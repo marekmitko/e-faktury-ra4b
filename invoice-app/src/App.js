@@ -19,7 +19,7 @@ import salesitem from "./components/sale-item";
 import MyAdmin from "./components/admin"
 import MyProfile  from './components/admin/users';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import TESTInvoiceCreate from './components/invoices/new-invoice/invoice-create/TESTInvoiceCreate';
+import TESTInvoiceCreate from './components/invoices/new-invoice/invoice-create/x.bin/TESTInvoiceCreate';
 
 // import { CssVarsProvider } from "@mui/joy/styles";
 import { BuyerDataFromLayout } from './components/invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/BuyerDataFormLayout';
