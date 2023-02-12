@@ -162,7 +162,9 @@ export default function JoyInputBox ({
                     onFocus={(event) => addItemOnFocusin(event)}
                     {...salesItemName.field}
                     // label="Product trade name" 
-                    color="primary" variant="plain" placeholder="Wprowadź produkt"
+                    color="primary"
+                    //  variant="plain" 
+                     placeholder="Wprowadź produkt"
                     // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
                 />
 

@@ -12,7 +12,7 @@ export default function IssuedTextInput() {
     <Stack direction="column" spacing={0}>
       <TextField
         // disabled
-        variant="plain"
+        // variant="plain"
         color="info"
         label=" "
         placeholder="Aleksander Mariański"

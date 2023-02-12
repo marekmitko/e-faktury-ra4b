@@ -5,7 +5,12 @@
         "rootDir": "src",
         "declaration": true,
         "declarationMap": true,
-        "allowJs": false
+        "allowJs": false,
+
+        // "composite": true,
+        // "module": "ESNext",
+        // "moduleResolution": "Node",
+        // "allowSyntheticDefaultImports": true
     },
     "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js"],
     "include": ["src"]

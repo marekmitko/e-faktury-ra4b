@@ -6,7 +6,9 @@ import JoyTypography from "@mui/joy/Typography";
 
 export default function BuyerModalShow() {
     return (
-        <JoyCard variant="outlined" sx={{ width: 320, bgcolor: "background.body" }}>
+        <JoyCard 
+        // variant="outlined"
+         sx={{ width: 320, bgcolor: "background.body" }} >
         <JoyCardOverflow
             variant="soft"
             color="primary"
@@ -17,8 +19,8 @@ export default function BuyerModalShow() {
             px: "var(--Card-padding)",
             bgcolor: "background.level1",
             textAlign: "center",
-            fontSize: "xs2",
-            fontWeight: "xl2",
+            // fontSize: "xs2",
+            // fontWeight: "xl2",
             letterSpacing: "1px",
             textTransform: "uppercase"
             }}
@@ -28,7 +30,7 @@ export default function BuyerModalShow() {
             sx={{
                 display: "block",
                 // ml: "auto",
-                fontWeight: "md",
+                // fontWeight: "md",
                 color: "text.secondary"
             }}
             >
@@ -36,23 +38,23 @@ export default function BuyerModalShow() {
             </JoyTypography>
             <JoyDivider orientation="vertical" />
             <JoyTypography
-            level="body2"
+            // level="body2"
             textColor="primary.500" 
             sx={{
                 ml: "auto",
-                fontWeight: "md"
+                // fontWeight: "md"
             }}
             >
-          <td>ILOŚĆ</td><td style={{ paddingRight: "10px", paddingLeft: "10px" }} >|</td><td>SUMA</td>
+          {/* <td>ILOŚĆ</td><td style={{ paddingRight: "10px", paddingLeft: "10px" }} >|</td><td>SUMA</td> */}
             </JoyTypography>
         </JoyCardOverflow>
-        <JoyDivider />
+        {/* <JoyDivider />
         <JoyTypography
             level="body2"
             textColor="primary.500"
             sx={{
             ml: "auto",
-            fontWeight: "md",
+            // fontWeight: "md",
             flexDirection: "column",
             display: "flex"
             }}
@@ -77,7 +79,7 @@ export default function BuyerModalShow() {
                 <td> zł </td>
             </tr>
             </small>
-        </JoyTypography>
+        </JoyTypography> */}
         </JoyCard>
     );
     }

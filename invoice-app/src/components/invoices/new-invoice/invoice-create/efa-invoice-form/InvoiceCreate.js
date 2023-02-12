@@ -11,7 +11,7 @@ import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
-import InvoiceShowModal from "./efa-invoice-show/InvoiceShowModal";
+import InvoiceShowModal, { InvoiceShowModal2 } from "./efa-invoice-show/InvoiceShowModal";
 import { ConfirmButton } from "./efa-invoice-show/ConfirmButton";
 import { set } from "lodash";
 
@@ -248,11 +248,10 @@ const InvoiceCreate = (props) => {
                     </InvoiceFormLayout>  
                     <br/>
             <span>
-
-            <InvoiceShowModal  create={create} open={open} setOpen={setOpen} navigate={navigate}>
-                {/* <hr/>
-                */}
-                <ConfirmButton />
+            <InvoiceShowModal  
+                create={create} open={open} setOpen={setOpen} navigate={navigate}
+            >
+                <ConfirmButton /> 
             </InvoiceShowModal>
                 {/* <InvoiceCreateToolbar /> */}
             </span>

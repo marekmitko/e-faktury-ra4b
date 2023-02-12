@@ -7,14 +7,41 @@ import JoySheet from '@mui/joy/Sheet';
 import JoyCard from '@mui/joy/Card';
 import { useFormContext } from 'react-hook-form';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../../db/fnInvoiceForm';
-import MyButton from '@mui/material/Button';
+// import MyButton from '@mui/material/Button';
 import { useRedirect } from 'react-admin';
 import BuyerModalShow from '../../invoice-confirm-modal/components/BuyerModalShow';
-import { Grid } from '@mui/material';
+import { Grid, Button } from '@mui/material';
+import MyButton from '@mui/joy/Button';
 import PaymentModalShow from '../../invoice-confirm-modal/components/PaymentModalShow';
 
 
 
+// export function InvoiceShowModal2({ children, open, setOpen, create, navigate}) {
+// return(
+//     <>
+//             {/* <JoyButton 
+//             // variant="outlined" 
+//                 // color="neutral" 
+//                 fontSize="sm"
+//                 onClick={() => {
+//                 // setOpen(true); 
+//                 // console.log( dataForm ); 
+//                 } }>
+
+//                 Utwórz
+//             </JoyButton> */}
+//             <MyButton>
+//                 Joy
+//             </MyButton>
+// <Button
+// >Yoy</Button>
+
+//     </>
+
+
+
+//     );
+// }
 export default function InvoiceShowModal({ children, open, setOpen, create, navigate}) {
 
 const methods = useFormContext();
@@ -77,10 +104,15 @@ const onSubmit = (data) => {
 
 return (
    
-<React.Fragment>
+< >
 
 
-        <JoyButton variant="outlined" color="neutral" onClick={() => {setOpen(true); console.log( dataForm ); } }>
+        <JoyButton 
+        variant="outlined" 
+            color="neutral" 
+            
+            onClick={() => {setOpen(true); console.log( dataForm ); } }>
+
             Utwórz
         </JoyButton>
         <JoyModal
@@ -94,10 +126,10 @@ return (
             variant="solid"
             sx={{
                 maxWidth: 500,
-                // minWidth: '80%',
+                minWidth: '80%',
                 borderRadius: 'md',
                 p: 3,
-                // boxShadow: 'lg',
+                boxShadow: 'lg',
 
             }}
             >
@@ -111,7 +143,9 @@ return (
                 bgcolor: 'background.body',
                 }}
             />
-            <JoyCard variant="standard" sx={{ bgcolor: '#0ff', marginBottom: '5px', p: 1, mr: 5}} >
+            <JoyCard 
+            variant="standard" sx={{ bgcolor: '#0ff', marginBottom: '5px', p: 1, mr: 5}} 
+            >
             <JoyTypography
                 component="h2"
                 id="modal-title"
@@ -125,12 +159,16 @@ return (
                 <small>MVA: 451381816153 | adres: ul. Coś tam </small>
             </JoyTypography>
             </JoyCard>
-            <JoyCard variant="outlined" sx={{ bgcolor: '#fff'}} >
-                    {/* <PaymentModalShow /> */}
+            <JoyCard 
+            // variant="outlined" 
+            sx={{ bgcolor: '#fff'}} >
+                    <PaymentModalShow />
                     <BuyerModalShow />
                     <PaymentModalShow />
           
-            <JoyTypography id="modal-desc" textColor="text.tertiary">
+            <JoyTypography id="modal-desc" 
+            // textColor="text.tertiary"
+            >
                 {dataForm.user_company}{" "}  {dataForm.buyer_company}<br/>
                 {dataForm.user_ref}{" "}  {dataForm.buyer_ref}<br/>
                 
@@ -156,6 +194,6 @@ return (
                 {children ? children : null }
             </JoySheet>
         </JoyModal>
-        </React.Fragment>
+        </ >
     );
 }

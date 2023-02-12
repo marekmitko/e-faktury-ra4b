@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Divider from '@mui/joy/Divider';
 import Input from '@mui/joy/Input';
-import Select from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
 
 
 export default function InputDecorators() {
@@ -17,8 +15,8 @@ export default function InputDecorators() {
             <React.Fragment>
                 <Divider orientation="vertical" />{"|"}
                 <Input type="date" 
-                    size="xs"
-                    variant="plain"
+                    // size="xs"
+                    // variant="plain"
                     value={currency}
                     // onChange={(_, value) => setCurrency(value!)}
                     onChange={(_, value) => setCurrency(value )}

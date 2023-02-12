@@ -210,7 +210,9 @@ export default function BasicButtons() {
             <br />
             <Card variant="outlined" sx={(theme) => ({ minWidth: "320px" })}>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-                    <Typography level="h2" fontSize="md" sx={{ alignSelf: "flex-start" }}>
+                    <Typography level="h2" 
+                    fontSize="md"
+                     sx={{ alignSelf: "flex-start" }}>
                         Yosemite National Park
                     </Typography>
                     <Typography level="body2">April 24 to May 02, 2021</Typography>

@@ -28,7 +28,8 @@
 12 silly installInDir ]
 13 error execute callback with error
 14 error Error: Command failed: yarn install --mutex network:42424 --non-interactive
-14 error error Couldn't find any versions for "ra-data-json-server" that matches "^4.0.1"
+14 error warning Lockfile has incorrect entry for "ra-data-json-server@^4.7.5". Ignoring it.
+14 error error Couldn't find any versions for "ra-data-json-server" that matches "^4.7.5"
 14 error [1/4] Resolving packages...
 14 error info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
 14 error

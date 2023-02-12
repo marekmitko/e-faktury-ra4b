@@ -57,7 +57,9 @@ export default function EnhancedRow({ item }) {
         <TableRow key={item.name} sx={{ width: '100%', px: 0, mx: 0 }} >
             <TableCell>{item.idx}</TableCell>
             <TableCell>
-                <JoyTextField color="primary" variant="plain" placeholder="Wprowadź produkt" />
+                <JoyTextField color="primary" 
+                // variant="plain" 
+                placeholder="Wprowadź produkt" />
             </TableCell>
             <td>
                 <JoySelect

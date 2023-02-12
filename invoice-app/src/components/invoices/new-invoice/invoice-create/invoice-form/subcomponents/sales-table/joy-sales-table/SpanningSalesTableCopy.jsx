@@ -152,8 +152,11 @@ export default function SpanningSalesTable() {
                                             // }
                                             ButtonAddItem={<AddCircleRoundedIcon />}
                                         >
-                                            <IconButton  color="error"   aria-label="delete" size="small"   onClick={() => remove(index)} >
-                                                <DeleteIcon fontSize="small" />
+                                            <IconButton  color="error"   aria-label="delete" 
+                                            size="small"   onClick={() => remove(index)} >
+                                                <DeleteIcon 
+                                                // fontSize="small" 
+                                                />
                                             </IconButton>
                                         </InputBox>
                                     </div>

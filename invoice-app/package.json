@@ -14,7 +14,7 @@
         "@emotion/react": "latest",
         "@emotion/styled": "latest",
         "@mui/utils": "latest",
-        "@mui/material": "latest",
+        "@mui/material": "^5.0.2",
         "@mui/x-data-grid":"latest",
         "@mui/joy": "latest",
         "@mui/icons-material": "latest",
@@ -23,10 +23,10 @@
         "@testing-library/user-event": "^13.2.1",
         "next": "^12.1.0",
         "prop-types": "^15.8.1",
-        "ra-data-json-server": "^4.3.1",
-        "ra-data-simple-rest": "^4.3.1",
+        "ra-data-json-server": "^4.7.2",
+        "ra-data-simple-rest": "^4.7.2",
         "react": "^17.0.2",
-        "react-admin": "^4.3.1",
+        "react-admin": "^4.7.5",
         "react-dom": "^17.0.2",
         "react-scripts": "5.0.0",
         "web-vitals": "^2.1.4",
@@ -42,8 +42,8 @@
         "react-router": "^6.1.0",
         "ra-language-polish": "^1.3.8",
         "ra-language-norwegian": "^1.0.1",
-        "ra-language-english": "^4.3.4",
-        "ra-i18n-polyglot": "^4.3.4" 
+        "ra-language-english": "^4.7.2",
+        "ra-i18n-polyglot": "^4.7.2" 
     },
     "eslintConfig": {
         "extends": [

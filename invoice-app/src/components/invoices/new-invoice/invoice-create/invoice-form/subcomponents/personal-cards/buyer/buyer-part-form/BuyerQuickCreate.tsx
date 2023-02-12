@@ -25,7 +25,7 @@ const BuyerQuickCreate = (props: any) => {
 
     const { onCancel, onCreate } = useCreateSuggestionContext();
     const handleSave = useCallback(
-        values => {
+        (values: any )=> {
             create(
                 'posts',
                 { data: values },

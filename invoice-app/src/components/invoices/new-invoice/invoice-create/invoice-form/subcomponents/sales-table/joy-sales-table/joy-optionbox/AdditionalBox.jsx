@@ -40,8 +40,8 @@ export const AdditionalBox = (props) => {
                 {/* <Grid item xs={xs? xs : 12} sm={sm? sm : 6}> */}
                 {/* <Grid item xs={12} sm={6}> */}
                     <Card    sx={{  mt: 0 }} >
-                        <Sheet
-                            variant="plain"
+                        {/* <Sheet
+                            // variant="plain"
                             sx={{
                                 p: 2,
                                     //  bgcolor: "background.body",
@@ -55,7 +55,7 @@ export const AdditionalBox = (props) => {
                                     // justifyContent: "flex-start",
                                     // alignContent: "flex-start"
                             }}
-                        > 
+                        >  */}
                             {/* <Grid item xs={12} > */}
                                 <Grid  xs={12} container spacing={1} rowSpacing={2} >
                                     {/* <Grid item xs={12} sm={4}>
@@ -75,7 +75,10 @@ export const AdditionalBox = (props) => {
                                             ehf && (
                                                 <Chip   sx={{ paddingLeft: '45px', marginTop: '-70px', height: '25px'}} variant="soft"> 
                                                     <small> ZAMÓWIENIE NR: </small>  
-                                                    <JoyInput sx={{ display: 'inline', p:1 }} variant="plain"   placeholder="Podaj numer"   
+                                                    <JoyInput sx={{ display: 'inline', p:1 }} 
+                                                    
+                                                    // variant="plain"
+                                                       placeholder="Podaj numer"   
                                                     {...register('buyer_order_no')}/>
                                                 </Chip>
                                                 )  
@@ -83,7 +86,10 @@ export const AdditionalBox = (props) => {
                                         }
                                         </EhfOptionbox>
                                         {ehf && (
-                                        <div style={{marginTop: '-20px'}}>  <EhfBuyerTextInput /> <EhfUserTextInput />   </div>
+                                        <div style={{marginTop: '-20px'}}>  
+                                            {/* <EhfBuyerTextInput /> 
+                                            <EhfUserTextInput />    */}
+                                        </div>
                                         )}
                                         </div>
                                     </Grid>
@@ -114,7 +120,7 @@ export const AdditionalBox = (props) => {
                                     */}
                                 </Grid>
                             {/* </Grid> */}
-                        </Sheet>
+                        {/* </Sheet> */}
                     </Card>
                 </Grid>
             </Grid>

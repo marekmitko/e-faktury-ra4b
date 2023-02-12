@@ -22,7 +22,7 @@ const BuyerReferenceInput = (props: any) => {
     const postId = useWatch({ name: 'buyer_id' });
 
     const handleShowClick = useCallback(
-        event => {
+        (event: any )=> {
             event.preventDefault();
             setShowPreviewDialog(true);
         },

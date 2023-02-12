@@ -63,28 +63,6 @@ export const ConfirmButton = (props) => {
     // // if (isLoading) return null;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const handleClick = () => setOpen(true);
     const handleDialogClose = () => setOpen(false);
     const handleConfirm = () => {

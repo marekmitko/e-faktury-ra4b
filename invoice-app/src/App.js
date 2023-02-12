@@ -3,6 +3,7 @@ import { Resource,
         ListGuesser, ShowGuesser, EditGuesser, 
         CustomRoutes, 
 } from 'react-admin';
+import { StyledEngineProvider } from '@mui/material/styles';
 import { Route } from 'react-router-dom';
 import { i18nProvider } from './i18nProvider/i18nProvider';
 
@@ -20,13 +21,14 @@ import MyProfile  from './components/admin/users';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import TESTInvoiceCreate from './components/invoices/new-invoice/invoice-create/TESTInvoiceCreate';
 
-import { CssVarsProvider } from "@mui/joy/styles";
+// import { CssVarsProvider } from "@mui/joy/styles";
 import { BuyerDataFromLayout } from './components/invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/BuyerDataFormLayout';
 import EfaClientCreate from './components/clients/CLIENT-e-faktury/EfaClientCreate';
 import EfaClientList from './components/clients/CLIENT-e-faktury/EfaClientList';
 import EfaClientEdit from './components/clients/CLIENT-e-faktury/EfaClientEdit';
 import { PostCreate } from './components/invoices/invoice-list/INVOICE-e-faktury/EfaInvoiceCreate';
 import { EditSimpleList } from './components/invoices/invoice-list/INVOICE-e-faktury/EditSimpleList';
+import CssVarJoyProvider from './joy-theme-provider/JoyThemeProvider';
 
 
 // *see const dataProvider
@@ -37,35 +39,40 @@ const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
 function App(props) {
     return (
         
-        
-        <MyAdmin 
-        theme={CssVarsProvider}
-        dataProvider={dbjsonProvider}
-        i18nProvider={i18nProvider}
-        > 
-        {/* <CssVarsProvider> */}
-            <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
-            <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
-            {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
-            <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
-                list={ListGuesser} 
-                edit={PostCreate}   
-                show={ShowGuesser}   
-            />
-            <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
-                list={EfaClientList} 
-                edit={EfaClientEdit}   
-                show={ShowGuesser}
-                create={EfaClientCreate}  
-                // recordRepresentation={(record) => `${record.company} Masło`}
-            />
-            {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
-            <CustomRoutes>
-                <Route path="/data_user" element={<MyProfile />}/ >
-            </CustomRoutes>
-        {/* </CssVarsProvider> */}
-            <hr/>{"asdsad"}
-        </MyAdmin>
+        <StyledEngineProvider injectFirst>
+<CssVarJoyProvider>
+
+
+            <MyAdmin 
+            // theme={CssVarsProvider}
+            dataProvider={dbjsonProvider}
+            i18nProvider={i18nProvider}
+            > 
+            {/* <CssVarsProvider> */}
+                <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
+                <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
+                {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
+                <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
+                    list={ListGuesser} 
+                    edit={PostCreate}   
+                    show={ShowGuesser}   
+                />
+                <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
+                    list={EfaClientList} 
+                    edit={EfaClientEdit}   
+                    show={ShowGuesser}
+                    create={EfaClientCreate}  
+                    // recordRepresentation={(record) => `${record.company} Masło`}
+                />
+                {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
+                <CustomRoutes>
+                    <Route path="/data_user" element={<MyProfile />}/ >
+                </CustomRoutes>
+            {/* </CssVarsProvider> */}
+                <hr/>{"asdsad"}
+            </MyAdmin>
+                </CssVarJoyProvider>
+        </StyledEngineProvider>
     );
 }
 export default App;

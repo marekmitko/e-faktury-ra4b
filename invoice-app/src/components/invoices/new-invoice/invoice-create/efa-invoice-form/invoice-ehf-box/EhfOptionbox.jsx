@@ -22,7 +22,8 @@ export const EhfOptionbox = ({label, children}) => {
                         checked={EHFCheckbox.field.value}
                         icon={<Close/>}
                         label={label}
-                    />{ children ? children : " " }
+                    />
+                    { children ? children : " " }
                 </span>
             }
         />
