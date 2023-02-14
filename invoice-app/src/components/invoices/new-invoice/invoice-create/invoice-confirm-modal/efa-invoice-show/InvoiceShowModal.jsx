@@ -9,10 +9,10 @@ import { useFormContext } from 'react-hook-form';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../../db/fnInvoiceForm';
 // import MyButton from '@mui/material/Button';
 import { useRedirect } from 'react-admin';
-import BuyerModalShow from '../../invoice-confirm-modal/components/BuyerModalShow';
+import BuyerModalShow from '../components/bin/BuyerModalShow';
 import { Grid, Button } from '@mui/material';
 import MyButton from '@mui/joy/Button';
-import PaymentModalShow from '../../invoice-confirm-modal/components/PaymentModalShow';
+import PaymentModalShow from '../components/bin/PaymentModalShow';
 
 
 
@@ -120,16 +120,17 @@ return (
             aria-describedby="modal-desc"
             open={open}
             onClose={() => setOpen(false)}
-            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            sx={{ display: 'flex', justifyContent: 'center',     alignItems: 'center',        }}
         >
             <JoySheet
-            variant="solid"
+            // variant="solid"
             sx={{
                 maxWidth: 500,
                 minWidth: '80%',
                 borderRadius: 'md',
                 p: 3,
                 boxShadow: 'lg',
+                backgroundColor: 'transparent'
 
             }}
             >

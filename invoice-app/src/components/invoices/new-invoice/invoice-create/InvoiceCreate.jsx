@@ -8,13 +8,15 @@ import { CommentCreate } from "../../invoice-list/invoice-filters/filters-bar-it
 import { InvoiceFormLayout } from './invoice-form/InvoiceFormLayout';
 import SpanningSalesTable from './invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './efa-invoice-form/subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
+import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../db/fnInvoiceForm';
 import { user_db }  from './efa-invoice-form/defaultValuesInvoice';
-import InvoiceShowModal, { InvoiceShowModal2 } from "./efa-invoice-form/efa-invoice-show/InvoiceShowModal";
-import { ConfirmButton } from "./efa-invoice-form/efa-invoice-show/ConfirmButton";
+import InvoiceShowModal, { InvoiceShowModal2 } from "./invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
+import { ConfirmButton } from "./invoice-confirm-modal/efa-invoice-show/ConfirmButton";
 import { set } from "lodash";
 import { onSubmitModal } from "./onSubmitModal";
+import { ConfirmCreateButton } from "./invoice-confirm-modal/ConfirmCreateButton";
+import InvoiceConfirmModal from "./invoice-confirm-modal/components/InvoiceConfirmModal";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
@@ -27,7 +29,7 @@ const ResourceName = () => {
 const InvoiceCreate = (props) => {
     
     const navigate = useNavigate();
-   
+    const notify = useNotify();
     const {user_company} = user_db;
     const record = { user_db, user_ref: user_company };
 
@@ -77,25 +79,6 @@ const InvoiceCreate = (props) => {
             // if (loading) return <Loading />;
             // if (error) return <Error />;
             // if (!user) return null;
-
- 
-            //   const onSubmit = async (data) => {
-            //     await sleep(2000);
-            //     if (data.username === "bill") {
-            //       alert(JSON.stringify(data));
-            //     } else {
-            //       alert("There is an error");
-            //     }
-            //   };
-            
-            //   console.log(errors);
-
-           
-
-
-
-
-
 
     const onSubmit =  (data) => { 
         // https://react-hook-form.com/api/useform
@@ -147,7 +130,8 @@ const InvoiceCreate = (props) => {
     const [open, setOpen] =  useState(false);
 
 
-const onSubmit2 = onSubmitModal(methods, record);
+const onSubmit2 = onSubmitModal({methods, setOpen, open, create, navigate, notify});
+
 
     return(
     <>
@@ -157,23 +141,22 @@ const onSubmit2 = onSubmitModal(methods, record);
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
                 {/* <form onSubmit={save} record={data}> */}
-                <form onSubmit={methods.handleSubmit(onSubmit2)} >
+                <form   id="new-invoice-form" onSubmit={methods.handleSubmit(onSubmit2)} >
+
+                {/* <form   id="new-invoice-form" onSubmit={() => setOpen(true) && methods.handleSubmit(onSubmit2)} > */}
                     <InvoiceFormLayout titleForm={<ResourceName />} >
                         <SpanningSalesTable />
                     </InvoiceFormLayout>  
                     <br/>
-            <span>
-            <InvoiceShowModal  
-                create={create} open={open} setOpen={setOpen} navigate={navigate}
-            >
-                <ConfirmButton /> 
-            </InvoiceShowModal>
-                {/* <InvoiceCreateToolbar /> */}
-            </span>
+                    <ConfirmCreateButton   preSubmitOn={methods.handleSubmit(onSubmit2)} />
+                    <hr/> 
 
-                <Button type="submit" >
-                    Wystaw
-                </Button> 
+                    
+                    <Button type="button" >
+                        Wystaw - Submit
+                    </Button> 
+                <hr/>
+                <InvoiceConfirmModal methods={methods} setOpen={setOpen} open={open}/>
         </form>
     </FormProvider>
         {/* </Create> */}

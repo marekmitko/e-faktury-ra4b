@@ -11,6 +11,8 @@ import CreateNewBuyer from './CreateNewBuyer';
 import { BuyerPartInvoiceFormLayout } from './BuyerPartInvoiceFormLayout';
 import { BuyerDetailShowLayout } from './BuyerDetailShowLayout';
 import db_buyer from './db_empty_buyer';
+import { EfaBuyerDataFromLayout } from '../../client/EfaBuyerDataFormLayout';
+
 // import { SellerDataShowLayout } from '../../seller/SellerDataShowLayout';
 
 
@@ -59,8 +61,8 @@ export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
     if (isLoading) return <p>Loading...</p>;
     if (error)  return (
                     <>
-                    <p><b>DOPYTAĆ</b></p>
-                    <BuyerDataFromLayout />
+                        <p><b>DOPYTAĆ</b></p>
+                        <EfaBuyerDataFromLayout />
                     </>
                 );
     return (

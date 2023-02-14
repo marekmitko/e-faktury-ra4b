@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo} from "react";
 import {InputAdornment, IconButton,   Chip, Stack, TextField,  } from "@mui/material";
 import Box from "@mui/material/Box";
-import {   useController, useWatch } from "react-hook-form";
+import {   useController, useFormContext, useWatch } from "react-hook-form";
 import {  useTranslate } from "react-admin";
 import { PriceInput } from "./input-box-component/PriceInput";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
@@ -32,7 +32,7 @@ export default function InputBox ({
 
     const translate = useTranslate();
 
-    const salesItemName = useController({ name: `${arrayItemIdx}._${idx}_product_name`, control, defaultValue: "", });
+    const salesItemName = useController({ name: `${arrayItemIdx}._${idx}_product_name`, control, defaultValue: "", rules: { required: true }, });
     const qtyItem = useController({ name: `${arrayItemIdx}._${idx}_product_count`, control, defaultValue: "", });
     const taxItem = useController({ name: `${arrayItemIdx}._${idx}_product_vat`, control, defaultValue: "", });
     const netItem = useController({ name: `${arrayItemIdx}._${idx}_product_price_netto`, control, defaultValue: "", });
@@ -78,6 +78,18 @@ export default function InputBox ({
                 ) { return eventsOnItem();}
             }
 
+        //   const { formState: { errors } } = useFormContext();
+
+
+
+
+
+
+
+
+
+
+
         return (
             <>
             <Box  
@@ -118,6 +130,7 @@ export default function InputBox ({
                         sx={{ width: '60%'}} // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
                         label="myroot.form.label.inputbox_itemrow.itemNameField" 
                     />
+                    {/* <p>{ errors.salesItemName && <span>This field is required</span>}</p> */}
                 </Stack>
 {/* <td> <JoyComboInputSelect /> </td> */}
 {/* <AutoItemCategoryInput /> */}

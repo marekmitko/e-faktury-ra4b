@@ -11,8 +11,8 @@ import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
-import InvoiceShowModal, { InvoiceShowModal2 } from "./efa-invoice-show/InvoiceShowModal";
-import { ConfirmButton } from "./efa-invoice-show/ConfirmButton";
+import InvoiceShowModal, { InvoiceShowModal2 } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
+import { ConfirmButton } from "../invoice-confirm-modal/efa-invoice-show/ConfirmButton";
 import { set } from "lodash";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151

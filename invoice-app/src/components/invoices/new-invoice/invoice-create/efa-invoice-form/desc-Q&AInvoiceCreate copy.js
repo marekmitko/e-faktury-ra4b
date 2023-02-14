@@ -12,7 +12,7 @@ import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
-import InvoiceShowModal from "./efa-invoice-show/InvoiceShowModal";
+import InvoiceShowModal from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
 
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 

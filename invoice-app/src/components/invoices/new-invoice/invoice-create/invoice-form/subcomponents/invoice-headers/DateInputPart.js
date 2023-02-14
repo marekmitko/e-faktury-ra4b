@@ -24,9 +24,8 @@ export const DateInputPart = (props) => {
                     defaultValue="00000"
                     source="invoice_no" 
                     variant="standard" label="myroot.form.label.input.invoice_no" disabled />
-            <DateInput source="created_at" variant="standard" defaultValue={todayDate}   label="myroot.form.label.input.created_at"  />
-            {/* <DateInput source="sale_date" defaultValue={todayDate} /> */}
-            <DateInput source="payment_due" variant="standard" defaultValue={todayDateAdd14}  label="myroot.form.label.input.payment_due" />
+            <DateInput source="date_submit" variant="standard" defaultValue={todayDate}   label="myroot.form.label.input.created_at"  />
+            <DateInput source="date_payment" variant="standard" defaultValue={todayDateAdd14}  label="myroot.form.label.input.payment_due" />
         </Stack>
     );
 };

@@ -1,17 +1,26 @@
 import { useState, useEffect, useMemo} from "react";
 import {InputAdornment, FormControl, InputLabel, Autocomplete, MenuItem, Select, Chip, Stack} from "@mui/material";
 import TextField from "@mui/material/TextField";
+import { useWatch } from "react-hook-form";
 
 
 
 
 
 export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...props }) => {
+    const Price = useWatch({name: `${objController.field.name}` } );
+    console.log('useWatchprice', Price);
     return (
         <TextField 
             {...props}
-                // helperText={false}
+            
+            // helperText="Incorrect entry."
+            //     // helperText={false}
             variant="standard"
+            required
+            
+            error={Price ? false : true}
+            helperText={ Price ? false : 'Wprowadź cene'}
             type="number"
             InputProps={{
                 inputMode: 'numeric',

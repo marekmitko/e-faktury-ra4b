@@ -2,7 +2,7 @@ import React from "react";
 import { useWatch } from "react-hook-form";
 import TableCell from '@mui/material/TableCell';
 
-function setTotalSumNetValue(results){
+export function setTotalSumNetValue(results){
     let totalSum = 0;
 
     for(const key in results) {
@@ -17,7 +17,7 @@ function setTotalSumNetValue(results){
     return totalSum;
 }
 
-function setTotalSum(results){
+export function setTotalSum(results){
     let totalSum = 0;
 
     for(const key in results) {

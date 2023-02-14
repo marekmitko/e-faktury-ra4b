@@ -101,9 +101,8 @@ const InvoiceList = (props) => {
             <TextField source="id" />
             <TextField source="buyer_company" />
             <DateField source="date_submit" />
-            {/* <TextField source="date_sale" /> */}
             <DateField source="date_payment" />
-            <TextField source="payment_amount" />
+            <DateField  source="payment_amount" />
             <TextField source="buyer_org_nr" />
             {/* <WrapperField label="Kwota i data wpłaty"  >
                 <TextField source="firstname" />

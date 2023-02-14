@@ -8,14 +8,14 @@ export const taxOptions = [
     { id: 'Coś 4',     value: 100,   name: "0"        }
 ];
 export const typeOptions = [
-    { id: 'placeholder',        value: "placeholder",  name: 'Wybierz rodzaj',         },   
-    { id: 'Usługi',             value: 125,   name: 'Usługi',              },   
-    { id: 'Towar',              value: 115,   name: 'Towar',               },   
-    { id: 'Wynajem',            value: 112,   name: 'Wynajem',             },   
-    { id: 'Prowizja',           value: 106,   name: 'Prowizja',            },   
-    { id: 'Sprzedaż 0% MVA',    value: 100,   name:'Sprzedaż 0% MVA',     },
-    { id: 'Zwolniona z MVA',    value: 100,   name:'Zwolniona z MVA',     },
-    { id: 'Sprzedaż zagranicę 0% MVA',           value: 100,   name: 'Sprzedaż',            }
+    { id: 'placeholder',                value: "placeholder",  name: 'Wybierz rodzaj',         },   
+    { id: 'Usługi',                     value: 'Usługi',                    name: 'Usługi',                      },   
+    { id: 'Towar',                      value: 'Towar',                     name: 'Towar',                       },   
+    { id: 'Wynajem',                    value: 'Wynajem',                   name: 'Wynajem',                     },   
+    { id: 'Prowizja',                   value: 'Prowizja',                  name: 'Prowizja',                    },   
+    { id: 'Sprzedaż 0% MVA',            value: 'Sprzedaż 0% MVA',           name: 'Sprzedaż 0% MVA',             },
+    { id: 'Zwolniona z MVA',            value: 'Zwolniona z MVA',           name: 'Zwolniona z MVA',             },
+    { id: 'Sprzedaż zagranicę 0% MVA',  value: 'Sprzedaż zagranicę 0% MVA', name: 'Sprzedaż zagranicę 0% MVA',   }
 ];
 export const productOptions = [
     { id: 'placeholder',                                            name:  'Wybierz produkt',                                                       value: "placeholder"   },   
