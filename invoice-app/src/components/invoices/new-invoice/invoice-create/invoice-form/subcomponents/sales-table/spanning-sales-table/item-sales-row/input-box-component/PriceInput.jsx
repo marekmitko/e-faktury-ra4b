@@ -9,7 +9,13 @@ import { useWatch } from "react-hook-form";
 
 export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...props }) => {
     const Price = useWatch({name: `${objController.field.name}` } );
-    console.log('useWatchprice', Price);
+
+    // const { isDirty } = objController.fieldState
+    // console.log("PRICE", objController);
+    // console.log("#######################");
+    // console.log("isDirty", isDirty);
+    // console.log("#######################");
+
     return (
         <TextField 
             {...props}
@@ -48,4 +54,12 @@ export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...p
 };
 
 
+// onChange={ event => {
+//     var value = event.target.value.replace(/[^0-9\,\.]/ig,'');
+//     value = value.replace(/[,]/gi,'.');
+//     objController.field.onChange(value);
+//     // console.log('valuePrice', value);
+//     }
+// } // send value to hook form 
 
+// />

@@ -1,54 +1,34 @@
 
-import { transformArrayProducts, createPrefixObjectKeys } from '../../../../db/fnInvoiceForm';
-import { useNotify  } from 'react-admin';
+import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 
-export const onSubmitModal = (props) => {
-    const { create, methods, navigate, notify} = props;
-    console.log({...methods});
-    
+export const onSubmitModal = ({create, methods, navigate, notify}) => {
+    // const {create, methods, navigate, notify} = props;
+
     // () => methods.setOpen(true);
-    const currentDataForm = methods.getValues();
-    const currentBuyerId= methods.getValues('buyer_id');
-    // https://react-hook-form.com/api/useform
-    // const output = {
-    //     ...data,
-    //     others: "others"
-    //   }
-    // const productsArr = transformArrayProducts(data.products);
-    // data.products = productsArr;
-
-    // const prefix_buyer = createPrefixObjectKeys("buyer_");
-    // const db_buyer = prefix_buyer(data.dbBuyers);
-    // data.dbBuyers = ""
-    // data = {...data, ...db_buyer};
-    // console.log("fullDATA:", data);
-
-
-    // console.log('dataForm',data);
-
+    // const currentDataForm = methods.getValues();
+    // const currentBuyerId= methods.getValues('buyer_id');
+    // // https://react-hook-form.com/api/useform
+    
+    
+    
+    // getData buyer_id
+        const currentBuyerId= methods.getValues('buyer_id');
+        // hmmm... czy i jak? 
+    
     return (async data => {
 
         await sleep(500);
         if (data.buyer_id) {
 
 
-        // const output = {
-        //         ...data,
-        //         others: "others"
-        //     }
-
-        // getData buyer_id
-            const currentBuyerId= methods.getValues('buyer_id');
-            // hmmm... czy i jak? 
-
         // TRANSFORM db_buyer
             const prefix_buyer = createPrefixObjectKeys("buyer_");
             const db_buyer = prefix_buyer(data.dbBuyers);
-            data.dbBuyers = ""
+            data.dbBuyers = "";
 
 
         // TRANSFORM products_arr
@@ -60,7 +40,8 @@ export const onSubmitModal = (props) => {
                         ...data,
                         ...db_buyer,
                         // others: "others"
-                    }
+                    };
+
             console.log("db_outputForm:", output);
 
 
@@ -77,7 +58,7 @@ export const onSubmitModal = (props) => {
                 { onSuccess: () => {
                     // const invoice_id = 
                     // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
-                    // const refcord = useRecordContext
+                    // const record = useRecordContext
                         navigate('/issuedInvoices_list');
                         notify('Twoja faktura została utworzona pomyślnie');
                     } }

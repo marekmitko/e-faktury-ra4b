@@ -69,7 +69,7 @@ export function TogglePrice({ state, setState}) {
                 {/* <Grid    ><small>START WITH THE PRICE</small></Grid> */}
                 <Grid   container alignItems="center" spacing={1} >
                     <Grid item align="center">
-                        <Typography sx={{ width: "30px", color: "#fff", paddingRight: '25px',
+                        <Typography sx={{ width: "60px", color: "#fff", paddingRight: '25px',
                             // fontWeight:  state ?  "300" : "500",
                             // display: "inline"
                             // textDecoration: state ? "" : "underline",

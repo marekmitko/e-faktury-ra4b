@@ -2,13 +2,15 @@ import { useState, useEffect, useMemo} from "react";
 import {InputAdornment, IconButton,   Chip, Stack, TextField,  } from "@mui/material";
 import Box from "@mui/material/Box";
 import {   useController, useFormContext, useWatch } from "react-hook-form";
-import {  useTranslate } from "react-admin";
+import {  useRecordContext, useTranslate } from "react-admin";
 import { PriceInput } from "./input-box-component/PriceInput";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 // import AutoItemCategoryInput from "./input-box-component/subcomponent/AutoItemCategoryInput";
 import SelectItemOption from "./input-box-component/subcomponent/SelectItemOption";
 import { TextInputItem } from "./input-box-component/subcomponent/TextInputItem";
 import { productOptions, taxOptions, typeOptions }  from './options_select_input';
+import SelectOrInputText from "./input-box-component/select-combo-input/bin/MySelectOrInput";
+import SelectListButton from "./input-box-component/SelectListButton";
 // import JoyComboInputSelect from "./input-box-component/subcomponent/JoyComboInputSelect";
 
 
@@ -17,7 +19,7 @@ import { productOptions, taxOptions, typeOptions }  from './options_select_input
 function setGrossPriceItem(netPriceItem, taxValue){
     // if(!isNaN(!parseFloat(taxValue))) return "";
     if(netPriceItem)
-    return (netPriceItem*taxValue)/100;
+    return (+netPriceItem*taxValue)/100;
 }
 function setNetPriceItem(grossPriceInput, taxValue){
     // if(!isNaN(!parseFloat(taxValue))) return "";
@@ -31,18 +33,19 @@ export default function InputBox ({
     eventsOnItem, salesListLength, salesItemIndex, children, update, control, arrayItemIdx, idx, entryPriceIsGross, myField}) {
 
     const translate = useTranslate();
-
-    const salesItemName = useController({ name: `${arrayItemIdx}._${idx}_product_name`, control, defaultValue: "", rules: { required: true }, });
+   
+    const salesItemName = useController({ name: `${arrayItemIdx}._${idx}_product_name`, control, defaultValue: "",  });
     const qtyItem = useController({ name: `${arrayItemIdx}._${idx}_product_count`, control, defaultValue: "", });
     const taxItem = useController({ name: `${arrayItemIdx}._${idx}_product_vat`, control, defaultValue: "", });
     const netItem = useController({ name: `${arrayItemIdx}._${idx}_product_price_netto`, control, defaultValue: "", });
     const grossItem = useController({ name: `${arrayItemIdx}._${idx}_product_price_brutto`, control, defaultValue: "", });
     const typeItem = useController({ name: `${arrayItemIdx}._${idx}_product_type`, control, defaultValue: "", });
-    const categoryItem = useController({ name: `${arrayItemIdx}._${idx}_product_name_selected`, control, defaultValue: "", });
+    // const categoryItem = useController({ name: `${arrayItemIdx}._${idx}_product_name_selected`, control, defaultValue: "", });
 
     // const netPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_netto` });
     // const grossPriceInput = useWatch({ control, name: `${arrayItemIdx}._${idx}_product_price_brutto` });
-    
+    const fieldNameProduct= `${salesItemName.field.name}`;
+
     const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
 
     const newDependentValue = useMemo(() => {
@@ -50,7 +53,7 @@ export default function InputBox ({
         if (!entryPriceIsGross  ) //setGrossPriceItem
             return ((!isNaN(enteryValue)) ? (parseFloat(enteryValue)  * (+taxItem.field.value)) : "0.00" ) / 100;
         if (entryPriceIsGross) //setNetPriceItem
-            return (parseFloat(enteryValue) / (+taxItem.field.value)) * 100 ;
+            return (parseFloat(+enteryValue) / (+taxItem.field.value)) * 100 ;
         }, [enteryValue, taxItem.field.value, entryPriceIsGross]);
 
 
@@ -58,11 +61,11 @@ export default function InputBox ({
     //  Chyba umyślnie to tak tutaj było 🙈
     useEffect(() => {
                 if ( !isNaN(!parseFloat(newDependentValue)) && entryPriceIsGross ) {
-                    setValue(`${netItem.field.name}`, `${newDependentValue.toFixed(2) ? newDependentValue.toFixed(2) : "" }`);
+                    setValue(`${netItem.field.name}`, `${newDependentValue.toFixed(2) ? newDependentValue.toFixed(2) : "0.00"  }`);
                     // setValue( netPriceInput, `${newDependentValue.toFixed(6)}`);
                 }
                 if ( !isNaN(!parseFloat(newDependentValue)) && !entryPriceIsGross ){
-                    setValue( `${grossItem.field.name}`, `${newDependentValue.toFixed(2) ? newDependentValue.toFixed(2) : "" }` );
+                    setValue( `${grossItem.field.name}`, `${newDependentValue.toFixed(2) ? newDependentValue.toFixed(2) : "0.00"  }` );
                     // setValue( grossPriceInput, `${newDependentValue.toFixed(6)}` );
 
                 }
@@ -72,7 +75,7 @@ export default function InputBox ({
      // addItemOnFocusin ##############################
             function addItemOnFocusin(event) {
                 // console.log("create");
-                console.log("inItemOnFocusin");
+                // console.log("inItemOnFocusin");
                 if ( salesListLength === salesItemIndex + 1 &&
                 !event.currentTarget.contains(event.relatedTarget)
                 ) { return eventsOnItem();}
@@ -83,6 +86,7 @@ export default function InputBox ({
 
 
 
+        const record = useRecordContext(); 
 
 
 
@@ -97,8 +101,9 @@ export default function InputBox ({
                 className="App"
                 sx={{
                     mt: 0,
+                    mb: "-3px",
                     pt: 0,
-                    pb: 1,
+                    pb: 0,
                     display: "grid",
                     gridTemplateColumns: setCellGridTemplateRowItem,
                     gridGap: 10,
@@ -111,34 +116,34 @@ export default function InputBox ({
                         <IconButton color="primary"  sx={ {ml: "auto", mr: 0,} } // aria-label="upload picture" component="label"
                             onClick={() => eventsOnItem()}
                         >  {/* <ButtonAddItem />  */}
-                            <AddCircleRoundedIcon sx={ {ml: "auto", mr: 0,} }   />
+                            <AddCircleRoundedIcon sx={ {ml: "auto", mr: -1,} }   />
                         </IconButton>
                         :
                         <Chip label={`${++idx}`} size="normal" color="primary" variant="outlined" 
-                            sx={{ ml: "auto", mr: 0, border: "none", fontSize: '1em', fontWeight: 500, textAlign: 'right'  }}
+                            sx={{ ml: "auto", mr: -1, border: "none", fontSize: '1em', fontWeight: 500, textAlign: 'right'  }}
                         />
                     }   
                 </Stack>
-                <Stack direction="row" spacing={0} alignItems="flex-start" sx={{ paddingTop: 0, marginTop: '-15px', width: '100%' }}
-                        // divider={<Divider orientation="vertical" flexItem />}
-                >
-                    <SelectItemOption {...categoryItem.field} field={categoryItem.field} variant="standard" 
-                        label="myroot.form.label.inputbox_itemrow.itemNameSelect" 
-                        sx={{ width: '40%'}} defaultValue="placeholder" options={productOptions} 
-                    />
-                    <TextInputItem {...salesItemName.field} onFocus={(event) => addItemOnFocusin(event)}  
-                        sx={{ width: '60%'}} // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
+                <Stack direction="row" spacing={0} alignItems="flex-start" sx={{ paddingTop: 0, marginTop: '-25px', width: '100%' }} >
+                    <SelectListButton nameProdcutNameInput={fieldNameProduct} options={record.choice_product_list}  />
+                    <TextInputItem 
+                        // variant={ salesItemName.field.value ? "standard" : "outlined"}
+                        fieldNameProduct={fieldNameProduct} objController={salesItemName} fieldName={salesItemName.field} {...salesItemName.field}  onFocus={(event) => addItemOnFocusin(event)}  options={record.choice_product_list}
+                        sx={{ width: '92%'}} // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
+                        isError={salesItemName.field.value}
                         label="myroot.form.label.inputbox_itemrow.itemNameField" 
-                    />
+                        />
                     {/* <p>{ errors.salesItemName && <span>This field is required</span>}</p> */}
                 </Stack>
-{/* <td> <JoyComboInputSelect /> </td> */}
-{/* <AutoItemCategoryInput /> */}
-                <SelectItemOption {...typeItem.field} field={typeItem.field} variant="standard"
-                    label="myroot.form.label.inputbox_itemrow.typeItem" 
+                <SelectItemOption {...typeItem.field} field={typeItem.field} 
+                // variant={ typeItem.field.value ? "standard" : "outlined"}
+                isError={typeItem.field.value}
+                    // label="myroot.form.label.inputbox_itemrow.typeItem" 
+                    label={ typeItem.field.value ? "myroot.form.label.inputbox_itemrow.typeItem" : "Wprowadź typ"} 
                     sx={{ minWidth: 120 }} defaultValue="placeholder" options={typeOptions}  
                 />
-                <SelectItemOption {...taxItem.field} field={taxItem.field} variant="standard"
+                <SelectItemOption {...taxItem.field} field={taxItem.field} variant={ taxItem.field.value ? "standard" : "outlined"}
+                    isError={taxItem.field.value}
                     label="myroot.form.label.inputbox_itemrow.taxItem" 
                     sx={{ minWidth: 25 }} defaultValue="placeholder" options={taxOptions}  
                 />

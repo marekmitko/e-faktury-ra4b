@@ -117,9 +117,9 @@ export default function InvoiceConfirmModal(props) {
                     <Divider   sx={{ p: 0.1 }}  />
                     {/* <ModalToolbar /> */}
                     <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-start', pt: 2, mb: -1}}>
-                        <JoyButton variant="plain" color="primary" onClick={() => setOpen(false)}>
+                        {/* <JoyButton variant="plain" color="primary" onClick={() => setOpen(false)}>
                             Wystaw
-                        </JoyButton>
+                        </JoyButton> */}
                         <MuiButton
                             // disabled={loading}
                             // onClick={handleConfirm}
@@ -131,7 +131,7 @@ export default function InvoiceConfirmModal(props) {
                     {/* {translate(confirm, { _: confirm })} */}
                     </MuiButton>
 
-                        <button type="submit" form="new-invoice-form">Submit</button>
+                        {/* <button type="submit" form="new-invoice-form">Submit</button> */}
                         <Divider   orientation="vertical"  sx={{ mx: 5 }} />
                         <JoyButton variant="plain" color="danger" onClick={() => setOpen(false)}>
                             Anuluj

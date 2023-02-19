@@ -1,7 +1,7 @@
 import * as React from "react";
 import { autocompleteClasses, Card , Grid} from "@mui/material";
 import {    Create,   SimpleForm,   TextInput  } from 'react-admin';
-import { SellerCard } from "../invoice-form/subcomponents/personal-cards/seller/SellerCard";
+import { SellerCard } from "../efa-invoice-form/personal-cards/SellerCard";
 import { BuyerCard } from "../invoice-form/subcomponents/personal-cards/buyer/BuyerCard";
 
 import { BuyerCard3 } from "../invoice-form/subcomponents/personal-cards/buyer/BuyerCard3";

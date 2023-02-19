@@ -3,16 +3,18 @@ import { AutocompleteInput, useChoicesContext,
     useCreate, useShowController, useGetOne, Loading, Error,
     useCreateSuggestionContext, Show,
     Record, ReferenceInput, useRecordContext, useCreateContext, TextInput, useRedirect, RecordContextProvider } from 'react-admin';
+import { BuyerDetailShowLayout } from '../../../invoice-form/subcomponents/personal-cards/buyer/buyer-part-form/BuyerDetailShowLayout';
 
-import { PersonalDataCard } from '../../../../../../../../../custom/invoice/parsonal-cards/PersonalDataCard';
-import BuyerIcon from '@mui/icons-material/Person';
-import {FormControlLabel, Checkbox, hslToRgb} from '@mui/material';
-import { BuyerDataFromLayout } from '../BuyerDataFormLayout';
-import CreateNewBuyer from './CreateNewBuyer';
-import { BuyerPartInvoiceFormLayout } from './BuyerPartInvoiceFormLayout';
-import { BuyerDetailShowLayout } from './BuyerDetailShowLayout';
-import db_buyer from './db_empty_buyer';
-import { EfaBuyerDataFromLayout } from '../../client/EfaBuyerDataFormLayout';
+// import { PersonalDataCard } from '../../../../../../../../../custom/invoice/parsonal-cards/PersonalDataCard';
+// import BuyerIcon from '@mui/icons-material/Person';
+// import {FormControlLabel, Checkbox, hslToRgb} from '@mui/material';
+// import { BuyerDataFromLayout } from '../BuyerDataFormLayout';
+// import CreateNewBuyer from './CreateNewBuyer';
+// import { BuyerPartInvoiceFormLayout } from './BuyerPartInvoiceFormLayout';
+// import { BuyerDetailShowLayout } from '';
+import { EfaBuyerDataFromLayout } from '../../../invoice-form/subcomponents/personal-cards/client/EfaBuyerDataFormLayout';
+// import db_buyer from './db_empty_buyer';
+// import { EfaBuyerDataFromLayout } from '../../client/EfaBuyerDataFormLayout';
 
 // import { SellerDataShowLayout } from '../../seller/SellerDataShowLayout';
 
@@ -22,10 +24,10 @@ import { EfaBuyerDataFromLayout } from '../../client/EfaBuyerDataFormLayout';
 // https://marmelab.com/react-admin/Edit.html#queryoptions
 
 
-const BuyerIdShow = ({BuyerId}) => {
-    const controllerProps = useShowController({ resource: 'posts', id: BuyerId });
-    return <Show {...controllerProps} />;
-};
+// const BuyerIdShow = ({BuyerId}) => {
+//     const controllerProps = useShowController({ resource: 'posts', id: BuyerId });
+//     return <Show {...controllerProps} />;
+// };
 
 
 // note  const BookDetail = ({ id }) => {
@@ -79,7 +81,7 @@ export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => {
     return(
         <WrapperBuyerPartFormItem resource={resourceBuyer} id={buyerId}>
             {/* <BuyerDataFromLayout /> */}
-            <BuyerDetailShowLayout  />
+            <BuyerDetailShowLayout />
         </WrapperBuyerPartFormItem>
     )
 };
@@ -103,26 +105,26 @@ export const ControlDataInputBuyerShow = ({resourceBuyer,  buyerId}) => {
 
 
 
-// https://marmelab.com/react-admin/useChoicesContext.html
+// // https://marmelab.com/react-admin/useChoicesContext.html
 
-export const BuerTESTInput = (props) => {
-    const { setFilters, displayedFilters } = useChoicesContext();
+// export const BuerTESTInput = (props) => {
+//     const { setFilters, displayedFilters } = useChoicesContext();
 
-    const handleCheckboxChange = (event, checked) => {
-        setFilters({ published: checked }, displayedFilters);
-    };
+//     const handleCheckboxChange = (event, checked) => {
+//         setFilters({ published: checked }, displayedFilters);
+//     };
  
-    return (
-        <>
-            <AutocompleteInput   {...props}  />
-            <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label="Only published posts"
-                onChange={handleCheckboxChange}
-            />
-        </>
-    );
-};
+//     return (
+//         <>
+//             <AutocompleteInput   {...props}  />
+//             <FormControlLabel
+//                 control={<Checkbox defaultChecked />}
+//                 label="Only published posts"
+//                 onChange={handleCheckboxChange}
+//             />
+//         </>
+//     );
+// };
 
 
 

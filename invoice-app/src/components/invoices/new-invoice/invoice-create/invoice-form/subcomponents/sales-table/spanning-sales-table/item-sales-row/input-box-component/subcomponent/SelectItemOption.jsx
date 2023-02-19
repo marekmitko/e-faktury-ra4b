@@ -5,7 +5,7 @@ import { useTranslate } from "react-admin";
 
 
 // function SelectItemOption({field, ...props}) {
-function SelectItemOption({field, options, label, variant, variantLabel, defaultValue, sx,...props}) {
+function SelectItemOption({field, options, isError, label, variant, variantLabel, defaultValue, sx,...props}) {
     const translate = useTranslate();
     
     // https://stackoverflow.com/questions/66722593/how-to-set-defaultvalue-after-some-delay-on-react-select-with-react-hook-form
@@ -26,6 +26,9 @@ function SelectItemOption({field, options, label, variant, variantLabel, default
             {translate(label)}
         </InputLabel>
         <Select
+            required
+            color="success"
+            error={isError ? false : true}
             defaultValue={defaultValue ? `${defaultValue}` : null}
             labelId="demo-simple-select-autowidth-label"
             id="demo-simple-select-autowidth"

@@ -5,8 +5,8 @@ import DataContatctIcon from '@mui/icons-material/Wysiwyg';
 import { Stack, Typography, Box, Divider, TableCell, TableHead } from "@mui/material";
 import { TextField,useRecordContext, SimpleShowLayout, useTranslate, WrapperField, useGetOne, useGetMany } from "react-admin";
 // import { ZipCityDualLabel, ZipCityDualTextField } from "../../../../../../../../custom/ZipCityDualTextField";
-import { CodeAndNameCityDualField } from '../../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
-import { BuyerDataFromLayout } from "../BuyerDataFormLayout";
+// import { CodeAndNameCityDualField } from '../../../../../../../../../custom/invoice/fields/CodeAndNameCityDualField'
+// import { BuyerDataFromLayout } from "../BuyerDataFormLayout";
 import { useFormContext } from "react-hook-form";
 
 // BUG // *see Zapytać 

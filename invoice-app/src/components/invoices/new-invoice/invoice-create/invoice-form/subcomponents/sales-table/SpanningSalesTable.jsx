@@ -18,6 +18,8 @@ import SwitchNetOrGross from './spanning-sales-table/sales-table-panel/SwitchNet
 import JoyInputBox from './spanning-sales-table/item-sales-row/JoyInputBox';
 import { useRecordContext } from 'react-admin';
 import JoyNotebox2 from './joy-sales-table/joy-optionbox/JoyNotebox2';
+import UnstyledSelectIntroduction from './spanning-sales-table/item-sales-row/input-box-component/select-combo-input/bin/MySelectOrInput';
+import NEWSelectOrInputText from './spanning-sales-table/item-sales-row/input-box-component/select-combo-input/bin/SelectOrInputText copy';
 
 
 
@@ -122,7 +124,9 @@ export default function SpanningSalesTable(props) {
     // const SubmitHandler  = data => console.log(data);
     return (
         <>
-         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}>
+         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} 
+        //  sx={{   border: '1px dashed grey' }}
+         >
          {/* "50px auto 150px 70px 60px 125px 125px 125px 50px " */}
         <Grid item xs={12}  >
         {/* <form onSubmit={handleSubmit(onSubmit)} {...props}> */}
@@ -153,14 +157,14 @@ export default function SpanningSalesTable(props) {
                                             <IconButton  color="error"   aria-label="delete" size="small"   onClick={() => remove(index)} >
                                                 <DeleteIcon
                                                 //  fontSize="small" 
-                                                 />
+                                                />
                                             </IconButton>
                                         </InputBox>
                                     </div>
                             ); 
                         })}
                     </TableBody>
-                    <TableRow><TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}}> 
+                        <TableRow><TableCell colSpan={9} sx={{border: 0, p: 0, pt: 2}}> 
                     {/* <div>  <br /> <span className="counter">Render Count: {renderCount}</span>  </div> */}
                 </TableCell></TableRow>
                     <TableRow>
