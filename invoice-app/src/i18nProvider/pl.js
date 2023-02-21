@@ -81,8 +81,10 @@ export const pl = {
                     ehf: 'Faktura EHF'
                 },
                 header: {
+                    seller: 'Wstawca',
+                    buyer: 'Nabywca',
                     address: 'Adres',
-                    contact: 'Dane Kontaktowe',
+                    contact: 'Kontakt',
                     additional_note: 'Uwagi do faktury',
                     optionbox_invoice: 'Opcje dodatkowe',
                     payment_channel: 'Forma płatności',

@@ -113,14 +113,14 @@ export default function InputBox ({
                 <Stack direction="row" 
                     alignItems="right" component='span' sx={{ display: "flex", taxtAlign: "right", width: "100%" }} >
                     {(salesListLength === salesItemIndex + 1) ? 
-                        <IconButton color="primary"  sx={ {ml: "auto", mr: 0,} } // aria-label="upload picture" component="label"
+                        <IconButton color="primary"  sx={ {ml: 1, mr: -1,} } // aria-label="upload picture" component="label"
                             onClick={() => eventsOnItem()}
                         >  {/* <ButtonAddItem />  */}
-                            <AddCircleRoundedIcon sx={ {ml: "auto", mr: -1,} }   />
+                            <AddCircleRoundedIcon sx={ {ml: 1, mr: -1,} }   />
                         </IconButton>
                         :
-                        <Chip label={`${++idx}`} size="normal" color="primary" variant="outlined" 
-                            sx={{ ml: "auto", mr: -1, border: "none", fontSize: '1em', fontWeight: 500, textAlign: 'right'  }}
+                        <Chip label={` ${++idx}. `} size="normal" color="primary" variant="outlined" 
+                            sx={{ ml: 2, mr: -2, border: "none", fontSize: '1em', fontWeight: 500, textAlign: 'right'  }}
                         />
                     }   
                 </Stack>
@@ -129,7 +129,8 @@ export default function InputBox ({
                     <TextInputItem 
                         // variant={ salesItemName.field.value ? "standard" : "outlined"}
                         fieldNameProduct={fieldNameProduct} objController={salesItemName} fieldName={salesItemName.field} {...salesItemName.field}  onFocus={(event) => addItemOnFocusin(event)}  options={record.choice_product_list}
-                        sx={{ width: '92%'}} // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
+                        // sx={{ width: '92%'}} 
+                        // iconStart={<AccountCircle sx={{ color: "#0089ff", fontSize: 18 }} /> } 
                         isError={salesItemName.field.value}
                         label="myroot.form.label.inputbox_itemrow.itemNameField" 
                         />
@@ -140,7 +141,7 @@ export default function InputBox ({
                 isError={typeItem.field.value}
                     // label="myroot.form.label.inputbox_itemrow.typeItem" 
                     label={ typeItem.field.value ? "myroot.form.label.inputbox_itemrow.typeItem" : "Wprowadź typ"} 
-                    sx={{ minWidth: 120 }} defaultValue="placeholder" options={typeOptions}  
+                    sx={{ minWidth: 100 }} defaultValue="placeholder" options={typeOptions}  
                 />
                 <SelectItemOption {...taxItem.field} field={taxItem.field} variant={ taxItem.field.value ? "standard" : "outlined"}
                     isError={taxItem.field.value}

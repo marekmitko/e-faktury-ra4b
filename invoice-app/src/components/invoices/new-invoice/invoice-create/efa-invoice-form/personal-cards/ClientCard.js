@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PersonalDataCard } from './subcomponents/PersonalDataCard'
+import { PersonalDataCard } from './subcomponents/presonal-card-container/PersonalDataCard'
 import BuyerIcon from '@mui/icons-material/Person';
 import ClientReferenceAutocompleteInput from "./subcomponents/ClientReferenceAutocompleteInput";
 import ClientDataAutomaticDisplay from "./subcomponents/ClientDataAutomaticDisplay";

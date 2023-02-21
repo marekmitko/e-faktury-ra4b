@@ -19,10 +19,8 @@ import salesitem from "./components/sale-item";
 import MyAdmin from "./components/admin"
 import MyProfile  from './components/admin/users';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import TESTInvoiceCreate from './components/invoices/new-invoice/invoice-create/x.bin/TESTInvoiceCreate';
 
 // import { CssVarsProvider } from "@mui/joy/styles";
-import { BuyerDataFromLayout } from './components/invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/BuyerDataFormLayout';
 import EfaClientCreate from './components/clients/CLIENT-e-faktury/EfaClientCreate';
 import EfaClientList from './components/clients/CLIENT-e-faktury/EfaClientList';
 import EfaClientEdit from './components/clients/CLIENT-e-faktury/EfaClientEdit';

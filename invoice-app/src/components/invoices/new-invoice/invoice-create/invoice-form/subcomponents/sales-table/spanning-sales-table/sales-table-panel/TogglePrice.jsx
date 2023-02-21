@@ -5,7 +5,16 @@ import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import { useWatch, replace } from 'react-hook-form';
 import { RadioButtonGroupInput } from 'react-admin';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 
+const StyledTableCellClasses = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        // backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.getContrastText(theme.palette.primary.dark),
+        fontWeight: '450',
+      },
+
+    }));
 
 const CustomSwitch = styled(Switch)(({ theme }) => ({
             width: 30,
@@ -69,12 +78,12 @@ export function TogglePrice({ state, setState}) {
                 {/* <Grid    ><small>START WITH THE PRICE</small></Grid> */}
                 <Grid   container alignItems="center" spacing={1} >
                     <Grid item align="center">
-                        <Typography sx={{ width: "60px", color: "#fff", paddingRight: '25px',
+                        <Typography sx={{ width: "50px", color: "#fff", paddingRight: '25px',
                             // fontWeight:  state ?  "300" : "500",
                             // display: "inline"
                             // textDecoration: state ? "" : "underline",
                         }} >
-                            { state ? "BRUTTO" : "NETTO" }
+                            <StyledTableCellClasses sx={{   p: 0, border: 'none' }}>{state ? "BRUTTO" : "NETTO" }</StyledTableCellClasses>
                         </Typography></Grid>
                     <Grid item>
                         <CustomSwitch

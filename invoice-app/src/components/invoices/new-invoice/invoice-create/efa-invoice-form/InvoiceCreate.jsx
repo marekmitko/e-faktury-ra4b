@@ -8,7 +8,7 @@ import { useForm, FormProvider, useFormContext, Controller} from "react-hook-for
 import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify } from 'react-admin';
+import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
 import InvoiceShowModal, { InvoiceShowModal2 } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
@@ -23,6 +23,11 @@ import Header from './invoice-headers';
 import { tiers } from "./onTestDb";
 import { SellerCard } from "./personal-cards/SellerCard";
 import ClientCard from "./personal-cards/ClientCard";
+import PersonalCardShow from "./personal-cards/show/PersonalCardShow";
+import SellerIcon from "@mui/icons-material/Store";
+import BuyerIcon from '@mui/icons-material/ShoppingCart';
+import SellerCardShow from "./personal-cards/SellerCardShow";
+import BuyerCardShowForm from "./personal-cards/BuyerCardShowForm";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 
@@ -104,12 +109,11 @@ const InvoiceCreate = (props) => {
         data = {...data, ...db_buyer};
         console.log("fullDATA:", data);
         
-
         // PRZEKSZTAŁĆ NA TO => https://marmelab.com/react-admin/useGetOne.html //*edu
         // to jest to co teraz robie   =>  https://marmelab.com/react-admin/useDataProvider.html
         // https://marmelab.com/react-admin/useGetOne.html //*edu sprawdić to!!!
-
-
+        
+        
         // const { data: db_buyerId } = myDataProvider.getOne('buyersEfaktury', { id: `${currentBuyerId}` }).then(({ data }) => {
         //     console.log("test_dbClient", db_buyerId);
         //     // setUser(data);
@@ -127,22 +131,23 @@ const InvoiceCreate = (props) => {
                 } }
         );
     };
-
+    
 
     // if (error) { return <p>ERROR</p>; }
     // return <button disabled={isLoading} onClick={() =>{} }>Like</button>;
-
+    
     // if (isLoading) return null;
     const [open, setOpen] =  useState(false);
 
     const onSubmit2 = onSubmitModal({create, methods, navigate, notify});
 
-
+    const db_seller = { street: user_db.user_address, companyName: user_db.user_company, mva: user_db.user_org_nr, city: user_db.user_place, zipCode: user_db.user_zip_code, country: user_db.user_country, phoneNumber: user_db.user_phone, email: user_db.user_email};
+    const translate = useTranslate();
     return(
     <>
     {/* <Create 
         redirect="show"
-        component="div"  {...props} > */}
+    component="div"  {...props} > */}
 
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
@@ -153,14 +158,33 @@ const InvoiceCreate = (props) => {
                 {/* <form onSubmit={save} record={data}> */}
                     <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}    />
                     <CssBaseline />
-                    {/* <Header titleForm={<ResourceName />}/>  */}
-                    <Container maxWidth="md" component="main">
+                    <Container 
+                    maxWidth="xl" 
+                    component="main">
                                 <Grid container spacing={2} alignItems="flex-end">
-                                <Grid  item xs={12}  sm={6}  md={6}   // key={tier.title}
+                                <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
+                                >
+                                    <Header titleForm={<ResourceName />}/> 
+                                </Grid>
+                                <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
+                                >
+                                    {/* <PersonalCardShow bgcolor="inherit" title={translate('myroot.form.label.header.seller')} icon={<SellerIcon />} 
+                                        dataPersonal={db_seller}
+                                    /> */}
+                                    <SellerCardShow bgcolor="inherit"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                </Grid>
+                                <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
+                                >
+                                    <PersonalCardShow bgcolor='white' title={translate('myroot.form.label.header.buyer')}  icon={<BuyerIcon />} 
+                                        dataPersonal={db_seller}
+                                    />
+                                    <BuyerCardShowForm  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                </Grid>
+                                <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
                                 >
                                     <SellerCard />
                                 </Grid>
-                                <Grid  item xs={12}  sm={6}  md={6}   // key={tier.title}
+                                <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
                                 >
                                     <ClientCard />
                                 </Grid>
@@ -217,11 +241,15 @@ const InvoiceCreate = (props) => {
                                         </Card>
                                     </Grid>
                                 ))}
+                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
+                                    >
+                                        <SpanningSalesTable />
+                                    </Grid>
                                 </Grid>
                             </Container>
-                    <InvoiceFormLayout titleForm={<ResourceName />} >
+                    {/* <InvoiceFormLayout titleForm={<ResourceName />} >
                         <SpanningSalesTable />
-                    </InvoiceFormLayout>  
+                    </InvoiceFormLayout>   */}
                     <br/> 
                      <hr/> 
 

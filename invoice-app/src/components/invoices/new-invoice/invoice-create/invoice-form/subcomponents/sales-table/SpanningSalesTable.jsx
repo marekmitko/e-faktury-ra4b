@@ -124,15 +124,17 @@ export default function SpanningSalesTable(props) {
     // const SubmitHandler  = data => console.log(data);
     return (
         <>
-         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} 
-        //  sx={{   border: '1px dashed grey' }}
-         >
+         {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}  */}
+        {/* //  sx={{   border: '1px dashed grey' }} */}
+         {/* > */}
          {/* "50px auto 150px 70px 60px 125px 125px 125px 50px " */}
         <Grid item xs={12}  >
         {/* <form onSubmit={handleSubmit(onSubmit)} {...props}> */}
             <TableContainer component={Paper} >
-                <Table    sx={{ minWidth: 700 }}    aria-label="spanning table"  size='small'    padding="none"     >
-                    <TableHeader toggelPrice={entryPriceIsGross}  >
+                <Table    sx={{ minWidth: 500 }}    aria-label="spanning table"  size='small'    padding="none"     >
+                    <TableHeader toggelPrice={entryPriceIsGross}  
+                          gridTemplateColumns={" auto 100px 60px 50px 90px 100px 100px 50px"}
+                    >
                         <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
                     </TableHeader>
                     <TableBody>
@@ -141,7 +143,7 @@ export default function SpanningSalesTable(props) {
                                 return(
                                     <div hover={true} key={field.id} >
                                         <InputBox  
-                                            setCellGridTemplateRowItem="50px auto 150px 70px 60px 125px 125px 125px 50px"
+                                            setCellGridTemplateRowItem="30px auto 100px 60px 50px 90px 100px 100px 50px"
                                             update={update} myField={field} entryPriceIsGross={entryPriceIsGross}
                                             setValue={setValue} 
                                             control={control} arrayItemIdx={`products.${index}`} idx={index} 
@@ -199,7 +201,7 @@ export default function SpanningSalesTable(props) {
                         {/* <input type='button' value="▶🚀consol.log(data)" onClick={handleSubmit(onSubmit)}/> */}
         {/* </form> */}
         </Grid>
-        </Grid>
+        {/* </Grid> */}
         </>
     );
 }

@@ -13,6 +13,9 @@ const user = {
     "email": "aleksander@marianski.com",
     "mva": 1,
     "foretaksregistret": 0,
+    "org_nr": 13446789,
+    "phone":' 123 456 789',
+    
 };
 
 //* createDefalutValues */

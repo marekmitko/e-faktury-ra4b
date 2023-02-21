@@ -1,8 +1,20 @@
 import React from "react";
 import {Box, Card, CardActions, CardHeader, CardContent, Typography, TextField, Button, Avatar, IconButton, Grid} from "@mui/material";
-
+import { styled } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import sxCSS from './PersonalDataCard.style'
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+
+const StyledTableCellClasses = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        // backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.getContrastText(theme.palette.primary.dark),
+        fontWeight: '450',
+        paddingTop: '1px',
+      },
+
+    }));
+
 
 // *see  PersonalDataCard
 export const  PersonalDataCard = ({xs, sm, variant, headerTitle, headerIcon, children, sxContent, sxCard }) => (

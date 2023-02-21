@@ -1,8 +1,8 @@
 import {   Grid, } from '@mui/material';
 import { useResourceContext   } from 'react-admin';
-// import Header from './subcomponents/invoice-headers';
+import ClientCard from '../efa-invoice-form/personal-cards/ClientCard';
 import { SellerCard } from '../efa-invoice-form/personal-cards/SellerCard';
-import ClientCard from './subcomponents/personal-cards/client/ClientCard';
+// import Header from './subcomponents/invoice-headers';
 import AdditionalBox from './subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox';
 
 // import AdditionalOptions from './subcomponents/invoice-additional-options';

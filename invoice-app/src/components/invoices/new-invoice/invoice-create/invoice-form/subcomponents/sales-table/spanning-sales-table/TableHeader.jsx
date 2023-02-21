@@ -12,6 +12,7 @@ const StyledTableCellClasses = styled(TableCell)(({ theme }) => ({
         // backgroundColor: theme.palette.primary.dark,
         color: theme.palette.getContrastText(theme.palette.primary.dark),
         fontWeight: '450',
+        paddingTop: '1px',
       },
 
     }));
@@ -19,7 +20,7 @@ const StyledTableCellClasses = styled(TableCell)(({ theme }) => ({
 
 
 
-export default function TableHeader( {children, enabled, disabled, toggelPrice } ) {
+export default function TableHeader( {children, gridTemplateColumns, enabled, disabled, toggelPrice } ) {
     // ?? Po co to było??? 
     // const {enabled, disabled} = children;
     // children = [enabled, disabled]
@@ -33,7 +34,8 @@ export default function TableHeader( {children, enabled, disabled, toggelPrice }
                 className="App"
                 sx={{
                     display: "grid",
-                    gridTemplateColumns: "50px auto 150px 70px 60px 125px 125px 125px 50px",
+                    gridTemplateColumns: gridTemplateColumns,
+                    // gridTemplateColumns: "50px auto 150px 70px 60px 125px 125px 125px 50px",
                     gridGap: 10,
                     marginBottom: 1,
                     marginTop: "auto",
@@ -52,13 +54,13 @@ export default function TableHeader( {children, enabled, disabled, toggelPrice }
                     // justifyItems: 'center'
                 }}
             >
-                <Grid item xs="auto" p="1" >
+                {/* <Grid item xs="auto" p="1" >
                     <StyledTableCellClasses align="right" 
                     // sx={{ maxWidth: 50,  pr:0, border: 'none' }} 
                     />
-                </Grid>
+                </Grid> */}
                 <Grid item xs="auto">
-                    <StyledTableCellClasses sx={{ minWidth: 250, border: 'none', }} >
+                    <StyledTableCellClasses sx={{ pl: 1.5, minWidth: 100, border: 'none', }} >
                         <Stack justifyContent="flex-start" direction='row' > 
                             POZYCJA SPRZEDAŻY 
                             {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {children} */}
@@ -66,7 +68,7 @@ export default function TableHeader( {children, enabled, disabled, toggelPrice }
                     </StyledTableCellClasses>
                 </Grid>
                 <Grid item xs="auto" >
-                    <StyledTableCellClasses sx={{ minWidth: 175, p: 0,  border: 'none' }} >TYP</StyledTableCellClasses>
+                    <StyledTableCellClasses sx={{  p: 0,  border: 'none' }} >TYP</StyledTableCellClasses>
                 </Grid>
                 <Grid item xs={0.75}>
                     <StyledTableCellClasses sx={{   border: 'none' }}>VAT</StyledTableCellClasses>

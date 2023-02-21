@@ -1,9 +1,6 @@
 import React from 'react';
-import { AutocompleteInput, useChoicesContext,
-    useCreate, useShowController, useGetOne, Loading, Error,
-    useCreateSuggestionContext, Show,
-    Record, ReferenceInput, useRecordContext, useCreateContext, TextInput, useRedirect, RecordContextProvider } from 'react-admin';
-import { BuyerDetailShowLayout } from '../../../invoice-form/subcomponents/personal-cards/buyer/buyer-part-form/BuyerDetailShowLayout';
+import {  useGetOne, RecordContextProvider } from 'react-admin';
+import { BuyerDetailShowLayout } from './BuyerDetailShowLayout';
 
 // import { PersonalDataCard } from '../../../../../../../../../custom/invoice/parsonal-cards/PersonalDataCard';
 // import BuyerIcon from '@mui/icons-material/Person';
@@ -12,7 +9,7 @@ import { BuyerDetailShowLayout } from '../../../invoice-form/subcomponents/perso
 // import CreateNewBuyer from './CreateNewBuyer';
 // import { BuyerPartInvoiceFormLayout } from './BuyerPartInvoiceFormLayout';
 // import { BuyerDetailShowLayout } from '';
-import { EfaBuyerDataFromLayout } from '../../../invoice-form/subcomponents/personal-cards/client/EfaBuyerDataFormLayout';
+// import { EfaBuyerDataFromLayout } from '../../../invoice-form/subcomponents/personal-cards/client/EfaBuyerDataFormLayout';
 // import db_buyer from './db_empty_buyer';
 // import { EfaBuyerDataFromLayout } from '../../client/EfaBuyerDataFormLayout';
 
@@ -65,7 +62,7 @@ export const WrapperBuyerPartFormItem = ({ id, resource, children }) => {
     if (error)  return (
                     <>
                         <p><b>DOPYTAĆ</b></p>
-                        <EfaBuyerDataFromLayout />
+                        {/* <Efa */}
                     </>
                 );
     return (

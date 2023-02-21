@@ -14,7 +14,7 @@ import BuyerAddIcon from '@mui/icons-material/PersonAddAlt1';
 import { SaveButton, TextInput, useRecordContext, AutocompleteInput, ReferenceInput, useCreateSuggestionContext, useCreate, SimpleForm, Create, useNotify, useRedirect, choices } from "react-admin";
 import { BuyerDataFromLayout } from "./BuyerDataFormLayout";
 // import { BuyerCard } from "../buyer/BuyerCard";
-import { PersonalDataCard } from "./PersonalDataCard";
+import { PersonalDataCard } from "./presonal-card-container/PersonalDataCard";
 // import { BuyerDataFromLayout3 } from "../buyer/BuyerDataFormLayout3";
 // import { ClientCreateButton } from "./create-client-subform/ClientCreateButton";
 
