@@ -8,7 +8,7 @@ import Card from "@mui/joy/Card";
 import IconButton from "@mui/joy/IconButton";
 import { Link } from "@mui/joy";
 
-export const HeaderPersonalShow = ({ title, icon, mvaNo, companyName }) => {
+export const HeaderPersonalShowForm = ({ title, icon, mvaNo, companyName, children }) => {
     return (
     <Box>
       {/* <Card> */}
@@ -38,7 +38,8 @@ export const HeaderPersonalShow = ({ title, icon, mvaNo, companyName }) => {
             }}
         >
             {/* <Link href="#multiple-actions" overlay underline="none"> */}
-            {companyName ? companyName : ""}
+            {/* {companyName ? companyName : ""} */}
+            {children}
             {/* </Link> */}
         </Typography>
         <CardOverflow

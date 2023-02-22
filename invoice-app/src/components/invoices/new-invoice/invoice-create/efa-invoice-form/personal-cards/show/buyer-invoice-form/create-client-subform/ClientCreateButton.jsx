@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/PersonAddAlt1'; 
-import { ModalCreateNewClient } from '../new-simple-modal-new-client/ModalCreateNewClient';
+import { ModalCreateNewClient } from '../../../subcomponents/new-simple-modal-new-client/ModalCreateNewClient';
 
 export const ClientCreateButton = ({ version, onChange, onClick}) => {
     const [open, setOpen] = React.useState(false); // Controls modal
@@ -20,7 +20,7 @@ export const ClientCreateButton = ({ version, onChange, onClick}) => {
         {/* <div> */}
 
             <Button size="small" variant="outlined" color="secondary" aria-label="create"
-                sx={{border: 'none', p: 0.7, transform: 'scale(1.3)' }} 
+                sx={{border: 'none',  transform: 'scale(1.3)' }} 
                 onClick={handleClickOpen}
                 >
                 <AddIcon  />

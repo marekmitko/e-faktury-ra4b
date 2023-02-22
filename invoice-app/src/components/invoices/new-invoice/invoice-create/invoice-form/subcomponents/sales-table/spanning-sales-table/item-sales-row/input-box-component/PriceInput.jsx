@@ -26,7 +26,7 @@ export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...p
             required
             
             error={Price ? false : true}
-            helperText={ Price ? false : 'Wprowadź cene'}
+            helperText={ Price ? false : 'Podaj cenę'}
             type="number"
             InputProps={{
                 inputMode: 'numeric',

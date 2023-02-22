@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 import { useForm, FormProvider, useFormContext, Controller} from "react-hook-form";
 import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
-import { InvoiceCreateToolbar } from './subcomponents/InvoiceCreateToolbar';
+import { InvoiceCreateToolbar } from './desktop/subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
@@ -19,15 +19,14 @@ import { ConfirmCreateButton } from "../invoice-confirm-modal/ConfirmCreateButto
 import InvoiceConfirmModal from "../invoice-confirm-modal/components/InvoiceConfirmModal";
 import SelectOrInputText from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/input-box-component/select-combo-input/bin/MySelectOrInput";
 import { productOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
-import Header from './invoice-headers';
+import Header from './desktop/invoice-ehf-box/invoice-headers';
 import { tiers } from "./onTestDb";
-import { SellerCard } from "./personal-cards/SellerCard";
-import ClientCard from "./personal-cards/ClientCard";
+import ClientCard from "./personal-cards/bin/ClientCard";
 import PersonalCardShow from "./personal-cards/show/PersonalCardShow";
 import SellerIcon from "@mui/icons-material/Store";
-import BuyerIcon from '@mui/icons-material/ShoppingCart';
 import SellerCardShow from "./personal-cards/SellerCardShow";
-import BuyerCardShowForm from "./personal-cards/BuyerCardShowForm";
+import BuyerCardShowForm from "./personal-cards/show/buyer-invoice-form/BuyerCardShowForm";
+import EfaBuyerAutoInput from "./personal-cards/EfaBuyerAutoInput";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 
@@ -141,6 +140,12 @@ const InvoiceCreate = (props) => {
 
     const onSubmit2 = onSubmitModal({create, methods, navigate, notify});
 
+    const [valueBuyerId, setValueBuyerId] = useState("2145");
+
+
+
+
+
     const db_seller = { street: user_db.user_address, companyName: user_db.user_company, mva: user_db.user_org_nr, city: user_db.user_place, zipCode: user_db.user_zip_code, country: user_db.user_country, phoneNumber: user_db.user_phone, email: user_db.user_email};
     const translate = useTranslate();
     return(
@@ -167,26 +172,16 @@ const InvoiceCreate = (props) => {
                                     <Header titleForm={<ResourceName />}/> 
                                 </Grid>
                                 <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
+                                    // sx={{minWidth: '1000px', minHeight: '500px', display: 'flex'}}
                                 >
-                                    {/* <PersonalCardShow bgcolor="inherit" title={translate('myroot.form.label.header.seller')} icon={<SellerIcon />} 
-                                        dataPersonal={db_seller}
-                                    /> */}
                                     <SellerCardShow bgcolor="inherit"  icon={<SellerIcon />}     dataPersonal={db_seller} />
                                 </Grid>
                                 <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
                                 >
-                                    <PersonalCardShow bgcolor='white' title={translate('myroot.form.label.header.buyer')}  icon={<BuyerIcon />} 
-                                        dataPersonal={db_seller}
-                                    />
-                                    <BuyerCardShowForm  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                    <BuyerCardShowForm dataPersonal={db_seller} />
                                 </Grid>
-                                <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
-                                >
-                                    <SellerCard />
-                                </Grid>
-                                <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
-                                >
-                                    <ClientCard />
+                                <Grid  item xs={12}  sm={12}  md={12}    >
+                                        <SpanningSalesTable />
                                 </Grid>
                                 { tiers.map((tier) => (
                                     // Enterprise card is full width at sm breakpoint
@@ -241,10 +236,7 @@ const InvoiceCreate = (props) => {
                                         </Card>
                                     </Grid>
                                 ))}
-                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
-                                    >
-                                        <SpanningSalesTable />
-                                    </Grid>
+
                                 </Grid>
                             </Container>
                     {/* <InvoiceFormLayout titleForm={<ResourceName />} >

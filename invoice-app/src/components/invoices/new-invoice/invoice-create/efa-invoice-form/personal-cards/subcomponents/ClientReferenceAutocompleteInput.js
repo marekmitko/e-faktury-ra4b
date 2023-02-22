@@ -11,7 +11,7 @@ import {
 // import BuyerIcon from '@mui/icons-material/Person';
 import BuyerAddIcon from '@mui/icons-material/PersonAddAlt1'; 
 
-import { SaveButton, TextInput, useRecordContext, AutocompleteInput, ReferenceInput, useCreateSuggestionContext, useCreate, SimpleForm, Create, useNotify, useRedirect, choices } from "react-admin";
+import { SaveButton, TextInput, ReferenceArrayInput, WithRecord, useRecordContext, AutocompleteInput, ReferenceInput, useCreateSuggestionContext, useCreate, SimpleForm, Create, useNotify, useRedirect, choices, Datagrid } from "react-admin";
 import { BuyerDataFromLayout } from "./BuyerDataFormLayout";
 // import { BuyerCard } from "../buyer/BuyerCard";
 import { PersonalDataCard } from "./presonal-card-container/PersonalDataCard";
@@ -50,9 +50,8 @@ const OptionRenderer = () => {
 
 
 export default function ClientReferenceAutocompleteInput(props) {
-    const {handleBuyerIdChange, valueBuyerId, setValueForm, source, reference} = props;
+    const {handleBuyerIdChange, valueBuyerId, variant, setValueForm, source, reference} = props;
  
-    // const record = useRecordContext();
     // const inputText = choices => `${choices.company} ${choices.id}`;
     const inputText = choices => `${choices.company}`;
     const matchSuggestion = (filter, choices) => {
@@ -60,23 +59,24 @@ export default function ClientReferenceAutocompleteInput(props) {
         return choices ? ( 
             choices.company.toLowerCase().includes(filter.toLowerCase()) 
             || choices.id.toLowerCase().includes(filter.toLowerCase()) 
-        ) : null;
-    };
-console.log("valueBuyerId", valueBuyerId);
+            ) : null;
+        };
+// console.log("record", record);
     return (
-        <>
-        <ReferenceInput 
+        <ReferenceInput  
             source={source}
             reference={reference}
             // enableGetChoices={({ q }) =>  q.length >= 3}
-            {...props} 
+            // {...props} 
         >
             <AutocompleteInput 
+                variant={variant ? variant : "filled" }
+                // size="small"
                 fullWidth 
                 onChange={(event) => {
                     setValueForm('buyer_id', `${event}`);
                     handleBuyerIdChange(event);
-                    }
+                }
                 }  
                 optionText={<OptionRenderer   />}
                 optionValue='id' 
@@ -91,10 +91,9 @@ console.log("valueBuyerId", valueBuyerId);
                 // createItemLabel="Add a New Client"
                 matchSuggestion={matchSuggestion}
                 label="myroot.form.label.input.buyerAutocomplete"
-            />
-        </ReferenceInput>
-        {/* <ClientCreateButton onClick={}/> */}
-        </>
+                // label={false}
+                />
+        </ReferenceInput >
     );
 }
 

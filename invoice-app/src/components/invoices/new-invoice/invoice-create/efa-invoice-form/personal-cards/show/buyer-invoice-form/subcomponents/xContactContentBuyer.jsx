@@ -1,14 +1,15 @@
 import * as React from "react";
 import Typography from "@mui/joy/Typography";
 import CardOverflow from "@mui/joy/CardOverflow";
-import Card from "@mui/joy/Card";
-import Divider from "@mui/joy/Divider";
 import { Box } from "@mui/joy";
+import { useRecordContext } from "react-admin";
 
-export const ContactContent = ({contactNumber, emailAdress}) => {
+export const ContactContentBuyer = ({contactNumber, emailAdress}) => {
+    const record = useRecordContext();
+    if (!record) return null;
+    const { phone, email, firstname, lastname } = record;
     return (
         <Box >
-
                 <CardOverflow
                 // variant="soft"
                 sx={{   display: "flex",
@@ -22,14 +23,14 @@ export const ContactContent = ({contactNumber, emailAdress}) => {
                     level="body3"
                     sx={{ fontWeight: "md", color: "text.secondary" }}
                     >
-                    { contactNumber ? contactNumber : ""}
+                    { phone ? phone : ""}
                 </Typography>
                 {/* <Divider orientation="vertical" /> */}
                 <Typography
                     level="body3"
                     sx={{ fontWeight: "md", color: "text.secondary" }}
                 >
-                    {emailAdress ? emailAdress : "" }
+                    {email ? email : "" }
                 </Typography>
                 </CardOverflow>
                     </Box>

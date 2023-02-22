@@ -13,7 +13,7 @@ import { useController, useFormContext, useWatch} from 'react-hook-form';
 import InvoiceAdditionalCheckbox from './component/InvoiceAdditionalCheckbox';
 import EhfCheckbox from './component/EhfCheckbox';
 import SendInvoiceCheckbox from './component/subcomponent/SendInvoiceCheckbox';
-import { EhfOptionbox } from '../../../../../efa-invoice-form/invoice-ehf-box/EhfOptionbox';
+import { EhfOptionbox } from '../../../../../efa-invoice-form/desktop/invoice-ehf-box/EhfOptionbox';
 import { useTranslate } from 'react-admin';
 import { Chip } from '@mui/joy';
 import JoyInput  from "@mui/joy/Input";

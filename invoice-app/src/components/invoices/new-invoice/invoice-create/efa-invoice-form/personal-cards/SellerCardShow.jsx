@@ -25,6 +25,9 @@ export default function SellerCardShow({dataPersonal, bgcolor, icon, title}) {
         <JoyCard
             variant="outlined"
             sx={{ 
+                display: 'flex',
+                alignSelf: 'stretch',
+                justifySelf: "stretch",
                 bgcolor: bgcolor ? bgcolor : '#fff',
                 boxShadow: 'none',
                 border: 0.5, 

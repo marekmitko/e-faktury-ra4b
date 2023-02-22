@@ -8,7 +8,7 @@ import Card from "@mui/joy/Card";
 import IconButton from "@mui/joy/IconButton";
 import { Link } from "@mui/joy";
 
-export const HeaderPersonalShow = ({ title, icon, mvaNo, companyName }) => {
+export const SubHeaderBuyer = ({ title, icon, mvaNo, companyName, children }) => {
     return (
     <Box>
       {/* <Card> */}
@@ -29,7 +29,7 @@ export const HeaderPersonalShow = ({ title, icon, mvaNo, companyName }) => {
         >
                 {icon? icon : ""}
             </IconButton>
-        <Typography
+        {/* <Typography
             level="h5"
             color="primary"
             sx={{
@@ -37,10 +37,11 @@ export const HeaderPersonalShow = ({ title, icon, mvaNo, companyName }) => {
             mt: 1
             }}
         >
-            {/* <Link href="#multiple-actions" overlay underline="none"> */}
-            {companyName ? companyName : ""}
-            {/* </Link> */}
-        </Typography>
+            {/* <Link href="#multiple-actions" overlay underline="none"> *
+            {/* {companyName ? companyName : ""} */}
+            {children}
+            {/* </Link> *
+        </Typography> */}
         <CardOverflow
             sx={{
             m: 0,

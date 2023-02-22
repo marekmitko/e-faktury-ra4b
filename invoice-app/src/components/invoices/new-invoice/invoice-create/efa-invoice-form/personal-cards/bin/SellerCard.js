@@ -1,12 +1,12 @@
 import React from 'react';
 import { SimpleShowLayout } from 'react-admin';
-import { PersonalDataCard } from  './subcomponents/presonal-card-container/PersonalDataCard'
+import { PersonalDataCard } from  '../subcomponents/presonal-card-container/PersonalDataCard'
 // import { UserRecordWithGCC } from '../../../../../../contexts/UserRecordContext';
 import {   Box   } from '@mui/material';
 
 
 import SellerIcon from '@mui/icons-material/ManageAccounts';
-import { SellerDataShowLayout } from './subcomponents/SellerDataShowLayout';
+import { SellerDataShowLayout } from '../subcomponents/SellerDataShowLayout';
 
 
 // *see SellerCard

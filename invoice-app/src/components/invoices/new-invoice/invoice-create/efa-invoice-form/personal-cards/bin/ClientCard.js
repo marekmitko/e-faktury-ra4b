@@ -1,10 +1,10 @@
 import * as React from "react";
-import { PersonalDataCard } from './subcomponents/presonal-card-container/PersonalDataCard'
+import { PersonalDataCard } from '../subcomponents/presonal-card-container/PersonalDataCard'
 import BuyerIcon from '@mui/icons-material/Person';
-import ClientReferenceAutocompleteInput from "./subcomponents/ClientReferenceAutocompleteInput";
-import ClientDataAutomaticDisplay from "./subcomponents/ClientDataAutomaticDisplay";
+import ClientReferenceAutocompleteInput from "../subcomponents/ClientReferenceAutocompleteInput";
+import ClientDataAutomaticDisplay from "../subcomponents/ClientDataAutomaticDisplay";
 // import CustomerSubForm from "./CustomerSubForm";
-import { ClientCreateButton } from "./subcomponents/create-client-subform/ClientCreateButton";
+import { ClientCreateButton } from "../show/buyer-invoice-form/create-client-subform/ClientCreateButton";
 // import OldClientReferenceAutocompleteInput from "../buyer/buyer-part-form/client-autocomplete-input/ClientReferenceAutocompleteInput";
 // import { ReferenceInput } from "react-admin";
 import { Stack } from "@mui/material";
