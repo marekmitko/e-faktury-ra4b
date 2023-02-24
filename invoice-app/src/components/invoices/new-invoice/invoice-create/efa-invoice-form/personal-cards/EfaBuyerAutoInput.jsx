@@ -76,6 +76,13 @@ export default function EfaBuyerAutoInput(props) {
                 
               
                 <JoyIconButton 
+                    onMouseDown={(event) => {
+                        // don't open the popup when clicking on this button
+                        event.stopPropagation();
+                        }}
+                        onClick={() => {
+                        // click handler goes here
+                        }}
                     size="md"
                     variant="solid"
                     color="primary"

@@ -13,6 +13,14 @@ export const HeaderPersonalShow = ({ title, icon, mvaNo, companyName }) => {
     <Box>
       {/* <Card> */}
         <IconButton 
+            onMouseDown={(event) => {
+            // don't open the popup when clicking on this button
+            event.stopPropagation();
+            }}
+            onClick={() => {
+            // click handler goes here
+            }}
+
             size="md"
             variant="solid"
             color="primary"

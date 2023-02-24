@@ -85,7 +85,7 @@ const userTestfilters = [
 // tip tutaj te propsy są konieczne => https://marmelab.com/react-admin/FilteringTutorial.html#the-filter-buttonform-combo
 
 const InvoiceList = (props) => {
-    const isSmall = useMediaQuery('(max-width:600px)');
+    const isSmall = useMediaQuery('(max-width:899px)');
 
     return (
         <List>
@@ -102,7 +102,7 @@ const InvoiceList = (props) => {
             <TextField source="buyer_company" />
             <DateField source="date_submit" />
             <DateField source="date_payment" />
-            <DateField  source="payment_amount" />
+            <DateField source="payment_amount" />
             <TextField source="buyer_org_nr" />
             {/* <WrapperField label="Kwota i data wpłaty"  >
                 <TextField source="firstname" />

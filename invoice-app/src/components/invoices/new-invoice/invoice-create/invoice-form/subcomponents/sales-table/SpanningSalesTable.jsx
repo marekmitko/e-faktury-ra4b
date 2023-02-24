@@ -71,7 +71,20 @@ export default function SpanningSalesTable(props) {
     const { control, getValues,   setValue     } = useFormContext();
     const { fields, append, remove, update } = useFieldArray({   // all props  prepend, swap, move, insert        
         control, // control props comes from useForm (optional: if you are using FormContext)
-        name: "products" // unique name for your Field Array
+        name: "products", // unique name for your Field Array
+        // rules: {
+        //     validate: async value => {
+        //         if (!sanitizedValidate) return true;
+        //         const error = await sanitizedValidate(
+        //             value,
+        //             getValues(),
+        //             props
+        //         );
+
+        //         if (!error) return true;
+        //         return getValidationErrorMessage(error);
+        //     },
+        // },
     });
 
 

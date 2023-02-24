@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, CssBaseline, Container, Card, Grid, CardContent, Typography, Box, CardHeader} from "@mui/material";
+import { Button, CssBaseline, Container, Card, Grid, CardContent, Typography, Box, CardHeader, useMediaQuery} from "@mui/material";
 import StarIcon from "@mui/icons-material/StarBorder";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { useForm, FormProvider, useFormContext, Controller} from "react-hook-for
 import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
 import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
 import { InvoiceCreateToolbar } from './desktop/subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify } from 'react-admin';
+import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
 import InvoiceShowModal, { InvoiceShowModal2 } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
@@ -27,6 +27,8 @@ import SellerIcon from "@mui/icons-material/Store";
 import SellerCardShow from "./personal-cards/SellerCardShow";
 import BuyerCardShowForm from "./personal-cards/show/buyer-invoice-form/BuyerCardShowForm";
 import EfaBuyerAutoInput from "./personal-cards/EfaBuyerAutoInput";
+import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST";
+import { MobileFormIterator } from "./components/mobile/spanning-sales-table/MobileFormIterator";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 
@@ -35,14 +37,13 @@ const ResourceName = () => {
     return <>{resource}</>;
 }
 
-const InvoiceCreate = (props) => {
-    
+const InvoiceCreate = (props) => { 
     const navigate = useNavigate();
     const notify = useNotify();
     // const create = useCreate();
 
     const {user_company} = user_db;
-    const record = { user_db, user_ref: user_company, choice_product_list: productOptions };
+    const record = { user_db, user_ref: user_company, choice_product_list: productOptions  };
     console.log("RECORD:", record);
     // { handleSubmit, reset, control } 
     const methods = useForm({ 
@@ -140,14 +141,14 @@ const InvoiceCreate = (props) => {
 
     const onSubmit2 = onSubmitModal({create, methods, navigate, notify});
 
-    const [valueBuyerId, setValueBuyerId] = useState("2145");
-
-
-
 
 
     const db_seller = { street: user_db.user_address, companyName: user_db.user_company, mva: user_db.user_org_nr, city: user_db.user_place, zipCode: user_db.user_zip_code, country: user_db.user_country, phoneNumber: user_db.user_phone, email: user_db.user_email};
     const translate = useTranslate();
+
+
+    const isSmall = useMediaQuery(`${MQ_isSmall}`);
+
     return(
     <>
     {/* <Create 
@@ -156,8 +157,6 @@ const InvoiceCreate = (props) => {
 
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
-            
-        
                 <form   id="new-invoice-form" onSubmit={methods.handleSubmit(onSubmit2)} >
                 {/* <form   id="new-invoice-form" onSubmit={() => setOpen(true) && methods.handleSubmit(onSubmit2)} > */}
                 {/* <form onSubmit={save} record={data}> */}
@@ -171,6 +170,23 @@ const InvoiceCreate = (props) => {
                                 >
                                     <Header titleForm={<ResourceName />}/> 
                                 </Grid>
+                                <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
+                                >
+                                <Form>
+                                    <TextInput source="id" />
+                                    <TextInput  source="title" />
+                                    <ArrayInput source="questions">
+                                        <MobileFormIterator>
+                                            <NumberInput label="Question ID" source="id" />
+                                            <TextInput label="Question Text" source="text" />
+                                        </MobileFormIterator>
+                                        {/* <SimpleFormIterator>
+                                            <NumberInput label="Question ID" source="id" />
+                                            <TextInput label="Question Text" source="text" />
+                                        </SimpleFormIterator> */}
+                                    </ArrayInput>
+                                        </Form>
+                                </Grid>
                                 <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
                                     // sx={{minWidth: '1000px', minHeight: '500px', display: 'flex'}}
                                 >
@@ -181,7 +197,7 @@ const InvoiceCreate = (props) => {
                                     <BuyerCardShowForm dataPersonal={db_seller} />
                                 </Grid>
                                 <Grid  item xs={12}  sm={12}  md={12}    >
-                                        <SpanningSalesTable />
+                                        <SpanningSalesTable  isSmall={isSmall} />
                                 </Grid>
                                 { tiers.map((tier) => (
                                     // Enterprise card is full width at sm breakpoint

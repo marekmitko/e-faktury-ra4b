@@ -1,3 +1,15 @@
+
+
+
+
+
+// const MEDIA_QUERY 
+export const MQ_isSmall = '(min-width:899px)';
+
+
+
+
+
 // Global Configuration Variable GCV
 // Global Configuration Constans  GCC
 // infO Global Configuration Variable GCV - USER_DATA_PROVIDER_CONFIG
@@ -17,4 +29,4 @@ export const PROPERTY_VALUE_CSS_CONFIG = {
         }
     },
 };
-
+ 

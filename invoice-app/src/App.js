@@ -27,8 +27,8 @@ import EfaClientEdit from './components/clients/CLIENT-e-faktury/EfaClientEdit';
 import { PostCreate } from './components/invoices/invoice-list/INVOICE-e-faktury/EfaInvoiceCreate';
 import { EditSimpleList } from './components/invoices/invoice-list/INVOICE-e-faktury/EditSimpleList';
 import CssVarJoyProvider from './joy-theme-provider/JoyThemeProvider';
-
-
+import { FormsCreate } from './components/invoices/new-invoice/invoice-create/efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/MobiForm';
+import AbcIcon from '@mui/icons-material/Abc';
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
@@ -51,9 +51,12 @@ function App(props) {
                 <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
                 {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
                 <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
-                    list={ListGuesser} 
+                    list={FormsCreate} 
                     edit={PostCreate}   
-                    show={ShowGuesser}   
+                    show={ShowGuesser} 
+                    create={FormsCreate}  
+                    icon={AbcIcon}
+                />
                 />
                 <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
                     list={EfaClientList} 
