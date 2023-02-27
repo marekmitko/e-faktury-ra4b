@@ -17,12 +17,7 @@ import { useSimpleFormIteratorItem, useSimpleFormIterator,
         SimpleFormIteratorItemContext // *edu https://github.com/marmelab/react-admin/blob/master/packages/ra-ui-materialui/src/input/ArrayInput/SimpleFormIteratorItemContext.ts
 } from 'react-admin';
 
-
-// import { SimpleFormIteratorClasses } from './useSimpleFormIteratorStyles';
-// import { useSimpleFormIterator } from './useSimpleFormIterator';
-// import { ArrayInputContextValue } from './ArrayInputContext';
-
-export const MobileFormIteratorItem = React.forwardRef((props, ref) => {
+export const SalesTableFormIteratorRow = React.forwardRef((props, ref) => {
         const {         // MobileFormIteratorItemProps
             children,  
             disabled,
@@ -37,14 +32,16 @@ export const MobileFormIteratorItem = React.forwardRef((props, ref) => {
             reOrderButtons,
             resource,
             source,
+            fields
         } = props;
 
         
         // * A hook that provides access to a SimpleFormIterator data (the total number of items) and mutators (add, reorder and remove).
         // * Useful to create custom array input iterators.
         const { total, reOrder, remove } = useSimpleFormIterator();
-        const ageValue = useWatch({ name: `${member}.age` });
-
+        const {myPriceFormat, age } = useWatch({ name: `${member}` });
+        console.log("fields", fields);
+        // console.log("ref",  ref);
 
         // Returns a boolean to indicate whether to disable the remove button for certain fields.
         // If disableRemove is a function, then call the function with the current record to
@@ -83,22 +80,24 @@ export const MobileFormIteratorItem = React.forwardRef((props, ref) => {
                 ? getItemLabel(index)
                 : getItemLabel;
 
-           
         return (
             <SimpleFormIteratorItemContext.Provider value={context}>
-                <tr ref={ref}
+                <tr     style={{ backgroundColor: 'azure'}} >
+                <tr ref={ref}     style={{border: "2px blue solid", padding: '10px'}} 
                         // className={SimpleFormIteratorClasses.line} 
                 >
 
-                    {label && (
+                    {/* {label && ( */}
+                    {true && (
                         <Typography
+                            sx={{ bgcolor: 'midnightblue', color: 'white'}}
                             variant="body2"
                             // className={SimpleFormIteratorClasses.index}
                         >
-                            {label}
+                            {label}{"label sales row"}
                         </Typography>
                     )}
-                    <section           // https://stackoverflow.com/questions/57557271/how-to-use-clsx-in-react
+                    <section      style={{border: "2px blue dotted", padding: '1px', margin: '10px', backgroundColor: 'white'}}      // https://stackoverflow.com/questions/57557271/how-to-use-clsx-in-react
                     >
                         {/* 
                         GOTOWA KARTA WIERSZA
@@ -106,7 +105,6 @@ export const MobileFormIteratorItem = React.forwardRef((props, ref) => {
                         {Children.map(
                             children,
                             (input, index2) => {      // input: ReactElement,
-
 
                                 if (!isValidElement(input)) {
                                     return null;
@@ -151,6 +149,10 @@ export const MobileFormIteratorItem = React.forwardRef((props, ref) => {
                         </span>
                     )}
                         </section>
+                        <section>
+                        <p>{(myPriceFormat)? myPriceFormat : "0.oo" }</p>
+                        </section>
+                </tr>
                 </tr>
             </SimpleFormIteratorItemContext.Provider>
         );

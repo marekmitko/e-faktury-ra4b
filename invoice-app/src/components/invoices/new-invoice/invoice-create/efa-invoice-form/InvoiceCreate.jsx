@@ -27,8 +27,8 @@ import SellerIcon from "@mui/icons-material/Store";
 import SellerCardShow from "./personal-cards/SellerCardShow";
 import BuyerCardShowForm from "./personal-cards/show/buyer-invoice-form/BuyerCardShowForm";
 import EfaBuyerAutoInput from "./personal-cards/EfaBuyerAutoInput";
-import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST";
-import { MobileFormIterator } from "./components/mobile/spanning-sales-table/MobileFormIterator";
+import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST"; 
+import { SalesTableFormIterator } from "./components/new-sales-table/components/SalesTableFormIterator";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 
@@ -175,15 +175,11 @@ const InvoiceCreate = (props) => {
                                 <Form>
                                     <TextInput source="id" />
                                     <TextInput  source="title" />
-                                    <ArrayInput source="questions">
-                                        <MobileFormIterator>
+                                    <ArrayInput source="sales_table">
+                                        <SalesTableFormIterator >
                                             <NumberInput label="Question ID" source="id" />
                                             <TextInput label="Question Text" source="text" />
-                                        </MobileFormIterator>
-                                        {/* <SimpleFormIterator>
-                                            <NumberInput label="Question ID" source="id" />
-                                            <TextInput label="Question Text" source="text" />
-                                        </SimpleFormIterator> */}
+                                        </SalesTableFormIterator>
                                     </ArrayInput>
                                         </Form>
                                 </Grid>

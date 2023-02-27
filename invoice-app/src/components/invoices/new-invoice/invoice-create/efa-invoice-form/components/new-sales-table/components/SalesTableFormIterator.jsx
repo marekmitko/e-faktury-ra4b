@@ -10,12 +10,13 @@ import clsx from 'clsx';
 import {
     SimpleFormIteratorClasses,
     SimpleFormIteratorPrefix,
-} from './subcomponents/useSimpleFormIteratorStyles';
+} from '../../mobile/spanning-sales-table/subcomponents/useSimpleFormIteratorStyles';
 import { Confirm, ReOrderButtons, SimpleFormIteratorContext, RemoveItemButton, AddItemButton } from 'react-admin';
-import { MobileFormIteratorItem } from './subcomponents/MobileFormIteratorItem';
-import { ClearArrayButton } from './subcomponents/ClearArrayButton';
-import useProductFormIterator from './logic/useProductFormField';
+import { SalesTableFormIteratorRow } from '../../mobile/spanning-sales-table/subcomponents/SalesTableFormIteratorRow';
+import { ClearArrayButton } from '../../mobile/spanning-sales-table/subcomponents/ClearArrayButton';
+import useProductFormIterator from '../../mobile/spanning-sales-table/logic/useProductFormField';
 import { MQ_isSmall } from '../../../../../../../../config/GLOBAL_CONFIG_CONST';
+import TableContainerFormIterator from './sales-table/TableContainerFormIterator';
 
 // in ra-core/form/getDefaultValues.js
 // const getDefaultValues = (data = {}, defaultValue = {}, defaultValues = {}) => {
@@ -26,7 +27,7 @@ import { MQ_isSmall } from '../../../../../../../../config/GLOBAL_CONFIG_CONST';
 
 
 // export const MobileFormIterator = (props) => {
-export const MobileFormIterator = React.forwardRef((props, ref ) => {
+export const SalesTableFormIterator = React.forwardRef((props, ref ) => {
 
     const {  
         addButton = <AddItemButton/>,               
@@ -89,17 +90,22 @@ export const MobileFormIterator = React.forwardRef((props, ref ) => {
 
         const isSmall = useMediaQuery(`${MQ_isSmall}`);
     
-
+        // const userMyRef = React.useRef({});
 
     return  fields ? (
-        <SimpleFormIteratorContext.Provider value={context}>
-            {/*  https://mui.com/material-ui/react-table/#custom-pagination-actions */}
-            <TableContainer>
+        <SimpleFormIteratorContext.Provider value={context}>    {/*  https://mui.com/material-ui/react-table/#custom-pagination-actions */}
+            <TableContainer sx={{border: "3px orange solid", p: 1}}>
+                <TableContainerFormIterator />
+
+                <span>Table Container</span>
             <Root sx={sx} >
-                <Table>  {/* //<ul /> </ul> */}
+                <Table sx={{border: "5px pink solid", padding: "10px" }}>  {/* //<ul /> </ul> */}
+                    <span>Table  </span>
+                <hr />
+                <span><small>HEADER</small></span>
                     {fields.map((member, index) => {
                         return(
-                        <MobileFormIteratorItem
+                        <SalesTableFormIteratorRow
                             key={member.id}
                             disabled={disabled}
                             disableRemove={disableRemove}
@@ -115,14 +121,14 @@ export const MobileFormIterator = React.forwardRef((props, ref ) => {
                             reOrderButtons={reOrderButtons}
                             resource={resource}
                             source={source}
-                            // ref={ref}
+                            // ref={userMyRef}
                             inline={inline}
                         >
-                                    <p>Header in input</p>
-                                    {children} 
-                                    {/* https://marmelab.com/react-admin/Inputs.html#writing-your-own-input-component */}
-                        </MobileFormIteratorItem>
-                    
+                            <p>Header in input</p>
+                            <Table  sx={{border: "2px blue solid", p: 1}} >"SubTable in FormIterator"</Table>
+                            {children} 
+                            {/* https://marmelab.com/react-admin/Inputs.html#writing-your-own-input-component */}
+                        </SalesTableFormIteratorRow>
                     )}
                 )}
                 </Table>
@@ -182,7 +188,7 @@ export const MobileFormIterator = React.forwardRef((props, ref ) => {
 });
 // };
 
-MobileFormIterator.defaultProps = {
+SalesTableFormIterator.defaultProps = {
     disableAdd: false,
     disableRemove: false,
     disableReordering: true
@@ -190,7 +196,8 @@ MobileFormIterator.defaultProps = {
 
 
 const Root = styled('div', {
-    name: SimpleFormIteratorPrefix,
+    // name: SimpleFormIteratorPrefix,
+    name: SalesTableFormIterator,
     overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
     '& > ul': {

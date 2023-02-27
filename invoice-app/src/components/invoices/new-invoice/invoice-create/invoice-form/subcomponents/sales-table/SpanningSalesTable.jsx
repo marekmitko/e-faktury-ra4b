@@ -126,7 +126,7 @@ export default function SpanningSalesTable(props) {
 
 //*see SPRAWDZIĆ 
   /*  const record = useRecordContext(props); */
-    const record = { myComponent: "test netPrice" }; // my component 
+    // const record = { myComponent: "test netPrice" }; // my component 
     const [entryPriceIsGross, setEntryPriceOnGross ] = useState(false);
     // *see ważne dla useForContext => https://codesandbox.io/embed/react-hook-form-conditional-fields-9iw0k
     

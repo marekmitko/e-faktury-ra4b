@@ -40,7 +40,7 @@ export const PriceInput = ({ objController, iconStart, iconEnd, InputProps, ...p
                 ) : null
             }}
             onChange={ event => {
-                var value = event.target.value.replace(/[^0-9\,\.]/ig,'');
+                var value = event.target.value.replace(/[^0-9\,\.]/gi,'');
                 value = value.replace(/[,]/gi,'.');
                 objController.field.onChange(value);
             }} // send value to hook form 

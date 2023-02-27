@@ -15,13 +15,14 @@ import {
     NumberInput,
     Form, Title, SelectField, SelectInput, useRecordContext
 } from 'react-admin';
-import { MobileFormIterator } from "../MobileFormIterator";
 import { NetAndGrossPrice } from "../../../product-sales-item/subcomponents/PriceInput";
 import { NetAndGrossPrice2 } from "../../../product-sales-item/subcomponents/PriceInput2";
+import {MyPriceFormatInput} from "../../../product-sales-item/subcomponents/PriceFormatInput";
+import { SalesTableFormIterator } from "../../../new-sales-table/components/SalesTableFormIterator";
 
 
 const validateAge = (value) => {
-    if (value < 18) {
+    if (+value < 18) {
         return <span>'Must be over 18' {value} </span>;
     }
     return undefined;
@@ -32,11 +33,7 @@ const required = () => (value) => (
         ? undefined
         : 'myroot.validation.required'
 );
-
-const blabla = () => (value) => ( 
-    console.log('vlavla', value)
-);
-
+ 
 
 
 const onSubmit = data => console.log('DATA', data);
@@ -47,52 +44,42 @@ const TertComp = () => {
     return( <p>Sum: </p>);
 };
 
+
+
 export const FormsCreate = props => { 
 
-
-    const memberRef = useRef([{}]);
     return(
     <Create component='div' {...props}>
         {/* <SimpleForm> */}
         <Form onSubmit={onSubmit}  >
         <div>
-            <input type="button" onClick={() =>  console.log(memberRef) }   />
-            {/* <DatagridContextProvider value={contextValue}> */}
-            {/* <DatagridRoot sx={sx} className={DatagridClasses.root}> */}
             <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }} />
             <CssBaseline />
             <Container
                 maxWidth="xl"
                 component="main"
             >
-                <Title title="Book list" />
+                <Title title=" - Book list" />
 
-            <TableContainer>
+            <TableContainer sx={{ border: "3px greenyellow inset"}}>
+            <small> main container - component: TableContainer </small>
                         <tr style={{marginTop: 'auto'}}>
-                <ArrayInput source="questions">
-                    <MobileFormIterator ref={memberRef}> 
-                            <NetAndGrossPrice />
-                            <NetAndGrossPrice2 source="myprice" />
-                            <NumberInput source="age" validate={[required(), validateAge]} xxx={blabla()} />
-                        <TextInput label="Question Text" source="text"  />
-                        <TextField source="text" />
-                        <SelectInput sx={{ mt: 0 }} source="category" choices={[
-                            { id: 'tech', name: 'Tech' },
-                            { id: 'lifestyle', name: 'Lifestyle' },
-                            { id: 'people', name: 'People' },
-                        ]} />
-                        <TertComp />
-                    
-                        <tr>
-                        <SelectInput sx={{ mt: 0 }} source="vat" choices={[
-                            { id: 'tech', name: 'Tech' },
-                            { id: 'lifestyle', name: 'Lifestyle' },
-                            { id: 'people', name: 'People' },
-                        ]} />
+                <ArrayInput source="sales_table-test">
+                    <SalesTableFormIterator
+                        // ref={memberRef}
+                    > 
+                    <MyPriceFormatInput label="price net" source="myPriceFormat"   />
+                    <NumberInput source="age" validate={[required(), validateAge]}   />
+                    <TextInput label="Question Text" source="text"  />
+                    <TextField source="text" />
+                    <SelectInput sx={{ mt: 0 }} source="category" choices={[
+                        { id: 'tech', name: 'Tech' },
+                        { id: 'lifestyle', name: 'Lifestyle' },
+                        { id: 'people', name: 'People' },
+                    ]} />
+                    {/* <TertComp />
                         <NumberInput label="Ilość" source="qty" />
                         <TextInput label="Question Text" source="text" />
-                        </tr>
-                        <span> 
                         <TableCell>
                             <TextField label="Question Text" record={{text1: "123"}} source="text1" />
                         </TableCell>
@@ -101,9 +88,8 @@ export const FormsCreate = props => {
                         </TableCell>
                         <TableCell>
                             <TextField label="Cena" record={{text3: "123"}} source="text3" />
-                        </TableCell>
-                            </span>
-                    </MobileFormIterator>
+                        </TableCell> */}
+                    </SalesTableFormIterator>
                 </ArrayInput>
                 </tr>
             </TableContainer>
