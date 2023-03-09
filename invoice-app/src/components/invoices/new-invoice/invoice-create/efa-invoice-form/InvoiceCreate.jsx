@@ -28,7 +28,7 @@ import SellerCardShow from "./personal-cards/SellerCardShow";
 import BuyerCardShowForm from "./personal-cards/show/buyer-invoice-form/BuyerCardShowForm";
 import EfaBuyerAutoInput from "./personal-cards/EfaBuyerAutoInput";
 import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST"; 
-import { SalesTableFormIterator } from "./components/new-sales-table/components/SalesTableFormIterator";
+import { SalesFormIterator } from "./components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 
@@ -176,10 +176,10 @@ const InvoiceCreate = (props) => {
                                     <TextInput source="id" />
                                     <TextInput  source="title" />
                                     <ArrayInput source="sales_table">
-                                        <SalesTableFormIterator >
+                                        <SalesFormIterator >
                                             <NumberInput label="Question ID" source="id" />
                                             <TextInput label="Question Text" source="text" />
-                                        </SalesTableFormIterator>
+                                        </SalesFormIterator>
                                     </ArrayInput>
                                         </Form>
                                 </Grid>
@@ -251,9 +251,9 @@ const InvoiceCreate = (props) => {
 
                                 </Grid>
                             </Container>
-                    {/* <InvoiceFormLayout titleForm={<ResourceName />} >
+                    <InvoiceFormLayout titleForm={<ResourceName />} >
                         <SpanningSalesTable />
-                    </InvoiceFormLayout>   */}
+                    </InvoiceFormLayout>  
                     <br/> 
                      <hr/> 
 

@@ -18,8 +18,7 @@ function SelectItemOption({field, options, isError, label, variant, variantLabel
     // const saveData = (form_data) => {
     //     console.log("form_data", form_data);
     // };
-    
-    console.log("selected:", field.value)
+  
     return (
     <FormControl  {...props} sx={ sx }  >
         <InputLabel variant={ variantLabel ? variantLabel : "standard"}  id="demo-simple-select-autowidth-label">

@@ -77,10 +77,10 @@ export default function TableHeader( {children, gridTemplateColumns, enabled, di
                     <StyledTableCellClasses  sx={{   border: 'none' }} >ILOŚĆ</StyledTableCellClasses>
                 </Grid>
                 {/* <StyledTableCellClasses  sx={{   border: 'none' }} > */}
-                    <td>
+                    {/* <td> */}
                         {/* <PriceSwitchJoyButton /> */}
                         {children}
-                    </td>
+                    {/* </td> */}
                     {/* {toggelPrice ? 'CENA BRUTTO' : 'CENA NETTO'} */}
                 {/* </StyledTableCellClasses> */}
                     <StyledTableCellClasses align="right"  sx={{   border: 'none' }} >SUMA NETTO</StyledTableCellClasses>

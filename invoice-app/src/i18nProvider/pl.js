@@ -39,7 +39,17 @@ import polishMessages from 'ra-language-polish';
 
 export const pl = {
     ...polishMessages,
+
     myroot: {
+        validation: {
+            required: 'Pole wymagane'
+        },
+        custom_ra: {
+            action: {
+                tooltip: { addSalesItem: 'Dodaj kolejną pozycję sprzedaży' },
+                button: { addSalesItem: 'Dodaj przedmiot' }
+            }
+        },
         fullname: 'Przedstawiciel',
         issuer: 'Wystawca',
         sitebar : {
@@ -55,6 +65,26 @@ export const pl = {
                 notebox_invoice: 'Wprowadź własne adnotacje...',
             },
             label: {
+                header_salesTable: {
+                    itemName: 'Przedmiot sprzedaży',
+                    itemType: 'Typ',
+                    itemQty: 'Ilość',
+                    itemTax: 'VAT',
+                    itemPrice: 'Cena',
+                    priceNet: 'BRUTTO',
+                    priceGross: 'NETTO',
+                    itemGrossPrice: 'Cena brutto',
+                    itemNetPrice: 'Cena netto',
+                    sumNetPrice: 'netto',
+                    sumGrossPrice: 'brutto',
+                    sumPrice: 'Suma'
+                },
+                header_totalResultTable: {
+                    totalNetCost: 'Razem netto',
+                    totalTaxCost: 'Podatek',
+                    totalGrossCost: 'Razem brutto',
+                    totalCost: 'Razem'
+                },
                 inputbox_itemrow:{
                     itemNameSelect: 'Wybierz produkt',
                     itemNameField: 'Nazwa produktu',

@@ -8,23 +8,23 @@ import {
     Create,
     NumberInput,
     Form, Title,  
-} from 'react-admin'; 
-import { SalesFormIterator } from "../../../new-sales-table/components/sales-form-iterator/SalesFormIterator";
-import { CustomInputNumber, MyControlledPriceNumberInput, PriceNumberInput, RaPriceNumberInput } from "../../../new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber";
-import { InputTextSelected } from "../../../new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelected";
-import { productOptions, taxOptions, typeOptions  } from "../../../../../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
-import { SelectInputItem } from "../../../new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItem";
-import { MQ_isMinimal, MQ_isSmall, MQ_isMedium, MQ_isXSmall, MQ_isLarge} from "../../../new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
-import SalesTableHeader from "../../../new-sales-table/components/sales-table-header/SalesTableHeader";
+} from 'react-admin';
+import { SalesFormIterator } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
+
+import { CustomInputNumber, MyControlledPriceNumberInput, PriceNumberInput, RaPriceNumberInput } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber";
+import { InputTextSelected } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelected";
+import { SelectInputItem } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItem";
+import { MQ_isMinimal, MQ_isSmall, MQ_isMedium, MQ_isXSmall, MQ_isLarge} from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
+import SalesTableHeader from "../efa-invoice-form/components/new-sales-table/components/sales-table-header/SalesTableHeader";
 import JoyBox from "@mui/joy/Box";
-// import TotalResultCostTable from "../../../new-sales-table/components/total-cost-result-table/bin/TotalResultCostTable";
-import TotalCostTable from "../../../new-sales-table/components/total-cost-result-table/TotalCostTable";
-import JoyNotebox2 from "../../../../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNotebox2";
+import TotalCostTable from "../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostTable";
 import Box from "@mui/joy/Box";
 import { Card } from "@mui/joy";
-import {    lineLayout } from "./styledLineLayout";
-import { BorderLineBox } from "../../../layout/LineLayout";
- 
+import {  productOptions, taxOptions, typeOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
+import JoyNotebox2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNotebox2";
+import { lineLayout } from "../efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/styledLineLayout";
+import { BorderLineBox } from "../efa-invoice-form/components/layout/LineLayout";
+
 
 const borderLine = css({ 
     flex: '0 1 auto',
@@ -39,7 +39,6 @@ const required = () => (value) => (
         ? undefined
         : 'myroot.validation.required'
 );
-
 // https://blog.logrocket.com/guide-mui-grid-system/
 
 const areaXSmall =  `"name name name name name name name name name"
@@ -74,7 +73,7 @@ const configGridBox_inputItemBox = {
 
 
 
-export const FormsCreate = props => { 
+export const SalesTableV2 = props => { 
 
 
     // xs, extra-small: 0px
@@ -130,7 +129,7 @@ export const FormsCreate = props => {
                                     ...configGridBox_inputItemBox,
                                     gridTemplateAreas: isMedium ? (
                                                                 isSmall ? ( isXSmall ? areaXSmall : areaSmall 
-                                                                     ): areaMedium 
+                                                                    ): areaMedium 
                                                                 )  : globalArea,
                             }}
                                 sxSumPriceBox={{ 
@@ -171,13 +170,11 @@ export const FormsCreate = props => {
                             />
                         </SalesFormIterator>
                     </ArrayInput>
-                    <Box 
-                    sx={ {
+                    <Box  sx={ {
                             display: 'flex', p: 0,   
                             // bgcolor: isLarge ? 'background.paper' : 'transparent', 
-                            borderRadius: 1, flexDirection: 'column' } } 
-                         
-                            >
+                            borderRadius: 1, flexDirection: 'column' } }                           
+                    >
                         <Box component='tr' className='itemRow-salesIterator' sx={  { display: 'flex',
                                     flexDirection: isXSmall ? 'column' : 'row',
                                 bgcolor: 'transparent', borderRadius: 1,  
@@ -218,41 +215,19 @@ export const FormsCreate = props => {
                     <Box component='td' 
                         
                         className="buttonRemoveItem-itemRow"
-                             sx={{ flexBasis: "20px", p: 0, m: 0, mr: "5px",  mt: 'auto', mb: "auto"
+                            sx={{ flexBasis: "20px", p: 0, m: 0, mr: "5px",  mt: 'auto', mb: "auto"
                             }} 
                             /> 
                         </Box>
                     </Box>
-                    <JoyBox  className="App"
-                            sx={{
-                                mt: 0,
-                                pt: 0,
-                                pb: 1,
-                                display: 'flex',
-                                // display: "grid",
-                                // gridTemplateColumns: 'repeat(2, 1fr)',
-                                // gridGap: 10,
-                                // alignItems: "baseline"
-                            }}
-                >
-                    {/* <p>"TotalCostTable"</p>   */}
-                {/* <TotalCostTable 
-                    // totalNetCost={totalNetCost} totalTaxCost={totalTaxCost} totalCostResult={totalCostResult} currency={currency}
-                /> */}
-                </JoyBox>
+
                 </TableContainer>
             </Container>
         <div    css={borderLine} ><p>"ASdsads"</p> </div>
         </div>
-        {/* <hr/>
-        <PriceNumberInput name="LAalal" />  //działa  dobrze  
-        <MyControlledPriceNumberInput name='testPrice'  />
-        <MuiAutoValidInput  />
-        <hr/>
-        <RaPriceNumberInput name="Faf" />     // muli  */}
+
         <input type='submit' />
         </Form>
-        {/* </SimpleForm> */}
     </Create>
 );
 };

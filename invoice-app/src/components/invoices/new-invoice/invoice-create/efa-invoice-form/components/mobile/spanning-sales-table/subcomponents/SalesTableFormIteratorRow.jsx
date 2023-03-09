@@ -12,10 +12,21 @@ import {
 import { Typography } from '@mui/material';
 // import clsx from 'clsx';
 import {  useWatch } from "react-hook-form";
-
+import {
+    List,
+    ListItem,
+    Divider,
+    ListItemContent,
+    Button,
+    Box, Stack, Card,
+    Link, CardCover, CardContent
+    } from "@mui/joy";
 import { useSimpleFormIteratorItem, useSimpleFormIterator, 
         SimpleFormIteratorItemContext // *edu https://github.com/marmelab/react-admin/blob/master/packages/ra-ui-materialui/src/input/ArrayInput/SimpleFormIteratorItemContext.ts
 } from 'react-admin';
+import RowContainerIterator from '../../../new-sales-table/components/sales-table/RowContainerIterator';
+import { ShowItemSumCost } from '../../../new-sales-table/components/sales-form-iterator/subcomponent/field/ShowItemSumCost';
+import { PriceField } from '../../../new-sales-table/components/sales-form-iterator/subcomponent/field/PriceField';
 
 export const SalesTableFormIteratorRow = React.forwardRef((props, ref) => {
         const {         // MobileFormIteratorItemProps
@@ -82,45 +93,86 @@ export const SalesTableFormIteratorRow = React.forwardRef((props, ref) => {
 
         return (
             <SimpleFormIteratorItemContext.Provider value={context}>
-                <tr     style={{ backgroundColor: 'azure'}} >
-                <tr ref={ref}     style={{border: "2px blue solid", padding: '10px'}} 
+                <tr ref={ref}     style={{border: "2px blue solid", padding: '10px',  backgroundColor: 'skyblue',}} 
                         // className={SimpleFormIteratorClasses.line} 
                 >
 
-                    {/* {label && ( */}
-                    {true && (
+                    {label && (
+                    // {true && (
                         <Typography
-                            sx={{ bgcolor: 'midnightblue', color: 'white'}}
-                            variant="body2"
+                        sx={{ bgcolor: 'midnightblue', color: 'white'}}
+                        variant="body2"
                             // className={SimpleFormIteratorClasses.index}
                         >
                             {label}{"label sales row"}
                         </Typography>
                     )}
-                    <section      style={{border: "2px blue dotted", padding: '1px', margin: '10px', backgroundColor: 'white'}}      // https://stackoverflow.com/questions/57557271/how-to-use-clsx-in-react
-                    >
+                    {/* <section      style={{border: "2px blue dotted", padding: '1px', margin: '10px', backgroundColor: 'white'}}      // https://stackoverflow.com/questions/57557271/how-to-use-clsx-in-react
+                    >                */}
+                <RowContainerIterator >
+                    <Card component="li" sx={{ minWidth: 300, flexGrow: 1 }}>
+                        <CardCover 
+                        // sx={{ bgcolor: "#7F9FBF" }} 
+                        />
+                        <CardContent>
                         {/* 
                         GOTOWA KARTA WIERSZA
                         https://codesandbox.io/s/efa23-product-card-mobi-version-3-vphxjv */}
                         {Children.map(
                             children,
                             (input, index2) => {      // input: ReactElement,
-
+                                // console.log("index:", index, "index2:", index2);
                                 if (!isValidElement(input)) {
                                     return null;
                                 }
                                 const { source, ...inputProps } = input.props;
                                 return cloneElement(input, {
                                     source: source
-                                        ? `${member}.${source}`
+                                    ? `${member}.${source}`
                                         : member,
-                                    index: source ? undefined : index2,
-                                    resource,
-                                    disabled,
-                                    ...inputProps,
+                                        index: source ? undefined : index2,
+                                        resource,
+                                        disabled,
+                                        ...inputProps,
                                 });
                             }
                         )}
+
+                    </CardContent>
+                        </Card>
+                        <Card component="li" sx={{ minWidth: 300, flexGrow: 0, flexBasis: 'fit-content'}}>
+                            <CardCover sx={{ bgcolor: "#7F9FBF" }} />
+                            <CardContent>
+                                {/* <TitleItemRow title={""} /> */}
+                                <Stack
+                                    // direction={isSmall ? "row" : "column"}
+                                    alignItems="flex-start"
+                                    justifyContent="flex-end"
+                                    spacing={0.5}
+                                    >
+                                <ShowItemSumCost >
+                                <Stack direction="row" alignItems="center" gap={0.5}>
+
+                                    <PriceField title="netto" >
+                                        <td style={{ padding: "0 20px" }}>
+                                            {(myPriceFormat)? myPriceFormat : "0.00" }  
+                                        </td>
+                                    </PriceField>
+                                    <PriceField   title="brutto">
+                                        <td style={{ padding: "0 20px" }}>
+                                            {(age)? age : "0.00" }
+                                        </td>
+                                    </PriceField>
+                                    <PriceField   title="brutto">
+                                        <td style={{ padding: "0 20px" }}>
+                                            {(age && myPriceFormat )? age*myPriceFormat : "0.00" }
+                                        </td>
+                                    </PriceField>
+                                    </Stack>
+                                </ShowItemSumCost>
+                            </Stack>
+                        </CardContent>
+                    </Card>
                     {!disabled && (
                         // <span className={SimpleFormIteratorClasses.action}>
                         <span>
@@ -140,7 +192,7 @@ export const SalesTableFormIteratorRow = React.forwardRef((props, ref) => {
                                     onClick: handleRemoveButtonClick(
                                         removeButton.props.onClick,
                                         index
-                                    ),
+                                        ),
                                     // className: clsx(
                                     //     'button-remove',
                                     //     `button-remove-${source}-${index}`
@@ -148,11 +200,7 @@ export const SalesTableFormIteratorRow = React.forwardRef((props, ref) => {
                                 })}
                         </span>
                     )}
-                        </section>
-                        <section>
-                        <p>{(myPriceFormat)? myPriceFormat : "0.oo" }</p>
-                        </section>
-                </tr>
+                </RowContainerIterator>
                 </tr>
             </SimpleFormIteratorItemContext.Provider>
         );

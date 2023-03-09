@@ -29,6 +29,8 @@ import { EditSimpleList } from './components/invoices/invoice-list/INVOICE-e-fak
 import CssVarJoyProvider from './joy-theme-provider/JoyThemeProvider';
 import { FormsCreate } from './components/invoices/new-invoice/invoice-create/efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/MobiForm';
 import AbcIcon from '@mui/icons-material/Abc';
+import { SalesTableV2 } from './components/invoices/new-invoice/invoice-create/components/SalesTableV2';
+import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
@@ -50,14 +52,20 @@ function App(props) {
                 <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
                 <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
                 {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
+                <Resource name='efa-V2' options={{ label: 'efa-V2' }} label="efa-V2"  
+                    list={SalesTableV2} 
+                    edit={EditGuesser}   
+                    show={ShowGuesser} 
+                    create={SalesTableV2}  
+                    icon={LooksTwoIcon}
+                /> 
                 <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
                     list={FormsCreate} 
                     edit={PostCreate}   
                     show={ShowGuesser} 
                     create={FormsCreate}  
                     icon={AbcIcon}
-                />
-                />
+                /> 
                 <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
                     list={EfaClientList} 
                     edit={EfaClientEdit}   
