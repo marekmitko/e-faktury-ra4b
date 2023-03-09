@@ -23,7 +23,7 @@ import JoyNotebox2 from "../../../../../invoice-form/subcomponents/sales-table/j
 import Box from "@mui/joy/Box";
 import { Card } from "@mui/joy";
 import {    lineLayout } from "./styledLineLayout";
-import { BorderLineBox } from "../../../layout/LineLayout";
+import { BorderLinebox } from "../../../layout/RowLineLayout";
  
 
 const borderLine = css({ 
@@ -183,16 +183,12 @@ export const FormsCreate = props => {
                                 bgcolor: 'transparent', borderRadius: 1,  
                                 mx: 1 //sxItemRow
                             }  } >
-                            <BorderLineBox sxCSS={{ order: 3 }}>
-                                <p>AAA"</p>
-                            <Box sx={{ maxWidth: '10px', ml: 'auto', mr: "0", mt: 'auto', mb: "auto"}}>
-                            </Box>
-                            </BorderLineBox>
-                            <BorderLineBox sxCSS={{ order: -1 }}>
+                            <BorderLinebox sxCSS={{ order: 3 }} />
+                            <BorderLinebox sxCSS={{ order: -1 }}>
                                 <p>:Dasxcvcxsads"</p>
                             <Box sx={{ maxWidth: '10px', ml: 'auto', mr: "0", mt: 'auto', mb: "auto"}}>
                             </Box>
-                            </BorderLineBox>
+                            </BorderLinebox>
                             <Box
                             sx={ { order: 1 } }
                         >

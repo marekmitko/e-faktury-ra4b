@@ -21,6 +21,7 @@ import { AddItemRowButton } from './subcomponent/button/AddItemRowButton';
 import JoyDivider from '@mui/joy/Divider';
 import { useFormContext } from 'react-hook-form';
 import { EfaRemoveBtnIcon, EfaRemoveItemButton } from './subcomponent/button/RemoveItemButton';
+import { BorderLinebox, FlexboxContainer } from '../../../layout/RowLineLayout';
 // in ra-core/form/getDefaultValues.js
 // const getDefaultValues = (data = {}, defaultValue = {}, defaultValues = {}) => {
 //     const globalDefaultValue =
@@ -57,6 +58,7 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
         sxSumPriceBox,
         tableHeader, 
         totalCostTable,
+        isXSmall
     } = props;
     const [confirmIsOpen, setConfirmIsOpen] = useState(false);
 
@@ -114,15 +116,7 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
         
     return  fields ? (
         <SimpleFormIteratorContext.Provider value={context}>    {/*  https://mui.com/material-ui/react-table/#custom-pagination-actions */}
-            {/* <TableContainer className="div_TableContainer--SalesFormIterator" sx={{border: "3px orange solid", p: 1, display: "flex", flexDirection: 'column'}}>
-
-                <span><b> TableContainer--SalesFormIterator </b></span>
-                <TableContainerIterator className="li_TableContainerIterator-TableContainer" isSmall={false}>
-                <span><b> TableContainer--SalesFormIterator </b></span> */}
-                <table  style={{ 
-                    // border: "8px red solid", padding: "10px", backgroundColor: 'yellowgreen', 
-                    display: 'flex', flexDirection: 'column', margin: '0', padding: '0', width: '100%' }} >
-               
+            <table  style={{ margin: '0', padding: '0', width: '100%' }} >
             {/* <Root sx={sx} */}
             {/* <Root sx={{display: 'flex', flexDirection: 'column', justifyContent: 'stretch',}}
                 className={clsx(
@@ -131,31 +125,16 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                     disabled && 'disabled'
                 )}
             > */}
-
-                                {/*
-                tbody {
-                display: table-row-group;
-                vertical-align: middle;
-                border-color: inherit;
-                }
-                */}
-
-
-                {/* //<ul /> </ul> */}
-
                 <thead  style={{width: '100%' }}>
-                    {tableHeader}
-                
-                        {/* <tr  style={{margin: 'auto', display: 'flex', flex: 'auto', flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <th > 1</th>
-                            
-                                    <th  style={{    width: '100%' }} >
-
-                                    {tableHeader}
-                                    </th>
-                            
-                            <th > 4 </th>
-                        </tr> */}
+                    <FlexboxContainer component='tr' sxCSS={{ //display: 'flex', 
+                        flexDirection: isXSmall ? 'column' : 'row',
+                        bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
+                    }}
+                    > 
+                        <BorderLinebox sxCSS={{ order: -1 }} /> 
+                        {tableHeader}
+                        <BorderLinebox  sxCSS={{ order: 3 }} />
+                    </FlexboxContainer>
                 </thead>
                 <tbody  style={{    width: '100%' }}  >  
         <Box

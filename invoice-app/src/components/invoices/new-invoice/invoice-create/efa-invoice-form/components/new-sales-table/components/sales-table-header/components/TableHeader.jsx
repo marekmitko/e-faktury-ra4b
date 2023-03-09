@@ -20,7 +20,7 @@ export default function TableHeader( {children, sxContentRow, enabled, disabled,
             {/* <TableRow> */}
             <Box
                 className="App"
-                sx={ sxContentRow }
+                sx={ { ...sxContentRow, width: '100%' }}
             >
                     <StyledTableCellClasses sx={{  gridArea: 'name', width: "100%", pl: 1.5, minWidth: 100, border: 'none', }} >
                         {translate('myroot.form.label.header_salesTable.itemName')}

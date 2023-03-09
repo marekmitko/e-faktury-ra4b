@@ -131,10 +131,10 @@ export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
                         >
                             <Card  sx={{ 
                                 boxShadow: 'none',
-                                bgcolor: 'transparent',
+                                bgcolor: '#85C1E9',
                                 // minWidth: 150, 
                                 flexGrow: 1,
-                                width: '70%',
+                                // width: '70%',
                                 mb: -2
                             }}>
                                 <CardCover 

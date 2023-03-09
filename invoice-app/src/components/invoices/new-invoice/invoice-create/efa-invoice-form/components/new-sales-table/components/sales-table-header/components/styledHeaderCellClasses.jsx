@@ -16,3 +16,17 @@ export const StyledTableCellClasses = styled(TableCell)(({ theme }) => ({
       },
 
     }));
+
+export const SalesTh = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        // backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.getContrastText(theme.palette.primary.dark),
+        fontWeight: '450',
+        padding: 0,
+        textTransform: 'uppercase',
+        border: 'none', 
+        flex: '1 1 auto', // auto zamiast width: 100%
+        // width: "100%",
+      },
+
+    }));

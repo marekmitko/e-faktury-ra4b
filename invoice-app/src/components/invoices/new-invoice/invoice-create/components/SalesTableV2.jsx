@@ -23,15 +23,10 @@ import { Card } from "@mui/joy";
 import {  productOptions, taxOptions, typeOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
 import JoyNotebox2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNotebox2";
 import { lineLayout } from "../efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/styledLineLayout";
-import { BorderLineBox } from "../efa-invoice-form/components/layout/LineLayout";
+import { BorderLinebox, FlexboxContainer, FullwidthWraper, InnerLinebox } from "../efa-invoice-form/components/layout/RowLineLayout";
+import SwitchNetOrGross from "../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/SwitchNetOrGross";
 
 
-const borderLine = css({ 
-    flex: '0 1 auto',
-    maxWidth: '20px',
-    backgroundColor: 'red',
-    color: 'green'
-});
 
 export const nameSalesIteratorForm = 'products';
 const required = () => (value) => (
@@ -102,13 +97,15 @@ export const SalesTableV2 = props => {
             >
                 <Title title=" - list" />
                 <small> main container - component: TableContainer </small>
-                <TableContainer sx={{  width: '100%' }}>
-                    <ArrayInput source={nameSalesIteratorForm} fullWidth>
-                        <SalesFormIterator  fullWidth // ref={memberRef} 
+                <TableContainer className="tableContainer" sx={{  width: '100%' }}>
+                    <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
+                        <SalesFormIterator  isXSmall={isXSmall} fullWidth // ref={memberRef} 
                         tableHeader={  isLarge ?  
-                                                <SalesTableHeader  entryPriceIsGross={entryPriceIsGross} setEntryPriceOnGross={setEntryPriceOnGross}   /> 
+                                                <SalesTableHeader>
+                                                    <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
+                                                </SalesTableHeader> 
                                                 : null
-                                            }
+                                    }
                         sxTableBody={{
                             display: 'flex', p: 0,   
                             bgcolor: isLarge ? 'background.paper' : 'transparent', 
@@ -170,60 +167,36 @@ export const SalesTableV2 = props => {
                             />
                         </SalesFormIterator>
                     </ArrayInput>
-                    <Box  sx={ {
-                            display: 'flex', p: 0,   
-                            // bgcolor: isLarge ? 'background.paper' : 'transparent', 
-                            borderRadius: 1, flexDirection: 'column' } }                           
+                    <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
                     >
-                        <Box component='tr' className='itemRow-salesIterator' sx={  { display: 'flex',
-                                    flexDirection: isXSmall ? 'column' : 'row',
-                                bgcolor: 'transparent', borderRadius: 1,  
-                                mx: 1 //sxItemRow
-                            }  } >
-                            <BorderLineBox sxCSS={{ order: 3 }}>
-                                <p>AAA"</p>
-                            <Box sx={{ maxWidth: '10px', ml: 'auto', mr: "0", mt: 'auto', mb: "auto"}}>
-                            </Box>
-                            </BorderLineBox>
-                            <BorderLineBox sxCSS={{ order: -1 }}>
-                                <p>:Dasxcvcxsads"</p>
-                            <Box sx={{ maxWidth: '10px', ml: 'auto', mr: "0", mt: 'auto', mb: "auto"}}>
-                            </Box>
-                            </BorderLineBox>
-                            <Box
-                            sx={ { order: 1 } }
+                        <FlexboxContainer component='tr' sxCSS={{ //display: 'flex', 
+                                flexDirection: isXSmall ? 'column' : 'row',
+                                bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
+                            }}
                         >
-                            <Card  sx={{ 
-                                // boxShadow: 'none',
-                                bgcolor: 'transparent',
-                                // minWidth: 150, 
-                                flexGrow: 1,
-                                // width: '70%',
-                                mb: -2
-                            }}>
-
-                    <Grid row container spacing={0}  >
-                        <Grid item xs={12} sm={6} md={6} >
-                            <TotalCostTable />
-                        </Grid>
-                        {/* <Grid item xs={12} sm={6} md={6} >
-                            <JoyNotebox2 register={() => {} }/>
-                        </Grid> */}
-                    </Grid>
-                            </Card>
-                            </Box>
-                    <Box component='td' 
-                        
-                        className="buttonRemoveItem-itemRow"
-                            sx={{ flexBasis: "20px", p: 0, m: 0, mr: "5px",  mt: 'auto', mb: "auto"
-                            }} 
-                            /> 
-                        </Box>
-                    </Box>
-
+                            <BorderLinebox sxCSS={{ order: -1 }} /> 
+                            <InnerLinebox sxCSS={ { order: 1 } }    >
+                                <Card  sx={{ 
+                                        // boxShadow: 'none',
+                                        bgcolor: 'transparent', 
+                                        flexGrow: 1, 
+                                    }}
+                                >
+                                    <Grid row container spacing={0}  >
+                                        <Grid item xs={12} sm={6} md={6} >
+                                            <TotalCostTable />
+                                        </Grid>
+                                        {/* <Grid item xs={12} sm={6} md={6} >
+                                            <JoyNotebox2 register={() => {} }/>
+                                        </Grid> */}
+                                    </Grid>
+                                </Card>
+                            </InnerLinebox>
+                            <BorderLinebox  sxCSS={{ order: 3 }} />
+                        </FlexboxContainer>
+                    </FullwidthWraper>
                 </TableContainer>
             </Container>
-        <div    css={borderLine} ><p>"ASdsads"</p> </div>
         </div>
 
         <input type='submit' />
