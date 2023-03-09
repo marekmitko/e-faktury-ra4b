@@ -3,6 +3,7 @@ import {InputAdornment,
     TextField,
     Divider} from "@mui/material";
 import { TextInput, useRecordContext, useTranslate } from "react-admin";
+import { Box } from "@mui/system";
 // import SelectListButton from "../SelectListButton";
 // import JoyInput from '@mui/joy/Input';
 // import { useFormContext, Controller } from 'react-hook-form';
@@ -10,7 +11,7 @@ import { TextInput, useRecordContext, useTranslate } from "react-admin";
 // import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 // import { Stack } from "@mui/joy";
 
-export const CustomInputSelected = ({ objController, iconStart, iconEnd, InputProps, width, variant, label, ...props }) => {
+export const CustomInputSelected = ({  iconStart, iconEnd, InputProps, width, variant, label, ...props }) => {
 
     // const { isDirty, isTouched } = objController.fieldState;
     const translate = useTranslate();
@@ -29,8 +30,13 @@ export const CustomInputSelected = ({ objController, iconStart, iconEnd, InputPr
                 autoComplete="off"
                 InputProps={{
                     ...InputProps,
-                    endAdornment: iconEnd ? (
-                        <InputAdornment    position="end">{iconEnd}</InputAdornment>
+                    startAdornment: iconStart ? (
+                        <InputAdornment  sx={{  ml: -1.5, }} sizeSmall="small"  position="start">
+                            {/* <Box sx={{p: 0, display: 'flex'}}> */}
+                                {iconStart}
+                                {/* <Divider variant="middle"  orientation="vertical" flexItem /> */}
+                                {/* </Box> */}
+                                </InputAdornment>
                         ) : null
                     }}
             />

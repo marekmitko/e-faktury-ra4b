@@ -136,10 +136,16 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                         <BorderLinebox  sxCSS={{ order: 3 }} />
                     </FlexboxContainer>
                 </thead>
-                <tbody  style={{    width: '100%' }}  >  
-        <Box
+                <tbody  style={{   display: 'inline-flex', width: '100%' }}  >  
+        {/* <Box
             sx={ sxTableBody }
-            >
+            > */}
+                 <FlexboxContainer component='tr' sxCSS={{  
+                        display: 'flex', 
+                        flexFlow: 'column nowrap',
+                        bgcolor: 'transparent', borderRadius: 1, //...sxTableBody    
+                    }}
+                    > 
                     {fields.map((member, index) => {
                         return(
                         <SalesFormIteratorRow
@@ -173,7 +179,7 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                         </SalesFormIteratorRow>
                     )}
                 )}
-                </Box>
+                </FlexboxContainer>
                 </tbody>
                 <JoyDivider light sx={{ p: "2px", my: 2, bgcolor: 'neutral.300'}} />
             <tfoot style={{ 

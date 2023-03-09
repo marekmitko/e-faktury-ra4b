@@ -29,7 +29,7 @@ export const BorderLinebox = ({children, sxCSS, ...props}) => {
     <Box {...props} component='td' className="borderLinebox tdLinebox" sx={{ 
         flex: '0 0 auto', // none         // display: { xs: 'none', md: 'block'},
         width: {sx: '5px', sm: '20px', md: '50px' }, // maxWidth: '20px',
-        backgroundColor: '#00FFFF',
+        // backgroundColor: '#00FFFF',
         p: 0, m: 0, //mx: "5px",  mt: 'auto', mb: "auto"
         ...sxCSS,
         }}  >
@@ -41,7 +41,7 @@ export const InnerLinebox = ({children, sxCSS, ...props}) => {
     return(
     <Box  {...props} component='td' className="innerLinebox tdLinebox" sx={{  
         flex: '1 1 auto', // auto
-        backgroundColor: '#a0f0D0',
+        // backgroundColor: '#a0f0D0',
         p: 0, m: 0, //mx: "5px",  mt: 'auto', mb: "auto"
         ...sxCSS,
         }}  >

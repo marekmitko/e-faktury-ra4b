@@ -107,7 +107,7 @@ export const SalesTableV2 = props => {
                                                 : null
                                     }
                         sxTableBody={{
-                            display: 'flex', p: 0,   
+                            // display: 'flex', p: 0,   
                             bgcolor: isLarge ? 'background.paper' : 'transparent', 
                             borderRadius: 1, flexDirection: 'column' }}
                         
@@ -135,7 +135,7 @@ export const SalesTableV2 = props => {
                                 flexFlow: `row ${isMinimal ? 'wrap' : 'nowrap'}` }}
                             getItemLabel={(index) => (<span>{++index}</span>)}  > 
                             <InputTextSelected 
-                                    label="myroot.form.label.inputbox_itemrow.itemNameField"
+                                label="myroot.form.label.inputbox_itemrow.itemNameField"
                                 source="product_name" 
                                 choiceOptions={OptionRecord.choice_product_list} 
                                 sx={{   gridArea: 'name'   }} 

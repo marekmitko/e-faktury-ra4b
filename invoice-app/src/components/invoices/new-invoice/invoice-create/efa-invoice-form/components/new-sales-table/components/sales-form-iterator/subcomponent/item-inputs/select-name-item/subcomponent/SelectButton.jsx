@@ -8,8 +8,9 @@ import { useFormContext } from "react-hook-form";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import JoyIconButton from "@mui/joy/IconButton";
 import { Box } from "@mui/joy";
+import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 
-export default function SelectButton( {nameProdcutNameInput, options, label, variant, variantLabel, defaultValue, sx, ...props} ) {
+export default function SelectButton( {nameProdcutNameInput, options, label, variant, variantLabel, defaultValue, sxCSS, sx, ...props} ) {
     const {  setValue } = useFormContext();
     const [open, setOpen] = React.useState(false);
 
@@ -26,15 +27,16 @@ export default function SelectButton( {nameProdcutNameInput, options, label, var
     };
     return (
         <>
-        <Box>
+        <Box sx={sxCSS}>
             
-        <JoyIconButton variant="plain"  
-            sx={{ display: "inline-block",   
-                mt: '5px', pb: 0, mr: '5px',
-                width: '10px',
+        <JoyIconButton variant="plain"  size="sm"  
+            sx={{ 
+                ":hover, --focusVisible":  { backgroundColor: "white", color: 'skyblue' },
+                "--IconButton-size": "auto", 
+                display: "flex",  
             }}
             onClick={handleOpen}>
-            <ExpandMoreIcon />
+            <MoreVertTwoToneIcon />
         </JoyIconButton>
         
         </Box>
@@ -43,8 +45,8 @@ export default function SelectButton( {nameProdcutNameInput, options, label, var
         <Select
             sx={{ visibility: "hidden", mt: "-50px", mx: 0, maxWidth: '1px', textAlign: 'right' }}
             defaultValue={defaultValue ? `${defaultValue}` : null}
-            labelId="demo-controlled-open-select-label"
-            id="demo-controlled-open-select"
+            // labelId="demo-controlled-open-select-label"
+            // id="demo-controlled-open-select"
             open={open}
             onClose={handleClose}
             onOpen={handleOpen} 

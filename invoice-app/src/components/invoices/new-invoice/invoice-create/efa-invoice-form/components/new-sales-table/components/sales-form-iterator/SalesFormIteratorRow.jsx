@@ -29,6 +29,7 @@ import RowContainerIterator from './subcomponent/form-iterator/RowContainerItera
 import { PriceField } from './subcomponent/field/PriceField';
 import { ShowItemSumCost } from './subcomponent/field/ShowItemSumCost';
 import { wrap } from 'lodash';
+import { BorderLinebox, InnerLinebox } from '../../../layout/RowLineLayout';
 
 export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
         const {         // MobileFormIteratorItemProps
@@ -101,12 +102,14 @@ export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
 
         return (
             <SimpleFormIteratorItemContext.Provider value={context}>
+
+                
                 <div ref={ref}     style={{ width: "100%"   }} 
                         // className={SimpleFormIteratorClasses.line} 
                 >
-                <Box component='tr' className='itemRow-salesIterator' sx={  sxItemRow  } >
 
                     {/*BOX ITEM INDEX   */}
+                    <BorderLinebox sxCSS={{ order: -1 }} >
                     <Box component='td' className="indexItem-itemRow" sx={{ 
                         flexBasis: "20px", p: 0, m: 0, mx: "5px",  mt: 'auto', mb: "auto"
                         }}>
@@ -123,15 +126,16 @@ export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
                     )}
                     </Box>
                     </Box>
+                    </BorderLinebox>
+                    <InnerLinebox sxCSS={{ order: 1  }} >
+                <Box component='tr' className='itemRow-salesIterator' sx={  sxItemRow  } >
                     <td className="mainContentItem-itemRow" style={{width: '100%'}}>
-                {/* <RowContainerIterator > */}
                         {/* <tr > */}
                         <Box
-                            sx={ sxItemContent }
+                            // sx={ sxItemContent }
                         >
                             <Card  sx={{ 
                                 boxShadow: 'none',
-                                bgcolor: '#85C1E9',
                                 // minWidth: 150, 
                                 flexGrow: 1,
                                 // width: '70%',
@@ -230,14 +234,17 @@ export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
 
 
                     </td>
-
+                        </Box>
+                    </InnerLinebox>
 
                     {!disabled && (
                         // <span className={SimpleFormIteratorClasses.action}>
-                            <Box component='td' className="buttonRemoveItem-itemRow"
+                        <BorderLinebox sxCSS={{ order: 3 }} >
+
+                            {/* <Box ref={ref}  component='td' className="buttonRemoveItem-itemRow"
                              sx={{ flexBasis: "20px", p: 0, m: 0, mr: "5px",  mt: 'auto', mb: "auto"
-                            }}> 
-                        <div   style={{ maxWidth: '10px' }}>
+                            }}>  */}
+                        {/* <div   style={{ maxWidth: '10px' }}> */}
                             {!disableReordering &&
                                 cloneElement(reOrderButtons, {
                                     index,
@@ -260,10 +267,11 @@ export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
                                     //     `button-remove-${source}-${index}`
                                     // ),
                                 })}
-                        </div>
-                     </Box>
+                        {/* </div> */}
+                     {/* </Box> */}
+                </BorderLinebox>
                     )}
-                     </Box>
+                     {/* </Box> */}
                 </div>
             </SimpleFormIteratorItemContext.Provider>
         );
