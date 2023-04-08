@@ -40,7 +40,7 @@ export function SelectInputItem({ options, label, variantLabel, variant, default
             </InputLabel>
             <Select
                 required
-                color="success"
+                // color="success"
                 // error={isError ? false : true}
                 defaultValue={defaultValue ? `${defaultValue}` : null}
                 labelId="demo-simple-select-autowidth-label"

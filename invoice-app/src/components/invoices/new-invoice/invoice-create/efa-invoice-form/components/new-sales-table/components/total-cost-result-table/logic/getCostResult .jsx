@@ -31,7 +31,21 @@ export const getTotalPrice = (results, namePrice) => {
             totalSum += (price * count );  
     }
     return totalSum;
-}
+};
+
+export const getTotalTax = (results) => {
+    let totalSum = 0;
+
+    for(const key in results) {
+        let count = parseFloat(results[key]["product_count"]);
+        let price = parseFloat(results[key]["product_price_netto"]);
+        let tax = parseFloat(results[key]["product_vat"]);
+        console.log('tax', tax, price, count);
+        if(!isNaN(+price) && (!isNaN(count) && tax)) // omówić przpadek 3e312
+            totalSum += (((price * tax )-price *100 )*count);  
+    }
+    return totalSum/100 ;
+};
 
 export function getTotalGross(results){
     let totalSum = 0;

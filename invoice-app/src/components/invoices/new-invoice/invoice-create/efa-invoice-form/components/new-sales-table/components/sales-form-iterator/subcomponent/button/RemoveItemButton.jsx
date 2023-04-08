@@ -3,6 +3,7 @@ import CloseIcon from '@mui/icons-material/RemoveCircleOutline';
 import Delete from '@mui/icons-material/Delete';
 import IconButton from '@mui/joy/IconButton';
 import { useSimpleFormIteratorItem, IconButtonWithTooltip, } from 'react-admin';
+import { Box } from '@mui/joy';
 
 
 
@@ -13,19 +14,29 @@ export const EfaRemoveItemButton = (props) => {
     const { remove } = useSimpleFormIteratorItem();
 
     return (
+
         <IconButtonWithTooltip
             label="ra.action.remove"
             size="small"
             onClick={() => remove()}
             color="warning"
-            {...props}
+            sx={{
+                ":hover, --focusVisible":  { transform: 'rotate(45deg)', 
+                
+                
+                backgroundColor: 'transparent', border: 'none' 
+            },
+            "--IconButton-size": "12px", 
+            mb: -3,
+        }}
+        {...props}
         >
         <IconButton
             color="danger"
             variant="plain"
             size="sm"
-            sx={{ mr: 'auto' }}
-    >
+            sx={{  mr: 'auto', "--IconButton-size": "5px",  }}
+            >
     <Delete />
     </IconButton>
         </IconButtonWithTooltip>

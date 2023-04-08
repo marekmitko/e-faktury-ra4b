@@ -10,14 +10,15 @@ export const DateInputPart = (props) => {
     const todayDate = new Date();
     const todayDateAdd14 = new Date(todayDate.getTime()+(14*24*60*60*1000));
     return(
-        <Stack 
-        // direction="row" spacing={1} width="100%"  sx={{ justifyItems: 'center'}}  justifyContent="flex-end"  alignItems="center" 
-        direction="row"
-        justifyContent="flex-end"
-        alignItems="center"
-        spacing={5}
-        paddingRight={3}
-        >
+        // <Stack 
+        // // direction="row" spacing={1} width="100%"  sx={{ justifyItems: 'center'}}  justifyContent="flex-end"  alignItems="center" 
+        // direction="row"
+        // justifyContent="flex-end"
+        // alignItems="center"
+        // spacing={5}
+        // paddingRight={3}
+        // >
+    <>
             {/* <NumberInput source="invoice_no" disabled /> */}
            <NumberInput   
                  sx={{ marginRight: 'auto', marginLeft: '20px'}}
@@ -26,6 +27,7 @@ export const DateInputPart = (props) => {
                     variant="standard" label="myroot.form.label.input.invoice_no" disabled />
             <DateInput source="date_submit" variant="standard" defaultValue={todayDate}   label="myroot.form.label.input.created_at"  />
             <DateInput source="date_payment" variant="standard" defaultValue={todayDateAdd14}  label="myroot.form.label.input.payment_due" />
-        </Stack>
+            </>
+        // </Stack>
     );
 };

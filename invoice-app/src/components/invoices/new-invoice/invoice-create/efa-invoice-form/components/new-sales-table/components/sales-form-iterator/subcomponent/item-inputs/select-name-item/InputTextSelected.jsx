@@ -1,9 +1,9 @@
 import * as React from "react";
 // import InputLabel from "@mui/material/InputLabel";
-import { choices, useInput } from 'react-admin';
+import { choices, useInput, useTranslate } from 'react-admin';
 import SelectButton from "./subcomponent/SelectButton";
 import { CustomInputSelected } from "./subcomponent/CustomInputSelected";
-import { Stack, Divider, Box, FormControl, InputLabel } from "@mui/material";
+import { Stack, Divider, Box, FormControl, InputLabel, TextField, InputAdornment } from "@mui/material";
 // import { Box } from "@mui/joy";
 
 
@@ -16,7 +16,7 @@ const SelectBtn = ({namefield, choiceOptions }) => (
             width: 'min-content',
             // border: (theme) => `1px solid ${theme.palette.divider}`,
             borderRadius: 1,
-            bgcolor: 'background.paper',
+            bgcolor: 'transparent',
             color: 'text.secondary',
             // '& svg': {
             //     m: 1.5,
@@ -28,7 +28,7 @@ const SelectBtn = ({namefield, choiceOptions }) => (
         }}
     >
 
-    <SelectButton sxCSS={{   display: 'flex',   alignItems: 'center' }}
+    <SelectButton sxCSS={{   display: 'flex',   alignItems: 'center', bgcolor: 'transparent'}}
     nameProdcutNameInput={namefield ? namefield : ""} 
     options={choiceOptions ? choiceOptions : {} }
 />
@@ -41,21 +41,41 @@ const SelectBtn = ({namefield, choiceOptions }) => (
 
 
 
-export const InputTextSelected = ({choiceOptions, sx, label, ...props}) => {
-
+export const InputTextSelected = ({choiceOptions, sx,  InputProps, label,  placeholder, variant, ...props}) => {
+    const translate = useTranslate();
     const {
         field,
         fieldState: { isTouched, invalid, error },
-        formState: { isSubmitted }
+        formState: { isSubmitted },
+        // isRequired
     } = useInput(props);
-    const namefield = field.name;
+    const { name } = field;
     // const options = props.choiceOptions;
     return(
-        <Box sx={{ ...sx, '& > :not(style)': { m: 1, width: '25ch' }, } }   component="form"
-  
-      >      <FormControl>
-      <InputLabel variant='outlined' htmlFor="component-outlined">Name</InputLabel>
-                <CustomInputSelected id="component-outlined"
+        <Box sx={{ ...sx } }    >
+        <TextField sx={{ width: '100%' }}
+                {...field} 
+                variant={ variant ? variant : "outlined"}
+                label={translate(label)}
+                required
+                placeholder={translate(placeholder)}
+                autoComplete="off"
+                InputProps={{
+                    // ...InputProps,
+                    startAdornment:   (
+                        <InputAdornment  sx={{  ml: -1.5, }} sizeSmall="small"  position="start">
+                                {<SelectBtn namefield={ field? name : "" } choiceOptions={choiceOptions? choiceOptions : {} } />}
+                                </InputAdornment>
+                        ),
+                        // classes: {
+                        //     focused: 'on'
+                        // }
+                        // value: 'fs'
+                    }}
+            {...props}
+            />
+
+                {/* <CustomInputSelected id="component-outlined"
                     {...field}  
                     iconStart={<SelectBtn choiceOptions={choiceOptions? choiceOptions : {} } namefield={namefield ? namefield : ""} />}
                     variant="outlined"
@@ -63,7 +83,7 @@ export const InputTextSelected = ({choiceOptions, sx, label, ...props}) => {
                     // error={(!isTouched) ? false :  true }
                     {...props}
                     />
-                    </FormControl>
+               */}
         </Box>
     );
 };

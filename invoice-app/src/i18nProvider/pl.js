@@ -77,11 +77,13 @@ export const pl = {
                     itemNetPrice: 'Cena netto',
                     sumNetPrice: 'netto',
                     sumGrossPrice: 'brutto',
-                    sumPrice: 'Suma'
+                    sumPrice: 'Suma',
+                    sumNetOutput: 'Wartość netto:',
+                    sumGrossOutput: 'Wartość brutto:' 
                 },
                 header_totalResultTable: {
                     totalNetCost: 'Razem netto',
-                    totalTaxCost: 'Podatek',
+                    totalTaxCost: 'Podatek VAT',
                     totalGrossCost: 'Razem brutto',
                     totalCost: 'Razem'
                 },
@@ -100,6 +102,7 @@ export const pl = {
                     invoice_no: 'Numer faktury',
                     created_at: 'Data Wystawienia',
                     payment_due: 'Termin Płatności',
+                    selectInputItemName: 'Wybierz pozycję z listy'
                 },
                 checkbox: {
                     send_invoice: 'Wyślij',

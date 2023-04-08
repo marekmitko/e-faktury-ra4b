@@ -6,7 +6,7 @@ import { useTranslate } from "react-admin";
 
 
 const tdStyle = { width: '70%' }; 
-const tdCostWidth = '70%'; 
+const tdCostWidth = '65%'; 
 const thBorderTopWidth = '2px';
 
 export const TotalCostCell = ({children, styleCell, ...props}) => ( 
@@ -21,29 +21,29 @@ export const TotalCostCell = ({children, styleCell, ...props}) => (
 ); 
 
 
-export const CostCell = ({children}) => (
-    <TotalCostCell noWrap fontWeight="lg"  level="body2" textColor="neutral.500" textAlign='right' 
-        styleCell={{ width: `${tdCostWidth}`  }}  
+export const CostCell = ({children, ...props}) => (
+    <TotalCostCell noWrap fontWeight="500"  level="body2" textColor="neutral.600" textAlign='right' 
+        styleCell={{ width: `${tdCostWidth}`  }}   {...props}
     >
         {children}
     </TotalCostCell>);
-export const CellLabel = ({children}) => (
-    <TotalCostCell noWrap fontWeight="lg"  level="body2" textColor="neutral.500" textAlign='left' >
+export const CellLabel = ({children, ...props}) => (
+    <TotalCostCell noWrap fontWeight="lg"  level="body2" textColor="neutral.600" textAlign='left' {...props} >
         {children}
     </TotalCostCell>
 );
-export const TotalCell = ({children}) => (
-    <th  style={{ borderTopWidth: `${thBorderTopWidth}`,   borderTopStyle: "solid",   width: `${tdCostWidth}`  }} >
-        <Typography noWrap fontWeight="lg"     textColor="primary.800" textAlign='right'  >
+export const TotalCell = ({children, ...props}) => (
+    <th  style={{ borderTopWidth: `${thBorderTopWidth}`,      width: `${tdCostWidth}`  }} >
+        <Typography  noWrap   textColor="primary.900" textAlign='right'  {...props} >
             {children ? children : ''}
         </Typography>
     </th> 
 );
-export const TotalLabel =({children}) => (
-    <th  style={{ borderTopWidth: `${thBorderTopWidth}`,   borderTopStyle: "solid"  }} >
-        <Typography noWrap level="body2">
+export const TotalLabel =({children, ...props}) => (
+    // <th  style={{ borderTopWidth: `${thBorderTopWidth}`,  }} >
+        <Typography noWrap  textAlign='right'  {...props}  >
         {children ? children : ''}
             
         </Typography>
-    </th>
+    // </th>
 );

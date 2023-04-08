@@ -36,7 +36,7 @@ export default function BuyerCardShowForm({children, dataPersonal, bgcolor, icon
                     // boxShadow: 'none',
                     border: 0,
                     borderColor: blueGrey[300],
-                    // width: 320,
+                    flex: '1 1 auto',
                     pt: 0, pb: 0, px: 0,   borderTopLeftRadius: '40px' }}
             >
                 <TitleCardShow title={translate('myroot.form.label.header.buyer')} />

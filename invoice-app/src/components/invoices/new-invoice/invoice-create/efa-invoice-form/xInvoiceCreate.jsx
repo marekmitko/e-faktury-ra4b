@@ -29,6 +29,7 @@ import BuyerCardShowForm from "./personal-cards/show/buyer-invoice-form/BuyerCar
 import EfaBuyerAutoInput from "./personal-cards/EfaBuyerAutoInput";
 import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST"; 
 import { SalesFormIterator } from "./components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
+import { SalesTableV2 } from "../components/SalesTableV2";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 
@@ -193,9 +194,10 @@ const InvoiceCreate = (props) => {
                                     <BuyerCardShowForm dataPersonal={db_seller} />
                                 </Grid>
                                 <Grid  item xs={12}  sm={12}  md={12}    >
+                                    <SalesTableV2 />
                                         <SpanningSalesTable  isSmall={isSmall} />
                                 </Grid>
-                                { tiers.map((tier) => (
+                                {/* { tiers.map((tier) => (
                                     // Enterprise card is full width at sm breakpoint
                                     <Grid
                                         item
@@ -204,7 +206,8 @@ const InvoiceCreate = (props) => {
                                         sm={tier.title === "Enterprise" ? 12 : 6}
                                         md={tier.title === "Enterprise" ? 12 : 6}
                                         // md={4}
-                                    >  
+                                    >  <Card>
+                                        
                                         <CardHeader
                                             title={tier.title}
                                             subheader={tier.subheader}
@@ -246,8 +249,9 @@ const InvoiceCreate = (props) => {
                                             lalal
                                             </p>
                                         </Card>
+                                </Card>
                                     </Grid>
-                                ))}
+                                ))} */}
 
                                 </Grid>
                             </Container>

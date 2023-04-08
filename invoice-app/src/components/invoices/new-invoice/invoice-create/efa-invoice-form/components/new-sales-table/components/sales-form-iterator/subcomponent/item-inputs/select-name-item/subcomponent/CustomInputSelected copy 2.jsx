@@ -20,14 +20,22 @@ export const CustomInputSelected = ({  iconStart, iconEnd, InputProps, width, va
                 {...props} 
                 variant={ variant ? variant : "standard"}
                 label={translate(label)}
+                // inputRef={textRef} 
+                // defaultValue={product ? product : "" }
+                // size="small"
+                // helperText={true}
+            //    focused
                 required
-
+                // error={(!isTouched) ? false :  true }
                 autoComplete="off"
                 InputProps={{
                     ...InputProps,
                     startAdornment: iconStart ? (
                         <InputAdornment  sx={{  ml: -1.5, }} sizeSmall="small"  position="start">
+                            {/* <Box sx={{p: 0, display: 'flex'}}> */}
                                 {iconStart}
+                                {/* <Divider variant="middle"  orientation="vertical" flexItem /> */}
+                                {/* </Box> */}
                                 </InputAdornment>
                         ) : null
                     }}
@@ -37,3 +45,25 @@ export const CustomInputSelected = ({  iconStart, iconEnd, InputProps, width, va
 };    
 
 
+
+    {/* <Controller
+        control={control}
+        name="produkt_Name_Test"
+        render={({
+            field: { onChange, onBlur, value, name, ref },
+            fieldState: { invalid, isTouched, isDirty, error },
+            formState,
+        }) => (
+            <JoyInput
+            defaultValue={`${product ? product : null }`}
+                variant='soft'
+                // name={name}
+                onBlur={onBlur} // notify when input is touched
+                onChange={onChange} // send value to hook form
+                checked={value}
+                inputRef={ref}
+                placeholder="Wpisz Wystawcę"
+                startDecorator={<PersonRoundedIcon />}
+                />
+        )}
+        /> */}

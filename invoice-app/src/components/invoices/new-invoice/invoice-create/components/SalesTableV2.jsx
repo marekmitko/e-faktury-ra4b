@@ -11,7 +11,7 @@ import {
 } from 'react-admin';
 import { SalesFormIterator } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
 
-import { CustomInputNumber, MyControlledPriceNumberInput, PriceNumberInput, RaPriceNumberInput } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber";
+import { CustomInputNumber, CustomInputPrice, MyControlledPriceNumberInput, PriceNumberInput, RaPriceNumberInput } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber";
 import { InputTextSelected } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelected";
 import { SelectInputItem } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItem";
 import { MQ_isMinimal, MQ_isSmall, MQ_isMedium, MQ_isXSmall, MQ_isLarge} from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
@@ -25,6 +25,9 @@ import JoyNotebox2 from "../invoice-form/subcomponents/sales-table/joy-sales-tab
 import { lineLayout } from "../efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/styledLineLayout";
 import { BorderLinebox, FlexboxContainer, FullwidthWraper, InnerLinebox } from "../efa-invoice-form/components/layout/RowLineLayout";
 import SwitchNetOrGross from "../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/SwitchNetOrGross";
+import TotalCostCardV2 from "../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostCardV2";
+import { JoyNoteboxV2 } from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
+import { ItemIndexChip } from "../efa-invoice-form/components/index-item-row/ItemIndexChip";
 
 
 
@@ -36,6 +39,11 @@ const required = () => (value) => (
 );
 // https://blog.logrocket.com/guide-mui-grid-system/
 
+const areaMinimal =  `"name name name name name name name name name"
+                " . type type type type type type type type  "
+                " . tax tax tax tax tax tax tax tax"
+                " . count count count count count count count count"
+                " . price price price price price price price price"`;
 const areaXSmall =  `"name name name name name name name name name"
                 " . type type type type type type type type  "
                 " . count count count tax tax tax tax tax  "
@@ -48,7 +56,14 @@ const areaSmall =  `"name name name name name name name name name"
 const areaMedium =  `"name name name name name name type type type"
                         " qty qty count count tax tax price price price "`;
 
-export const globalArea = `" name name name type type count tax price price "`;
+const sxTotalCard = { 
+    // flexDirection: { xs: 'row', md: 'column' },
+    // minWidth: 'auto',
+    gap: 1, //maxHeight : 'min-content'
+};
+
+// export const globalArea = `" name name name type type count tax price price "`;
+export const globalArea = `"name type count tax price "`;
 
 const onSubmit = data => console.log('DATA', data);
 
@@ -57,15 +72,34 @@ const myAutoTestSLC = [required() ];
 
 const OptionRecord = {  choice_product_list: productOptions  };
 
-const configGridBox_inputItemBox = {
+const configGridBox_itemRow = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(9, 1fr)',
+    // gridTemplateColumns: 'minmax(550px, 1fr) minmax(auto, 300px) ',
+    gridTemplateColumns: '500px  minmax(auto-fill, 300px)',
+    gridTemplateAreas: `"rowInput rowOutput"`,
+    gridAutoFlow: 'row',
     // gap: 1,
     // rowGap: 0.75,
     columnGap: 0.5,
     gridTemplateRows: 'auto',
 };
 
+const configGridBox_inputItemBox = {
+    display: 'grid',
+    // gridTemplateColumns: '3fr repeat(7, 1fr) minmax(10px, auto)',
+    gridTemplateColumns: '31fr 17fr 9fr 11fr 16fr',
+    gap: 1,
+    rowGap: 0.75,
+    columnGap: 0.5,
+    gridTemplateRows: 'auto',
+};
+
+
+const cssItemNoLarge = {
+    flexDirection: 'column', bgcolor: 'background.paper',  display: 'flex',  gap: '20px',
+    padding: 1, borderRadius: 1 
+};
+// const cssItemStandart
 
 
 export const SalesTableV2 = props => { 
@@ -85,7 +119,7 @@ export const SalesTableV2 = props => {
 
     const [entryPriceIsGross, setEntryPriceOnGross ] = useState(false);
     return(
-    <Create component='div' {...props}>
+    <Create component='div'  {...props}>
         {/* <SimpleForm> */}
         <Form onSubmit={onSubmit}  >
         <div>
@@ -96,49 +130,64 @@ export const SalesTableV2 = props => {
                 component="main"
             >
                 <Title title=" - list" />
-                <small> main container - component: TableContainer </small>
+                {/* <small> main container - component: TableContainer </small> */}
                 <TableContainer className="tableContainer" sx={{  width: '100%' }}>
                     <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
-                        <SalesFormIterator  isXSmall={isXSmall} fullWidth // ref={memberRef} 
-                        tableHeader={  isLarge ?  
-                                                <SalesTableHeader>
-                                                    <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
-                                                </SalesTableHeader> 
-                                                : null
-                                    }
-                        sxTableBody={{
-                            // display: 'flex', p: 0,   
-                            bgcolor: isLarge ? 'background.paper' : 'transparent', 
-                            borderRadius: 1, flexDirection: 'column' }}
+                        <SalesFormIterator  
+                            entryPriceIsGross={entryPriceIsGross}
                         
-                        sxItemRow={{ display: 'flex',
-                                    flexDirection: isXSmall ? 'column' : 'row',
-                                bgcolor: 'transparent', borderRadius: 1,  
-                                mx: 1 //sxItemRow
-                            }}
-                            sxItemContent={ {  // mainContent in ItemRow
-                                display: 'flex', flexWrap: 'wrap', borderRadius: 2,   my: 0, p: 0,
-                                width: 'auto',  // width: '100%'
-                                bgcolor: isLarge ? 'transparent' : 'background.paper' , 
-                                boxShadow: isLarge ? 0 : 1 ,
-                            }}
-                                sxInputContent={{ bgcolor: 'transparent', // onlyInputPart in ItemRow
-                                    ...configGridBox_inputItemBox,
-                                    gridTemplateAreas: isMedium ? (
-                                                                isSmall ? ( isXSmall ? areaXSmall : areaSmall 
-                                                                    ): areaMedium 
-                                                                )  : globalArea,
-                            }}
-                                sxSumPriceBox={{ 
-                                // width: '100%',
-                                display: 'flex', 
-                                flexFlow: `row ${isMinimal ? 'wrap' : 'nowrap'}` }}
-                            getItemLabel={(index) => (<span>{++index}</span>)}  > 
+                        
+                            isXSmall={isXSmall} fullWidth // ref={memberRef} 
+                            wraperSectionItem={ 
+                                configGridBox_itemRow
+                                // isLarge? {display: 'flex'} : cssItemNoLarge
+                            }
+                            tableHeader={  ( isLarge )?  
+                                                    <SalesTableHeader   >
+                                                        <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
+                                                    </SalesTableHeader> 
+                                                    : (isMedium ?       null     :                                         
+                                                            <SalesTableHeader   >
+                                                                <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
+                                                            </SalesTableHeader>  )
+                                        }
+                            sxTableBody={{
+                                // display: 'flex', p: 0,   
+                                bgcolor: isLarge ? 'background.paper' : 'transparent', 
+                                borderRadius: 1, flexDirection: 'column' }}
+                            
+                            sxItemRow={ {
+                            //   ...configGridBox_itemRow,
+                                    //   flexFlow: isXSmall ? 'column wrap' : 'row nowrap',
+                                    bgcolor: 'transparent', borderRadius: 1,  
+                                }}
+                                sxItemContent={ {  // mainContent in ItemRow
+                                    display: 'flex', flexWrap: 'wrap', borderRadius: 2,   my: 0, p: 0,
+                                    width: 'auto',  // width: '100%'
+                                    // bgcolor: isLarge ? 'transparent' : 'background.paper' , 
+                                    boxShadow: isLarge ? 0 : 1 ,
+                                }}
+                                    sxInputContent={{ bgcolor: 'transparent', // onlyInputPart in ItemRow
+                                        ...configGridBox_inputItemBox,
+                                        gridTemplateAreas: isMedium ? (
+                                                                    isSmall ? ( isXSmall ? ( isMinimal? areaMinimal : areaXSmall ) : areaSmall 
+                                                                        ): areaMedium 
+                                                                    )  : globalArea,
+                                }}
+                                    sxSumPriceBox={{ 
+                                    // width: '100%',
+                                    display: 'flex', 
+                                    flexDirection: isMinimal ? 'column' : 'row'
+                                }}
+                                getItemLabel={(index) => (<ItemIndexChip cssBox={{ mb: -2 }} index={++index} />)}  
+                        > 
                             <InputTextSelected 
-                                label="myroot.form.label.inputbox_itemrow.itemNameField"
-                                source="product_name" 
-                                choiceOptions={OptionRecord.choice_product_list} 
-                                sx={{   gridArea: 'name'   }} 
+                                    // label="myroot.form.label.inputbox_itemrow.itemNameField"
+                                    label=''
+                                    source="product_name" 
+                                    choiceOptions={OptionRecord.choice_product_list} 
+                                    sx={{   gridArea: 'name'   }} 
+                                    placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
                             />
                             <SelectInputItem
                                     source="product_type" 
@@ -156,10 +205,28 @@ export const SalesTableV2 = props => {
                                     options={taxOptions}  
                                     variant="outlined"
                             />
-                            <CustomInputNumber source="product_price_netto"  validate={vumberInputValidation}
+                            {/* <CustomInputNumber source="product_price_netto"  validate={vumberInputValidation}
                                 sx={{ gridArea: 'price', width: "100%" }}
                                 label="myroot.form.label.inputbox_itemrow.netItem"
-                            />
+                            /> */}
+                            {/* <CustomInputPrice validate={vumberInputValidation} source="product_price" 
+                                entryPriceIsGross={entryPriceIsGross}
+                                sx={{ gridArea: 'price', width: "100%" }}
+                                // label="myroot.form.label.inputbox_itemrow" 
+                                />  */}
+                                        <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
+                                            sx={{ gridArea: 'price', width: "100%", 
+                                            visibility: entryPriceIsGross ? 'hidden' : 'visible',
+                                            display: entryPriceIsGross ? 'hidden' : '' }}
+                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        />
+                                        <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
+                                            sx={{ gridArea: 'price', width: "100%", 
+                                            visibility: entryPriceIsGross ? 'visible' : 'hidden',
+                                            display: entryPriceIsGross ? '' : 'hidden'      }}
+                                            label="myroot.form.label.inputbox_itemrow.grossItem" 
+                                        />
+                                }
                             <NumberInput source="product_count"
                                 label="myroot.form.label.inputbox_itemrow.qtyItem"
                                 variant="outlined" helperText={false}
@@ -180,17 +247,27 @@ export const SalesTableV2 = props => {
                                         // boxShadow: 'none',
                                         bgcolor: 'transparent', 
                                         flexGrow: 1, 
+                                        boxShadow: 'none'
                                     }}
                                 >
-                                    <Grid row container spacing={0}  >
-                                        <Grid item xs={12} sm={6} md={6} >
-                                            <TotalCostTable />
-                                        </Grid>
-                                        {/* <Grid item xs={12} sm={6} md={6} >
-                                            <JoyNotebox2 register={() => {} }/>
-                                        </Grid> */}
-                                    </Grid>
-                                </Card>
+                                    <div style={{ width: '100%' }}>
+                                    <div style={{ display: 'flex' }}>
+                                    <JoyBox sx={{ display: 'grid',  
+                                        gridTemplateColumns: {xs: '1fr', sm: '1fr', md: '1fr 1fr'},
+                                        // gap: 1,
+                                        rowGap: 1.5,
+                                        columnGap: {xs: 0, sm: 1, md: 2},
+                                        gridTemplateRows: 'auto',
+                                    }} >
+
+                                        <JoyBox sx={{ flexBasis: '1 1 auto',}}>
+                                            <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} />
+                                        </JoyBox>
+                                            <TotalCostCardV2 sxCSS={{ ...sxTotalCard,  flex: '0 0 auto', order: { xs: -1, sm: -1, md: 1, lg: 1 } }} />
+                                    </JoyBox>
+                                    </div>
+                                    </div>
+                                </Card> 
                             </InnerLinebox>
                             <BorderLinebox  sxCSS={{ order: 3 }} />
                         </FlexboxContainer>

@@ -11,7 +11,7 @@ export const ContactContent = ({contactNumber, emailAdress}) => {
 
                 <CardOverflow
                 // variant="soft"
-                sx={{   display: "flex",
+                sx={{   display: "flex", flexFlow: 'column wrap',
                         m: 0, py: 0.5,
                         height: '30px',
                         bgcolor: "background.level1",

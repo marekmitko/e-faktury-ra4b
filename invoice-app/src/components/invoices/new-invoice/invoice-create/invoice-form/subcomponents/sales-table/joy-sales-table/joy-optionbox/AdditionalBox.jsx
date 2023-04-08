@@ -40,7 +40,7 @@ export const AdditionalBox = (props) => {
                 {/* <Grid item xs={xs? xs : 12} sm={sm? sm : 6}> */}
                     <Card    sx={{  mt: 0 }} >
                                 {/* <Grid  xs={12} container spacing={1} rowSpacing={2} > */}
-                                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3}} sx={{   border: '1px dashed grey' }}> 
+                                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3}} > 
                                     <Grid item xs={12} sm={3}  md={4}>
                                         <InvoiceAdditionalCheckbox />
                                     </Grid>

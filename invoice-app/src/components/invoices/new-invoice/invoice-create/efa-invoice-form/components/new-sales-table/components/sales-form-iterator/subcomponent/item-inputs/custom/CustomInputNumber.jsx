@@ -315,6 +315,24 @@ export const CustomInputNumber = (props) => {
         </Box>
     );
 };
+export const CustomInputPrice = (props) => {
+    const {source,  label, name, sx, entryPriceIsGross, ...rest} = props;
+
+    // const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
+
+    // const priceNetto = () => (<RaPriceNumberInput source={`${source}_netto`} label={label} {...props} />);
+    // const priceNetto = (<RaPriceNumberInput source={`${source}_brutto`} label={label} {...props} />);
+
+    return(
+        <Box sx={sx} >
+            {entryPriceIsGross ? 
+                                <RaPriceNumberInput source={`${source}_netto`} label='myroot.form.label.inputbox_itemrow.netItem' {...props} /> 
+                                :
+                                <RaPriceNumberInput source={`${source}_brutto`} label='myroot.form.label.inputbox_itemrow.grossItem' {...props} /> 
+            }
+        </Box>
+    );
+};
 
 
 

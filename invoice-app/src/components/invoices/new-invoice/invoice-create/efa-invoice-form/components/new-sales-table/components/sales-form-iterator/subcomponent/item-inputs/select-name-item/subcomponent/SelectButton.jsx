@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import JoyIconButton from "@mui/joy/IconButton";
 import { Box } from "@mui/joy";
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
+import { IconButtonWithTooltip } from "react-admin";
 
 export default function SelectButton( {nameProdcutNameInput, options, label, variant, variantLabel, defaultValue, sxCSS, sx, ...props} ) {
     const {  setValue } = useFormContext();
@@ -28,17 +29,36 @@ export default function SelectButton( {nameProdcutNameInput, options, label, var
     return (
         <>
         <Box sx={sxCSS}>
+        <IconButtonWithTooltip
+            label="myroot.form.label.input.selectInputItemName" 
+            size="small"
+            // onClick={() => remove()}
+            color="info"
+            sx={{  
+                ":hover, --focusVisible":  { 
+               
             
-        <JoyIconButton variant="plain"  size="sm"  
-            sx={{ 
-                ":hover, --focusVisible":  { backgroundColor: "white", color: 'skyblue' },
+                backgroundColor: 'transparent', border: 'none' 
+                },
+                "--IconButton-size": "12px", 
+            }}
+            {...props}
+        >
+        <JoyIconButton  variant="soft"  size="sm"  
+            sx={{  border: 'none', color: 'primary.900',
+                ":hover, --focusVisible":  { transform: 'rotate(90deg)', 
+                color: '#26c6da', // color: 'primary.500', 
+            
+                backgroundColor: 'transparent', border: 'none' 
+                },
                 "--IconButton-size": "auto", 
-                display: "flex",  
+                
+                display: "flex",  bgcolor: 'transparent'
             }}
             onClick={handleOpen}>
             <MoreVertTwoToneIcon />
         </JoyIconButton>
-        
+        </IconButtonWithTooltip>
         </Box>
         <FormControl {...props} >
             {/* <InputLabel id="demo-controlled-open-select-label">Age</InputLabel> */}

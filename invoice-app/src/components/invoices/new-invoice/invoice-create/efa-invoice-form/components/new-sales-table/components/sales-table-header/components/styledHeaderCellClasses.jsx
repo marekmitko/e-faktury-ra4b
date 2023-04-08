@@ -25,8 +25,8 @@ export const SalesTh = styled(TableCell)(({ theme }) => ({
         padding: 0,
         textTransform: 'uppercase',
         border: 'none', 
-        flex: '1 1 auto', // auto zamiast width: 100%
-        // width: "100%",
+        // flex: '1 1 auto', // auto zamiast width: 100%
+        width: "100%",
       },
 
     }));

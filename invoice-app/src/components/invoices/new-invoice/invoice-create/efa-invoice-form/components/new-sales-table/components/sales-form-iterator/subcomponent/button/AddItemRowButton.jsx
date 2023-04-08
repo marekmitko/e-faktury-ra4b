@@ -13,6 +13,10 @@ export const AddItemRowButton = (props) => {
         size="small"
         onClick={() => add()}
         color="primary"
+        variant='outlined'
+        sx={{  backgroundColor: 'transparent',
+            ":hover, --focusVisible":  {   backgroundColor: 'transparent', border: 'none'     },
+        }}
         {...props} 
         > 
             <JoyChip startDecorator={<AddCircleIcon fontSize="small" />}	>

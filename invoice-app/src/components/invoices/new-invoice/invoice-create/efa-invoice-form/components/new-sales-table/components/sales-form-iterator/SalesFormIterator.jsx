@@ -22,12 +22,6 @@ import JoyDivider from '@mui/joy/Divider';
 import { useFormContext } from 'react-hook-form';
 import { EfaRemoveBtnIcon, EfaRemoveItemButton } from './subcomponent/button/RemoveItemButton';
 import { BorderLinebox, FlexboxContainer } from '../../../layout/RowLineLayout';
-// in ra-core/form/getDefaultValues.js
-// const getDefaultValues = (data = {}, defaultValue = {}, defaultValues = {}) => {
-//     const globalDefaultValue =
-//         typeof defaultValue === 'function' ? defaultValue() : defaultValue;
-//     return { ...globalDefaultValue, ...defaultValues, ...data };
-// };
 
 
 // export const MobileFormIterator = (props) => {
@@ -49,6 +43,7 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
         inline=false,
         getItemLabel = false,
         fullWidth,
+        wraperSectionItem,
         sx,
         itemSx,
         sxTableBody,
@@ -58,6 +53,7 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
         sxSumPriceBox,
         tableHeader, 
         totalCostTable,
+        entryPriceIsGross,
         isXSmall
     } = props;
     const [confirmIsOpen, setConfirmIsOpen] = useState(false);
@@ -91,7 +87,7 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
 
 
     // *edu Jak to zoptymalizować 
-    const { getValues } = useFormContext();
+    const { getValues,  setValue  } = useFormContext();
     // // console.log("fromContextMy", getValues(`${source}`) );
     // console.log( "getValues", getValues);
 
@@ -128,7 +124,7 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                 <thead  style={{width: '100%' }}>
                     <FlexboxContainer component='tr' sxCSS={{ //display: 'flex', 
                         flexDirection: isXSmall ? 'column' : 'row',
-                        bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
+                        bgcolor: 'primary.900', borderRadius: 1, pt: 0.6,   
                     }}
                     > 
                         <BorderLinebox sxCSS={{ order: -1 }} /> 
@@ -140,16 +136,18 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
         {/* <Box
             sx={ sxTableBody }
             > */}
-                 <FlexboxContainer component='tr' sxCSS={{  
+                <FlexboxContainer component='tr' sxCSS={{  
                         display: 'flex', 
                         flexFlow: 'column nowrap',
-                        bgcolor: 'transparent', borderRadius: 1, //...sxTableBody    
+                        bgcolor: 'transparent', borderRadius: 1, //...sxTableBody  
+                        ...sxTableBody  
                     }}
                     > 
                     {fields.map((member, index) => {
                         return(
                         <SalesFormIteratorRow
-                            sx={ itemSx }
+                            sx={ itemSx } setValue={setValue}
+                            wraperSectionItem={wraperSectionItem}
                             sxItemRow={ sxItemRow }
                             sxItemContent={ sxItemContent }
                             sxInputContent={ sxInputContent }
@@ -171,17 +169,15 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                             source={source}
                             // ref={userMyRef}
                             inline={inline}
+                            entryPriceIsGross={entryPriceIsGross}
                         >
-                            {/* <p>Header in input</p>
-                            <Table  sx={{border: "2px blue solid", p: 1}} >"SubTable in FormIterator"</Table> */}
-                            
                             {children} 
                         </SalesFormIteratorRow>
                     )}
                 )}
                 </FlexboxContainer>
                 </tbody>
-                <JoyDivider light sx={{ p: "2px", my: 2, bgcolor: 'neutral.300'}} />
+                <JoyDivider light sx={{ p: "2px", my: 2, mx: 6, bgcolor: 'neutral.300'}} />
             <tfoot style={{ 
                 // border: "8px pink solid", display: 'flex', color: 'black',  backgroundColor: 'orange', 
                 width: '100%'}}>  
@@ -192,15 +188,13 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                     borderRadius: 1, flexDirection: 'column' }}
                     >
 
-                    <tr style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between',}}
+                    <tr style={{ marginTop: '-42px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between',}}
                         className={SalesFormIteratorClasses.buttons}
                         >  
                         <td/>
                             {!disableAdd && ( 
-                            <><td>
-
-                         
-                                <div style={{ margin: '-45px auto'}}>
+                            <td>
+                                <div style={{ margin: 'auto' }}>
                                     {cloneElement(addButton, {
                                         className: clsx(
                                             '-button-add',
@@ -212,30 +206,24 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                                     })}
                                 </div>
                                 </td>
-                                </>
                             )}
+                                <td>
                             {fields.length > 0 && !disableClear && !disableRemove && (
-                                 <td>
-                                <div 
-                                // className={SalesFormIteratorClasses.clear}
+                                <div style={{ margin: 'auto', padding: 0 }} // className={SalesFormIteratorClasses.clear}
                                 >
                                     <Confirm
                                         isOpen={confirmIsOpen}
-                                        title={translate(
-                                            'ra.action.clear_array_input'
-                                        )}
-                                        content={translate(
-                                            'ra.message.clear_array_input'
-                                            )}
+                                        title={translate('ra.action.clear_array_input')}
+                                        content={translate('ra.message.clear_array_input')}
                                         onConfirm={handleArrayClear}
                                         onClose={() => setConfirmIsOpen(false)}
                                     />
-                                    <ClearArrayButton
+                                    <ClearArrayButton color="error" sx={{ mt: 0.7, mr: 1  }}
                                         onClick={() => setConfirmIsOpen(true)}
                                     />
                                 </div>
-                            </td>
                             )}
+                            </td>
                         </tr>
                         </Box>
                 )}

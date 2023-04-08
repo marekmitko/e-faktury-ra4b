@@ -70,8 +70,10 @@ export function TogglePrice({ state, setState}) {
                 <Grid item align="center" >
                     <Typography sx={{ width: "50px", color: "#fff", paddingRight: '25px',  paddingTop: 0, mt: 0}} >
                         <StyledTableCellClasses sx={{  m: 0,  p: 0, border: 'none', textAlign: 'right'}}>
-                            {state ? translate('myroot.form.label.header_salesTable.priceGross') 
-                                    :  translate('myroot.form.label.header_salesTable.priceNet') }
+                            {state ? 
+                                        translate('myroot.form.label.header_salesTable.priceNet') 
+                                        :  
+                                        translate('myroot.form.label.header_salesTable.priceGross') }
                         </StyledTableCellClasses>
                     </Typography></Grid>
                 <Grid item ml={1.5} >

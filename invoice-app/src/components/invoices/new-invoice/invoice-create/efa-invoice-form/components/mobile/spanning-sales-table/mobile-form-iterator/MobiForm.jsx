@@ -214,7 +214,7 @@ export const FormsCreate = props => {
                     <Box component='td' 
                         
                         className="buttonRemoveItem-itemRow"
-                             sx={{ flexBasis: "20px", p: 0, m: 0, mr: "5px",  mt: 'auto', mb: "auto"
+                            sx={{ flexBasis: "20px", p: 0, m: 0, mr: "5px",  mt: 'auto', mb: "auto"
                             }} 
                             /> 
                         </Box>

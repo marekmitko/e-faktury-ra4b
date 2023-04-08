@@ -26,13 +26,13 @@ export default function SellerCardShow({dataPersonal, bgcolor, icon, title}) {
             variant="outlined"
             sx={{ 
                 display: 'flex',
-                alignSelf: 'stretch',
-                justifySelf: "stretch",
+                // alignSelf: 'stretch',
+                // justifySelf: "stretch",
                 bgcolor: bgcolor ? bgcolor : '#fff',
-                boxShadow: 'none',
-                border: 0.5, 
-                borderColor: blueGrey[300],
-                // width: 320,
+                boxShadow: 1, // color: 'text.level2',
+                // border: 0.5, 
+                // borderColor: blueGrey[300],
+                flex: '1 1 auto',
                 pt: 0, pb: 0, px: 0,   borderTopLeftRadius: '40px' }}
         >
             <TitleCardShow title={translate('myroot.form.label.header.seller')} icon={icon} />
@@ -52,7 +52,7 @@ export default function SellerCardShow({dataPersonal, bgcolor, icon, title}) {
                             secondRow={`${dataPersonal.phoneNumber}`} />
             {/* <AddressContent capitionLabel="Kontakt" streetAddress={dataPersonal.email} addressCity={dataPersonal.phoneNumber}   /> */}
                 <Divider   sx={{ p: 0.1, mt: 1, mx: 0 }} />
-            <ContactContent contactNumber={"NUMER RACHUNKU:  0"} emailAdress={" 56056566046508635088"} />
+            <ContactContent contactNumber={"NUMER RACHUNKU:"} emailAdress={" 123"} />
         </JoyCard>
     </>
     );

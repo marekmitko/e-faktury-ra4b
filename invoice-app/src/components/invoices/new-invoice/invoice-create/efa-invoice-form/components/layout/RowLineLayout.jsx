@@ -1,12 +1,12 @@
 import { Box } from "@mui/joy"
 
 
-export const FullwidthWraper = ({children, sxCSS, ...props}) => {
+export const FullwidthWraper = ({children, sxCSS, className, ...props}) => {
     return(
-    <Box {...props} component='section' className="fullwidthWraper" sx={{   
+    <Box {...props} component='section' className={`${className? className: ''} fullwidthWraper`}sx={{   
         width: "100%",
-        backgroundColor: '#a7a7aa',
-        p: 1, m: 0, //mx: "5px",  mt: 'auto', mb: "auto"
+        backgroundColor: 'transparent',
+        p: 0, m: 0, //mx: "5px",  mt: 'auto', mb: "auto"
         ...sxCSS,
         }}  >
         {children} 
@@ -15,7 +15,7 @@ export const FullwidthWraper = ({children, sxCSS, ...props}) => {
 };
 export const FlexboxContainer = ({children, sxCSS, className, ...props}) => {
     return(
-    <Box {...props} className="flexboxContainer trLinecontainer" sx={{   
+    <Box {...props} className={`${className? className: ''} flexboxContainer trLinecontainer`} sx={{   
         display: 'flex', 
         p: 0, m: 0, //mx: "5px",  mt: 'auto', mb: "auto"
         ...sxCSS,
@@ -24,12 +24,12 @@ export const FlexboxContainer = ({children, sxCSS, className, ...props}) => {
     </Box>
     );
 };
-export const BorderLinebox = ({children, sxCSS, ...props}) => {
+export const BorderLinebox = ({children, sxCSS, className, ...props}) => {
     return(
-    <Box {...props} component='td' className="borderLinebox tdLinebox" sx={{ 
+    <Box {...props} component='td' className={`${className? className: ''} borderLinebox tdLinebox`} sx={{ 
         flex: '0 0 auto', // none         // display: { xs: 'none', md: 'block'},
         width: {sx: '5px', sm: '20px', md: '50px' }, // maxWidth: '20px',
-        // backgroundColor: '#00FFFF',
+        // border: '2px solid #00FFFF',
         p: 0, m: 0, //mx: "5px",  mt: 'auto', mb: "auto"
         ...sxCSS,
         }}  >
@@ -37,9 +37,9 @@ export const BorderLinebox = ({children, sxCSS, ...props}) => {
     </Box>
     );
 };
-export const InnerLinebox = ({children, sxCSS, ...props}) => {
+export const InnerLinebox = ({children, sxCSS, className, ...props}) => {
     return(
-    <Box  {...props} component='td' className="innerLinebox tdLinebox" sx={{  
+    <Box  {...props} component='td' className={`${className? className: ''} innerLinebox tdLinebox`} sx={{  
         flex: '1 1 auto', // auto
         // backgroundColor: '#a0f0D0',
         p: 0, m: 0, //mx: "5px",  mt: 'auto', mb: "auto"
