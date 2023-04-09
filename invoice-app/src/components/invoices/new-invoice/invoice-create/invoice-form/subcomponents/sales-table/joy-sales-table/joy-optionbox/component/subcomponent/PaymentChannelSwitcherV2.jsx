@@ -14,12 +14,12 @@ import PaymentIcon from "@mui/icons-material/Payments";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 
 
-    export default function PaymentChannelSwitcher({register}) {
+    export default function PaymentChannelSwitcherV2({register}) {
     const [form, setForm] = React.useState({payment_form: 'transfer'});
     const translate = useTranslate();
     const { onChange, onBlur, name, ref } = register('payment_form'); 
     return (
-        <Box sx={{ minWidth: 240, pb:2}}>
+        <Box sx={{ minWidth: 150, pb: 1 }}>
         <Box
             sx={{
             display: 'flex',
@@ -27,21 +27,7 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
             alignItems: 'center',
             }}
         >
-            <Typography
-                id="example-payment-channel-label"
-                // level="body5"
-                textTransform="uppercase"
-                // fontWeight="xl"
-                sx={{ 
-                    fontSize: "xs1",
-                    letterSpacing: "xs",
-                    fontWeight: "lg",
-                    color: "text.secondary",
-                    pb: 1,
-                }}
-            >
-            {translate('myroot.form.label.header.payment_channel')}
-            </Typography>
+
         </Box>
         <RadioGroup
             aria-labelledby="example-payment-channel-label"
@@ -52,11 +38,13 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
         <List
             component="div"
             variant="solid"
+            //orientation="horizontal"
             row={form}
             sx={{
+            borderColor: "red",
             borderRadius: 'sm',
             boxShadow: 'sm',
-            bgcolor: 'background.body',
+            bgcolor: 'background.body', border: 'none'
             }}
         >
             {[
@@ -74,11 +62,14 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
                 <React.Fragment key={item.id}>
                 {index !== 0 && <ListDivider />}
                     <Radio 
+                        
+                        // size="sm" 
                         variant="outlined" 
                         id={item.id} 
                         value={item.value} 
-                        color="info"
+                        color="primary" 
                         label={item.label } 
+ 
                         {...register('payment_form')}
                     />
                 </React.Fragment>

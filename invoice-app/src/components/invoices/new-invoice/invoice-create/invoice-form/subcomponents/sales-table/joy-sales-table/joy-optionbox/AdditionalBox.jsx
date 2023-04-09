@@ -20,6 +20,10 @@ import JoyInput  from "@mui/joy/Input";
 import TextFieldDecorator from './component/subcomponent/TextFieldDecorator';
 import EhfBuyerTextInput from './component/subcomponent/EhfBuyerTextInput';
 import EhfUserTextInput from './component/subcomponent/EhfUserTextInput';
+import PaymentBoxV2 from './PaymentBoxV2';
+import { OptionCard } from './OptionCard';
+import SendInvoiceCheckboxV2 from './component/subcomponent/SendInvoiceCheckboxV2';
+import PaymentChannelSwitcherV2 from './component/subcomponent/PaymentChannelSwitcherV2';
 
 // TODO Added props sx + spacing 
 {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{   border: '1px dashed grey' }}> */}
@@ -38,39 +42,46 @@ export const AdditionalBox = (props) => {
             <Grid container spacing={1} rowSpacing={1}>
                 <Grid item xs={12}  >
                 {/* <Grid item xs={xs? xs : 12} sm={sm? sm : 6}> */}
-                    <Card    sx={{  mt: 0 }} >
+                    {/* <Card    sx={{  mt: 0 }} > */}
                                 {/* <Grid  xs={12} container spacing={1} rowSpacing={2} > */}
                                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3}} > 
-                                    <Grid item xs={12} sm={3}  md={4}>
-                                        <InvoiceAdditionalCheckbox />
+                                    <Grid item xs={12} sm={3}  md={2}>
+                                        <OptionCard  label='myroot.form.label.header.payment_channel' >
+                                            <PaymentChannelSwitcherV2 register={register} />
+                                        </OptionCard>
                                     </Grid>
-                                    <Grid item xs={12} sm={3}  md={4}>
-                                        <SendInvoiceCheckbox />
+                                    <Grid item xs={12} sm={3}  md={3}>
+                                        <OptionCard  label='myroot.form.label.header.send_invoice' >
+                                            <SendInvoiceCheckboxV2 />
+                                            <div>
+                                                <EhfOptionbox  label={translate('myroot.form.label.checkbox.ehf')} >
+                                                {  ehf ?  
+                                                    ehf && (
+                                                        <Chip   sx={{ paddingLeft: '45px', marginTop: '-70px', height: '25px'}} variant="soft"> 
+                                                            <small> ZAMÓWIENIE NR: </small>  
+                                                            <JoyInput sx={{ display: 'inline', p:1 }} 
+                                                            // variant="plain"
+                                                            placeholder="Podaj numer"   
+                                                            {...register('buyer_order_no')}/>
+                                                        </Chip>
+                                                        )  
+                                                    : (" ")
+                                                }
+                                                </EhfOptionbox>
+                                                {ehf && (
+                                                <div style={{marginTop: '-20px'}}>  
+                                                    {/* <EhfBuyerTextInput /> 
+                                                    <EhfUserTextInput />    */}
+                                                </div>
+                                                )}
+                                            </div>
+                                        </OptionCard>
                                     </Grid>
-                                    <Grid item xs={12} sm={6}  md={4}>
+                                    {/* <Grid item xs={12} sm={6}  md={4}>
                                         <div>
-                                        <EhfOptionbox  label={translate('myroot.form.label.checkbox.ehf')} >
-                                        {  ehf ?  
-                                            ehf && (
-                                                <Chip   sx={{ paddingLeft: '45px', marginTop: '-70px', height: '25px'}} variant="soft"> 
-                                                    <small> ZAMÓWIENIE NR: </small>  
-                                                    <JoyInput sx={{ display: 'inline', p:1 }} 
-                                                    // variant="plain"
-                                                    placeholder="Podaj numer"   
-                                                    {...register('buyer_order_no')}/>
-                                                </Chip>
-                                                )  
-                                            : (" ")
-                                        }
-                                        </EhfOptionbox>
-                                        {ehf && (
-                                        <div style={{marginTop: '-20px'}}>  
-                                            {/* <EhfBuyerTextInput /> 
-                                            <EhfUserTextInput />    */}
+                                        
                                         </div>
-                                        )}
-                                        </div>
-                                    </Grid>
+                                    </Grid> */}
                                             {/* 
                                     <Grid item xs={12} sm={8}>
                                         <OptionInputBox >
@@ -99,7 +110,7 @@ export const AdditionalBox = (props) => {
                                 </Grid>
                             {/* </Grid> */}
                         {/* </Sheet> */}
-                    </Card>
+                    {/* </Card> */}
                 </Grid>
             </Grid>
         </Grid>

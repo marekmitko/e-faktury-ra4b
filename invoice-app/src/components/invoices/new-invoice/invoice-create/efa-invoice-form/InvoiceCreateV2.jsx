@@ -31,6 +31,7 @@ import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST";
 import { SalesFormIterator } from "./components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
 import { SalesTableV2 } from "../components/SalesTableV2";
 import AdditionalBox from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox";
+import PaymentBoxV2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/PaymentBoxV2";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 
@@ -167,9 +168,9 @@ const InvoiceCreateV2 = (props) => {
                                 <SalesTableV2 />
                                 {/* <SpanningSalesTable  isSmall={isSmall} /> */}
                             </Grid>
-                            <Grid   item xs={12}    sm={12}  md={12}    >
+                            {/* <Grid   item xs={12}    sm={12}  md={12}    >
                                 <AdditionalBox />
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </Container>
                     {/* <InvoiceFormLayout titleForm={<ResourceName />} >

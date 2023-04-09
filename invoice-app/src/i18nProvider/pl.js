@@ -109,8 +109,8 @@ export const pl = {
                     payment_invoice: 'Forma płatności',
                     postmail: 'Tradycyjną pocztą',
                     inv_email: 'Na adres email',
-                    transfer: 'Przelewem',
-                    cash: 'Gotówką',
+                    transfer: 'Przelew',
+                    cash: 'Gotówka',
                     ehf: 'Faktura EHF'
                 },
                 header: {

@@ -28,6 +28,12 @@ import SwitchNetOrGross from "../efa-invoice-form/components/new-sales-table/com
 import TotalCostCardV2 from "../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostCardV2";
 import { JoyNoteboxV2 } from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
 import { ItemIndexChip } from "../efa-invoice-form/components/index-item-row/ItemIndexChip";
+import AdditionalBox from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox";
+import { AdditionalBoxV2 } from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox V2";
+import OptionCard from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/OptionCard";
+import PaymentChannelSwitcherV2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/PaymentChannelSwitcherV2";
+import { useFormContext } from "react-hook-form";
+import SendInvoiceCheckboxV2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/SendInvoiceCheckboxV2";
 
 
 
@@ -104,6 +110,7 @@ const cssItemNoLarge = {
 
 export const SalesTableV2 = props => { 
 
+    const { register } = useFormContext();
 
     // xs, extra-small: 0px
     // sm, small: 600px
@@ -226,7 +233,6 @@ export const SalesTableV2 = props => {
                                             display: entryPriceIsGross ? '' : 'hidden'      }}
                                             label="myroot.form.label.inputbox_itemrow.grossItem" 
                                         />
-                                }
                             <NumberInput source="product_count"
                                 label="myroot.form.label.inputbox_itemrow.qtyItem"
                                 variant="outlined" helperText={false}
@@ -243,12 +249,14 @@ export const SalesTableV2 = props => {
                         >
                             <BorderLinebox sxCSS={{ order: -1 }} /> 
                             <InnerLinebox sxCSS={ { order: 1 } }    >
-                                <Card  sx={{ 
-                                        // boxShadow: 'none',
-                                        bgcolor: 'transparent', 
-                                        flexGrow: 1, 
-                                        boxShadow: 'none'
-                                    }}
+                            <JoyBox  sx={{ 
+                                    // boxShadow: 'none',
+                                    bgcolor: 'transparent', 
+                                    flexGrow: 1, 
+                                    boxShadow: 'none',
+                                    display: 'flex',
+                                    my: 1
+                                }}
                                 >
                                     <div style={{ width: '100%' }}>
                                     <div style={{ display: 'flex' }}>
@@ -267,7 +275,54 @@ export const SalesTableV2 = props => {
                                     </JoyBox>
                                     </div>
                                     </div>
-                                </Card> 
+                                </JoyBox> 
+                            </InnerLinebox>
+                            <BorderLinebox  sxCSS={{ order: 3 }} />
+                        </FlexboxContainer>
+                    </FullwidthWraper>
+                    <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
+                    >
+                        <FlexboxContainer component='div' sxCSS={{ //display: 'flex', 
+                                // flexDirection: isXSmall ? 'column' : 'row',
+                                bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
+                            }}
+                        >
+                            <BorderLinebox sxCSS={{ order: -1 }} /> 
+                            <InnerLinebox sxCSS={ { order: 1 } }    >
+                            <JoyBox  sx={{ 
+                                    // boxShadow: 'none',
+                                    bgcolor: 'transparent', 
+                                    flexGrow: 1, 
+                                    boxShadow: 'none',
+                                    display: 'flex',
+                                    my: 1,
+                                    flexFlow: 'row wrap'
+                                }}
+                            >
+                                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 2}} alignItems="stretch" columns={{ xs: 4, sm: 24, md: 36 }} >
+                                    <Grid item xs={12} sm={10}  md={10} >
+                                        <JoyBox sx={{ flexBasis: '1 1 auto',  }} >
+                                            <OptionCard label='myroot.form.label.header.payment_channel' >
+                                                <PaymentChannelSwitcherV2 register={register} />
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                    <Grid item xs={12} sm={14}  md={14}>
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                            <OptionCard label='myroot.form.label.header.send_invoice' >
+                                                <SendInvoiceCheckboxV2 />
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                    <Grid item xs={12} sm={24}  md={12}>
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                            <OptionCard label='myroot.form.label.header.efa' >
+                                                {/* <SendInvoiceCheckboxV2 /> */} <div>{" ."}</div>
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                            </Grid>
+                            </JoyBox> 
                             </InnerLinebox>
                             <BorderLinebox  sxCSS={{ order: 3 }} />
                         </FlexboxContainer>
