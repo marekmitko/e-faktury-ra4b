@@ -7065,6 +7065,11 @@ domhandler@^4.0.0, domhandler@^4.2.0, domhandler@^4.3.1:
   dependencies:
     domelementtype "^2.2.0"
 
+dompurify@^2.4.3:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.4.5.tgz#0e89a27601f0bad978f9a924e7a05d5d2cccdd87"
+  integrity sha512-jggCCd+8Iqp4Tsz0nIvpcb22InKEBrGz5dw3EQJMs8HPJDsKbFIO3STYtAvCfDx26Muevn1MHVI0XxjgFfmiSA==
+
 domutils@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.7.0.tgz#56ea341e834e06e6748af7a1cb25da67ea9f8c2a"
@@ -13683,18 +13688,41 @@ ra-core@^4.7.2:
     react-is "^17.0.2"
     react-query "^3.32.1"
 
-ra-data-json-server@^4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-4.7.2.tgz#1cb69ea68828b59fc4018874dffb274844f309e5"
-  integrity sha512-O4Mc7vq0HK8i+RyKa2dtvMN3iSvLYJrsmSQqqZnJMGaSwioWZBi9WBuuYRMUCuFlSQx/7y1lzYfrlWPkGci7Mw==
+ra-core@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-4.9.1.tgz#fbbb0727ab5f17457453ee7893b5ef86fc8b9325"
+  integrity sha512-5xfqFciDqTVN37KdXs8IvZoq+1REszRSpALHuAyPDGZtww9EjAg75ByEda8QCUTeQsgQGrbHyYUbW+BhO5bapw==
+  dependencies:
+    clsx "^1.1.1"
+    date-fns "^2.19.0"
+    eventemitter3 "^4.0.7"
+    inflection "~1.12.0"
+    jsonexport "^3.2.0"
+    lodash "~4.17.5"
+    prop-types "^15.6.1"
+    query-string "^7.1.1"
+    react-is "^17.0.2"
+    react-query "^3.32.1"
+
+ra-data-json-server@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-4.9.1.tgz#68867b97f3fcef9082086f9c9e29e873ed7c6eae"
+  integrity sha512-6JcFQ/79Xq8i07tHd4JEMEJ7noEenV/LiEa/RmgPdvAXVoq66eWVL3dydGe1rkNiARn4QsOSpjjdd29DHzuZLw==
   dependencies:
     query-string "^7.1.1"
-    ra-core "^4.7.2"
+    ra-core "^4.9.1"
 
 ra-data-simple-rest@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-4.7.2.tgz#b9e62f02f90083e70c745838e09216adfed17c56"
   integrity sha512-SOa+5LCHdEgmf4pO7ZYWBhbx0vHEzI03bosyNVFi53VHaeEYFDovtoz7xMw5Nbtnae9lWx+cEaFxyW8LlxsG+Q==
+  dependencies:
+    query-string "^7.1.1"
+
+ra-data-simple-rest@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-4.9.1.tgz#8bd8b315e3a6ddadf360329806823e2fe6c93f80"
+  integrity sha512-F9X6qEHF91roh301q1fXJlMKcuK04tSsG/hBdfyynsTvytXI90OVU550cJe72UBKVZcR+X6zgvwtSA15G4dxdw==
   dependencies:
     query-string "^7.1.1"
 
@@ -13706,6 +13734,14 @@ ra-i18n-polyglot@^4.7.2:
     node-polyglot "^2.2.2"
     ra-core "^4.7.2"
 
+ra-i18n-polyglot@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-4.9.1.tgz#7664006763a220cd2ad83f6eb2df15cdec615e71"
+  integrity sha512-jeXF7NO917YDP6ZharpKnUrK9JUPoJYS5hhg7Dx7py2wWEXroqeWLKQbxehKOBRLICUYQC8ygcGG2grLDneETw==
+  dependencies:
+    node-polyglot "^2.2.2"
+    ra-core "^4.9.1"
+
 ra-language-english@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-4.7.2.tgz#4e72eb2a78a81b8839f8b81702c73430cbaee6c6"
@@ -13713,12 +13749,19 @@ ra-language-english@^4.7.2:
   dependencies:
     ra-core "^4.7.2"
 
+ra-language-english@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-4.9.1.tgz#71329d00b159787cab36edaf815203785441c504"
+  integrity sha512-90/k8x/Wuu2nb8KXYShU6JWIKtDQmaNPt10XfWD48EC0LedZB0zBTJUJ+aY/GdFy/8zs/yL/5uHxpnsmUOx1dA==
+  dependencies:
+    ra-core "^4.9.1"
+
 ra-language-norwegian@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ra-language-norwegian/-/ra-language-norwegian-1.0.1.tgz#19cc975a3e977b67fe7eac3c31e8929abe283d1b"
   integrity sha512-rg8nO2lfTpcf1UQo5WlhIVbnezMGtPi/+Lfbqn9fyNgGrtl6pgrtqkAdzPo4qhALIGOaIn3zeDQ5f1SDmuO9gQ==
 
-ra-language-polish@^1.3.8:
+ra-language-polish@^1.3.9:
   version "1.3.9"
   resolved "https://registry.yarnpkg.com/ra-language-polish/-/ra-language-polish-1.3.9.tgz#d66cd1e436e64c94bf60972d4a3ee8627de3e6fd"
   integrity sha512-/0/uTpAPI56+1sQnAdhFW8HbfrgYIV3XAIqtQdt+cgPbpsCZgiqKOM+Gdl/UsWnPbcj8qe9fVdSLAPCmXWGPkA==
@@ -13731,6 +13774,25 @@ ra-ui-materialui@^4.7.5:
     autosuggest-highlight "^3.1.1"
     clsx "^1.1.1"
     css-mediaquery "^0.1.2"
+    inflection "~1.12.0"
+    jsonexport "^3.2.0"
+    lodash "~4.17.5"
+    prop-types "^15.7.0"
+    query-string "^7.1.1"
+    react-dropzone "^12.0.4"
+    react-error-boundary "^3.1.4"
+    react-query "^3.32.1"
+    react-transition-group "^4.4.1"
+
+ra-ui-materialui@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-4.9.1.tgz#05538f72c4ae2d108c7f1f2d4dec1fd6d96ac52a"
+  integrity sha512-kdu3yUXCV5BNw3GzjrrLOUR1Tk/nEgvrbr9EcMlFTkHhif83qxnhMT8sfZ21F9J8DkDcMBnZJOisCd0WwvcRwg==
+  dependencies:
+    autosuggest-highlight "^3.1.1"
+    clsx "^1.1.1"
+    css-mediaquery "^0.1.2"
+    dompurify "^2.4.3"
     inflection "~1.12.0"
     jsonexport "^3.2.0"
     lodash "~4.17.5"
@@ -13815,6 +13877,24 @@ react-admin@^4.2.5, react-admin@^4.7.5:
     ra-i18n-polyglot "^4.7.2"
     ra-language-english "^4.7.2"
     ra-ui-materialui "^4.7.5"
+    react-hook-form "^7.40.0"
+    react-router "^6.1.0"
+    react-router-dom "^6.1.0"
+
+react-admin@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-4.9.1.tgz#e671d67d78795fff0b856c5de7a8a3799efee94d"
+  integrity sha512-9PvAvCTnk7/NjzhICW5XK7cAxMKQNpkOpkn+IjA5ExHusE7Z7ou3RUkh7CcGHo652pDkx4/B1zZjuzVbPced6A==
+  dependencies:
+    "@emotion/react" "^11.4.1"
+    "@emotion/styled" "^11.3.0"
+    "@mui/icons-material" "^5.0.1"
+    "@mui/material" "^5.0.2"
+    history "^5.1.0"
+    ra-core "^4.9.1"
+    ra-i18n-polyglot "^4.9.1"
+    ra-language-english "^4.9.1"
+    ra-ui-materialui "^4.9.1"
     react-hook-form "^7.40.0"
     react-router "^6.1.0"
     react-router-dom "^6.1.0"

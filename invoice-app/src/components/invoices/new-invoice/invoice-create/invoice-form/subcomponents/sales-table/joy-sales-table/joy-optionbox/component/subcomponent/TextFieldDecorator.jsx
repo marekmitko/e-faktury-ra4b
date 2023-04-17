@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Stack from '@mui/joy/Stack';
-import JoyTextField from '@mui/joy/TextField';
+import JoyTextField from '@mui/joy/Input';
 import Chip from '@mui/joy/Chip';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import EditIcon from '@mui/icons-material/Edit';

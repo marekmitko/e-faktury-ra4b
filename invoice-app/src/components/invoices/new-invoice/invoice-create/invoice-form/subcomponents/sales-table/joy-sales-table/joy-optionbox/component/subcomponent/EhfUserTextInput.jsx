@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Stack from '@mui/joy/Stack';
-import JoyTextField from '@mui/joy/TextField';
+import JoyTextField from '@mui/joy/Input';
 import Chip from '@mui/joy/Chip';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import EditIcon from '@mui/icons-material/Edit';
@@ -23,7 +23,7 @@ export default function EhfUserTextInput(props) {
                 formState,
             }) => (
                 <JoyTextField
-                    defaultValue={`${record.user_ref ? record.user_ref : null }`}
+                    defaultValue={`${record?.user_ref ? record.user_ref : "" }`}
                     variant='soft'
                     // name={name}
                     onBlur={onBlur} // notify when input is touched
@@ -34,7 +34,7 @@ export default function EhfUserTextInput(props) {
                     startDecorator={<PersonRoundedIcon />}
                     endDecorator={
                         <Chip size="sm" variant="soft">
-                            WYSTAWCA
+                            WYS
                         </Chip> 
             }
             

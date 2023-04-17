@@ -19,7 +19,7 @@ import SalesTableHeader from "../efa-invoice-form/components/new-sales-table/com
 import JoyBox from "@mui/joy/Box";
 import TotalCostTable from "../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostTable";
 import Box from "@mui/joy/Box";
-import { Card, Divider } from "@mui/joy";
+import { Card } from "@mui/joy";
 import {  productOptions, taxOptions, typeOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
 import JoyNotebox2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNotebox2";
 import { lineLayout } from "../efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/styledLineLayout";
@@ -33,6 +33,16 @@ import { AdditionalBoxV2 } from "../invoice-form/subcomponents/sales-table/joy-s
 import OptionCard from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/OptionCard";
 import PaymentChannelSwitcherV2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/PaymentChannelSwitcherV2";
 import { useFormContext } from "react-hook-form";
+import SendInvoiceCheckboxV2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/SendInvoiceCheckboxV2";
+import { EhfOptionbox } from "../efa-invoice-form/desktop/invoice-ehf-box/EhfOptionbox";
+import InvoiceShow from "../efa-invoice-form/EfaInvoiceShow";
+import NewInvoiceHeader from "../efa-invoice-form/desktop/invoice-ehf-box/invoice-headers";
+import EhfBuyerTextInput from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/EhfBuyerTextInput";
+import EhfUserTextInput from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/EhfUserTextInput";
+import IssuedTextInput from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/IssuedTextInput";
+import EhfCheckbox from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/EhfCheckbox";
+import SimpleAccordion from "./EfaOptionAccordion";
+import FruitOptionCheckbox from "./sending-options/SendingOptionsGroupCheckbox";
 import AdditionalSendOptionBox from "../efa-invoice-form/components/additional-sending-options/AdditionalSendOptionBox";
 import LabelOptionCard from "../efa-invoice-form/components/additional-sending-options/subcomponents/LabelOptionCard";
 
@@ -200,7 +210,7 @@ export const SalesTableV2 = props => {
                             <SelectInputItem
                                     source="product_type" 
                                     label="myroot.form.label.inputbox_itemrow.typeItem"
-                                    sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
+                                    sx={{ gridArea: 'type' }} 
                                     defaultValue="placeholder" 
                                     options={typeOptions}  
                                     variant="outlined"
@@ -208,27 +218,36 @@ export const SalesTableV2 = props => {
                             <SelectInputItem
                                     source="product_vat" 
                                     label="myroot.form.label.inputbox_itemrow.taxItem"
-                                    sx={{ gridArea: 'tax', '& svg': { mr: -0.5 }  }} 
+                                    sx={{ gridArea: 'tax' }} 
                                     defaultValue="placeholder" 
                                     options={taxOptions}  
                                     variant="outlined"
                             />
-                            <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
-                                sx={{ gridArea: 'price', width: "100%", 
-                                visibility: entryPriceIsGross ? 'hidden' : 'visible',
-                                display: entryPriceIsGross ? 'hidden' : '' }}
-                                label="myroot.form.label.inputbox_itemrow.netItem" 
-                            />
-                            <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
-                                sx={{ gridArea: 'price', width: "100%", 
-                                visibility: entryPriceIsGross ? 'visible' : 'hidden',
-                                display: entryPriceIsGross ? '' : 'hidden'      }}
-                                label="myroot.form.label.inputbox_itemrow.grossItem" 
-                            />
+                            {/* <CustomInputNumber source="product_price_netto"  validate={vumberInputValidation}
+                                sx={{ gridArea: 'price', width: "100%" }}
+                                label="myroot.form.label.inputbox_itemrow.netItem"
+                            /> */}
+                            {/* <CustomInputPrice validate={vumberInputValidation} source="product_price" 
+                                entryPriceIsGross={entryPriceIsGross}
+                                sx={{ gridArea: 'price', width: "100%" }}
+                                // label="myroot.form.label.inputbox_itemrow" 
+                                />  */}
+                                        <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
+                                            sx={{ gridArea: 'price', width: "100%", 
+                                            visibility: entryPriceIsGross ? 'hidden' : 'visible',
+                                            display: entryPriceIsGross ? 'hidden' : '' }}
+                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        />
+                                        <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
+                                            sx={{ gridArea: 'price', width: "100%", 
+                                            visibility: entryPriceIsGross ? 'visible' : 'hidden',
+                                            display: entryPriceIsGross ? '' : 'hidden'      }}
+                                            label="myroot.form.label.inputbox_itemrow.grossItem" 
+                                        />
                             <NumberInput source="product_count"
                                 label="myroot.form.label.inputbox_itemrow.qtyItem"
                                 variant="outlined" helperText={false}
-                                sx={{ gridArea: 'count', marginTop: "8px", '& input': { mr: -1 } }}
+                                sx={{ gridArea: 'count', marginTop: "8px" }}
                             />
                         </SalesFormIterator>
                     </ArrayInput>
@@ -272,6 +291,8 @@ export const SalesTableV2 = props => {
                             <BorderLinebox  sxCSS={{ order: 3 }} />
                         </FlexboxContainer>
                     </FullwidthWraper>
+                    <hr />
+                    <hr />
                     <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
                     >
                         <FlexboxContainer component='div' sxCSS={{ //display: 'flex', 
@@ -282,9 +303,9 @@ export const SalesTableV2 = props => {
                         >
                             <BorderLinebox sxCSS={{ order: -1 }} /> 
                             <InnerLinebox sxCSS={ { order: 1 } }    >
-                                <div style={{ width: '100%' }}>
                                 <JoyBox  sx={{ 
                                         // boxShadow: 'none',
+                                        width: '100%',
                                         bgcolor: 'transparent', 
                                         flexGrow: 1, 
                                         boxShadow: 'none',
@@ -294,23 +315,152 @@ export const SalesTableV2 = props => {
                                     }}
                                     >
                                         <div style={{ width: '100%' }}>
-                                        <div style={{ display: 'flex', gap: '10px', flexWrap: "wrap",    }}>
-                                            <JoyBox  sx={{ flex: '1 160px', maxWidth: {xs: 'auto', md: '250px'}    }}>
+                                        <div style={{ display: 'flex', gap: '10px', flexWrap: "wrap" }}>
+
+                                            <JoyBox  sx={{ flex: '1 30px' }}>
                                                 {/* <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} /> */}
                                                 <LabelOptionCard label={translate('myroot.form.label.header.payment_channel')} >
                                                     <PaymentChannelSwitcherV2 register={register} />
                                                 </LabelOptionCard>
                                             </JoyBox>
-                                            <JoyBox  sx={{ flex: '2 300px', maxWidth: {xs: 'auto', md: '350px'} }}>
-                                                <LabelOptionCard label={translate('myroot.form.label.header.send_invoice')} >
+                                            <JoyBox  sx={{ flex: '2 70px' }}>
+                                                <LabelOptionCard label="Dodatkowe opcje wysyłki faktury" >
                                                         <AdditionalSendOptionBox />
                                                 </LabelOptionCard>
                                             </JoyBox>
                                         </div>
                                         </div>
                                     </JoyBox> 
-                                        </div>
                                 </InnerLinebox>
+                            <BorderLinebox  sxCSS={{ order: 3 }} />
+                        </FlexboxContainer>
+                    </FullwidthWraper>
+                    <hr />
+                    <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
+                    >
+                        <FlexboxContainer component='tr' sxCSS={{ //display: 'flex', 
+                                flexDirection: isXSmall ? 'column' : 'row',
+                                bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
+                            }}
+                        >
+                            <BorderLinebox sxCSS={{ order: -1 }} /> 
+                            <InnerLinebox sxCSS={ { order: 1 } }    >
+                            <JoyBox  sx={{ 
+                                    // boxShadow: 'none',
+                                    bgcolor: 'transparent', 
+                                    flexGrow: 1, 
+                                    boxShadow: 'none',
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    my: 1
+                                }}
+                                >
+                                    <div style={{ width: '100%' }}>
+                                    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                        <div style={{ flex: '1 0 20%',  }}>
+
+                                            {/* <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} /> */}
+                                            <LabelOptionCard label={translate('myroot.form.label.header.payment_channel')} >
+                                                <PaymentChannelSwitcherV2 register={register} />
+                                            </LabelOptionCard>
+                                        </div>
+                                        <div style={{ flex: '1 0 40%' }}>
+                                            {/* <TotalCostCardV2 sxCSS={{ ...sxTotalCard,  flex: '0 0 auto', order: { xs: -1, sm: -1, md: 1, lg: 1 } }} /> */}
+                                            <LabelOptionCard label="Dodatkowe opcje wysyłki faktury" >
+                                                <AdditionalSendOptionBox />
+                                            </LabelOptionCard>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </JoyBox> 
+                            </InnerLinebox>
+                            <BorderLinebox  sxCSS={{ order: 3 }} />
+                        </FlexboxContainer>
+                    </FullwidthWraper>
+                    <hr />
+                    <hr />
+                    <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
+                    >
+                        <FlexboxContainer component='div' sxCSS={{ //display: 'flex', 
+                                // flexDirection: isXSmall ? 'column' : 'row',
+                                bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
+                            }}
+                        >
+                            <BorderLinebox sxCSS={{ order: -1 }} /> 
+                            <InnerLinebox sxCSS={ { order: 1 } }    >
+                            <JoyBox  sx={{ 
+                                    // boxShadow: 'none',
+                                    bgcolor: 'transparent', 
+                                    flexGrow: 1, 
+                                    boxShadow: 'none',
+                                    display: 'flex',
+                                    my: 1,
+                                    flexFlow: 'row wrap'
+                                }}
+                            >
+                                <Grid  container justifyContent='flex-end' rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 2}} alignItems="stretch" columns={{ xs: 4, sm: 36, md: 48 }} >
+                                    <Grid item xs={4} sm={10}  md={14} >
+                                        {/* <AdditionalSendOptionBox /> */}
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                            
+                                        <LabelOptionCard label={translate('myroot.form.label.header.payment_channel')} >
+                                                <PaymentChannelSwitcherV2 register={register} />
+                                        </LabelOptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                    <Grid item xs={4} sm={16}  md={22}  >
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                        <LabelOptionCard label="Dodatkowe opcje wysyłki faktury" >
+                                            <AdditionalSendOptionBox />
+                                        </LabelOptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                    </Grid>
+                                    <Grid  container justifyContent='flex-end' rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 2}} alignItems="stretch" columns={{ xs: 4, sm: 36, md: 48 }} >
+                                    {/* <Grid item xs={12} sm={10}  md={12} >
+                                        <JoyBox sx={{ flexBasis: '1 1 auto',  }} >
+                                            <OptionCard label='myroot.form.label.header.payment_channel' >
+                                                <PaymentChannelSwitcherV2 register={register} />
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid> */}
+                                    <Grid item xs={12} sm={12}  md={18}>
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                            <OptionCard label='myroot.form.label.header.send_invoice' >
+                                                <SendInvoiceCheckboxV2 />
+                                                <SimpleAccordion>
+                                                    <EhfBuyerTextInput />
+                                                    <EhfUserTextInput /> 
+                                                    <IssuedTextInput /> 
+                                                </SimpleAccordion>
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                    <Grid item xs={12} sm={14}  md={14}>
+                                    <Grid item xs={4} sm={36}  md={48}>
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                            <OptionCard label='myroot.form.label.header.efa' >
+                                                <FruitOptionCheckbox />
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                            <OptionCard label='myroot.form.label.header.send_invoice' >
+                                                <EhfCheckbox />
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                    <Grid item xs={12} sm={24}  md={12}>
+                                        <JoyBox sx={{ flexBasis: '1 1 auto' }} >
+                                            <OptionCard label='myroot.form.label.header.efa' >
+                                            <SendInvoiceCheckboxV2 />
+                                            </OptionCard>
+                                        </JoyBox>
+                                    </Grid>
+                                    
+                            </Grid>
+                            </JoyBox> 
+                            </InnerLinebox>
                             <BorderLinebox  sxCSS={{ order: 3 }} />
                         </FlexboxContainer>
                     </FullwidthWraper>
@@ -320,8 +470,6 @@ export const SalesTableV2 = props => {
                                         {/* <EhfCheckbox /> */}
 
         <input type='submit' />
-        <p />
-        <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5 }}  />
         </Form>
     </Create>
 );

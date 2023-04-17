@@ -121,7 +121,7 @@ export const pl = {
                     additional_note: 'Uwagi do faktury',
                     optionbox_invoice: 'Opcje dodatkowe',
                     payment_channel: 'Forma płatności',
-                    send_invoice: 'Prześlij dokument',
+                    send_invoice: 'Dodatkowe opcje wysyłki',
                     efa: 'Wystaw fakturę EHF'
                 },
                 title: {
