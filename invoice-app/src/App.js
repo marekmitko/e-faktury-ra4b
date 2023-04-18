@@ -29,7 +29,7 @@ import { EditSimpleList } from './components/invoices/invoice-list/INVOICE-e-fak
 import CssVarJoyProvider from './joy-theme-provider/JoyThemeProvider';
 import { FormsCreate } from './components/invoices/new-invoice/invoice-create/efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/MobiForm';
 import AbcIcon from '@mui/icons-material/Abc';
-import { SalesTableV2 } from './components/invoices/new-invoice/invoice-create/components/SalesTableV2';
+import { SalesTableV2 } from './components/invoices/new-invoice/invoice-create/components/efaV2/SalesTableV2';
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );

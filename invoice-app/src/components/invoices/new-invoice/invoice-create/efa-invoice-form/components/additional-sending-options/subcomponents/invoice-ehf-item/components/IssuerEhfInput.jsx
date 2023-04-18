@@ -26,6 +26,7 @@ export default function IssuerEhfInput(props) {
             <div>
                 <Box
         sx={{
+ 
             display: 'flex',
             alignItems: 'center',
             width: 'min-content',
@@ -47,24 +48,31 @@ export default function IssuerEhfInput(props) {
         {/* <Divider 
         sx={{ p: 1 }}  variant="middle"  
         orientation="vertical" flexItem /> */}
-          <Chip size="sm" variant="solid" color="neutral.400"
-            sx={{ px: 0.5, borderRadius: 1, }}
-          >
-            
-            WYSTAWCA 
-          </Chip>
+            <Divider sx={{px: 0.05, py: 0, my: -0.5, }} orientation="vertical"  />
+            <Chip size="sm" variant="solid" color="neutral.400"
+                sx={{   p:0,  minWidth: '80px', m: 0, justifyContent: "center", alignItems: 'center', width: '100%', display: 'flex' }}
+                >
+                    <div style={{ textAlign: 'center' }} > WYSTAWCA </div>   
+            </Chip>
 
-          </Box>
+            </Box>
             </div>
         }
         slotProps={{
+            input: { 
+                autocomplete: "off",
+                // id: 'unique-id',
+            },
             root: ({  focusVisible, primary, success}) => ({
             sx:    { 
-                    "& input": { fontSize: 'medium' }, 
-                    "& svg": {
+                '--Input-focusedHighlight': 'var(--mui-palette-neutral-500)',
+
+                    '--Input-focusedThickness': '1.5px',
+                    "& input": { fontSize: 'medium', color: 'neutral.600'}, 
+                    "& svg": {  color: 'neutral.600'
                     },
                     "&:hover svg": {
-                    color: 'focusVisible',
+                    color: 'var(--mui-palette-neutral-800)',
                     }
                 } 
             })

@@ -20,38 +20,68 @@ import { Grid } from "@mui/material";
 import IssuerEhfInput from "./subcomponents/invoice-ehf-item/components/IssuerEhfInput";
 import BuyerEhfInput from "./subcomponents/invoice-ehf-item/components/BuyerEhfInput"; 
 import EhfInvoiceInputGroup from "./subcomponents/invoice-ehf-item/EhfInvoiceInputGroup";
+import { useFormContext, useWatch } from "react-hook-form";
 
 
 
-export default function AdditionalSendOptionBox() {
+export default function AdditionalSendOptionBox({control, register, setValue}) {
+
     const [status, setStatus] = React.useState({
         postmail: false,
         inv_email: false,
         ehf: false
     });
-    console.log("status", status);
+
     return (
         <List sx={{ p: 0, border: 'none' }}  >
             <ListItem   sx={{ my: 0, borderRadius: "sm", alignItems: "flex-end" }} >
-                <OptionSendItem  cssIcon={{ ml: "auto", mb: -0.5, pb: 0, alignItems: "flex-end" }}
+                <OptionSendItem  
+                    name="postmail" // BUG -> //toDo sprawdzić jak to poprawnie zapisać
+                    cssIcon={{ ml: "auto", mb: -0.5, pb: 0, alignItems: "flex-end" }}
                     label="Wysłać pocztą" checked={status.postmail}  
-                    onChange={(event) => setStatus({ ...status, postmail: event.target.checked })  }
+                    onChange={(event) => { 
+                        setStatus((prevStatus) => (
+                            { ...prevStatus, postmail: event.target.checked }
+                        ));
+                        if(event.target.checked){
+                            setValue("postmail", 1 );
+                        } else {
+                            setValue("postmail", 0 );}
+                        }}
                     defaultIcon={<PictureInPictureAltOutlinedIcon />}  iconChecked={<MarkunreadMailboxOutlinedIcon />} 
-                />
+                    />
             </ListItem>
             <ListItem sx={{ borderRadius: "sm" }}>
                 <OptionSendItem  cssIcon={{ ml: "auto", mb: 0, pb: 0, mt: -0.5 }}
+                    name="inv_email" // BUG -> //toDo sprawdzić jak to poprawnie zapisać
                     label="Wysłać na adres email" checked={status.inv_email}
-                    onChange={ (event) => setStatus({ ...status, inv_email: event.target.checked }) }
+                    onChange={(event) => { 
+                        setStatus((prevStatus) => (
+                            { ...prevStatus, inv_email: event.target.checked }
+                        ));
+                        if(event.target.checked){
+                            setValue("inv_email", 1 );
+                        } else {
+                            setValue("inv_email", 0 );}
+                    }}
                     defaultIcon={ <MailOutlineIcon /> }  iconChecked={<ForwardToInboxOutlinedIcon />} 
-                />
+                    />
             </ListItem>
             <ListItem sx={{ borderRadius: "sm",  alignItems: "flex-start", display: 'flex', flexDirection: 'column', pb: 0, mb: status.ehf ? -2 : "" }}>
                 <OptionSendItem  cssIcon={{    pl: 'auto' ,   mt: -1, pr: 0.5 }}
-                    // label={ status.ehf ? <Stack>EHF Faktura <input value="192"/> </Stack> : "EHF Faktura"} 
+                    name="ehf" // BUG -> //toDo sprawdzić jak to poprawnie zapisać
                     label="EHF Faktura" 
+                    // label={ status.ehf ? <Stack>EHF Faktura <input value="192"/> </Stack> : "EHF Faktura"} 
                     checked={status.ehf}
-                    onChange={ (event) =>  setStatus({ ...status, ehf: event.target.checked }) }
+                    onChange={(event) => { 
+                        setStatus((prevStatus) => (
+                            { ...prevStatus, ehf: event.target.checked }
+                        ));
+                        if(event.target.checked){
+                            setValue("ehf", 1 );
+                        } else {
+                            setValue("ehf", 0 );}
+                    }}
                     defaultIcon={ <Box   sx={{   transform: "rotate(90deg)",   }}><AnalyticsOutlinedIcon /></Box>}  iconChecked={<Box   sx={{   transform: "rotate(90deg)",   }}><AddchartOutlinedIcon /></Box>} 
                     />
             {/* <FocusTrap open={status.ehf} disableRestoreFocus disableAutoFocus> */}

@@ -15,11 +15,22 @@ export default function OrderEhfInput(props) {
             <Chip size="sm" variant="solid"   sx={{  textTransform: 'uppercase', px: 0.5, borderRadius: 1, color: 'text.secondary', bgcolor: 'transparent', mb: -0.1,   }}   >
                 {startLabel ? startLabel : '' }
             </Chip>
+          
             <Input    variant="plain" sx={{ width: '20%'  }} 
             size="xs"  
+           
             slotProps={{
+                input: { 
+                    autocomplete: "off",
+                    // id: 'unique-id',
+                },
                 root: ({  focusVisible, primary, success, info}) => ({
                 sx:    {  
+                    '--Input-focusedThickness': '1.5px',
+                    '--Input-radius': '5px',
+                    // '--Input-focusedHighlight': 'red',
+
+
                             "& input": { fontSize: 'small', px: 0.5, fontWeight: 500, border: 'none', textAlign: 'left', 
                             }, 
                             "& input:hover": {

@@ -17,11 +17,13 @@ import OrientationSwitch from './components/OrientationSwitch';
 
 export default function PaymentMethodRadioGroup({register}) {
 
-    const [orientation, setOrientation] = React.useState("vertical");
+    // const [orientation, setOrientation] = React.useState("vertical");
 
-    const [form, setForm] = React.useState({payment_form: 'transfer'});
+    const [form, setForm] = React.useState({payment_form: ''});
     const translate = useTranslate();
-    const { onChange, onBlur, name, ref } = register('payment_form'); 
+    const { onChange, onBlur, name, ref } = register('payment_form');
+    
+        //toDO Added Default Values to PaymentMethod 
     return (
         <Box sx={{ minWidth: 160, pb: 1 }} 
         >
@@ -64,7 +66,7 @@ export default function PaymentMethodRadioGroup({register}) {
             ].map((item, index) => (
             <ListItem sx={{ display: 'flex', 
             justifyContent: 'space-between', 
-             width: 'fr',
+            //  width: 'fr',
              borderRadius: "sm", m: 0, py: 0, pt: 0,  mt: -1, mb: (index === 1) ? -1 : ''  
             }} >
                 <React.Fragment key={item.id}>

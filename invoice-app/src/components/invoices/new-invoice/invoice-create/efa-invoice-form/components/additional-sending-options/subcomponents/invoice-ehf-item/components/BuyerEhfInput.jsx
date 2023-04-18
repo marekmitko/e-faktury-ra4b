@@ -31,6 +31,8 @@ export default function BuyerEhfInput(props) {
             bgcolor: 'transparent',
             color: 'text.secondary',
             mr: -0.5,
+
+          
             // '& svg': {
             //     m: 1.5,
             // },
@@ -43,24 +45,35 @@ export default function BuyerEhfInput(props) {
         {/* <Divider 
         sx={{ p: 1 }}  variant="middle"  
         orientation="vertical" flexItem /> */}
-          <Chip size="sm" variant="solid" color="neutral.400"
-            sx={{ px: 0.5, borderRadius: 1, }}
-          >
-            
-            NABYWCA 
-          </Chip>
-
-          </Box>
+            <Divider sx={{px: 0.05, py: 0, my: -0.5, }} orientation="vertical"  />
+            <Chip size="sm" variant="solid" color="neutral.400"
+                sx={{   p: 0,  minWidth: '80px', m: 0, justifyContent: "center", alignItems: 'center', width: '100%', display: 'flex' }}
+            >
+                <div style={{ textAlign: 'center' }} > NABYWCA </div>   
+            </Chip>
+            </Box>
             </div>
         }
         slotProps={{
+            input: { 
+                autocomplete: "off",
+                // id: 'unique-id',
+            },
             root: ({  focusVisible, primary, success}) => ({
+
+
+
             sx:    { 
-                    "& input": { fontSize: 'medium' }, 
-                    "& svg": {
+                // '--Input-focusedHighlight': 'var(--mui-palette-neutral-500)',
+                    '--Input-focusedThickness': '1.5px',
+                    "& input": { fontSize: 'medium',
+                    '--Input-placeholderOpacity': .9,  //toDo Trzeba to poprawić jakoś 
+                    fontSize: 'medium', color: 'neutral.700'
+                    }, 
+                    "& svg": {  color: 'neutral.600'
                     },
                     "&:hover svg": {
-                    color: 'focusVisible',
+                    color: 'var(--mui-palette-primary-800)',
                     }
                 } 
             })

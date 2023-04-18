@@ -2,6 +2,7 @@ import {useRef, useState} from "react";
 import { Container, GlobalStyles, TableContainer, TableFooter, TablePagination, TableCell, useMediaQuery, Grid } from "@mui/material";
 import JoyCssBaseline from '@mui/joy/CssBaseline';
 import JoyGlobalStyles from '@mui/joy/GlobalStyles';
+import { Card, Divider } from "@mui/joy";
 import { jsx, css } from '@emotion/react'
 import {
     ArrayInput,
@@ -9,35 +10,21 @@ import {
     NumberInput,
     Form, Title, useTranslate,  
 } from 'react-admin';
-import { SalesFormIterator } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
+import { SalesFormIterator } from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
 
-import { CustomInputNumber, CustomInputPrice, MyControlledPriceNumberInput, PriceNumberInput, RaPriceNumberInput } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber";
-import { InputTextSelected } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelected";
-import { SelectInputItem } from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItem";
-import { MQ_isMinimal, MQ_isSmall, MQ_isMedium, MQ_isXSmall, MQ_isLarge} from "../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
-import SalesTableHeader from "../efa-invoice-form/components/new-sales-table/components/sales-table-header/SalesTableHeader";
+import { CustomInputNumber,   } from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber";
+import { InputTextSelected } from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelected";
+import { SelectInputItem } from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItem";
+import { MQ_isMinimal, MQ_isSmall, MQ_isMedium, MQ_isXSmall, MQ_isLarge} from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
+import SalesTableHeader from "../../efa-invoice-form/components/new-sales-table/components/sales-table-header/SalesTableHeader";
 import JoyBox from "@mui/joy/Box";
-import TotalCostTable from "../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostTable";
-import Box from "@mui/joy/Box";
-import { Card, Divider } from "@mui/joy";
-import {  productOptions, taxOptions, typeOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
-import JoyNotebox2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNotebox2";
-import { lineLayout } from "../efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/styledLineLayout";
-import { BorderLinebox, FlexboxContainer, FullwidthWraper, InnerLinebox } from "../efa-invoice-form/components/layout/RowLineLayout";
-import SwitchNetOrGross from "../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/SwitchNetOrGross";
-import TotalCostCardV2 from "../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostCardV2";
-import { JoyNoteboxV2 } from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
-import { ItemIndexChip } from "../efa-invoice-form/components/index-item-row/ItemIndexChip";
-import AdditionalBox from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox";
-import { AdditionalBoxV2 } from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox V2";
-import OptionCard from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/OptionCard";
-import PaymentChannelSwitcherV2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/PaymentChannelSwitcherV2";
-import { useFormContext } from "react-hook-form";
-import AdditionalSendOptionBox from "../efa-invoice-form/components/additional-sending-options/AdditionalSendOptionBox";
-import LabelOptionCard from "../efa-invoice-form/components/additional-sending-options/subcomponents/LabelOptionCard";
-import PaymentMethodRadioGroup from "../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/PaymentMethodRadioGroup";
-
-
+import {  productOptions, taxOptions, typeOptions } from "../../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
+import { lineLayout } from "../../efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/styledLineLayout";
+import { BorderLinebox, FlexboxContainer, FullwidthWraper, InnerLinebox } from "../../efa-invoice-form/components/layout/RowLineLayout";
+import SwitchNetOrGross from "../../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/SwitchNetOrGross";
+import TotalCostCardV2 from "../../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostCardV2";
+import { JoyNoteboxV2 } from "../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
+import { ItemIndexChip } from "../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 
 export const nameSalesIteratorForm = 'products';
 const required = () => (value) => (
@@ -76,7 +63,6 @@ export const globalArea = `"name type count tax price "`;
 const onSubmit = data => console.log('DATA', data);
 
 const vumberInputValidation = [required()];
-const myAutoTestSLC = [required() ];
 
 const OptionRecord = {  choice_product_list: productOptions  };
 
@@ -112,8 +98,6 @@ const cssItemNoLarge = {
 
 export const SalesTableV2 = props => { 
 
-    const { register } = useFormContext();
-    const translate = useTranslate();
     // xs, extra-small: 0px
     // sm, small: 600px
     // md, medium: 900px
@@ -274,65 +258,12 @@ export const SalesTableV2 = props => {
                             <BorderLinebox  sxCSS={{ order: 3 }} />
                         </FlexboxContainer>
                     </FullwidthWraper>
-                    <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
-                    >
-                        <FlexboxContainer component='div' sxCSS={{ //display: 'flex', 
-                                // flexDirection: isXSmall ? 'column' : 'row',
-                                bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
-                                // flexWrap: 'wrap'
-                            }}
-                        >
-                            <BorderLinebox sxCSS={{ order: -1 }} /> 
-                            <InnerLinebox sxCSS={ { order: 1 } }    >
-                                <div style={{ width: '100%' }}>
-                                <JoyBox  sx={{ 
-                                        // boxShadow: 'none',
-                                        bgcolor: 'transparent', 
-                                        flexGrow: 1, 
-                                        boxShadow: 'none',
-                                        display: 'flex',
-                                        my: 1, 
-                                        flexWrap: "wrap"
-                                    }}
-                                    >
-                                        <div style={{ width: '100%' }}>
-                                        <Box sx={{ display: 'flex', gap: '10px',
-                                        flexDirection: { xs: 'column', sm: is650px ? 'column' : 'row', md: 'row' },
-                                             //flexWrap: "wrap", 
-                                    
-                                        }}>
-                                            {/* <JoyBox  sx={{ flex: '1 160px', maxWidth: {xs: 'auto', md: '250px'}    }}>
-                                                <LabelOptionCard label={translate('myroot.form.label.header.payment_channel')} >
-                                                    <PaymentChannelSwitcherV2 register={register} />
-                                                </LabelOptionCard>
-                                            </JoyBox> */}
-                                            <JoyBox  sx={{ flex: is650px ? '' : '1 160px', maxWidth: {  md: '30%', lg: '18.5%' } }}>
-                                                {/* <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} /> */}
-                                                <LabelOptionCard label={translate('myroot.form.label.header.payment_channel')} >
-                                                    <PaymentMethodRadioGroup  register={register} />
-                                                </LabelOptionCard>
-                                            </JoyBox>
-                                            <JoyBox  sx={{ flex: is650px ? '' : '1 250px', maxWidth: {  md: '50%',  lg: '30%' } }}>
-                                                <LabelOptionCard label={translate('myroot.form.label.header.send_invoice')} >
-                                                        <AdditionalSendOptionBox />
-                                                </LabelOptionCard>
-                                            </JoyBox>
-                                        </Box>
-                                        </div>
-                                    </JoyBox> 
-                                        </div>
-                                </InnerLinebox>
-                            <BorderLinebox  sxCSS={{ order: 3 }} />
-                        </FlexboxContainer>
-                    </FullwidthWraper>
                 </TableContainer>
             </Container>
         </div>
-                                        {/* <EhfCheckbox /> */}
-
-        <input type='submit' />
-        <p />
-        <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5 }}  />
+        {/* <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5, pb: 0, mb: 0 }}  >
+            <input type='submit' />
+        </Divider> */}
         </Form>
     </Create>
 );

@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import * as React from 'react';
+import { useEffect, useState, } from "react";
 import { Button, CssBaseline, Container, Card, Grid, CardContent, Typography, Box, CardHeader, useMediaQuery} from "@mui/material";
-import StarIcon from "@mui/icons-material/StarBorder";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
-import { useForm, FormProvider, useFormContext, Controller} from "react-hook-form";
-import { InvoiceFormLayout } from '../invoice-form/InvoiceFormLayout';
-import SpanningSalesTable from '../invoice-form/subcomponents/sales-table/SpanningSalesTable';
+import { useForm, FormProvider, useFormContext, Controller, useWatch} from "react-hook-form";
 import { InvoiceCreateToolbar } from './desktop/subcomponents/InvoiceCreateToolbar';
 import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
@@ -26,13 +24,17 @@ import PersonalCardShow from "./personal-cards/show/PersonalCardShow";
 import SellerIcon from "@mui/icons-material/Store";
 import SellerCardShow from "./personal-cards/SellerCardShow";
 import BuyerCardShowForm from "./personal-cards/show/buyer-invoice-form/BuyerCardShowForm";
-import EfaBuyerAutoInput from "./personal-cards/EfaBuyerAutoInput";
 import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST"; 
-import { SalesFormIterator } from "./components/new-sales-table/components/sales-form-iterator/SalesFormIterator";
-import { SalesTableV2 } from "../components/SalesTableV2";
-import AdditionalBox from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/AdditionalBox";
-import PaymentBoxV2 from "../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/PaymentBoxV2";
+import { SalesTableV2 } from "../components/efaV2/SalesTableV2";
+import { AdditionalTableV2 } from "../components/efaV2/AdditionalTableV2";
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
+
+function getInvoiceId() {
+    return 'fv-xxx/xx/xx/xx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*9|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(9);
+    });
+}   
 
 
 const ResourceName = () => {
@@ -40,24 +42,40 @@ const ResourceName = () => {
     return <>{resource}</>;
 }
 
+
+
+
+
+
+
+
+
+
+
 const InvoiceCreateV2 = (props) => { 
+    const invoiceId = getInvoiceId();
+
+
     const navigate = useNavigate();
     const notify = useNotify();
     // const create = useCreate();
-
+    
     const {user_company} = user_db;
+    const buyerOrderNo = invoiceId;
     const record = { user_db, user_ref: user_company, choice_product_list: productOptions  };
     console.log("RECORD:", record);
     // { handleSubmit, reset, control } 
     const methods = useForm({ 
         defaultValues: { 
+            preInvoiceId: invoiceId,
             buyer_id: "", 
+            payment_form: false,
             ehf: 0, 
-            buyer_ref: "", 
-            buyer_order_no: "",
+            // buyer_ref: "ass", 
+            buyer_order_no: buyerOrderNo,
             comments:"", 
-            postmail: false,  
-            inv_email: false,
+            postmail: 0,  
+            inv_email: 0,
             user_ref: user_db.user_company,
             ...user_db,
             products: [{
@@ -70,6 +88,9 @@ const InvoiceCreateV2 = (props) => {
             } ]
         }
     });
+    
+    console.log("invId 📟:", invoiceId);
+
         const [create, { isLoading, error }] = useCreate();
         const myDataProvider = useDataProvider();
 
@@ -135,6 +156,9 @@ const InvoiceCreateV2 = (props) => {
     const translate = useTranslate();
     const isSmall = useMediaQuery(`${MQ_isSmall}`);
 
+
+
+
     return(
     <>
     {/* <Create 
@@ -166,8 +190,11 @@ const InvoiceCreateV2 = (props) => {
                             </Grid>
                             <Grid   item xs={12}    sm={12}  md={12}    >
                                 <SalesTableV2 />
-                                {/* <SpanningSalesTable  isSmall={isSmall} /> */}
                             </Grid>
+                            <Grid   item xs={12}    sm={12}  md={12}    >
+                                <AdditionalTableV2 />
+                            </Grid>
+                            {/* <SpanningSalesTable  isSmall={isSmall} /> */}
                             {/* <Grid   item xs={12}    sm={12}  md={12}    >
                                 <AdditionalBox />
                             </Grid> */}
@@ -176,6 +203,9 @@ const InvoiceCreateV2 = (props) => {
                     {/* <InvoiceFormLayout titleForm={<ResourceName />} >
                         <SpanningSalesTable />
                     </InvoiceFormLayout>   */}
+
+                    {/* // toDo to się może akurat jeszcze przydać - dobrze zrobiona tabelka  */}
+                    {/* <SpanningSalesTable /> */}
                     <Button type="button" >
                         Wystaw - Submit
                     </Button> 
