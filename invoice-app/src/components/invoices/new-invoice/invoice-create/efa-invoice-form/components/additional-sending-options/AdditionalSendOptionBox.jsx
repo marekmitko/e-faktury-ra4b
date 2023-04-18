@@ -8,18 +8,18 @@ import PictureInPictureAltOutlinedIcon from "@mui/icons-material/PictureInPictur
 import MarkunreadMailboxOutlinedIcon from "@mui/icons-material/MarkunreadMailboxOutlined";
 import AddchartOutlinedIcon from "@mui/icons-material/AddchartOutlined";
 import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
-import SendEhfCheckbox  from "./subcomponents/SendEhfCheckbox";
+import SendEhfCheckbox  from "./subcomponents/invoice-ehf-item/components/olx-files-example/SendEhfCheckbox";
 import OptionSendItem from "./subcomponents/OptionSendItem";
-import FocusTrap from "@mui/base/FocusTrap";
 import { Input, Stack, SvgIcon, Typography} from "@mui/joy";
-import EhfDetailsTrapModal from "./subcomponents/EhfDetailsTrapModal";
-import SimpleAccordion from "../../../components/EfaOptionAccordion";
-import EhfBuyerTextInput from "../../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/EhfBuyerTextInput";
-import EhfUserTextInput from "../../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/EhfUserTextInput";
-import IssuedTextInput from "../../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/IssuedTextInput";
+// import EhfDetailsTrapModal from "./subcomponents/invoice-ehf-item/components/olx-files-example/EhfDetailsTrapModal";
+// import SimpleAccordion from "../../../components/EfaOptionAccordion";
+// import EhfBuyerTextInput from "../../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/EhfBuyerTextInput";
+// import EhfUserTextInput from "../../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/subcomponent/EhfUserTextInput";
+// import IssuedTextInput from "../../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/component/IssuedTextInput";
 import { Grid } from "@mui/material";
-import IssuerEhfInput from "./subcomponents/IssuerEhfInput";
-import BuyerEhfInput from "./subcomponents/BuyerEhfInput";
+import IssuerEhfInput from "./subcomponents/invoice-ehf-item/components/IssuerEhfInput";
+import BuyerEhfInput from "./subcomponents/invoice-ehf-item/components/BuyerEhfInput"; 
+import EhfInvoiceInputGroup from "./subcomponents/invoice-ehf-item/EhfInvoiceInputGroup";
 
 
 
@@ -56,31 +56,16 @@ export default function AdditionalSendOptionBox() {
                     />
             {/* <FocusTrap open={status.ehf} disableRestoreFocus disableAutoFocus> */}
             </ListItem>   
-            <li style={{ width: '100%'}}>
+            {/* <li style={{ width: '100%'}}> */}
+            <li >
                 {(status.ehf) && (
                     <> 
-                    <Stack spacing={1} sx={{ p: 1, mt: 1,   }}>
-                    <Stack       spacing={0.5} direction="row" sx={{ ml: 'auto'    }}>
-                    <Typography level="body2" sx={{ textTransform: 'uppercase', lineHeight: 1.8, mb: -0.5, 
-                    letterSpacing: '-0.2px', 
-                    fontFamily: 'monospace'
-                    }}><label>Numer zamówienia:</label></Typography>
-                    <Input size="xs" sx={{ px: 0.5, maxWidth: "150px"}} placeholder="123456789" variant="standard" />
-                        </Stack>
-                        <IssuerEhfInput />
-                        <BuyerEhfInput />
-                        {/* <EhfBuyerTextInput />
-                        <EhfUserTextInput /> 
-                    <IssuedTextInput />  */}
-                    </Stack>
+                    <EhfInvoiceInputGroup />
+                    {/* <Stack spacing={1} sx={{ p: 1, mt: 1,   }}>
+                    {/* </Stack> */}
                     </>
                 )}
             </li>
-            {/* </FocusTrap> */}
-            {/* <ListItem sx={{ borderRadius: "sm", alignItems: "flex-start" , mt: -1, display: 'flex-inline'   }}    > */}
-            {/* <ListItem sx={{ borderRadius: "sm",  alignItems: "flex-start" }}   >
-                </ListItem>    */}
-         
         </List>
     );
 }

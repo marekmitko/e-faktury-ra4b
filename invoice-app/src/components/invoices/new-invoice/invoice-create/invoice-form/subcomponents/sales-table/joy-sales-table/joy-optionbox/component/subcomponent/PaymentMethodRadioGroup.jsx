@@ -14,12 +14,50 @@ import PaymentIcon from "@mui/icons-material/Payments";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 
 
-    export default function PaymentChannelSwitcherV2({register}) {
+export default function PaymentMethodRadioGroup({register}) {
+
+    const [orientation, setOrientation] = React.useState("vertical");
+
     const [form, setForm] = React.useState({payment_form: 'transfer'});
     const translate = useTranslate();
     const { onChange, onBlur, name, ref } = register('payment_form'); 
     return (
         <Box sx={{ minWidth: 150, pb: 1 }}>
+ <Box
+        sx={{
+          mb: 2,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }}
+      >
+        <Typography
+          id="example-payment-channel-label"
+          level="body3"
+          textTransform="uppercase"
+          fontWeight="xl"
+          sx={{ letterSpacing: "0.15rem" }}
+        >
+          Pay with
+        </Typography>
+        <Switch
+          component="label"
+          size="sm"
+          endDecorator="Row view"
+          checked={orientation === "horizontal"}
+          onChange={(event) =>
+            setOrientation(event.target.checked ? "horizontal" : "vertical")
+          }
+          sx={{
+            [`&&:not(.${switchClasses.checked})`]: {
+              "--Switch-trackBackground": (theme) =>
+                theme.vars.palette.background.level3
+            }
+          }}
+        />
+      </Box>
+
+
         <Box
             sx={{
             display: 'flex',
@@ -38,7 +76,7 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
         <List
             component="div"
             variant="solid"
-            //orientation="horizontal"
+            orientation={orientation}
             row={form}
             sx={{ mb: -.5,
             borderRadius: 'sm',
@@ -52,7 +90,7 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
             ].map((item, index) => (
             <ListItem sx={{ display: 'flex', justifyContent: 'space-between',  borderRadius: "sm", m: 0, py: 0, pt: 0,  mt: -1, mb: (index === 1) ? -1 : ''  }} >
                 <React.Fragment key={item.id}>
-                {index !== 0 && <ListDivider />}
+                {/* {index !== 0 && <ListDivider />} */}
                     <Radio color="primary" //color="neutral"
                         sx={{ display: 'flex', ml: 0, mr: 'auto',   }} 
                         // size="sm" 

@@ -70,8 +70,8 @@ export const AdditionalBox = (props) => {
                                                 </EhfOptionbox>
                                                 {ehf && (
                                                 <div style={{marginTop: '-20px'}}>  
-                                                    {/* <EhfBuyerTextInput /> 
-                                                    <EhfUserTextInput />    */}
+                                                    <EhfBuyerTextInput /> 
+                                                    <EhfUserTextInput />   
                                                 </div>
                                                 )}
                                             </div>

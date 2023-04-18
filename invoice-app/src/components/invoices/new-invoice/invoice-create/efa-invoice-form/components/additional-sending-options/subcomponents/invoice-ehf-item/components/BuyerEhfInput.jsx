@@ -10,16 +10,14 @@ import { Box, Divider, SvgIcon } from "@mui/joy";
 import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 
 
-export default function BuyerEhfInput() {
+export default function BuyerEhfInput(props) {
   return (
     
     <Stack direction="column" spacing={0}>
       <Input
-      size="sm"
+        size="sm"
         // disabled
         variant="outlined"
-        label=" "
-        placeholder="Jan Kowalski  "
         startDecorator={<SvgIcon  fontSize="small" > <PermContactCalendarIcon /></SvgIcon>}
         endDecorator={
             <div>
@@ -67,7 +65,7 @@ export default function BuyerEhfInput() {
                 } 
             })
         }}
-      />
+       {...props} />
       {/* <Input
         // disabled
         // sx={{ backgroundColor: "white" }}

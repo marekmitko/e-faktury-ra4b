@@ -2,7 +2,7 @@ import * as React from "react";
 import Stack from "@mui/system/Stack";
 import FocusTrap from "@mui/base/FocusTrap";
 import Input from "@mui/joy/Input";
-import { CheckedButton } from "./CheckedButton";
+import { CheckedButton } from "../../../CheckedButton";
 import { Box } from "@mui/joy";
 
 

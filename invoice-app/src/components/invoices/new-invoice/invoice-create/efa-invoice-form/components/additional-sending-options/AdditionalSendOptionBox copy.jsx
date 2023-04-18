@@ -10,10 +10,10 @@ import MarkunreadMailboxOutlinedIcon from "@mui/icons-material/MarkunreadMailbox
 import AddchartOutlinedIcon from "@mui/icons-material/AddchartOutlined";
 import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
 import SendEhfCheckbox  from "./subcomponents/SendEhfCheckbox";
-import OptionSendItem from "./subcomponents/OptionSendItem";
+import OptionSendItem from "./subcomponents/invoice-ehf-item/OptionSendItem";
 import FocusTrap from "@mui/base/FocusTrap";
 import { Input, Stack } from "@mui/joy";
-import EhfDetailsTrapModal from "./subcomponents/EhfDetailsTrapModal";
+import EhfDetailsTrapModal from "./subcomponents/invoice-ehf-item/EhfDetailsTrapModal";
 
 
 

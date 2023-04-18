@@ -9,17 +9,18 @@ import People from "@mui/icons-material/People";
 import { Box, Divider, SvgIcon } from "@mui/joy";
 import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 
-export default function IssuerEhfInput() {
+export default function IssuerEhfInput(props) {
+
   return (
-    
     <Stack direction="column" spacing={0}>
       <Input
-      size="sm"
+        // label=" "
+        // placeholder="Aleksander Mariański"
         // disabled
+        size="sm"
         variant="soft"
         color="neutral"
-        label=" "
-        placeholder="Aleksander Mariański"
+        
         startDecorator={<SvgIcon  fontSize="small" > <PersonRoundedIcon /></SvgIcon>}
         endDecorator={
             <div>
@@ -41,6 +42,7 @@ export default function IssuerEhfInput() {
             // },
             
         }}
+       
     > 
         {/* <Divider 
         sx={{ p: 1 }}  variant="middle"  
@@ -67,7 +69,8 @@ export default function IssuerEhfInput() {
                 } 
             })
         }}
-      />
+
+        {...props} />
       {/* <Input
         // disabled
         // sx={{ backgroundColor: "white" }}
