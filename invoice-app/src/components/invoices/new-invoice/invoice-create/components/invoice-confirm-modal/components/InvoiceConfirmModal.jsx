@@ -117,9 +117,9 @@ export default function InvoiceConfirmModal(props) {
                     <Divider   sx={{ p: 0.1 }}  />
                     {/* <ModalToolbar /> */}
                     <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-start', pt: 2, mb: -1}}>
-                        <JoyButton variant="plain" color="primary" onClick={() => setOpen(false)}>
+                        {/* <JoyButton variant="plain" color="primary" onClick={() => setOpen(false)}>
                             Wystaw
-                        </JoyButton>
+                        </JoyButton> */}
                         <MuiButton
                             // disabled={loading}
                             // onClick={handleConfirm}

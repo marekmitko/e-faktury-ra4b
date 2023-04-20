@@ -46,8 +46,11 @@ export const pl = {
         },
         custom_ra: {
             action: {
-                tooltip: { addSalesItem: 'Dodaj kolejną pozycję sprzedaży' },
-                button: { addSalesItem: 'Dodaj przedmiot' }
+                tooltip: {  addSalesItem: 'Dodaj kolejną pozycję sprzedaży' },
+                button: {   addSalesItem: 'Dodaj przedmiot',
+                            createInvoice: 'Utwórz',
+                            invoicePreparation: ' Tworzenie'
+                        }
             }
         },
         fullname: 'Przedstawiciel',
@@ -61,6 +64,7 @@ export const pl = {
             }
         },
         form: {
+            
             placeholder: {
                 notebox_invoice: 'Wprowadź własne adnotacje...',
             },

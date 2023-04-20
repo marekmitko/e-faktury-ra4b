@@ -14,7 +14,7 @@ import {
 } from './useSalesFormIteratorStyles';
 import { Confirm, ReOrderButtons, SimpleFormIteratorContext, RemoveItemButton, AddItemButton } from 'react-admin';
 import { SalesFormIteratorRow } from './SalesFormIteratorRow';
-import { ClearArrayButton } from './subcomponent/button/ClearArrayButton';
+import { ClearArrayButton } from '../../../../../components/invoice-confirm-modal/components/button/bin/ClearArrayButton';
 import useProductFormIterator from './logic/useProductFormField';
 import TableContainerIterator from './subcomponent/form-iterator/TableContainerIterator';
 import { AddItemRowButton } from './subcomponent/button/AddItemRowButton';
@@ -208,23 +208,23 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                                 </td>
                             )}
                                 <td>
-                            {fields.length > 0 && !disableClear && !disableRemove && (
-                                <div style={{ margin: 'auto', padding: 0 }} // className={SalesFormIteratorClasses.clear}
-                                >
-                                    <Confirm
-                                        isOpen={confirmIsOpen}
-                                        title={translate('ra.action.clear_array_input')}
-                                        content={translate('ra.message.clear_array_input')}
-                                        onConfirm={handleArrayClear}
-                                        onClose={() => setConfirmIsOpen(false)}
-                                    />
-                                    <ClearArrayButton color="error" sx={{ mt: 0.7, mr: 1  }}
-                                        onClick={() => setConfirmIsOpen(true)}
-                                    />
-                                </div>
-                            )}
-                            </td>
-                        </tr>
+                                    {fields.length > 0 && !disableClear && !disableRemove && (
+                                        <div style={{ margin: 'auto', padding: 0 }} // className={SalesFormIteratorClasses.clear}
+                                        >
+                                            <Confirm
+                                                isOpen={confirmIsOpen}
+                                                title={translate('ra.action.clear_array_input')}
+                                                content={translate('ra.message.clear_array_input')}
+                                                onConfirm={handleArrayClear}
+                                                onClose={() => setConfirmIsOpen(false)}
+                                            />
+                                            <ClearArrayButton color="error" sx={{ mt: 0.7, mr: 1  }}
+                                                onClick={() => setConfirmIsOpen(true)}
+                                            />
+                                        </div>
+                                    )}
+                                </td>
+                            </tr>
                         </Box>
                 )}
                 </tfoot>

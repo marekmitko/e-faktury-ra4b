@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useEffect, useState, } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Button, CssBaseline, Container, Card, Grid, CardContent, Typography, Box, CardHeader, useMediaQuery} from "@mui/material";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useForm, FormProvider, useFormContext, Controller, useWatch} from "react-hook-form";
 import { InvoiceCreateToolbar } from './desktop/subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput } from 'react-admin';
+import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput, Confirm } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
 import InvoiceShowModal, { InvoiceShowModal2 } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
@@ -27,6 +27,8 @@ import BuyerCardShowForm from "./personal-cards/show/buyer-invoice-form/BuyerCar
 import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST"; 
 import { SalesTableV2 } from "../components/efaV2/SalesTableV2";
 import { AdditionalTableV2 } from "../components/efaV2/AdditionalTableV2";
+import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
+import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 function getInvoiceId() {
@@ -156,15 +158,45 @@ const InvoiceCreateV2 = (props) => {
     const translate = useTranslate();
     const isSmall = useMediaQuery(`${MQ_isSmall}`);
 
+// {/* Modal PreInvoice - Confirm  confirm issuing an invoice  */}
+const [confirmIsOpen, setConfirmIsOpen] = useState(false);
+
+const log = console.log('InvoiceCreationCancelButton❌');
+const handleCancelInvoiceCreation = useCallback(() => { //todo //*edu Sprawidzić jak działa useCallback() 
+    log();
+    setConfirmIsOpen(false);
+}, [log]);
 
 
+
+const [showPreviewDialog, setShowPreviewDialog] = useState(false);
+// const postId = useWatch({ name: 'post_id' });
+
+const handleShowClick = useCallback(
+    event => {
+        event.preventDefault();
+        setShowPreviewDialog(true);
+    },
+    [setShowPreviewDialog]
+);
+
+const handleCloseShow = useCallback(() => {
+    setShowPreviewDialog(false);
+}, [setShowPreviewDialog]);
+
+
+
+
+
+
+
+// {/* END ConfirmInvoiceModal */}
 
     return(
     <>
     {/* <Create 
         redirect="show"
     component="div"  {...props} > */}
-
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
                 <form   id="new-invoice-form" onSubmit={methods.handleSubmit(onSubmit2)} >
@@ -200,7 +232,7 @@ const InvoiceCreateV2 = (props) => {
                             </Grid> */}
                         </Grid>
                     </Container>
-                    {/* <InvoiceFormLayout titleForm={<ResourceName />} >
+                    {/* <InvoiceFormLayo titleForm={<ResourceName />} >
                         <SpanningSalesTable />
                     </InvoiceFormLayout>   */}
 
@@ -210,6 +242,28 @@ const InvoiceCreateV2 = (props) => {
                         Wystaw - Submit
                     </Button> 
                 <InvoiceConfirmModal methods={methods} setOpen={setOpen} open={open}/>
+
+                    {/* validation             ....                .....  //toDo Warunki  */}
+                    {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
+                        <div style={{ margin: 'auto', padding: 0 }} // className={SalesFormIteratorClasses.clear}
+                        >
+                            <Confirm
+                                isOpen={confirmIsOpen}
+                                title={translate('ra.action.clear_array_input')}
+                                content={translate('ra.message.clear_array_input')}
+                                onConfirm={handleCancelInvoiceCreation}
+                                onClose={() => setConfirmIsOpen(false)}
+                            />
+                            <CreateInvoiceButton  onClick={() => (
+                                
+                                        setConfirmIsOpen(true)
+                                    )
+                                } 
+                            />
+                        </div>
+                    {/* )} */}
+
+
                 </form>
                 </FormProvider>
     </RecordContextProvider>
