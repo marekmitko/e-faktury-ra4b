@@ -29,6 +29,7 @@ import { SalesTableV2 } from "../components/efaV2/SalesTableV2";
 import { AdditionalTableV2 } from "../components/efaV2/AdditionalTableV2";
 import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
+import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 function getInvoiceId() {
@@ -214,12 +215,12 @@ const handleCloseShow = useCallback(() => {
                             <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
                                     // sx={{minWidth: '1000px', minHeight: '500px', display: 'flex'}}
                                 >
-                                <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                {/* <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} /> */}
                                 <BuyerReferenceCard dataPersonal={db_seller} />
                             </Grid>
                             <Grid   item xs={12}   sm={12}  md={6}   // key={tier.title}
                             >
-                                <BuyerCardShowForm dataPersonal={db_seller} />
+                                {/* <BuyerCardShowForm dataPersonal={db_seller} /> */}
                             </Grid>
                             <Grid   item xs={12}    sm={12}  md={12}    >
                                 <SalesTableV2 />

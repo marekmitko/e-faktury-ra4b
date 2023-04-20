@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Resource, 
-        ListGuesser, ShowGuesser, EditGuesser, 
+        // ListGuesser,
+        ShowGuesser, EditGuesser, 
         CustomRoutes, 
 } from 'react-admin';
 import { StyledEngineProvider } from '@mui/material/styles';
@@ -35,6 +36,21 @@ import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //  *see App
 function App(props) {
     return (
@@ -44,9 +60,9 @@ function App(props) {
 
 
             <MyAdmin 
-            // theme={CssVarsProvider}
-            dataProvider={dbjsonProvider}
-            i18nProvider={i18nProvider}
+                // theme={CssVarsProvider}
+                dataProvider={dbjsonProvider}
+                i18nProvider={i18nProvider}
             > 
             {/* <CssVarsProvider> */}
                 <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  

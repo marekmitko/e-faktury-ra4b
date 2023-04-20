@@ -1,19 +1,20 @@
 import * as React from "react";
 import JoyCard from "@mui/joy/Card";
-import { SubHeaderBuyer } from "./components/subcomponents copy/SubHeaderBuyer";
-import { AddressDetailsBuyer } from "./components/subcomponents copy/AddressDetailsBuyer";
-import { ContactDetailsBuyer  } from "./components/subcomponents copy/ContactDetailsBuyer";
+import { SubHeaderBuyer } from "./components/subcomponents/SubHeaderBuyer";
+import { AddressDetailsBuyer } from "./components/subcomponents/AddressDetailsBuyer";
+import { ContactDetailsBuyer  } from "./components/subcomponents/ContactDetailsBuyer";
 // import { ModalTitle } from "../../../invoice-confirm-modal/components/subcomponents/ModalTitle";
-import { TitleCardShow } from "./components/subcomponents copy/TitleCardShow";
+import { TitleCardShow } from "./components/subcomponents/TitleCardShow";
 import { Box, Divider } from "@mui/joy";
 import { blue, blueGrey } from '@mui/material/colors';
 import { useRecordContext, useTranslate, } from "react-admin";
 // import ClientReferenceAutocompleteInput from "../../subcomponents/ClientReferenceAutocompleteInput";
-import { useFormContext } from "react-hook-form";
-import EfaBuyerAutoInput from "../../EfaBuyerAutoInput";
+import { useFormContext, useWatch } from "react-hook-form";
+import EfaBuyerAutoInput from "./components/subcomponents/EfaBuyerAutoInput";
 import BuyerIcon from '@mui/icons-material/ShoppingCart';
-import { ContactShow } from "./ShowContentBuyer";
+import { ContactShow } from "./components/subcomponents/ShowContentBuyer";
 import { autocompleteClasses } from "@mui/material";
+import BuyerReferenceInput from "./components/BuyerReferenceInput";
 
 
 
@@ -26,6 +27,12 @@ import { autocompleteClasses } from "@mui/material";
 export default function BuyerReferenceCard({children, dataPersonal, bgcolor, icon, title}) {
     const translate = useTranslate();
     const [valueBuyerId, setValueBuyerId] = React.useState("");
+
+    const buyerId = useWatch({ name: "buyer_id" });
+
+    const defaultSort = { field: 'company', order: 'ASC' };
+
+    console.log("buyerId", buyerId);
     return (
         <> 
             <JoyCard
@@ -41,12 +48,23 @@ export default function BuyerReferenceCard({children, dataPersonal, bgcolor, ico
             >
                 <TitleCardShow title={translate('myroot.form.label.header.buyer')} />
                 <Divider   sx={{ p: 0.12, mt: 0, mx: 0, bgcolor: blueGrey[300]}} />
-                <EfaBuyerAutoInput icon={<BuyerIcon/>} valueBuyerId={valueBuyerId} setValueBuyerId={setValueBuyerId} />
-                <ContactShow resource="buyersEfaktury" id={valueBuyerId} >
-                    <SubHeaderBuyer />
-                    <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   />
-                    <ContactDetailsBuyer  capitionLabel={translate('myroot.form.label.header.contact')} />
-                </ContactShow>
+                {/* <EfaBuyerAutoInput icon={<BuyerIcon/>} valueBuyerId={valueBuyerId} setValueBuyerId={setValueBuyerId} /> */}
+                    <BuyerReferenceInput 
+                            buyerId={buyerId}
+                            source="buyer_id"
+                            reference="buyersEfaktury"
+                            // validate={required()}
+                            perPage={10000}
+                            sort={defaultSort}
+                    >
+                        {/* <ContactShow resource="buyersEfaktury" id={buyerId} > */}
+                        <ContactShow resource="buyersEfaktury" id={buyerId} >
+                            <SubHeaderBuyer />
+                            <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   />
+                            <ContactDetailsBuyer  capitionLabel={translate('myroot.form.label.header.contact')} />
+                        </ContactShow>
+                    </BuyerReferenceInput>
+                
                 {/* <AddressContent capitionLabel="Kontakt" streetAddress={dataPersonal.email} addressCity={dataPersonal.phoneNumber}   /> */}
                 {/* <ContactContent contactNumber={"NUMER RACHUNKU"} emailAdress={"56056566046508635088"} /> */}
             </JoyCard>
