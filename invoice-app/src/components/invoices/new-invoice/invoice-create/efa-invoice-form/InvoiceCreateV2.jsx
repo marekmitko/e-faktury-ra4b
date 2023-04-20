@@ -215,6 +215,7 @@ const handleCloseShow = useCallback(() => {
                                     // sx={{minWidth: '1000px', minHeight: '500px', display: 'flex'}}
                                 >
                                 <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                <BuyerReferenceCard dataPersonal={db_seller} />
                             </Grid>
                             <Grid   item xs={12}   sm={12}  md={6}   // key={tier.title}
                             >
