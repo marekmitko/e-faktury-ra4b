@@ -25,7 +25,7 @@ export default function CardSubcaption( ) {
 
     return(
         <>
-        <Box sx={{  pb: 1, mt: -0.25
+        <Box sx={{  pb: 1,
             //  mt: 1, 
         }} >
             <Box sx={{ p: 1,
@@ -39,6 +39,8 @@ export default function CardSubcaption( ) {
                 <CardOverflow
                         variant="soft"
                         sx={{
+
+                            alignItems: "flex-end", justifyContent: "flex-end" ,
                             display: 'flex',
                         p: 'var(--Card-padding)',
                         // gap: 1.5,
@@ -46,6 +48,8 @@ export default function CardSubcaption( ) {
                         mb: -1,
                         // --mui-palette-neutral-plainHoverBg:
                         bgcolor: 'neutral.50',
+                        opacity: 0.98,
+                        filter: 'alpha(opacity=98)', // IE 5-7
                         // bgcolor: 'transparent',
                       
                         // borderBottomLeftRadius: 'calc(15px - var(--variant-borderWidth, 0px))',
@@ -53,24 +57,58 @@ export default function CardSubcaption( ) {
                         borderBottomRightRadius: 'calc(8px - var(--variant-borderWidth, 0px))',
                         }}
                         >
-                        <Grid container spacing={0.5}  alignItems="flex-end" >
+                        {/* <Grid container spacing={0.5}  alignItems="flex-end" > */}
 
             
-                    <Grid item xs={12}  sx={{ m: .75,   }}   alignItems="flex-end"  justifyContent="flex-end" >
-                        <Box sx={{ display: 'flex', flexFlow: 'row nowrap', mr: 0.5,  //alignItems: "flex-end", justifyContent: "flex-end" 
+                    {/* <Grid item xs={12}  sx={{ m: .75,   }}   alignItems="flex-end"  justifyContent="flex-end" > */}
+                        <Box sx={{  display: 'flex',  p: 0.75,
+                                    alignItems: "center", justifyContent: "center",  flexFlow: 'row nowrap', mr: 0.5,  
                     }} >
-                            <Box sx={{ flex: '1 1 20em '}}>
-                                <Chip size="sm" variant="solid"   sx={{  textTransform: 'uppercase', px: 0.5, borderRadius: 1, color: 'text.secondary', bgcolor: 'transparent', mb: -0.1,   }}   >
+                            <Box sx={{ flex: '1 1 20em ', display: 'flex', flexDirection: 'column'}}>
+                                <Chip size="sm" variant="solid"   sx={{  textTransform: 'uppercase', px: 1, borderRadius: 1, color: 'text.secondary', bgcolor: 'transparent', mb: -0.1,   }}   >
                                     {/* {startLabel ? startLabel : '' } */} 
-                                    TERMIN:
-                                </Chip>
+                                    TERMIN: 
+                                </Chip> 
                             </Box>
-                            <Box sx={{ flex: '2 2 20em', }}>
-                                    <Input type="date" size="xs" sx={{ maxWidth: '115px', '& input': {pl: '5px'} }} />
+                            <Box sx={{ flex: '2 2 20em', mr: -0.25 }}>
+                                    <Input type="date" size="xs"  
+                                        slotProps={{
+                                            input: { 
+                                                autocomplete: "off",
+                                                // id: 'unique-id',
+                                            },
+                                            root: ({  focusVisible, primary, success, info}) => ({
+                                            sx:    {  
+                                                '--Input-focusedThickness': '1.5px',
+                                                '--Input-radius': '5px',
+                                                '& input': { pl: '2px',
+                                                    '--Input-placeholderOpacity': .5,  //toDo Trzeba to poprawić jakoś 
+                                                    fontSize: 'medium', color: 'neutral.700',
+                                                    maxWidth: '115px',
+                                                    textAlign: 'center'
+                                                    // width: 'max-content',
+                                                    // textTransform: 'uppercase'
+                                                //     "& svg": {  color: 'success'
+                                                // },
+                                                // "&:hover svg": {
+                                                //     color: 'var(--mui-palette-primary-800)',
+                                                // },
+                                                // color: 'var(--mui-palette-primary-800)',
+                                            }, 
+
+
+
+
+                                            }
+                                        })
+                                    }}
+                                    
+                                    
+                                    />
                             </Box>      
                         </Box>
-                    </Grid>
-                    </Grid>
+                    {/* </Grid> */}
+                    {/* </Grid> */}
                     </CardOverflow>
 
          

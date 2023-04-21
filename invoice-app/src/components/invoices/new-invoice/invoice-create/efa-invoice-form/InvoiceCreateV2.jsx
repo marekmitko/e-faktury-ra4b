@@ -30,6 +30,7 @@ import { AdditionalTableV2 } from "../components/efaV2/AdditionalTableV2";
 import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
+import InvoiceCreationFormToolbar from '../components/toolbar/InvoiceCreationFormToolbar';
 // https://codesandbox.io/s/o1jmj4lwv9?file=/src/profile/ProfileEdit.js:97-151
 
 function getInvoiceId() {
@@ -207,7 +208,7 @@ const handleCloseShow = useCallback(() => {
                     <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}    />
                     <CssBaseline />
                     <Container maxWidth="xl" component="main">
-                        <Grid container spacing={2} justifyContent='center' alignItems="flex-end">
+                        <Grid container spacing={1} justifyContent='center' alignItems="flex-end">
                             <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
                             >
                                     <Header titleForm={<ResourceName />}/> 
@@ -241,30 +242,43 @@ const handleCloseShow = useCallback(() => {
 
                     {/* // toDo to się może akurat jeszcze przydać - dobrze zrobiona tabelka  */}
                     {/* <SpanningSalesTable /> */}
-                    <Button type="button" >
-                        Wystaw - Submit
-                    </Button> 
-                <InvoiceConfirmModal methods={methods} setOpen={setOpen} open={open}/>
 
                     {/* validation             ....                .....  //toDo Warunki  */}
                     {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
                         <div style={{ margin: 'auto', padding: 0 }} // className={SalesFormIteratorClasses.clear}
                         >
-                            <Confirm
-                                isOpen={confirmIsOpen}
-                                title={translate('ra.action.clear_array_input')}
-                                content={translate('ra.message.clear_array_input')}
-                                onConfirm={handleCancelInvoiceCreation}
-                                onClose={() => setConfirmIsOpen(false)}
-                            />
-                            <CreateInvoiceButton  onClick={() => (
-                                
-                                        setConfirmIsOpen(true)
-                                    )
-                                } 
-                            />
+                    {/* {!disabled && !(disableAdd && (disableClear || disableRemove)) && ( */}
+                        <Box>
+                            {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
+                                <Box sx={{ 
+                                    pt: 2,
+                                    px: { xs: 4, sm: 8, md: 10, lg: 10 }, alignItems: 'flex-end' }} // className={SalesFormIteratorClasses.clear}
+                                >
+                                    <InvoiceCreationFormToolbar >
+
+                                        <Confirm
+                                            isOpen={confirmIsOpen}
+                                            title={translate('ra.action.clear_array_input')}
+                                            content={translate('ra.message.clear_array_input')}
+                                            onConfirm={handleCancelInvoiceCreation}  // onSubmit
+                                            onClose={() => setConfirmIsOpen(false)}
+                                        />
+                                        <CreateInvoiceButton //color="error" sx={{ mt: 0.7, mr: 1  }}
+                                            onClick={() => ( setConfirmIsOpen(true) )     } 
+                                        />
+                                        <hr/>
+                    <Button type="button" >
+                        Wystaw
+                    </Button> 
+                    <InvoiceConfirmModal methods={methods} setOpen={setOpen} open={open}/>
+                        </InvoiceCreationFormToolbar> 
+                                    </Box>
+                                {/* )} */}
+                            </Box>
+                            {/* )} */}
                         </div>
                     {/* )} */}
+                            
 
 
                 </form>

@@ -38,18 +38,19 @@ const areaMinimal =  `"name name name name name name name name name"
                 " . type type type type type type type type  "
                 " . tax tax tax tax tax tax tax tax"
                 " . count count count count count count count count"
-                " . price price price price price price price price"`;
+                " . price price price price price price price price"
+                `;
 const areaXSmall =  `"name name name name name name name name name"
                 " . type type type type type type type type  "
-                " . count count count tax tax tax tax tax  "
+                " . count count tax tax tax tax tax tax  "
                 " . price price price price price price price price "`;
 
-const areaSmall =  `"name name name name name name name name name"
-                " . tax tax tax type type type type type  "
-                " . count count count price price price price price "`;
+const areaSmall =  `"name name name name name name name name name name name name name name name name"
+                "  . tax tax type type type type type type type type type type type type type  "
+                "  . count count price price price price price price price price price price price price price "`;
 
-const areaMedium =  `"name name name name name name type type type"
-                        " qty qty count count tax tax price price price "`;
+const areaMedium =  `"name name name name name name name name name type type"
+                        " count count tax tax tax tax tax tax tax price price "`;
 
 const sxTotalCard = { 
     // flexDirection: { xs: 'row', md: 'column' },
