@@ -52,7 +52,7 @@ const OptionRenderer = () => {
     ) : null;
 };
 
-export default function EfaBuyerAutoInput(props) {
+export default function BuyerAutocompleteInput(props) {
     const translate = useTranslate();
     const { setValue } = useFormContext();
 

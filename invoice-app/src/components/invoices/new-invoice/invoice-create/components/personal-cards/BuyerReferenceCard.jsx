@@ -10,11 +10,13 @@ import { blue, blueGrey } from '@mui/material/colors';
 import { useRecordContext, useTranslate, } from "react-admin";
 // import ClientReferenceAutocompleteInput from "../../subcomponents/ClientReferenceAutocompleteInput";
 import { useFormContext, useWatch } from "react-hook-form";
-import EfaBuyerAutoInput from "./components/subcomponents/EfaBuyerAutoInput";
+import EfaBuyerAutoInput from "../../efa-invoice-form/personal-cards/EfaBuyerAutoInput";
+
 import BuyerIcon from '@mui/icons-material/ShoppingCart';
 import { ContactShow } from "./components/subcomponents/ShowContentBuyer";
 import { autocompleteClasses } from "@mui/material";
 import BuyerReferenceInput from "./components/BuyerReferenceInput";
+import BuyerPreview from "./components/BuyerPreview";
 
 
 
@@ -24,7 +26,7 @@ import BuyerReferenceInput from "./components/BuyerReferenceInput";
 // dataPersonal={db_seller}
 // />
 
-export default function BuyerReferenceCard({children, dataPersonal, bgcolor, icon, title}) {
+export default function BuyerReferenceCard({children, dataPersonal, resourcePath, bgcolor, icon, title}) {
     const translate = useTranslate();
     const [valueBuyerId, setValueBuyerId] = React.useState("");
 
@@ -52,13 +54,17 @@ export default function BuyerReferenceCard({children, dataPersonal, bgcolor, ico
                     <BuyerReferenceInput 
                             buyerId={buyerId}
                             source="buyer_id"
-                            reference="buyersEfaktury"
+                            reference={resourcePath}
                             // validate={required()}
                             perPage={10000}
                             sort={defaultSort}
                     >
+
+
+                        
+                        {/* <   BuyerPreview id={buyerId} resource={resourcePath} /> */}
                         {/* <ContactShow resource="buyersEfaktury" id={buyerId} > */}
-                        <ContactShow resource="buyersEfaktury" id={buyerId} >
+                        <ContactShow resource={resourcePath} id={buyerId} >
                             <SubHeaderBuyer />
                             <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   />
                             <ContactDetailsBuyer  capitionLabel={translate('myroot.form.label.header.contact')} />

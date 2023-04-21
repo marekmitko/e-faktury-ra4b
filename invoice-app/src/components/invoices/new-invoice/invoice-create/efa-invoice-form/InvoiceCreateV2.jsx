@@ -50,7 +50,8 @@ const ResourceName = () => {
 
 
 
-
+const buyersResourcePath = 'buyersEfaktury';
+const userResourcePath= 'data_user';
 
 
 
@@ -206,20 +207,20 @@ const handleCloseShow = useCallback(() => {
                     <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}    />
                     <CssBaseline />
                     <Container maxWidth="xl" component="main">
-                        <Grid container spacing={2} alignItems="flex-end">
+                        <Grid container spacing={2} justifyContent='center' alignItems="flex-end">
                             <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
                             >
                                     <Header titleForm={<ResourceName />}/> 
                             </Grid>
 
-                            <Grid  item xs={12}  sm={12}  md={6}   // key={tier.title}
+                            <Grid  item xs={11}  sm={11}  md={5.75}   // key={tier.title}
                                     // sx={{minWidth: '1000px', minHeight: '500px', display: 'flex'}}
                                 >
-                                {/* <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} /> */}
-                                <BuyerReferenceCard dataPersonal={db_seller} />
+                                <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} />
                             </Grid>
-                            <Grid   item xs={12}   sm={12}  md={6}   // key={tier.title}
+                            <Grid   item xs={11}   sm={11}  md={5.75}   // key={tier.title}
                             >
+                                <BuyerReferenceCard resourcePath={buyersResourcePath}/>
                                 {/* <BuyerCardShowForm dataPersonal={db_seller} /> */}
                             </Grid>
                             <Grid   item xs={12}    sm={12}  md={12}    >

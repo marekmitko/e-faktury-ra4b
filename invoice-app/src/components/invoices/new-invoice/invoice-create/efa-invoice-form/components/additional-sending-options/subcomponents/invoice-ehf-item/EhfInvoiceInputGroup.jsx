@@ -14,12 +14,16 @@ import { useFormContext, Controller, useWatch } from 'react-hook-form';
 export default function EhfInvoiceInputGroup() {
 
     const record = useRecordContext();
-    const { control, getValues } = useFormContext();
+    const { control, setValue } = useFormContext();
     const changeBuyer = useWatch({ control, name: 'buyer_id' });
+
+    if(!changeBuyer) setValue('buyer_ref', "" );
+
+
     const preInvoiceId = useWatch({ control, name: 'preInvoiceId' });
 
-    const db_buyer = getValues('dbBuyers');
-    console.log(db_buyer?.company);
+    // const db_buyer = getValues('dbBuyers');
+    // console.log(db_buyer?.company);
 
     return (
         <>
@@ -93,7 +97,7 @@ export default function EhfInvoiceInputGroup() {
                                         name={name}
                                         value={value}
                                         placeholder={changeBuyer?  changeBuyer : "Wprowadź Nabywcę" } 
-                                        defaultValue={changeBuyer ?  changeBuyer : "" } 
+                                        // defaultValue={changeBuyer ?  changeBuyer : "" } 
                                         onBlur={onBlur} // notify when input is touched
                                         onChange={onChange} // send value to hook form
                                         inputRef={ref}

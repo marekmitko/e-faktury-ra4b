@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { useQueryClient } from 'react-query';
 import {
     useGetOne, // 
     SimpleShowLayout,
@@ -7,7 +6,11 @@ import {
     ResourceContextProvider,
     Identifier,
     RaRecord,
+    useTranslate,
 } from 'react-admin';
+import { SubHeaderBuyer } from './subcomponents/SubHeaderBuyer';
+import { AddressDetailsBuyer } from './subcomponents/AddressDetailsBuyer';
+import { ContactDetailsBuyer } from './subcomponents/ContactDetailsBuyer';
 
 const BuyerPreview = <RecordType extends RaRecord = any>({
     id, resource
@@ -29,13 +32,13 @@ const BuyerPreview = <RecordType extends RaRecord = any>({
         { id: String(id) },
     );
 
-
+const translate = useTranslate();
     return (
         <ResourceContextProvider value={resource}>
             <SimpleShowLayout record={data}>
-                {/* <TextField source="id" /> */}
-                {/* <TextField source="title" /> */}
-                <TextField source="company" />
+            <SubHeaderBuyer />
+                            {/* <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   /> */}
+                            <ContactDetailsBuyer  capitionLabel={translate('myroot.form.label.header.contact')} />
             </SimpleShowLayout>
         </ResourceContextProvider>
     );

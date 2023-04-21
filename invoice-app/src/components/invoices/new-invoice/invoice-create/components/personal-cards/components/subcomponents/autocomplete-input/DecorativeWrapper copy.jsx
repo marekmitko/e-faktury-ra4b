@@ -14,15 +14,10 @@ import {
 import BuyerAddIcon from '@mui/icons-material/PersonAddAlt1'; 
 import JoyIconButton from "@mui/joy/IconButton";
 import { SaveButton, useGetList, RaRecord, RecordContextProvider, TextInput, ReferenceArrayInput, WithRecord, useRecordContext, AutocompleteInput, ReferenceInput, useCreateSuggestionContext, useCreate, SimpleForm, Create, useNotify, useRedirect, choices, Datagrid, useTranslate, useChoicesContext } from "react-admin";
-import { BuyerDataFromLayout } from "./subcomponents/BuyerDataFormLayout";
+import { BuyerDataFromLayout } from "../buyer-preview/BuyerDataFormLayout";
 // import { BuyerCard } from "../buyer/BuyerCard";
-import { PersonalDataCard } from "./subcomponents/presonal-card-container/PersonalDataCard";
-import ClientReferenceAutocompleteInput from "./subcomponents/ClientReferenceAutocompleteInput";
+// import { PersonalDataCard } from "./subcomponents/presonal-card-container/PersonalDataCard";
 import { useFormContext } from "react-hook-form";
-import { ContactShow } from "./show/buyer-invoice-form/ShowContentBuyer";
-import { Stack } from "@mui/joy";
-import { ClientCreateButton } from "./show/buyer-invoice-form/create-client-subform/ClientCreateButton";
-
 const db_buyer =  {
     id:         "",
     firstname:  "",
@@ -52,11 +47,11 @@ const OptionRenderer = () => {
     ) : null;
 };
 
-export default function EfaBuyerAutoInput(props) {
+export default function DecorativeWrapper(props) {
     const translate = useTranslate();
     const { setValue } = useFormContext();
 
-    const {handleBuyerIdChange,  source, reference} = props;
+    const {handleBuyerIdChange, children,  source, reference} = props;
 
     // const inputText = choices => `${choices.company} ${choices.id}`;
     const inputText = choices => `${choices.company}`;
@@ -99,7 +94,8 @@ export default function EfaBuyerAutoInput(props) {
                 >
                 {props.icon? props.icon : ""}
             </JoyIconButton>
-            <Stack direction="row" ml={7} mb='-10px' mr={2} spacing={2} >
+            { children ? children : null }
+            {/* <Stack direction="row" ml={7} mb='-10px' mr={2} spacing={2} >
                 <ClientReferenceAutocompleteInput
                     variant="filled"
                     source="buyer_id" reference="buyersEfaktury" 
@@ -111,7 +107,7 @@ export default function EfaBuyerAutoInput(props) {
             <Stack alignItems="center" justifyContent="center" sx={{maxWidth: '50px', mx: 2, p: .1}} mr={2}>
                     <ClientCreateButton />
                 </Stack> 
-            </Stack>
+            </Stack> */}
             </Box>
         </>
     );
@@ -143,7 +139,7 @@ export const CreateNewClient = ({handleBuyerIdChange, onClose, selectedValue, op
     return (
         <Dialog open onClose={onCancel}>
 
-            <PersonalDataCard  sx={12} sm={12} variant="outlined" headerIcon={<BuyerAddIcon />} headerTitle={"Nowy Nabywca"}>
+            {/* <PersonalDataCard  sx={12} sm={12} variant="outlined" headerIcon={<BuyerAddIcon />} headerTitle={"Nowy Nabywca"}> */}
                 <SimpleForm 
                     defaultValues={db_buyer}
                     sx={{ display: "flex", alignContent: "stretch"}}
@@ -168,7 +164,7 @@ export const CreateNewClient = ({handleBuyerIdChange, onClose, selectedValue, op
                     </BuyerDataFromLayout >
     
                 </SimpleForm>
-                    </PersonalDataCard>
+                    {/* </PersonalDataCard> */}
     
         </Dialog>
     );
