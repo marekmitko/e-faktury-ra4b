@@ -13,6 +13,9 @@ import AccountBalanceWallet from "@mui/icons-material/AccountBalanceWallet";
 import PaymentIcon from "@mui/icons-material/Payments";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import OrientationSwitch from './components/OrientationSwitch';
+import { CardOverflow, Chip, Grid } from '@mui/joy';
+import { Controller } from 'react-hook-form';
+import PaymentDueDateField from './components/PaymentDueDateField';
 
 
 export default function PaymentMethodRadioGroup({register}) {
@@ -25,7 +28,8 @@ export default function PaymentMethodRadioGroup({register}) {
     
         //toDO Added Default Values to PaymentMethod 
     return (
-        <Box sx={{ minWidth: 160, pb: 1 }} 
+        <Box sx={{ minWidth: 160, pb: -1
+         }} 
         >
 
         {/* <OrientationSwitch orientation={orientation} setOrientation={setOrientation} /> */}

@@ -110,7 +110,7 @@ export const pl = {
                 },
                 checkbox: {
                     send_invoice: 'Wyślij',
-                    payment_invoice: 'Forma płatności',
+                    payment_invoice: 'Opcje płatności',
                     postmail: 'Tradycyjną pocztą',
                     inv_email: 'Na adres email',
                     transfer: 'Przelew',
@@ -124,7 +124,7 @@ export const pl = {
                     contact: 'Kontakt',
                     additional_note: 'Uwagi do faktury',
                     optionbox_invoice: 'Opcje dodatkowe',
-                    payment_channel: 'Forma płatności',
+                    payment_channel: 'Forma i termin płatności',
                     send_invoice: 'Dodatkowe opcje wysyłki',
                     efa: 'Wystaw fakturę EHF'
                 },

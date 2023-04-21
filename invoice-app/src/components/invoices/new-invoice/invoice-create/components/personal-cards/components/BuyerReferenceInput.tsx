@@ -17,6 +17,20 @@ import DecorativeWrapper from "./subcomponents/autocomplete-input/DecorativeWrap
 import { Stack,   } from "@mui/joy";
 import { ClientCreateButton } from "../../../efa-invoice-form/personal-cards/show/buyer-invoice-form/create-client-subform/ClientCreateButton";
 
+
+
+declare namespace JSX {
+    interface IntrinsicElements {
+      foo: { props: any;   };
+    }
+  }
+
+
+
+
+
+
+
 // import PostQuickCreate from "./PostQuickCreate";
 // import PostPreview from "./PostPreview";
 

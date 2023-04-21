@@ -4,7 +4,7 @@ import { Container, GlobalStyles, TableContainer, TableFooter, TablePagination, 
 
 import { MQ_isMinimal, MQ_isSmall, MQ_isMedium, MQ_isXSmall, MQ_isLarge} from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
 import JoyBox from "@mui/joy/Box";
-import { Card, Divider } from "@mui/joy";
+import { Box, Card, Divider } from "@mui/joy";
 import { lineLayout } from "../../efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/styledLineLayout";
 import { BorderLinebox, FlexboxContainer, FullwidthWraper, InnerLinebox } from "../../efa-invoice-form/components/layout/RowLineLayout";
 import SwitchNetOrGross from "../../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/SwitchNetOrGross";
@@ -15,6 +15,8 @@ import AdditionalSendOptionBox from "../../efa-invoice-form/components/additiona
 import LabelOptionCard from "../../efa-invoice-form/components/additional-sending-options/subcomponents/LabelOptionCard";
 import PaymentMethodRadioGroup from "../../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/PaymentMethodRadioGroup";
 import { useTranslate } from 'react-admin';
+import CardSubcaption from '../../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/components/CardSubcaption';
+import CardSubcaptionV2 from '../../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/components/CardSubcaptionV2';
 
 
 
@@ -68,13 +70,18 @@ export const AdditionalTableV2 = props => {
                                              //flexWrap: "wrap", 
                                     
                                         }}>
-                                            <JoyBox  sx={{ flex: is650px ? '' : '1 160px', maxWidth: {  md: '30%', lg: '18.5%' } }}>
+                                            <JoyBox  sx={{ flex: is650px ? '' : '1 160px', maxWidth: {  md: '30%', lg: '20%' },  minWidth: { xs: '200px', sm: '220px',  md: '220px', lg: '220px' }  }}>
                                                 {/* <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} /> */}
                                                 <LabelOptionCard label={translate('myroot.form.label.header.payment_channel')} >
                                                     <PaymentMethodRadioGroup  register={register} />
+                                                    <Box //sx={{ transform: 'scale(0.9)', }}
+                                                    >
+                                                    <CardSubcaption />
+                                                        {/* <CardSubcaptionV2 /> */}
+                                                    </Box>
                                                 </LabelOptionCard>
                                             </JoyBox>
-                                            <JoyBox  sx={{ flex: is650px ? '' : '1 250px', maxWidth: {  md: '50%',  lg: '30%' } }}>
+                                            <JoyBox  sx={{ flex: is650px ? '' : '1 250px', maxWidth: {  md: '50%',  lg: '30%' }, minWidth: { xs: '200px', sm: '200px',  md: '200px', lg: '200px' }}}>
                                                 <LabelOptionCard label={translate('myroot.form.label.header.send_invoice')} >
                                                         <AdditionalSendOptionBox  
                                                          control={control} register={register} setValue={setValue}

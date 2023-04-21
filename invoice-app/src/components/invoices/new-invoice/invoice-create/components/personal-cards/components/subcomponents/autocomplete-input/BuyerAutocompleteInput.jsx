@@ -21,7 +21,8 @@ import ClientReferenceAutocompleteInput from "./subcomponents/ClientReferenceAut
 import { useFormContext } from "react-hook-form";
 import { ContactShow } from "./show/buyer-invoice-form/ShowContentBuyer";
 import { Stack } from "@mui/joy";
-import { ClientCreateButton } from "./show/buyer-invoice-form/create-client-subform/ClientCreateButton";
+import { ClientCreateButton } from "./create-client-subform/ClientCreateButton";
+
 
 const db_buyer =  {
     id:         "",

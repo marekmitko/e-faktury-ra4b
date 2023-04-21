@@ -84,11 +84,10 @@ export default function OldCustomAutocompleteInput(props) {
         //     // {...props} 
         // >
             <AutocompleteInput 
-                variant={variant ? variant : "standard" }
-                // placeholder="ffds"
-                // size="small"
-                fullWidth 
-                onChange={(event) => {
+            // placeholder="ffds"
+            // size="small"
+            fullWidth 
+            onChange={(event) => {
                     setValue('buyer_id', `${event}`);
                     setValue('buyer_ref', `${choiceName}`);
                     // setInputValue(() => event.target.value);
@@ -109,31 +108,48 @@ export default function OldCustomAutocompleteInput(props) {
                 // createItemLabel="Add a New Client"
                 matchSuggestion={matchSuggestion}
                 // label="myroot.form.label.input.buyerAutocomplete"
-                label={""}
+                label={false}
                 
                 // endAdornment={    <BuyerIcon /> }
+                
+                // & .RaSelectInput-textField83 × 7
 
-                // & .RaSelectInput-textField
-
-                 
+                variant={variant ? variant : "standard" }
                 // endDecoration={<p>dsa</p>}
-                sx={{ mb: -1.5, fontSize: '15px',   // backgroundColor: 'blue', 
-                    "& fieldset": {  p: 0 }, 
+                sx={{ mb: -1.8, mt: .5,  // backgroundColor: 'blue', 
+                // "& fieldset": {  //p: 0,
+                //     backgroundColor: 'blue', border: '2px solid black',
+                    //     }, 
+                    // pr: .5,
+                    pb: 0,
+
+                    "& .MuiAutocomplete-inputRoot":  {  
+                            backgroundColor: 'neutral.100', 
+                            borderTopLeftRadius: '15px',
+                            borderTopRightRadius: '15px',
+                            mt: 0,   
+                            mb: 0,
+                            pl: 1
+                        },
+
+
                     "& input": { p: 0  , m: 0,  
-                    'focusedHighlight': "none",
+                            // 'focusedHighlight': "none", 
+                         
+                        },
+                    '& .MuiInput-input': { // backgroundColor: 'blue', 
+                    color: 'text.primary.500',   fontSize: '1.5rem' },
 
-                        '&  SelectInput-textField': { backgroundColor: 'blue'  }
+                    "& .RaAutocompleteInput-textField": {
+                            // fontSize: '2.2rem',  backgroundColor: 'blue', 
+                            // borderRadius: '25%',
+                    
                     },
-                    '& .MuiInput-input': { //backgroundColor: 'whitesmoke', 
-                    color: 'text.primary.500', mt: -1, fontSize: '1.2rem' },
 
-
-                    '& .MuiSelectInput-textField': { backgroundColor: 'blue', fontSize: '3rem' },
-                    "& .MuiAutocomplete-endAdornment": { mt: -1 },
+                    "& .MuiAutocomplete-endAdornment": { mt: 0, px: 1 },
                     // "& svg": {  color: 'neutral.600', mt: -1 }
                 }}
                 {...props}
-                placeholder="dsads"
                 />
         // </ReferenceInput >
     );
