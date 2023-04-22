@@ -113,159 +113,176 @@ export const SalesTableV2 = props => {
     const is650px = useMediaQuery('(max-width:650px)');
 
     const [entryPriceIsGross, setEntryPriceOnGross ] = useState(false);
+
+
+
+    const postSave = (data) => {
+        console.log("✅SalesTAB", data);
+    };
+
+
+
+
+
+
+
+
     return(
-    <Create component='div'  {...props}>
-        {/* <SimpleForm> */}
-        <Form onSubmit={onSubmit}  >
-        <div>
-            <JoyGlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }} />
-            <JoyCssBaseline />
-            <Container
-                maxWidth="xl"
-                component="main"
-            >
-                <Title title=" - list" />
-                {/* <small> main container - component: TableContainer </small> */}
-                <TableContainer className="tableContainer" sx={{  width: '100%' }}>
-                    <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
-                        <SalesFormIterator  
-                            entryPriceIsGross={entryPriceIsGross}
-                        
-                        
-                            isXSmall={isXSmall} fullWidth // ref={memberRef} 
-                            wraperSectionItem={ 
-                                configGridBox_itemRow
-                                // isLarge? {display: 'flex'} : cssItemNoLarge
-                            }
-                            tableHeader={  ( isLarge )?  
-                                                    <SalesTableHeader   >
-                                                        <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
-                                                    </SalesTableHeader> 
-                                                    : (isMedium ?       null     :                                         
+        <>
+            {/* <Create component='div'//  {...props}
+            > */}
+                {/* <SimpleForm> */}
+                {/* <Form onSubmit={postSave} id="sales_table_form"  > */}
+                <div>
+                    <JoyGlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }} />
+                    <JoyCssBaseline />
+                    <Container
+                        maxWidth="xl"
+                        component="main"
+                    >
+                        <Title title=" - list" />
+                        {/* <small> main container - component: TableContainer </small> */}
+                        <TableContainer className="tableContainer" sx={{  width: '100%' }}>
+                            <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
+                                <SalesFormIterator  
+                                    entryPriceIsGross={entryPriceIsGross}
+                                
+                                
+                                    isXSmall={isXSmall} fullWidth // ref={memberRef} 
+                                    wraperSectionItem={ 
+                                        configGridBox_itemRow
+                                        // isLarge? {display: 'flex'} : cssItemNoLarge
+                                    }
+                                    tableHeader={  ( isLarge )?  
                                                             <SalesTableHeader   >
                                                                 <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
-                                                            </SalesTableHeader>  )
-                                        }
-                            sxTableBody={{
-                                // display: 'flex', p: 0,   
-                                bgcolor: isLarge ? 'background.paper' : 'transparent', 
-                                borderRadius: 1, flexDirection: 'column' }}
-                            
-                            sxItemRow={ {
-                            //   ...configGridBox_itemRow,
-                                    //   flexFlow: isXSmall ? 'column wrap' : 'row nowrap',
-                                    bgcolor: 'transparent', borderRadius: 1,  
-                                }}
-                                sxItemContent={ {  // mainContent in ItemRow
-                                    display: 'flex', flexWrap: 'wrap', borderRadius: 2,   my: 0, p: 0,
-                                    width: 'auto',  // width: '100%'
-                                    // bgcolor: isLarge ? 'transparent' : 'background.paper' , 
-                                    boxShadow: isLarge ? 0 : 1 ,
-                                }}
-                                    sxInputContent={{ bgcolor: 'transparent', // onlyInputPart in ItemRow
-                                        ...configGridBox_inputItemBox,
-                                        gridTemplateAreas: isMedium ? (
-                                                                    isSmall ? ( isXSmall ? ( isMinimal? areaMinimal : areaXSmall ) : areaSmall 
-                                                                        ): areaMedium 
-                                                                    )  : globalArea,
-                                }}
-                                    sxSumPriceBox={{ 
-                                    // width: '100%',
-                                    display: 'flex', 
-                                    flexDirection: isMinimal ? 'column' : 'row'
-                                }}
-                                getItemLabel={(index) => (<ItemIndexChip cssBox={{ mb: -2 }} index={++index} />)}  
-                        > 
-                            <InputTextSelected 
-                                    // label="myroot.form.label.inputbox_itemrow.itemNameField"
-                                    label=''
-                                    source="product_name" 
-                                    choiceOptions={OptionRecord.choice_product_list} 
-                                    sx={{   gridArea: 'name'   }} 
-                                    placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
-                            />
-                            <SelectInputItem
-                                    source="product_type" 
-                                    label="myroot.form.label.inputbox_itemrow.typeItem"
-                                    sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
-                                    defaultValue="placeholder" 
-                                    options={typeOptions}  
-                                    variant="outlined"
-                            />
-                            <SelectInputItem
-                                    source="product_vat" 
-                                    label="myroot.form.label.inputbox_itemrow.taxItem"
-                                    sx={{ gridArea: 'tax', '& svg': { mr: -0.5 }  }} 
-                                    defaultValue="placeholder" 
-                                    options={taxOptions}  
-                                    variant="outlined"
-                            />
-                            <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
-                                sx={{ gridArea: 'price', width: "100%", 
-                                visibility: entryPriceIsGross ? 'hidden' : 'visible',
-                                display: entryPriceIsGross ? 'hidden' : '' }}
-                                label="myroot.form.label.inputbox_itemrow.netItem" 
-                            />
-                            <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
-                                sx={{ gridArea: 'price', width: "100%", 
-                                visibility: entryPriceIsGross ? 'visible' : 'hidden',
-                                display: entryPriceIsGross ? '' : 'hidden'      }}
-                                label="myroot.form.label.inputbox_itemrow.grossItem" 
-                            />
-                            <NumberInput source="product_count"
-                                label="myroot.form.label.inputbox_itemrow.qtyItem"
-                                variant="outlined" helperText={false}
-                                sx={{ gridArea: 'count', marginTop: "8px", '& input': { mr: -1 } }}
-                            />
-                        </SalesFormIterator>
-                    </ArrayInput>
-                    <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
-                    >
-                        <FlexboxContainer component='tr' sxCSS={{ //display: 'flex', 
-                                flexDirection: isXSmall ? 'column' : 'row',
-                                bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
-                            }}
-                        >
-                            <BorderLinebox sxCSS={{ order: -1 }} /> 
-                            <InnerLinebox sxCSS={ { order: 1 } }    >
-                            <JoyBox  sx={{ 
-                                    // boxShadow: 'none',
-                                    bgcolor: 'transparent', 
-                                    flexGrow: 1, 
-                                    boxShadow: 'none',
-                                    display: 'flex',
-                                    my: 1
-                                }}
+                                                            </SalesTableHeader> 
+                                                            : (isMedium ?       null     :                                         
+                                                                    <SalesTableHeader   >
+                                                                        <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
+                                                                    </SalesTableHeader>  )
+                                                }
+                                    sxTableBody={{
+                                        // display: 'flex', p: 0,   
+                                        bgcolor: isLarge ? 'background.paper' : 'transparent', 
+                                        borderRadius: 1, flexDirection: 'column' }}
+                                    
+                                    sxItemRow={ {
+                                    //   ...configGridBox_itemRow,
+                                            //   flexFlow: isXSmall ? 'column wrap' : 'row nowrap',
+                                            bgcolor: 'transparent', borderRadius: 1,  
+                                        }}
+                                        sxItemContent={ {  // mainContent in ItemRow
+                                            display: 'flex', flexWrap: 'wrap', borderRadius: 2,   my: 0, p: 0,
+                                            width: 'auto',  // width: '100%'
+                                            // bgcolor: isLarge ? 'transparent' : 'background.paper' , 
+                                            boxShadow: isLarge ? 0 : 1 ,
+                                        }}
+                                            sxInputContent={{ bgcolor: 'transparent', // onlyInputPart in ItemRow
+                                                ...configGridBox_inputItemBox,
+                                                gridTemplateAreas: isMedium ? (
+                                                                            isSmall ? ( isXSmall ? ( isMinimal? areaMinimal : areaXSmall ) : areaSmall 
+                                                                                ): areaMedium 
+                                                                            )  : globalArea,
+                                        }}
+                                            sxSumPriceBox={{ 
+                                            // width: '100%',
+                                            display: 'flex', 
+                                            flexDirection: isMinimal ? 'column' : 'row'
+                                        }}
+                                        getItemLabel={(index) => (<ItemIndexChip cssBox={{ mb: -2 }} index={++index} />)}  
+                                > 
+                                    <InputTextSelected 
+                                            // label="myroot.form.label.inputbox_itemrow.itemNameField"
+                                            label=''
+                                            source="product_name" 
+                                            choiceOptions={OptionRecord.choice_product_list} 
+                                            sx={{   gridArea: 'name'   }} 
+                                            placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
+                                    />
+                                    <SelectInputItem
+                                            source="product_type" 
+                                            label="myroot.form.label.inputbox_itemrow.typeItem"
+                                            sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
+                                            defaultValue="placeholder" 
+                                            options={typeOptions}  
+                                            variant="outlined"
+                                    />
+                                    <SelectInputItem
+                                            source="product_vat" 
+                                            label="myroot.form.label.inputbox_itemrow.taxItem"
+                                            sx={{ gridArea: 'tax', '& svg': { mr: -0.5 }  }} 
+                                            defaultValue="placeholder" 
+                                            options={taxOptions}  
+                                            variant="outlined"
+                                    />
+                                    <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
+                                        sx={{ gridArea: 'price', width: "100%", 
+                                        visibility: entryPriceIsGross ? 'hidden' : 'visible',
+                                        display: entryPriceIsGross ? 'hidden' : '' }}
+                                        label="myroot.form.label.inputbox_itemrow.netItem" 
+                                    />
+                                    <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
+                                        sx={{ gridArea: 'price', width: "100%", 
+                                        visibility: entryPriceIsGross ? 'visible' : 'hidden',
+                                        display: entryPriceIsGross ? '' : 'hidden'      }}
+                                        label="myroot.form.label.inputbox_itemrow.grossItem" 
+                                    />
+                                    <NumberInput source="product_count"
+                                        label="myroot.form.label.inputbox_itemrow.qtyItem"
+                                        variant="outlined" helperText={false}
+                                        sx={{ gridArea: 'count', marginTop: "8px", '& input': { mr: -1 } }}
+                                    />
+                                </SalesFormIterator>
+                            </ArrayInput>
+                            <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 
+                            >
+                                <FlexboxContainer component='tr' sxCSS={{ //display: 'flex', 
+                                        flexDirection: isXSmall ? 'column' : 'row',
+                                        bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
+                                    }}
                                 >
-                                    <div style={{ width: '100%' }}>
-                                    <div style={{ display: 'flex' }}>
-                                    <JoyBox sx={{ display: 'grid',  
-                                        gridTemplateColumns: {xs: '1fr', sm: '1fr', md: '1fr 1fr'},
-                                        // gap: 1,
-                                        rowGap: 1.5,
-                                        columnGap: {xs: 0, sm: 1, md: 2},
-                                        gridTemplateRows: 'auto',
-                                    }} >
+                                    <BorderLinebox sxCSS={{ order: -1 }} /> 
+                                    <InnerLinebox sxCSS={ { order: 1 } }    >
+                                    <JoyBox  sx={{ 
+                                            // boxShadow: 'none',
+                                            bgcolor: 'transparent', 
+                                            flexGrow: 1, 
+                                            boxShadow: 'none',
+                                            display: 'flex',
+                                            my: 1
+                                        }}
+                                        >
+                                            <div style={{ width: '100%' }}>
+                                            <div style={{ display: 'flex' }}>
+                                            <JoyBox sx={{ display: 'grid',  
+                                                gridTemplateColumns: {xs: '1fr', sm: '1fr', md: '1fr 1fr'},
+                                                // gap: 1,
+                                                rowGap: 1.5,
+                                                columnGap: {xs: 0, sm: 1, md: 2},
+                                                gridTemplateRows: 'auto',
+                                            }} >
 
-                                        <JoyBox sx={{ flexBasis: '1 1 auto',}}>
-                                            <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} />
-                                        </JoyBox>
-                                            <TotalCostCardV2 sxCSS={{ ...sxTotalCard,  flex: '0 0 auto', order: { xs: -1, sm: -1, md: 1, lg: 1 } }} />
-                                    </JoyBox>
-                                    </div>
-                                    </div>
-                                </JoyBox> 
-                            </InnerLinebox>
-                            <BorderLinebox  sxCSS={{ order: 3 }} />
-                        </FlexboxContainer>
-                    </FullwidthWraper>
-                </TableContainer>
-            </Container>
-        </div>
-        {/* <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5, pb: 0, mb: 0 }}  >
-            <input type='submit' />
-        </Divider> */}
-        </Form>
-    </Create>
-);
+                                                <JoyBox sx={{ flexBasis: '1 1 auto',}}>
+                                                    <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} />
+                                                </JoyBox>
+                                                    <TotalCostCardV2 sxCSS={{ ...sxTotalCard,  flex: '0 0 auto', order: { xs: -1, sm: -1, md: 1, lg: 1 } }} />
+                                            </JoyBox>
+                                            </div>
+                                            </div>
+                                        </JoyBox> 
+                                    </InnerLinebox>
+                                    <BorderLinebox  sxCSS={{ order: 3 }} />
+                                </FlexboxContainer>
+                            </FullwidthWraper>
+                        </TableContainer>
+                    </Container>
+                </div>
+                <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5, pb: 0, mb: 0 }}  >
+                    {/* <input type='submit' /> */}
+                </Divider>
+                {/* </Form> */}
+            {/* </Create> */}
+        </>
+    );
 };

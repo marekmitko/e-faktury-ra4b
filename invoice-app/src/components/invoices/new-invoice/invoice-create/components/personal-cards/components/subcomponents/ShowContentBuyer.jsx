@@ -90,8 +90,8 @@ export const ContactShow2 = ({children, ...props}) => {
 
 
 
-    const record2 = useRecordContext();
-    console.log('ContactShow@@', record2);
+    // const record2 = useRecordContext(); //BUG // toDo ? Nawet nie wiem po co to tu jest 
+    // console.log('ContactShow@@', record2);
 
 
 

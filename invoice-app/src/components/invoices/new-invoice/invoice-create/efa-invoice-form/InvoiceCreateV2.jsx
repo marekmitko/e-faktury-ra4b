@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useForm, FormProvider, useFormContext, Controller, useWatch} from "react-hook-form";
 import { InvoiceCreateToolbar } from './desktop/subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput, Confirm } from 'react-admin';
+import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput, Confirm, SaveButton, FormGroupsProvider, useAugmentedForm } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './defaultValuesInvoice';
 import InvoiceShowModal, { InvoiceShowModal2 } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
@@ -40,6 +40,7 @@ function getInvoiceId() {
     });
 }   
 
+const log = console.log('InvoiceCreationCancelButton❌');
 
 const ResourceName = () => {
     const resource = useResourceContext();
@@ -68,7 +69,7 @@ const InvoiceCreateV2 = (props) => {
     const {user_company} = user_db;
     const buyerOrderNo = invoiceId;
     const record = { user_db, user_ref: user_company, choice_product_list: productOptions  };
-    console.log("RECORD:", record);
+    // console.log("RECORD:", record);
     // { handleSubmit, reset, control } 
     const methods = useForm({ 
         defaultValues: { 
@@ -94,7 +95,7 @@ const InvoiceCreateV2 = (props) => {
         }
     });
     
-    console.log("invId 📟:", invoiceId);
+    // console.log("invId 📟:", invoiceId);
 
         const [create, { isLoading, error }] = useCreate();
         const myDataProvider = useDataProvider();
@@ -161,10 +162,15 @@ const InvoiceCreateV2 = (props) => {
     const translate = useTranslate();
     const isSmall = useMediaQuery(`${MQ_isSmall}`);
 
+// {/* FormProvider - Config Form to InvoiceCreate  */}
+
+const { form, formHandleSubmit } = useAugmentedForm(props)
+
+
+
 // {/* Modal PreInvoice - Confirm  confirm issuing an invoice  */}
 const [confirmIsOpen, setConfirmIsOpen] = useState(false);
 
-const log = console.log('InvoiceCreationCancelButton❌');
 const handleCancelInvoiceCreation = useCallback(() => { //todo //*edu Sprawidzić jak działa useCallback() 
     log();
     setConfirmIsOpen(false);
@@ -202,6 +208,9 @@ const handleCloseShow = useCallback(() => {
     component="div"  {...props} > */}
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
+                <FormGroupsProvider  {...form} >
+
+               
                 <form   id="new-invoice-form" onSubmit={methods.handleSubmit(onSubmit2)} >
                 {/* <form   id="new-invoice-form" onSubmit={() => setOpen(true) && methods.handleSubmit(onSubmit2)} > */}
                 {/* <form onSubmit={save} record={data}> */}
@@ -282,6 +291,10 @@ const handleCloseShow = useCallback(() => {
 
 
                 </form>
+    <SaveButton  label="SaveTable2" 
+                form="sales_table_form"
+            />
+             </FormGroupsProvider>
                 </FormProvider>
     </RecordContextProvider>
     </>

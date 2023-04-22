@@ -29,8 +29,6 @@ export default function TotalCostCardV2(props) {
     let totalNet = getTotalPrice(results, "product_price_netto");
     let totalTax = getTotalTax(results );
 
-console.log("totalTax", totalTax);
-
     return (
         <Card
             variant="plain"
