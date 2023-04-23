@@ -6,9 +6,8 @@ export default function InvoiceCreationFormToolbar({children}) {
     const notify = useNotify();
     return (
         <Toolbar sx={{ gap: '10px', justifyContent: 'flex-end'}}>
-            { children ? children : null }
             <SaveButton  label="SaveTable" 
-                form="new-invoice-form"
+                // form="new-invoice-form"
             />
             <SaveButton 
                 label="Save and add"
@@ -22,6 +21,7 @@ export default function InvoiceCreationFormToolbar({children}) {
                 variant="text"
             />
             
+            { children ? children : null }
         </Toolbar>
     );
 }

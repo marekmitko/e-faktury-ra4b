@@ -69,6 +69,13 @@ export const pl = {
                 notebox_invoice: 'Wprowadź własne adnotacje...',
             },
             label: {
+                button: {
+                    invoiceConfirmModal: {
+                        issueConfirmedInvoice: "Wystaw",
+                        issueConfirmedInvoiceAndAddNew: "Wystaw i dodaj",
+                        cancelIssueInvoice: "Anuluj"
+                    }
+                },
                 header_salesTable: {
                     itemName: 'Przedmiot sprzedaży',
                     itemType: 'Typ',

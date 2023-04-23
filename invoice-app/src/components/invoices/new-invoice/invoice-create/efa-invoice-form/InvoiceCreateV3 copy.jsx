@@ -26,6 +26,7 @@ import { CancelCreationButton } from '../components/invoice-confirm-modal/compon
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
 import InvoiceCreationFormToolbar from '../components/toolbar/InvoiceCreationFormToolbar';
+import InvoiceConfirmModalV4 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV4';
 
 
 
@@ -167,11 +168,11 @@ const { form, formHandleSubmit } = useAugmentedForm(props)
 
 // {/* Modal PreInvoice - Confirm  confirm issuing an invoice  */}
 const [confirmIsOpen, setConfirmIsOpen] = useState(false);
-const log = () => console.log("log()");
-const handleCancelInvoiceCreation = useCallback(() => { //todo //*edu Sprawidzić jak działa useCallback() 
-    log();
-    setConfirmIsOpen(false);
-}, [log]);
+// const log = () => console.log("log()");
+// const handleCancelInvoiceCreation = useCallback(() => { //todo //*edu Sprawidzić jak działa useCallback() 
+//     log();
+//     setConfirmIsOpen(false);
+// }, [log]);
 
 
 
@@ -208,7 +209,8 @@ const onSubmitTEST = ( data ) => console.info("1️⃣2️⃣👍🏻👍🏻Sub
         <RecordContextProvider value={record}>
             <FormProvider {...methods}>
                 <FormGroupsProvider  {...form} >
-                    <form   id="new-invoice-form" onSubmit={methods.handleSubmit(onSubmitTEST)} >
+                    <form  onSubmit={methods.handleSubmit(onSubmitTEST)} //  id="new-invoice-form" 
+                    >
                         
                     {/* <form   id="new-invoice-form" onSubmit={() => setOpen(true) && methods.handleSubmit(onSubmit2)} > */}
                     {/* <form onSubmit={save} record={data}> */}
@@ -255,12 +257,12 @@ const onSubmitTEST = ( data ) => console.info("1️⃣2️⃣👍🏻👍🏻Sub
                                         px: { xs: 4, sm: 8, md: 10, lg: 10 }, alignItems: 'flex-end' }} // className={SalesFormIteratorClasses.clear}
                                     >
                                         <InvoiceCreationFormToolbar >
-
+{/* 
                                             <Confirm
                                                 isOpen={confirmIsOpen}
                                                 title={translate('ra.action.clear_array_input')}
                                                 content={translate('ra.message.clear_array_input')}
-                                                onConfirm={handleCancelInvoiceCreation}  // onSubmit
+                                                // onConfirm={handleCancelInvoiceCreation}  // onSubmit
                                                 onClose={() => setConfirmIsOpen(false)}
                                                 />
                                             <CreateInvoiceButton //color="error" sx={{ mt: 0.7, mr: 1  }}
@@ -268,23 +270,21 @@ const onSubmitTEST = ( data ) => console.info("1️⃣2️⃣👍🏻👍🏻Sub
                                                 />
                         <Button type="button" >
                             Wystaw
-                        </Button> 
-                        <InvoiceConfirmModalV3 methods={methods} //setOpen={setOpen} open={open}
-                                    onChange={(data) => {
-                                        // tutaj mógłbym poprosić o invoiceId z serwera
-                                        console.info("🟢🟢🟢ModalInput Change", data);
-                                    }}
-                        />
+                        </Button>  */}
                                     </InvoiceCreationFormToolbar> 
+                                    <InvoiceConfirmModalV4 methods={methods} //setOpen={setOpen} open={open}
+                                        onChange={(data) => {
+                                            // tutaj mógłbym poprosić o invoiceId z serwera
+                                            console.info("🟢🟢🟢ModalInput Change", data);
+                                        }}
+                                    />
                                         </Box>
                                     {/* )} */}
                                 </Box>
                                 {/* )} */}
                             </div>
                         {/* )} */}
-                        {/* <SaveButton  label="SaveTable2"    form="new-invoice-form"   /> */}
-                        {/* <hr /> */}
-                        <input  id="new-invoice-form" value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"          />
+                        <input   value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"          />
                     </form>
              </FormGroupsProvider>
                 </FormProvider>

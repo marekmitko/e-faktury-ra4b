@@ -26,7 +26,7 @@ const MyLayout = ( props ) => (
             </div>
         </Layout> 
             <hr />
-            <FooterLayoutFragment />\
+            <FooterLayoutFragment />
     </>
 );
     
