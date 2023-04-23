@@ -14,7 +14,7 @@ import { ConfirmButton } from "../invoice-confirm-modal/efa-invoice-show/Confirm
 import { set } from "lodash";
 import { onSubmitModal } from "./onSubmitModal";
 import { ConfirmCreateButton } from "../invoice-confirm-modal/ConfirmCreateButton";
-import InvoiceConfirmModal from "../invoice-confirm-modal/components/InvoiceConfirmModal";
+import InvoiceConfirmModalV3 from "../invoice-confirm-modal/components/InvoiceConfirmModalV3";
 import { productOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
 import Header from './desktop/invoice-ehf-box/invoice-headers';
 import SellerIcon from "@mui/icons-material/Store";
@@ -128,11 +128,13 @@ const InvoiceCreateV3 = (props) => {
             "issuedInvoices_list",
             {  data },
             { onSuccess: () => {
-                    // const invoice_id = 
-                    // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
-                    // const record = useRecordContext
-                    navigate('/issuedInvoices_list');
-                } }
+                // const invoice_id = 
+                // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
+                // const record = useRecordContext
+                navigate('/issuedInvoices_list');
+                    notify('Twoja faktura została utworzona pomyślnie');
+                } 
+            }
         );
     };
 
@@ -264,34 +266,25 @@ const onSubmitTEST = ( data ) => console.info("1️⃣2️⃣👍🏻👍🏻Sub
                                             <CreateInvoiceButton //color="error" sx={{ mt: 0.7, mr: 1  }}
                                                 onClick={() => ( setConfirmIsOpen(true) )     } 
                                                 />
-                                                </InvoiceCreationFormToolbar> 
                         <Button type="button" >
                             Wystaw
                         </Button> 
-                        <InvoiceConfirmModal methods={methods} //setOpen={setOpen} open={open}
+                        <InvoiceConfirmModalV3 methods={methods} //setOpen={setOpen} open={open}
                                     onChange={(data) => {
                                         // tutaj mógłbym poprosić o invoiceId z serwera
                                         console.info("🟢🟢🟢ModalInput Change", data);
                                     }}
-                        
-                        
-                        
                         />
+                                    </InvoiceCreationFormToolbar> 
                                         </Box>
                                     {/* )} */}
                                 </Box>
                                 {/* )} */}
                             </div>
                         {/* )} */}
-                <SaveButton  label="SaveTable2"    form="new-invoice-form"   />
-
-
-                <hr />
-
-                <input
-          style={{ backgroundColor: "white", color: "blue" }}
-          type="submit"
-        />
+                        {/* <SaveButton  label="SaveTable2"    form="new-invoice-form"   /> */}
+                        {/* <hr /> */}
+                        <input  id="new-invoice-form" value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"          />
                     </form>
              </FormGroupsProvider>
                 </FormProvider>

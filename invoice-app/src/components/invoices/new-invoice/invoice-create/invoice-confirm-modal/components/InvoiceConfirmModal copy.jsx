@@ -10,7 +10,7 @@ import JoyCard from '@mui/joy/Card';
 import { useFormContext, useForm } from 'react-hook-form';
 // import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../../db/fnInvoiceForm';
 // import MyButton from '@mui/material/Button';
-import { useRedirect } from 'react-admin';
+import { useCreate, useRedirect } from 'react-admin';
 import BuyerModalShow from '../components/bin/BuyerModalShow';
 import MuiButton from '@mui/material/Button';
 import PaymentModalShow from '../components/bin/PaymentModalShow';
@@ -29,11 +29,15 @@ import ActionCheck from '@mui/icons-material/CheckCircle';
 
 
 export default function InvoiceConfirmModal(props) {
-    const { children, open, setOpen, create, navigate, methods, 
+    const { children, open, setOpen, navigate, methods, // create,
         ConfirmIcon = ActionCheck,
         // ...rest 
     } = props;
 
+
+
+//  MY TEST MODAL RHF
+    
     const [isModalVisible, setModalVisible] = React.useState(false);
 
     const showModal = () => setModalVisible(true);
@@ -58,16 +62,51 @@ export default function InvoiceConfirmModal(props) {
         hideModal();
       };
 
+    //  END MY TEST MODAL RHF
 
-//  MY TEST MODAL RHF
-
-
+      
+      
     const dataForm = methods.getValues();
     const buyerCompany = dataForm.dbBuyers ? dataForm.dbBuyers.company : "" ;
     const buyerOrgNo = dataForm.dbBuyers ? dataForm.dbBuyers.org_nr : "";
     const productsArr = transformArrayProducts(dataForm.products);
     console.info('🆕🐱‍🏍getValues', dataForm);
     console.info('🆕🐱‍🏍transformArrayProducts', productsArr);
+
+
+    
+    //  My test ButtonCreate handleIssueConfirmedInvoice
+    
+
+    
+    
+    
+    
+    // const [create, { isLoading, error }] = useCreate( 'issuedInvoices_list', { data: dataForm  } );
+    const [create, { isLoading, error }] = useCreate();
+    
+    const myData = {...dataForm};
+    const myProducts = dataForm.products;
+    // myData.products = {...dataForm};
+    
+    console.log('💠💠💠✅🐱‍🏍Finally data', dataForm );
+    
+    const handleIssueConfirmedInvoice  = () => {
+        create('issuedInvoices_list', { data: myData  } )
+    }
+    if (error) { return <p>ERROR</p>; }
+    
+    
+    // const dataLog = () =>  console.log('💠💠💠✅🐱‍🏍Finally data', dataForm, '💠💠💠✅🐱‍🏍Products',  myProducts  );
+    const dataLog = () => {
+        console.log('💠💠💠✅🐱‍🏍Finally data',   dataForm  );
+        console.log('💠💠💠✅🐱‍🏍Products',  myProducts  );
+
+    } 
+
+    // return <button disabled={isLoading} onClick={handleClick}>Like</button>;
+    
+    //  END My test ButtonCreate handleIssueConfirmedInvoice
 
     const totalNetCost = setTotalSumNetValue(dataForm.products);
     const totalGrossCost = setTotalSum(dataForm.products);
@@ -94,11 +133,13 @@ export default function InvoiceConfirmModal(props) {
 
 
 
+  
             <JoyButton 
                 variant="plain" 
                 color="primary" 
                 startDecorator={<NoteAddIcon />}
-                onClick={ () => setOpen(true) }
+                // onClick={ () => setOpen(true) }
+                onClick={showModal}
             >
                 Utwórz
             </JoyButton>
@@ -142,6 +183,21 @@ export default function InvoiceConfirmModal(props) {
                         }}
                         />
                     <hr/>
+                    <JoyButton 
+                        variant="plain" 
+                        color="primary" 
+                        startDecorator={<NoteAddIcon />}
+                        // onClick={ () => setOpen(true) }
+                        onClick={handleIssueConfirmedInvoice}
+                    >
+                        Issue
+                    </JoyButton>
+                    <button type='button'
+                        onClick={dataLog}
+                    >
+                        Issue
+                    </button>
+                    <hr />
                     <hr/>
                     <div className="modal_content">
                         <form onSubmit={handleSubmitWithoutPropagation}>
