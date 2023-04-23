@@ -42,7 +42,7 @@ export const onSubmitModal = ({create, methods, navigate, notify}) => {
                         // others: "others"
                     };
 
-            console.log("db_outputForm:", output);
+            console.log("🔰🔰🔰!!!!db_outputForm:", output);
 
 
 

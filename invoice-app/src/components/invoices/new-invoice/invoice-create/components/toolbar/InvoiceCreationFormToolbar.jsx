@@ -8,7 +8,7 @@ export default function InvoiceCreationFormToolbar({children}) {
         <Toolbar sx={{ gap: '10px', justifyContent: 'flex-end'}}>
             { children ? children : null }
             <SaveButton  label="SaveTable" 
-                form="sales_table_form"
+                form="new-invoice-form"
             />
             <SaveButton 
                 label="Save and add"

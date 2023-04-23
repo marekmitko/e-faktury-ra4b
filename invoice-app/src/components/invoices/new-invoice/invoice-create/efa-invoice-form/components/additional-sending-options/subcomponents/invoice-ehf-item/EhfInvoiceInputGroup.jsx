@@ -10,6 +10,9 @@ import { Divider } from "@mui/material";
 import { useRecordContext } from 'react-admin';
 import { useFormContext, Controller, useWatch } from 'react-hook-form';
 
+
+//toDo to powinno dizałac tak - sprawdź to => https://codesandbox.io/s/final-additional-component-651s9b?file=/demo.jsx
+//https://codesandbox.io/s/pedantic-bartik-8wb3mj
     
 export default function EhfInvoiceInputGroup() {
 

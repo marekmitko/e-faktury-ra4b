@@ -143,7 +143,7 @@ export const SalesTableV2 = props => {
                         <Title title=" - list" />
                         {/* <small> main container - component: TableContainer </small> */}
                         <TableContainer className="tableContainer" sx={{  width: '100%' }}>
-                            <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
+                            <ArrayInput  className="array" label={"dsfds"} source={nameSalesIteratorForm} fullWidth>
                                 <SalesFormIterator  
                                     entryPriceIsGross={entryPriceIsGross}
                                 
