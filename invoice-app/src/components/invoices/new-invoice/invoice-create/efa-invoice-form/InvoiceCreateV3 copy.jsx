@@ -26,7 +26,7 @@ import { CancelCreationButton } from '../components/invoice-confirm-modal/compon
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
 import InvoiceCreationFormToolbar from '../components/toolbar/InvoiceCreationFormToolbar';
-import InvoiceConfirmModalV4 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV4';
+import InvoiceConfirmModalV4 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV5';
 
 
 

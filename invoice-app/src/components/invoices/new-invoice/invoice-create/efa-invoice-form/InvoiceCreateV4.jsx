@@ -26,7 +26,7 @@ import { CancelCreationButton } from '../components/invoice-confirm-modal/compon
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
 import InvoiceCreationFormToolbar from '../components/toolbar/InvoiceCreationFormToolbar';
-import InvoiceConfirmModalV4 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV4';
+import InvoiceConfirmModalV5 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV5';
 
 
 
@@ -107,64 +107,18 @@ const InvoiceCreateV4 = (props) => {
             // if (error) return <Error />;
             // if (!user) return null;
 
-    const onSubmit =  (data) => { 
-        // https://react-hook-form.com/api/useform
-        // const output = {
-        //     ...data,
-        //     others: "others"
-        //   }
-        const currentDataForm = methods.getValues();
-        const currentBuyerId= methods.getValues('buyer_id');
-        
-        const productsArr = transformArrayProducts(data.products);
-        data.products = productsArr;
 
-        const prefix_buyer = createPrefixObjectKeys("buyer_");
-        const db_buyer = prefix_buyer(data.dbBuyers);
-        data.dbBuyers = ""
-        data = {...data, ...db_buyer};
-        console.log("fullDATA:", data);
-
-        create(
-            "issuedInvoices_list",
-            {  data },
-            { onSuccess: () => {
-                // const invoice_id = 
-                // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
-                // const record = useRecordContext
-                navigate('/issuedInvoices_list');
-                    notify('Twoja faktura została utworzona pomyślnie');
-                } 
-            }
-        );
-    };
-
-    // if (error) { return <p>ERROR</p>; }
-    // return <button disabled={isLoading} onClick={() =>{} }>Like</button>;
-    
-    // if (isLoading) return null;
-    const [open, setOpen] =  useState(false);
 
     const onSubmit2 = onSubmitModal({create, methods, navigate, notify});
     const db_seller = { street: user_db.user_address, companyName: user_db.user_company, mva: user_db.user_org_nr, city: user_db.user_place, zipCode: user_db.user_zip_code, country: user_db.user_country, phoneNumber: user_db.user_phone, email: user_db.user_email};
     const translate = useTranslate();
     const isSmall = useMediaQuery(`${MQ_isSmall}`);
 
-// {/* FormProvider - Config Form to InvoiceCreate  */}
+
+    
 // {/* Test DataDisplay to ConfirmModal  */}
-            
-
-
-//const restClient = restProvider(data, true);
-
-
-
-// {/* Test DataDisplay to ConfirmModal  */}
-
+// Om2 ta funkcja jest do sprawdzenia 
 const { form, formHandleSubmit } = useAugmentedForm(props)
-
-// {/* END FormProvider - Config Form to InvoiceCreate  */}
-
 
 // {/* Modal PreInvoice - Confirm  confirm issuing an invoice  */}
 const [confirmIsOpen, setConfirmIsOpen] = useState(false);
@@ -193,88 +147,80 @@ const handleCloseShow = useCallback(() => {
 
 
 
-const onSubmitTEST = ( data ) => console.info("1️⃣2️⃣👍🏻👍🏻Submit onSubmitTEST", data);
+const onSubmitTEST = ( data ) => console.info("1️⃣👍🏻Submit onSubmitTEST", data);
 
 
 
 // {/* END ConfirmInvoiceModal */}
 
     return(
-    <>
-    {/* <DataUserList /> // toDo zobacz bo sie generuje fajny AddButton -> zobacz w InvoiceCreateV2  */} 
-        {/* // toDo to się może akurat jeszcze przydać - dobrze zrobiona tabelka  */}
-        {/* <SpanningSalesTable /> */}
+        <>
+            {/* <DataUserList /> // toDo zobacz bo sie generuje fajny AddButton -> zobacz w InvoiceCreateV2  */} 
+                {/* // toDo to się może akurat jeszcze przydać - dobrze zrobiona tabelka  */}
+                {/* <SpanningSalesTable /> */}
 
-    {/* <Create   redirect="show"  component="div"  {...props} > */}
-        <RecordContextProvider value={record}>
-            <FormProvider {...methods}>
-                <FormGroupsProvider  {...form} >
-                    <form  onSubmit={methods.handleSubmit(onSubmitTEST)}  id="new-invoice-form"       >
-                    {/* <form onSubmit={save} record={data}> */}
-                        <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}    />
-                        <CssBaseline />
-                        <Container maxWidth="xl" component="main">
-                            <Grid container spacing={1} justifyContent='center' alignItems="flex-end">
-                                <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
-                                >
-                                        <Header titleForm={<ResourceName />}/> 
-                                </Grid>
+            {/* <Create   redirect="show"  component="div"  {...props} > */}
+            <RecordContextProvider value={record}>
+                <FormProvider {...methods}>
+                    <FormGroupsProvider  {...form} >
+                        <form  onSubmit={methods.handleSubmit(onSubmitTEST)}  id="new-invoice-form"       >
+                        {/* <form onSubmit={save} record={data}> */}
+                            <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}    />
+                            <CssBaseline />
+                            <Container maxWidth="xl" component="main">
+                                <Grid container spacing={1} justifyContent='center' alignItems="flex-end">
+                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
+                                    >
+                                            <Header titleForm={<ResourceName />}/> 
+                                    </Grid>
 
-                                <Grid  item xs={11}  sm={11}  md={5.75}   // key={tier.title}
-                                        // sx={{minWidth: '1000px', minHeight: '500px', display: 'flex'}}
+                                    <Grid  item xs={11}  sm={11}  md={5.75}   >
+                                        <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                    </Grid>
+                                    <Grid   item xs={11}   sm={11}  md={5.75}   // key={tier.title}
                                     >
-                                    <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                        <BuyerReferenceCard resourcePath={buyersResourcePath}/>
+                                    </Grid>
+                                    <Grid   item xs={12}    sm={12}  md={12}    >
+                                        <SalesTableV2 />
+                                    </Grid>
+                                    <Grid   item xs={12}    sm={12}  md={12}    >
+                                        <AdditionalTableV2 />
+                                    </Grid>
                                 </Grid>
-                                <Grid   item xs={11}   sm={11}  md={5.75}   // key={tier.title}
+                            </Container>
+                            {/* validation             ....                .....  //toDo Warunki  */}
+                            {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
+                                <div style={{ margin: 'auto', padding: 0 }} // className={SalesFormIteratorClasses.clear}
                                 >
-                                    <BuyerReferenceCard resourcePath={buyersResourcePath}/>
-                                </Grid>
-                                <Grid   item xs={12}    sm={12}  md={12}    >
-                                    <SalesTableV2 />
-                                </Grid>
-                                <Grid   item xs={12}    sm={12}  md={12}    >
-                                    <AdditionalTableV2 />
-                                </Grid>
-                                {/* <SpanningSalesTable  isSmall={isSmall} /> */}
-                                {/* <Grid   item xs={12}    sm={12}  md={12}    >
-                                    <AdditionalBox />
-                                </Grid> */}
-                            </Grid>
-                        </Container>
-                        {/* validation             ....                .....  //toDo Warunki  */}
-                        {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
-                            <div style={{ margin: 'auto', padding: 0 }} // className={SalesFormIteratorClasses.clear}
-                            >
-                        {/* {!disabled && !(disableAdd && (disableClear || disableRemove)) && ( */}
-                            <Box>
-                                {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
-                                    <Box sx={{ 
-                                        pt: 2,
-                                        px: { xs: 4, sm: 8, md: 10, lg: 10 }, alignItems: 'flex-end' }} // className={SalesFormIteratorClasses.clear}
-                                    >
-                                        <InvoiceCreationFormToolbar >
-                                            <hr/>
-                                    <InvoiceConfirmModalV4 methods={methods} //setOpen={setOpen} open={open}
-                                        onChange={(data) => {
-                                            // tutaj mógłbym poprosić o invoiceId z serwera
-                                            console.info("🟢🟢🟢ModalInput Change", data);
-                                        }}
-                                        />
-                                    </InvoiceCreationFormToolbar> 
-                                        </Box>
-                                    {/* )} */}
-                                </Box>
-                                    {/* )} */}
-                            </div>
-                        {/* //*edu 
-                            <input   value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"        
-                        /> */}
-                    </form>
+                            {/* {!disabled && !(disableAdd && (disableClear || disableRemove)) && ( */}
+                                <Box>
+                                    {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
+                                        <Box sx={{ 
+                                            pt: 2,
+                                            px: { xs: 4, sm: 8, md: 10, lg: 10 }, alignItems: 'flex-end' }} // className={SalesFormIteratorClasses.clear}
+                                        >
+                                            <InvoiceCreationFormToolbar >
+                                                <hr/>
+                                        <InvoiceConfirmModalV5 methods={methods} //setOpen={setOpen} open={open}
+                                            onChange={(data) => {
+                                                // tutaj mógłbym poprosić o invoiceId z serwera
+                                                console.info("🟢🟢🟢ModalInput Change", data);
+                                            }}
+                                            />
+                                        </InvoiceCreationFormToolbar> 
+                                            </Box>
+                                        {/* )} */}
+                                    </Box>
+                                        {/* )} */}
+                                </div>
+                            {/* //*edu   <input   value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"    /> */}
+                        </form>
                     </FormGroupsProvider>
                 </FormProvider>
-    </RecordContextProvider>
-    </>
-);
+            </RecordContextProvider>
+        </>
+    );
 };
 
 export default InvoiceCreateV4;

@@ -26,18 +26,18 @@ import { ModalToolbar } from './subcomponents/ModalToolbar';
 import ActionCheck from '@mui/icons-material/CheckCircle';
 import { useNavigate } from 'react-router';
 import { setTotalSumNetValue, setTotalSum } from '../../../invoice-form/subcomponents/sales-table/spanning-sales-table/total-sum-table/CalcTotalSum';
-import { transformArrayProducts } from '../../../../../../../db/fnInvoiceForm';
+import { createPrefixObjectKeys, transformArrayProducts } from '../../../../../../../db/fnInvoiceForm';
 import { CreateInvoiceButton } from './button/CreateInvoiceButton';
 import { CreateInvoiceButtonV4 } from './button/CreateInvoiceButtonV4';
 import { SvgIcon } from '@mui/joy';
-
+const prefixObjectUser = createPrefixObjectKeys('buyer_');
 
 export default function InvoiceConfirmModalV4(props) {
     const { children, open, setOpen, // create, navigate,
         methods,
         ConfirmIcon = ActionCheck,
         // ...rest 
-    } = props;
+    } = props; 
 
 
     const translate = useTranslate();
@@ -49,37 +49,41 @@ export default function InvoiceConfirmModalV4(props) {
     const showModal = () => setModalVisible(true);
     const hideModal = () => setModalVisible(false);
   
-    const forwardChange = (data) => {
-        hideModal();
-        props.onChange(data);
-    };
+        const forwardChange = (data) => {
+            hideModal();
+            props.onChange(data);
+        };
 
-    const { register, handleSubmit } = useForm();
-  
-    const forwardSave = (data) => {
-        console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
-        props.onSave(data);
-    };
+        const { register, handleSubmit } = useForm();
     
-      const handleSubmitWithoutPropagation = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleSubmit(forwardSave)(e);
-        hideModal();
-      };
+        const forwardSave = (data) => {
+            console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
+            props.onSave(data);
+        };
+        
+        const handleSubmitWithoutPropagation = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleSubmit(forwardSave)(e);
+            hideModal();
+        };
 
-    //  END MY TEST MODAL RHF
+        //  END MY TEST MODAL RHF
 
-      
-      
+        
+        
     const dataForm = methods.getValues();
     const buyerCompany = dataForm.dbBuyers ? dataForm.dbBuyers.company : "" ;
     const buyerOrgNo = dataForm.dbBuyers ? dataForm.dbBuyers.org_nr : "";
     const productsArr = transformArrayProducts(dataForm.products);
-    console.info('🆕🐱‍🏍getValues', dataForm);
-    console.info('🆕🐱‍🏍transformArrayProducts', productsArr);
+    // console.info('🆕🐱‍🏍getValues', dataForm);
+    // console.info('🆕🐱‍🏍dbBuyers', dataForm.dbBuyers);
+    // console.info('🆕🐱‍🏍transformArrayProducts', productsArr);
+    
+    
+    // const dataBuerTransform = dataForm?.dataBuyer ? prefixObjectUser(dataForm.dataBuyer) : { } ;
 
-
+    // console.log("🆕🐱‍🏍dbBuyers'", typeof(dataBuerTransform), dataBuerTransform );
     
     // CREATE My test ButtonCreate handleIssueConfirmedInvoice
     
@@ -90,22 +94,23 @@ export default function InvoiceConfirmModalV4(props) {
     
     const redirect = useRedirect();
     const navigate = useNavigate();
-    
-    
-    
-    // const [create, { isLoading, error }] = useCreate( 'issuedInvoices_list', { data: dataForm  } );
     const [create, { isLoading, error }] = useCreate();
     
-    const myData = {...dataForm};
-    // const myProducts = dataForm.products;
-    // myData.products = {...dataForm};
-    
-    console.log('💠💠💠✅🐱‍🏍Finally data', dataForm );
+    const myData = {...dataForm, };
     
     const handleIssueConfirmedInvoice  = () => {
+        const dataBuerTransform = dataForm?.dataBuyer ? prefixObjectUser(dataForm.dataBuyer) : { } ;
+        const output = {
+            ...myData,
+            ...dataBuerTransform
+        };
+        delete output["dataBuyer"];
+        delete output["preInvoiceId"];
+
+        console.log('💠 💠✅🐱‍🏍Finally output', output );
         create(
             'issuedInvoices_list', 
-            { data: myData  },
+            { data: output },
             { onSuccess: () => {
                 // const invoice_id = 
                 // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
@@ -113,14 +118,13 @@ export default function InvoiceConfirmModalV4(props) {
                 navigate('/issuedInvoices_list');
                 notify('Twoja faktura została utworzona pomyślnie');
             } }
-        )
+        ); // Om? tu ma byc ten srednik? 
     }
     if (error) { return <p>ERROR</p>; }
     
     
-    // const dataLog = () =>  console.log('💠💠💠✅🐱‍🏍Finally data', dataForm, '💠💠💠✅🐱‍🏍Products',  myProducts  );
     const dataLog = () => {
-        console.log('💠💠💠✅🐱‍🏍Finally myData',   myData  );
+        // console.log('💠💠💠✅🐱‍🏍Finally myData',   myData  );
         // console.log('💠💠💠✅🐱‍🏍Products',  myProducts  );
 
     } 
@@ -220,7 +224,6 @@ export default function InvoiceConfirmModalV4(props) {
                             </Box>
                             <Box sx={{ gridRow: "1", gridColumn: "auto" }}>
                                 {/* <TotalSalesInfoShow  /> */}
-
                             </Box>
                         </Box>
                         <br/>
@@ -301,10 +304,11 @@ const ModalForm = (props) => {
      * To powinna być nasza domyślna metoda obsługi formularzy
      */
   
-    const forwardSave = (data) => {
-      console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
-      props.onSave(data);
-    };
+    const forwardSave = () => { };
+    // const forwardSave = (data) => {
+    // //   console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
+    // //   props.onSave(data);
+    // };
   
     const handleSubmitWithoutPropagation = (e) => {
       e.preventDefault();

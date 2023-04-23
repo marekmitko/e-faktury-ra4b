@@ -61,8 +61,6 @@ const sxTotalCard = {
 // export const globalArea = `" name name name type type count tax price price "`;
 export const globalArea = `"name type count tax price "`;
 
-const onSubmit = data => console.log('DATA', data);
-
 const vumberInputValidation = [required()];
 
 const OptionRecord = {  choice_product_list: productOptions  };
@@ -90,13 +88,6 @@ const configGridBox_inputItemBox = {
 };
 
 
-const cssItemNoLarge = {
-    flexDirection: 'column', bgcolor: 'background.paper',  display: 'flex',  gap: '20px',
-    padding: 1, borderRadius: 1 
-};
-// const cssItemStandart
-
-
 export const SalesTableV2 = props => { 
 
     // xs, extra-small: 0px
@@ -114,25 +105,8 @@ export const SalesTableV2 = props => {
 
     const [entryPriceIsGross, setEntryPriceOnGross ] = useState(false);
 
-
-
-    const postSave = (data) => {
-        console.log("✅SalesTAB", data);
-    };
-
-
-
-
-
-
-
-
     return(
         <>
-            {/* <Create component='div'//  {...props}
-            > */}
-                {/* <SimpleForm> */}
-                {/* <Form onSubmit={postSave} id="sales_table_form"  > */}
                 <div>
                     <JoyGlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }} />
                     <JoyCssBaseline />
@@ -143,7 +117,7 @@ export const SalesTableV2 = props => {
                         <Title title=" - list" />
                         {/* <small> main container - component: TableContainer </small> */}
                         <TableContainer className="tableContainer" sx={{  width: '100%' }}>
-                            <ArrayInput  className="array" label={"dsfds"} source={nameSalesIteratorForm} fullWidth>
+                            <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
                                 <SalesFormIterator  
                                     entryPriceIsGross={entryPriceIsGross}
                                 
@@ -278,11 +252,8 @@ export const SalesTableV2 = props => {
                         </TableContainer>
                     </Container>
                 </div>
-                <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5, pb: 0, mb: 0 }}  >
-                    {/* <input type='submit' /> */}
-                </Divider>
-                {/* </Form> */}
-            {/* </Create> */}
+                {/* // <...> bardzo spoko separator */}
+                {/* <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5, pb: 0, mb: 0 }} / >  */}
         </>
     );
 };

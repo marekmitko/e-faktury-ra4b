@@ -8,6 +8,7 @@ import {
     useNotify, useRefresh, useRedirect, useShowController, RecordContextProvider, useRecordContext, ResourceContextProvider, ShowContextProvider
 } from 'react-admin';
 import { Box, Card, CardContent, Typography } from '@mui/material';
+import { useFormContext, useWatch } from 'react-hook-form';
 
 // import { Avatar } from './Avatar';
 // import { ContactAside } from './ContactAside';
@@ -40,7 +41,8 @@ import { Box, Card, CardContent, Typography } from '@mui/material';
 
 
 {/* <ShowContentBuyer /> */}
-
+// Om
+// Om? Tutaj jest coś najebane a wiem to po lini nr: 117
 export const ContactShow = (props) => {
     
 
@@ -88,14 +90,38 @@ export const ContactShow2 = ({children, ...props}) => {
     //     // refresh();
     // };
 
-
-
+    const { setValue, control } = useFormContext();
     // const record2 = useRecordContext(); //BUG // toDo ? Nawet nie wiem po co to tu jest 
     // console.log('ContactShow@@', record2);
 
+    const changeBuyerId = useWatch( {control, name: 'buyer_id' } );
+//Om Obczaj w consol.log
+    // console.log("🔘changeBuyer", changeBuyerId);
+//*edu nie wiem czy to dobrze robie // https://react-hook-form.com/api/useform/setvalue/
+        React.useEffect(() => {         
+            setValue('dataBuyer', data)
+            // console.log("💠💎changeBuyer", changeBuyerId)
+            // console.log("💠💎changeBuyer", getValues())
+            }, [changeBuyerId]);
 
 
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const body = (
         <RecordContextProvider  value={data}>
         {/* <ShowContextProvider value={controllerProps}> */}
