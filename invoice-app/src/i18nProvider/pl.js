@@ -65,6 +65,20 @@ export const pl = {
         },
         form: {
             
+            invoiceConfirmModal: {
+                    paymentInfoShow: {
+                        verticalCaption: "Razem",
+                        horizontalCaption: "Do zapłaty:",
+                        horizontalSubtitle: "(wartość brutto)",
+                        totalCost: "Razem",
+                        totalGrossCost: "Kwota brutto",
+                        capitionVat: 'VAT:',
+                        currencyName: 'PLN' //toDo przerobić do zmiennej niezależnej od i18n
+                    },
+                    buyerInfoShow: {
+                        labelTaxpayerId: 'MVA'
+                    },
+                },
             placeholder: {
                 notebox_invoice: 'Wprowadź własne adnotacje...',
             },
@@ -73,7 +87,8 @@ export const pl = {
                     invoiceConfirmModal: {
                         issueConfirmedInvoice: "Wystaw",
                         issueConfirmedInvoiceAndAddNew: "Wystaw i dodaj",
-                        cancelIssueInvoice: "Anuluj"
+                        cancelIssueInvoice: "Anuluj",
+                        createInvoice: 'Utwórz',
                     }
                 },
                 header_salesTable: {
@@ -125,6 +140,8 @@ export const pl = {
                     ehf: 'Faktura EHF'
                 },
                 header: {
+                    newInvoice: 'Nowa faktura',
+                    prefixInovoiceNo: 'nr:',
                     seller: 'Wstawca',
                     buyer: 'Nabywca',
                     address: 'Adres',

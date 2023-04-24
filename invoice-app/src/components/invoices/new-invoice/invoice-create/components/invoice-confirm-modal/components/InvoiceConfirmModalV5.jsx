@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { createPortal } from 'react-dom';
 import Box from '@mui/joy/Box';
 import JoyButton from '@mui/joy/Button';
 import JoyModal from '@mui/joy/Modal';
@@ -39,40 +38,17 @@ export default function InvoiceConfirmModalV5(props) {
     const { getValues } = useFormContext();
     const translate = useTranslate();
 
-//  MY TEST MODAL RHF
     const [isModalVisible, setModalVisible] = React.useState(false);
-
+    
     const showModal = () => setModalVisible(true);
     const hideModal = () => setModalVisible(false);
-  
-        const forwardChange = (data) => {
-            hideModal();
-            props.onChange(data);
-        };
-
-        const { register, handleSubmit } = useForm();
     
-        const forwardSave = (data) => {
-            console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
-            props.onSave(data);
-        };
-        
-        const handleSubmitWithoutPropagation = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            handleSubmit(forwardSave)(e);
-            hideModal();
-        };
-
-        //  END MY TEST MODAL RHF
-
-        
-        
     const dataForm = getValues();
     const myData = {...dataForm, };
+    console.log("myData💎", {...myData});
 
-    const buyerCompany = myData.dbBuyers ? myData.dbBuyers.company : "" ;
-    const buyerOrgNo = myData.dbBuyers ? myData.dbBuyers.org_nr : "";
+    const buyerCompany = myData.dataBuyer ? myData.dataBuyer.company : "" ;
+    const buyerOrgNo = myData.dataBuyer ? myData.dataBuyer.org_nr : "";
     const productsArr = transformArrayProducts(dataForm.products);
 
     const notify = useNotify();
@@ -82,17 +58,15 @@ export default function InvoiceConfirmModalV5(props) {
     const [create, { isLoading, error }] = useCreate();
     
     const handleIssueConfirmedInvoice  = () => {
-        //Om 
-        //Om? w sumie to powinno być zrobione wcześniej
-        // toDo -> przerzucić to do tego inputa na przykład 
+        //Om  /Om? w sumie to powinno być zrobione wcześniej
+        // toDo -> przerzucić to do tego inputa na przykład //Om? ten btn jest w linii 121 CreateInvoiceButtonV4
         const dataBuerTransform = dataForm?.dataBuyer ? prefixObjectUser(dataForm.dataBuyer) : { } ;
         const output = {
             ...myData,
             ...dataBuerTransform
         };
-        delete output["dataBuyer"];
+        delete output["dataBuyer"];     //Om? Czy to jest dobre - pierwszy raz się spotkałem 
         delete output["preInvoiceId"];
-        // console.log('💠💠✅🐱‍🏍Finally output', output );
 
         create(
             'issuedInvoices_list', 
@@ -107,35 +81,23 @@ export default function InvoiceConfirmModalV5(props) {
         ); // Om? tu ma byc ten srednik? 
     }
     if (error) { return <p>ERROR</p>; }
-    
-    
-    const dataLog = () => {
-        // console.log('💠💠💠✅🐱‍🏍Finally myData',   myData  );
-        // console.log('💠💠💠✅🐱‍🏍Products',  myProducts  );
 
-    } 
-
-    // return <button disabled={isLoading} onClick={handleClick}>Like</button>;
-    
-    //  END My test ButtonCreate handleIssueConfirmedInvoice
-
+    // Om? useCallback - opakowanie zmiennych 
+    //*edu //toDo po cholere jest ten Callback i czy nie powinienem tutaj wszystkich zmiennych do tego opakować 
     const totalNetCost = setTotalSumNetValue(myData.products);
     const totalGrossCost = setTotalSum(dataForm.products);
-    console.log("totalNetCost", myData.products, totalNetCost); 
-    console.log("totalNetCost", myData.products, totalNetCost); 
-    console.log("totalGrossCost", totalGrossCost); 
+
     return(  
         <>
             <JoyButton 
                 variant="plain" 
                 color="primary" 
                 startDecorator={<NoteAddIcon />}
-                // onClick={ () => setOpen(true) }
                 onClick={showModal}
             >
-                Utwórz
+                {translate('myroot.form.label.button.invoiceConfirmModal.createInvoice')} 
             </JoyButton>
-            <CreateInvoiceButtonV4  onClick={() => ( showModal() )  } />
+            <CreateInvoiceButtonV4  onClick={() => ( showModal() )  } />   {/* //Om? toDo server connection & data transform  */}
             <JoyModal
                 aria-labelledby="modal-title"
                 aria-describedby="modal-desc"
@@ -174,75 +136,60 @@ export default function InvoiceConfirmModalV5(props) {
                             bgcolor: 'background.body',
                             // color: 'red'
                         }}
-                        />
-                    <div className="modal_content">
-                        <form onSubmit={handleSubmitWithoutPropagation}>
-                        <input
-                            {...register("modalInputValue")}
-                            placeholder="Modal Input Value"
-                        />
-                        <input type="submit" />
-                        {/* <button type="button" className="button" onClick={props.onClose}> */}
-                        <button type="button" className="button" onClick={hideModal}>
-                            Close modal
-                        </button>
-                        <button type='button'
-                            onClick={dataLog}
-                        >
-                            Issue
-                        </button>
-                        </form>
-                    </div>
-                    <ModalTitle title={"Nowa Faktura"} />
+                    />
+                    <ModalTitle title={translate('myroot.form.label.header.newInvoice')} 
+                                prefixInovoiceNo={translate('myroot.form.label.header.prefixInovoiceNo')} 
+                                invoiceNo={myData.preInvoiceId}
+                    
+                    />
                     <Divider   sx={{ p: 0.1 }} />
-                    <BuyerInfoShow buyerName={buyerCompany} taxpayerId={buyerOrgNo}/>
+                    <BuyerInfoShow buyerName={buyerCompany} taxpayerId={buyerOrgNo} 
+                        labelTaxpayerId={translate('myroot.form.invoiceConfirmModal.buyerInfoShow.labelTaxpayerId')} 
+                    
+                    />
                     <SalesTableInfoShow rows={productsArr}  />
                     <Divider   sx={{ p: 0.08, mb: 1, ml: '45%', mr: 0.05 }} />
-
-
                     <div style={{ width: "100%" }}>
                         <Box
                             sx={{
-                                display: "grid",
-                                gridAutoColumns: "2fr",
-                                gap: 1
+                                display: "flex",
+                                justifyContent: 'flex-end',
                             }}
                         >
-                            <Box sx={{ gridRow: "1", gridColumn: "3 / 5" }}>
+                            <Box sx={{  minWidth: '250px' }}>
                                 <PaymentInfoShow totalGross={totalGrossCost}  totalNet={totalNetCost} />
-                            </Box>
-                            <Box sx={{ gridRow: "1", gridColumn: "auto" }}>
-                                {/* <TotalSalesInfoShow  /> */}
                             </Box>
                         </Box>
                         <br/>
                     </div>
+                    {/* <Divider   sx={{ p: 0.1 }}  />  //<...> zajebiście tu se dołoże ten formularz dodatkowy 
+                    <ModalToolbar /> */}
                     <Divider   sx={{ p: 0.1 }}  />
-                    {/* <ModalToolbar /> */}
-                    <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-start', pt: 2, mb: -1}}>
+                    <Box sx={{ display: 'flex', gap: 1, justifyContent: 'space-between', pt: 2, mb: -1}}>
+                        <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-start', p: 0, m: 0 }}>
                         <JoyButton 
                             variant="solid" 
                             startDecorator={<SvgIcon fontSize="md" ><ConfirmIcon />  </SvgIcon> }
-                            color="primary" 
                             // type="submit" form="new-invoice-form" // Om? toDo nie wiem czy mi to potrzebne 
                             onClick={handleIssueConfirmedInvoice}
-                            sx={{ textTransform: 'uppercase' }}
+                            sx={{ textTransform: 'uppercase', backgroundColor: "primary.900" }}
                         >
                             {translate('myroot.form.label.button.invoiceConfirmModal.issueConfirmedInvoice')} 
                         </JoyButton>
+                        <Divider   orientation="vertical"  sx={{ mx: 1, px: .05 }} />
                         <JoyButton 
-                            variant="plain" color="primary" 
+                            // onClick={handleIssueConfirmedInvoice}
+                            variant="plain" //color="primary.800" 
                             // startDecorator={<NoteAddIcon />}
                             // onClick={hideModal}
                             type="button" // Om? toDo tu był problem
                             form="new-invoice-form"
-                            // onClick={handleIssueConfirmedInvoice}
                             startDecorator={<SvgIcon fontSize="md" ><ConfirmIcon />  </SvgIcon> }
-                            sx={{ textTransform: 'uppercase' }}
-                        >
+                            sx={{ textTransform: 'uppercase', color: "primary.900"  }}
+                            >
                             {translate('myroot.form.label.button.invoiceConfirmModal.issueConfirmedInvoiceAndAddNew')} 
                         </JoyButton>
-                        <Divider   orientation="vertical"  sx={{ mx: 5 }} />
+                            </Box>
                         <JoyButton variant="plain" color="danger"   sx={{ textTransform: 'uppercase' }}
                                 onClick={hideModal}  
                         >
@@ -255,92 +202,3 @@ export default function InvoiceConfirmModalV5(props) {
         </>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const ModalForm = (props) => {
-    const { register, handleSubmit } = useForm();
-  
-    /**
-     * Issue #3: Submit event still propagates to parent when using portal
-     * https://reactjs.org/docs/portals.html#event-bubbling-through-portals
-     * Event bubbling goes through React DOM instead of HTML DOM
-     * Portals don't have an effect on this one, we need to stop event propagation
-     * This should be our default form handling method
-     */
-  
-    /**
-     * Problem nr 3: Zdarzenie przesyłania nadal jest propagowane do elementu nadrzędnego podczas korzystania z portalu
-     * https://reactjs.org/docs/portals.html#event-bubbling-through-portals
-     * Bąbelkowanie zdarzeń przechodzi przez React DOM zamiast HTML DOM
-     * Portale nie mają na to wpływu, musimy zatrzymać propagację zdarzeń
-     * To powinna być nasza domyślna metoda obsługi formularzy
-     */
-  
-    const forwardSave = () => { };
-    // const forwardSave = (data) => {
-    // //   console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
-    // //   props.onSave(data);
-    // };
-  
-    const handleSubmitWithoutPropagation = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      handleSubmit(forwardSave)(e);
-    };
-  
-    return (
-      <ModalPortal>
-        <div className="modal">
-          <div className="modal_content">
-            <form onSubmit={handleSubmitWithoutPropagation}>
-              <input
-                {...register("modalInputValue")}
-                placeholder="Modal Input Value"
-              />
-              <input type="submit" />
-              {/* <button type="button" className="button" onClick={props.onClose}> */}
-              <button type="button" className="button" onClick={props.onClose}>
-                Close modal
-              </button>
-            </form>
-          </div>
-        </div>
-      </ModalPortal>
-    );
-  };
-  
-  /**
-   * Issue #2: Cannot nest forms directly in DOM
-   * https://html.spec.whatwg.org/multipage/forms.html#the-form-element
-   * This is a basic html spec, the fix is using portals to unest Modals
-   * https://reactjs.org/docs/portals.html
-   */
-  const modalDiv = document.getElementById("modals");
-  
-  const ModalPortal = (props) => {
-    /**
-     * Issue #2: Cannot nest forms directly in DOM
-     * https://html.spec.whatwg.org/multipage/forms.html#the-form-element
-     * This is a basic html spec, the fix is using portals to unest Modals
-     * https://reactjs.org/docs/portals.html
-     */
-    return createPortal(props.children, modalDiv);
-  };
-  

@@ -56,18 +56,17 @@ export default function InvoiceConfirmModalV4(props) {
 
         const { register, handleSubmit } = useForm();
     
-        const forwardSave = (data) => {
-            console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
-            props.onSave(data);
-        };
-        
-        const handleSubmitWithoutPropagation = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            handleSubmit(forwardSave)(e);
-            hideModal();
-        };
-
+           //  MY TEST FullScreen MODAL ReactHookForm
+            const forwardSave = (data) => {
+                console.info("🅿💖💖💎🅿🛄Submit ModalForm", data);
+                props.onSave(data);
+            };
+            const handleSubmitWithoutPropagation = (e) => {  //Om? może trzeba to omówić 
+                e.preventDefault();
+                e.stopPropagation();
+                handleSubmit(forwardSave)(e); //Om? funkcja samowywołująca się ? 
+                hideModal();
+            };
         //  END MY TEST MODAL RHF
 
         

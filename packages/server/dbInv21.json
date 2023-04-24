@@ -2528,6 +2528,68 @@
       "date_submit": "2023-04-23T14:21:17.804Z",
       "date_payment": "2023-05-07T14:21:17.804Z",
       "id": "WkHHmq-"
+    },
+    {
+      "buyer_id": "bElyxvi",
+      "payment_form": false,
+      "ehf": 0,
+      "buyer_order_no": "fv-757/26/14/03",
+      "comments": "",
+      "postmail": 0,
+      "inv_email": 0,
+      "user_ref": "Efremtid sp. zoo",
+      "user_id": "user_123",
+      "user_company": "Efremtid sp. zoo",
+      "user_firstname": "Aleksander",
+      "user_lastname": "Mariański",
+      "user_address": "Widawska 128d",
+      "user_place": "Wrocław",
+      "user_zip_code": "50345",
+      "user_email": "aleksander@marianski.com",
+      "user_mva": 1,
+      "user_foretaksregistret": 0,
+      "user_org_nr": 13446789,
+      "user_phone": " 123 456 789",
+      "products": [
+        {
+          "product_name": "",
+          "product_count": 112,
+          "product_price_brutto": "15.00",
+          "product_price_netto": "12",
+          "product_vat": 125,
+          "product_type": ""
+        },
+        {
+          "product_name": "",
+          "product_count": 12,
+          "product_price_brutto": "",
+          "product_price_netto": "12",
+          "product_vat": "",
+          "product_type": ""
+        },
+        {
+          "product_name": "",
+          "product_count": 12,
+          "product_price_brutto": "",
+          "product_price_netto": "12",
+          "product_vat": "",
+          "product_type": ""
+        }
+      ],
+      "date_submit": "2023-04-23T18:02:25.077Z",
+      "date_payment": "2023-05-07T18:02:25.077Z",
+      "buyer_ref": "meetco.dev Marek Mitko",
+      "buyer_company": "meetco.dev Marek Mitko",
+      "buyer_mva": true,
+      "buyer_org_nr": "987456321",
+      "buyer_address": "Księcia Witolda 49",
+      "buyer_zip_code": 50202,
+      "buyer_place": "Wrocław",
+      "buyer_email": "studio@meetco.dev",
+      "buyer_phone": "500555502",
+      "buyer_firstname": "Marek",
+      "buyer_lastname": "Mitko",
+      "id": "WOOgQ03"
     }
   ],
   "tradePartners_list": [
