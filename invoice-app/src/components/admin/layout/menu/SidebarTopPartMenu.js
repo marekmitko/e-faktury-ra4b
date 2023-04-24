@@ -32,9 +32,10 @@ import MarkAsUnreadIcon from '@mui/icons-material/MarkAsUnread';
 
 
 
-export const SidebarTopPartMenu  = ({children}) => {
+export const SidebarTopPartMenu  = (props) => {
     const translate = useTranslate();
     return  (
+<>
     <Menu>
         <Divider sx={{m: 1 }} >
             <small><b><MarkAsUnreadIcon /></b></small> 
@@ -60,7 +61,9 @@ export const SidebarTopPartMenu  = ({children}) => {
                     label={translate('myroot.sitebar.main_menu.header.section_list')} 
                 />
         </Divider>
-        {children}
+        { props?.children? props.children : '' }
     </Menu>  
+    <Menu {...props} />
+    </>
 );
         };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Admin } from 'react-admin';
 // import { CustomLayout } from './layout/FooterLayoutFragment';
 import { CustomDashboard } from './layout/dashboard/CustomDashboard';
-import MyLayout from './layout';
+import Layout from './layout';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 // ?ver catchAll && title="e-faktury"  po cholere 
@@ -13,9 +13,10 @@ import { CssVarsProvider } from "@mui/joy/styles";
 const MyAdmin = ( {children, ...props} ) => (
     <Admin
         basename="/admin"
+        // title="Example Admin"
         disableTelemetry  
         dashboard={CustomDashboard}
-        layout={MyLayout}
+        layout={Layout}
         // layout={<MyLayout /> && <ReactQueryDevtools />}
         {...props}  
     >
