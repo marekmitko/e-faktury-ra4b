@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useForm, FormProvider, useFormContext, Controller, useWatch} from "react-hook-form";
 import { InvoiceCreateToolbar } from './desktop/subcomponents/InvoiceCreateToolbar';
-import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput, Confirm, SaveButton, FormGroupsProvider, useAugmentedForm, TextField, Datagrid, List, useGetList } from 'react-admin';
+import {  SimpleForm, useTranslate, RecordContextProvider,  Create, useResourceContext, useDataProvider, useCreateController, useGetOne, useUpdate, Title, useCreate, useRecordContext, useNotify, ArrayInput, TextInput, Form, NumberInput, Confirm, SaveButton, FormGroupsProvider, useAugmentedForm, TextField, Datagrid, List, useGetList, TitlePortal } from 'react-admin';
 import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../db/fnInvoiceForm';
 import { user_db }  from './bin2/defaultValuesInvoice';
 import InvoiceShowModal, { InvoiceShowModal2 } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
@@ -27,6 +27,7 @@ import { CreateInvoiceButton } from '../components/invoice-confirm-modal/compone
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
 import InvoiceCreationFormToolbar from '../components/toolbar/InvoiceCreationFormToolbar';
 import InvoiceConfirmModalV5 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV5';
+import CreateInvoiceFormPageTitle from '../components/invoice-form-title/CreateInvoiceFormPageTitle';
 
 
 
@@ -160,6 +161,7 @@ const onSubmitTEST = ( data ) => console.info("1️⃣👍🏻Submit onSubmitTES
                 {/* <SpanningSalesTable /> */}
 
             {/* <Create   redirect="show"  component="div"  {...props} > */}
+            <CreateInvoiceFormPageTitle />
             <RecordContextProvider value={record}>
                 <FormProvider {...methods}>
                     <FormGroupsProvider  {...form} >

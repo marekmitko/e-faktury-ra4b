@@ -45,6 +45,9 @@ export const pl = {
             required: 'Pole wymagane'
         },
         custom_ra: {
+            page: {
+                createInvoiceFormPageTitle: 'Wystaw nową fakturę'
+            },
             action: {
                 tooltip: {  addSalesItem: 'Dodaj kolejną pozycję sprzedaży' },
                 button: {   addSalesItem: 'Dodaj przedmiot',

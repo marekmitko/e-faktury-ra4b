@@ -114,7 +114,6 @@ export const SalesTableV2 = props => {
                         maxWidth="xl"
                         component="main"
                     >
-                        <Title title=" - list" />
                         {/* <small> main container - component: TableContainer </small> */}
                         <TableContainer className="tableContainer" sx={{  width: '100%' }}>
                             <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
