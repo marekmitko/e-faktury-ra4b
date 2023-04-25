@@ -17,6 +17,8 @@
         "@mui/material": "^5.0.2",
         "@mui/x-data-grid":"latest",
         "@mui/x-date-pickers": "^6.2.1",
+        "date-fns": "latest",
+        "dayjs": "latest",
         "@mui/joy": "latest",
         "@mui/icons-material": "^5.11.16",
         "@testing-library/jest-dom": "^5.14.1",

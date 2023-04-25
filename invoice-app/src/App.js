@@ -68,13 +68,6 @@ function App(props) {
             {/* <CssVarsProvider> */}
                 <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
                 <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
-                
-                <Divider>
-                    <Chip variant="soft" color="neutral" size="sm">
-                        Visual indicator
-                    </Chip>
-                </Divider>
-                <hr/>
                 <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
                     list={FormsCreate} 
                     edit={PostCreate}   

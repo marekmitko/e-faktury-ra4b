@@ -127,6 +127,8 @@ export const pl = {
 
                 },
                 input: {
+                    data_sale: 'Data wystawienia',
+                    date_payment: 'Termin płatności',
                     buyerAutocomplete: 'Kupujący',
                     invoice_no: 'Numer faktury',
                     created_at: 'Data Wystawienia',
