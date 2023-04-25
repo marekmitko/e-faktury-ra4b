@@ -16,7 +16,6 @@
 
     export  const  SalesTableInfoShow = ({rows}) => {
 
-        console.log("rows", rows);
     return (
         <Table
         sx={{
@@ -51,7 +50,7 @@
         </thead>
         <tbody>
             {true? rows.map(( row, idx ) => {
-                if(rows.length  === (idx+1 )) return (null);
+                // if(rows.length  === (idx+1 )) return (null);
                 return(
             <tr key={`_${idx}_${row.product_name}`}>
                 <td>{row.product_name}</td>

@@ -5,7 +5,7 @@ export default function InvoiceCreationFormToolbar({children}) {
     const { reset } = useFormContext();
     const notify = useNotify();
     return (
-        <Toolbar sx={{ gap: '10px', justifyContent: 'flex-end'}}>
+        <Toolbar sx={{ gap: '10px', justifyContent: 'flex-end', mb: 2.5 }}>
             {/* <SaveButton  label="SaveTable" 
                 // form="new-invoice-form"
             />

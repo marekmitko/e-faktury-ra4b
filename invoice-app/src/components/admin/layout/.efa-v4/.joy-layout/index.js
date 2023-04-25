@@ -1,13 +1,18 @@
 import React from 'react';
 import { memo } from 'react';
 import { Admin, Layout, InspectorButton, AppBar } from 'react-admin';
-import { FooterLayoutFragment } from './FooterLayoutFragment';
-import { CustomDashboard } from './dashboard/CustomDashboard';
-import { SidebarTopPartMenu } from './menu/SidebarTopPartMenu';
-import { CustomAppBar } from './top-appbar/CustomAppBar';
+
+
+
+import { SidebarTopPartMenu } from '../../menu/SidebarTopPartMenu';
+import { CustomAppBar } from '../../top-appbar/CustomAppBar';
 import { Typography } from '@mui/joy';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import JoyAppBar from './.efa-v4/appbar/JoyAppBar';
+
+import { FooterLayoutFragment } from '../../FooterLayoutFragment';
+import { CustomDashboard } from '../../dashboard/CustomDashboard';
+import JoyAppBar from '../appbar/JoyAppBar';
+import { Box } from '@mui/material';
 // import { ReactQueryDevtools, ReactQueryDevtoolsPanel } from 'react-query/devtools';
 
 
@@ -23,11 +28,7 @@ const MyAppBar = memo(props => (  //*edu po co to memo //Om? WAŻNE PYTANIE
 
 
 
-
-
-
-
-const MyLayout = ( props ) => (
+const JoyLayout = ( props ) => (
     <>
         <Layout
             {...props}
@@ -37,7 +38,7 @@ const MyLayout = ( props ) => (
             // menu 
             // notification
         >
-          <div>
+            <div>
                 {/* <center><strong>CentralCardHeader</strong></center> */}
             </div>
                 {props.children}
@@ -55,7 +56,7 @@ const MyLayout = ( props ) => (
 
 export default props => (
     <>
-        <Layout {...props}  
+        <Layout {...props} sx={{ mb: 1 }} //toDo do przerobienia //Om? Inaczej to ustawić usunąć mb: 1
             // sidebar={SidebarTopPartMenu }
             dashboard={null}
             menu={SidebarTopPartMenu}
@@ -68,8 +69,12 @@ export default props => (
             initialIsOpen={false}
             toggleButtonProps={{ style: { width: 20, height: 30 } }}
         /> */}
-       
+        <hr />
+        <FooterLayoutFragment />
+       <Box  sx={{ my: 1 }}>
+
+       </Box>
     </>
 );
 
-// export default MyLayout;
+// export default JoyLayout;

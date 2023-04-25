@@ -2,14 +2,16 @@ import * as React from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Title } from 'react-admin';
+import JoyHeaderApp from "../.efa-v4/appbar/JoyHeaderApp";
 // import BoxTextInput from "../../../invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/subcomponent/BoxTextInput";
 // import InputBox from "../../../invoices/new-invoice/invoice-create/invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/InputBox";
 
 
 export const CustomDashboard = (props) => (
     <Card>
-        <Title title="Welcome to the administration" />
+        <Title title="e-faktury.no" />
         <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+        <JoyHeaderApp />
         {/* <InputBox /> */}
     </Card>
 );

@@ -11,13 +11,6 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 export const CreateInvoiceButtonV4 = (props: any) => {
     const { onClick } = props;
     const translate = useTranslate();
-        // const [data, setData] = React.useState<{
-        // email: string;
-        // status: 'initial' | 'loading' | 'failure' | 'sent';
-        // }>({
-        //     email: '',
-        //     status: 'initial',
-        // });  
     const [buttonState, setButtonState] = React.useState<{
         status: 'initial' | 'loading' | 'failure' | 'compiled';
         }>({
@@ -56,7 +49,7 @@ export const CreateInvoiceButtonV4 = (props: any) => {
                     //   } catch (ex) {
                     //     console.error("inner", ex.message);
                     //     throw ex;
-                      } finally {
+                        } finally {
                     }
                         console.log("finally");
             } catch (error) {

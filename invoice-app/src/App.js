@@ -32,6 +32,7 @@ import { FormsCreate } from './components/invoices/new-invoice/invoice-create/ef
 import AbcIcon from '@mui/icons-material/Abc';
 import { SalesTableV2 } from './components/invoices/new-invoice/invoice-create/components/efaV2/SalesTableV2';
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
+import { Chip, Divider } from '@mui/joy';
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
@@ -67,14 +68,13 @@ function App(props) {
             {/* <CssVarsProvider> */}
                 <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
                 <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
-                {/* <Resource name='saleitemlist' options={{ label: 'Produkty' }} label="client_TEST"   {...salesitem}  /> */}
-                <Resource name='efa-V2' options={{ label: 'efa-V2' }} label="efa-V2"  
-                    list={SalesTableV2} 
-                    edit={EditGuesser}   
-                    show={ShowGuesser} 
-                    create={SalesTableV2}  
-                    icon={LooksTwoIcon}
-                /> 
+                
+                <Divider>
+                    <Chip variant="soft" color="neutral" size="sm">
+                        Visual indicator
+                    </Chip>
+                </Divider>
+                <hr/>
                 <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
                     list={FormsCreate} 
                     edit={PostCreate}   
@@ -87,14 +87,13 @@ function App(props) {
                     edit={EfaClientEdit}   
                     show={ShowGuesser}
                     create={EfaClientCreate}  
-                    // recordRepresentation={(record) => `${record.company} Masło`}
+                    // recordRepresentation={(record) =>(<span> `${record.company} Masło`</span>)}
                 />
                 {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
                 <CustomRoutes>
                     <Route path="/data_user" element={<MyProfile />}/ >
                 </CustomRoutes>
             {/* </CssVarsProvider> */}
-                <hr/>{"asdsad"}
             </MyAdmin>
                 </CssVarJoyProvider>
         </StyledEngineProvider>

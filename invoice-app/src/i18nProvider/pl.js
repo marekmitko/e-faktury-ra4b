@@ -186,6 +186,7 @@ export const pl = {
     
     },
     resources: {
+
         dbclientlist: {
             name: 'Kontrahent |||| Kontrahenci',
             contact: "Kontakt",
@@ -204,8 +205,11 @@ export const pl = {
                 mva: "MVA",
             }
         },
+        invoicesEfaktury: {
+            name: '⏹e-Faktura |||| ⏹e-Faktury',
+        },
         buyersEfaktury: {
-            name: 'e-Kontrahent |||| e-Kontrahenci',
+            name: '⏹e-Kontrahent |||| ⏹e-Kontrahenci',
             contact: "Kontakt",
             fields: {
                 company: 'Nazwa Firmy',
@@ -246,9 +250,6 @@ export const pl = {
         }
     }
 };
-
-
-
 
 
 
