@@ -28,6 +28,7 @@ import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard'
 import InvoiceCreationFormToolbar from '../components/toolbar/InvoiceCreationFormToolbar';
 import InvoiceConfirmModalV5 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV5';
 import CreateInvoiceFormPageTitle from '../components/invoice-form-title/CreateInvoiceFormPageTitle';
+import { StyledTableCellClasses } from './components/new-sales-table/components/sales-table-header/components/styledHeaderCellClasses';
 
 
 
@@ -173,11 +174,11 @@ const onSubmitTEST = ( data ) => console.info("1️⃣👍🏻Submit onSubmitTES
                                 <Grid container spacing={1} justifyContent='center' alignItems="flex-end">
                                     <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
                                     >
-                                            <Header titleForm={<ResourceName />}/> 
+                                            <Header  /> 
                                     </Grid>
 
                                     <Grid  item xs={11}  sm={11}  md={5.75}   >
-                                        <SellerCardShow bgcolor="neutral.100"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                        <SellerCardShow bgcolor="neutral.50"  icon={<SellerIcon />}     dataPersonal={db_seller} />
                                     </Grid>
                                     <Grid   item xs={11}   sm={11}  md={5.75}   // key={tier.title}
                                     >

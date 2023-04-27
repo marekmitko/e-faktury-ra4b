@@ -41,7 +41,7 @@ export const AddressContent = ({capitionLabel, prefixFirstRow, firstRow, secondR
             </CardOverflow>
             <Divider />
             <CardContent sx={{ ml: 2, justifyContent: "center" }}>
-            <Typography level="body1" sx={{ fontSize: "lg" }}>
+            <Typography level="body1" sx={{ fontSize: "lg" }} textColor='neutral.600'          >
                {prefixFirstRow ? prefixFirstRow : ""}{" "}{ firstRow ? firstRow : "" }<br />
                {prefixSecondRow ? prefixSecondRow : ""}{" "}{ secondRow ? secondRow : "" }<br />
                {prefixThirdRow ? prefixThirdRow : ""}{" "}{ thirdRow ? thirdRow : "" }

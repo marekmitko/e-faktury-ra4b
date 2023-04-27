@@ -23,80 +23,80 @@ interface AutoCompleteFieldProps
 }
 
 function AutocompleteField(props: AutoCompleteFieldProps) {
-  const {
-    label,
-    disabled,
-    readOnly,
-    id,
-    value,
-    onChange,
-    InputProps: { ref, startAdornment, endAdornment } = {},
-    inputProps,
-    options = []
-  } = props;
+    const {
+        label,
+        disabled,
+        readOnly,
+        id,
+        value,
+        onChange,
+        InputProps: { ref, startAdornment, endAdornment } = {},
+        inputProps,
+        options = []
+    } = props;
 
-  const mergeAdornments = (...adornments: React.ReactNode[]) => {
-    const nonNullAdornments = adornments.filter((el) => el != null);
-    if (nonNullAdornments.length === 0) {
-      return null;
-    }
-
-    if (nonNullAdornments.length === 1) {
-      return nonNullAdornments[0];
-    }
-
-    return (
-      <Stack direction="row">
-        {nonNullAdornments.map((adornment, index) => (
-          <React.Fragment key={index}>{adornment}</React.Fragment>
-        ))}
-      </Stack>
-    );
-  };
-
-  return (
-    <Autocomplete
-      id={id}
-      options={options}
-      disabled={disabled}
-      readOnly={readOnly}
-      ref={ref}
-      sx={{ minWidth: 250 }}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label={label}
-          inputProps={{ ...params.inputProps, ...inputProps }}
-          placeholder="dd/mm/rrrr"
-          InputProps={{
-            ...params.InputProps,
-            startAdornment: mergeAdornments(
-              startAdornment,
-              params.InputProps.startAdornment
-            ),
-            endAdornment: mergeAdornments(
-              endAdornment,
-              params.InputProps.endAdornment
-            )
-          }}
-        />
-      )}
-      getOptionLabel={(option) => {
-        if (!dayjs.isDayjs(option)) {
-          return "";
+    const mergeAdornments = (...adornments: React.ReactNode[]) => {
+        const nonNullAdornments = adornments.filter((el) => el != null);
+        if (nonNullAdornments.length === 0) {
+        return null;
         }
 
-        return option.format("MM / DD / YYYY");
-      }}
-      value={value}
-      onChange={(_, newValue) => {
-        onChange?.(newValue, { validationError: null });
-      }}
-      isOptionEqualToValue={(option, valueToCheck) =>
-        option.toISOString() === valueToCheck.toISOString()
-      }
-    />
-  );
+        if (nonNullAdornments.length === 1) {
+        return nonNullAdornments[0];
+        }
+
+        return (
+        <Stack direction="row">
+            {nonNullAdornments.map((adornment, index) => (
+            <React.Fragment key={index}>{adornment}</React.Fragment>
+            ))}
+        </Stack>
+        );
+    };
+
+    return (
+        <Autocomplete
+        id={id}
+        options={options}
+        disabled={disabled}
+        readOnly={readOnly}
+        ref={ref}
+        sx={{ minWidth: 250 }}
+        renderInput={(params) => (
+            <TextField
+            {...params}
+            label={label}
+            inputProps={{ ...params.inputProps, ...inputProps }}
+            placeholder="dd/mm/rrrr"
+            InputProps={{
+                ...params.InputProps,
+                startAdornment: mergeAdornments(
+                startAdornment,
+                params.InputProps.startAdornment
+                ),
+                endAdornment: mergeAdornments(
+                endAdornment,
+                params.InputProps.endAdornment
+                )
+            }}
+            />
+        )}
+        getOptionLabel={(option) => {
+            if (!dayjs.isDayjs(option)) {
+            return "";
+            }
+
+            return option.format("MM / DD / YYYY");
+        }}
+        value={value}
+        onChange={(_, newValue) => {
+            onChange?.(newValue, { validationError: null });
+        }}
+        isOptionEqualToValue={(option, valueToCheck) =>
+            option.toISOString() === valueToCheck.toISOString()
+        }
+        />
+    );
 }
 
 interface AutocompleteDatePickerProps extends DatePickerProps<Dayjs> {

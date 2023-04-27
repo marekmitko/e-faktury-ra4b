@@ -5,17 +5,18 @@ export const taxOptions = [
     { id: 'Usługi',    value: 125,   name: "25%"        },   
     { id: 'Coś 1',     value: 115,   name: "15%"        },   
     { id: 'Coś 2',     value: 112,   name: "12%"        },   
+    { id: 'Coś 2',     value: 106,   name: "6%"        },   
     { id: 'Coś 4',     value: 100,   name: "0"        }
 ];
 export const typeOptions = [
-    { id: 'placeholder',                value: "placeholder",  name: 'Wybierz rodzaj',         },   
-    { id: 'Usługi',                     value: 'Usługi',                    name: 'Usługi',                      },   
-    { id: 'Towar',                      value: 'Towar',                     name: 'Towar',                       },   
-    { id: 'Wynajem',                    value: 'Wynajem',                   name: 'Wynajem',                     },   
-    { id: 'Prowizja',                   value: 'Prowizja',                  name: 'Prowizja',                    },   
-    { id: 'Sprzedaż 0% MVA',            value: 'Sprzedaż 0% MVA',           name: 'Sprzedaż 0% MVA',             },
-    { id: 'Zwolniona z MVA',            value: 'Zwolniona z MVA',           name: 'Zwolniona z MVA',             },
-    { id: 'Sprzedaż zagranicę 0% MVA',  value: 'Sprzedaż zagranicę 0% MVA', name: 'Sprzedaż zagranicę 0% MVA',   }
+    { id: 'placeholder',                value: false,                       name: 'Wybierz rodzaj',              },   
+    { id: 'Usługi',                     value: 'services',                  name: 'Usługi',                      },   
+    { id: 'Towar',                      value: 'goods',                     name: 'Towar',                       },   
+    { id: 'Wynajem',                    value: 'rent',                      name: 'Wynajem',                     },   
+    { id: 'Prowizja',                   value: 'commission',                name: 'Prowizja',                    },   //Om   
+    { id: 'Sprzedaż 0% MVA',            value: 'mva0',                      name: 'Sprzedaż 0% MVA',             },
+    { id: 'Zwolniona z MVA',            value: 'mvafree',                   name: 'Zwolniona z MVA',             },
+    { id: 'Sprzedaż zagranicę 0% MVA',  value: 'mvautl',                    name: 'Sprzedaż zagranicę 0% MVA',   }
 ];
 export const productOptions = [
     { id: 'placeholder',                                            name:  'Wybierz produkt',                                       no: 'Velg et produkt',                                               value: "placeholder"   },   

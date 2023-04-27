@@ -2,7 +2,7 @@ import {useRef, useState} from "react";
 import { Container, GlobalStyles, TableContainer, TableFooter, TablePagination, TableCell, useMediaQuery, Grid } from "@mui/material";
 import JoyCssBaseline from '@mui/joy/CssBaseline';
 import JoyGlobalStyles from '@mui/joy/GlobalStyles';
-import { Card, Divider } from "@mui/joy";
+import { Card, Divider, Typography } from "@mui/joy";
 import { jsx, css } from '@emotion/react'
 import {
     ArrayInput,
@@ -25,6 +25,7 @@ import SwitchNetOrGross from "../../efa-invoice-form/components/new-sales-table/
 import TotalCostCardV2 from "../../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/TotalCostCardV2";
 import { JoyNoteboxV2 } from "../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
 import { ItemIndexChip } from "../../efa-invoice-form/components/index-item-row/ItemIndexChip";
+import { StyledTableCellClasses } from "../../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/styledHeaderCellClasses";
 
 export const nameSalesIteratorForm = 'products';
 const required = () => (value) => (
@@ -88,6 +89,25 @@ const configGridBox_inputItemBox = {
 };
 
 
+
+const MobileSalesTableHeader = ({ children, title}) => (
+    <Typography textColor='neutral.100' fontWeight='500'
+        sx={{ pl: 1, textTransform: 'uppercase' }}    
+    >
+        {title ? title : ''}
+        {/* {children? children : ''} */}
+    </Typography>
+);
+
+
+
+
+
+
+
+
+
+
 export const SalesTableV2 = props => { 
 
     // xs, extra-small: 0px
@@ -105,6 +125,7 @@ export const SalesTableV2 = props => {
 
     const [entryPriceIsGross, setEntryPriceOnGross ] = useState(false);
 
+    const translate = useTranslate();
     return(
         <>
                 <div>
@@ -130,14 +151,15 @@ export const SalesTableV2 = props => {
                                                             <SalesTableHeader   >
                                                                 <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
                                                             </SalesTableHeader> 
-                                                            : (isMedium ?       null     :                                         
+                                                            : (isMedium ?       <MobileSalesTableHeader title={translate('myroot.form.mobile.salesTableHeaderTitle')}/> :                                         
                                                                     <SalesTableHeader   >
                                                                         <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
                                                                     </SalesTableHeader>  )
                                                 }
                                     sxTableBody={{
                                         // display: 'flex', p: 0,   
-                                        bgcolor: isLarge ? 'background.paper' : 'transparent', 
+                                        // bgcolor: isLarge ? 'background.paper' : 'transparent', 
+                                        bgcolor:  'transparent', 
                                         borderRadius: 1, flexDirection: 'column' }}
                                     
                                     sxItemRow={ {
@@ -149,7 +171,8 @@ export const SalesTableV2 = props => {
                                             display: 'flex', flexWrap: 'wrap', borderRadius: 2,   my: 0, p: 0,
                                             width: 'auto',  // width: '100%'
                                             // bgcolor: isLarge ? 'transparent' : 'background.paper' , 
-                                            boxShadow: isLarge ? 0 : 1 ,
+                                            // boxShadow: isLarge ? 0 : 1 ,
+                                            boxShadow:  0,
                                         }}
                                             sxInputContent={{ bgcolor: 'transparent', // onlyInputPart in ItemRow
                                                 ...configGridBox_inputItemBox,

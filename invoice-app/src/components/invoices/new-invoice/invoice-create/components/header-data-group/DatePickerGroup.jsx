@@ -10,6 +10,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // import PickerWithAutocompleteField from './PickerWithAutocompleteField';
 import { useFormContext, useWatch } from 'react-hook-form';
 import MyCustomRangeDatePicker from './MyCustomRangeDatePicker';
+import DatePickerSelectinput from './new-date-group-V5/DatePickerSelectinput';
 
 
 
@@ -57,20 +58,7 @@ export default function DatePickerGroup() {
         <MyCustomRangeDatePicker 
             labelStart="data wystawienia"
             labelEnd="termin płatności"
-        />
-            <DemoContainer
-                components={[
-                    'DatePicker',
-                    'MobileDatePicker',
-                    'DesktopDatePicker',
-                    'StaticDatePicker',
-                ]}
-            >
-                <p></p>
-                
-            </DemoContainer>
-        <div>
-        </div>
+        /> 
                     </>
     );
     }

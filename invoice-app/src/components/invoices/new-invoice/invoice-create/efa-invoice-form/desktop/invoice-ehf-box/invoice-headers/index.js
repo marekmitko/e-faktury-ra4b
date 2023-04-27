@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Card, Stack, Grid } from '@mui/material';
-import { DateInputPart } from './DateInputPart';
-import { LogotypeItem } from './LogotypeItem';
-import { DateInput, NumberInput } from 'react-admin';
+import { Card, Stack, Grid, useMediaQuery } from '@mui/material';
 import HeaderDateGroup from '../../../../components/header-data-group';
-import MyCustomRangeDatePicker from '../../../../components/header-data-group/MyCustomRangeDatePicker';
+import FinalDatePickerSelectinput from '../../../../components/header-data-group/new-date-group-V5/mix/FinalDatePickerSelectinput';
+import { Input } from '@mui/joy';
+import { MQ_isMedium } from '../../../components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles';
 // import { flexbox } from '@mui/system';
 
 // TODO Added props sx + spacing 
@@ -16,23 +15,23 @@ const todayDateAdd14 = new Date(todayDate.getTime()+(14*24*60*60*1000));
 
 // *see <NewInvoiceHeader />
 export const NewInvoiceHeader = (props) => { 
+
+    const isMedium = useMediaQuery(`${MQ_isMedium}`);
+
     return(
         <Grid container spacing={1} rowSpacing={1}>
-            <Grid item xs={12} sm={6} md={6} >
+            <Grid item xs={12} sm={12} md={6} >
                 <HeaderDateGroup />
                 {/* <MyCustomRangeDatePicker /> */}
             </Grid>
-            <Grid item xs={12} sm={2} md={3}>
-                <Card sx={{ height:'100%', display: 'flex', alignContent: "center"}} >
-                    <LogotypeItem titleForm={props.titleForm} />
-                </Card>
-            </Grid>
-            {/* <Grid item xs={12} sm={6} md={7} >
-                <Card sx={{ pt: 1, display: 'flex', flexFlow: 'row wrap', gap: 1 }} >
-                    <DateInput source="date_submit" variant="standard" defaultValue={todayDate}   label="myroot.form.label.input.created_at"  />
-                    <DateInput source="date_payment" variant="standard" defaultValue={todayDateAdd14}  label="myroot.form.label.input.payment_due" />
-                </Card>
-            </Grid> */}
+            { !isMedium &&
+                <Grid item xs={12} sm={6} md={6} >
+                
+                <br/>
+                        <FinalDatePickerSelectinput />
+                        <Input disabled value='ddd' /> 
+                </Grid>
+            }
         </Grid>
         
 );

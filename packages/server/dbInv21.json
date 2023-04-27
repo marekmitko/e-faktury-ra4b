@@ -2829,6 +2829,109 @@
       "buyer_firstname": "Marek",
       "buyer_lastname": "Mitko",
       "id": "sOabtTo"
+    },
+    {
+      "buyer_id": "",
+      "payment_form": false,
+      "ehf": 0,
+      "buyer_order_no": "fv-312/54/63/02",
+      "comments": "",
+      "postmail": 0,
+      "inv_email": 0,
+      "user_ref": "Efremtid sp. zoo",
+      "user_id": "user_123",
+      "user_company": "Efremtid sp. zoo",
+      "user_firstname": "Aleksander",
+      "user_lastname": "Mariański",
+      "user_address": "Widawska 128d",
+      "user_place": "Wrocław",
+      "user_zip_code": "50345",
+      "user_email": "aleksander@marianski.com",
+      "user_mva": 1,
+      "user_foretaksregistret": 0,
+      "user_org_nr": 13446789,
+      "user_phone": " 123 456 789",
+      "products": [
+        {
+          "product_name": "",
+          "product_count": 1,
+          "product_price_brutto": null,
+          "product_price_netto": "",
+          "product_vat": 125,
+          "product_type": ""
+        }
+      ],
+      "sedase": "27.04.2023",
+      "id": "yt997YU"
+    },
+    {
+      "buyer_id": "",
+      "payment_form": false,
+      "ehf": 0,
+      "buyer_order_no": "fv-856/54/82/41",
+      "comments": "",
+      "postmail": 0,
+      "inv_email": 0,
+      "user_ref": "Efremtid sp. zoo",
+      "user_id": "user_123",
+      "user_company": "Efremtid sp. zoo",
+      "user_firstname": "Aleksander",
+      "user_lastname": "Mariański",
+      "user_address": "Widawska 128d",
+      "user_place": "Wrocław",
+      "user_zip_code": "50345",
+      "user_email": "aleksander@marianski.com",
+      "user_mva": 1,
+      "user_foretaksregistret": 0,
+      "user_org_nr": 13446789,
+      "user_phone": " 123 456 789",
+      "products": [
+        {
+          "product_name": "",
+          "product_count": 1,
+          "product_price_brutto": null,
+          "product_price_netto": "",
+          "product_vat": 125,
+          "product_type": ""
+        }
+      ],
+      "dateSALES2": "2023-04-30T14:09:10.000Z",
+      "id": "0gcaAkO"
+    },
+    {
+      "buyer_id": "",
+      "payment_form": false,
+      "ehf": 0,
+      "buyer_order_no": "fv-873/04/62/16",
+      "comments": "",
+      "postmail": 0,
+      "inv_email": 0,
+      "user_ref": "Efremtid sp. zoo",
+      "user_id": "user_123",
+      "user_company": "Efremtid sp. zoo",
+      "user_firstname": "Aleksander",
+      "user_lastname": "Mariański",
+      "user_address": "Widawska 128d",
+      "user_place": "Wrocław",
+      "user_zip_code": "50345",
+      "user_email": "aleksander@marianski.com",
+      "user_mva": 1,
+      "user_foretaksregistret": 0,
+      "user_org_nr": 13446789,
+      "user_phone": " 123 456 789",
+      "products": [
+        {
+          "product_name": "",
+          "product_count": 1,
+          "product_price_brutto": null,
+          "product_price_netto": "",
+          "product_vat": 125,
+          "product_type": ""
+        }
+      ],
+      "date_sale": "2023-04-23T14:23:20.000Z",
+      "dateEnd": "2023-04-18T14:23:20.000Z",
+      "id": "THCnFja"
     }
   ],
   "tradePartners_list": [

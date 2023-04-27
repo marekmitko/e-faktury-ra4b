@@ -22,6 +22,7 @@ import JoyDivider from '@mui/joy/Divider';
 import { useFormContext } from 'react-hook-form';
 import { EfaRemoveBtnIcon, EfaRemoveItemButton } from './subcomponent/button/RemoveItemButton';
 import { BorderLinebox, FlexboxContainer } from '../../../layout/RowLineLayout';
+import LabelOptionCard from '../../../additional-sending-options/subcomponents/LabelOptionCard';
 
 
 // export const MobileFormIterator = (props) => {
@@ -145,39 +146,51 @@ export const SalesFormIterator = React.forwardRef((props, ref ) => {
                     > 
                     {fields.map((member, index) => {
                         return(
-                        <SalesFormIteratorRow
-                            sx={ itemSx } setValue={setValue}
-                            wraperSectionItem={wraperSectionItem}
-                            sxItemRow={ sxItemRow }
-                            sxItemContent={ sxItemContent }
-                            sxInputContent={ sxInputContent }
-                            sxSumPriceBox={ sxSumPriceBox }
-                            key={member.id}
-                            disabled={disabled}
-                            disableRemove={disableRemove}
-                            disableReordering={disableReordering}
-                            fields={fields}
-                            getItemLabel={getItemLabel}
-                            index={index}
-                            member={`${source}.${index}`}
-                            onRemoveField={removeField}
-                            onReorder={handleReorder}
-                            record={(records && records[index]) || {}}
-                            removeButton={removeButton}
-                            reOrderButtons={reOrderButtons}
-                            resource={resource}
-                            source={source}
-                            // ref={userMyRef}
-                            inline={inline}
-                            entryPriceIsGross={entryPriceIsGross}
-                        >
-                            {children} 
-                        </SalesFormIteratorRow>
+                        <>
+                        <Box sx={{ mt: 1, bgcolor:  'background.paper', borderRadius: 2, boxShadow: 1 }}>
+                            <LabelOptionCard label={ 
+                                <span> {`${index +1 }. `}
+                                {translate('myroot.form.mobile.salesItemTitle')}
+                                </span>} 
+                            >
+                            <SalesFormIteratorRow
+                                sx={ itemSx } setValue={setValue}
+                                wraperSectionItem={wraperSectionItem}
+                                sxItemRow={ sxItemRow }
+                                sxItemContent={ sxItemContent }
+                                sxInputContent={ sxInputContent }
+                                sxSumPriceBox={ sxSumPriceBox }
+                                key={member.id}
+                                disabled={disabled}
+                                disableRemove={disableRemove}
+                                disableReordering={disableReordering}
+                                fields={fields}
+                                getItemLabel={getItemLabel}
+                                index={index}
+                                member={`${source}.${index}`}
+                                onRemoveField={removeField}
+                                onReorder={handleReorder}
+                                record={(records && records[index]) || {}}
+                                removeButton={removeButton}
+                                reOrderButtons={reOrderButtons}
+                                resource={resource}
+                                source={source}
+                                // ref={userMyRef}
+                                inline={inline}
+                                entryPriceIsGross={entryPriceIsGross}
+                            >
+                                {children} 
+                            
+                            </SalesFormIteratorRow>
+                        </LabelOptionCard>
+                                            </Box>
+
+                    </>
                     )}
                 )}
                 </FlexboxContainer>
                 </tbody>
-                <JoyDivider light sx={{ p: "2px", my: 2, mx: 6, bgcolor: 'neutral.300'}} />
+                <JoyDivider light sx={{ p: "2px", my: 2, mr: 5, bgcolor: 'primary.900'}} />
             <tfoot style={{ 
                 // border: "8px pink solid", display: 'flex', color: 'black',  backgroundColor: 'orange', 
                 width: '100%'}}>  

@@ -12,7 +12,7 @@ export default function HeaderDateGroup( ) {
 
     return(
         <>
-            <Card sx={{ pt: 1, display: 'flex', flexFlow: 'row wrap', gap: 1 }} >
+            <Card sx={{ pt: 1, display: 'flex', flexFlow: 'row wrap', gap: 1, boxShadow: 'none' }} >
                 <DatePickerGroup />
             </Card>
         </>

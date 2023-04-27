@@ -61,6 +61,7 @@
                 level="h5"
                 // color="primary"
                 bgColor="primary"
+                textColor='neutral.600'
                 sx={{ ml: 0 }}
                 >
                 {title}

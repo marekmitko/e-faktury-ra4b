@@ -172,8 +172,11 @@ export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
                         )}
                         {/* </Box> */}
                     </BorderLinebox>
-                    <InnerLinebox sxCSS={{ order: 1, m: 0, p: 0,  }} className={RowItemClasses.inline} >
-                        <Card component="section" className={RowItemClasses.rowSection}  >
+                    <InnerLinebox sxCSS={{ order: 1, m: 0, p: 0,  }} 
+                        className={RowItemClasses.inline} 
+                    >
+                        <Card component="section" className={RowItemClasses.rowSection} 
+                         >
                             {/* <Box sx={ wraperSectionItem }> */}
                                 <div style={{    gridArea: 'rowInput'    }} >
                                         <Card component='section' className='inputSection-itemRow' sx={{  
@@ -185,6 +188,9 @@ export const SalesFormIteratorRow = React.forwardRef((props, ref) => {
                                             bgcolor:  "transparent"  }}>
                                             <CardCover  sx={{ bgcolor:  'transparent'  }}      />
                                             {/* <CardContent sx={ sxInputContent }     >    GOTOWA KARTA WIERSZA  https://codesandbox.io/s/efa23-product-card-mobi-version-3-vphxjv */}
+                                            
+                                            
+                                            
                                             <CardContent component='tr' sx={ sxInputContent }     >  {/*   GOTOWA KARTA WIERSZA  https://codesandbox.io/s/efa23-product-card-mobi-version-3-vphxjv */}
                                             {Children.map(
                                                 children,
@@ -340,9 +346,12 @@ overridesResolver: (props, styles) => styles.root,
             backgroundColor: 'transparent',
             boxShadow:  `${theme.shadows[0]}` //'1'mui-shadowRing)
         },
+//Om2 tu jest clou - syle item sales list 
         [theme.breakpoints.down('md')]: { 
-            backgroundColor: `${theme.palette.background.paper}`,
-            boxShadow:  `${theme.shadows[2]}`, //'1'mui-shadowRing)
+            // backgroundColor: `${theme.palette.background.paper}`,
+            backgroundColor: 'transparent',
+            // boxShadow:  `${theme.shadows[2]}`, //'1'mui-shadowRing)
+            boxShadow:  `${theme.shadows[0]}`, //'1'mui-shadowRing)
             gap: theme.spacing(3),
         },
     },

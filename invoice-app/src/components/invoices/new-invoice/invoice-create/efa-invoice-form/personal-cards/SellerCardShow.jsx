@@ -8,6 +8,8 @@ import { TitleCardShow } from "./show/subcomponents/TitleCardShow";
 import { Divider } from "@mui/joy";
 import { blue, blueGrey } from '@mui/material/colors';
 import { useTranslate } from "react-admin";
+import { useMediaQuery } from "@mui/material";
+import { MQ_isMedium } from "../components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
 
 
 
@@ -20,6 +22,8 @@ import { useTranslate } from "react-admin";
 
 export default function SellerCardShow({dataPersonal, bgcolor, icon, title}) {
     const translate = useTranslate();
+    
+    const isMedium = useMediaQuery(`${MQ_isMedium}`);
   return (
     <>
         <JoyCard
@@ -29,7 +33,7 @@ export default function SellerCardShow({dataPersonal, bgcolor, icon, title}) {
                 // alignSelf: 'stretch',
                 // justifySelf: "stretch",
                 bgcolor: bgcolor ? bgcolor : '#fff',
-                boxShadow: 1, // color: 'text.level2',
+                boxShadow: 'none', // color: 'text.level2',
                 // border: 0.5, 
                 // borderColor: blueGrey[300],
                 flex: '1 1 auto',
@@ -38,18 +42,25 @@ export default function SellerCardShow({dataPersonal, bgcolor, icon, title}) {
             <TitleCardShow title={translate('myroot.form.label.header.seller')} icon={icon} />
             <Divider   sx={{ p: 0.12, mt: 0, mx: 0, bgcolor: blueGrey[300]}} />
             <HeaderPersonalShow 
+                cssIcon={{      //'--mui-palette-primary-solidDisabledColor': 'neutral.200',
+                                //'--mui-palette-primary-solidDisabledBg': 'red',
+                                borderColor: 'neutral.500', bgcolor: 'neutral.50', color: 'neutral.600'
+                }}
                 icon={icon}
                 title={title}
                 mvaNo={dataPersonal.mva}
                 companyName={dataPersonal.companyName}
                 />
+            { !isMedium && <>
             <AddressContent capitionLabel={translate('myroot.form.label.header.address')}
-                            prefixFirstRow="ul. "
-                            firstRow={dataPersonal.street} secondRow={`${dataPersonal.city}, ${dataPersonal.zipCode}`} />
+            prefixFirstRow="ul. "
+            firstRow={dataPersonal.street} secondRow={`${dataPersonal.city}, ${dataPersonal.zipCode}`} />
             <AddressContent capitionLabel={translate('myroot.form.label.header.contact')} 
                             firstRow={"Aleksander Mariański"} 
                             thirdRow={`${dataPersonal.email}`} 
                             secondRow={`${dataPersonal.phoneNumber}`} />
+                            </>
+                        }
             {/* <AddressContent capitionLabel="Kontakt" streetAddress={dataPersonal.email} addressCity={dataPersonal.phoneNumber}   /> */}
                 <Divider   sx={{ p: 0.1, mt: 1, mx: 0 }} />
             <ContactContent contactNumber={"NUMER RACHUNKU:"} emailAdress={" 123"} />

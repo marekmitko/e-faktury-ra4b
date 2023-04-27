@@ -67,7 +67,10 @@ export const pl = {
             }
         },
         form: {
-            
+            mobile: {
+                salesTableHeaderTitle: 'Lista przedmiotów sprzedaży',
+                salesItemTitle: 'Pozycja sprzedaży',
+            },
             invoiceConfirmModal: {
                     paymentInfoShow: {
                         verticalCaption: "Razem",
@@ -127,6 +130,9 @@ export const pl = {
 
                 },
                 input: {
+                    datePickerSelectinput: {
+                        optionLabelName: 'dni'
+                    },
                     data_sale: 'Data wystawienia',
                     date_payment: 'Termin płatności',
                     buyerAutocomplete: 'Kupujący',

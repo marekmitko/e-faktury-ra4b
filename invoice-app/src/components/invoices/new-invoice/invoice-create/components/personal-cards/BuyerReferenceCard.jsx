@@ -14,9 +14,10 @@ import EfaBuyerAutoInput from "../../efa-invoice-form/personal-cards/EfaBuyerAut
 
 import BuyerIcon from '@mui/icons-material/ShoppingCart';
 import { ContactShow } from "./components/subcomponents/ShowContentBuyer";
-import { autocompleteClasses } from "@mui/material";
+import { autocompleteClasses, useMediaQuery } from "@mui/material";
 import BuyerReferenceInput from "./components/BuyerReferenceInput";
 import BuyerPreview from "./components/BuyerPreview";
+import { MQ_isMedium } from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
 
 
 
@@ -34,23 +35,26 @@ export default function BuyerReferenceCard({children, dataPersonal, resourcePath
 
     const defaultSort = { field: 'company', order: 'ASC' };
 
-    console.log("buyerId", buyerId);
+    
+    const isMedium = useMediaQuery(`${MQ_isMedium}`);
+
+
+
     return (
         <> 
             <JoyCard
                 variant="outlined"
                 sx={{ 
-                    minHeight: '300px',
+                    minHeight: isMedium ? "120px": '300px',
                     bgcolor: bgcolor ? bgcolor : '#fff',
                     // boxShadow: 'none',
                     border: 0,
                     borderColor: blueGrey[300],
-                    flex: '1 1 auto',
+                    flex: '1 1 auto', 
                     pt: 0, pb: 0, px: 0,   borderTopLeftRadius: '40px' }}
             >
                 <TitleCardShow title={translate('myroot.form.label.header.buyer')} />
                 <Divider   sx={{ p: 0.12, mt: 0, mx: 0, bgcolor: blueGrey[300]}} />
-                {/* <EfaBuyerAutoInput icon={<BuyerIcon/>} valueBuyerId={valueBuyerId} setValueBuyerId={setValueBuyerId} /> */}
                     <BuyerReferenceInput 
                             buyerId={buyerId}
                             source="buyer_id"
@@ -59,20 +63,14 @@ export default function BuyerReferenceCard({children, dataPersonal, resourcePath
                             perPage={10000}
                             sort={defaultSort}
                     >
-
-
-                        
-                        {/* <   BuyerPreview id={buyerId} resource={resourcePath} /> */}
-                        {/* <ContactShow resource="buyersEfaktury" id={buyerId} > */}
+                    { !isMedium &&
                         <ContactShow resource={resourcePath} id={buyerId} >
                             <SubHeaderBuyer />
                             <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   />
                             <ContactDetailsBuyer  capitionLabel={translate('myroot.form.label.header.contact')} />
                         </ContactShow>
+                    }
                     </BuyerReferenceInput>
-                
-                {/* <AddressContent capitionLabel="Kontakt" streetAddress={dataPersonal.email} addressCity={dataPersonal.phoneNumber}   /> */}
-                {/* <ContactContent contactNumber={"NUMER RACHUNKU"} emailAdress={"56056566046508635088"} /> */}
             </JoyCard>
         </>
     );
