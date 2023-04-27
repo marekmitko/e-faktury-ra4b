@@ -5,13 +5,13 @@ import { useController } from 'react-hook-form';
 
 const DatePickerInput = (props) => {
     const translate = useTranslate();
-    const { name, label } = props;
+    const { name, label, defaultValue } = props;
 
     const {
         field,
         fieldState: { isTouched, invalid, error },
         formState: { isSubmitted }
-    } = useController({ name, defaultValue: '' });
+    } = useController({ name, defaultValue: defaultValue ? defaultValue : ''  });
     return (
 
         <DatePicker 
@@ -21,6 +21,12 @@ const DatePickerInput = (props) => {
             // name={field.name}
             {...props}
             label={label ? translate(`${label}`) : translate(`${name}`)  }
+            slotProps={{
+                textField: {
+                    variant: 'outlined',
+                    helperText: 'MM/DD/YYYY',
+                },
+            }}
         />
         // <TextField
         //     {...field}

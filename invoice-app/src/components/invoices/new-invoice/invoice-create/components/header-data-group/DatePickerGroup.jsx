@@ -3,36 +3,74 @@ import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import DatePickerInput from './DatePickerInput';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import DatePickerInput from './DatePickerInput';
+// import DateRangePicker from './DateRangePicker';
+// import DateRangePicker2 from './DateRangePicker2';
+// import PickerWithAutocompleteField from './PickerWithAutocompleteField';
+import { useFormContext, useWatch } from 'react-hook-form';
+import MyCustomRangeDatePicker from './MyCustomRangeDatePicker';
+
+
+
+
+
+// React Material UI Tutorial - 40 - Date and Time Picker
+// https://www.youtube.com/watch?v=OpaT8jLB-hc
+
+// https://react-hook-form.com/api/usewatch/
+
+
+const a = dayjs();
+const b = a.add(7, 'day');
+
+
 
 export default function DatePickerGroup() {
+    // const { control, setValue } = useFormContext();
+    // const dateIssue = useWatch({control, name: 'date_sale' });
+    
+    // const today = dayjs().startOf("day");
+    
+    // const [dateValue, setDateValue] = React.useState(a);
+
+    // React.useEffect(() => {
+    //     // let dateSelected = dateIssue;
+    //     let dateSelected = today;
+    //     dateSelected.add(7, 'day');
+    //     setValue( 'date_sale', dateSelected );
+
+    // }, [dateValue]);
+
+    // const tomorrow = dayjs().add(1, 'day');
+
+
+
+
+    // console.log("dateIssue", dateIssue); 
+
+
+
+    
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <>
+        <MyCustomRangeDatePicker 
+            labelStart="data wystawienia"
+            labelEnd="termin płatności"
+        />
             <DemoContainer
                 components={[
-                'DatePicker',
-                'MobileDatePicker',
-                'DesktopDatePicker',
-                'StaticDatePicker',
+                    'DatePicker',
+                    'MobileDatePicker',
+                    'DesktopDatePicker',
+                    'StaticDatePicker',
                 ]}
             >
-                <DemoItem label="Responsive variant">
-                    <DatePickerInput 
-                        label="myroot.form.label.input.data_sale"
-                        name='date_sale'
-                    />
-                    <DatePickerInput 
-                        label="myroot.form.label.input.date_payment"
-                        name='date_payment'
-                    />
-                    <DatePicker 
-                        label="Basic date picker"
-                        defaultValue={dayjs('2022-04-17')} 
-                    />
-                </DemoItem>
-            
+                <p></p>
+                
             </DemoContainer>
-        </LocalizationProvider>
+        <div>
+        </div>
+                    </>
     );
     }

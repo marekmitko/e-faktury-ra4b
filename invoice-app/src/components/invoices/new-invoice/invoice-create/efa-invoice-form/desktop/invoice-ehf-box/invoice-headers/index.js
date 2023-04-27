@@ -4,6 +4,7 @@ import { DateInputPart } from './DateInputPart';
 import { LogotypeItem } from './LogotypeItem';
 import { DateInput, NumberInput } from 'react-admin';
 import HeaderDateGroup from '../../../../components/header-data-group';
+import MyCustomRangeDatePicker from '../../../../components/header-data-group/MyCustomRangeDatePicker';
 // import { flexbox } from '@mui/system';
 
 // TODO Added props sx + spacing 
@@ -19,6 +20,7 @@ export const NewInvoiceHeader = (props) => {
         <Grid container spacing={1} rowSpacing={1}>
             <Grid item xs={12} sm={6} md={6} >
                 <HeaderDateGroup />
+                {/* <MyCustomRangeDatePicker /> */}
             </Grid>
             <Grid item xs={12} sm={2} md={3}>
                 <Card sx={{ height:'100%', display: 'flex', alignContent: "center"}} >
