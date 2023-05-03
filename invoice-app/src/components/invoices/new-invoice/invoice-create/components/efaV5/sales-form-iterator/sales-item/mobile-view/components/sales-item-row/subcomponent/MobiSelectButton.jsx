@@ -13,7 +13,6 @@ import { IconButtonWithTooltip } from "react-admin";
 import ArrowDropDownCircleOutlinedIcon from '@mui/icons-material/ArrowDropDownCircleOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
-import { ItemIndexChip } from "../../../../../../../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 
 
 export default function MobiSelectButton( {nameProdcutNameInput, options, label, variant, variantLabel, defaultValue, sxCSS, sx, ...props} ) {

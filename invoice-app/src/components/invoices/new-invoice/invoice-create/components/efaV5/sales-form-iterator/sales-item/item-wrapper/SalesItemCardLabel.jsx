@@ -21,6 +21,7 @@ export default function SalesItemCardLabel({children, label }) {
             borderRadius: 2,
             // minWidth: "250px",
             bgcolor: "transparent",
+            mb: -1,
         }}
         >
     

@@ -47,18 +47,18 @@ const areaMinimal =  `" name name name name name name name name"
                 "  count count count count count count count count"
                 "  price price price price price price price price"
                 `;
-const areaXSmall =  `" name name name name name name name name"
-                "  type type type type type type type type  "
-                "  count count tax tax tax tax tax tax  "
-                "  price price price price price price price price "`;
+// const areaXSmall =  `" name name name name name name name name"
+//                 "  type type type type type type type type  "
+//                 "  count count tax tax tax tax tax tax  "
+//                 "  price price price price price price price price "`;
 
 const areaSmall =  `"name name name name name name name name name name name name name name name"
-                "  tax tax type type type type type type type type type type type type type  "
-                "  count count price price price price price price price price price price price price price "`;
+                "  tax type type type type type type type type type type type type type type  "
+                "  count price price price price price price price price price price price price price price "`;
 
 // const areaMedium =  `"name name name name name name name name name type type"
 //                         " count count tax tax tax tax tax tax tax price price "`;
-
+const areaXSmall = areaSmall;
 const areaMedium = areaSmall;
 
 const sxTotalCard = { 
@@ -106,7 +106,7 @@ const MobileSalesTableHeader = ({ children, title}) => (
         sx={{ width: '100%', px: 1 }}
     >
         <Typography  textColor='neutral.50' fontWeight='500'
-        sx={{   textTransform: 'uppercase', paddingRight: '25px',  paddingTop: 0, mt: 0}} 
+        sx={{   textTransform: 'uppercase',    paddingTop: 0, mt: 0}} 
         >
                         <StyledTableCellClasses
                             sx={{  m: 0,  p: 0, pb: 0.5, border: 'none', textAlign: 'right'}}>
@@ -241,7 +241,7 @@ export const SalesTableV5 = props => {
                                             sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
                                             defaultValue="placeholder" 
                                             options={typeOptions}  
-                                            variant="outlined"
+                                            variant={isMedium ? 'standard': 'outlined'}
                                     />
                                     <SelectInputItem
                                             source="product_vat" 
@@ -249,24 +249,27 @@ export const SalesTableV5 = props => {
                                             sx={{ gridArea: 'tax', '& svg': { mr: -0.5 }  }} 
                                             defaultValue="placeholder" 
                                             options={taxOptions}  
-                                            variant="outlined"
+                                            variant={isMedium ? 'standard': 'outlined'}
                                     />
                                     <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
                                         sx={{ gridArea: 'price', width: "100%", 
                                         visibility: entryPriceIsGross ? 'hidden' : 'visible',
                                         display: entryPriceIsGross ? 'hidden' : '' }}
                                         label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        variant={isMedium ? 'standard': 'outlined'}
                                     />
                                     <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
                                         sx={{ gridArea: 'price', width: "100%", 
                                         visibility: entryPriceIsGross ? 'visible' : 'hidden',
                                         display: entryPriceIsGross ? '' : 'hidden'      }}
                                         label="myroot.form.label.inputbox_itemrow.grossItem" 
+                                        variant={isMedium ? 'standard': 'outlined'}
                                     />
                                     <NumberInput source="product_count" 
                                         label="myroot.form.label.inputbox_itemrow.qtyItem"
-                                        variant="outlined" helperText={false}
+                                        helperText={false}
                                         sx={{ gridArea: 'count', marginTop: "8px", '& input': { mr: -1 } }}
+                                        variant={isMedium ? 'standard': 'outlined'}
                                     />
                                 </SalesFormIteratorV5>
                             </ArrayInput>

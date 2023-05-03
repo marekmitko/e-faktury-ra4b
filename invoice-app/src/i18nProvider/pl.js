@@ -49,7 +49,10 @@ export const pl = {
                 createInvoiceFormPageTitle: 'Wystaw nową fakturę'
             },
             action: {
-                tooltip: {  addSalesItem: 'Dodaj kolejną pozycję sprzedaży' },
+                tooltip: {  
+                        addSalesItem: 'Dodaj kolejną pozycję sprzedaży',
+                        removeSalesItem: 'Usuń pozycję'
+                },
                 button: {   addSalesItem: 'Dodaj przedmiot',
                             createInvoice: 'Utwórz',
                             invoicePreparation: ' Tworzenie'

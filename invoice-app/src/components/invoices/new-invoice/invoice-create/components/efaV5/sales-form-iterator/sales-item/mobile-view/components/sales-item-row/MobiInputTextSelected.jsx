@@ -4,6 +4,8 @@ import MobiSelectButton from "./subcomponent/MobiSelectButton";
 import { Stack, Divider, Box, FormControl, InputLabel, TextField, InputAdornment } from "@mui/material";
 import { ItemIndexChip } from "../../../../../../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 import SalesItemCardLabel from "../../../item-wrapper/SalesItemCardLabel";
+import { MobiIndexChip } from "./subcomponent/MobiIndexChip";
+import MobiRemoveItemButton from "./subcomponent/MobiRemoveItemButton";
 
 
 
@@ -56,7 +58,7 @@ export const MobiInputTextSelected = ({index, choiceOptions, sx,  InputProps, la
             <SalesItemCardLabel >
 
             <Stack direction='row' >
-                <ItemIndexChip cssBox={{ m: .5, mt: .75, mr: 1 }} index={++index} />
+                <MobiIndexChip cssBox={{ m: .5, mt: .75, mr: 0.5 }} index={++index} />
                 <TextField sx={{ width: '100%' } }
                         {...field} 
                         // variant={ variant ? variant : "standard"}
@@ -68,7 +70,7 @@ export const MobiInputTextSelected = ({index, choiceOptions, sx,  InputProps, la
                         InputProps={{
                             // ...InputProps,
                             startAdornment:   (
-                                <InputAdornment  sx={{  ml: -.5 }} sizeSmall="small"  position="start">
+                                <InputAdornment  sx={{  mx: -0.75                                                                                                    }} sizeSmall="small"  position="start">
                                         {<SelectBtn namefield={ field? name : "" } choiceOptions={choiceOptions? choiceOptions : {} } />}
                                         </InputAdornment>
                                 ),
@@ -79,7 +81,9 @@ export const MobiInputTextSelected = ({index, choiceOptions, sx,  InputProps, la
                             }}
                     {...props}
                 />
-                <ItemIndexChip cssBox={{ m: .5, mt: .75, mr: 1 }} index={++index} />
+                <Box sx={{ m: .5, mt: .75, mr: .5 }} >
+                   <MobiRemoveItemButton />
+                </Box>
             </Stack>
                             </SalesItemCardLabel>
         </Box>
