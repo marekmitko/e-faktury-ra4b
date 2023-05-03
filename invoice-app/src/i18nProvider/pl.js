@@ -130,6 +130,10 @@ export const pl = {
 
                 },
                 input: {
+                    customText: {
+                        enterPrice: "Cena przedmiotu",
+                        errorPrice: "Cena wymagana",
+                    },
                     datePickerSelectinput: {
                         optionLabelName: 'dni'
                     },

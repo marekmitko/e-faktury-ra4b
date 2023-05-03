@@ -224,45 +224,40 @@ export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( pro
 
 
         return (
-  <FormControlUnstyled sx={{ width: '100%' }} defaultValue="" required>
-      {({ filled, focused } ) => { 
-        
-       return(
+        <FormControlUnstyled sx={{ width: '100%' }} defaultValue="" required>
+            {({ filled, focused } ) => { 
+                return(
 
-          <React.Fragment> 
-            {/* <div> {filled ?  "✔" : "noFilled"}</div> */}
-
-            {/* <CssTextField label="Custom CSS" id="custom-css-outlined-input" /> */}
+            <React.Fragment> 
+                {/* <div> {filled ?  "✔" : "noFilled"}</div> */}
+                {/* <CssTextField label="Custom CSS" id="custom-css-outlined-input" /> */}
+                <ValidationTextField
+                    className={filled ? 'filled' : ''}
+                    label={label}
+                    // hiddenLabel
+                    defaultValue={`${values.numberformat}`}
+                    autoComplete={autoComplete}
+                    id="validation-outlined-input"
+                    size="small"
+                    inputRef={props.ref}
+                    value={values.numberformat}
+                    onChange={handleChange}
+                    // name="numberformat"
+                    // id="formatted-numberformat-input"
+                    // placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
+        //Om? Omówić z Olkiem
+                    InputProps={{
+                        inputComponent: NumericFormatCustom
+                    }}
+                    // required={(values[name] === undefined)? false : ((parseFloat(values[name]) && parseFloat(values[name]) >= 0) ? false : true)}
+                    error={(values[name] === undefined)? false : ((parseFloat(values[name]) && parseFloat(values[name]) >= 0) ? false : true)}
+                    variant="outlined"
+                    // helperText={(values[name] === undefined)? "" : (!(parseFloat(values[name]) >= 0) ? ((parseFloat(values[name])< 0) ? "Wartość ujemna" : "Podaj cenę") : ((parseFloat(values[name]) > 0)? "" : ("Podaj wartość większą od 0")) )}
                 
-            
-            <ValidationTextField
-                className={filled ? 'filled' : ''}
-                label={label}
-                // hiddenLabel
-                defaultValue={`${values.numberformat}`}
-                autoComplete={autoComplete}
-                id="validation-outlined-input"
-                size="small"
-                inputRef={props.ref}
-                value={values.numberformat}
-                onChange={handleChange}
-                // name="numberformat"
-                // id="formatted-numberformat-input"
-                // placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
-    //Om? Omówić z Olkiem
-                InputProps={{
-                    inputComponent: NumericFormatCustom
-                }}
-                // required={(values[name] === undefined)? false : ((parseFloat(values[name]) && parseFloat(values[name]) >= 0) ? false : true)}
-                error={(values[name] === undefined)? false : ((parseFloat(values[name]) && parseFloat(values[name]) >= 0) ? false : true)}
-                variant="outlined"
-                // helperText={(values[name] === undefined)? "" : (!(parseFloat(values[name]) >= 0) ? ((parseFloat(values[name])< 0) ? "Wartość ujemna" : "Podaj cenę") : ((parseFloat(values[name]) > 0)? "" : ("Podaj wartość większą od 0")) )}
-            
-                {...props}
-            />
-            </React.Fragment>
-          ) }
-          }
+                    {...props}
+                />
+                </React.Fragment>
+            )}}
         </FormControlUnstyled>
         );
 }
@@ -274,7 +269,7 @@ export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( pro
 
 
 
-export const RaPriceNumberInput = (props) => {
+export const RaMuiPriceInput = (props) => {
     const translate = useTranslate(); 
         const { onChange, onBlur, name, label, ...rest } = props;
         const {
@@ -291,55 +286,45 @@ export const RaPriceNumberInput = (props) => {
         });
 
         return (
-
-            <PriceNumberInput
-                {...field}
-                // sx={{        '& input:valid + fieldset': {
-                //     borderWidth: (isTouched && (error === undefined) && !isNaN(parseFloat(field.value))) ? 0 : 2,
-                //     }
-                // }}
-                // sx={{ bgcolor: isDirty? "gold" : "blue", border: isDirty? '4px green solid' : 'none'  }}
-           
-                label={(isTouched && isNaN(parseFloat(field.value)) ) ? "Podaj cenę" : translate(label) }
-                error={ (isTouched || isSubmitted) && (invalid || (isTouched && isNaN(parseFloat(field.value)) )) }
-                // error={((isTouched || isSubmitted)) }
-                placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
-                // helperText={(isTouched || isSubmitted) && invalid ? error : ( (invalid || (isTouched && isNaN(parseFloat(field.value)) )) ? "Podaj cenę" : "" )}
-                required={isRequired}
-                {...rest}
-            />
+            <Box sx={props.sx} >
+                <PriceNumberInput
+                    {...field}
+                    // sx={{        '& input:valid + fieldset': {
+                    //     borderWidth: (isTouched && (error === undefined) && !isNaN(parseFloat(field.value))) ? 0 : 2,
+                    //     }
+                    // }}
+                    // sx={{ bgcolor: isDirty? "gold" : "blue", border: isDirty? '4px green solid' : 'none'  }}
+            
+                    label={(isTouched && isNaN(parseFloat(field.value)) ) ? "Podaj cenę" : translate(label) }
+                    error={ (isTouched || isSubmitted) && (invalid || (isTouched && isNaN(parseFloat(field.value)) )) }
+                    // error={((isTouched || isSubmitted)) }
+                    placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
+                    // helperText={(isTouched || isSubmitted) && invalid ? error : ( (invalid || (isTouched && isNaN(parseFloat(field.value)) )) ? "Podaj cenę" : "" )}
+                    required={isRequired}
+                    {...rest}
+                />
+            </Box>
         );
     };
     
 
 
 
-export const CustomInputNumber = (props) => {
-    const {source, label,  name, sx, ...rest} = props;
-    return(
-        <Box sx={sx} >
-            <RaPriceNumberInput source={source} label={label} {...props} />
-        </Box>
-    );
-};
-export const CustomInputPrice = (props) => {
-    const {source,  label, name, sx, entryPriceIsGross, ...rest} = props;
 
-    // const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
 
-    // const priceNetto = () => (<RaPriceNumberInput source={`${source}_netto`} label={label} {...props} />);
-    // const priceNetto = (<RaPriceNumberInput source={`${source}_brutto`} label={label} {...props} />);
 
-    return(
-        <Box sx={sx} >
-            {entryPriceIsGross ? 
-                                <RaPriceNumberInput source={`${source}_netto`} label='myroot.form.label.inputbox_itemrow.netItem' {...props} /> 
-                                :
-                                <RaPriceNumberInput source={`${source}_brutto`} label='myroot.form.label.inputbox_itemrow.grossItem' {...props} /> 
-            }
-        </Box>
-    );
-};
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

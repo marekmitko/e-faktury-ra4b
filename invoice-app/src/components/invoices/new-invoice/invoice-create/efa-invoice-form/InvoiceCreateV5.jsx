@@ -19,7 +19,6 @@ import { productOptions } from "../invoice-form/subcomponents/sales-table/spanni
 import Header from './desktop/invoice-ehf-box/invoice-headers';
 import SellerIcon from "@mui/icons-material/Store";
 import SellerCardShow from "./personal-cards/SellerCardShow";
-import  { MQ_isSmall }   from "../../../../../config/GLOBAL_CONFIG_CONST"; 
 import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
@@ -29,6 +28,12 @@ import CreateInvoiceFormPageTitle from '../components/invoice-form-title/CreateI
 import { StyledTableCellClasses } from './components/new-sales-table/components/sales-table-header/components/styledHeaderCellClasses';
 import { SalesTableV5 } from '../components/efaV5/SalesTableV5';
 import { AdditionalTableV5 } from '../components/efaV5/AdditionalTableV5';
+import { JoyInputField, MobileInputNumber } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/MobileInputNumber';
+import JoySelectinputField from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputField';
+import {EndJoyInputPriceFormat, JoySelectinputPriceFormat, RaJoySelectinputPriceFormat } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputPriceFormat';
+import { MQ_isMedium } from './components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles';
+import { RaJoyPriceInput } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput';
+
 
 
 
@@ -86,7 +91,6 @@ const InvoiceCreateV5 = (props) => {
     });
 
 
-
         const [create, { isLoading, error }] = useCreate();
         const myDataProvider = useDataProvider();
         const currentBuyerId= methods.getValues('buyer_id');
@@ -114,7 +118,7 @@ const InvoiceCreateV5 = (props) => {
     const onSubmit2 = onSubmitModal({create, methods, navigate, notify});
     const db_seller = { street: user_db.user_address, companyName: user_db.user_company, mva: user_db.user_org_nr, city: user_db.user_place, zipCode: user_db.user_zip_code, country: user_db.user_country, phoneNumber: user_db.user_phone, email: user_db.user_email};
     const translate = useTranslate();
-    const isSmall = useMediaQuery(`${MQ_isSmall}`);
+    // const isSmall = useMediaQuery(`${MQ_isSmal}`);
 
 
     
@@ -154,7 +158,8 @@ const onSubmitTEST = ( data ) => console.info("1️⃣👍🏻Submit onSubmitTES
 
 
 // {/* END ConfirmInvoiceModal */}
-
+// const isMedium = useMediaQuery(`${MQ_isMedium}`);
+const isHidden = useMediaQuery(`${MQ_isMedium}`);
     return(
         <>
             {/* <DataUserList /> // toDo zobacz bo sie generuje fajny AddButton -> zobacz w InvoiceCreateV2  */} 
@@ -176,7 +181,36 @@ const onSubmitTEST = ( data ) => console.info("1️⃣👍🏻Submit onSubmitTES
                                     >
                                             <Header  /> 
                                     </Grid>
+                                    { isHidden && 
+                                    <>
+                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
+                                    > 
+                                             <RaJoyPriceInput
+                                                source="product_price_MuiTEST2" 
+                                                label="myroot.form.label.inputbox_itemrow.netItem" 
+                                            />
+                                    </Grid>
+                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
+                                    >
 
+
+                                         <MobileInputNumber
+                                        source="numTestInput"  
+                                        sx={{ gridArea: 'name', width: "100%", 
+                                        // visibility: entryPriceIsGross ? 'visible' : 'hidden',
+                                        // display: entryPriceIsGross ? '' : 'hidden'      
+                                        }}
+                                        label="test" 
+                                    />
+                                        <hr />
+                                        <RaJoySelectinputPriceFormat 
+                                           source="InputPriceTest2" 
+                                           label="test2"
+                                           // error  textHelper
+                                           />
+                                    </Grid>
+                                    </>
+                                    }
                                     <Grid  item xs={11}  sm={11}  md={5.75}   >
                                         <SellerCardShow bgcolor="neutral.50"  icon={<SellerIcon />}     dataPersonal={db_seller} />
                                     </Grid>

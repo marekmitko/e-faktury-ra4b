@@ -12,7 +12,7 @@ import {
     SalesFormIteratorPrefix,
     MQ_isSmall
 } from './useSalesFormIteratorStyles';
-import { Confirm, ReOrderButtons, SimpleFormIteratorContext, RemoveItemButton, AddItemButton } from 'react-admin';
+import { Confirm, ReOrderButtons, SimpleFormIteratorContext, RemoveItemButton, AddItemButton, useSimpleFormIterator } from 'react-admin';
 import { SalesFormIteratorRowV5 } from './SalesFormIteratorRowV5';
 import useProductFormIterator from './logic/useProductFormField';
 // import TableContainerIterator from './subcomponent/form-iterator/TableContainerIterator';
@@ -23,6 +23,7 @@ import { FlexboxContainer, BorderLinebox } from '../../../efa-invoice-form/compo
 import { EfaRemoveBtnIcon, EfaRemoveItemButton } from '../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/button/RemoveItemButton';
 import { ClearArrayButton } from '../../invoice-confirm-modal/components/button/bin/ClearArrayButton';
 import LabelOptionCard from '../../../efa-invoice-form/components/additional-sending-options/subcomponents/LabelOptionCard';
+import WrapperItemCard from './sales-item/item-wrapper/WrapperItemCard';
 
 // export const MobileFormIterator = (props) => {
 export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
@@ -60,6 +61,20 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
 
     const { records, record, fields, translate,  removeField, addField, move, replace } = useProductFormIterator(props)
     // removeField
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // add field and call the onClick event of the button passed as addButton prop
     const handleAddButtonClick = ( 
@@ -144,10 +159,33 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                     }}
                     > 
                     {fields.map((member, index) => {
+
+
+                    //newRemoveButton   // remove field and call the onClick event of the button passed as removeButton prop
+
+                    
+                    // const { remove } = useSimpleFormIterator();
+
+                    // const handleRemoveButtonClick = (
+                    //     originalOnClickHandler, //MouseEventHandler,
+                    //     index // number
+                    // ) => (event) => { // MouseEvent
+                    //     remove(index);
+                    //     if (originalOnClickHandler) {
+                    //         originalOnClickHandler(event);
+                    //     }
+                    // };
+
+
+
+
+
+
+
                         return(
                         <>
                         <Box sx={{ mt: 1, bgcolor:  'background.paper', borderRadius: 2, boxShadow: 1 }}>
-                            <LabelOptionCard label={ 
+                            <WrapperItemCard label={ 
                                 <span> {`${index +1 }. `}
                                 {translate('myroot.form.mobile.salesItemTitle')}
                                 </span>} 
@@ -181,7 +219,7 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                                 {children} 
                             
                             </SalesFormIteratorRowV5>
-                        </LabelOptionCard>
+                        </WrapperItemCard>
                                             </Box>
 
                     </>

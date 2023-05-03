@@ -243,13 +243,11 @@ export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( pro
                 autoComplete={autoComplete}
                 id="validation-outlined-input"
                 size="small"
-                inputRef={props.ref}
                 value={values.numberformat}
                 onChange={handleChange}
                 // name="numberformat"
                 // id="formatted-numberformat-input"
                 // placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
-    //Om? Omówić z Olkiem
                 InputProps={{
                     inputComponent: NumericFormatCustom
                 }}

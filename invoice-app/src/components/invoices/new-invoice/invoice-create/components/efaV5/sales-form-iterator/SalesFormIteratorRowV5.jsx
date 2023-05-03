@@ -174,8 +174,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                     <InnerLinebox sxCSS={{ order: 1, m: 0, p: 0,  }} 
                         className={RowItemClasses.inline} 
                     >
-                        <Card component="section" className={RowItemClasses.rowSection} 
-                         >
+                        <Card component="section" className={RowItemClasses.rowSection}  >
                             {/* <Box sx={ wraperSectionItem }> */}
                                 <div style={{    gridArea: 'rowInput'    }} >
                                         <Card component='section' className='inputSection-itemRow' sx={{  
@@ -273,7 +272,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                     // ),
                                 })}
 
-                            {!disableRemoveField(record) &&
+                            {/* {!disableRemoveField(record) &&
                                 cloneElement(removeButton, {
                                     onClick: handleRemoveButtonClick(
                                         removeButton.props.onClick,
@@ -283,7 +282,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                     //     'button-remove',
                                     //     `button-remove-${source}-${index}`
                                     // ),
-                                })}
+                                })} */}
                         {/* </div> */}
                      {/* </Box> */}
                 </BorderLinebox>

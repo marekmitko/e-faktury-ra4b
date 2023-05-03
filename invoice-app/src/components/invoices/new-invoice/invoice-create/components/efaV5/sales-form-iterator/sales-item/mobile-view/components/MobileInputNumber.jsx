@@ -12,6 +12,65 @@ import { alpha, styled } from '@mui/material/styles';
 import FormControlUnstyled, {
     FormControlUnstyledState, useFormControlUnstyledContext,
   } from '@mui/base/FormControlUnstyled';
+import JoyFormControl from '@mui/joy/FormControl';
+import JoyFormLabel from '@mui/joy/FormLabel';
+import JoyFormHelperText from '@mui/joy/FormHelperText';
+import JoyInput from '@mui/joy/Input';
+import { InputAdornment } from "@mui/material";
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import { RaJoySelectinputPriceFormat } from "./input/JoySelectinputPriceFormat";
+
+
+
+
+// JoyInputField
+export function JoyInputField(props){
+    const { textHelper } = props;
+
+    return(<>
+        <JoyFormControl
+            id={props?.id ? props.id : ( props.name || props.name  || "" ) }
+            required={props?.required ? true : false}
+            size={props?.size ? props.size : 'sm'}
+            color={props?.color ? props.color : 'primary'}
+        >
+                <JoyFormLabel>
+                    {props?.label ? props.label : props?.name }
+                </JoyFormLabel>
+            <JoyInput
+                placeholder={props?.placeholder ? props.placeholder : '' }
+                name={props?.name ? props.name : '' }
+                // type="tel"
+                type={props?.type ? props.type : '' }
+                autoComplete={props?.autoComplete ? "on" : "off" }
+                autoFocus={props?.autoFocus ? true : false }
+                error={props?.error ? true : false}
+                fullWidth={props?.fullWidth ? true : false }
+                defaultValue="DefaultValue"
+                variant={props?.variant ? props.variant : "outlined"} 
+            />
+            { textHelper &&
+                <JoyFormHelperText>
+                    Help!
+                </JoyFormHelperText>
+            }
+        </JoyFormControl>
+        
+    </>)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -90,6 +149,7 @@ const NumericFormatCustom = React.forwardRef(function NumericFormatCustom( props
     return (
         <NumericFormat
         {...other}
+        className="NumericFormatCustomInput"
         getInputRef={ref}
         onValueChange={(values) => {
             onChange({
@@ -104,6 +164,10 @@ const NumericFormatCustom = React.forwardRef(function NumericFormatCustom( props
         suffix=" zł"
         decimalScale={2}
         decimalSeparator=","
+        style={{ width: '100%',
+            minHeight: '30px',
+            border: 'none'
+        }}
     
     />
   );
@@ -140,7 +204,7 @@ NumericFormatCustom.propTypes = {
     },
     });
 
-
+//Om? Zostaje
     const ValidationTextField = styled(TextField)({
             '& input:valid + fieldset': {
             borderColor: 'grey',
@@ -165,20 +229,7 @@ NumericFormatCustom.propTypes = {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Om? Zostaje
 export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( props, ref  )  {
     // function PriceNumberInput(props)  {
     const { 
@@ -225,17 +276,17 @@ export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( pro
 
         return (
   <FormControlUnstyled sx={{ width: '100%' }} defaultValue="" required>
-      {({ filled, focused } ) => { 
-        
-       return(
+      {({ filled, focused } ) => (
 
           <React.Fragment> 
             {/* <div> {filled ?  "✔" : "noFilled"}</div> */}
 
             {/* <CssTextField label="Custom CSS" id="custom-css-outlined-input" /> */}
-                
-            
             <ValidationTextField
+                sx={{
+                    // '& input:focus-visible ':  { outline: 'none' }
+                    '&:focus': {  outline: '3px solid  red'       } 
+                }}
                 className={filled ? 'filled' : ''}
                 label={label}
                 // hiddenLabel
@@ -243,26 +294,29 @@ export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( pro
                 autoComplete={autoComplete}
                 id="validation-outlined-input"
                 size="small"
-                inputRef={props.ref}
                 value={values.numberformat}
                 onChange={handleChange}
                 // name="numberformat"
                 // id="formatted-numberformat-input"
                 // placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
-    //Om? Omówić z Olkiem
                 InputProps={{
-                    inputComponent: NumericFormatCustom
+                    inputComponent: NumericFormatCustom,
+                    // startAdornment: (
+                    //     <InputAdornment position="start">
+                    //       <AccountCircle />
+                    //     </InputAdornment>
+                    //   ),
                 }}
                 // required={(values[name] === undefined)? false : ((parseFloat(values[name]) && parseFloat(values[name]) >= 0) ? false : true)}
                 error={(values[name] === undefined)? false : ((parseFloat(values[name]) && parseFloat(values[name]) >= 0) ? false : true)}
                 variant="outlined"
                 // helperText={(values[name] === undefined)? "" : (!(parseFloat(values[name]) >= 0) ? ((parseFloat(values[name])< 0) ? "Wartość ujemna" : "Podaj cenę") : ((parseFloat(values[name]) > 0)? "" : ("Podaj wartość większą od 0")) )}
-            
+               
+                
                 {...props}
             />
             </React.Fragment>
           ) }
-          }
         </FormControlUnstyled>
         );
 }
@@ -273,7 +327,7 @@ export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( pro
 // https://codesandbox.io/s/qcixu6?file=/demo.tsx:3513-3525
 
 
-
+//Om? Zostaje
 export const RaPriceNumberInput = (props) => {
     const translate = useTranslate(); 
         const { onChange, onBlur, name, label, ...rest } = props;
@@ -301,11 +355,12 @@ export const RaPriceNumberInput = (props) => {
                 // sx={{ bgcolor: isDirty? "gold" : "blue", border: isDirty? '4px green solid' : 'none'  }}
            
                 label={(isTouched && isNaN(parseFloat(field.value)) ) ? "Podaj cenę" : translate(label) }
-                error={ (isTouched || isSubmitted) && (invalid || (isTouched && isNaN(parseFloat(field.value)) )) }
+                // error={ (isTouched || isSubmitted) && (invalid || (isTouched && isNaN(parseFloat(field.value)) )) }
                 // error={((isTouched || isSubmitted)) }
                 placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
                 // helperText={(isTouched || isSubmitted) && invalid ? error : ( (invalid || (isTouched && isNaN(parseFloat(field.value)) )) ? "Podaj cenę" : "" )}
                 required={isRequired}
+                
                 {...rest}
             />
         );
@@ -314,32 +369,29 @@ export const RaPriceNumberInput = (props) => {
 
 
 
-export const CustomInputNumber = (props) => {
+export const MobileInputNumber = (props) => {
     const {source, label,  name, sx, ...rest} = props;
     return(
         <Box sx={sx} >
+            {/* <RaJoySelectinputPriceFormat source={source} label={label} {...props} /> */}
             <RaPriceNumberInput source={source} label={label} {...props} />
         </Box>
     );
 };
-export const CustomInputPrice = (props) => {
-    const {source,  label, name, sx, entryPriceIsGross, ...rest} = props;
 
-    // const enteryValue = entryPriceIsGross ? grossItem.field.value : netItem.field.value;
 
-    // const priceNetto = () => (<RaPriceNumberInput source={`${source}_netto`} label={label} {...props} />);
-    // const priceNetto = (<RaPriceNumberInput source={`${source}_brutto`} label={label} {...props} />);
 
-    return(
-        <Box sx={sx} >
-            {entryPriceIsGross ? 
-                                <RaPriceNumberInput source={`${source}_netto`} label='myroot.form.label.inputbox_itemrow.netItem' {...props} /> 
-                                :
-                                <RaPriceNumberInput source={`${source}_brutto`} label='myroot.form.label.inputbox_itemrow.grossItem' {...props} /> 
-            }
-        </Box>
-    );
-};
+
+
+
+
+
+
+
+
+
+
+
 
 
 

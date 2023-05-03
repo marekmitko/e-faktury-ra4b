@@ -26,6 +26,10 @@ import { JoyNoteboxV2 } from "../../invoice-form/subcomponents/sales-table/joy-s
 import { ItemIndexChip } from "../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 import { SalesFormIteratorV5 } from "./sales-form-iterator/SalesFormIteratorV5";
 import { StyledTableCellClasses } from "./sales-form-iterator/useSalesFormIteratorStyles";
+import { MobileInputNumber } from "./sales-form-iterator/sales-item/mobile-view/components/MobileInputNumber";
+import { RaJoySelectinputPriceFormat } from "./sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputPriceFormat";
+import { RaMuiPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/mui/RaMuiPriceInput";
+import { RaJoyPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput";
 
 export const nameSalesIteratorForm = 'products';
 const required = () => (value) => (
@@ -35,20 +39,20 @@ const required = () => (value) => (
 );
 // https://blog.logrocket.com/guide-mui-grid-system/
 
-const areaMinimal =  `"name name name name name name name name name"
-                " . type type type type type type type type  "
-                " . tax tax tax tax tax tax tax tax"
-                " . count count count count count count count count"
-                " . price price price price price price price price"
+const areaMinimal =  `" name name name name name name name name"
+                "  type type type type type type type type  "
+                "  tax tax tax tax tax tax tax tax"
+                "  count count count count count count count count"
+                "  price price price price price price price price"
                 `;
-const areaXSmall =  `"name name name name name name name name name"
-                " . type type type type type type type type  "
-                " . count count tax tax tax tax tax tax  "
-                " . price price price price price price price price "`;
+const areaXSmall =  `" name name name name name name name name"
+                "  type type type type type type type type  "
+                "  count count tax tax tax tax tax tax  "
+                "  price price price price price price price price "`;
 
-const areaSmall =  `"name name name name name name name name name name name name name name name name"
-                "  . tax tax type type type type type type type type type type type type type  "
-                "  . count count price price price price price price price price price price price price price "`;
+const areaSmall =  `"name name name name name name name name name name name name name name name"
+                "  tax tax type type type type type type type type type type type type type  "
+                "  count count price price price price price price price price price price price price price "`;
 
 const areaMedium =  `"name name name name name name name name name type type"
                         " count count tax tax tax tax tax tax tax price price "`;
@@ -129,6 +133,7 @@ export const SalesTableV5 = props => {
     return(
         <>
                 <div>
+                    
                     <JoyGlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }} />
                     <JoyCssBaseline />
                     <Container
@@ -188,14 +193,29 @@ export const SalesTableV5 = props => {
                                         }}
                                         getItemLabel={(index) => (<ItemIndexChip cssBox={{ mb: -2 }} index={++index} />)}  
                                 > 
-                                    <InputTextSelected 
+                                    {/* <RaJoySelectinputPriceFormat
+                                        source="product_price_TEST" 
+                                        label="test2"
+                                        sx={{   gridArea: 'name'   }} 
+                                            // error  textHelper
+                                        /> */}
+                                        {/* <RaMuiPriceInput */}
+                                        <RaJoyPriceInput
+                                            source="product_price_MuiTEST" validate={vumberInputValidation}
+                                            sx={{ gridArea: 'name', width: "100%", 
+                                            // visibility: entryPriceIsGross ? 'hidden' : 'visible',
+                                            // display: entryPriceIsGross ? 'hidden' : '' 
+                                            }}
+                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        />
+                                    {/* <InputTextSelected 
                                             // label="myroot.form.label.inputbox_itemrow.itemNameField"
                                             label=''
                                             source="product_name" 
                                             choiceOptions={OptionRecord.choice_product_list} 
                                             sx={{   gridArea: 'name'   }} 
                                             placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
-                                    />
+                                    /> */}
                                     <SelectInputItem
                                             source="product_type" 
                                             label="myroot.form.label.inputbox_itemrow.typeItem"
@@ -224,7 +244,7 @@ export const SalesTableV5 = props => {
                                         display: entryPriceIsGross ? '' : 'hidden'      }}
                                         label="myroot.form.label.inputbox_itemrow.grossItem" 
                                     />
-                                    <NumberInput source="product_count"
+                                    <NumberInput source="product_count" 
                                         label="myroot.form.label.inputbox_itemrow.qtyItem"
                                         variant="outlined" helperText={false}
                                         sx={{ gridArea: 'count', marginTop: "8px", '& input': { mr: -1 } }}
