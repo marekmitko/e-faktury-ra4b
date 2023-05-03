@@ -12,6 +12,7 @@ import { alpha, styled } from '@mui/material/styles';
 import FormControlUnstyled, {
     FormControlUnstyledState, useFormControlUnstyledContext,
   } from '@mui/base/FormControlUnstyled';
+  import { red, pink, blueGrey} from '@mui/material/colors';
 
 
 
@@ -104,6 +105,12 @@ const NumericFormatCustom = React.forwardRef(function NumericFormatCustom( props
         suffix=" zł"
         decimalScale={2}
         decimalSeparator=","
+        // style={{ width: '100%',
+        //     minHeight: '30px',
+        //     padding: 1,
+        //     paddingLeft:'8px',
+        //     border: 'none'
+        // }}
     
     />
   );
@@ -151,7 +158,7 @@ NumericFormatCustom.propTypes = {
             borderWidth: 2,
             },
             '& input:invalid + fieldset': {
-            borderColor: 'red',
+            borderColor: red[200],
             borderWidth: 2,
             },
             '& input:error + fieldset': {
@@ -161,7 +168,7 @@ NumericFormatCustom.propTypes = {
             '& input:valid:focus + fieldset': {
             borderLeftWidth: 6,
             padding: '2px !important', // override inline-style
-            },
+            }, 
         });
 
 
@@ -232,6 +239,9 @@ export const  PriceNumberInput = React.forwardRef(function PriceNumberInput( pro
                 {/* <div> {filled ?  "✔" : "noFilled"}</div> */}
                 {/* <CssTextField label="Custom CSS" id="custom-css-outlined-input" /> */}
                 <ValidationTextField
+                    // sx={{ "& input": {border: 'none' } }}
+                    InputLabelProps={{ shrink: true }} 
+                    // margin="normal" 
                     className={filled ? 'filled' : ''}
                     label={label}
                     // hiddenLabel
@@ -295,10 +305,20 @@ export const RaMuiPriceInput = (props) => {
                     // }}
                     // sx={{ bgcolor: isDirty? "gold" : "blue", border: isDirty? '4px green solid' : 'none'  }}
             
-                    label={(isTouched && isNaN(parseFloat(field.value)) ) ? "Podaj cenę" : translate(label) }
+                    label={(isTouched && isNaN(parseFloat(field.value)) ) ? 
+                            // translate('myroot.form.label.input.customText.errorPrice')
+                            translate(label)
+                            :
+                            ""
+                            // translate('myroot.form.label.input.customText.enterPrice'),
+                        }
                     error={ (isTouched || isSubmitted) && (invalid || (isTouched && isNaN(parseFloat(field.value)) )) }
                     // error={((isTouched || isSubmitted)) }
-                    placeholder={ (isTouched || error ) ? 'Cena wymagana': "Cena produktu" }
+                    placeholder={ (isTouched || error ) ? 
+                        translate('myroot.form.label.input.customText.errorPrice')
+                        : 
+                        translate('myroot.form.label.input.customText.enterPrice')
+                    }
                     // helperText={(isTouched || isSubmitted) && invalid ? error : ( (invalid || (isTouched && isNaN(parseFloat(field.value)) )) ? "Podaj cenę" : "" )}
                     required={isRequired}
                     {...rest}

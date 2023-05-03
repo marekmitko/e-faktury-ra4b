@@ -51,6 +51,7 @@ export const InputTextSelected = ({choiceOptions, sx,  InputProps, label,  place
     } = useInput(props);
     const { name } = field;
     // const options = props.choiceOptions;
+    console.log("inputprops", props);
     return(
         <Box sx={{ ...sx } }    >
         <TextField sx={{ width: '100%' }}

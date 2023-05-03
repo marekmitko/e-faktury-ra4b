@@ -33,6 +33,7 @@ import JoySelectinputField from '../components/efaV5/sales-form-iterator/sales-i
 import {EndJoyInputPriceFormat, JoySelectinputPriceFormat, RaJoySelectinputPriceFormat } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputPriceFormat';
 import { MQ_isMedium } from './components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles';
 import { RaJoyPriceInput } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput';
+import { RaMuiPriceInput } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/mui/RaMuiPriceInput';
 
 
 
@@ -181,25 +182,34 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                     >
                                             <Header  /> 
                                     </Grid>
-                                    { isHidden && 
+                                    { !isHidden && 
                                     <>
-                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
-                                    > 
-                                             <RaJoyPriceInput
-                                                source="product_price_MuiTEST2" 
-                                                label="myroot.form.label.inputbox_itemrow.netItem" 
-                                            />
+                                    <Grid  item xs={12}  sm={12}  md={12}     > 
+                                        <RaJoyPriceInput
+                                            source="product_price_MuiTESTyy"  
+                                            sx={{ gridArea: 'name', width: "100%", 
+                                            // visibility: entryPriceIsGross ? 'hidden' : 'visible',
+                                            // display: entryPriceIsGross ? 'hidden' : '' 
+                                            }}
+                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        />
+                                    </Grid>
+                                    <Grid  item xs={12}  sm={12}  md={12}     > 
+                                        <RaJoyPriceInput
+                                            source="product_price_JoyTEST2" 
+                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        />
                                     </Grid>
                                     <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
                                     >
 
-
+                                        <RaMuiPriceInput source="product_price_MuiTEST2" label="cena brutto"  />
                                          <MobileInputNumber
                                         source="numTestInput"  
-                                        sx={{ gridArea: 'name', width: "100%", 
-                                        // visibility: entryPriceIsGross ? 'visible' : 'hidden',
-                                        // display: entryPriceIsGross ? '' : 'hidden'      
-                                        }}
+                                        // sx={{ gridArea: 'name', width: "100%", 
+                                        // // visibility: entryPriceIsGross ? 'visible' : 'hidden',
+                                        // // display: entryPriceIsGross ? '' : 'hidden'      
+                                        // }}
                                         label="test" 
                                     />
                                         <hr />

@@ -142,9 +142,9 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                         bgcolor: 'primary.900', borderRadius: 1, pt: 0.6,   
                     }}
                     > 
-                        <BorderLinebox sxCSS={{ order: -1 }} /> 
+                        {/* <BorderLinebox sxCSS={{ order: -1 }} />  */}
                         {tableHeader}
-                        <BorderLinebox  sxCSS={{ order: 3 }} />
+                        {/* <BorderLinebox  sxCSS={{ order: 3 }} /> */}
                     </FlexboxContainer>
                 </thead>
                 <tbody  style={{   display: 'inline-flex', width: '100%' }}  >  
@@ -155,41 +155,19 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                         display: 'flex', 
                         flexFlow: 'column nowrap',
                         bgcolor: 'transparent', borderRadius: 1, //...sxTableBody  
-                        ...sxTableBody  
+                        ...sxTableBody,
+                        width: '100%'
                     }}
                     > 
                     {fields.map((member, index) => {
-
-
-                    //newRemoveButton   // remove field and call the onClick event of the button passed as removeButton prop
-
-                    
-                    // const { remove } = useSimpleFormIterator();
-
-                    // const handleRemoveButtonClick = (
-                    //     originalOnClickHandler, //MouseEventHandler,
-                    //     index // number
-                    // ) => (event) => { // MouseEvent
-                    //     remove(index);
-                    //     if (originalOnClickHandler) {
-                    //         originalOnClickHandler(event);
-                    //     }
-                    // };
-
-
-
-
-
-
-
                         return(
                         <>
-                        <Box sx={{ mt: 1, bgcolor:  'background.paper', borderRadius: 2, boxShadow: 1 }}>
-                            <WrapperItemCard label={ 
+                        <Box component='tr' sx={{ mt: 1, p: 0,  bgcolor:  'background.paper', borderRadius: 2, boxShadow: 1 }}>
+                            {/* <WrapperItemCard label={ 
                                 <span> {`${index +1 }. `}
-                                {translate('myroot.form.mobile.salesItemTitle')}
+                                {translate('myroot.form.mobile.salesItemTitle')} 
                                 </span>} 
-                            >
+                            > */}
                             <SalesFormIteratorRowV5
                                 sx={ itemSx } setValue={setValue}
                                 wraperSectionItem={wraperSectionItem}
@@ -219,7 +197,7 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                                 {children} 
                             
                             </SalesFormIteratorRowV5>
-                        </WrapperItemCard>
+                        {/* </WrapperItemCard> */}
                                             </Box>
 
                     </>

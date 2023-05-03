@@ -68,7 +68,7 @@ export const pl = {
         },
         form: {
             mobile: {
-                salesTableHeaderTitle: 'Lista przedmiotów sprzedaży',
+                salesTableHeaderTitle: 'Lista sprzedaży',
                 salesItemTitle: 'Pozycja sprzedaży',
             },
             invoiceConfirmModal: {

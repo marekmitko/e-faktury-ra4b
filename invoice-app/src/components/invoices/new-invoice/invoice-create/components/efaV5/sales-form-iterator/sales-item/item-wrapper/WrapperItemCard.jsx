@@ -19,17 +19,21 @@ export default function WrapperItemCard({children, label }) {
         <Sheet
         // variant="outlined"
         sx={{
+            m: 0,
             pb: 0,
             borderRadius: 2,
             // minWidth: "250px",
             bgcolor: "background.body",
         }}
         >
-            { isMedium && 
+            {/* <Box role="group" aria-labelledby="filter-status"
+            sx={{ py: 0.25 }}
+            > */}
+            {isMedium && 
 
                 <>
         <Typography
-            textColor='neutral.700' level="body2" fontWeight='400'
+            textColor='neutral' level="body2" fontWeight='400'
             id="filter-status"
             sx={{
                 textTransform: "uppercase",
@@ -43,14 +47,11 @@ export default function WrapperItemCard({children, label }) {
         >
             { label ? label : "" }
         </Typography>
-        <Divider sx={{ py:0.15, mx: 0, mt: -0.5 }}  />
+        {/* <Divider sx={{ py:0.15, mx: 0, mt: -0.5 }}  /> */}
         </>
     }
-        <Box role="group" aria-labelledby="filter-status"
-        sx={{ mt: 0.25 }}
-        >
                 { children? children : "" }
-        </Box>
+        {/* </Box> */}
         {/* <Button
             variant="outlined"
             color="neutral"

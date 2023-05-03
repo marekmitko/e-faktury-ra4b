@@ -49,7 +49,6 @@ export const AdditionalTableV5 = props => {
                                 bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
                             }}
                         >
-                            <BorderLinebox sxCSS={{ order: -1 }} /> 
                             <InnerLinebox sxCSS={ { order: 1 } }    >
                                 <div style={{ width: '100%' }}>
                                 <JoyBox  sx={{ 
@@ -93,7 +92,6 @@ export const AdditionalTableV5 = props => {
                                     </JoyBox> 
                                         </div>
                                 </InnerLinebox>
-                            <BorderLinebox  sxCSS={{ order: 3 }} />
                         </FlexboxContainer>
                 </FullwidthWraper>
             </TableContainer>

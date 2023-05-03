@@ -1,8 +1,8 @@
 import {useRef, useState} from "react";
-import { Container, GlobalStyles, TableContainer, TableFooter, TablePagination, TableCell, useMediaQuery, Grid } from "@mui/material";
+import { Container, GlobalStyles, Stack, TableContainer, TableFooter, TablePagination, TableCell, useMediaQuery, Grid } from "@mui/material";
 import JoyCssBaseline from '@mui/joy/CssBaseline';
 import JoyGlobalStyles from '@mui/joy/GlobalStyles';
-import { Card, Divider, Typography } from "@mui/joy";
+import { Box, Card, Divider,  Typography } from "@mui/joy";
 import { jsx, css } from '@emotion/react'
 import {
     ArrayInput,
@@ -25,11 +25,13 @@ import TotalCostCardV2 from "../../efa-invoice-form/components/new-sales-table/c
 import { JoyNoteboxV2 } from "../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
 import { ItemIndexChip } from "../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 import { SalesFormIteratorV5 } from "./sales-form-iterator/SalesFormIteratorV5";
-import { StyledTableCellClasses } from "./sales-form-iterator/useSalesFormIteratorStyles";
 import { MobileInputNumber } from "./sales-form-iterator/sales-item/mobile-view/components/MobileInputNumber";
 import { RaJoySelectinputPriceFormat } from "./sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputPriceFormat";
 import { RaMuiPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/mui/RaMuiPriceInput";
 import { RaJoyPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput";
+import { StyledTableCellClasses } from './sales-form-iterator/sales-item/mobile-view/styledHeaderCellClasses';
+import { MobiInputTextSelected } from "./sales-form-iterator/sales-item/mobile-view/components/sales-item-row/MobiInputTextSelected";
+
 
 export const nameSalesIteratorForm = 'products';
 const required = () => (value) => (
@@ -54,8 +56,10 @@ const areaSmall =  `"name name name name name name name name name name name name
                 "  tax tax type type type type type type type type type type type type type  "
                 "  count count price price price price price price price price price price price price price "`;
 
-const areaMedium =  `"name name name name name name name name name type type"
-                        " count count tax tax tax tax tax tax tax price price "`;
+// const areaMedium =  `"name name name name name name name name name type type"
+//                         " count count tax tax tax tax tax tax tax price price "`;
+
+const areaMedium = areaSmall;
 
 const sxTotalCard = { 
     // flexDirection: { xs: 'row', md: 'column' },
@@ -73,7 +77,7 @@ const OptionRecord = {  choice_product_list: productOptions  };
 const configGridBox_itemRow = {
     display: 'grid',
     // gridTemplateColumns: 'minmax(550px, 1fr) minmax(auto, 300px) ',
-    gridTemplateColumns: '500px  minmax(auto-fill, 300px)',
+    // gridTemplateColumns: '500px  minmax(auto-fill, 300px)',
     gridTemplateAreas: `"rowInput rowOutput"`,
     gridAutoFlow: 'row',
     // gap: 1,
@@ -92,15 +96,27 @@ const configGridBox_inputItemBox = {
     gridTemplateRows: 'auto',
 };
 
-
+const MobileHeaderDivider = (
+    <Divider  spacing={2} orientation="vertical"   sx={{ px: 0.09, mr: 2, mt: -0.5,  bgcolor: 'neutral.400'}}   />
+);
 
 const MobileSalesTableHeader = ({ children, title}) => (
-    <Typography textColor='neutral.100' fontWeight='500'
-        sx={{ pl: 1, textTransform: 'uppercase' }}    
+    <Stack  direction="row"    justifyContent="space-between"    alignItems="stretch"
+        // divider={MobileHeaderDivider}  
+        sx={{ width: '100%', px: 1 }}
     >
-        {title ? title : ''}
-        {/* {children? children : ''} */}
-    </Typography>
+        <Typography  textColor='neutral.50' fontWeight='500'
+        sx={{   textTransform: 'uppercase', paddingRight: '25px',  paddingTop: 0, mt: 0}} 
+        >
+                        <StyledTableCellClasses
+                            sx={{  m: 0,  p: 0, pb: 0.5, border: 'none', textAlign: 'right'}}>
+                                { title ? title : "" }
+                            </StyledTableCellClasses>
+                </Typography>
+                <Box sx={{ mt: .17,     mr: 0, ml: 'auto', pl: 1  }}>
+                            {children? children : ''}
+                </Box>
+    </Stack>
 );
 
 
@@ -156,7 +172,11 @@ export const SalesTableV5 = props => {
                                                             <SalesTableHeader   >
                                                                 <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
                                                             </SalesTableHeader> 
-                                                            : (isMedium ?       <MobileSalesTableHeader title={translate('myroot.form.mobile.salesTableHeaderTitle')}/> :                                         
+                                                            : (isMedium ?       
+                                                                    <MobileSalesTableHeader title={translate('myroot.form.mobile.salesTableHeaderTitle')}>
+                                                                        <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
+                                                                    </MobileSalesTableHeader> 
+                                                                    :                                         
                                                                     <SalesTableHeader   >
                                                                         <SwitchNetOrGross {...{  entryPriceIsGross, setEntryPriceOnGross }}  />
                                                                     </SalesTableHeader>  )
@@ -191,31 +211,30 @@ export const SalesTableV5 = props => {
                                             display: 'flex', 
                                             flexDirection: isMinimal ? 'column' : 'row'
                                         }}
-                                        getItemLabel={(index) => (<ItemIndexChip cssBox={{ mb: -2 }} index={++index} />)}  
-                                > 
-                                    {/* <RaJoySelectinputPriceFormat
-                                        source="product_price_TEST" 
-                                        label="test2"
-                                        sx={{   gridArea: 'name'   }} 
-                                            // error  textHelper
-                                        /> */}
-                                        {/* <RaMuiPriceInput */}
-                                        <RaJoyPriceInput
-                                            source="product_price_MuiTEST" validate={vumberInputValidation}
-                                            sx={{ gridArea: 'name', width: "100%", 
-                                            // visibility: entryPriceIsGross ? 'hidden' : 'visible',
-                                            // display: entryPriceIsGross ? 'hidden' : '' 
-                                            }}
-                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        getItemLabel={
+                                            isMedium ? false :  (index) => (<ItemIndexChip cssBox={{ mb: -2 }} index={++index} />)
+                                        }  
+                                    >  
+                                    {isMedium ? 
+                                        <MobiInputTextSelected
+                                          // label="myroot.form.label.inputbox_itemrow.itemNameField"
+                                            label=''
+                                            source="product_name" 
+                                            choiceOptions={OptionRecord.choice_product_list} 
+                                            sx={{   gridArea: 'name'   }} 
+                                            placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
                                         />
-                                    {/* <InputTextSelected 
+                                        :
+                                        <InputTextSelected 
                                             // label="myroot.form.label.inputbox_itemrow.itemNameField"
                                             label=''
                                             source="product_name" 
                                             choiceOptions={OptionRecord.choice_product_list} 
                                             sx={{   gridArea: 'name'   }} 
                                             placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
-                                    /> */}
+                                        />
+                                    }
+
                                     <SelectInputItem
                                             source="product_type" 
                                             label="myroot.form.label.inputbox_itemrow.typeItem"
@@ -258,7 +277,7 @@ export const SalesTableV5 = props => {
                                         bgcolor: 'transparent', borderRadius: 1,    //sxItemRow
                                     }}
                                 >
-                                    <BorderLinebox sxCSS={{ order: -1 }} /> 
+                                    
                                     <InnerLinebox sxCSS={ { order: 1 } }    >
                                     <JoyBox  sx={{ 
                                             // boxShadow: 'none',
@@ -288,7 +307,6 @@ export const SalesTableV5 = props => {
                                             </div>
                                         </JoyBox> 
                                     </InnerLinebox>
-                                    <BorderLinebox  sxCSS={{ order: 3 }} />
                                 </FlexboxContainer>
                             </FullwidthWraper>
                         </TableContainer>

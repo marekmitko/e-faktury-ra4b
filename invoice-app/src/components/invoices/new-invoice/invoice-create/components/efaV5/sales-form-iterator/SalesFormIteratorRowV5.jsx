@@ -158,9 +158,9 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
             <SimpleFormIteratorItemContext.Provider value={context}>
                 <RootRowLine ref={ref}  className={RowItemClassesPrefix} >
                     {/*BOX ITEM INDEX   */}
-                    <BorderLinebox sxCSS={{ order: -1, height: '100%', }} className={RowItemClasses.index} >
-
+                        
                             {label && (
+                        <BorderLinebox sxCSS={{ order: -1, height: '100%', }} className={RowItemClasses.index} >
                             <Box sx={{  display: 'flex', justifyContent: 'center', alignItems: 'center', m: 0, p: 0, height: '100%' }}>
                                 {/* <JoyTypography  sx={{ p: 0, m: 0, maxWidth: '20px',  bgcolor: 'background.paper',  color: 'neutral.600', borderRadius: "25%",     }}
                                     variant="body1"
@@ -168,13 +168,13 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                     {label}
                                 {/* </JoyTypography> */}
                         </Box>
+                    </BorderLinebox>
                         )}
                         {/* </Box> */}
-                    </BorderLinebox>
                     <InnerLinebox sxCSS={{ order: 1, m: 0, p: 0,  }} 
                         className={RowItemClasses.inline} 
                     >
-                        <Card component="section" className={RowItemClasses.rowSection}  >
+                        <Card sx={{ p: 0, m: 0 }} component="section" className={RowItemClasses.rowSection}  >
                             {/* <Box sx={ wraperSectionItem }> */}
                                 <div style={{    gridArea: 'rowInput'    }} >
                                         <Card component='section' className='inputSection-itemRow' sx={{  
@@ -182,7 +182,8 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                             boxShadow: 'none', 
                                             p: 0,
                                             // flexGrow: 1,  
-                                            mb: -2, 
+                                   
+                                            m: 0,
                                             bgcolor:  "transparent"  }}>
                                             <CardCover  sx={{ bgcolor:  'transparent'  }}      />
                                             {/* <CardContent sx={ sxInputContent }     >    GOTOWA KARTA WIERSZA  https://codesandbox.io/s/efa23-product-card-mobi-version-3-vphxjv */}
@@ -197,12 +198,13 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                                     if (!isValidElement(input)) {
                                                         return null;
                                                     }
-                                                    const { source, ...inputProps } = input.props;
+                                                    const { source, myIdx, ...inputProps } = input.props;
                                                     return  cloneElement(input, {
                                                         source: source
                                                         ? `${member}.${source}`
                                                             : member,
-                                                        index: source ? undefined : index2,
+                                                        // index: source ? undefined : index2,
+                                                        index: source ? index : index2,
                                                         resource,
                                                         disabled,
                                                         ...inputProps,
@@ -229,7 +231,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                     }}>
 
                                         {/* <TitleItemRow title={""} /> */}
-                                            <Stack
+                                            <Stack sx={{  mt: -2, }}
                                                 // direction={isSmall ? "row" : "column"}
                                                 alignItems="flex-start"
                                                 justifyContent="flex-end"
@@ -326,7 +328,7 @@ overridesResolver: (props, styles) => styles.root,
     // gap: theme.spacing(1),
     marginRight: theme.spacing(1),
     // marginTop: theme.spacing(1),
-    [theme.breakpoints.down('md')]: { display: 'none' },
+    // [theme.breakpoints.down('md')]: { display: 'none' },
 },
 [`& .${RowItemClasses.inline}`]: {
     // alignItems: 'flex-start',
