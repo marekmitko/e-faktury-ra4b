@@ -73,6 +73,12 @@ export const pl = {
             mobile: {
                 salesTableHeaderTitle: 'Lista sprzedaży',
                 salesItemTitle: 'Pozycja sprzedaży',
+                itemCard: {
+                    itemNetSum: 'Wartość netto',
+                    itemGrossSum: 'Wartość brutto',
+                    itemTaxSum: 'Wartość VAT',
+
+                }
             },
             invoiceConfirmModal: {
                     paymentInfoShow: {

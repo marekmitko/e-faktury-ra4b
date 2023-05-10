@@ -25,12 +25,9 @@ import TotalCostCardV2 from "../../efa-invoice-form/components/new-sales-table/c
 import { JoyNoteboxV2 } from "../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
 import { ItemIndexChip } from "../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 import { SalesFormIteratorV5 } from "./sales-form-iterator/SalesFormIteratorV5";
-import { MobileInputNumber } from "./sales-form-iterator/sales-item/mobile-view/components/MobileInputNumber";
-import { RaJoySelectinputPriceFormat } from "./sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputPriceFormat";
-import { RaMuiPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/mui/RaMuiPriceInput";
-import { RaJoyPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput";
 import { StyledTableCellClasses } from './sales-form-iterator/sales-item/mobile-view/styledHeaderCellClasses';
 import { MobiInputTextSelected } from "./sales-form-iterator/sales-item/mobile-view/components/sales-item-row/MobiInputTextSelected";
+import { MobiSelectInput } from "./sales-form-iterator/sales-item/mobile-view/components/sales-item-row/mobi-item-content/MobiSelectInput";
 
 
 export const nameSalesIteratorForm = 'products';
@@ -124,7 +121,7 @@ const MobileSalesTableHeader = ({ children, title}) => (
 
 
 
-
+const Separator = () => <Box pt="1em" />;
 
 
 
@@ -234,15 +231,26 @@ export const SalesTableV5 = props => {
                                             placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
                                         />
                                     }
-
-                                    <SelectInputItem
-                                            source="product_type" 
-                                            label="myroot.form.label.inputbox_itemrow.typeItem"
-                                            sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
-                                            defaultValue="placeholder" 
-                                            options={typeOptions}  
-                                            variant={isMedium ? 'standard': 'outlined'}
-                                    />
+                                    {isMedium ? 
+                                        <MobiSelectInput 
+                                        source="product_type" 
+                                        label="myroot.form.label.inputbox_itemrow.typeItem"
+                                        sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
+                                        defaultValue="placeholder" 
+                                        options={typeOptions}  
+                                        // variant={isMedium ? 'standard': 'outlined'}
+                                        />
+                                        :
+                                        <SelectInputItem
+                                                source="product_type" 
+                                                label="myroot.form.label.inputbox_itemrow.typeItem"
+                                                sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
+                                                defaultValue="placeholder" 
+                                                options={typeOptions}  
+                                                variant={isMedium ? 'standard': 'outlined'}
+                                        />
+                                    }
+                                    <Separator />
                                     <SelectInputItem
                                             source="product_vat" 
                                             label="myroot.form.label.inputbox_itemrow.taxItem"

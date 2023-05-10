@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Resource, 
         // ListGuesser,
         ShowGuesser, EditGuesser, 
-        CustomRoutes, 
+        CustomRoutes,
+        ListGuesser, 
 } from 'react-admin';
 import { StyledEngineProvider } from '@mui/material/styles';
 import { Route } from 'react-router-dom';
@@ -33,6 +34,7 @@ import AbcIcon from '@mui/icons-material/Abc';
 import { SalesTableV2 } from './components/invoices/new-invoice/invoice-create/components/efaV2/SalesTableV2';
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 import { Chip, Divider } from '@mui/joy';
+import VisitorCreate from './components/clients/efa-V5-test/VisitorCreate';
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
@@ -66,8 +68,9 @@ function App(props) {
                 i18nProvider={i18nProvider}
             > 
             {/* <CssVarsProvider> */}
+                {/* <Resource name="dbclientlist" options={{ label: 'Visitor V5' }} label="Visitor V5" list={ListGuesser} create={VisitorCreate}/>   */}
                 <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
-                <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} />
+                <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} create={VisitorCreate} />
                 <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
                     list={FormsCreate} 
                     edit={PostCreate}   

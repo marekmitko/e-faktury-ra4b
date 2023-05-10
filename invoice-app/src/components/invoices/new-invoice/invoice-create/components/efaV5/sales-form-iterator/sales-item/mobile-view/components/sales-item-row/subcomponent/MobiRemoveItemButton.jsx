@@ -5,12 +5,15 @@ import IconButton from '@mui/joy/IconButton';
 import Tooltip from '@mui/joy/Tooltip';
 import Box from '@mui/joy/Box';
 import { Sheet } from '@mui/joy';
-import { useTranslate } from 'react-admin';
+import { useTranslate, useSimpleFormIteratorItem } from 'react-admin';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
 
 export default function MobiRemoveItemButton() {
+    // Om dopracować  
+    //<...> Trzeba to dopracować jakiś useCallback() itp 
+    const {remove, index } = useSimpleFormIteratorItem();
     const translate = useTranslate();
     return (
         <Box sx={{ display: 'flex',  width: '100%', justifyContent: 'center' }}>
@@ -25,6 +28,7 @@ export default function MobiRemoveItemButton() {
             <IconButton size="sm"
                 variant="plain"
                 color="danger"
+                onClick={remove}
                 sx={{ 
                     border: 'none',
                     color: 'danger.400',

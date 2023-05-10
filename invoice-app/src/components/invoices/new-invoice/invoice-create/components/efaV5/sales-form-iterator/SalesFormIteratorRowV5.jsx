@@ -28,10 +28,12 @@ import { PriceField } from './subcomponent/field/PriceField';
 import { ShowItemSumCost } from './subcomponent/field/ShowItemSumCost';
 import { wrap } from 'lodash';
 import { SumItemOutputShow } from './subcomponent/item-outputs/SumItemOutputShow';
-import { Typography } from '@mui/material';
-import { RowItemClasses, RowItemClassesPrefix, SalesFormIteratorClasses, SalesFormIteratorPrefix } from './useSalesFormIteratorStyles';
+import { Typography, useMediaQuery } from '@mui/material';
+import { MQ_isMedium, RowItemClasses, RowItemClassesPrefix, SalesFormIteratorClasses, SalesFormIteratorPrefix } from './useSalesFormIteratorStyles';
 import { InnerLinebox, BorderLinebox } from '../../../efa-invoice-form/components/layout/RowLineLayout';
 import { formatCurrency } from '../../../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/logic/getCostResult ';
+import MobiSumItemContent from './sales-item/mobile-view/components/sales-item-row/subcomponent/MobiSumItemContent';
+import OldMobiSumItemContent from './sales-item/mobile-view/components/sales-item-row/subcomponent/OldMobiSumItemContent';
 
 
 
@@ -152,7 +154,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                 : getItemLabel;
 
 
-
+        const isMedium = useMediaQuery(`${MQ_isMedium}`);
         
         return (
             <SimpleFormIteratorItemContext.Provider value={context}>
@@ -182,7 +184,6 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                             boxShadow: 'none', 
                                             p: 0,
                                             // flexGrow: 1,  
-                                   
                                             m: 0,
                                             bgcolor:  "transparent"  }}>
                                             <CardCover  sx={{ bgcolor:  'transparent'  }}      />
@@ -214,9 +215,11 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                             </CardContent>
                                         </Card>
                                 </div>
-                                <div style={{ 
-                                    gridArea: 'rowOutput'
-                                    // flex: 'initial' 
+                                { !isMedium &&
+
+                                    <div style={{ 
+                                        gridArea: 'rowOutput'
+                                        // flex: 'initial' 
                                     }} >
                                     <Card  component="section"  className='outputSection-itemRow' sx={{  p: 0,
                                         ml: "auto", mr: 0,  mt: 0.5, mb: 0,
@@ -247,7 +250,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                                             </SumItemOutputShow>
                                                             <SumItemOutputShow label='myroot.form.label.header_salesTable.sumGrossOutput'
                                                                 noWrap cssBox={{  flex: 1 }}
-                                                            >
+                                                                >
                                                                 { getGrossSum(product_price_netto, product_count, product_vat ) }
                                                             </SumItemOutputShow>
                                                         </Box>
@@ -257,8 +260,14 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                         </CardContent>
                                     </Card>
                                 </div>
+                        }
                             {/* </Box> */}
                         </Card>
+                                    <MobiSumItemContent 
+                                        firstlineItemSum={getNetSum(product_price_netto, product_count )} 
+                                        secondlineItemSum={ getGrossSum(product_price_netto, product_count, product_vat ) }
+                                    />
+                                    {/* <OldMobiSumItemContent /> */}
                     </InnerLinebox>
                     {!disabled && (
                         // <span className={SimpleFormIteratorClasses.action}>
