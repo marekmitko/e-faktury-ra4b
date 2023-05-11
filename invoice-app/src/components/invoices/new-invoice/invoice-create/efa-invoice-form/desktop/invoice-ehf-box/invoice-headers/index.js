@@ -19,21 +19,7 @@ export const NewInvoiceHeader = (props) => {
     const isMedium = useMediaQuery(`${MQ_isMedium}`);
 
     return(
-        <Grid container spacing={1} rowSpacing={1}>
-            <Grid item xs={12} sm={12} md={6} >
                 <HeaderDateGroup />
-                {/* <MyCustomRangeDatePicker /> */}
-            </Grid>
-            { !isMedium &&
-                <Grid item xs={12} sm={6} md={6} >
-                
-                <br/>
-                        <FinalDatePickerSelectinput />
-                        <Input disabled value='ddd' /> 
-                </Grid>
-            }
-        </Grid>
-        
 );
     };
 

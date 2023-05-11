@@ -56,7 +56,8 @@ const JoyLayout = ( props ) => (
 
 export default props => (
     <>
-        <Layout {...props} sx={{ mb: 1 }} //toDo do przerobienia //Om? Inaczej to ustawić usunąć mb: 1
+    //Om //*edu TRZEBA SPRAWDZIĆ JAK ZROBIĆ TAK BY nie było mx: '-4px'
+        <Layout {...props}  sx={{  mx: '-4px', m: 0, mt: -2,  pb: 2,  }} //toDo do przerobienia //Om? Inaczej to ustawić usunąć mb: 1
             // sidebar={SidebarTopPartMenu }
             dashboard={null}
             menu={SidebarTopPartMenu}
@@ -69,11 +70,11 @@ export default props => (
             initialIsOpen={false}
             toggleButtonProps={{ style: { width: 20, height: 30 } }}
         /> */}
-        <hr />
+        {/* <hr /> */}
         <FooterLayoutFragment />
-       <Box  sx={{ my: 1 }}>
+       {/* <Box  sx={{ my: 1 }}>
 
-       </Box>
+       </Box> */}
     </>
 );
 

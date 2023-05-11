@@ -155,10 +155,10 @@ export const SalesTableV5 = props => {
                     
                     <JoyGlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }} />
                     <JoyCssBaseline />
-                    {/* <Container
+                    <Container
                         maxWidth="xl"
                         component="main"
-                    > */}
+                    >
                         {/* <small> main container - component: TableContainer </small> */}
                         <TableContainer className="tableContainer" sx={{  width: '100%' }}>
                             <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
@@ -364,7 +364,7 @@ export const SalesTableV5 = props => {
                                 </FlexboxContainer>
                             </FullwidthWraper>
                         </TableContainer>
-                    {/* </Container> */}
+                    </Container>
                 </div>
                 {/* // <...> bardzo spoko separator */}
                 {/* <Divider sx={{ borderColor: 'red', py:0.15, mx: 0, mt: -0.5, pb: 0, mb: 0 }} / >  */}

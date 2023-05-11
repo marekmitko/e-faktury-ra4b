@@ -59,7 +59,7 @@ export const AdditionalTableV5 = props => {
                                         display: 'flex',
                                         m: 1, //BUG <- to było przez to ale dlaczego tak się dzieje to nie wiem 
                                         //ToDo - Edu - sprawdzic - bo było tylko my bez mx  
-                                        mx: 2,
+                                        mx: .5,
                                         flexWrap: "wrap"
                                     }}
                                     >

@@ -147,7 +147,7 @@ const MyCustomRangeDatePicker = ({labelStart, labelEnd}) => {
     const { setValue } = useFormContext();
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale}>
-        <Stack spacing={2} sx={{ width: 200 }}>
+        {/* <Stack spacing={2} sx={{ width: '100%' }}>
             <ToggleButtonGroup
                 color='primary'
                 value={locale}
@@ -163,10 +163,10 @@ const MyCustomRangeDatePicker = ({labelStart, labelEnd}) => {
                     </ToggleButton>
                 ))}
             </ToggleButtonGroup>
-        </Stack>
-        <Box sx={{ width: '100%' }}>
+        </Stack> */}
+        {/* <Box sx={{ width: '100%' }}> */}
 
-            <Box sx={{ display: 'flex', flexFlow: 'row wrap', alignSelf: 'center', alignContent: 'space-between', justifyContent: 'space-between' }} >
+            <Box sx={{gap: 1,   display: 'flex', flexFlow: 'row wrap', alignSelf: 'center', alignContent: 'space-between', justifyContent: 'space-between' }} >
                 <RaDataPicker
                     source='date_sale'
                     sx={{ width: '150px', }}
@@ -204,8 +204,8 @@ const MyCustomRangeDatePicker = ({labelStart, labelEnd}) => {
                 />
 
     {/* </DemoContainer> */}
+        {/* </Box> */}
     </Box>
-                    </Box>
     </LocalizationProvider>
     );
 }; 
