@@ -36,7 +36,7 @@ export default function MobiSumItemContent(props) {
                 p: .75
             }}
             >
-                <CardContent sx={{  p: 0, m: 0 ,
+                <CardContent sx={{  p: 0, px: .25, mx: -1, mb: -1 ,
                         flexBasis:  'initial' ,
                         bgcolor: 'background.level1', 
                         opacity: .75,

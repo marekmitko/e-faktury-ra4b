@@ -86,14 +86,14 @@ export default function MobiSelectButton( {nameProdcutNameInput, options, label,
             onChange={handleChange}
             >
              {(options.length) ? 
-                (options.map(({id, name, value}, index) => { 
-                        // <MenuItem key={`${id}_idx${index}`} value={index}>
-                        if(index==0) return (<MenuItem sx={{ p: 'auto' }} divider dense disabled key={`${id}_idx${index}`} value={value}><em>{name}</em></MenuItem>)
-                        return(
-                        <MenuItem dense  key={`${id}_idx${index}`} value={value} >
+                (options.map(({id, name, value}, index) => {
+                    console.log("💠id", id, "name", name, 'value', value, 'idx', index);
+                    return(
+                        <MenuItem key={`${value}_idx${index}`} value={index}>
                             {name}
                         </MenuItem>)
-                })
+                        }
+                        )
                 ) : null
             }
             </Select>

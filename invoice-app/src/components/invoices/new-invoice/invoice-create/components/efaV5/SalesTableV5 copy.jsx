@@ -30,7 +30,7 @@ import { MobiInputTextSelected } from "./sales-form-iterator/sales-item/mobile-v
 import { MobiSelectInput } from "./sales-form-iterator/sales-item/mobile-view/components/sales-item-row/mobi-item-content/MobiSelectInput";
 import MobiNumberInput from "./sales-form-iterator/sales-item/mobile-view/components/sales-item-row/mobi-item-content/MobiNumberInput";
 import { MobiPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/sales-item-row/mobi-item-content/MobiPriceInput";
-import { NewMobiSelectItemInput } from "./sales-form-iterator/sales-item/mobile-view/components/sales-item-row/mobi-item-content/NewMobiSelectItemInput";
+import { RaJoyPriceInput } from "./sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput";
 
 
 export const nameSalesIteratorForm = 'products';
@@ -248,80 +248,88 @@ export const SalesTableV5 = props => {
                                         // variant={isMedium ? 'standard': 'outlined'}
                                         /> 
                                         : */}
-                                        {isMedium ? 
-                                            <NewMobiSelectItemInput
-                                                // label="myroot.form.label.inputbox_itemrow.itemNameField"
-                                                //    label=''
-                                                source="product_type" 
-                                                label="myroot.form.label.inputbox_itemrow.typeItem"
-                                                //    sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
-
-                                                choiceOptions={typeOptions} 
-                                                sx={{   gridArea: 'type'   }} 
-                                                placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
-                                            />
-                                            :
-                                            <SelectInputItem
+                                        <SelectInputItem
                                                 source="product_type" 
                                                 label="myroot.form.label.inputbox_itemrow.typeItem"
                                                 sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
                                                 defaultValue="placeholder" 
                                                 options={typeOptions}  
-                                                variant={isMedium ? 'outlined': 'outlined'}
-                                            />
-                                        }
+                                                variant={isMedium ? 'standard': 'outlined'}
+                                        />
                                     {/* <Separator /> */}
-                                        {isMedium ? 
-                                            <NewMobiSelectItemInput
-                                             // label="myroot.form.label.inputbox_itemrow.itemNameField"
-                                            //    label=''
-                                                source="product_vat" 
-                                                label="myroot.form.label.inputbox_itemrow.taxItem"
-                                                //    sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 
-
-                                                choiceOptions={taxOptions} 
-                                                sx={{   gridArea: 'tax'   }} 
-                                                placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
-                                            />
-                                            :
-                                            <SelectInputItem
+                                        <SelectInputItem
                                                 source="product_vat" 
                                                 label="myroot.form.label.inputbox_itemrow.taxItem"
                                                 sx={{ gridArea: 'tax', '& svg': { mr: -0.5 }  }} 
                                                 defaultValue="placeholder" 
                                                 options={taxOptions}  
-                                                variant={isMedium ? 'outlined': 'outlined'}
-                                            />
-                                        }
-                                        <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
-                                            sx={{ gridArea: 'price', width: "100%",  mt: 0,
+                                                variant={isMedium ? 'standard': 'outlined'}
+                                        />
+                                    {isMedium ? 
+                                        <MobiPriceInput source="product_price_netto" validate={vumberInputValidation}
+                                            sx={{ gridArea: 'price', width: "100%",  mr: 2,
                                             visibility: entryPriceIsGross ? 'hidden' : 'visible',
                                             display: entryPriceIsGross ? 'hidden' : '' }}
                                             label="myroot.form.label.inputbox_itemrow.netItem" 
-                                            variant={isMedium ? 'outlined': 'outlined'}
+                                            variant={isMedium ? 'filled': 'outlined'}
                                         />
+                                        :
+                                        <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
+                                            sx={{ gridArea: 'price', width: "100%",  mr: 2,
+                                            visibility: entryPriceIsGross ? 'hidden' : 'visible',
+                                            display: entryPriceIsGross ? 'hidden' : '' }}
+                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                            variant={isMedium ? 'filled': 'outlined'}
+                                        />
+                                    }
+                                     {isMedium ?
+                                      <RaJoyPriceInput
+                                                                                  source="product_price_brutto" 
+                                            validate={vumberInputValidation}
+                                            sx={{ gridArea: 'price', width: "100%",  mr: 2,
+                                            visibility: entryPriceIsGross ? 'visible' : 'hidden',
+                                            display: entryPriceIsGross ? '' : 'hidden'      }}
+                                            label="myroot.form.label.inputbox_itemrow.netItem" 
+                                            variant={isMedium ? 'filled': 'outlined'}
+                                //       source="product_price_MuiTESTyy"  
+                                //       sx={{ gridArea: 'name', width: "100%", 
+                                //       // visibility: entryPriceIsGross ? 'hidden' : 'visible',
+                                //       // display: entryPriceIsGross ? 'hidden' : '' 
+                                //       }}
+                                //       label="myroot.form.label.inputbox_itemrow.netItem" 
+                                  /> 
+                                        // <MobiPriceInput 
+                                        //     source="product_price_brutto" 
+                                        //     validate={vumberInputValidation}
+                                        //     sx={{ gridArea: 'price', width: "100%",  mr: 2,
+                                        //     visibility: entryPriceIsGross ? 'visible' : 'hidden',
+                                        //     display: entryPriceIsGross ? '' : 'hidden'      }}
+                                        //     label="myroot.form.label.inputbox_itemrow.netItem" 
+                                        //     variant={isMedium ? 'filled': 'outlined'}
+                                        // />
+                                    :
                                         <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
-                                            sx={{ gridArea: 'price', width: "100%",   mt: 0,
+                                            sx={{ gridArea: 'price', width: "100%",  mr: 2,
                                             visibility: entryPriceIsGross ? 'visible' : 'hidden',
                                             display: entryPriceIsGross ? '' : 'hidden'      }}
                                             label="myroot.form.label.inputbox_itemrow.grossItem" 
-                                            variant={isMedium ? 'outlined': 'outlined'}
+                                            variant={isMedium ? 'standard': 'outlined'}
                                         />
+                                     }
+                                    {isMedium ? 
+                                        <MobiNumberInput source="product_count" 
+                                            label="myroot.form.label.inputbox_itemrow.qtyItem"
+                                            helperText={false}
+                                            sx={{ gridArea: 'count', marginTop: "8px", '& input': { mr: -1 } }}
+                                        /> 
+                                        :
                                         <NumberInput source="product_count" 
                                             label="myroot.form.label.inputbox_itemrow.qtyItem"
                                             helperText={false}
-                                            sx={{ gridArea: 'count', '& input': { mr: -1 },
-                                                // '& .MuiInputLabel-root': { 
-                                                //     textTransform: 'uppercase', 
-                                                //     letterSpacing: '-0.5px',
-                                                //     marginRight: '-50px',
-                                                //     backgroundColor: 'inherit',
-                                                //     pr: -1
-                                                //     // transform: 'scale(0.95)'    
-                                                // }
-                                            }}
-                                            variant={isMedium ? 'outlined': 'outlined'}
+                                            sx={{ gridArea: 'count', marginTop: "8px", '& input': { mr: -1 } }}
+                                            variant={isMedium ? 'standard': 'outlined'}
                                         />
+                                    }
                                 </SalesFormIteratorV5>
                             </ArrayInput>
                             <FullwidthWraper   // bgcolor: isLarge ? 'background.paper' : 'transparent',    // borderRadius: 1, flexDirection: 'column' 

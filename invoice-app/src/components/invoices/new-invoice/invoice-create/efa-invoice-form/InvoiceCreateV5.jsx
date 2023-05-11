@@ -194,12 +194,12 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                             label="myroot.form.label.inputbox_itemrow.netItem" 
                                         />
                                     </Grid>
-                                    <Grid  item xs={12}  sm={12}  md={12}     > 
+                                    {/* <Grid  item xs={12}  sm={12}  md={12}     > 
                                         <RaJoyPriceInput
                                             source="product_price_JoyTEST2" 
                                             label="myroot.form.label.inputbox_itemrow.netItem" 
                                         />
-                                    </Grid>
+                                    </Grid> */}
                                     <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
                                     >
 

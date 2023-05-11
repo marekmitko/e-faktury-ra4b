@@ -205,7 +205,7 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                 )}
                 </FlexboxContainer>
                 </tbody>
-                <JoyDivider light sx={{ p: "2px", my: 2, mr: 5, bgcolor: 'primary.900'}} />
+                <JoyDivider light sx={{ p: "2px", my: 2.25, mr: 5, bgcolor: 'primary.900'}} />
             <tfoot style={{ 
                 // border: "8px pink solid", display: 'flex', color: 'black',  backgroundColor: 'orange', 
                 width: '100%'}}>  

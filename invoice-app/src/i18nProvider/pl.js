@@ -74,8 +74,8 @@ export const pl = {
                 salesTableHeaderTitle: 'Lista sprzedaży',
                 salesItemTitle: 'Pozycja sprzedaży',
                 itemCard: {
-                    itemNetSum: 'Wartość netto',
-                    itemGrossSum: 'Wartość brutto',
+                    itemNetSum: 'Suma netto',
+                    itemGrossSum: 'Suma brutto',
                     itemTaxSum: 'Wartość VAT',
 
                 }
@@ -119,8 +119,8 @@ export const pl = {
                     sumNetPrice: 'netto',
                     sumGrossPrice: 'brutto',
                     sumPrice: 'Suma',
-                    sumNetOutput: 'Wartość netto:',
-                    sumGrossOutput: 'Wartość brutto:' 
+                    sumNetOutput: 'Suma netto:',
+                    sumGrossOutput: 'Suma brutto:' 
                 },
                 header_totalResultTable: {
                     totalNetCost: 'Razem netto',

@@ -70,7 +70,7 @@ export const MobiInputTextSelected = ({index, choiceOptions, sx,  InputProps, la
                         InputProps={{
                             // ...InputProps,
                             startAdornment:   (
-                                <InputAdornment  sx={{  mx: -0.75                                                                                                    }} sizeSmall="small"  position="start">
+                                <InputAdornment  sx={{  mx: -.75                                                                                                    }} sizeSmall="small"  position="start">
                                         {<SelectBtn namefield={ field? name : "" } choiceOptions={choiceOptions? choiceOptions : {} } />}
                                         </InputAdornment>
                                 ),

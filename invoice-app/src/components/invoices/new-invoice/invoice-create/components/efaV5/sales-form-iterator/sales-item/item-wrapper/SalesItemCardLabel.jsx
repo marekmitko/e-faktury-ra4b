@@ -22,12 +22,13 @@ export default function SalesItemCardLabel({children, label }) {
             // minWidth: "250px",
             bgcolor: "transparent",
             mb: -1,
+           
         }}
         >
     
         { children? children : "" }
         <Divider sx={{ py:0.15, px: 0,  mt: -0.75,  backgroundColor: 'primary.900', opacity: 1,
-                    ml: -0.25, mr: -0.5,
+                    mx: -1,  mr: -1.25,
                     position: 'relative', zIndex: 100,
                     }}  
         />

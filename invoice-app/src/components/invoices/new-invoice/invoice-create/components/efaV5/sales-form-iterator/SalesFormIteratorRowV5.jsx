@@ -181,6 +181,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                 <div style={{    gridArea: 'rowInput'    }} >
                                         <Card component='section' className='inputSection-itemRow' sx={{  
                                             // gridArea: "inputSection",
+                                            height: '115px',
                                             boxShadow: 'none', 
                                             p: 0,
                                             // flexGrow: 1,  
@@ -191,7 +192,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                             
                                             
                                             
-                                            <CardContent component='tr' sx={ sxInputContent }     >  {/*   GOTOWA KARTA WIERSZA  https://codesandbox.io/s/efa23-product-card-mobi-version-3-vphxjv */}
+                                            <CardContent component='tr' sx={  { mx:.75, ...sxInputContent} }     >  {/*   GOTOWA KARTA WIERSZA  https://codesandbox.io/s/efa23-product-card-mobi-version-3-vphxjv */}
                                             {Children.map(
                                                 children,
                                                 (input, index2) => {      // input: ReactElement,
@@ -230,7 +231,7 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                                     >
                                         <CardCover sx={{    bgcolor: "transparent"   }}  />
                                         <CardContent sx={{ ml: "auto", mr: 0,  
-                                                            // width: 'auto'
+                                                        //   backgroundColor: 'red'
                                     }}>
 
                                         {/* <TitleItemRow title={""} /> */}
@@ -263,10 +264,12 @@ export const SalesFormIteratorRowV5 = React.forwardRef((props, ref) => {
                         }
                             {/* </Box> */}
                         </Card>
+                        { isMedium &&
                                     <MobiSumItemContent 
                                         firstlineItemSum={getNetSum(product_price_netto, product_count )} 
                                         secondlineItemSum={ getGrossSum(product_price_netto, product_count, product_vat ) }
                                     />
+                        }
                                     {/* <OldMobiSumItemContent /> */}
                     </InnerLinebox>
                     {!disabled && (

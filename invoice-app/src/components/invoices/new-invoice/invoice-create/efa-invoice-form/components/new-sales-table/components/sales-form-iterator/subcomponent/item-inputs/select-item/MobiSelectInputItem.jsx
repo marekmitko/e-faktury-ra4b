@@ -1,12 +1,12 @@
 import { useState, useEffect, useMemo} from "react";
-import {  FormControl, InputLabel, Autocomplete, MenuItem, Select, } from "@mui/material";
+import {  FormControl, InputLabel, Autocomplete, MenuItem, Select, InputAdornment, } from "@mui/material";
 import { useTranslate, useInput } from "react-admin";
 import { Box } from "@mui/joy";
 import { width } from "@mui/system";
-
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 // function SelectItemOption({field, ...props}) {
-export function SelectInputItem({ options, label, variantLabel, variant, defaultValue, sx,...props}) {
+export function MobiSelectInputItem({ options, label, variantLabel, variant, defaultValue, sx,...props}) {
     const translate = useTranslate();
     
     // https://stackoverflow.com/questions/66722593/how-to-set-defaultvalue-after-some-delay-on-react-select-with-react-hook-form
@@ -39,6 +39,29 @@ export function SelectInputItem({ options, label, variantLabel, variant, default
                 {translate(label)}
             </InputLabel> */}
             <Select
+               
+                    // endAdornment={
+                    //   <InputAdornment position="start">
+                    //     <AccountCircle />
+                    //   </InputAdornment>
+                    // }
+                    endAdornment={
+                        true ? (
+                            <div
+                                // onClick={xClick}
+                            >
+                                <i className="bi bi-x-lg"></i>
+                            </div>
+                        ) : null
+                    }
+                    sx={{
+                        "& .MuiSelect-iconOutlined": {
+                            display: false ? "none" : "",
+                        },
+                        "&.Mui-focused .MuiIconButton-root": {
+                            color: "primary.main",
+                        },
+                    }}
                 required
                 // color="success"
                 // error={isError ? false : true}
@@ -66,4 +89,4 @@ export function SelectInputItem({ options, label, variantLabel, variant, default
     );
 }
 
-export default SelectInputItem;
+export default MobiSelectInputItem;

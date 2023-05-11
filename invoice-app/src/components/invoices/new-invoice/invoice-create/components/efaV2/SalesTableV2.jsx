@@ -26,6 +26,7 @@ import TotalCostCardV2 from "../../efa-invoice-form/components/new-sales-table/c
 import { JoyNoteboxV2 } from "../../invoice-form/subcomponents/sales-table/joy-sales-table/joy-optionbox/JoyNoteboxV2";
 import { ItemIndexChip } from "../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 import { StyledTableCellClasses } from "../../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/styledHeaderCellClasses";
+import MobiSelectInputItem from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/MobiSelectInputItem";
 
 export const nameSalesIteratorForm = 'products';
 const required = () => (value) => (
@@ -196,7 +197,7 @@ export const SalesTableV2 = props => {
                                             sx={{   gridArea: 'name'   }} 
                                             placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
                                     />
-                                    <SelectInputItem
+                                    <MobiSelectInputItem
                                             source="product_type" 
                                             label="myroot.form.label.inputbox_itemrow.typeItem"
                                             sx={{ gridArea: 'type',  '& svg': { mr: -0.5 }   }} 

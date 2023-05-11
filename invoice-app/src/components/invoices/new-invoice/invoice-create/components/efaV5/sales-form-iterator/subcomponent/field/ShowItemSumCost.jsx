@@ -13,7 +13,7 @@ import { PriceField } from "./PriceField";
 //<FormLabel sx={{ ml: 0, mr: "auto" }}>
 export const ShowItemSumCost = ({children}) => (
   <>
-    <Stack direction="row" alignItems="center" spacing={0.5} gap={4}>
+    <Stack direction="row" alignItems="center" spacing={0.5} gap={1}>
       {/* <Stack direction="column" alignItems="center" gap={0.5}>
         <td>
           <PriceField  title={<br />} currency={"Suma: "} />
