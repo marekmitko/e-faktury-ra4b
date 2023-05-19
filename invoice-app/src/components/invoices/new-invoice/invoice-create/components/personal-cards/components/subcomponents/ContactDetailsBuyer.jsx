@@ -14,7 +14,7 @@ export const ContactDetailsBuyer = ({ capitionLabel }) => {
         <>
             <Card
                 sx={{
-                width: 300,
+                // width: 300,
                 ml: 3,
                 mt: 1,
                 bgcolor: "initial",

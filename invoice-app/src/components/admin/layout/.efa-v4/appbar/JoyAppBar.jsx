@@ -46,9 +46,9 @@ const darkTheme = {
                 sx={{ typography: 'subtitle2', color: 'primary.900' }}
             ></Typography>
         </Box>
-        <Box   >
+        {/* <Box   >
             <HelpButton   />
-        </Box>
+        </Box> */}
         <LocalesMenuButton sx={{ color: 'neutral.900' }}
             languages={[
                 { locale: 'en', name: 'English' },
@@ -56,7 +56,7 @@ const darkTheme = {
                 { locale: 'pl', name: 'Polish' },
             ]}
             />
-        <ToggleThemeButton lightTheme={lightTheme} darkTheme={darkTheme}        />
+        {/* <ToggleThemeButton lightTheme={lightTheme} darkTheme={darkTheme}        /> */}
         {/* {props.children} */}
         {/* <JoyHeaderApp /> */}
     </AppBar>

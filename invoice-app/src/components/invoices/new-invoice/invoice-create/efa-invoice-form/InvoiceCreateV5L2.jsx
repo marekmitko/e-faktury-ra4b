@@ -26,7 +26,7 @@ import InvoiceConfirmModalV3 from "../invoice-confirm-modal/components/InvoiceCo
 import { productOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
 import Header from './desktop/invoice-ehf-box/invoice-headers';
 import SellerIcon from "@mui/icons-material/Store";
-import SellerCardShow from "./personal-cards/SellerCardShow";
+import SellerCardShow from "./personal-cards/NewSellerCardShow";
 import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';
@@ -46,8 +46,17 @@ import DatePickerGroup from '../components/header-data-group/DatePickerGroup';
 import HeaderDateGroup from '../components/header-data-group';
 import InvoiceHeader from '../components/efaV5/view/InvoiceHeader';
 import MobiInvoiceHeader from '../components/efaV5/mobile-view/MobiInvoiceHeader';
+import CardWithIcon from './personal-cards/CardWithIcon';
+import NbNewOrders from './personal-cards/NbNewOrders';
+import NewCardWithIcon from './personal-cards/NewCardWithIcon.jsx';
+import SellNewCardWithIcon from './personal-cards/SellNewCardWithIcon';
+import CompanyCardWithIcon from './personal-cards/efa-V5-company-card/DefaultCompanyCard';
+import BuyerCompanyCard from './personal-cards/efa-V5-company-card/BuyerCompanyCard';
+import SellerCompanyCard from './personal-cards/efa-V5-company-card/BuyerCompanyCard copy';
 
 
+
+const Separator = () => <Box pt="0.5em" />;
 
 
 //  componet show
@@ -203,7 +212,7 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                     sx={(theme) => ({
                                         // width: 343,
                                         '--Tabs-gap': '0px',
-                                        borderRadius: 3,
+                                        borderRadius: 2,
                                         boxShadow: 'sm',
                                         overflow: 'auto',
                                         border: `1px solid ${theme.vars.palette.divider}`,
@@ -265,9 +274,19 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                             </TabPanel> */}
                                     </Tabs>
                                     <Box sx={{ display: 'flex', flexDirection: {xs: 'column', sm: 'row' }}} >
-                                        <SellerCardShow bgcolor="neutral.50"  icon={<SellerIcon />}     dataPersonal={db_seller} />
-                                        <BuyerReferenceCard resourcePath={buyersResourcePath} />
+                                        {/* <SellerCardShow bgcolor="neutral.50"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                        <BuyerReferenceCard resourcePath={buyersResourcePath} /> */}
+                                        <Separator />
+                                        {/* <SellerCompanyCard  dataPersonal={db_seller} /> */}
+                                        <Separator />
+                                        <BuyerCompanyCard resourcePath={buyersResourcePath}  />
+                                        <Separator />
                                     </Box>
+                                 
+                                    {/* <NbNewOrders /> */}
+                                    {/* <NewCardWithIcon /> */}
+                                    {/* <CompanyCardWithIcon  resourcePath={buyersResourcePath}  /> */}
+                                    {/* <SellNewCardWithIcon  resourcePath={buyersResourcePath}  /> */}
                                     <SalesTableV5 />
                                     <AdditionalTableV5 />
                                         </Fragment>

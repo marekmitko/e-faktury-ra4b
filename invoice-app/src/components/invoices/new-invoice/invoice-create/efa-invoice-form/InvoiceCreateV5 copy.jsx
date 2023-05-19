@@ -24,7 +24,7 @@ import InvoiceConfirmModalV3 from "../invoice-confirm-modal/components/InvoiceCo
 import { productOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
 import Header from './desktop/invoice-ehf-box/invoice-headers';
 import SellerIcon from "@mui/icons-material/Store";
-import SellerCardShow from "./personal-cards/SellerCardShow";
+import SellerCardShow from "./personal-cards/NewSellerCardShow";
 import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
 import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import BuyerReferenceCard from '../components/personal-cards/BuyerReferenceCard';

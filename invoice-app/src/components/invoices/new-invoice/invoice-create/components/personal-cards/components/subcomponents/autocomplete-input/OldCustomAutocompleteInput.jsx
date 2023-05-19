@@ -84,8 +84,10 @@ export default function OldCustomAutocompleteInput(props) {
         //     // {...props} 
         // >
             <AutocompleteInput 
+            
             // placeholder="ffds"
             // size="small"
+            
             fullWidth 
             onChange={(event) => {
                     setValue('buyer_id', `${event}`);
@@ -126,7 +128,7 @@ export default function OldCustomAutocompleteInput(props) {
                     "& .MuiAutocomplete-inputRoot":  {  
                             backgroundColor: 'neutral.100', 
                             borderTopLeftRadius: '15px',
-                            borderTopRightRadius: '15px',
+                            borderTopRightRadius: 0,
                             mt: 0,   
                             mb: 0,
                             pl: 1
@@ -138,7 +140,7 @@ export default function OldCustomAutocompleteInput(props) {
                          
                         },
                     '& .MuiInput-input': { // backgroundColor: 'blue', 
-                    color: 'text.primary.500',   fontSize: '1.5rem' },
+                    color: 'text.primary.500',   fontSize: {xs: '1.2rem', sm: '1.5rem' }},
 
                     "& .RaAutocompleteInput-textField": {
                             // fontSize: '2.2rem',  backgroundColor: 'blue', 
@@ -150,6 +152,7 @@ export default function OldCustomAutocompleteInput(props) {
                     // "& svg": {  color: 'neutral.600', mt: -1 }
                 }}
                 {...props}
+                disabled={props?.disabled ? true : false }
                 />
         // </ReferenceInput >
     );

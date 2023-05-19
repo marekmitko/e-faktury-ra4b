@@ -34,7 +34,7 @@ declare namespace JSX {
 // import PostQuickCreate from "./PostQuickCreate";
 // import PostPreview from "./PostPreview";
 
-const BuyerReferenceInput = (props : any) => {
+const NewSellerReferenceInput = (props : any) => {
 const translate = useTranslate();
 
 const [showPreviewDialog, setShowPreviewDialog] = useState(false);
@@ -68,9 +68,14 @@ return (
         {/* <AutocompleteInput 
         /> */}
 {/* <EfaBuyerAutoInput  icon={<BuyerIcon/>} valueBuyerId={valueBuyerId} setValueBuyerId={setValueBuyerId} /> */}
-        <DecorativeWrapper icon={<BuyerIcon />} >
-        <Stack direction="row" ml={7} mb='-10px' mr={2} spacing={2} >
-            <OldCustomAutocompleteInput     /> 
+       
+       
+        {/* <DecorativeWrapper icon={<BuyerIcon />} > */}
+        <Stack direction="row" ml={0} mb='-10px' mr={2} spacing={2} >
+            {/* <Stack alignItems="center" justifyContent="center" sx={{maxWidth: '50px', mx: 2, mr: -1, mt: -2, p: .1}} >
+                    <ClientCreateButton />
+                </Stack>  */}{'Mariański'}
+            {/* <OldCustomAutocompleteInput   />  */}
                 {/* <ClientReferenceAutocompleteInput
                     variant="filled"
                     source="buyer_id" reference="buyersEfaktury" 
@@ -79,18 +84,16 @@ return (
                     setValueForm={setValue}
                     // enableGetChoices={({ q }) =>  q.length ? (q.length >= 3) : null}
                 />    */}
-            <Stack alignItems="center" justifyContent="center" sx={{maxWidth: '50px', mx: 2, p: .1}} mr={2}>
-                    <ClientCreateButton />
-                </Stack> 
             </Stack>
-        </DecorativeWrapper>
+        {/* </DecorativeWrapper> */}
     </ReferenceInput>
 
 
 
   
     {props.children ? props.children : '' }
-    { buyerId ? (
+    {/* { buyerId ? ( */}
+    { false ? (
         <Fragment>
              {/* <BuyerPreview  id={buyerId} resource={reference} /> */}
         <Button //size="small"
@@ -111,9 +114,9 @@ return (
         >
             <DialogTitle>{translate("simple.create-post")}</DialogTitle>
             <DialogContent>
-                {/* <PostPreview id={postId} resource="posts" /> */}
-                <BuyerPreview  id={buyerId} resource={reference} />
-                </DialogContent>
+            {/* <PostPreview id={postId} resource="posts" /> */}
+            <BuyerPreview  id={buyerId} resource={reference} />
+            </DialogContent>
             <DialogActions>
             <Button
                 data-testid="button-close-modal"
@@ -129,4 +132,4 @@ return (
 );
 };
 
-export default BuyerReferenceInput;
+export default NewSellerReferenceInput;

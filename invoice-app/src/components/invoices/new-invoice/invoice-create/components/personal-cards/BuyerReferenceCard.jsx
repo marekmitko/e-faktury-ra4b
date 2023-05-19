@@ -20,7 +20,15 @@ import BuyerPreview from "./components/BuyerPreview";
 import { MQ_isMedium } from "../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
 
 
-
+export const ShowContent = ({resourcePath, buyerId}) => {
+    const translate = useTranslate();
+    return(
+    <ContactShow resource={resourcePath} id={buyerId} >
+        <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   />
+        <ContactDetailsBuyer  capitionLabel={translate('myroot.form.label.header.contact')} />
+    </ContactShow>
+    
+) }
 
 
 // <PersonalCardShow bgcolor="inherit" title={translate('myroot.form.label.header.seller')} icon={<SellerIcon />} 
@@ -63,13 +71,13 @@ export default function BuyerReferenceCard({children, dataPersonal, resourcePath
                             perPage={10000}
                             sort={defaultSort}
                     >
-                    { !isMedium &&
+                    {/* { !isMedium && */}
                         <ContactShow resource={resourcePath} id={buyerId} >
                             <SubHeaderBuyer />
                             <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   />
                             <ContactDetailsBuyer  capitionLabel={translate('myroot.form.label.header.contact')} />
                         </ContactShow>
-                    }
+                    {/* } */}
                     </BuyerReferenceInput>
             </JoyCard>
         </>

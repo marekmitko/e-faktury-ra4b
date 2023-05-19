@@ -46,7 +46,7 @@ export const pl = {
         },
         custom_ra: {
             page: {
-                createInvoiceFormPageTitle: 'Wystaw nową fakturę'
+                createInvoiceFormPageTitle: 'Nowa faktura'
             },
             action: {
                 tooltip: {  
