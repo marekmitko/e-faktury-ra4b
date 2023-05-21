@@ -164,8 +164,11 @@ export const pl = {
                     ehf: 'Faktura EHF'
                 },
                 header: {
+                    show: 'Pokaż',
+                    buyerCardHeader_supporting_text: 'Podaj Nabywcę',
                     newInvoice: 'Nowa faktura',
                     prefixInovoiceNo: 'nr:',
+                    street_prefix: 'ul.',
                     seller: 'Wstawca',
                     buyer: 'Nabywca',
                     address: 'Adres',

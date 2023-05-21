@@ -71,11 +71,11 @@ return (
        
        
         {/* <DecorativeWrapper icon={<BuyerIcon />} > */}
-        <Stack direction="row" ml={0} mb='-10px' mr={2} spacing={2} >
+        <Stack direction="row" ml={0} mb='-20px' mr={2} spacing={2} >
             {/* <Stack alignItems="center" justifyContent="center" sx={{maxWidth: '50px', mx: 2, mr: -1, mt: -2, p: .1}} >
                     <ClientCreateButton />
                 </Stack>  */}
-            <OldCustomAutocompleteInput /> 
+            <OldCustomAutocompleteInput  /> 
                 {/* <ClientReferenceAutocompleteInput
                     variant="filled"
                     source="buyer_id" reference="buyersEfaktury" 

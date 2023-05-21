@@ -129,7 +129,7 @@ NumericFormatCustom.propTypes = {
     },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
-        borderColor: 'red',
+        borderColor: 'danger.outlinedHoverBorder',
         },
         '&:hover fieldset': {
         borderColor: 'yellow',
@@ -143,15 +143,15 @@ NumericFormatCustom.propTypes = {
 
     const ValidationTextField = styled(TextField)({
             '& input:valid + fieldset': {
-            borderColor: 'grey',
+            // borderColor: 'grey',
             borderWidth: 1,
             },
             '& input:valid:focus + fieldset': {
-            borderColor: 'grey',
+            // borderColor: 'grey',
             borderWidth: 2,
             },
             '& input:invalid + fieldset': {
-            borderColor: 'red',
+            borderColor: 'danger.outlinedHoverBorder',
             borderWidth: 2,
             },
             '& input:error + fieldset': {

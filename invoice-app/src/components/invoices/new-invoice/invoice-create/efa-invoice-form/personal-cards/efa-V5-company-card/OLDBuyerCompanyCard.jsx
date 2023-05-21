@@ -105,7 +105,7 @@ const MyIcon = () => (<SvgIcon //shapeRendering
     > <SellerIcon />
     </SvgIcon>
 );
-export default function SellerCompanyCard({icon, cardTitle, resourcePath, dataPersonal }) {
+export default function OLDSellerCompanyCard({icon, cardTitle, resourcePath, dataPersonal }) {
 
 
 

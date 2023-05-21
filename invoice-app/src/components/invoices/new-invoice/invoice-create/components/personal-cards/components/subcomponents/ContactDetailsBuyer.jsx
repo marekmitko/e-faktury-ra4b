@@ -9,9 +9,10 @@ import { useRecordContext } from "react-admin";
 export const ContactDetailsBuyer = ({ capitionLabel }) => {
     const record = useRecordContext();
     if (!record) return null;
-    const { phone, email, firstname, lastname } = record;
+    const { phone, email, firstname, lastname, id } = record;
     return (
         <>
+        { id &&
             <Card
                 sx={{
                 // width: 300,
@@ -52,6 +53,7 @@ export const ContactDetailsBuyer = ({ capitionLabel }) => {
                 </Typography>
                 </CardContent>
             </Card>
+            }
         </>
     );
 };

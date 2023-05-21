@@ -38,13 +38,13 @@ const JoyLayout = ( props ) => (
             // menu 
             // notification
         >
-            <div>
-                {/* <center><strong>CentralCardHeader</strong></center> */}
-            </div>
+            {/* <div>
+            </div> */}
+                {/* // <center><strong>CentralCardHeader</strong></center> */}
                 {props.children}
-            <div>
+            {/* <div>
                 <center><strong>CentralCardFooter</strong></center>
-            </div>
+            </div> */}
         </Layout> 
             <hr />
             <FooterLayoutFragment />
@@ -54,11 +54,11 @@ const JoyLayout = ( props ) => (
 
 
 
+//Om //*edu TRZEBA SPRAWDZIĆ JAK ZROBIĆ TAK BY nie było mx: '-4px'
 export default props => (
     <>
-    //Om //*edu TRZEBA SPRAWDZIĆ JAK ZROBIĆ TAK BY nie było mx: '-4px'
-        <Layout {...props}  sx={{  mx: '-4px', m: 0, mt: -2,  pb: 2,  }} //toDo do przerobienia //Om? Inaczej to ustawić usunąć mb: 1
-            // sidebar={SidebarTopPartMenu }
+        <Layout {...props} // sx={{  mx: '-4px', m: 0, mt: '50px',  pb: 2,  }} //toDo do przerobienia //Om? Inaczej to ustawić usunąć mb: 1
+            sidebar={SidebarTopPartMenu }
             dashboard={null}
             menu={SidebarTopPartMenu}
             // appBar={CustomAppBar}
@@ -71,10 +71,7 @@ export default props => (
             toggleButtonProps={{ style: { width: 20, height: 30 } }}
         /> */}
         {/* <hr /> */}
-        <FooterLayoutFragment />
-       {/* <Box  sx={{ my: 1 }}>
-
-       </Box> */}
+        {/* <FooterLayoutFragment /> */}
     </>
 );
 

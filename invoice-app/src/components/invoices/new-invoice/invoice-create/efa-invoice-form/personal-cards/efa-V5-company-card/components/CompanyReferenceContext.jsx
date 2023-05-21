@@ -26,7 +26,7 @@ export const CompanyReferenceContext = (props) => {
     return (
         <ResourceContextProvider value={resource}>
             {/* <ChoicesContextProvider value={controllerProps}> */}
-            <SimpleShowLayout record={data} sx={{ p: 0, my: -2, mx: -3 }}>
+            <SimpleShowLayout record={data} sx={{ p: 0, m: 0}}>
                 {children}
             </SimpleShowLayout>
             {/* </ChoicesContextProvider> */}

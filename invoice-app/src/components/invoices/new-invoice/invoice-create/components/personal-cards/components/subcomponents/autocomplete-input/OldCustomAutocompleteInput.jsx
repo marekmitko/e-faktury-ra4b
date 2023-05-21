@@ -115,7 +115,7 @@ export default function OldCustomAutocompleteInput(props) {
                 // endAdornment={    <BuyerIcon /> }
                 
                 // & .RaSelectInput-textField83 × 7
-
+                
                 variant={variant ? variant : "standard" }
                 // endDecoration={<p>dsa</p>}
                 sx={{ mb: -1.8, mt: .5,  // backgroundColor: 'blue', 
@@ -131,7 +131,9 @@ export default function OldCustomAutocompleteInput(props) {
                             borderTopRightRadius: 0,
                             mt: 0,   
                             mb: 0,
-                            pl: 1
+                            pl: 1,
+                            color: 'primary.900',
+                            // textShadow: '2px 2px #ff0000'
                         },
 
 
@@ -140,7 +142,7 @@ export default function OldCustomAutocompleteInput(props) {
                          
                         },
                     '& .MuiInput-input': { // backgroundColor: 'blue', 
-                    color: 'text.primary.500',   fontSize: {xs: '1.2rem', sm: '1.5rem' }},
+                    color: 'text.primary.500',   fontSize: {xs: '1.1rem', md: '1.5rem' }},
 
                     "& .RaAutocompleteInput-textField": {
                             // fontSize: '2.2rem',  backgroundColor: 'blue', 

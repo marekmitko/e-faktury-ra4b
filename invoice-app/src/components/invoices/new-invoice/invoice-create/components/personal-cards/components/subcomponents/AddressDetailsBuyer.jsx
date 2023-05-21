@@ -9,11 +9,12 @@ import { useRecordContext } from "react-admin";
 export const AddressDetailsBuyer = ({capitionLabel, prefixFirstRow, prefixThirdRow,  thirdRow }) => {
     const record = useRecordContext();
     if (!record) return null;
-    const { zip_code, place, address } = record;
+    const { zip_code, place, address, id } = record;
     return (
         <>
+        { id &&
             <Card
-                sx={{
+            sx={{
                 // width: 300,
                 ml: 3,
                 mt: 1,
@@ -48,10 +49,11 @@ export const AddressDetailsBuyer = ({capitionLabel, prefixFirstRow, prefixThirdR
                 <Typography level="body1" sx={{ fontSize: "lg" }}>
                     { prefixFirstRow ? prefixFirstRow : ""}{" "}{ address ? address : "" }<br />
                     { zip_code ? zip_code : "" }{" "}{ place ? place : "" }<br />
-                    {prefixThirdRow ? prefixThirdRow : ""}{" "}{ thirdRow ? thirdRow : "" }
+                    {(prefixThirdRow && thirdRow )? prefixThirdRow : ""}{" "}{ thirdRow ? thirdRow : "" }
                 </Typography>
                 </CardContent>
             </Card>
+            }
         </>
     );
 };

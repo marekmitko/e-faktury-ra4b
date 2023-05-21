@@ -5,6 +5,8 @@ import { Tabs, TabList, TabPanel, ListDivider, Typography} from '@mui/joy';
 import Tab, { tabClasses } from '@mui/joy/Tab';
 
 
+import MuiTabs from "@mui/material/Tabs";
+import MuiTab from "@mui/material/Tab";
 
 import { Button, CssBaseline, Container, Card, Grid, CardContent, Box, CardHeader, useMediaQuery} from "@mui/material";
 import GlobalStyles from "@mui/material/GlobalStyles";
@@ -44,8 +46,17 @@ import DatePickerGroup from '../components/header-data-group/DatePickerGroup';
 import HeaderDateGroup from '../components/header-data-group';
 import InvoiceHeader from '../components/efaV5/view/InvoiceHeader';
 import MobiInvoiceHeader from '../components/efaV5/mobile-view/MobiInvoiceHeader';
+import CardWithIcon from './personal-cards/CardWithIcon';
+import NbNewOrders from './personal-cards/NbNewOrders';
+import NewCardWithIcon from './personal-cards/NewCardWithIcon.jsx';
+import SellNewCardWithIcon from './personal-cards/SellNewCardWithIcon';
+import CompanyCardWithIcon from './personal-cards/efa-V5-company-card/DefaultCompanyCard';
+import BuyerCompanyCard from './personal-cards/efa-V5-company-card/BuyerDefaultCompanyCard';
+import SellerCompanyCard from './personal-cards/efa-V5-company-card/BuyerCompanyCard copy';
 
 
+
+const Separator = () => <Box pt="0.5em" />;
 
 
 //  componet show
@@ -67,7 +78,7 @@ const ResourceName = () => {
 const buyersResourcePath = 'buyersEfaktury';
 const userResourcePath= 'data_user';
 
-const InvoiceCreateV5 = (props) => { 
+const InvoiceCreateV5L2 = (props) => { 
     const invoiceId = getInvoiceId();
     const navigate = useNavigate();
     const notify = useNotify(); 
@@ -193,7 +204,6 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
     {/* //Om */}
                             {/* <Container fixed //maxWidth="sm" 
                                 component="main" sx={{ width: '100%'}}> */}
-                                <br/> 
                             <Fragment>
                                 <Tabs
                                     size={isMedium ? 'sm' : 'lg'}
@@ -202,7 +212,7 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                     sx={(theme) => ({
                                         // width: 343,
                                         '--Tabs-gap': '0px',
-                                        borderRadius: 3,
+                                        borderRadius: 2,
                                         boxShadow: 'sm',
                                         overflow: 'auto',
                                         border: `1px solid ${theme.vars.palette.divider}`,
@@ -264,9 +274,19 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                             </TabPanel> */}
                                     </Tabs>
                                     <Box sx={{ display: 'flex', flexDirection: {xs: 'column', sm: 'row' }}} >
-                                        <SellerCardShow bgcolor="neutral.50"  icon={<SellerIcon />}     dataPersonal={db_seller} />
-                                        <BuyerReferenceCard resourcePath={buyersResourcePath} />
+                                        {/* <SellerCardShow bgcolor="neutral.50"  icon={<SellerIcon />}     dataPersonal={db_seller} />
+                                        <BuyerReferenceCard resourcePath={buyersResourcePath} /> */}
+                                        <Separator />
+                                        {/* <SellerCompanyCard  dataPersonal={db_seller} /> */}
+                                        <Separator />
+                                        <BuyerCompanyCard resourcePath={buyersResourcePath}  />
+                                        <Separator />
                                     </Box>
+                                 
+                                    {/* <NbNewOrders /> */}
+                                    {/* <NewCardWithIcon /> */}
+                                    {/* <CompanyCardWithIcon  resourcePath={buyersResourcePath}  /> */}
+                                    {/* <SellNewCardWithIcon  resourcePath={buyersResourcePath}  /> */}
                                     <SalesTableV5 />
                                     <AdditionalTableV5 />
                                         </Fragment>
@@ -311,26 +331,13 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                     />
                                         <hr />
                                         <RaJoySelectinputPriceFormat 
-                                           source="InputPriceTest2" 
-                                           label="test2"
-                                           // error  textHelper
-                                           />
+                                            source="InputPriceTest2" 
+                                            label="test2"
+                                            // error  textHelper
+                                            />
                                     </Grid>
                                     </>
                                     }
-                                    <Grid  item xs={11}  sm={11}  md={5.75}   >
-                                        <SellerCardShow bgcolor="neutral.50"  icon={<SellerIcon />}     dataPersonal={db_seller} />
-                                    </Grid>
-                                    <Grid   item xs={11}   sm={11}  md={5.75}   // key={tier.title}
-                                    >
-                                        <BuyerReferenceCard resourcePath={buyersResourcePath}/>
-                                    </Grid>
-                                    <Grid   item xs={12}    sm={12}  md={12}    >
-                                        <SalesTableV5 />
-                                    </Grid>
-                                    <Grid   item xs={12}    sm={12}  md={12}    >
-                                        <AdditionalTableV5 />
-                                    </Grid>
                                 </Grid>
                             </Container>
                             {/* validation             ....                .....  //toDo Warunki  */}
@@ -345,7 +352,7 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                             px: { xs: 4, sm: 8, md: 10, lg: 10 }, alignItems: 'flex-end' }} // className={SalesFormIteratorClasses.clear}
                                         >
                                             <InvoiceCreationFormToolbar >
-                                                <hr/>
+                                                {/* <hr/> */}
                                                 <InvoiceConfirmModalV5 methods={methods} //setOpen={setOpen} open={open}
                                                     onChange={(data) => {
                                                         // tutaj mógłbym poprosić o invoiceId z serwera
@@ -367,4 +374,4 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
     );
 };
 
-export default InvoiceCreateV5;
+export default InvoiceCreateV5L2;

@@ -36,11 +36,25 @@ import { Box, IconButton, List, ListDivider, ListItem, ListSubheader } from '@mu
 
 
 export const SidebarTopPartMenu  = (props) => {
+    const {resources, onMenuClick } = props;
     const translate = useTranslate();
+
+
+    console.log('resources', resources);
+    console.log('resources', props);
     return  (
 <>
-    <Menu>
             <DashboardItemToSubMenu  />
+    <Menu>
+            <ul>
+                
+    {resources && resources.map(resource =>{
+        
+        return(
+        <li>  <span> X <p>{resource.name} </p></span> </li>
+        )}) 
+    }
+    </ul>
         <ListDivider />
         <Box sx={{ m: 1, ml: 1.25, mt: 0 }}>
             <Sidenav />

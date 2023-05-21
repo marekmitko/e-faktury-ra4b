@@ -10,32 +10,38 @@ import { useRecordContext, useReferenceInputController, useResourceContext } fro
 
 
 
+const mySx = { py:0, my: 0, mb: -1,  };
+const mySxIcon = { bgcolor: 'primary.50', 
+                p: {xs: 2.5, md: 3.5},
+                pt: {xs: 3 , md: 4},
+                mt: { md: 1},
+                opacity: .9,
+                borderBottomRightRadius: '42px',
+                borderTopLeftRadius: '0', 
+            };
 
+const mySxSvg = { color: 'primary.900', fontSize: {xs: '35px', md: '45px'} };
+const mySxHeader= { ml: -1, color: 'primary.900', textTransform: 'uppercase', 
+                    fontWeight: "500", 
+                    fontSize: {xs: '1.05rem', md: '1.25rem'},
+                    letterSpacing: '-.25px',
+                    opacity: .95,
+            };
 
-
-
-export const BuyerCompanyCardHeader = (props) => { 
-        const {   cardIcon, suptitle, cardHeader, subtitle,   } = props;
+export const CompanyCardHeader = (props) => { 
+        const { cardIcon, suptitle, cardHeader, subtitle = false, sx, sxIcon, sxSvg, sxHeader } = props;
         const record = useRecordContext();
         const {  org_nr, id } = record;
 
     return (
-            <CardHeader sx={{ py:0, my: 0, mb: -1}}
+            <CardHeader sx={ props?.sx ? {...mySx, ...sx } : mySx }
                 avatar={ 
                     <Box display="flex" sx={{ ml: -2, mr: 0,  my: -2, }} >
-                            <Avatar
-                                sx={{ bgcolor: 'primary.50', 
-                                            p: {xs: 2.5, md: 3.5},
-                                            pt: {xs: 3 , md: 4},
-                                            mt: { md: 1},
-                                            opacity: .9,
-                                            borderBottomRightRadius: '42px',
-                                            borderTopLeftRadius: '0',
-                            }} aria-label="recipe">
+                            <Avatar  sx={ props?.sxIcon ? {...mySxIcon, ...sxIcon } : mySxIcon } aria-label="recipe">
                         <>
                             <Box  ml={-1} className="icon">
                                 <SvgIcon viewBox="-4 2 44 37" //shapeRendering 
-                                    sx={{ color: 'primary.900', fontSize: {xs: '35px', md: '45px'} }}
+                                    sx={ props?.sxSvg ? {...mySxSvg, ...sxSvg } : mySxSvg }
                                 >
                                     {cardIcon? cardIcon : ""}
                                 </SvgIcon>
@@ -80,12 +86,7 @@ export const BuyerCompanyCardHeader = (props) => {
                     }
                     title={
                         <Typography variant="h6" color="text.secondary" component="div"
-                            sx={{   ml: -1, color: 'primary.900', textTransform: 'uppercase', 
-                                    fontWeight: "500", 
-                                    fontSize: {xs: '1.05rem', md: '1.25rem'},
-                                    letterSpacing: '-.25px',
-                                    opacity: .95,
-                                }}
+                            sx={props?.sxHeader ? {...mySxHeader, ...sxHeader } : mySxHeader }
                                     
                         >
                             {cardHeader ? cardHeader : "Title"}
