@@ -3,7 +3,8 @@ import { Resource,
         // ListGuesser,
         ShowGuesser, EditGuesser, 
         CustomRoutes,
-        ListGuesser, 
+        ListGuesser,
+        Login, 
 } from 'react-admin';
 import { StyledEngineProvider } from '@mui/material/styles';
 import { Route } from 'react-router-dom';
@@ -16,14 +17,16 @@ import { fetchJson } from "@app/config";
 import httpClient from './config/providers/httpClient';
 
 import invoices from './components/invoices';
-import clients from "./components/clients";
+import old_clients from "./components/clients";
+import clients from './clients';
 import salesitem from "./components/sale-item";
 import MyAdmin from "./components/admin"
+import AppAdmin from "./components/admin/AppAdmin"
 import MyProfile  from './components/admin/users';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-// import { CssVarsProvider } from "@mui/joy/styles";
-import EfaClientCreate from './components/clients/CLIENT-e-faktury/EfaClientCreate';
+import { CssVarsProvider } from "@mui/joy/styles";
+import Efa_v3_ClientCreate from './components/clients/CLIENT-e-faktury/EfaClientCreate';
 import EfaClientList from './components/clients/CLIENT-e-faktury/EfaClientList';
 import EfaClientEdit from './components/clients/CLIENT-e-faktury/EfaClientEdit';
 import { PostCreate } from './components/invoices/invoice-list/INVOICE-e-faktury/EfaInvoiceCreate';
@@ -35,12 +38,17 @@ import { SalesTableV2 } from './components/invoices/new-invoice/invoice-create/c
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 import { Chip, Divider } from '@mui/joy';
 import VisitorCreate from './components/clients/efa-V5-test/VisitorCreate';
+import PeopleIcon from '@mui/icons-material/People';
+import { CustomAdmin } from './Admin/CustoAdmin';
+import EfaClientCreate from './clients/ClientCreate';
+import ClientCreate from './components/clients/ClientCreate';
+import { PreClientCreate } from './clients/OnePreClientCreate';
+
+
+
 // *see const dataProvider
 const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
-
-
-
 
 
 
@@ -62,35 +70,46 @@ function App(props) {
 <CssVarJoyProvider>
 
 
-            <MyAdmin 
+            {/* <MyAdmin  */}
+            {/* <AppAdmin */}
+            <CustomAdmin
+                // loginPage={Login}
                 // theme={CssVarsProvider}
                 dataProvider={dbjsonProvider}
                 i18nProvider={i18nProvider}
-            > 
-            {/* <CssVarsProvider> */}
-                {/* <Resource name="dbclientlist" options={{ label: 'Visitor V5' }} label="Visitor V5" list={ListGuesser} create={VisitorCreate}/>   */}
+            >  
                 <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
-                <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} create={VisitorCreate} />
-                <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
-                    list={FormsCreate} 
-                    edit={PostCreate}   
-                    show={ShowGuesser} 
-                    create={FormsCreate}  
-                    icon={AbcIcon}
-                /> 
                 <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
                     list={EfaClientList} 
                     edit={EfaClientEdit}   
                     show={ShowGuesser}
-                    create={EfaClientCreate}  
+                    // create={ClientCreate}  
+                    // create={Efa_v3_ClientCreate}  
+                    // create={VisitorCreate}  
+                    // create={clients.create}  
+                    create={clients.create}  
+                    // create={ClientCreate}  
+                    icon={PeopleIcon}
                     // recordRepresentation={(record) =>(<span> `${record.company} Masło`</span>)}
-                />
+                    />
                 {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
                 <CustomRoutes>
                     <Route path="/data_user" element={<MyProfile />}/ >
                 </CustomRoutes>
+            </CustomAdmin>
+            {/* <CssVarsProvider> */}
+                {/* <Resource name="dbclientlist" options={{ label: 'Visitor V5' }} label="Visitor V5" list={ListGuesser} create={VisitorCreate}/>   */}
+                    {/* <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} create={VisitorCreate} />
+                    <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
+                        list={FormsCreate} 
+                        edit={PostCreate}   
+                        show={ShowGuesser} 
+                        create={FormsCreate}  
+                        icon={AbcIcon}
+                    />  */}
             {/* </CssVarsProvider> */}
-            </MyAdmin>
+            {/* </AppAdmin> */}
+            {/* </MyAdmin> */}
                 </CssVarJoyProvider>
         </StyledEngineProvider>
     );

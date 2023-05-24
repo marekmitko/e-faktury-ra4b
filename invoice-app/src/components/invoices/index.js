@@ -15,3 +15,12 @@ export default {
     icon: IconToInvoiceList,
     iconCreate: IconToInvoiceCreate,
 };
+
+
+// const resource = {
+//     list: VisitorList,
+//     create: VisitorCreate,
+//     edit: VisitorEdit,
+//     icon: VisitorIcon,
+// };
+// export default resource;

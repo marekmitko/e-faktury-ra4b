@@ -4,7 +4,7 @@ import { Admin, Layout, InspectorButton, AppBar } from 'react-admin';
 
 
 
-import { SidebarTopPartMenu } from '../../menu/SidebarTopPartMenu';
+// import { SidebarTopPartMenu } from '../../appbar/SidebarTopPartMenu';
 import { CustomAppBar } from '../../top-appbar/CustomAppBar';
 import { Typography } from '@mui/joy';
 import { ReactQueryDevtools } from 'react-query/devtools';

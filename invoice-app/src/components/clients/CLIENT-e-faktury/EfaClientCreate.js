@@ -8,7 +8,7 @@ export const IconToCreateIcon = PersonAddIcon;
 
 const EfaClientCreate = (props) => { 
     return(
-        <Create component="div" redirect="list" title='Dodaj nowego kontrahenta' {...props}>
+        <Create component="div" redirect="list"  {...props}>
             <SimpleForm>
                 <BuyerCard />
             </SimpleForm>

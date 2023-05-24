@@ -6513,6 +6513,20 @@
       "email": "studio@meetco.dev",
       "phone": "500555502",
       "id": "FI0ktNS"
+    },
+    {
+      "company": "Kowalski Company",
+      "is_company": false,
+      "org_nr": "123456789",
+      "mva": true,
+      "address": "Plac Powstańców Śląskich",
+      "zip_code": 44100,
+      "place": "Wrocław",
+      "firstname": "Jan",
+      "lastname": "Kowalski",
+      "email": "kowalski@company.pl",
+      "phone": "500100060",
+      "id": "VDgkRBS"
     }
   ],
   "invoicesEfaktury": [

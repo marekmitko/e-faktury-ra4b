@@ -150,8 +150,8 @@ export const pl = {
                     date_payment: 'Termin płatności',
                     buyerAutocomplete: 'Kupujący',
                     invoice_no: 'Numer faktury',
-                    created_at: 'Data Wystawienia',
-                    payment_due: 'Termin Płatności',
+                    created_at: 'Data wystawienia',
+                    payment_due: 'Termin [P]łatności',
                     selectInputItemName: 'Wybierz pozycję z listy'
                 },
                 checkbox: {
@@ -165,7 +165,7 @@ export const pl = {
                 },
                 header: {
                     show: 'Pokaż',
-                    buyerCardHeader_supporting_text: 'Podaj Nabywcę',
+                    buyerCardHeader_supporting_text: 'Podaj nabywcę',
                     newInvoice: 'Nowa faktura',
                     prefixInovoiceNo: 'nr:',
                     street_prefix: 'ul.',
@@ -188,22 +188,23 @@ export const pl = {
         },
         myBuyersEfaktury: {
             header: {
-                addres_section: "Dane Adresowe",
-                contact_section: "Dane Kontaktowe"
+                // addres_section: "Dane Adresowe",
+                addres_section: "Adres",
+                contact_section: "Dane kontaktowe"
             },
             show: {
                 fields: {
-                    company: 'Nazwa Firmy',
+                    company: 'Nazwa firmy',
                     surname: 'Imię',
                     forename: 'Nazwisko',
                     firstname: 'Imię',
                     lastname: 'Nazwisko',
                     org_nr: 'Numer organizacyjny',
                     address: 'Ulica',
-                    zip_code: 'Kod Pocztowy',
+                    zip_code: 'Kod pocztowy',
                     place: 'Miasto',
-                    email: 'Adres Email',
-                    phone: 'Numer Telefonu',
+                    email: 'Adres email',
+                    phone: 'Numer telefonu',
                     companyRepresentative: 'Przedstawiciel'
                 }
             }
@@ -218,58 +219,63 @@ export const pl = {
             name: 'Kontrahent |||| Kontrahenci',
             contact: "Kontakt",
             fields: {
-                company: 'Nazwa Firmy',
+                company: 'Nazwa firmy',
                 firstname: 'Imię',
                 lastname: 'Nazwisko',
                 org_nr: 'Numer organizacyjny',
                 address: 'Ulica',
-                zip_code: 'Kod Pocztowy',
+                zip_code: 'Kod pocztowy',
                 place: 'Miasto',
-                email: 'Adres Email',
-                phone: 'Numer Telefonu',
+                email: 'Adres email',
+                phone: 'Numer telefonu',
                 companyRepresentative: 'Przedstawiciel',
                 is_company: 'Entreprenoren er et selskap?',
                 mva: "MVA",
             }
         },
         invoicesEfaktury: {
-            name: '⏹e-Faktura |||| ⏹e-Faktury',
+            name: 'e-Faktura |||| e-Faktury',
+            create: 'Nowa Faktura',
         },
         buyersEfaktury: {
-            name: '⏹e-Kontrahent |||| ⏹e-Kontrahenci',
+            name: 'nabywcę |||| nabywców',
+            create_menuItemLabel: 'Nowy nabywca',
+            list_menuItemLabel: 'Lista nabywców',
             contact: "Kontakt",
             fields: {
-                company: 'Nazwa Firmy',
+                company: 'Nazwa firmy',
                 surname: 'Imię',
                 forename: 'Nazwisko',
                 firstname: 'Imię',
                 lastname: 'Nazwisko',
                 org_nr: 'Numer organizacyjny',
                 address: 'Ulica',
-                zip_code: 'Kod Pocztowy',
+                zip_code: 'Kod pocztowy',
                 place: 'Miasto',
-                email: 'Adres Email',
-                phone: 'Numer Telefonu',
+                email: 'Adres email',
+                phone: 'Numer telefonu',
                 companyRepresentative: 'Przedstawiciel',
                 is_company: 'Entreprenoren er et selskap?',
                 mva: "MVA",
             }
         },
         issuedInvoices_list: {
-            name: 'Faktura |||| Faktury',
+            name: 'faktura |||| faktury',
+            create_menuItemLabel: 'Nowa faktura',
+            list_menuItemLabel: 'Lista faktur',
             fields: {
                 buyer_company: "Nabywca",
                 date_submit: 'Data wystawienia',
                 date_payment: 'Termin płatności',
-                company: 'Nazwa Firmy',
+                company: 'Nazwa firmy',
                 firstname: 'Imię',
                 lastname: 'Nazwisko',
                 mva: 'MVA',
                 org_nr: 'Numer MVA',
                 address: 'Ulica',
-                zip_code: 'Kod Pocztowy',
+                zip_code: 'Kod pocztowy',
                 place: 'Miejscowość',
-                email: 'Adres Email',
+                email: 'Adres email',
                 phone: 'Numer telefonu',
                 payment_amount: 'Kwota',
                 date_paid: "Wpłacono"

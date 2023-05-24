@@ -11,7 +11,7 @@ export const CustomDashboard = (props) => (
     <Card>
         <Title title="e-faktury.no" />
         <CardContent>Lorem ipsum sic dolor amet...</CardContent>
-        <JoyHeaderApp />
+        {/* <JoyHeaderApp /> */}
         {/* <InputBox /> */}
     </Card>
 );
