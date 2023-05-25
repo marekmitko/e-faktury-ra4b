@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { CardOverflow, Typography, Divider, Avatar, Box} from "@mui/joy";
 import { CardHeader } from '@mui/material';
-import { IconBuyer } from '..';
+import { IconBuyer } from '../..';
 import { TitleCard } from './TitleCard';
 
 

@@ -37,7 +37,7 @@ const MyCard = ({children}) => (<Card sx={{bgcolor: 'blue'}}>{children}</Card>) 
 
 const Separator = () => <Box sx={{ pt: '1em'}} />;
 
-export const ClientCreate = (props) =>  { 
+export const MinClientCreate = (props) =>  { 
     const translate = useTranslate();
     // const record = useRecordContext();
 

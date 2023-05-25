@@ -4,12 +4,12 @@ import {  useTranslate, TextInput,   BooleanInput , NumberInput, useRecordContex
 import MailIcon from '@mui/icons-material/MailOutline';
 import MailOutlineSharpIcon from '@mui/icons-material/MailOutlineSharp';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import { CompanyCardHeader } from './subcomponent/CompanyCardHeader';
-import { IconCreate } from '.';
-import { IconBuyer } from '.';
+import { CompanyCardHeader } from '../subcomponent/CompanyCardHeader';
+import { IconCreate } from '..';
+import { IconBuyer } from '..';
 import CardHeader from '@mui/material/CardHeader';
-import { TitleCard } from './subcomponent/TitleCard';
-import CircleIconChip from '../reusable-components/CircleIconChip';
+import { TitleCard } from '../subcomponent/TitleCard';
+import CircleIconChip from '../../reusable-components/CircleIconChip';
 import PermContactCalendarOutlinedIcon from '@mui/icons-material/PermContactCalendarOutlined';
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
 import RecentActorsOutlinedIcon from '@mui/icons-material/RecentActorsOutlined';
@@ -17,7 +17,7 @@ import PersonPinCircleOutlinedIcon from '@mui/icons-material/PersonPinCircleOutl
 import HolidayVillageOutlined from '@mui/icons-material/HolidayVillageOutlined';
 import EditLocationOutlinedIcon from '@mui/icons-material/EditLocationOutlined';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
-import SemiovalTitleChip from '../reusable-components/SemiovalTitleChip';
+import SemiovalTitleChip from '../../reusable-components/SemiovalTitleChip';
 import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 import MarkAsUnreadRoundedIcon from '@mui/icons-material/MarkAsUnreadRounded';
 
@@ -32,9 +32,7 @@ import PinDropOutlinedIcon from '@mui/icons-material/PinDropOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import JoyAvatar from '@mui/joy/Avatar';
-import { FormCardHeader } from './subcomponent/FormCardHeader';
-import MvaInputNumber from './subcomponent/MvaInputNumber';
-import MidV2CardHeader from './subcomponent/MidV2CardHeader';
+import { FormCardHeader } from '../subcomponent/FormCardHeader';
 
 
 // "id": "2125",
@@ -70,7 +68,7 @@ export const PreClientCreate = (props) =>  {
     <>
     {/* <Create component="div" redirect="list"   {...props}> */}
     <Create sx={{ p: 0,  maxWidth: 500,
-        '& .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0
+        '& .RaCreate-card': { borderRadius: '15px',  
     }
     
     
@@ -78,26 +76,54 @@ export const PreClientCreate = (props) =>  {
     }}   redirect="list" >
             <FormCardHeader />
         <SimpleForm
-            sx={{ maxWidth: 500, pt: 0, mt: 0 }}
+            sx={{ maxWidth: 500 }}
             // Here for the GQL provider
             defaultValues={{
-                company: "",
+                // birthday: new Date(),
+                // first_seen: new Date(),
+                // last_seen: new Date(),
+                // has_ordered: false,
+                // latest_purchase: new Date(),
+                // has_newsletter: false,
+                // groups: [],
+                // nb_commands: 0,
+                // total_spent: 0,
+                // org_nr: 0,
+                company: "Kowalski Company",
                 is_company: false,
-                org_nr: "",
+                org_nr: "123456789",
                 mva: true,
-                address: "",
-                zip_code: "",
-                place: "",
-                firstname: "",
-                lastname: "",
-                email: "",
-                phone: "",
+                address: "Plac Powstańców Śląskich",
+                zip_code: 44100,
+                place: "Wrocław",
+                firstname: "Jan",
+                lastname: "Kowalski",
+                email: "kowalski@company.pl",
+                phone: "500100060",
+                // id: "VDgkRBS"
             }}
             // validate={validateForm}
-        > 
-        {/* <MidV2CardHeader /> */}
-        <Box    width="100%" sx={{ zIndex: 1000, marginRight: '-40px', position: 'relative', left: -25, right: -25 }}>
-            <TextInput label="" 
+        >
+                    
+            
+{/* 
+<CardHeader sx={{ mt: 0 , pt: 0, pl: 0, }}
+        avatar={
+
+          <Avatar  sx={{  
+            // boxShadow: 1, zIndex: 3, bgcolor: 'neutral.50', mt: -.5, color: 'primary.900', borderTopRadius: 0,  
+            boxShadow: 1, zIndex: 3, bgcolor: 'neutral.50', mt: -.5, color: 'primary.900', borderTopRadius: 0,  
+            }} aria-label="recipe">
+            <IconBuyer />
+          </Avatar>
+        }
+        title={ <TitleCard >Dane nowego nabywcy </TitleCard>}
+        // subheader="September 14, 2016"
+      /> */}
+
+
+        <Box    width="100%" sx={{ marginRight: '-40px', position: 'relative', right: -25 }}>
+            <TextInput label=""
                 source="company" fullWidth helperText={false} resettable 
             sx={{
                 marginRight: -10,
@@ -120,22 +146,18 @@ export const PreClientCreate = (props) =>  {
                         // },
                     }}
             InputProps={{
-                    placeholder: "Nazwa firmy",
-                    startAdornment: <InputAdornment position="start"   sx={{ color: 'primary.900',  }}>
-                        <AddHomeWorkRoundedIcon  sx={{ mt: -1.5, ml: -.25 }} />
-                    </InputAdornment>,
-                }}    
+                placeholder: "Nazwa firmy",
+                startAdornment: <InputAdornment position="start"   sx={{ color: 'primary.900',  }}>
+                    <AddHomeWorkRoundedIcon  sx={{ mt: -1.5, ml: -.25 }} />
+                </InputAdornment>,
+              }}    
             />
         </Box>
         <Separator />
         {/* <BooleanInput  source="is_company" sx={{ alignItems: 'flex-start', p: 0, mt: '-15px' }} /> */}
         <Stack direction="row" spacing={2} width="100%" alignItems="center">
-            <BooleanInput 
-            options={{ checkedIcon: <AccountBoxOutlinedIcon />  }} 
-            // options={{ labelPlacement: "top" }} 
-            
-            size="small" source="mva" sx={{ alignItems: 'center'  }} />
-            <MvaInputNumber  source="org_nr" variant="standard" fullWidth  />
+            <BooleanInput  source="mva" sx={{ alignItems: 'center'  }} />
+            <TextInput  source="org_nr" fullWidth               variant="standard"   />
         </Stack>
         <SemiovalTitleChip  startDecorator={<EmailRoundedIcon  sx={{ maxHeight: '20px', color: 'primary.900', mb: -.1, ml: 1.5, mr: -.25, mt: -.15 }} />}>{translate('myroot.myBuyersEfaktury.header.addres_section')} </SemiovalTitleChip>
         <Separator />

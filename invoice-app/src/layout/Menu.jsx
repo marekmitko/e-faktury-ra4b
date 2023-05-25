@@ -11,7 +11,7 @@ import {
 } from 'react-admin';
 
 import invoices from '../components/invoices';
-import clients from "../components/clients";
+import clients from "../clients";
 import { ListDivider } from '@mui/joy';
 import EfaLogo from '../components/appbar/components/subcomponent/EfaLogo';
 
@@ -164,33 +164,6 @@ const Menu = ({ dense = false }) => {
                     leftIcon={<invoices.icon />}
                     dense={dense}
                 />
-            {/* </SubMenu> */}
-            {/* <SubMenu
-                handleToggle={() => handleToggle('menuCatalog')}
-                isOpen={state.menuCatalog}
-                name="pos.menu.catalog"
-                icon={<products.icon />}
-                dense={dense}
-            >
-                <MenuItemLink
-                    to="/products"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.products.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<products.icon />}
-                    dense={dense}
-                    />
-                <MenuItemLink
-                    to="/categories"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.categories.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<categories.icon />}
-                    dense={dense}
-                />
-            </SubMenu> */}
             <MenuItemLink
                 onClick={ () => handleToggle(4) }
                 sx={ (state === 4 ) ? activCSS : {} }

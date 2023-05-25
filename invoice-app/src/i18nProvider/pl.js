@@ -222,7 +222,7 @@ export const pl = {
                 company: 'Nazwa firmy',
                 firstname: 'Imię',
                 lastname: 'Nazwisko',
-                org_nr: 'Numer organizacyjny',
+                org_nr: 'Numer MVA',
                 address: 'Ulica',
                 zip_code: 'Kod pocztowy',
                 place: 'Miasto',
@@ -260,7 +260,7 @@ export const pl = {
             }
         },
         issuedInvoices_list: {
-            name: 'faktura |||| faktury',
+            name: 'faktura |||| faktur',
             create_menuItemLabel: 'Nowa faktura',
             list_menuItemLabel: 'Lista faktur',
             fields: {

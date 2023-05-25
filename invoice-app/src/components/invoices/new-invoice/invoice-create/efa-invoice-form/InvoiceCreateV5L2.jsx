@@ -233,10 +233,6 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                 <Grid container spacing={1} justifyContent='center' alignItems="flex-end">
                                     { !isHidden && 
                                     <>
-                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
-                                    >
-                                            <Header  /> 
-                                    </Grid>
                                     <Grid  item xs={12}  sm={12}  md={12}     > 
                                         <RaJoyPriceInput
                                             source="product_price_MuiTESTyy"  
@@ -253,7 +249,7 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                             label="myroot.form.label.inputbox_itemrow.netItem" 
                                         />
                                     </Grid> */}
-                                    <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
+                                    {/* <Grid  item xs={12}  sm={12}  md={12}   // key={tier.title}
                                     >
 
                                         <RaMuiPriceInput source="product_price_MuiTEST2" label="cena brutto"  />
@@ -271,7 +267,7 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                             label="test2"
                                             // error  textHelper
                                             />
-                                    </Grid>
+                                    </Grid> */}
                                     </>
                                     }
                                 </Grid>
@@ -285,8 +281,10 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                     {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
                                         <Box sx={{ 
                                             pt: 2,
-                                            px: { xs: 4, sm: 8, md: 10, lg: 10 }, alignItems: 'flex-end' }} // className={SalesFormIteratorClasses.clear}
-                                        >
+                                            mb: 9,
+                                            // px: { xs: 4, sm: 8, md: 10, lg: 10 },  // className={SalesFormIteratorClasses.clear}
+                                            alignItems: 'flex-end' }}
+                                            >
                                             <InvoiceCreationFormToolbar >
                                                 {/* <hr/> */}
                                                 <InvoiceConfirmModalV5 methods={methods} //setOpen={setOpen} open={open}

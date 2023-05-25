@@ -40,9 +40,9 @@ import { Chip, Divider } from '@mui/joy';
 import VisitorCreate from './components/clients/efa-V5-test/VisitorCreate';
 import PeopleIcon from '@mui/icons-material/People';
 import { CustomAdmin } from './Admin/CustoAdmin';
-import EfaClientCreate from './clients/ClientCreate';
+import EfaClientCreate from './clients/old/ClientCreate';
 import ClientCreate from './components/clients/ClientCreate';
-import { PreClientCreate } from './clients/OnePreClientCreate';
+import { PreClientCreate } from './clients/MinClientCreate';
 
 
 
@@ -80,15 +80,10 @@ function App(props) {
             >  
                 <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
                 <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
-                    list={EfaClientList} 
-                    edit={EfaClientEdit}   
+                    list={clients.list} 
+                    edit={clients.edit}   
                     show={ShowGuesser}
-                    // create={ClientCreate}  
-                    // create={Efa_v3_ClientCreate}  
-                    // create={VisitorCreate}  
-                    // create={clients.create}  
                     create={clients.create}  
-                    // create={ClientCreate}  
                     icon={PeopleIcon}
                     // recordRepresentation={(record) =>(<span> `${record.company} Masło`</span>)}
                     />

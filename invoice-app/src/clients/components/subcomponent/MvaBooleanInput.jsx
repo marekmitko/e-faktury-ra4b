@@ -2,7 +2,9 @@ import React, { memo } from 'react';
 import {  BooleanInput  } from 'react-admin';
 
 const MvaBooleanInput = (props) => (
-    <BooleanInput size="small"  
+    <BooleanInput 
+        parse={value => value ? 1 : 0 }
+        size="small"  
         options={{ 
             sx: { 
                 '& .Mui-checked': {

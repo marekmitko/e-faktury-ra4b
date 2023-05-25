@@ -37,7 +37,7 @@ const MyCard = ({children}) => (<Card sx={{bgcolor: 'blue'}}>{children}</Card>) 
 
 const Separator = () => <Box sx={{ pt: '1em'}} />;
 
-export const ClientCreate = (props) =>  { 
+export const PreClientCreate = (props) =>  { 
     const translate = useTranslate();
     // const record = useRecordContext();
 
@@ -50,8 +50,8 @@ export const ClientCreate = (props) =>  {
 
     <>
     <Create redirect="list"  // {...props}
-            sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 }  }}
-            // sx={{ p: 0, m: 0,  maxWidth: 500 }}  component='div'
+            // sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 }  }}
+            sx={{ p: 0, m: 0,  maxWidth: 500 }}  component='div'
     >
         <SimpleForm className="ClientCardForm" 
             onSubmit={clientSave}
@@ -60,16 +60,16 @@ export const ClientCreate = (props) =>  {
             // validate={validateForm}
             
             
-            // sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0 }  }}   component={Card} 
-            sx={{ pt: 0, mt: 0,  }}
+            sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0 }  }}   component={Card} 
+            // sx={{ pt: 0, mt: 0,  }}
             > 
                 {/* <MidV2CardHeader /> */}
             {/* <CardHeader /> */}
 
-
-            {/* <FormCardHeader  title='create_menuItemLabel' icon={<IconBuyer />} iconSx={{ mt: .45 }} /> */}
-            {/* <FormCardContent /> */}
-            <ContentForm />
+            
+            <FormCardHeader  title='create_menuItemLabel' icon={<IconBuyer />} iconSx={{ mt: .45 }} />
+            <FormCardContent />
+            {/* <ContentForm /> */}
             </SimpleForm>
         </Create>
     </ >

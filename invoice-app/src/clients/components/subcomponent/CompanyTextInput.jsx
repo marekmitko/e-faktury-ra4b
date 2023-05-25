@@ -9,7 +9,7 @@ const CompanyTextInput = (props) => {
         icon = <AddHomeWorkRoundedIcon sx={iconSx} />
     } = props;
     const translate = useTranslate();
-    const resources = useResourceContext();
+    const resource = useResourceContext();
     return (
         <TextInput label="" fullWidth helperText={false} resettable 
             sx={{   marginRight: -10,  
@@ -23,7 +23,7 @@ const CompanyTextInput = (props) => {
                     }, 
                 }}
             InputProps={{
-                placeholder: translate(`resources.${resources}.fields.${props['source']}`),
+                placeholder: translate(`resources.${resource}.fields.${props['source']}`),
                 startAdornment: <InputAdornment position="start"   
                                     sx={{ color: iconColor, '& > svg': { mt: -1.5,  ml: 1, } }}
                                 >

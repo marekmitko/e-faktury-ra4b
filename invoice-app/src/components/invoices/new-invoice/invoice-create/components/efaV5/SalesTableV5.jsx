@@ -294,14 +294,14 @@ export const SalesTableV5 = props => {
                                             />
                                         }
                                         <CustomInputNumber source="product_price_netto" validate={vumberInputValidation}
-                                            sx={{ gridArea: 'price', width: "100%",  mt: 0,
+                                            sx={{ gridArea: 'price', width: "100%",  mt: .5,
                                             visibility: entryPriceIsGross ? 'hidden' : 'visible',
                                             display: entryPriceIsGross ? 'hidden' : '' }}
                                             label="myroot.form.label.inputbox_itemrow.netItem" 
                                             variant={isMedium ? 'outlined': 'outlined'}
                                         />
                                         <CustomInputNumber source="product_price_brutto" validate={vumberInputValidation}
-                                            sx={{ gridArea: 'price', width: "100%",   mt: 0,
+                                            sx={{ gridArea: 'price', width: "100%",   mt: .5,
                                             visibility: entryPriceIsGross ? 'visible' : 'hidden',
                                             display: entryPriceIsGross ? '' : 'hidden'      }}
                                             label="myroot.form.label.inputbox_itemrow.grossItem" 
@@ -310,7 +310,7 @@ export const SalesTableV5 = props => {
                                         <NumberInput source="product_count" 
                                             label="myroot.form.label.inputbox_itemrow.qtyItem"
                                             helperText={false}
-                                            sx={{ gridArea: 'count', '& input': { mr: -1 },
+                                            sx={{ gridArea: 'count', '& input': { mr: -1 }, mt: 1,
                                                 // '& .MuiInputLabel-root': { 
                                                 //     textTransform: 'uppercase', 
                                                 //     letterSpacing: '-0.5px',
