@@ -45,10 +45,10 @@ import ClientCreate from './components/clients/ClientCreate';
 import { PreClientCreate } from './clients/MinClientCreate';
 
 
-
+const hostname = window.location.hostname;
 // *see const dataProvider
-const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
-const dbjsonProvider = jsonServerProvider('http://localhost:5000', httpClient);
+// const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
+const dbjsonProvider = jsonServerProvider('http://'+hostname+':5000', httpClient);
 
 
 

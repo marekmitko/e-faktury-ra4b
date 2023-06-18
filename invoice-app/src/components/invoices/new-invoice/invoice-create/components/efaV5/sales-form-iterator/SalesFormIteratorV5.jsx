@@ -24,6 +24,7 @@ import { EfaRemoveBtnIcon, EfaRemoveItemButton } from '../../../efa-invoice-form
 import { ClearArrayButton } from '../../invoice-confirm-modal/components/button/bin/ClearArrayButton';
 import LabelOptionCard from '../../../efa-invoice-form/components/additional-sending-options/subcomponents/LabelOptionCard';
 import WrapperItemCard from './sales-item/item-wrapper/WrapperItemCard';
+import TableFormIterator from './TableFormIterator';
 
 // export const MobileFormIterator = (props) => {
 export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
@@ -195,14 +196,13 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                                 entryPriceIsGross={entryPriceIsGross}
                             >
                                 {children} 
-                            
                             </SalesFormIteratorRowV5>
                         {/* </WrapperItemCard> */}
                                             </Box>
 
                     </>
                     )}
-                )}
+                    )}
                 </FlexboxContainer>
                 </tbody>
                 <JoyDivider light sx={{ p: "2px", my: 2.25, mr: 5, bgcolor: 'primary.900'}} />
@@ -216,6 +216,7 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                     borderRadius: 1, flexDirection: 'column' }}
                     >
 
+                        <TableFormIterator />
                     <tr style={{ marginTop: '-42px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between',}}
                         className={SalesFormIteratorClasses.buttons}
                         >  
