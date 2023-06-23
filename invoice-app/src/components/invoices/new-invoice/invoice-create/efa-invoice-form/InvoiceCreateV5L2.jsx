@@ -41,6 +41,10 @@ import InvoiceHeader from '../components/efaV5/view/InvoiceHeader';
 import MobiInvoiceHeader from '../components/efaV5/mobile-view/MobiInvoiceHeader';
 import ClientCompanyCard from './personal-cards/efa-V5-company-card/components/ClientCompanyCard';
 import SellerCompanyCard from './personal-cards/efa-V5-company-card/components/SellerCompanyCard';
+// import TableFormIterator from '../components/efaV5/sales-form-iterator/sales-table/TabFormIterator';
+import { CustomInputNumber } from './components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber';
+import { SalesFormIterator } from './components/new-sales-table/components/sales-form-iterator/SalesFormIterator';
+import { SalesTableFormIterator } from '../components/efaV5/sales-form-iterator/sales-table/SalesTableFormIterator';
 
 // const Item = styled(Paper)(({ theme }) => ({
 //     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -206,6 +210,7 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                 component="main" sx={{ width: '100%'}}> */}
                             <Fragment>
                                 <Box sx={{ width: '100%'    }} >
+                              
                                     <Grid2 container   columnSpacing={1} rowSpacing={1}  >
                                         <Grid2 xs={12}  >
                                             <Card sx={(theme) => ({ ...styledCardActivated,   border: `1px solid ${theme.vars.palette.divider}`})} >
@@ -222,6 +227,37 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                         </Grid2>
                                     </Grid2>
                                 </Box>
+                                <Separator />
+                                    <SalesTableFormIterator />
+                                    <hr />
+                                {/* <ArrayInput  className="array" label={false} source="products2" fullWidth>
+                                    <TableFormIterator >
+                                       <td>
+                                         <CustomInputNumber source="product_vat" 
+                                                label="myroot.form.label.inputbox_itemrow.netItem" 
+                                                />
+                                                </td>
+                                                <td>
+                                        <CustomInputNumber source="product_vat1" 
+                                                label="myroot.form.label.inputbox_itemrow.netItem" 
+                                                />
+                                                </td>
+                                                <td>
+                                        <CustomInputNumber source="product_vat2" 
+                                                label="myroot.form.label.inputbox_itemrow.netItem" 
+                                                />
+                                                </td>
+                                                <td>
+                                        <CustomInputNumber source="gtros3" 
+                                                label="myroot.form.label.inputbox_itemrow.netItem" 
+                                                />
+                                                </td>
+                                           
+                                    </TableFormIterator>
+                                </ArrayInput> */}
+
+
+
                                 <Separator />
                                     <SalesTableV5 />
                                     <AdditionalTableV5 />

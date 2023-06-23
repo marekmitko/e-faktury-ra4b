@@ -1,3 +1,84 @@
+
+
+
+
+
+
+export const data2 = {
+    columns: [
+        {
+        field: "id",
+        label: "No"
+        },
+        {
+        field: "item_name",
+        label: "Name"
+        },
+        {
+        field: "type",
+        label: "Type"
+        },
+        {
+        field: "qty",
+        label: "Qty."
+        },
+        {
+        field: "tax",
+        label: "Tax"
+        },
+        {
+        field: "net_price",
+        label: "Net"
+        },
+        {
+        field: "gross_price",
+        label: "Gross"
+        },
+        {
+        field: "sum_net",
+        label: "Sum net."
+        },
+        {
+        field: "sum_gross",
+        label: "Sum gross."
+        }
+    ],
+    data: [
+        {
+        id: "1",
+        item_name: "Gabriel",
+        surname: "Garsin"
+        },
+        {
+        id: "Mark",
+        surname: "Garsin"
+        },
+        {
+        id: "Mark",
+        surname: "Garsin"
+        },
+        {
+        name: "Gabriel",
+        surname: "Betappi"
+        },
+        {
+        name: "Gustav",
+        surname: "Mahler"
+        }
+    ]
+};
+
+
+
+
+
+
+
+
+
+
+
+
 export const data = {
     fields: [
       {
@@ -31,6 +112,16 @@ export const data = {
         show: true
       },
       {
+        id: "net_price",
+        description: "Net",
+        show: true
+      },
+      {
+        id: "gross_price",
+        description: "Gross",
+        show: true
+      },
+      {
         id: "country_code",
         description: "Country",
         show: true
@@ -44,6 +135,8 @@ export const data = {
         email: "mgauntlett0@mapquest.com",
         company: "Fivespan",
         ip_address: "39.139.197.152",
+        net_price: "100.00",
+        gross_price: "124.00",
         country_code: "CN"
       },
       {
@@ -53,6 +146,8 @@ export const data = {
         email: "lveque1@census.gov",
         company: "Aimbu",
         ip_address: "77.0.37.83",
+        net_price: "100.00",
+        gross_price: "124.00",
         country_code: "ZM"
       },
       {
@@ -62,6 +157,8 @@ export const data = {
         email: "fdonson2@indiatimes.com",
         company: "Meevee",
         ip_address: "141.126.205.140",
+        net_price: "100.00",
+        gross_price: "124.00",
         country_code: "ID"
       },
       {
@@ -71,61 +168,9 @@ export const data = {
         email: "fbessent3@chronoengine.com",
         company: "Riffpath",
         ip_address: "65.217.64.181",
+        net_price: "100.00",
+        gross_price: "124.00",
         country_code: "FR"
-      },
-      {
-        id: 5,
-        first_name: "Nels",
-        last_name: "Tilt",
-        email: "ntilt4@last.fm",
-        company: "Flashset",
-        ip_address: "68.194.140.19",
-        country_code: "JP"
-      },
-      {
-        id: 6,
-        first_name: "Jen",
-        last_name: "Sterrie",
-        email: "jsterrie5@reference.com",
-        company: "Youbridge",
-        ip_address: "210.173.199.119",
-        country_code: "VE"
-      },
-      {
-        id: 7,
-        first_name: "Lindsy",
-        last_name: "Kelway",
-        email: "lkelway6@jimdo.com",
-        company: "Rhyloo",
-        ip_address: "138.154.16.188",
-        country_code: "CN"
-      },
-      {
-        id: 8,
-        first_name: "Stacy",
-        last_name: "Graeber",
-        email: "sgraeber7@exblog.jp",
-        company: "Dazzlesphere",
-        ip_address: "167.47.78.169",
-        country_code: "PH"
-      },
-      {
-        id: 9,
-        first_name: "Sharon",
-        last_name: "Stainland",
-        email: "sstainland8@devhub.com",
-        company: "Browsebug",
-        ip_address: "63.59.239.96",
-        country_code: "CN"
-      },
-      {
-        id: 10,
-        first_name: "Caldwell",
-        last_name: "Rimell",
-        email: "crimell9@hexun.com",
-        company: "Rhynyx",
-        ip_address: "12.81.190.233",
-        country_code: "PL"
       }
     ]
   };

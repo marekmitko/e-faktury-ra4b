@@ -164,8 +164,6 @@ export const SalesTableV5 = props => {
                             <ArrayInput  className="array" label={false} source={nameSalesIteratorForm} fullWidth>
                                 <SalesFormIteratorV5 
                                     entryPriceIsGross={entryPriceIsGross}
-                                
-                                
                                     isXSmall={isXSmall} fullWidth // ref={memberRef} 
                                     wraperSectionItem={ 
                                         configGridBox_itemRow

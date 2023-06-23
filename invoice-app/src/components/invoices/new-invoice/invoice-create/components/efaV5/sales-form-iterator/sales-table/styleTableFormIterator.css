@@ -67,7 +67,7 @@
   
     table.sales__table tr {
       display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
+      grid-template-columns: 33.3% 33.3% 33.3%;
     }
   }
   

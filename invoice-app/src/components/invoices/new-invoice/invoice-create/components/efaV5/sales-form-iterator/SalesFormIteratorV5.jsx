@@ -12,7 +12,7 @@ import {
     SalesFormIteratorPrefix,
     MQ_isSmall
 } from './useSalesFormIteratorStyles';
-import { Confirm, ReOrderButtons, SimpleFormIteratorContext, RemoveItemButton, AddItemButton, useSimpleFormIterator } from 'react-admin';
+import { Confirm, ReOrderButtons, SimpleFormIteratorContext, RemoveItemButton, AddItemButton, useSimpleFormIterator, ArrayInput } from 'react-admin';
 import { SalesFormIteratorRowV5 } from './SalesFormIteratorRowV5';
 import useProductFormIterator from './logic/useProductFormField';
 // import TableContainerIterator from './subcomponent/form-iterator/TableContainerIterator';
@@ -24,7 +24,7 @@ import { EfaRemoveBtnIcon, EfaRemoveItemButton } from '../../../efa-invoice-form
 import { ClearArrayButton } from '../../invoice-confirm-modal/components/button/bin/ClearArrayButton';
 import LabelOptionCard from '../../../efa-invoice-form/components/additional-sending-options/subcomponents/LabelOptionCard';
 import WrapperItemCard from './sales-item/item-wrapper/WrapperItemCard';
-import TableFormIterator from './TableFormIterator';
+// import TableFormIterator from './sales-table/TabFormIterator';
 
 // export const MobileFormIterator = (props) => {
 export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
@@ -60,7 +60,8 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
     } = props;
     const [confirmIsOpen, setConfirmIsOpen] = useState(false);
 
-    const { records, record, fields, translate,  removeField, addField, move, replace } = useProductFormIterator(props)
+    const { records, record, fields, translate,  removeField, addField, move, replace 
+    } = useProductFormIterator(props)
     // removeField
 
 
@@ -215,8 +216,7 @@ export const SalesFormIteratorV5 = React.forwardRef((props, ref ) => {
                     bgcolor: 'transparent', 
                     borderRadius: 1, flexDirection: 'column' }}
                     >
-
-                        <TableFormIterator />
+                        {/* <TableFormIterator /> */}
                     <tr style={{ marginTop: '-42px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between',}}
                         className={SalesFormIteratorClasses.buttons}
                         >  
