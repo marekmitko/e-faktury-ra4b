@@ -20,7 +20,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 // set params when calling the hook
 
-export const IncreaseLikeActionButton = () => {
+export const IncreaseLikeActionButton = (props) => {
     const record = useRecordContext(); // przekazać props, chyba nie muszę bo useRecord pobiera z context 
     const diff = { likes: record.likes + 1 };
     const [update, { isLoading, error }] = useUpdate(

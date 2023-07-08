@@ -7,6 +7,8 @@ import {
     ReferenceField,
     NumberField,
     DateInput,
+    BulkDeleteButton,
+    NumberInput,
 } from 'react-admin';
 
 import FullNameField from './components/visitors/FullNameField';
@@ -18,6 +20,13 @@ import { IncreaseLikeActionButton } from './components/call-action-buttons/Inckr
 import { DownloadActionButton } from './components/call-action-buttons/DownloadActionButton';
 import { CancelActionButton } from './components/call-action-buttons/CancelActionButton';
 import { SpecialSubmitActionButton } from './components/call-action-buttons/SpecialSubmitActionButton';
+import { RowActionToolbar } from './components/RowActionToolbar';
+import { ErrorSpecialSubmitActionButton } from './components/call-action-buttons/ErrorSpecialSubmitActionButton';
+import { pink } from '@mui/material/colors';
+import ResetViewsButton from './components/visitors/ResetViewsButton';
+import { InvoiceListFilterSidebar } from './components/InvoiceListFilterSidebar';
+import { LinkToRelated, LinkToRelatedBuyerCompany } from './components/filters-sidebar/invoiceListFilters';
+
 
 //Om? Omówić baze danych dla InvoiceList 
 //**  / {/*
@@ -41,31 +50,86 @@ import { SpecialSubmitActionButton } from './components/call-action-buttons/Spec
 
 
 
-
+const InvoiceBulkActionButtons = () => (
+    <>
+        <ResetViewsButton label="Reset Views" />
+        {/* default bulk delete action */}
+        <BulkDeleteButton />
+    </>
+);
 
 
 
 
 
 const listFilters = [
-    <DateInput source="date_gte" alwaysOn />,
-    <DateInput source="date_lte" alwaysOn />,
+    <DateInput size="small" source="date_submit_gte" alwaysOn />,
+    <DateInput source="date_submit_lte" alwaysOn />,
+    <NumberInput source="payment_amount_gte" alwaysOn sx={{  mb: '4px' }} />,
+    <NumberInput source="payment_amount_lte" alwaysOn  sx={{ mb: '4px' }} />
 ];
 
+const rowStyle = (record, index) => ({
+    backgroundColor: record.paid_amount >= 500 ? '#efe' : 'white',
+});
+
 const InvoiceList = () => (
-    <List
+    <List  aside={<InvoiceListFilterSidebar />}
+        sx={{maxWidth: '1400px',  
+            borderTopLeftRadius: '50px',
+            borderTopRightRadius: '200px', 
+        }}
         filters={listFilters}
         perPage={25}
-        sort={{ field: 'date', order: 'desc' }}
+        sort={{ field: 'id', order: 'desc' }}
     >
         <Datagrid
+            bulkActionButtons={<InvoiceBulkActionButtons />}
             rowClick="expand"
             expand={<InvoiceShow />}
+            // rowStyle={rowStyle} 
             sx={{
-                '& .column-customer_id': {
-                    display: { xs: 'none', md: 'table-cell' },
+                    
+            //    '& thead.RaDatagrid-headerRow': {
+            //     borderTopLeftRadius: '50px',
+            //     borderTopRightRadius: '50px',
+            //    },
+
+
+                '& .MuiTableHead-root .RaDatagrid-headerRow': {
+                    backgroundColor: 'neutral.100', 
+                    borderBottom: '2px solid #0d47a1',
+                    borderTopLeftRadius: '50px',
+                    borderTopRightRadius: '50px',
+                    '&:first-child': {
+                        ml: -1,
+                        // borderTopLeftRadius: '50px',
+                        // borderTopRightRadius: '200px',
+                    }
                 },
-                '& .column-total_ex_taxes': {
+                '& .MuiTableHead-root .RaDatagrid-headerCell': {
+                    padding: { sx: '5px', md: '5px'  },
+                    backgroundColor: 'neutral.100', 
+                    borderBottom: '2px solid #0d47a1',
+                    '&:first-child': {
+                        ml: -1,
+                        // borderTopLeftRadius: '50px',
+                        // borderTopRightRadius: '200px',
+                    }
+
+                },
+                '& .RaDatagrid-rowCell': { 
+                    padding: { sx: '5px', md: '5px'  },
+                },
+                '& .MuiTableCell-root.MuiTableCell-paddingCheckbox': { 
+                    padding: { sx: '5px', md: '5px'  },
+                    textAlign: 'center'
+                },
+                '& .column-id': {
+                    
+                    display: { xs: 'none', md: 'none',  lg: 'table-cell' },
+                },
+                '& .column-date_submit': {
                     display: { xs: 'none', md: 'table-cell' },
                 },
                 '& .column-delivery_fees': {
@@ -78,7 +142,7 @@ const InvoiceList = () => (
         >
            
             <TextField source="id" />
-            <TextField source="buyer_company" />
+            <LinkToRelated source="buyer_company" />
             <DateField source="date_submit" />
             <DateField source="date_payment" />
             <NumberField source="payment_amount" />
@@ -95,11 +159,12 @@ const InvoiceList = () => (
                 
             </ReferenceField> */}
             {/* //Om? to jest dobrze? */}
+           
             <NumberField source="paid_amount" />
             <DateField source="date_paid" />
-            <ReferenceField source="command_id" reference="commands"  label="Input"   > 
+            {/* <ReferenceField source="command_id" reference="commands"  label="Input"   > 
                 <TextField source="reference"  label="Operacje"  />
-            </ReferenceField>
+            </ReferenceField> */}
             <tr label="Operacje" style={{ textAlign: 'center' }}>
                 <td>
                     <DownloadActionButton />
@@ -113,7 +178,11 @@ const InvoiceList = () => (
                 <td>
             <SpecialSubmitActionButton />
                 </td>
+                <td>
+            <ErrorSpecialSubmitActionButton />
+                </td>
             </tr>
+            {/* <RowActionToolbar /> */}
             {/* <NumberField source="total_ex_taxes" />
             <NumberField source="delivery_fees" />
             <NumberField source="delivery_fees" />

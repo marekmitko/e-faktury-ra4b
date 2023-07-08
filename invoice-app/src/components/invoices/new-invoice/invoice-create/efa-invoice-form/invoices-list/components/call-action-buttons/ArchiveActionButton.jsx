@@ -19,8 +19,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import ArchiveIcon from '@mui/icons-material/Archive';
 import { makeStyles } from '@mui/material';
-import { Button } from '@mui/joy';
-
+import { Button, IconButton } from '@mui/joy';
+import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 
 // *edu Standard - chyba najlepszy przykład z nowej dokumentacji
         // https://marmelab.com/react-admin/useDataProvider.html  
@@ -62,18 +62,48 @@ export const  ArchiveActionButton = (props) => {
             });
         };
         return (
-        <Button color='primary' size="small" onClick={() => { 
+        <span   onClick={(event) => { 
+            event.stopPropagation();
             console.log("Archive Clicked", record);
         sendEmail(record.id) }}>
             {
             !record.publish &&(
             !sendEmailLoading ? (
-                translate('resources.notifications.buttons.send')
+                // translate('resources.notifications.buttons.send')
+                <IconButton
+                sx={{ 
+                    "--IconButton-size": "30px",
+                    backgroundColor: 'transparent', color: 'primary.900', 
+                    // borderRadius: '25px', 
+                    padding: 0,
+                    '&:hover': {
+                            // backgroundColor: 'rgba(38, 198, 218, 0.99)',
+                            backgroundColor: 'primary.900',
+                            color: '#fff'
+                        },
+                }} 
+                >
+                    <NotificationAddIcon />
+                </IconButton>
             ) : (
-                <CircularProgress size={25} thickness={2} />
+                <IconButton
+                sx={{ 
+                    "--IconButton-size": "30px",
+                    backgroundColor: 'transparent', color: 'primary.900', 
+                    // borderRadius: '25px', 
+                    padding: 0,
+                    '&:hover': {
+                            // backgroundColor: 'rgba(38, 198, 218, 0.99)',
+                            backgroundColor: 'transparent',
+                            color: 'primary.900'
+                        },
+                }} 
+                >
+                    <CircularProgress size={15} thickness={3} />
+                </IconButton>
             )
             )
         }
-      </Button>
+      </span>
      )
      }

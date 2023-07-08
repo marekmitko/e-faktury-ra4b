@@ -17,28 +17,28 @@ const InvoiceShow = () => {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography variant="h6" gutterBottom align="right">
-                            Invoice {record.id}
+                        <Typography variant="body1"  align="right">
+                            Invoice No.: {record.id}
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} container alignContent="flex-end">
+                       
+                    <Typography variant="h6"   align="left">
+                         {record.buyer_company}
+                        </Typography>
                         <ReferenceField
                             reference="buyersEfaktury"
                             source="buyer_id"
                             link={false}
                         >
                             <CustomerField />
-                            <TextField
-                                source="company"
-                                align="left"
-                                component="p"
-                                gutterBottom
-                            />
                         </ReferenceField>
+                    <Grid item xs={12} container alignContent="flex-end">
+                       
+                    <Typography variant="body1"   align="center">
+                         {record.buyer_org_nr}
+                        </Typography>
                     </Grid>
-                </Grid>
                 <Box height={20}>&nbsp;</Box>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>

@@ -24,7 +24,6 @@ import { IconButton } from '@mui/joy';
 import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
 
 
-
 // set params when calling the hook
 
 const ErrorAlertIconButton = () => (
@@ -42,7 +41,7 @@ const ErrorAlertIconButton = () => (
             color='danger'
 
         >
-            <FileDownloadDoneIcon />
+            <AssignmentLateOutlinedIcon />
             {/* <SdCardAlertIcon /> */}
         </IconButton>
         </span>
@@ -61,7 +60,7 @@ const SuccessAlertIconButton = () => (
                 } 
             }  
             variant='plain'
-            color='danger'
+            // color='danger'
 
         >
             <FileDownloadDoneIcon />
@@ -70,13 +69,11 @@ const SuccessAlertIconButton = () => (
         </span>
 );
 
-
-
-export const SpecialSubmitActionButton = (props) => {
+export const ErrorSpecialSubmitActionButton = (props) => {
     const record = useRecordContext(props); // przekazać props, chyba nie muszę bo useRecord pobiera z context 
     const diff = { ...record, a_TEST_file_inkasso: true };
     const [update, { isLoading, error }] = useUpdate(
-        'issuedInvoices_list',
+        'error-test', //Om? brak zasobu - test 
         { id: record.id, data: diff, previousData: record }
     );
     const handleClick = (event) => {

@@ -19,12 +19,23 @@ export const CancelActionButton = (props) => {
 
     return(  
         <span> 
-            <IconButton
-                sx={{
-                    "--IconButton-size": "30px"
-                }}
+            <IconButton 
+                color="danger"
+                   sx={{ 
+                    "--IconButton-size": "30px",
+                    backgroundColor: 'transparent', //color: 'danger.900', 
+                    // borderRadius: '25px', 
+                    padding: 0,
+                    '&:hover': {
+                            // backgroundColor: 'rgba(38, 198, 218, 0.99)',
+                            // backgroundColor: 'danger.400',
+                            // color: '#fff'
+                        },
+                }} 
+
                 onClick={(event) => handlerCallbackAction(event, copies)}  
-                >
+            {...props}
+            >
                     <DeleteSweepRoundedIcon />
                 </IconButton>
         </span>

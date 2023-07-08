@@ -43,6 +43,7 @@ import { CustomAdmin } from './Admin/CustoAdmin';
 import EfaClientCreate from './clients/old/ClientCreate';
 import ClientCreate from './components/clients/ClientCreate';
 import { PreClientCreate } from './clients/MinClientCreate';
+import ReviewEdit from './components/invoices/new-invoice/invoice-create/efa-invoice-form/invoices-list/custom-inner-form/CustomInnerFormCreate';
 
 
 const hostname = window.location.hostname;
@@ -88,6 +89,7 @@ function App(props) {
                     // recordRepresentation={(record) =>(<span> `${record.company} Masło`</span>)}
                     />
                 {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
+                <Resource name="inner_form" list={ReviewEdit} options={{ label: 'Inner Form' }} label="client_TEST" />
                 <CustomRoutes>
                     <Route path="/data_user" element={<MyProfile />}/ >
                 </CustomRoutes>

@@ -39,7 +39,7 @@ import polishMessages from 'ra-language-polish';
 
 export const pl = {
     ...polishMessages,
-
+  
     myroot: {
         validation: {
             required: 'Pole wymagane'
@@ -278,7 +278,12 @@ export const pl = {
                 email: 'Adres email',
                 phone: 'Numer telefonu',
                 payment_amount: 'Kwota',
-                date_paid: "Wpłacono"
+                paid_amount: "Wpłacono",
+                date_paid: 'w dniu',
+                date_submit_gte: 'Wystawione od',
+                date_submit_lte: 'Wystawione do',
+                payment_amount_gte: 'Kwota minimalna',
+                payment_amount_lte: 'Kwota maksymalna',
             }
         }
     }

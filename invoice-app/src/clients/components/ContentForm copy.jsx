@@ -18,7 +18,6 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import MvaBooleanInput from './subcomponent/MvaBooleanInput';
 import MvaInputNumber from './subcomponent/MvaInputNumber';
 import CircleIconChip from '../../reusable-components/CircleIconChip';
-import HeaderClientFormCreate from './subcomponent/HeaderClientFormCreate';
 
 
 
@@ -30,8 +29,8 @@ export const ContentForm = () => {
     return(
         < > 
             <Box width='150%'  sx={{ display: 'flex', zIndex: 1000,   position: 'relative', left: -25, right: 0 }}>
+                <Title />
                 {/* <CompanyTextInput source="company"     /> */}
-                <HeaderClientFormCreate  source="company"  />
             </Box>
             <Separator />
             <Stack direction="row" spacing={2} width="100%" alignItems="center">
