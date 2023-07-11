@@ -151,7 +151,7 @@ export const pl = {
                     buyerAutocomplete: 'Kupujący',
                     invoice_no: 'Numer faktury',
                     created_at: 'Data wystawienia',
-                    payment_due: 'Termin [P]łatności',
+                    payment_due: 'Termin Płatności',
                     selectInputItemName: 'Wybierz pozycję z listy'
                 },
                 checkbox: {
@@ -238,6 +238,15 @@ export const pl = {
             create: 'Nowa Faktura',
         },
         buyersEfaktury: {
+            massage: {
+                delete_record: {
+                    title: 'Usuń nabywcę:'
+                },
+            },
+            header: {
+                create: 'Nowy nabywca',
+                edit: 'Edytuj dane'
+            },
             name: 'nabywcę |||| nabywców',
             create_menuItemLabel: 'Nowy nabywca',
             list_menuItemLabel: 'Lista nabywców',
@@ -263,6 +272,41 @@ export const pl = {
             name: 'faktura |||| faktur',
             create_menuItemLabel: 'Nowa faktura',
             list_menuItemLabel: 'Lista faktur',
+            show: {
+                header: {
+                    invoice: "Faktura",
+                    prefix_no: "nr:",
+                    section_seller: "Sprzedawca",
+                    section_buyer: "Nabywca",
+                    sale_item_list: "Pozycje faktury",
+                    payment_info: "Informacje o płatności",
+                    payment_summary: "Podsumowanie",
+                    invoice_notes: "Uwagi do faktury:",
+
+                    sales_table: {
+                        item_name: "Nazwa przedmiotu",
+                        quantity: "Ilość",
+                        prefix_value: "Wartość:",
+                        gross_value: "Brutto",
+                        net_value: "Netto",
+                        tax_value: "VAT"
+                    },
+                    sales_cost_table: {
+                        sum: "Razem",
+                        value: "Wartość",
+                        net: "Netto",
+                        gross: "Brutto",
+                        tax: "VAT",
+                        gross_value: "(kwota brutto)"
+                    },
+                    sales_info_table: {
+                        date_of_issue: "Data wystawienia",
+                        date_payment: "Termin płatności",
+                        payment_method: "Metoda patności",
+                        account_number: "numer rachunku bankowego:"
+                    }
+                },
+            },
             fields: {
                 buyer_company: "Nabywca",
                 date_submit: 'Data wystawienia',

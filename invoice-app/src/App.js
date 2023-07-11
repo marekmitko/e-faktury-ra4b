@@ -17,7 +17,7 @@ import { fetchJson } from "@app/config";
 import httpClient from './config/providers/httpClient';
 
 import invoices from './components/invoices';
-import old_clients from "./components/clients";
+
 import clients from './clients';
 import salesitem from "./components/sale-item";
 import MyAdmin from "./components/admin"
@@ -26,10 +26,7 @@ import MyProfile  from './components/admin/users';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { CssVarsProvider } from "@mui/joy/styles";
-import Efa_v3_ClientCreate from './components/clients/CLIENT-e-faktury/EfaClientCreate';
-import EfaClientList from './components/clients/CLIENT-e-faktury/EfaClientList';
-import EfaClientEdit from './components/clients/CLIENT-e-faktury/EfaClientEdit';
-import { PostCreate } from './components/invoices/invoice-list/INVOICE-e-faktury/EfaInvoiceCreate';
+
 import { EditSimpleList } from './components/invoices/invoice-list/INVOICE-e-faktury/EditSimpleList';
 import CssVarJoyProvider from './joy-theme-provider/JoyThemeProvider';
 import { FormsCreate } from './components/invoices/new-invoice/invoice-create/efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/MobiForm';
@@ -40,9 +37,7 @@ import { Chip, Divider } from '@mui/joy';
 import VisitorCreate from './components/clients/efa-V5-test/VisitorCreate';
 import PeopleIcon from '@mui/icons-material/People';
 import { CustomAdmin } from './Admin/CustoAdmin';
-import EfaClientCreate from './clients/old/ClientCreate';
-import ClientCreate from './components/clients/ClientCreate';
-import { PreClientCreate } from './clients/MinClientCreate';
+
 import ReviewEdit from './components/invoices/new-invoice/invoice-create/efa-invoice-form/invoices-list/custom-inner-form/CustomInnerFormCreate';
 
 

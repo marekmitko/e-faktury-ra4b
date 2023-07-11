@@ -8,10 +8,6 @@ import { ClientEdit } from './ClientEdit';
 // import { ClientCreate } from './ClientCreate';
 
 
-// import VisitorList from './VisitorList';
-// import ClientCreate from './old/ClientCreate';
-// import VisitorEdit from './VisitorEdit';
-
 const resource = {
     list: ClientList,
     create: ClientCreate, 

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Card,  Box, Stack, CardContent, CardHeader,  } from '@mui/material';
 import {  useTranslate, TextInput , NumberInput,   SimpleForm, Create, } from 'react-admin';
-import { FormCardHeader } from './components/FormCardHeader';
 import form from '../db/default-values/form';
 import { IconBuyer } from '.';
-import FormCardContent from './components/FormCardContent';
 import ContentForm from './components/ContentForm';
+import HeaderSimpleForm from './components/subcomponent/HeaderSimpleForm';
 
 
 // "id": "2125",
@@ -54,7 +53,7 @@ export const ClientCreate = (props) =>  {
             // sx={{ p: 0, m: 0,  maxWidth: 500 }}  component='div'
     >
         <SimpleForm className="ClientCardForm" 
-            onSubmit={clientSave}
+            // onSubmit={clientSave}
             // Here for the GQL provider
             defaultValues={form.client}
             // validate={validateForm}
@@ -69,7 +68,8 @@ export const ClientCreate = (props) =>  {
 
             {/* <FormCardHeader  title='create_menuItemLabel' icon={<IconBuyer />} iconSx={{ mt: .45 }} /> */}
             {/* <FormCardContent /> */}
-            <ContentForm />
+                <HeaderSimpleForm title='create'  />
+                <ContentForm />
             </SimpleForm>
         </Create>
     </ >

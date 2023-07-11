@@ -18,7 +18,8 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import MvaBooleanInput from './subcomponent/MvaBooleanInput';
 import MvaInputNumber from './subcomponent/MvaInputNumber';
 import CircleIconChip from '../../reusable-components/CircleIconChip';
-import HeaderClientFormCreate from './subcomponent/HeaderClientFormCreate';
+import HeaderClientFormCreate from './subcomponent/HeaderSimpleForm';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 
 
@@ -29,14 +30,15 @@ export const ContentForm = () => {
     const translate = useTranslate();
     return(
         < > 
-            <Box width='150%'  sx={{ display: 'flex', zIndex: 1000,   position: 'relative', left: -25, right: 0 }}>
-                {/* <CompanyTextInput source="company"     /> */}
-                <HeaderClientFormCreate  source="company"  />
-            </Box>
-            <Separator />
+
+            <Stack direction="row" gap={1} width="100%">
+                <CircleIconChip icon={<DriveFileRenameOutlineIcon />} iconSize="xl2"  circleSize="sm" boxSx={{ mt: -1.5, pr: 1 }} />
+                <TextInput  source="company"   variant="standard"  fullWidth/>
+            </Stack>
             <Stack direction="row" spacing={2} width="100%" alignItems="center">
                 <MvaBooleanInput sx={{ mt: 1.5, color: 'neutral.600'}} source="mva"  />
-                <MvaInputNumber  source="org_nr" variant="standard" fullWidth  />
+                {/* <MvaInputNumber  source="org_nr" variant="standard" fullWidth  /> */}
+                <NumberInput source="org_nr"  variant="standard"  fullWidth   />
             </Stack>
             <SemiovalTitleChip  startDecorator={<EmailRoundedIcon  sx={{ maxHeight: '20px', color: 'primary.900', mb: -.1, ml: 1.5, mr: -.25, mt: -.15 }} />}>{translate('myroot.myBuyersEfaktury.header.addres_section')} </SemiovalTitleChip>
             <Separator />

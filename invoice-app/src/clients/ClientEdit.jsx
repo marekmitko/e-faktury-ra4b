@@ -1,12 +1,11 @@
 import React from 'react';
 import { Card,  Box, Stack, CardContent, CardHeader,  } from '@mui/material';
 import {  useTranslate, TextInput , NumberInput,   SimpleForm, Create, Edit, } from 'react-admin';
-import { FormCardHeader } from './components/FormCardHeader';
 import form from '../db/default-values/form';
 import { IconBuyer } from '.';
-import FormCardContent from './components/FormCardContent';
 import ContentForm from './components/ContentForm';
-
+import HeaderSimpleForm from './components/subcomponent/HeaderSimpleForm';
+import { ListButton } from 'react-admin';
 
 // "id": "2125",
 // "buyer_id": "2125",
@@ -41,22 +40,19 @@ export const ClientEdit = (props) =>  {
     return (
 
     <>
-    <Edit   // {...props}
-            sx={{  maxWidth: 500 , '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 }  }}
-            // sx={{ p: 0, m: 0,  maxWidth: 500 }}  component='div'
-    >
-        <SimpleForm 
-            
-            // sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0 }  }}   component={Card} 
-            sx={{ pt: 0, mt: 0,  maxWidth: 500   }}
+        <Edit   // {...props}
+            actions=""
+                sx={{  maxWidth: 500 , '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 }  }}
+                // sx={{ p: 0, m: 0,  maxWidth: 500 }}  component='div'
+        >
+            <SimpleForm 
+                // sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0 }  }}   component={Card} 
+                sx={{ pt: 0, mt: 0,  maxWidth: 500   }}
             > 
-                {/* <MidV2CardHeader /> */}
-            {/* <CardHeader /> */}
-
-
-            {/* <FormCardHeader  title='create_menuItemLabel' icon={<IconBuyer />} iconSx={{ mt: .45 }} /> */}
-            {/* <FormCardContent /> */}
-            <ContentForm />
+                    <HeaderSimpleForm title='edit' toolbar={ <ListButton /> } />
+                   
+                    
+                <ContentForm />
             </SimpleForm>
         </Edit>
     </ >

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Card,  Box, Stack, CardContent, CardHeader,  } from '@mui/material';
 import {  useTranslate, TextInput , NumberInput,   SimpleForm, Create, } from 'react-admin';
-import { FormCardHeader } from './components/FormCardHeader';
 import form from '../db/default-values/form';
 import { IconBuyer } from '.';
-import FormCardContent from './components/FormCardContent';
 import ContentForm from './components/ContentForm';
 
 

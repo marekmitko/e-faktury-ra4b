@@ -19,31 +19,31 @@ import InvoiceShowModal, { InvoiceShowModal2 } from "../invoice-confirm-modal/ef
 import { ConfirmButton } from "../invoice-confirm-modal/efa-invoice-show/ConfirmButton";
 import { set } from "lodash";
 import { onSubmitModal } from "./onSubmitModal";
-import { ConfirmCreateButton } from "../invoice-confirm-modal/ConfirmCreateButton";
+// import { ConfirmCreateButton } from "../invoice-confirm-modal/ConfirmCreateButton";
 import InvoiceConfirmModalV3 from "../invoice-confirm-modal/components/InvoiceConfirmModalV3";
 import { productOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
 import Header from './desktop/invoice-ehf-box/invoice-headers';
-import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
-import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
+// import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
+// import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import InvoiceCreationFormToolbar from '../components/toolbar/InvoiceCreationFormToolbar';
 import InvoiceConfirmModalV5 from '../components/invoice-confirm-modal/components/InvoiceConfirmModalV5';
 import CreateInvoiceFormPageTitle from '../components/invoice-form-title/CreateInvoiceFormPageTitle';
-import { StyledTableCellClasses } from './components/new-sales-table/components/sales-table-header/components/styledHeaderCellClasses';
+// import { StyledTableCellClasses } from './components/new-sales-table/components/sales-table-header/components/styledHeaderCellClasses';
 import { SalesTableV5 } from '../components/efaV5/SalesTableV5';
 import { AdditionalTableV5 } from '../components/efaV5/AdditionalTableV5';
-import { JoyInputField, MobileInputNumber } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/MobileInputNumber';
-import JoySelectinputField from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputField';
-import {EndJoyInputPriceFormat, JoySelectinputPriceFormat, RaJoySelectinputPriceFormat } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputPriceFormat';
+// import { JoyInputField, MobileInputNumber } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/MobileInputNumber';
+// import JoySelectinputField from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputField';
+// import {EndJoyInputPriceFormat, JoySelectinputPriceFormat, RaJoySelectinputPriceFormat } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/input/JoySelectinputPriceFormat';
 import { MQ_isMedium } from './components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles';
 import { RaJoyPriceInput } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput';
-import { RaMuiPriceInput } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/mui/RaMuiPriceInput';
+// import { RaMuiPriceInput } from '../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/mui/RaMuiPriceInput';
 import InvoiceHeader from '../components/efaV5/view/InvoiceHeader';
 import MobiInvoiceHeader from '../components/efaV5/mobile-view/MobiInvoiceHeader';
 import ClientCompanyCard from './personal-cards/efa-V5-company-card/components/ClientCompanyCard';
 import SellerCompanyCard from './personal-cards/efa-V5-company-card/components/SellerCompanyCard';
 // import TableFormIterator from '../components/efaV5/sales-form-iterator/sales-table/TabFormIterator';
-import { CustomInputNumber } from './components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber';
-import { SalesFormIterator } from './components/new-sales-table/components/sales-form-iterator/SalesFormIterator';
+// import { CustomInputNumber } from './components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/custom/CustomInputNumber';
+// import { SalesFormIterator } from './components/new-sales-table/components/sales-form-iterator/SalesFormIterator';
 import { SalesTableFormIterator } from '../components/efaV5/sales-form-iterator/sales-table/SalesTableFormIterator';
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -223,7 +223,8 @@ const isHidden = useMediaQuery(`${MQ_isMedium}`);
                                             <SellerCompanyCard resourcePath="data_user" userId="user_1" />
                                         </Grid2>
                                         <Grid2 xs={12} sm={6} md={6}>
-                                            <ClientCompanyCard resourcePath={buyersResourcePath} />
+                                            {/* Om? Do poprawy */}
+                                            {/* <ClientCompanyCard resourcePath={buyersResourcePath} /> */}
                                         </Grid2>
                                     </Grid2>
                                 </Box>
