@@ -87,7 +87,7 @@ const userTestfilters = [
 const InvoiceList = (props) => {
     const isSmall = useMediaQuery('(max-width:899px)');
 
-    return (
+    return(
         <List>
             {isSmall ? (
                 <SimpleList
@@ -95,8 +95,9 @@ const InvoiceList = (props) => {
                     secondaryText={record => `Kwota: ${record.payment_amount}`}
                     tertiaryText={record => new Date(record.date_payment).toLocaleDateString()}
                     linkType="edit"
-                />
-            ) : (
+                />) 
+                :
+                (
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="buyer_company" />
@@ -135,30 +136,6 @@ const InvoiceList = (props) => {
     //     actions={<InvoiceListActions {...props} />}
     //     // actions={<CommentCreate {...props} />}
     //     {...props}
-
-    // > 
-    //     <Datagrid> 
-    //         <TextField label="NR" source="id" />
-    //         <TextField label="NABYWCA" source="company" />
-    //         <WrapperField label="PRZEDSTAWICIEL" sortBy="fullname.surname">
-    //             <TextField source="fullname.surname" />
-    //             {" "}
-    //             <TextField source="fullname.forename" />
-    //         </WrapperField>
-    //         <DateField label="DATA WYSTAWIENIA" source="published_at" />
-    //         <DateField label="TERMIN PŁATNOŚCI"source="dataTwoAdd14" />
-    //         {/* <TextField label="NALEŻNOŚĆ" source="amount_payment" /> */}
-    //         <TextField label="NALEŻNOŚĆ" source="sales_list.sum_item_tax" />
-    //         {/* <TextField source="payment" />
-    //         <DateField source="payment_date" /> */}
-    //         <Stack direction="row" alignItems="center"  width="50%" >
-    //             <EditButton   label="" basePath='/issuedInvoices_list' />
-    //             <DeleteButton label="" basePath='/issuedInvoices_list' />
-    //         </Stack >
-    //     </Datagrid>
-    //     {/* <Pagination /> */}
-    // {/* </ListBase> */}
-    // </List >
 
 
 export default InvoiceList;

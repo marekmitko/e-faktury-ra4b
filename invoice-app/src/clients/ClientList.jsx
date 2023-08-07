@@ -10,7 +10,8 @@ import {
     ReferenceInput,
     AutocompleteInput,
     TextInput,
-    DeleteWithConfirmButton
+    DeleteWithConfirmButton,
+    InfiniteList
 } from 'react-admin';
 import { Stack   } from "@mui/material";
 
@@ -66,18 +67,24 @@ const ClientList = (props) => {
 
 
     return (
+        // <InfiniteList 
         <List 
         // filters={UserListFilter} {...props}  
         sx={{            
             '& .MuiPaper-root': {
                 borderTopLeftRadius: '20px',
                 borderTopRightRadius: '20px',
-            }
+            },
+            '& .RaDatagrid-table': {
+                flexWrap: 'nowrap!important',
+            },
         }}
         >
             <Datagrid
                 bulkActionButtons={<ListBulkActionButtons />}
                 sx={{
+                    
+
                     '& .MuiTableHead-root .RaDatagrid-headerCell': {
                         padding: { sx: '5px', md: '5px'  },
                         backgroundColor: 'neutral.100', 
@@ -94,8 +101,77 @@ const ClientList = (props) => {
                             // borderTopRightRadius: '200px',
                         }
                     },
+                    '& .RaDatagrid-root .RaDatagrid-tbody.MuiTableBody-root ':{
+                        // backgroundColor: 'blue',
+                        flexWrap: 'nowrap' 
+                    },
                     '& .RaDatagrid-rowCell': { 
                         padding: { sx: '5px', md: '5px'  },
+                    },
+                    '& .column-company': {
+                        // maxWidth: { sx: '50px', md: '100px'  },
+                        maxWidth: '75px',
+                        // // backgroundColor: 'pink',
+                        // // display: 'flex',
+                        // flexWrap: 'nowrap',
+                        // // wordBreak: 'break-all',
+                        // textOverflow: 'ellipsis',
+                        // overflow: 'hidden',
+                        // whiteSpace: 'nowrap',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+
+                        '& .MuiTypography-root': {
+                            // backgroundColor: 'pink',
+                            // display: 'flex',
+                            // flexWrap: 'nowrap',
+                            // wordBreak: 'break-all',
+                            // textOverflow: 'ellipsis [...]',
+                            // maxHeight: '38.8px',
+                            // maxWidth: '50px',
+                            overflow: 'hidden',
+                            display: 'inline-block',
+                            // margin: '0 5px 0 5px',
+                            // textAlign: 'center',
+                            // textDecoration: 'none',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+
+                        }
+                    },
+                    '& .column-org_nr': {
+                        // maxWidth: { sx: '50px', md: '100px'  },
+                        maxWidth: '90px',
+                        minWidth: '70px',
+                        // // backgroundColor: 'pink',
+                        // // display: 'flex',
+                        // flexWrap: 'nowrap',
+                        // // wordBreak: 'break-all',
+                        // textOverflow: 'ellipsis',
+                        // overflow: 'hidden',
+                        // whiteSpace: 'nowrap',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+
+                        '& .MuiTypography-root': {
+                            // backgroundColor: 'pink',
+                            // display: 'flex',
+                            // flexWrap: 'nowrap',
+                            // wordBreak: 'break-all',
+                            // textOverflow: 'ellipsis [...]',
+                            // maxHeight: '38.8px',
+                            // maxWidth: '50px',
+                            overflow: 'hidden',
+                            display: 'inline-block',
+                            // margin: '0 5px 0 5px',
+                            // textAlign: 'center',
+                            // textDecoration: 'none',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+
+                        }
                     },
                     '& .column-email': {
                         display: { xs: 'none', md: 'none',  lg: 'table-cell' },

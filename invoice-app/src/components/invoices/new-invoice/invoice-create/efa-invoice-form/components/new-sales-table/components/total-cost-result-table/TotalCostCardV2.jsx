@@ -45,7 +45,7 @@ export default function TotalCostCardV2(props) {
                     }} 
                 >
                 <Table  // aria-label="table with ellipsis texts" //note czy mi to jest potrzebne? 
-                    noWrap hoverRow      // stripe="odd"
+                    noWrap //hoverRow      // stripe="odd"
                     sx={{ mx: "auto", }}   // width: 100, 
                 >
                     <tbody>
