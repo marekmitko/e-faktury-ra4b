@@ -10,13 +10,15 @@ import {
     BulkDeleteButton,
     NumberInput,
     SimpleList,
+    useTranslate,
+    BooleanInput,
 } from 'react-admin';
 
 import FullNameField from './components/visitors/FullNameField';
 import AddressField from './components/visitors/AddressField';
 import InvoiceShow from './invoice-show/InvoiceShow';
 import { PrintActionButton } from './components/call-action-buttons/PrintActionButton';
-import { ArchiveActionButton } from './components/call-action-buttons/ArchiveActionButton';
+import { PurringActionButton } from './components/call-action-buttons/PurringActionButton';
 import { IncreaseLikeActionButton } from './components/call-action-buttons/InckreaseLikeActionButton';
 import { DownloadActionButton } from './components/call-action-buttons/DownloadActionButton';
 import { CancelActionButton } from './components/call-action-buttons/CancelActionButton';
@@ -30,10 +32,11 @@ import { LinkToRelated, LinkToRelatedBuyerCompany } from './components/filters-s
 import ListBulkActionButtons from '../../../../../../reusable-components/button/bulk-action/ListBulkActionButtonBox';
 import { useMediaQuery } from '@mui/material';
 import SalesTableHeader from '../components/new-sales-table/components/sales-table-header/SalesTableHeader';
-import { Box, Typography } from '@mui/joy';
+import { Box, Tooltip, Typography } from '@mui/joy';
 import ListActionToolbar from '../../../../../../reusable-components/button/ListActionToolbar';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-
+import { db_efaktury } from '../../../../../../db/db-efaktury23/db_invoices_efa';
+import { db_products_efaktury } from '../../../../../../db/db-efaktury23/db_products_invoices_efa';
 //Om? Omówić baze danych dla InvoiceList 
 //**  / {/*
 {/* 
@@ -51,11 +54,34 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 //Om? Co ma być na liście faktur
 // kontrachent data wystawienia kwota  no faktury
 
+// const newEfa23 = [];
+
+// db_products_efaktury.map((item, id) => {
+
+//     // if(500 > id ) {
+//         let efaOne =       db_efaktury.find((efaktura) =>      efaktura.invoice_id == item.invoice_id   );
+
+//         // let newInvoiceID = newEfa23.find((newInv) =>  newInv.invoice_id === item.invoice_id );
+//         // if(newInvoiceID) {
+//         //     newInvoiceID.products.push(item);
+            
+//         // }
+//         efaOne.products = [];
+//         efaOne.id = item.invoice_id;
+//         efaOne.products.push(item);
+//         newEfa23.push(efaOne);
+        
+//     // }
+//     console.log(item, id);
+// })
 
 
 
 
 
+
+
+// console.log('🚀🔰', newEfa23);
 
 const InvoiceBulkActionButtons = () => (
     <>
@@ -70,8 +96,9 @@ const InvoiceBulkActionButtons = () => (
 
 
 const listFilters = [
-    <DateInput size="small" source="date_submit_gte" alwaysOn />,
+    <BooleanInput size="small" source="potential_purring" alwaysOn />,
     <DateInput source="date_submit_lte" alwaysOn />,
+    <DateInput source="potential_purring" alwaysOn />,
     <NumberInput source="payment_amount_gte" alwaysOn sx={{  mb: '4px' }} />,
     <NumberInput source="payment_amount_lte" alwaysOn  sx={{ mb: '4px' }} />
 ];
@@ -80,10 +107,21 @@ const rowStyle = (record, index) => ({
     backgroundColor: record.paid_amount >= 500 ? '#efe' : 'white',
 });
 
+
+
+
+
+
 const InvoiceList = () => { 
+
+    // console.log('🅿invoice', db_efaktury);
+
+
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('md'));
+    const translate = useTranslate();
     return(
-    <List  aside={isSmall ? "" : <InvoiceListFilterSidebar />}
+    <List 
+        // aside={isSmall ? "" : <InvoiceListFilterSidebar />}
         sx={{maxWidth: '1400px',  
             '& .MuiPaper-root': {
                 borderTopLeftRadius: '20px',
@@ -115,7 +153,22 @@ const InvoiceList = () => {
         </Box>
             <SimpleList
             sx={{ mt: -0.75, '& .MuiListItemIcon-root': { ml: -.75, mr: -2.5 } }}
-            leftIcon={() => <EditNoteIcon  />}
+            leftIcon={() => 
+                <>
+                <Tooltip
+                title={translate("myroot.custom_ra.action.tooltip.editAndView")}
+                size="sm"
+                arrow
+                color="primary"
+                placement="right"
+                variant="outlined"
+                sx={{ color: 'primary.900'}}
+            >
+
+                <EditNoteIcon  />
+            </Tooltip>
+            </>
+            }
             // leftAvatar={() => <EditNoteIcon />}
             primaryText={record => record.buyer_company}
             tertiaryText={record =>  `nr: ${record.id}` }
@@ -219,7 +272,9 @@ const InvoiceList = () => {
                 </td>
                 <td>   <CancelActionButton />  </td>
                 <td>
-            <ArchiveActionButton />
+            <PurringActionButton
+                // executed
+             />
                 </td>
                 <td>
             <SpecialSubmitActionButton />

@@ -51,7 +51,9 @@ export const pl = {
             action: {
                 tooltip: {  
                         addSalesItem: 'Dodaj kolejną pozycję sprzedaży',
-                        removeSalesItem: 'Usuń pozycję'
+                        removeSalesItem: 'Usuń pozycję',
+                        editAndView: 'Podgląd i edycja faktury'
+                        
                 },
                 button: {   addSalesItem: 'Dodaj przedmiot',
                             createInvoice: 'Utwórz',
@@ -243,6 +245,7 @@ export const pl = {
                     title: 'Usuń nabywcę:'
                 },
             },
+            
             header: {
                 create: 'Nowy nabywca',
                 edit: 'Edytuj dane'
@@ -268,7 +271,7 @@ export const pl = {
                 mva: "MVA",
             }
         },
-        issuedInvoices_list: {
+        e_faktury: {
             name: 'faktura |||| faktur',
             create_menuItemLabel: 'Nowa faktura',
             list_menuItemLabel: 'Lista faktur',
@@ -282,6 +285,7 @@ export const pl = {
                     payment_info: "Informacje o płatności",
                     payment_summary: "Podsumowanie",
                     invoice_notes: "Uwagi do faktury:",
+                    create: "Nowy nabywca",
 
                     sales_table: {
                         item_name: "Nazwa przedmiotu",
@@ -303,7 +307,75 @@ export const pl = {
                         date_of_issue: "Data wystawienia",
                         date_payment: "Termin płatności",
                         payment_method: "Metoda patności",
-                        account_number: "numer rachunku bankowego:"
+                        account_number: "numer rachunku bankowego:",
+                        cash_payment: "Gotówka",
+                        bank_transfer: "Przelew"
+                    }
+                },
+            },
+            fields: {
+                buyer_company: "Nabywca",
+                date_submit: 'Data wystawienia',
+                date_payment: 'Termin płatności',
+                company: 'Nazwa firmy',
+                firstname: 'Imię',
+                lastname: 'Nazwisko',
+                mva: 'MVA',
+                org_nr: 'Numer MVA',
+                address: 'Ulica',
+                zip_code: 'Kod pocztowy',
+                place: 'Miejscowość',
+                email: 'Adres email',
+                phone: 'Numer telefonu',
+                payment_amount: 'Kwota',
+                paid_amount: "Wpłacono",
+                date_paid: 'w dniu',
+                date_submit_gte: 'Wystawione od',
+                date_submit_lte: 'Wystawione do',
+                payment_amount_gte: 'Kwota minimalna',
+                payment_amount_lte: 'Kwota maksymalna',
+            }
+        },
+        issuedInvoices_list: {
+            name: 'faktura |||| faktur',
+            create_menuItemLabel: 'Nowa faktura',
+            list_menuItemLabel: 'Lista faktur',
+            show: {
+                header: {
+                    invoice: "Faktura",
+                    prefix_no: "nr:",
+                    section_seller: "Sprzedawca",
+                    section_buyer: "Nabywca",
+                    sale_item_list: "Pozycje faktury",
+                    payment_info: "Informacje o płatności",
+                    payment_summary: "Podsumowanie",
+                    invoice_notes: "Uwagi do faktury:",
+                    create: "Nowy nabywca",
+
+                    sales_table: {
+                        item_name: "Nazwa przedmiotu",
+                        quantity: "Ilość",
+                        prefix_value: "Wartość:",
+                        gross_value: "Brutto",
+                        net_value: "Netto",
+                        tax_value: "VAT"
+                    },
+                    sales_cost_table: {
+                        sum: "Razem",
+                        value: "Wartość",
+                        net: "Netto",
+                        gross: "Brutto",
+                        tax: "VAT",
+                        gross_value: "(kwota brutto)"
+                    },
+                    sales_info_table: {
+                        date_of_issue: "Data wystawienia",
+                        date_payment: "Termin płatności",
+                        payment_method: "Metoda patności",
+                        account_number: "numer rachunku bankowego:",
+                        cash_payment: "Gotówka",
+                        bank_transfer: "Przelew"
+
                     }
                 },
             },

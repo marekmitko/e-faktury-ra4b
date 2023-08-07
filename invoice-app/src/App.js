@@ -74,7 +74,8 @@ function App(props) {
                 dataProvider={dbjsonProvider}
                 i18nProvider={i18nProvider}
             >  
-                <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
+                {/* <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />   */}
+                <Resource name="e_faktury" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
                 <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
                     list={clients.list} 
                     edit={clients.edit}   

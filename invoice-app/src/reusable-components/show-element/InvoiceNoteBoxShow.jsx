@@ -22,9 +22,7 @@ const InvoiceNoteBoxShow = (props) => {
     const translate = useTranslate();
     const record = useRecordContext();
     const resource = useResourceContext();
-
-    console.log("🅿resource", resource);
-
+    
     if(!record) return null;
     return (
         <Card
@@ -77,7 +75,7 @@ const InvoiceNoteBoxShow = (props) => {
                             typography: {sm: 'body2', xs: "body2", md: 'body2' },
                         }}  
                             >
-                            Lorem ipsum...
+                        {record?.comments ? record.comments : "" }
                     </TotalLabel>
             </Box>
         </Card>

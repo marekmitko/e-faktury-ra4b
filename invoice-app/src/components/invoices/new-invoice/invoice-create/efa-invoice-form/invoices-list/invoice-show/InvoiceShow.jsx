@@ -37,7 +37,7 @@ const InvoiceShow = () => {
                         <TextField source='user_company' />  <br/>
                         <TextField source='user_address' /> <br/>
                         <FunctionField 
-                            render={record => ` ${record.user_zip_code} ${record.user_place}`}
+                            render={record => ` ${record.user_zip_code ? record.user_zip_code + " ": ""} ${record.user_place}`}
                         /><br/>
                         <TextField source='user_org_nr' />
                     </Grid>
@@ -46,7 +46,7 @@ const InvoiceShow = () => {
                         <TextField source='buyer_company' />  <br/>
                         <TextField source='buyer_address' /> <br/>
                         <FunctionField 
-                            render={record => ` ${record.buyer_zip_code} ${record.buyer_place}`}
+                            render={record => ` ${record.buyer_zip_code ? record.buyer_zip_code + " ": ""} ${record.buyer_place}`}
                         /><br/>
                         <TextField source='buyer_org_nr' />
                     </Grid>
@@ -64,14 +64,17 @@ const InvoiceShow = () => {
                         <SaleCostTableShow />
                     </Grid>
                 </Grid>
-                <Grid container spacing={2}>
-                    <Grid item xs={6}>
-                        <InvoiceNoteBoxShow />
+                {record?.comments && (
+                    <Grid container spacing={2}>
+                        <Grid item xs={6}>
+                            <InvoiceNoteBoxShow />
+                        </Grid>
+                        <Grid item xs={6}>
+                            {/* <SectionHeader name="payment_summary"/> */}
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                        {/* <SectionHeader name="payment_summary"/> */}
-                    </Grid>
-                </Grid>
+                    )
+                }
                 <Separator />
                 
                 <Separator />

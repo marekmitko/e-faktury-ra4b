@@ -131,9 +131,9 @@ const Menu = ({ dense = false }) => {
                     onClick={ () => handleToggle(1) }
                     sx={ (state === 1 ) ? activCSS : {} }
 
-                    to="/issuedInvoices_list/create"
+                    to="/e_faktury/create"
                     state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.issuedInvoices_list.create_menuItemLabel`, {
+                    primaryText={translate(`resources.e_faktury.create_menuItemLabel`, {
                         smart_count: 1,
                     })}
                     leftIcon={<invoices.iconCreate />}
@@ -156,9 +156,10 @@ const Menu = ({ dense = false }) => {
                     onClick={ () => handleToggle(3) }
                     sx={ (state === 3 ) ? activCSS : {} }
                     
-                    to="/issuedInvoices_list"
+                    // to="/issuedInvoices_list"
+                    to="/e_faktury"
                     state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.issuedInvoices_list.list_menuItemLabel`, {
+                    primaryText={translate(`resources.e_faktury.list_menuItemLabel`, {
                         smart_count: 3,
                     })}
                     leftIcon={<invoices.icon />}

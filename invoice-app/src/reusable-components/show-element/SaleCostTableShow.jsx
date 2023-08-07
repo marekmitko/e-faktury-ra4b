@@ -24,12 +24,6 @@ const SaleCostTableShow = (props) => {
     const record = useRecordContext();
     const resource = useResourceContext();
 
-    console.log("🅿resource", resource);
-
-    let totalGross = 125;
-    let totalNet = 100;
-    let totalTax = 25;
-
     if(!record) return null;
     return (
         <Card
@@ -76,7 +70,7 @@ const SaleCostTableShow = (props) => {
                     {  translate(`resources.${resource}.show.header.sales_cost_table.value`) }
                     </th>
                     </tr>
-                    <tbody>
+                    {/* <tbody>
                         <tr>
                             <CellLabel
                                 sx={{
@@ -86,28 +80,30 @@ const SaleCostTableShow = (props) => {
                             {  translate(`resources.${resource}.show.header.sales_cost_table.net`) }
                             </CellLabel>
                             <CostCell>
-                                {formatCurrency(totalNet)}{` ${currency}`}
+                            // { '???' 
+                                
                             </CostCell>
                         </tr>
                         <tr>
                             <CellLabel
-                               sx={{
+                                sx={{
                                    textTransform: 'uppercase',
                                 }}
                                 >
                                 {translate(`resources.${resource}.show.header.sales_cost_table.tax`) }
                             </CellLabel>
                             <CostCell>
-                                {formatCurrency(totalTax) }{` ${currency}`}
+                                { '???' }
                             </CostCell>
                         </tr>
-                    </tbody>
+                    </tbody> */}
                 </Table>
                 </CardContent>
             <Box  color="neutral" sx={{ 
                 ml: 'auto', mr: 0, 
                 wordBreak: 'break-all', 
-                display: 'flex', flexDirection: 'column', typography: {sm: 'h5', xs: 'body2'}, borderTop: '2px solid', borderColor: 'neutral.300'}}>
+                display: 'flex', flexDirection: 'column', typography: {sm: 'h5', xs: 'body2'}, //borderTop: '2px solid', borderColor: 'neutral.300'
+                }}>
                 <Typography    color="primary" level="inherit" textColor="primary.900"  
                     sx={{ m: 0.5, typography: {sm: 'h6', xs: 'body1', md: 'h5' } , width: '100%',  
                     wordBreak: 'break-all', }} 

@@ -23,8 +23,6 @@ const SaleInfoTableShow = (props) => {
     const record = useRecordContext();
     const resource = useResourceContext();
 
-    console.log("🅿resource", resource);
-
     if(!record) return null;
     return (
         <Card
@@ -77,12 +75,12 @@ const SaleInfoTableShow = (props) => {
                             </CostCell>
                         </tr>
                         <tr style={{
-                           backgroundColor: '#fff'
+                            backgroundColor: '#fff'
                         }}>
                             <CellLabel
-                               sx={{ 
-                                   textTransform: 'lowercase',
-                                   
+                                sx={{ 
+                                    textTransform: 'lowercase',
+                                    
                                 }}
                                 >
                                 {translate(`resources.${resource}.show.header.sales_info_table.payment_method`) }
@@ -90,8 +88,13 @@ const SaleInfoTableShow = (props) => {
                             <CostCell
                             sx={{
                                 textTransform: 'uppercase',
-                             }} >
-                             PRZELEW
+                                }} >
+                                    {
+                                        (record.payment_form === 'cash') ? 
+                                            translate(`resources.${resource}.show.header.sales_info_table.cash_payment`)
+                                            :
+                                            translate(`resources.${resource}.show.header.sales_info_table.bank_transfer`)
+                                    }
                             </CostCell>
                         </tr>
                     </tbody>

@@ -394,7 +394,20 @@
             "added":"2014-04-29 00:00:00","date_submit":"2014-04-29","date_sale":"0000-00-00","date_payment":"2014-05-13","date_purring":"2014-05-17","date_purring_to":"2014-05-31","date_inkassovarsel":"0000-00-00","date_inkassovarsel_to":"0000-00-00","date_inkasso":"0000-00-00","file_inkasso":"0","date_paid":"0000-00-00",
             "purring":"1","inkassovarsel":"0","inkasso":"0","payment_amount":"50482.50","paid_amount":"0.00","paid":"0","correction":"0",
             "date_correction":"0000-00-00","comments":"<br><br>","kunde_nr":"5","payment_form":"transfer","postmail":"0","postmail_kreditnota":"0","postmail_purring":"0","postmail_inkassovarsel":"0","purring_nr":"2","correction_nr":"0","inkassovarsel_nr":"0","efaktury_invoice":"0","project_id":"0","ehf":"0",
-            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":""
+            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":"",
+            "products": [
+                {"product_id":"14206","invoice_id":"9223","product_name":"Downlight LED 8W IP-44","product_vat":"25","value_netto":"2100.00","value_vat":"525.00","value_brutto":"2625.00","price_netto":"350.00","count":"6.0000","product_type":"services"},
+                {"product_id":"14207","invoice_id":"9223","product_name":"Downlight LED  IP-23","product_vat":"25","value_netto":"7960.00","value_vat":"1990.00","value_brutto":"9950.00","price_netto":"199.00","count":"40.0000","product_type":"services"},
+                {"product_id":"14208","invoice_id":"9223","product_name":"Sikringer 20 stk. 16A ,30mA\\C","product_vat":"25","value_netto":"13400.00","value_vat":"3350.00","value_brutto":"16750.00","price_netto":"670.00","count":"20.0000","product_type":"services"},
+                {"product_id":"14209","invoice_id":"9223","product_name":"Stikkontakt dobbel innfelt med\\jord og barnevern -hvit","product_vat":"25","value_netto":"2500.00","value_vat":"625.00","value_brutto":"3125.00","price_netto":"125.00","count":"20.0000","product_type":"services"},
+                {"product_id":"14210","invoice_id":"9223","product_name":"varmekabel ca. 8m2","product_vat":"25","value_netto":"2300.00","value_vat":"575.00","value_brutto":"2875.00","price_netto":"2300.00","count":"1.0000","product_type":"services"},
+                {"product_id":"14211","invoice_id":"9223","product_name":"Termostat 760 2pol","product_vat":"25","value_netto":"670.00","value_vat":"167.50","value_brutto":"837.50","price_netto":"670.00","count":"1.0000","product_type":"services"},
+                {"product_id":"14212","invoice_id":"9223","product_name":"Bryter innfelt 1pol RS16\\1 PH Elko","product_vat":"25","value_netto":"696.00","value_vat":"174.00","value_brutto":"870.00","price_netto":"87.00","count":"8.0000","product_type":"services"},
+                {"product_id":"14213","invoice_id":"9223","product_name":"stikkontakter elko plus","product_vat":"25","value_netto":"2190.00","value_vat":"547.50","value_brutto":"2737.50","price_netto":"219.00","count":"10.0000","product_type":"services"},
+                {"product_id":"14214","invoice_id":"9223","product_name":"hoved kabel-15meter","product_vat":"25","value_netto":"6570.00","value_vat":"1642.50","value_brutto":"8212.50","price_netto":"438.00","count":"15.0000","product_type":"services"},
+                {"product_id":"14215","invoice_id":"9223","product_name":"dimmer","product_vat":"25","value_netto":"2000.00","value_vat":"500.00","value_brutto":"2500.00","price_netto":"400.00","count":"5.0000","product_type":"services"}
+
+            ]
         },
         {
             "id":"9292",
@@ -405,7 +418,12 @@
             "added":"2014-04-30 00:00:00","date_submit":"2014-04-30","date_sale":"0000-00-00","date_payment":"2014-05-14","date_purring":"0000-00-00","date_purring_to":"0000-00-00","date_inkassovarsel":"0000-00-00","date_inkassovarsel_to":"0000-00-00","date_inkasso":"0000-00-00","file_inkasso":"0","date_paid":"0000-00-00",
             "purring":"0","inkassovarsel":"0","inkasso":"0","payment_amount":"1411288.75","paid_amount":"0.00","paid":"0","correction":"0",
             "date_correction":"0000-00-00","comments":"<br><br>","kunde_nr":"22","payment_form":"transfer","postmail":"1","postmail_kreditnota":"0","postmail_purring":"0","postmail_inkassovarsel":"0","purring_nr":"0","correction_nr":"0","inkassovarsel_nr":"0","efaktury_invoice":"0","project_id":"0","ehf":"0",
-            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":""
+            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":"",
+            "products": [
+                {"product_id":"14310","invoice_id":"9292","product_name":"Jobber etter avtale","product_vat":"25","value_netto":"1050576.00","value_vat":"262644.00","value_brutto":"1313220.00","price_netto":"87548.00","count":"12.0000","product_type":"services"},
+{"product_id":"14311","invoice_id":"9292","product_name":"flytte tjenester","product_vat":"25","value_netto":"78455.00","value_vat":"19613.75","value_brutto":"98068.75","price_netto":"78455.00","count":"1.0000","product_type":"services"}
+
+            ]
         },
         {
             "id":"9455",
@@ -526,7 +544,25 @@
             "added":"2014-05-20 00:00:00","date_submit":"2014-05-20","date_sale":"0000-00-00","date_payment":"2014-06-03","date_purring":"0000-00-00","date_purring_to":"0000-00-00","date_inkassovarsel":"0000-00-00","date_inkassovarsel_to":"0000-00-00","date_inkasso":"0000-00-00","file_inkasso":"0","date_paid":"2014-05-23",
             "purring":"0","inkassovarsel":"0","inkasso":"0","payment_amount":"22770.39","paid_amount":"22770.39","paid":"1","correction":"1",
             "date_correction":"2014-05-21","comments":"<br><br>","kunde_nr":"26","payment_form":"transfer","postmail":"0","postmail_kreditnota":"0","postmail_purring":"0","postmail_inkassovarsel":"0","purring_nr":"0","correction_nr":"56","inkassovarsel_nr":"0","efaktury_invoice":"0","project_id":"0","ehf":"0",
-            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":""
+            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":"",
+            "products": [
+                {"product_id":"15209","invoice_id":"9942","product_name":"elektrisk tjenester 600 NOK\\pr.time","product_vat":"25","value_netto":"6000.00","value_vat":"1500.00","value_brutto":"7500.00","price_netto":"600.00","count":"10.0000","product_type":"services"},
+{"product_id":"15210","invoice_id":"9942","product_name":"Downlight LED 8W IP-44","product_vat":"25","value_netto":"2310.00","value_vat":"577.50","value_brutto":"2887.50","price_netto":"385.00","count":"6.0000","product_type":"services"},
+{"product_id":"15211","invoice_id":"9942","product_name":"Kurs til tørkemaskin","product_vat":"25","value_netto":"1700.00","value_vat":"425.00","value_brutto":"2125.00","price_netto":"1700.00","count":"1.0000","product_type":"services"},
+{"product_id":"15212","invoice_id":"9942","product_name":"Kurs til vaskemaskin","product_vat":"25","value_netto":"1700.00","value_vat":"425.00","value_brutto":"2125.00","price_netto":"1700.00","count":"1.0000","product_type":"services"},
+{"product_id":"15213","invoice_id":"9942","product_name":"Kurs til VVB","product_vat":"25","value_netto":"1700.00","value_vat":"425.00","value_brutto":"2125.00","price_netto":"1700.00","count":"1.0000","product_type":"services"},
+{"product_id":"15214","invoice_id":"9942","product_name":"varmekabel  ca.4m2","product_vat":"25","value_netto":"1500.00","value_vat":"375.00","value_brutto":"1875.00","price_netto":"1500.00","count":"1.0000","product_type":"services"},
+{"product_id":"15215","invoice_id":"9942","product_name":"Kurs til varmekabel , downlight og lys over speil","product_vat":"25","value_netto":"1000.00","value_vat":"250.00","value_brutto":"1250.00","price_netto":"1000.00","count":"1.0000","product_type":"services"},
+{"product_id":"15216","invoice_id":"9942","product_name":"Bryter innfelt 2pol RS16\\2 PH Elko","product_vat":"25","value_netto":"58.00","value_vat":"14.50","value_brutto":"72.50","price_netto":"58.00","count":"1.0000","product_type":"services"},
+{"product_id":"15217","invoice_id":"9942","product_name":"Dimmer  KDT-500E 2pol","product_vat":"25","value_netto":"630.00","value_vat":"157.50","value_brutto":"787.50","price_netto":"630.00","count":"1.0000","product_type":"services"},
+{"product_id":"15218","invoice_id":"9942","product_name":"Termostat 760 2pol","product_vat":"25","value_netto":"760.00","value_vat":"190.00","value_brutto":"950.00","price_netto":"760.00","count":"1.0000","product_type":"services"},
+{"product_id":"15219","invoice_id":"9942","product_name":"Uniboks innfellingsboks justerbar for downlight","product_vat":"25","value_netto":"408.00","value_vat":"102.00","value_brutto":"510.00","price_netto":"68.00","count":"6.0000","product_type":"services"},
+{"product_id":"15220","invoice_id":"9942","product_name":"K-rør 16mm (50m) korrugert plastrør NORSK WAVIN","product_vat":"25","value_netto":"250.00","value_vat":"62.50","value_brutto":"312.50","price_netto":"250.00","count":"1.0000","product_type":"services"},
+{"product_id":"15221","invoice_id":"9942","product_name":"Downlightkabel TP- 90 FR 2x1,5mm2 NEK-10meter","product_vat":"25","value_netto":"76.00","value_vat":"19.00","value_brutto":"95.00","price_netto":"7.60","count":"10.0000","product_type":"services"},
+{"product_id":"15222","invoice_id":"9942","product_name":"Kabel PN 750V 2,5mm2 BLÅ,BRUN,GUL\\GRØN(1M)","product_vat":"25","value_netto":"4.31","value_vat":"1.08","value_brutto":"5.39","price_netto":"4.31","count":"1.0000","product_type":"services"},
+{"product_id":"15223","invoice_id":"9942","product_name":"Kombinasjonsplate 3-hull RS16 L537 Hv","product_vat":"25","value_netto":"120.00","value_vat":"30.00","value_brutto":"150.00","price_netto":"120.00","count":"1.0000","product_type":"services"}
+
+            ]
         },
         {
             "id":"10059",
@@ -548,7 +584,21 @@
             "added":"2014-05-26 00:00:00","date_submit":"2014-05-26","date_sale":"0000-00-00","date_payment":"2014-06-09","date_purring":"0000-00-00","date_purring_to":"0000-00-00","date_inkassovarsel":"0000-00-00","date_inkassovarsel_to":"0000-00-00","date_inkasso":"0000-00-00","file_inkasso":"0","date_paid":"0000-00-00",
             "purring":"0","inkassovarsel":"0","inkasso":"0","payment_amount":"15787.84","paid_amount":"0.00","paid":"0","correction":"0",
             "date_correction":"0000-00-00","comments":"<br><br>","kunde_nr":"27","payment_form":"transfer","postmail":"0","postmail_kreditnota":"0","postmail_purring":"0","postmail_inkassovarsel":"0","purring_nr":"0","correction_nr":"0","inkassovarsel_nr":"0","efaktury_invoice":"0","project_id":"0","ehf":"0",
-            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":""
+            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":"",
+            "products": [
+                {"product_id":"15447","invoice_id":"10106","product_name":"JORDF.AUT.PKPM2-16\\2\\C\\003-A","product_vat":"25","value_netto":"2204.00","value_vat":"551.00","value_brutto":"2755.00","price_netto":"551.00","count":"4.0000","product_type":"services"},
+                {"product_id":"15448","invoice_id":"10106","product_name":"KOMFYRVAKT ","product_vat":"25","value_netto":"2800.00","value_vat":"700.00","value_brutto":"3500.00","price_netto":"2800.00","count":"1.0000","product_type":"services"},
+                {"product_id":"15449","invoice_id":"10106","product_name":"KORRUGERTE RØR 16 MM (5M)-600","product_vat":"25","value_netto":"1107.45","value_vat":"276.86","value_brutto":"1384.31","price_netto":"221.49","count":"5.0000","product_type":"services"},
+                {"product_id":"15450","invoice_id":"10106","product_name":"KORRUGERTE RØR 20 MM (50M)-200","product_vat":"25","value_netto":"789.66","value_vat":"197.42","value_brutto":"987.08","price_netto":"394.83","count":"2.0000","product_type":"services"},
+                {"product_id":"15451","invoice_id":"10106","product_name":"KORRUGERTE RØR 30 MM (50M)-50","product_vat":"25","value_netto":"519.58","value_vat":"129.90","value_brutto":"649.48","price_netto":"519.58","count":"1.0000","product_type":"services"},
+                {"product_id":"15452","invoice_id":"10106","product_name":"KORRUGERTE RØR 40 MM (15)-10","product_vat":"25","value_netto":"423.67","value_vat":"105.92","value_brutto":"529.59","price_netto":"423.67","count":"1.0000","product_type":"services"},
+                {"product_id":"15453","invoice_id":"10106","product_name":"POWERPROJEKT 3G2,5-100M pn i rør-200","product_vat":"25","value_netto":"2048.50","value_vat":"512.13","value_brutto":"2560.63","price_netto":"2048.50","count":"1.0000","product_type":"services"},
+                {"product_id":"15454","invoice_id":"10106","product_name":"Downlight LED 8W IP-44","product_vat":"25","value_netto":"1340.40","value_vat":"335.10","value_brutto":"1675.50","price_netto":"335.10","count":"4.0000","product_type":"services"},
+                {"product_id":"15455","invoice_id":"10106","product_name":"TAKLAMPE NOVODISC LED 17W","product_vat":"25","value_netto":"611.00","value_vat":"152.75","value_brutto":"763.75","price_netto":"611.00","count":"1.0000","product_type":"services"},
+                {"product_id":"15456","invoice_id":"10106","product_name":"Downlightkabel TP- 90 FR 2x1,5mm2 NEK","product_vat":"25","value_netto":"786.00","value_vat":"196.50","value_brutto":"982.50","price_netto":"786.00","count":"1.0000","product_type":"services"}
+                
+
+            ]
         },
         {
             "id":"10107",
@@ -559,7 +609,22 @@
             "added":"2014-05-26 00:00:00","date_submit":"2014-05-26","date_sale":"0000-00-00","date_payment":"2014-06-09","date_purring":"0000-00-00","date_purring_to":"0000-00-00","date_inkassovarsel":"0000-00-00","date_inkassovarsel_to":"0000-00-00","date_inkasso":"0000-00-00","file_inkasso":"0","date_paid":"0000-00-00",
             "purring":"0","inkassovarsel":"0","inkasso":"0","payment_amount":"16549.20","paid_amount":"0.00","paid":"0","correction":"0",
             "date_correction":"0000-00-00","comments":"<br><br>","kunde_nr":"27","payment_form":"transfer","postmail":"0","postmail_kreditnota":"0","postmail_purring":"0","postmail_inkassovarsel":"0","purring_nr":"0","correction_nr":"0","inkassovarsel_nr":"0","efaktury_invoice":"0","project_id":"0","ehf":"0",
-            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":""
+            "user_ref":"","buyer_ref":"","buyer_order_no":"","additional_html":"",
+            "products": [
+                {"product_id":"15457","invoice_id":"10107","product_name":"Kabel PN 750V  2,5mm² Gul\/Grønn(100m) SNELLE","product_vat":"25","value_netto":"2630.48","value_vat":"657.62","value_brutto":"3288.10","price_netto":"657.62","count":"4.0000","product_type":"services"},
+{"product_id":"15458","invoice_id":"10107","product_name":"Kabel PN 750V 2,5mm2 BRUN,SNELLE","product_vat":"25","value_netto":"2642.64","value_vat":"660.66","value_brutto":"3303.30","price_netto":"660.66","count":"4.0000","product_type":"services"},
+{"product_id":"15459","invoice_id":"10107","product_name":"Kabel PN 750V 2,5mm2 BLÅ,SNELLE","product_vat":"25","value_netto":"2630.48","value_vat":"657.62","value_brutto":"3288.10","price_netto":"657.62","count":"4.0000","product_type":"services"},
+{"product_id":"15460","invoice_id":"10107","product_name":"Kabel PN 750V 2,5mm2 SVART,SNELLE","product_vat":"25","value_netto":"650.00","value_vat":"162.50","value_brutto":"812.50","price_netto":"650.00","count":"1.0000","product_type":"services"},
+{"product_id":"15461","invoice_id":"10107","product_name":"VEGGBOKS 1,5 S57\\100 STENDER -6 LØP","product_vat":"25","value_netto":"480.70","value_vat":"120.18","value_brutto":"600.88","price_netto":"48.07","count":"10.0000","product_type":"services"},
+{"product_id":"15462","invoice_id":"10107","product_name":"VEGGBOKS BRANN S57\\100 STENDER","product_vat":"25","value_netto":"2547.00","value_vat":"636.75","value_brutto":"3183.75","price_netto":"127.35","count":"20.0000","product_type":"services"},
+{"product_id":"15463","invoice_id":"10107","product_name":"LETTI 16-2B 25MM STIFT S-G(50stk.)","product_vat":"25","value_netto":"389.85","value_vat":"97.46","value_brutto":"487.31","price_netto":"129.95","count":"3.0000","product_type":"services"},
+{"product_id":"15464","invoice_id":"10107","product_name":"LETTI 20-2B 20MM STIFT S-G(40stk.)","product_vat":"25","value_netto":"115.26","value_vat":"28.82","value_brutto":"144.08","price_netto":"115.26","count":"1.0000","product_type":"services"},
+{"product_id":"15465","invoice_id":"10107","product_name":"TAKBOKS PLAST 32\\246 ELKO","product_vat":"25","value_netto":"124.04","value_vat":"31.01","value_brutto":"155.05","price_netto":"62.02","count":"2.0000","product_type":"services"},
+{"product_id":"15466","invoice_id":"10107","product_name":"Koblingsmateriell WAGO 4 leder(100)","product_vat":"25","value_netto":"365.40","value_vat":"91.35","value_brutto":"456.75","price_netto":"182.70","count":"2.0000","product_type":"services"},
+{"product_id":"15467","invoice_id":"10107","product_name":"Koblingsmateriell WAGO 6 Leder(50)","product_vat":"25","value_netto":"178.40","value_vat":"44.60","value_brutto":"223.00","price_netto":"178.40","count":"1.0000","product_type":"services"},
+{"product_id":"15468","invoice_id":"10107","product_name":"WAGO 222-413 3X0,08-2,5\\4 MM2","product_vat":"25","value_netto":"485.10","value_vat":"121.28","value_brutto":"606.38","price_netto":"485.10","count":"1.0000","product_type":"services"}
+
+            ]
         },
         {
             "id":"10108",

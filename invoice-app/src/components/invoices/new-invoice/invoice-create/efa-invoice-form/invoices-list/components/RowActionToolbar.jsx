@@ -12,7 +12,7 @@ import {
 import { useStyles } from '@mui/material';
 import { DownloadActionButton } from './call-action-buttons/DownloadActionButton';
 import { CancelActionButton } from './call-action-buttons/CancelActionButton';
-import { ArchiveActionButton } from './call-action-buttons/ArchiveActionButton';
+import { ArchiveActionButton } from './call-action-buttons/PurringActionButton';
 import { SpecialSubmitActionButton } from './call-action-buttons/SpecialSubmitActionButton';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import { Box, Stack } from '@mui/joy';

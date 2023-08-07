@@ -10,7 +10,7 @@ const ListBulkActionButtons = () => (
         {/* //Q? Jaki stan tu dać?  */}
         {/* // ['pessimistic', 'optimistic', 'undoable']   undoable is default*/}
         {/* <BulkDeleteButton /> */}
-        <BulkDeleteButton mutationMode="pessimistic" />
+        <BulkDeleteButton label="Anuluj faktury" mutationMode="pessimistic" />
         {/* <DeleteWithConfirmButton /> */}
     </Fragment>
 );

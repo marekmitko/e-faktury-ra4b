@@ -22,7 +22,7 @@ const HeaderSimpleForm = (props) => {
                         {icon}
                     </SvgIcon>
                     <Typography level="h5" fontSize="md" sx={{ my: 0.25, textTransform: 'upper', color: 'neutral.800' }}>
-                        { title ? translate(`resources.${resource}.show.header.${title}`) : "" }
+                        { title ? translate(`resources.${resource}.header.${title}`) : "" }
                     </Typography>
                     {toolbar &&
                     <Box

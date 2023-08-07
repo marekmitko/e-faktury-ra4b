@@ -86,7 +86,8 @@ const  SaleItemsTableShow = () => {
                         textAlign: "right"
                     }}
                     >
-                    {row.product_count}
+                    {/* //Om? Co z tym zrobić? Jak to zabezpieczyć?  */}
+                    { (+row.count).toFixed(2) }
                     </td>
                     <td
                     style={{
@@ -95,7 +96,8 @@ const  SaleItemsTableShow = () => {
                         textAlign: "right"
                     }}
                     >
-                    {`${row.product_vat-100}%`}
+                        {/* //BUG //Om? Ujednolicić i poprawić  */}
+                    {`${(row.product_vat >= 100) ? row.product_vat-100 : row.product_vat }%`}
                     </td>
                     <td
                     style={{
@@ -104,7 +106,8 @@ const  SaleItemsTableShow = () => {
                         textAlign: "right"
                     }}
                     >
-                    {(row.product_count * row.product_price_netto).toFixed(2) }
+                        {/* //infO count | value_netto //Om? Ujednolicić i poprawić  */}
+                    {(row.count * row.value_netto).toFixed(2) }
                     </td>
                     <td
                     style={{
@@ -112,7 +115,7 @@ const  SaleItemsTableShow = () => {
                         textAlign: "right"
                     }}
                     >
-                    {(row.product_count * row.product_price_brutto).toFixed(2) }
+                    {(row.count * row.value_brutto).toFixed(2) }
                     </td>
                 </tr>
                 ); }) : "" }
