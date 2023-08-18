@@ -29,12 +29,6 @@ import { CssVarsProvider } from "@mui/joy/styles";
 
 import { EditSimpleList } from './components/invoices/invoice-list/INVOICE-e-faktury/EditSimpleList';
 import CssVarJoyProvider from './joy-theme-provider/JoyThemeProvider';
-import { FormsCreate } from './components/invoices/new-invoice/invoice-create/efa-invoice-form/components/mobile/spanning-sales-table/mobile-form-iterator/MobiForm';
-import AbcIcon from '@mui/icons-material/Abc';
-import { SalesTableV2 } from './components/invoices/new-invoice/invoice-create/components/efaV2/SalesTableV2';
-import LooksTwoIcon from '@mui/icons-material/LooksTwo';
-import { Chip, Divider } from '@mui/joy';
-import VisitorCreate from './components/clients/efa-V5-test/VisitorCreate';
 import PeopleIcon from '@mui/icons-material/People';
 import { CustomAdmin } from './Admin/CustoAdmin';
 
@@ -60,6 +54,8 @@ const dbjsonProvider = jsonServerProvider('http://'+hostname+':5000', httpClient
 
 //  *see App
 function App(props) {
+
+
     return (
         
         <StyledEngineProvider injectFirst>

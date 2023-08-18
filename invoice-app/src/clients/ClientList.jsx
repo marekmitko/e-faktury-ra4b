@@ -3,30 +3,34 @@ import {
     List,
     Datagrid,
     TextField,
-    WrapperField,
     EmailField,
     EditButton,
     DeleteButton,
     ReferenceInput,
     AutocompleteInput,
     TextInput,
-    DeleteWithConfirmButton,
-    InfiniteList
+    InfiniteList,
+    SearchInput,
+    useTranslate
+
 } from 'react-admin';
-import { Stack   } from "@mui/material";
+import { Stack, Chip   } from "@mui/material";
 
 // reCSS ClientListIcon  
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
-import { Box } from '@mui/joy';
-import { CancelActionButton } from '../reusable-components/button/call-action/CancelActionButton';
-import { EditActionButton } from '../reusable-components/button/call-action/EditActionButton';
-import { RecordDelateActionButton } from '../reusable-components/button/call-action/RecordDelateActionButton';
-import { DeleteWithConfirmActionButton } from '../reusable-components/button/confirm-action/DeleteWithConfirmActionButton';
 import { EfaDeleteActionButton } from '../reusable-components/button/confirm-action/EfaDeleteActionButton';
-import { ActionWithConfirmButton } from '../reusable-components/button/confirm-action/ActionWithConfirmButton';
 import  EfaEditButton  from '../reusable-components/button/EfaEditButton';
 import ListBulkActionButtons from '../reusable-components/button/bulk-action/ListBulkActionButtonBox';
 export const IconToClientList = SupervisorAccountIcon;
+
+
+const QuickFilter = ({
+    label  } ) => {
+    const translate = useTranslate()
+    return <Chip sx={{ marginBottom: 1 }} label={translate(label)} />;
+};
+
+
 
 
 const UserListFilter = [
@@ -63,14 +67,24 @@ const UserListFilter = [
 //     </ReferenceInput>
 // ]
 
+const buyerFilters = [
+    <SearchInput source="q" alwaysOn />
+];
+
+
+
 const ClientList = (props) => {
 
 
     return (
-        // <InfiniteList 
-        <List 
-        // filters={UserListFilter} {...props}  
-        sx={{            
+        <InfiniteList 
+        // filters={buyerFilters}
+        // sort={{ field: 'company', order: 'DESC' }}
+        // <List 
+        // filters={UserListFilter} 
+        // {...props}  
+        sx={{   
+            '& .RaList-main': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: '900px' },  
             '& .MuiPaper-root': {
                 borderTopLeftRadius: '20px',
                 borderTopRightRadius: '20px',
@@ -83,8 +97,6 @@ const ClientList = (props) => {
             <Datagrid
                 bulkActionButtons={<ListBulkActionButtons />}
                 sx={{
-                    
-
                     '& .MuiTableHead-root .RaDatagrid-headerCell': {
                         padding: { sx: '5px', md: '5px'  },
                         backgroundColor: 'neutral.100', 
@@ -111,66 +123,30 @@ const ClientList = (props) => {
                     '& .column-company': {
                         // maxWidth: { sx: '50px', md: '100px'  },
                         maxWidth: '75px',
-                        // // backgroundColor: 'pink',
-                        // // display: 'flex',
-                        // flexWrap: 'nowrap',
-                        // // wordBreak: 'break-all',
-                        // textOverflow: 'ellipsis',
-                        // overflow: 'hidden',
-                        // whiteSpace: 'nowrap',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
 
                         '& .MuiTypography-root': {
-                            // backgroundColor: 'pink',
-                            // display: 'flex',
-                            // flexWrap: 'nowrap',
-                            // wordBreak: 'break-all',
-                            // textOverflow: 'ellipsis [...]',
-                            // maxHeight: '38.8px',
-                            // maxWidth: '50px',
                             overflow: 'hidden',
                             display: 'inline-block',
-                            // margin: '0 5px 0 5px',
-                            // textAlign: 'center',
-                            // textDecoration: 'none',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
 
                         }
                     },
                     '& .column-org_nr': {
-                        // maxWidth: { sx: '50px', md: '100px'  },
                         maxWidth: '90px',
                         minWidth: '70px',
-                        // // backgroundColor: 'pink',
-                        // // display: 'flex',
-                        // flexWrap: 'nowrap',
-                        // // wordBreak: 'break-all',
-                        // textOverflow: 'ellipsis',
-                        // overflow: 'hidden',
-                        // whiteSpace: 'nowrap',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
 
                         '& .MuiTypography-root': {
-                            // backgroundColor: 'pink',
-                            // display: 'flex',
-                            // flexWrap: 'nowrap',
-                            // wordBreak: 'break-all',
-                            // textOverflow: 'ellipsis [...]',
-                            // maxHeight: '38.8px',
-                            // maxWidth: '50px',
                             overflow: 'hidden',
                             display: 'inline-block',
-                            // margin: '0 5px 0 5px',
-                            // textAlign: 'center',
-                            // textDecoration: 'none',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
-
                         }
                     },
                     '& .column-email': {
@@ -179,27 +155,27 @@ const ClientList = (props) => {
                     '& .column-phone': {
                         display: { xs: 'none', md: 'table-cell',  lg: 'table-cell' },
                     },
+                    '& .column-action ': {
+                        width: '50px',
+                        padding: 0,
+                        paddingLeft: '8px'
+                    },
                 }}
 
             >
                 <TextField source="company" />
                 <TextField  source="org_nr" />
-                {/* <WrapperField label="myroot.fullname" sortBy="fullname.surname">
-                    <TextField source="fullname.surname" />
-                    {" "}
-                    <TextField source="fullname.forename" />
-                </WrapperField> */}
                 <TextField  source="phone" />
                 <EmailField source="email" />
-                <tr label="Operacje" style={{ textAlign: 'center' }}>
-                {/* <td> <EditActionButton />   </td> */}
+                <tr source="action" label="" style={{ textAlign: 'center' }}>
                 <td><EfaEditButton /></td>
                 <td>
                     <EfaDeleteActionButton />
                 </td>
                 </tr>
             </Datagrid>
-        </List>
+        {/* </List> */}
+        </InfiniteList>
     );
 };
 

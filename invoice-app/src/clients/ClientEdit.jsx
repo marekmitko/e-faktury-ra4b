@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card,  Box, Stack, CardContent, CardHeader,  } from '@mui/material';
-import {  useTranslate, TextInput , NumberInput,   SimpleForm, Create, Edit, } from 'react-admin';
+import { Card,  Box,   } from '@mui/material';
+import {    SimpleForm, Create, Edit, } from 'react-admin';
 import form from '../db/default-values/form';
 import { IconBuyer } from '.';
 import ContentForm from './components/ContentForm';
@@ -31,9 +31,6 @@ import { ListButton } from 'react-admin';
 // ??"inkasso": "0",
 // ?? // note "is_company": "1
 
-const MyCard = ({children}) => (<Card sx={{bgcolor: 'blue'}}>{children}</Card>) ;
-
-
 const Separator = () => <Box sx={{ pt: '1em'}} />;
 
 export const ClientEdit = (props) =>  { 
@@ -41,17 +38,10 @@ export const ClientEdit = (props) =>  {
 
     <>
         <Edit   // {...props}
-            actions=""
-                sx={{  maxWidth: 500 , '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 }  }}
-                // sx={{ p: 0, m: 0,  maxWidth: 500 }}  component='div'
+            actions=""  sx={{  maxWidth: 500 , '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 }  }}
         >
-            <SimpleForm 
-                // sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0 }  }}   component={Card} 
-                sx={{ pt: 0, mt: 0,  maxWidth: 500   }}
-            > 
-                    <HeaderSimpleForm title='edit' toolbar={ <ListButton /> } />
-                   
-                    
+            <SimpleForm   sx={{ pt: 0, mt: 0,  maxWidth: 500   }}    > 
+                <HeaderSimpleForm title='edit' toolbar={ <ListButton /> } />
                 <ContentForm />
             </SimpleForm>
         </Edit>
