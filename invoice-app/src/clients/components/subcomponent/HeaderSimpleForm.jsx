@@ -18,10 +18,10 @@ const HeaderSimpleForm = (props) => {
         <div style={{ width: '100%',   }}>
             <CardOverflow variant="soft" sx={{ bgcolor: 'background.level2',   }}>
                 <CardContent orientation="horizontal" sx={{ mx: 1, flexDirection: 'row' }}>
-                    <SvgIcon fontSize="xl2" sx={{ color: iconColor, '& > svg': {     },  display: 'block', mx: 1, my: 'auto', }} >
+                    <SvgIcon fontSize="xl" sx={{ color: iconColor, '& > svg': {     },  display: 'block', mx: 1, my: 'auto', }} >
                         {icon}
                     </SvgIcon>
-                    <Typography level="h5" fontSize="md" sx={{ my: 0.25, textTransform: 'upper', color: 'neutral.800' }}>
+                    <Typography level="h6" fontSize="md" sx={{ my: 0.25, textTransform: 'uppercase', color: iconColor, fontWeight: '500', }}>
                         { title ? translate(`resources.${resource}.header.${title}`) : "" }
                     </Typography>
                     {toolbar &&

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { CardOverflow, Typography, Divider, Avatar, Box, SvgIcon,  } from "@mui/joy";
 import {  CardContent, Stack } from '@mui/material';
-import { NumberInput, TextInput, Title, useResourceContext, useTranslate } from 'react-admin';
+import { NumberInput, TextInput, Title, regex, useResourceContext, useTranslate } from 'react-admin';
 import CompanyTextInput from './subcomponent/CompanyTextInput';
 import SemiovalTitleChip from '../../reusable-components/SemiovalTitleChip';
 
@@ -26,6 +26,9 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 
 const Separator = (props) => (<Box sx={{ pt: '1em'}} {...props} />);
 
+// const zipValidators = [, 'Must be a zip code')];
+// const zipValidators = [regex(/^\d{5}$/, 'Must be a zip code')];
+
 export const ContentForm = () => { 
     const translate = useTranslate();
     return(
@@ -33,7 +36,10 @@ export const ContentForm = () => {
 
             <Stack direction="row" gap={1} width="100%">
                 <CircleIconChip icon={<DriveFileRenameOutlineIcon />} iconSize="xl2"  circleSize="sm" boxSx={{ mt: -1.5, pr: 1 }} />
-                <TextInput  source="company"   variant="standard"  fullWidth/>
+                <TextInput  
+                    isRequired
+                    source="company"   variant="standard"  fullWidth
+                />
             </Stack>
             <Stack direction="row" spacing={2} width="100%" alignItems="center">
                 <MvaBooleanInput sx={{ mt: 1.5, color: 'neutral.600'}} source="mva"  />
@@ -44,7 +50,10 @@ export const ContentForm = () => {
             <Separator />
             <Stack direction="row" gap={1} width="100%">
                 <CircleIconChip icon={<EditLocationOutlinedIcon />} iconSize="xl2"  circleSize="sm" boxSx={{ mt: -1.5, pr: 1 }} />
-                <TextInput  source="address"   variant="standard"  fullWidth/>
+                <TextInput  
+                    isRequired
+                    source="address"   variant="standard"  fullWidth
+                />
             </Stack>
             <Stack
                 direction="row"
@@ -54,8 +63,16 @@ export const ContentForm = () => {
                 width="100%"
             >
                 <CircleIconChip icon={<FmdGoodOutlinedIcon />} iconSize="xl2"  circleSize="sm" boxSx={{ mt: -1.5 }} />
-                <NumberInput sx={{minWidth:'25%'}} source="zip_code"  variant="standard" />
-                <TextInput    source="place"  fullWidth  variant="standard" />
+                <TextInput sx={{minWidth:'25%'}} 
+                    // validate={zipValidators} 
+                    isRequired
+                    source="zip_code"  variant="standard" 
+                    //type="number" //Om? Omówićź czy type number może tu być
+                />
+                <TextInput
+                    isRequired
+                    source="place"  fullWidth  variant="standard" 
+                />
             </Stack>
                 <SemiovalTitleChip   startDecorator={<RecentActorsIcon  sx={{ color: 'primary.900', mb: -.1, ml: 1.5, mr: 0 }} />}>{translate('myroot.myBuyersEfaktury.header.contact_section')} </SemiovalTitleChip>
                 <Separator />
@@ -67,7 +84,10 @@ export const ContentForm = () => {
             <Stack direction="row" spacing={2} alignItems="center" width="100%">
                 <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                     <CircleIconChip icon={<MarkAsUnreadOutlinedIcon />} iconSize="xl2"  circleSize="sm" boxSx={{ mt: -1.5 }} />
-                    <TextInput source="email" fullWidth variant="standard" />
+                    <TextInput 
+                        isRequired
+                        source="email" fullWidth variant="standard" 
+                    />
                 </Stack>
                 <Stack direction="row"spacing={2} alignItems="center" width="100%" >
                     <CircleIconChip icon={<CallRoundedIcon />} iconSize="xl2"  circleSize="sm" boxSx={{ mt: -1.5 }} />

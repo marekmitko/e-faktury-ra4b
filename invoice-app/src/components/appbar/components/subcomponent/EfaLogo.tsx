@@ -21,9 +21,12 @@ export default function EfaLogo({ sx, ...props }: AspectRatioProps) {
         
           <img
             // src="../../../../../public/access/img/efemtid_dark_200px.png"
-            src="https://efremtid.no/wp-content/uploads/2021/02/efemtid_dark_200px.png"
+
+            // src="https://efremtid.no/wp-content/uploads/2021/02/efemtid_dark_200px.png"
+            src="https://meetco.studio/wp-content/uploads/2023/08/demo-logotype-e-faktury.no-—-kopia.png"
+            
             // srcSet="https://https://efremtid.no/wp-content/uploads/2021/02/efemtid_dark_200px.png"
-            alt="efremtid.no"
+            alt="e-faktury.no"
             /> 
          
           

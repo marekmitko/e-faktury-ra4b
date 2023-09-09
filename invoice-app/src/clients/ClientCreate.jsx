@@ -5,6 +5,7 @@ import form from '../db/default-values/form';
 import { IconBuyer } from '.';
 import ContentForm from './components/ContentForm';
 import HeaderSimpleForm from './components/subcomponent/HeaderSimpleForm';
+import { validateClientCreateForm } from './validateClientCreateForm';
  
 
 
@@ -18,10 +19,21 @@ export const ClientCreate = (props) =>  {
 
     return (
     <Create redirect="list" 
-        sx={{ '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 }  }}  
+        sx={{   '&  .RaCreate-card': { borderRadius: '15px',  pt: 0, mt: 0,  maxWidth: 500 },
+                '& .RaToolbar-defaultToolbar': {
+                    
+                    '& button': { 
+                        borderRadius: '50px',
+                    },
+                    '& button:enabled': { 
+                        bgcolor: 'primary.900',
+                    }
+                } 
+        }}  
     >
-        <SimpleForm className="ClientCardForm"   sx={{ pt: 0, mt: 0,  }} // onSubmit={clientSave}
+        <SimpleForm className="ClientCardForm"   sx={{ pt: 0, mt: 0, }} // onSubmit={clientSave}
             defaultValues={form.client}  // validate={validateForm}
+            validate={validateClientCreateForm}
         > 
             <HeaderSimpleForm title='create'  />
             <ContentForm />

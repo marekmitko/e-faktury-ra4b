@@ -42,7 +42,11 @@ export const pl = {
   
     myroot: {
         validation: {
-            required: 'Pole wymagane'
+            required_field: 'Pole wymagane',
+            mva_num_org: 'Podaj numer MVA',
+            zipcode_regex: 'Użyj formatu: 0000',
+            email_regex: 'Podaj poprawny adres email',
+            num_org_minValue: 'Podaj poprawdną wartość',
         },
         custom_ra: {
             page: {
