@@ -41,7 +41,6 @@ export default function TotalCostCardV2(props) {
                         borderRadius: 1.5,
                         borderBottomRightRadius: 0,
                         borderBottomLeftRadius: 0
-
                     }} 
                 >
                 <Table  // aria-label="table with ellipsis texts" //note czy mi to jest potrzebne? 
