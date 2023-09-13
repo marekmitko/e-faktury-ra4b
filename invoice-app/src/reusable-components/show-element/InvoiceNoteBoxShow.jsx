@@ -51,7 +51,7 @@ const InvoiceNoteBoxShow = (props) => {
                 }}   // width: 100, 
                     >
                         <tr >
-                            <th colspan="2" style={{ 
+                            <th colspan="2" style={{   
                                     textTransform: 'uppercase', 
                                     height: '30px', paddingTop: 0, paddingBottom: 0,
                                     // borderBottom: '2px solid', 

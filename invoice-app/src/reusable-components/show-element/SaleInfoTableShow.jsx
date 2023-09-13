@@ -102,16 +102,16 @@ const SaleInfoTableShow = (props) => {
                 </CardContent>
             <Box  color="neutral" sx={{ 
                 alignItems: 'stretch', height: '100%',
-                mr: 'auto', ml: 0, mt: 1.5,
+                mr: 'auto', ml: 0, mt: 1,
                 wordBreak: 'break-all', 
                 display: 'flex', flexDirection: 'column', typography: {sm: 'h5', xs: 'body2'}, 
                 }}
             >
                 <TotalLabel  level="h6"  textColor="neutral.600" sx={{ //mr: 1, 
-                              pt: 0,  ml: 1, //fontStyle: 'italic',
+                              pt: 0,  ml: 1, mb: 1, //fontStyle: 'italic',
                             typography: {sm: 'body2', xs: "body2", md: 'body2' },
-                            textTransform: 'uppercase',
-                            fontWeight: "500!important"
+                            textTransform: 'lowercase',
+                            fontWeight: "400!important"
                         }}  
                             >
                         {translate(`resources.${resource}.show.header.sales_info_table.account_number`)}
@@ -130,8 +130,9 @@ const SaleInfoTableShow = (props) => {
                     
                     }} 
                     >
+                </Typography>
                     <Typography  level="h6"  textColor="neutral.600" sx={{ //mr: 1, 
-                            pt: 0,   //fontStyle: 'italic',
+                            my: 1, ml: 0,   //fontStyle: 'italic',
                             typography: {sm: 'body2', xs: "body2", md: 'body2' },
                             fontWeight: '500!important',
                             letterSpacing: '-.05px!important'
@@ -139,7 +140,6 @@ const SaleInfoTableShow = (props) => {
                             >
                         { 'PL49 1020 2892 2276 3005 0000 1234'  }
                     </Typography>
-                </Typography>
             </Box>
         </Card>
     );

@@ -19,6 +19,7 @@ import httpClient from './config/providers/httpClient';
 import invoices from './components/invoices';
 
 import clients from './clients';
+import new_invoices from './invoices';
 import salesitem from "./components/sale-item";
 import MyAdmin from "./components/admin"
 import AppAdmin from "./components/admin/AppAdmin"
@@ -71,7 +72,11 @@ function App(props) {
                 i18nProvider={i18nProvider}
             >  
                 {/* <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />   */}
-                <Resource name="e_faktury" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />  
+                <Resource name="e_faktury" options={{ label: 'Lista Faktur' }} label="Faktury" 
+                
+                {...invoices}  
+                list={new_invoices.list}
+                edit={EditSimpleList} />  
                 <Resource name='buyersEfaktury' options={{ label: 'efaKlient' }} label="efaKlient"  
                     list={clients.list} 
                     edit={clients.edit}   

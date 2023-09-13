@@ -290,6 +290,11 @@ export const pl = {
                     payment_summary: "Podsumowanie",
                     invoice_notes: "Uwagi do faktury:",
                     create: "Nowy nabywca",
+                    total: 'Kwota',
+                    date_submit: 'Wystawiono',
+                    date_paid: 'Termin płatności',
+                    status: 'Status',
+
 
                     sales_table: {
                         item_name: "Nazwa przedmiotu",
