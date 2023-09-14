@@ -41,7 +41,7 @@ const MobileGrid = () => {
                                         />
                                     &nbsp;
 
-                                    <Typography component='div' sx={{ mt: -.25, letterSpacing: -0.2 }} variant="body2" gutterBottom>
+                                    <Typography component='div' sx={{ mt: -.5, letterSpacing: -0.2 }} variant="body2" gutterBottom>
                                 {translate('resources.e_faktury.show.header.date_submit')}
                                 :&nbsp;
                                 <DateField source="date_submit"  />
@@ -92,7 +92,7 @@ const MobileGrid = () => {
                                 <ChipField sx={{ 
                                     '&.RaChipField-chip.MuiChip-root': { 
                                     my: -0.5,
-                                    borderRadius: 2,
+                                    // borderRadius: 2,
                                     '&.MuiChip-label': {
                                         padding: 0,
                                         }

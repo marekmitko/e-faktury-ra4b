@@ -1,5 +1,5 @@
 
-import { transformArrayProducts, createPrefixObjectKeys } from '../../../../db/fnInvoiceForm';
+import { transformArrayProducts, createPrefixObjectKeys } from '../../db/fnInvoiceForm';
 
 const methods = ()=>{};
 const myDataProvider = ()=>{};

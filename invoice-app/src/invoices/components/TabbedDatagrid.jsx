@@ -23,6 +23,9 @@ import {
 } from 'react-admin';
 import { useMediaQuery, Divider, Tabs, Tab, Theme } from '@mui/material';
 import MobileGrid from './MobileGrid';
+import CustomDataField from './CustomDataField';
+import ValuePaidField from './ValuePaidField';
+import OptionRow from './OptionRow';
 
 
 const tabs = [
@@ -46,6 +49,7 @@ const TabbedDatagrid = () => {
             setFilters &&
                 setFilters(
                     { ...filterValues, status: value },
+                    console.log('filterValues', filterValues, filterValues.status),
                     displayedFilters,
                     false // no debounce, we want the filter to fire immediately
                 );
@@ -90,28 +94,38 @@ const TabbedDatagrid = () => {
                     {filterValues.status === 'ordered' && (
                         <DatagridConfigurable
                             rowClick="edit"
-                            omit={['total_ex_taxes', 'delivery_fees', 'taxes']}
+                            omit={['invoice_id', 'delivery_fees', 'taxes']}
                         >
-                            <DateField source="date" showTime />
-                            <TextField source="reference" />
+                            <TextField source="invoice_id"  />
+                            <TextField color="primary.800"
+                                fontWeight='500'
+                                source="buyer_company" 
+                            />
+                            <DateField source="date_submit"  />
+                            <CustomDataField source="date_payment" />
+                            <NumberField source="payment_amount" options={{ minimumFractionDigits: 2}} />
+                            <CustomDataField source="date_paid" />
+                            <ValuePaidField source="paid_amount"   />
+                            <OptionRow />
+                            {/* <TextField source="reference" />
                             {/* <CustomerReferenceField /> */}
-                            <ReferenceField
+                            {/* <ReferenceField
                                 source="customer_id"
                                 reference="customers"
                                 link={false}
                                 label="resources.commands.fields.address"
-                            >
+                            > */}
                                 {/* <AddressField /> */}
-                            </ReferenceField>
+                            {/* </ReferenceField> */}
                             {/* <NbItemsField /> */}
-                            <NumberField
+                            {/* <NumberField
                                 source="total_ex_taxes"
                                 options={{
                                     style: 'currency',
                                     currency: 'USD',
                                 }}
-                            />
-                            <NumberField
+                            /> */}
+                            {/* <NumberField
                                 source="delivery_fees"
                                 options={{
                                     style: 'currency',
@@ -132,7 +146,7 @@ const TabbedDatagrid = () => {
                                     currency: 'USD',
                                 }}
                                 sx={{ fontWeight: 'bold' }}
-                            />
+                            />  */}
                         </DatagridConfigurable>
                     )}
                     {filterValues.status === 'delivered' && (
@@ -155,8 +169,7 @@ const TabbedDatagrid = () => {
                             <NumberField
                                 source="total_ex_taxes"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: 'currency', 
                                 }}
                             />
                             <NumberField

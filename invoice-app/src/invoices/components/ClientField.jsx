@@ -43,10 +43,10 @@ const CustomerField = (props ) => {
             }}
             />
         <Box>
-            <Box sx={{ color: 'text.secondary',  fontWeight: '500',   }}>{record.buyer_company}</Box>
+            <Box sx={{  mb: -0.5, color: 'text.secondary',  fontWeight: '500',   }}>{record.buyer_company}</Box>
             <Box sx={{   color: 'primary.800',
                 // display: 'inline',  
-                fontWeight: '500',  mt: -0.25,
+                fontWeight: '500',  mt: -0.5,
                 fontSize: 14, }}
             >
                 {(+record.buyer_mva === 1 ) ? `mva: ` : `nr org.: ` }{record.buyer_org_nr}

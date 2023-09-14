@@ -338,7 +338,7 @@ export const pl = {
                 phone: 'Numer telefonu',
                 payment_amount: 'Kwota',
                 paid_amount: "Wpłacono",
-                date_paid: 'w dniu',
+                date_paid: 'Data zapłaty',
                 date_submit_gte: 'Wystawione od',
                 date_submit_lte: 'Wystawione do',
                 payment_amount_gte: 'Kwota minimalna',
