@@ -4,6 +4,7 @@ import {
     AutocompleteInput,
     BooleanField,
     Count,
+    CreateButton,
     DatagridConfigurable,
     DateField,
     DateInput,
@@ -25,9 +26,20 @@ import { useMediaQuery, Divider, Tabs, Tab, Theme } from '@mui/material';
 import TabbedDatagrid from './components/TabbedDatagrid';
 
 
+const InvoiceListActions = () => (
+    <TopToolbar>
+        {/* <FilterButton /> */}
+        <CreateButton />
+        <ExportButton />
+        <SelectColumnsButton />
+    </TopToolbar>
+);
+
+
 
 const InvoiceList = () => (
     <List
+        actions={ <InvoiceListActions/> }
         // filterDefaultValues={{ status: 'ordered' }}
         sort={{ field: 'date', order: 'DESC' }}
         perPage={25}

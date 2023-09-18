@@ -26,12 +26,19 @@ import MobileGrid from './MobileGrid';
 import CustomDataField from './CustomDataField';
 import ValuePaidField from './ValuePaidField';
 import OptionRow from './OptionRow';
+import InvoicePaidButton from './subcomponents/InvoicePaidButton';
+import TransitionGroupExample from './subcomponents/TestPaidButton';
+import HGroupExample from './subcomponents/HTestPaidButton';
+import { PurringItemButton } from './button/PurrignItemButton';
+
+
+
 
 
 const tabs = [
-    { id: 'ordered', name: 'ordered' },
-    { id: 'delivered', name: 'delivered' },
-    { id: 'cancelled', name: 'cancelled' },
+    { id: 'ordered', name: 'all' },
+    { id: 'delivered', name: 'to pay' },
+    { id: 'cancelled', name: 'paid' },
 ];
 
 
@@ -96,6 +103,7 @@ const TabbedDatagrid = () => {
                             rowClick="edit"
                             omit={['invoice_id', 'delivery_fees', 'taxes']}
                         >
+                            <PurringItemButton label='Purign' />
                             <TextField source="invoice_id"  />
                             <TextField color="primary.800"
                                 fontWeight='500'
@@ -104,9 +112,12 @@ const TabbedDatagrid = () => {
                             <DateField source="date_submit"  />
                             <CustomDataField source="date_payment" />
                             <NumberField source="payment_amount" options={{ minimumFractionDigits: 2}} />
+                            {/* <InvoicePaidButton />
+                            <TransitionGroupExample />
+                            <HGroupExample /> */}
                             <CustomDataField source="date_paid" />
                             <ValuePaidField source="paid_amount"   />
-                            <OptionRow />
+                            <OptionRow  label="Operacje"  />
                             {/* <TextField source="reference" />
                             {/* <CustomerReferenceField /> */}
                             {/* <ReferenceField
