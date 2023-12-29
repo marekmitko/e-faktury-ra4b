@@ -30,6 +30,7 @@ import InvoicePaidButton from './subcomponents/InvoicePaidButton';
 import TransitionGroupExample from './subcomponents/TestPaidButton';
 import HGroupExample from './subcomponents/HTestPaidButton';
 import { PurringItemButton } from './button/PurrignItemButton';
+import InvoiceShow from '../../components/invoices/new-invoice/invoice-create/efa-invoice-form/invoices-list/invoice-show/InvoiceShow';
 
 
 
@@ -100,8 +101,10 @@ const TabbedDatagrid = () => {
                 <>
                     {filterValues.status === 'ordered' && (
                         <DatagridConfigurable
-                            rowClick="edit"
+                            // rowClick="edit"
                             omit={['invoice_id', 'delivery_fees', 'taxes']}
+                            expand={<InvoiceShow />}
+                            rowClick="expand"
                         >
                             <PurringItemButton label='Purign' />
                             <TextField source="invoice_id"  />

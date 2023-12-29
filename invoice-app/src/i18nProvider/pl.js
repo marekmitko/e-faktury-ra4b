@@ -279,6 +279,25 @@ export const pl = {
             name: 'faktura |||| faktur',
             create_menuItemLabel: 'Nowa faktura',
             list_menuItemLabel: 'Lista faktur',
+            list: {
+                tooltip: { 
+                    item: {
+                        purring_disabled: "Faktura opłacona, nie można wystawić purringu",
+                        purring_is_inactive: "Nie minął termin płatności, nie można wystawić purringu",
+                        sending_free_purring: "Wystaw darmowe ponaglenie do zapłaty - purring. (Do 14 dni po terminie płatności purring jest bezpłatny.)",
+                        sending_paid_purring: "Wystaw płatne ponaglenie do zapłaty - purring. (Upłunęło 14 dni od terminu płatności. Zgodnie z ustawą zostanie doliczona opłata w wysokości: 65 NOK)",
+                        purring_issued: "Ponaglenie do zapłaty wystawiono dnia:",
+                    },
+                },
+                confirm: {
+                    item: {
+                        free_purring_issued_title: "Wystaw bezpłatne ponaglenie - purring!",
+                        free_purring_issued_content: "Zamierzasz wystawić purring do faktury. Jest to ponaglenie do zapłaty dla kontrahenta zwlekającego z płatnością za fakturę. Czy na pewno chcesz wystawić purring?",
+                        paid_purring_issued_title: "Wystaw płatne ponaglenie - purring!",
+                        paid_purring_issued_content: "Zamierzasz wystawić purring do faktury. Jest to ponaglenie do zapłaty dla kontrahenta zwlekającego z płatnością za fakturę. Czy na pewno chcesz wystawić płatny purring? (Upłunęło 14 dni od terminu płatności. Zgodnie z ustawą zostanie doliczona opłata w wysokości: 65 NOK)"
+                    }
+                }
+            },
             show: {
                 header: {
                     invoice: "Faktura",
