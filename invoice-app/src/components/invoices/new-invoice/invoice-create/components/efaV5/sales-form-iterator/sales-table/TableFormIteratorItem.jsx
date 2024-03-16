@@ -67,7 +67,8 @@ export const TabFormIteratorItemRow = React.forwardRef((props, ref) => {
             removeButton,
             reOrderButtons,
             resource,
-            source, setValue
+            source, setValue,
+            isMedium
         } = props;
 
 

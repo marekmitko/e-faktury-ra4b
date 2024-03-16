@@ -322,6 +322,8 @@ export const CustomInputNumber = (props) => {
         </Box>
     );
 };
+
+
 export const CustomInputPrice = (props) => {
     const {source,  label, name, sx, entryPriceIsGross, ...rest} = props;
 
