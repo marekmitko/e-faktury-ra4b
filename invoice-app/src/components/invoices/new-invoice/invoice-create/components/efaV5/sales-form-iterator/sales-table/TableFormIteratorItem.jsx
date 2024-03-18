@@ -42,6 +42,7 @@ import {
   NetItemSumOutput,
   SumItemOutputShow,
 } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-outputs/SumItemOutputShow";
+import { EffectPriceOutputField } from "./table-data-cell/PriceOutputField";
 
 const RowItemClassesPrefix = "ItemTableRow";
 
@@ -174,29 +175,13 @@ export const TabFormIteratorItemRow = React.forwardRef((props, ref) => {
         })} */}
 
       {/* <td data-th={"field.description"}>{"item[field.id]"}</td> */}
-      <td>
-        {/* <NetItemSumOutput
-          index={index}
-          source={source}
-          control={control}
-          entryPriceIsGross={entryPriceIsGross}
-        /> */}
 
-        <EffectNetItemSumOutput
-          index={index}
-          source={source}
-          control={control}
-          entryPriceIsGross={entryPriceIsGross}
-        />
-      </td>
-      <td>
-        <GrossItemSumOutput
-          index={index}
-          source={source}
-          control={control}
-          entryPriceIsGross={entryPriceIsGross}
-        />
-      </td>
+      <EffectPriceOutputField
+        index={index}
+        source={source}
+        control={control}
+        entryPriceIsGross={entryPriceIsGross}
+      />
 
       <td class="td-remove" style={{ display: isMedium ? "none" : "" }}>
         <div class="remove-button-container">{removeButton}</div>

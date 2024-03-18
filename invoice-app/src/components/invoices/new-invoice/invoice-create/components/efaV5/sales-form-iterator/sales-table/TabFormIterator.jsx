@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cloneElement, useCallback, useMemo, useState, useRef } from "react";
-import "./styleNewTableFormIterator.css";
+import "./style/styleNewTableFormIterator.css";
 import { data, data2 } from "../table-form-iterator/dataTableFormIterator";
 import { EfaRemoveItemButton } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/button/RemoveItemButton";
 import { AddItemRowButton } from "../subcomponent/button/AddItemRowButton";

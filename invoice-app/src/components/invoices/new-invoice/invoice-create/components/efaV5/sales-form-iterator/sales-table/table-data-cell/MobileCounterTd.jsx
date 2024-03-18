@@ -6,11 +6,11 @@ export const MobileCounterTd = (props) => {
   return (
     <td class="counter-td" style={{ display: display, visibility: visibility }}>
       <div class="counter-container">
-        <div>{indexChip}</div>
-        <div>
+        <div class="item-counter-container">{indexChip}</div>
+        <div class="item-header-container">
           <span>{itemName}</span>
         </div>
-        <div class="remove-button-container">{removeButton}</div>
+        <div class="item-remove-button-container">{removeButton}</div>
       </div>
     </td>
   );
