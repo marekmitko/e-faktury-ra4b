@@ -19,7 +19,7 @@ export const ItemIndexChip = ({ cssBox, index }) => (
         "--Chip-decoratorChildHeight": "25px",
       }}
     >
-      {index}
+      {++index}
     </Chip>
   </Box>
 );

@@ -96,6 +96,7 @@ import SellerCompanyCard from "./personal-cards/efa-V5-company-card/components/S
 // import { SalesFormIterator } from './components/new-sales-table/components/sales-form-iterator/SalesFormIterator';
 import { SalesTableFormIterator } from "../components/efaV5/sales-form-iterator/sales-table/NewSalesTableFormIterator";
 import { ItemIndexChip } from "./components/index-item-row/ItemIndexChip";
+import { SalesTableV6 } from "../components/efaV5/SalesTableV6";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -168,9 +169,9 @@ const InvoiceCreateV5L2 = (props) => {
         {
           product_name: "",
           product_count: 1,
-          product_price_brutto: "",
-          product_price_netto: "",
-          product_vat: 125,
+          product_price_brutto: null,
+          product_price_netto: null,
+          product_vat: null,
           product_type: "",
         },
       ],
@@ -311,10 +312,11 @@ const InvoiceCreateV5L2 = (props) => {
                         )
                   }
                 />
-                <hr />
+                {/* <hr />
 
-                <Separator />
-                <SalesTableV5 />
+                <Separator /> */}
+                <SalesTableV6 />
+                {/* <SalesTableV5 /> */}
                 <AdditionalTableV5 />
               </Fragment>
               {/* </Container> */}

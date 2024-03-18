@@ -89,15 +89,15 @@ export const data = {
       show: true,
     },
     {
-      id: "email",
-      description: "Qty",
-      class: "td-qty",
-      show: true,
-    },
-    {
       id: "company",
       description: "VAT",
       class: "td-vat",
+      show: true,
+    },
+    {
+      id: "email",
+      description: "Qty",
+      class: "td-qty",
       show: true,
     },
     {
@@ -116,11 +116,6 @@ export const data = {
       id: "gross_price",
       description: "Sum Gross",
       class: "td-sum-gross",
-      show: true,
-    },
-    {
-      id: "country_code",
-      description: "Country",
       show: true,
     },
     {

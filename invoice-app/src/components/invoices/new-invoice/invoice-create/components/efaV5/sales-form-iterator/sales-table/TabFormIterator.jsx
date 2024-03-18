@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cloneElement, useCallback, useMemo, useState } from "react";
+import { cloneElement, useCallback, useMemo, useState, useRef } from "react";
 import "./styleNewTableFormIterator.css";
 import { data, data2 } from "../table-form-iterator/dataTableFormIterator";
 import { EfaRemoveItemButton } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/button/RemoveItemButton";
@@ -8,14 +8,31 @@ import { ReOrderButtons, SimpleFormIteratorContext } from "react-admin";
 import useProductFormIterator from "../logic/useProductFormField";
 import { TableFormIteratorItem2 } from "./TableFormIteratorItem";
 // import ResponsiveTable from "../table-form/ResposiveTable";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { TabFormIteratorItemRow } from "./TableFormIteratorItem";
 import { ItemIndexChip } from "../../../../efa-invoice-form/components/index-item-row/ItemIndexChip";
 import { MQ_isMedium } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
 import { useMediaQuery } from "@mui/material";
-import { MobileCounterTd } from "./variant-row/MobileCounterTd";
+import { MobileCounterTd } from "./table-data-cell/MobileCounterTd";
 import clsx from "clsx";
 import SwitchNetOrGross from "../../../../efa-invoice-form/components/new-sales-table/components/sales-table-header/components/SwitchNetOrGross";
+import { formatCurrency } from "../../../../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/logic/getCostResult ";
+
+const getGrossSum = (priceNetto, qty, tax) => {
+  let priceSum = 0;
+  if (priceNetto === undefined) return "priceSum";
+  if (!priceNetto) return priceSum;
+
+  if (priceNetto && qty && tax) priceSum = (priceNetto * qty * tax) / 100;
+  return formatCurrency(priceSum);
+};
+const getNetSum = (priceNetto, qty) => {
+  let priceSum = 0;
+  if (priceNetto === undefined) return "priceSum";
+  if (priceNetto && qty) priceSum = priceNetto * qty;
+
+  return formatCurrency(priceSum);
+};
 
 const required = () => (value) =>
   value ? undefined : "myroot.validation.required";
@@ -57,10 +74,10 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
   const isMedium = useMediaQuery(`${MQ_isMedium}`);
 
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
-
+  const initialDefaultValue = useRef({});
   const {
     records,
-    // record,
+    record,
     fields,
     translate,
     removeField,
@@ -96,11 +113,14 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
   }, [replace]);
 
   // *edu Jak to zoptymalizować
-  const { getValues, setValue } = useFormContext();
-  // // console.log("fromContextMy", getValues(`${source}`) );
-  // console.log( "getValues", getValues);
 
+  const methods = useFormContext();
+  const { control } = useFormContext();
+  // console.log("fromContextMy", getValues(`${source}`) );
+  // console.log( "getValues", getValues);
+  console.log("METHOD📌", methods);
   // czy to tez tam dodać?
+
   const context = useMemo(
     () => ({
       total: fields.length,
@@ -109,7 +129,7 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
       reOrder: handleReorder,
       source,
       // to dodałem
-      getValues,
+      //   getValues,
     }),
     [addField, fields.length, handleReorder, removeField, source]
   );
@@ -118,11 +138,23 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
 
   console.log("!!1️⃣fields", fields);
 
+  //   const watchTest = useWatch({
+  //     control,
+  //     name: `${source}.${index}`,
+  //     defaultValue: fields,
+  //   });
+
+  //   const memberTest = useWatch({
+  //     control,
+  //     name: `${source}`,
+  //     // defaultValue: {{fields}},
+  //   });
+
   return fields ? (
     <SimpleFormIteratorContext.Provider value={context}>
       {/* <ResponsiveTable columns={data2.columns} data={data2.data} /> */}
       <div class="sales__table container">
-        <table class="sales__table">
+        <table class="new__sales__table">
           <thead>
             <tr class="sales__row__header">
               {data_table.fields
@@ -134,9 +166,6 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                         <SwitchNetOrGross
                           {...{ entryPriceIsGross, setEntryPriceOnGross }}
                         />
-                        {/* <span>
-                          {entryPriceIsGross ? "Price Gross" : "Price Net"}
-                        </span> */}
                       </th>
                     );
                   return (
@@ -148,50 +177,14 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
             </tr>
           </thead>
           <tbody>
-            {/* {data_table.fields.map((item, index) => {
-          return (
-            <tr key={index}>
-              <td data-th="First name">{item.first_name}</td>
-              <td data-th="Last name">{item.last_name}</td>
-              <td data-th="E-mail">{item.email}</td>
-              <td data-th="Company">{item.company}</td>
-              <td data-th="IP Address">{item.ip_address}</td>
-              <td data-th="Country">{item.country_code}</td>
-            </tr>
-          );
-        })}      */}
-
-            {/* {data_table.items.map((item, index) => { */}
-            {/* {fields.map((item, index) => {
-                            console.log("🟢Field", fields);
-                          <div>  
-                        return ( */}
-            <div>
-              {/* // .filter(field => field.show)
-                            {data_table.items
-                                .map(field => {
-                                        return(
-                                    <td data-th={"fds"}>{'item[field.id]'}</td>
-                                    )}
-                            )} */}
-            </div>
             {fields.map((member, index) => {
-              //   console.log("memeber", member);
-              //   console.log("🟢Field", fields);
               return (
                 <>
                   <tr class="sales-item-row" key={index}>
                     <TabFormIteratorItemRow
-                      // sx={ itemSx }
-                      setValue={setValue}
-                      // wraperSectionItem={wraperSectionItem}
-                      // sxItemRow={ sxItemRow }
-                      // sxItemContent={ sxItemContent }
-                      // sxInputContent={ sxInputContent }
-                      // sxSumPriceBox={ sxSumPriceBox }
                       key={member.id}
                       disabled={disabled}
-                      disableRemove={disableRemove}
+                      disableRemove={isMedium ? false : disableRemove}
                       disableReordering={disableReordering}
                       fields={fields}
                       getItemLabel={getItemLabel}
@@ -206,36 +199,26 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                       source={source}
                       // ref={userMyRef}
                       inline={inline}
-                      // entryPriceIsGross={entryPriceIsGross}
+                      entryPriceIsGross={entryPriceIsGross}
                     >
+                      <MobileCounterTd
+                        indexChip={<ItemIndexChip index={index} />}
+                        removeButton={removeButton}
+                        itemName={"POZYCJA SPRZEDAŻY"}
+                        // visibility={isMedium ? "collapse" : "hidden"}
+                        display={isMedium ? "" : "none"}
+                      />
+                      <td
+                        class="td-counter"
+                        style={{ display: isMedium ? "none" : "" }}
+                      >
+                        <div class="counter-container">
+                          <div>
+                            <ItemIndexChip index={index} />
+                          </div>
+                        </div>
+                      </td>
                       {children}
-                      {isMedium ? (
-                        <React.Fragment>
-                          <MobileCounterTd
-                            indexChip={<ItemIndexChip index={++index} />}
-                            removeButton={removeButton}
-                            itemName={"POZYCJA SPRZEDAŻY"}
-                          />
-                          {children}
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          <td class="td-counter">
-                            <div class="counter-container">
-                              <div>
-                                <ItemIndexChip index={++index} />
-                              </div>
-                            </div>
-                          </td>
-                          {children}
-                          <td></td>
-                          <td>
-                            <div class="remove-button-container">
-                              {removeButton}
-                            </div>
-                          </td>
-                        </React.Fragment>
-                      )}
                     </TabFormIteratorItemRow>
                   </tr>
                   {/* <td data-th={field.description}>{item[field.id]}</td> */}

@@ -77,7 +77,7 @@ table.sales__table tr td {
 }
 
 .counter-td {
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   max-width: 10px;
   width: 30px;
   overflow: hidden;

@@ -35,33 +35,35 @@ import { ItemIndexChip } from "../../../../efa-invoice-form/components/index-ite
 import MobiRemoveItemButton from "../sales-item/mobile-view/components/sales-item-row/subcomponent/MobiRemoveItemButton";
 import { InputTextSelectedTd } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelectedTd";
 import SelectInputItemTd from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItemTd";
+import { useFormContext } from "react-hook-form";
 
-const InputNumerTd = (props) => (
+const InputNumberTd = (props) => (
   <td>
     <NumberInput {...props} />
   </td>
 );
 
 const CustomNumberTd = (props) => {
-  const { source, isMedium, entryPriceIsGross } = props;
+  const { source, isMedium, entryPriceIsGross, defaultValue } = props;
 
   return (
     <td>
       <CustomInputNumber
-        source={`net_${source}`}
+        source={`${source}_netto`}
         validate={vumberInputValidation}
+        defaultValue={defaultValue}
         sx={{
           gridArea: "price",
           width: "100%",
           mt: 0.5,
-          visibility: entryPriceIsGross ? "hidden" : "visible",
-          display: entryPriceIsGross ? "none" : "",
+          visibility: !entryPriceIsGross ? "visable" : "hidden",
+          display: !entryPriceIsGross ? "" : "none",
         }}
         label="myroot.form.label.inputbox_itemrow.netItem"
         variant={isMedium ? "outlined" : "outlined"}
       />
       <CustomInputNumber
-        source={`gross_${source}`}
+        source={`${source}_brutto`}
         validate={vumberInputValidation}
         sx={{
           gridArea: "price",
@@ -116,12 +118,20 @@ export const SalesTableFormIterator = (props) => {
   const [entryPriceIsGross, setEntryPriceOnGross] = useState(false);
 
   const translate = useTranslate();
+
+  const methodsInnerSalesProps = useFormContext(props);
+  const methodsInnerSalesNone = useFormContext();
+
+  console.log("metISP✅", methodsInnerSalesProps);
+  console.log("metISP❌", methodsInnerSalesNone);
+
   return (
     <>
       <ArrayInput
         className="array"
         label={false}
-        source={nameSalesIteratorForm}
+        // source={nameSalesIteratorForm}
+        source="products"
         fullWidth
       >
         <TabFormIterator
@@ -130,7 +140,6 @@ export const SalesTableFormIterator = (props) => {
           entryPriceIsGross={entryPriceIsGross}
           setEntryPriceOnGross={setEntryPriceOnGross}
         >
-          {/* <td> */}
           <InputTextSelectedTd
             // label="myroot.form.label.inputbox_itemrow.itemNameField"
             label=""
@@ -155,12 +164,14 @@ export const SalesTableFormIterator = (props) => {
             options={taxOptions}
             variant={isMedium ? "outlined" : "outlined"}
           />
-          <InputNumerTd
+          <InputNumberTd
+            defaultValue="3"
             source="product_count"
             label="myroot.form.label.inputbox_itemrow.qtyItem"
             helperText={false}
             sx={{
-              mt: 0.5,
+              mt: 1,
+              //   mt: 0.5,
               //gridArea: 'count', '& input': { mr: -1 }, mt: 1,
               // '& .MuiInputLabel-root': {
               //     textTransform: 'uppercase',
