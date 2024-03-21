@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Fragment, useCallback } from 'react';
+import * as React from "react";
+import { Fragment, useCallback } from "react";
 import {
     AutocompleteInput,
     BooleanField,
@@ -20,51 +20,47 @@ import {
     TextInput,
     TopToolbar,
     useListContext,
-} from 'react-admin';
-import { useMediaQuery, Divider, Tabs, Tab, Theme } from '@mui/material';
-import MobileGrid from './MobileGrid';
-import CustomDataField from './CustomDataField';
-import ValuePaidField from './ValuePaidField';
-import OptionRow from './OptionRow';
-import InvoicePaidButton from './subcomponents/InvoicePaidButton';
-import TransitionGroupExample from './subcomponents/TestPaidButton';
-import HGroupExample from './subcomponents/HTestPaidButton';
-import { PurringItemButton } from './button/PurrignItemButton';
-import InvoiceShow from '../../components/invoices/new-invoice/invoice-create/efa-invoice-form/invoices-list/invoice-show/InvoiceShow';
-
-
-
-
+    useTranslate,
+} from "react-admin";
+import { useMediaQuery, Divider, Tabs, Tab, Theme } from "@mui/material";
+import MobileGrid from "./MobileGrid";
+import CustomDataField from "./CustomDataField";
+import ValuePaidField from "./ValuePaidField";
+import OptionRow from "./OptionRow";
+import InvoicePaidButton from "./subcomponents/InvoicePaidButton";
+import TransitionGroupExample from "./subcomponents/TestPaidButton";
+import HGroupExample from "./subcomponents/HTestPaidButton";
+import { PurringItemButton } from "./button/PurrignItemButton";
+import InvoiceShow from "../../components/invoices/new-invoice/invoice-create/efa-invoice-form/invoices-list/invoice-show/InvoiceShow";
 
 const tabs = [
-    { id: 'ordered', name: 'all' },
-    { id: 'delivered', name: 'to pay' },
-    { id: 'cancelled', name: 'paid' },
+    { id: "ordered", name: "all" },
+    { id: "delivered", name: "to_pay" },
+    { id: "cancelled", name: "settled" },
 ];
-
-
-
 
 const TabbedDatagrid = () => {
     const listContext = useListContext();
     const { filterValues, setFilters, displayedFilters } = listContext;
-    const isXSmall = useMediaQuery(theme =>
-        theme.breakpoints.down('sm')
-    );
+    const isXSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
     const handleChange = useCallback(
         (event, value) => {
             setFilters &&
                 setFilters(
                     { ...filterValues, status: value },
-                    console.log('filterValues', filterValues, filterValues.status),
+                    console.log(
+                        "filterValues",
+                        filterValues,
+                        filterValues.status
+                    ),
                     displayedFilters,
                     false // no debounce, we want the filter to fire immediately
                 );
         },
         [displayedFilters, filterValues, setFilters]
     );
-
+    const translate = useTranslate();
     return (
         <Fragment>
             <Tabs
@@ -74,53 +70,71 @@ const TabbedDatagrid = () => {
                 indicatorColor="primary"
                 onChange={handleChange}
             >
-                {tabs.map(choice => (
-                    <Tab
-                        key={choice.id}
-                        label={
-                            <span>
-                                {choice.name} (
-                                <Count
-                                    filter={{
-                                        ...filterValues,
-                                        status: choice.name,
-                                    }}
-                                    sx={{ lineHeight: 'inherit' }}
-                                />
-                                )
-                            </span>
-                        }
-                        value={choice.id}
-                    />
-                ))}
+                {tabs.map((choice) => {
+                    const { name } = choice;
+                    return (
+                        <Tab
+                            key={choice.id}
+                            label={
+                                <span>
+                                    {translate(
+                                        `resources.e_faktury.list.tab.header.${name}`
+                                    )}
+                                    (
+                                    <Count
+                                        filter={{
+                                            ...filterValues,
+                                            status: choice.name,
+                                        }}
+                                        sx={{ lineHeight: "inherit" }}
+                                    />
+                                    )
+                                </span>
+                            }
+                            value={choice.id}
+                        />
+                    );
+                })}
             </Tabs>
             <Divider />
             {isXSmall ? (
                 <MobileGrid />
             ) : (
                 <>
-                    {filterValues.status === 'ordered' && (
+                    {filterValues.status === "ordered" && (
                         <DatagridConfigurable
                             // rowClick="edit"
-                            omit={['invoice_id', 'delivery_fees', 'taxes']}
+                            omit={["invoice_id", "delivery_fees", "taxes"]}
                             expand={<InvoiceShow />}
                             rowClick="expand"
                         >
-                            <PurringItemButton label='Purign' />
-                            <TextField source="invoice_id"  />
-                            <TextField color="primary.800"
-                                fontWeight='500'
-                                source="buyer_company" 
+                            <TextField source="invoice_id" label="invoice_id" />
+                            <PurringItemButton label="PUR" />
+                            <TextField
+                                sx={{
+                                    display: "inline-block",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    wrap: "nowrap",
+                                    maxWidth: "80px",
+                                }}
+                                color="primary.800"
+                                fontWeight="500"
+                                source="buyer_company"
                             />
-                            <DateField source="date_submit"  />
+                            <DateField source="date_submit" />
                             <CustomDataField source="date_payment" />
-                            <NumberField source="payment_amount" options={{ minimumFractionDigits: 2}} />
+                            <NumberField
+                                source="payment_amount"
+                                options={{ minimumFractionDigits: 2 }}
+                            />
                             {/* <InvoicePaidButton />
                             <TransitionGroupExample />
                             <HGroupExample /> */}
                             <CustomDataField source="date_paid" />
-                            <ValuePaidField source="paid_amount"   />
-                            <OptionRow  label="Operacje"  />
+                            <ValuePaidField source="paid_amount" />
+                            <OptionRow label="Operacje" />
                             {/* <TextField source="reference" />
                             {/* <CustomerReferenceField /> */}
                             {/* <ReferenceField
@@ -129,7 +143,7 @@ const TabbedDatagrid = () => {
                                 link={false}
                                 label="resources.commands.fields.address"
                             > */}
-                                {/* <AddressField /> */}
+                            {/* <AddressField /> */}
                             {/* </ReferenceField> */}
                             {/* <NbItemsField /> */}
                             {/* <NumberField
@@ -163,10 +177,10 @@ const TabbedDatagrid = () => {
                             />  */}
                         </DatagridConfigurable>
                     )}
-                    {filterValues.status === 'delivered' && (
+                    {filterValues.status === "delivered" && (
                         <DatagridConfigurable
                             rowClick="edit"
-                            omit={['total_ex_taxes', 'delivery_fees', 'taxes']}
+                            omit={["total_ex_taxes", "delivery_fees", "taxes"]}
                         >
                             <DateField source="date" showTime />
                             <TextField source="reference" />
@@ -183,30 +197,30 @@ const TabbedDatagrid = () => {
                             <NumberField
                                 source="total_ex_taxes"
                                 options={{
-                                    style: 'currency', 
+                                    style: "currency",
                                 }}
                             />
                             <NumberField
                                 source="delivery_fees"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: "currency",
+                                    currency: "USD",
                                 }}
                             />
                             <NumberField
                                 source="taxes"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: "currency",
+                                    currency: "USD",
                                 }}
                             />
                             <NumberField
                                 source="total"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: "currency",
+                                    currency: "USD",
                                 }}
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ fontWeight: "bold" }}
                             />
                             <BooleanField
                                 source="returned"
@@ -214,10 +228,10 @@ const TabbedDatagrid = () => {
                             />
                         </DatagridConfigurable>
                     )}
-                    {filterValues.status === 'cancelled' && (
+                    {filterValues.status === "cancelled" && (
                         <DatagridConfigurable
                             rowClick="edit"
-                            omit={['total_ex_taxes', 'delivery_fees', 'taxes']}
+                            omit={["total_ex_taxes", "delivery_fees", "taxes"]}
                         >
                             <DateField source="date" showTime />
                             <TextField source="reference" />
@@ -234,31 +248,31 @@ const TabbedDatagrid = () => {
                             <NumberField
                                 source="total_ex_taxes"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: "currency",
+                                    currency: "USD",
                                 }}
                             />
                             <NumberField
                                 source="delivery_fees"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: "currency",
+                                    currency: "USD",
                                 }}
                             />
                             <NumberField
                                 source="taxes"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: "currency",
+                                    currency: "USD",
                                 }}
                             />
                             <NumberField
                                 source="total"
                                 options={{
-                                    style: 'currency',
-                                    currency: 'USD',
+                                    style: "currency",
+                                    currency: "USD",
                                 }}
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ fontWeight: "bold" }}
                             />
                         </DatagridConfigurable>
                     )}

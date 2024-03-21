@@ -1,0 +1,111 @@
+@media (min-width: 1000px) and (max-width: 1200px) {
+}
+
+@media (min-width: 901px) and (max-width: 1199px) {
+}
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 1200px) {
+}
+table.sales-info-table-modal {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    width: 100%;
+}
+.sales-info-table-modal .table-head {
+    background-color: var(--mui-palette-background-level1, #fafafa);
+    /* background-color: transparent; */
+}
+
+.info-table-container table.sales-info-table-modal .table-head .head-row th {
+    /* border-color: var(--mui-palette-neutral-outlinedBorder); */
+    border-top: 0.8px solid var(--mui-palette-neutral-outlinedBorder);
+}
+.info-table-container
+    table.sales-info-table-modal
+    .table-head
+    .head-row
+    th.sales-item {
+    border-left: 0.8px solid var(--mui-palette-neutral-outlinedBorder);
+}
+.info-table-container
+    table.sales-info-table-modal
+    .table-head
+    .head-row
+    th.sales-value {
+    border-right: 0.8px solid var(--mui-palette-neutral-outlinedBorder);
+}
+
+.sales-info-table-modal .head-row .header-cell {
+    color: var(
+        --variant-plainColor,
+        rgba(var(--joy-palette-neutral-mainChannel) / 1)
+    );
+    font-weight: 400;
+    text-transform: capitalize;
+    background-color: transparent;
+    line-height: normal;
+}
+
+.sales-info-table-modal .body-row .body-cell {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sales-info-table-modal .head-row .header-cell.sales-item,
+.sales-info-table-modal .body-row .body-cell.item-name {
+    /* width: 20px; */
+    /* max-width: 140px; */
+}
+
+.sales-info-table-modal .head-row .header-cell.sales-quantity,
+.sales-info-table-modal .body-row .body-cell.item-quantity {
+    max-width: 50px;
+    text-align: center;
+}
+.sales-info-table-modal .head-row .header-cell.sales-value,
+.sales-info-table-modal .body-row .body-cell.item-value {
+    /* max-width: 50px; */
+    text-align: right;
+}
+
+table.sales-info-table-modal {
+    border-bottom-style: solid;
+    border-bottom-color: var(--mui-palette-divider);
+    border-bottom-width: 1px;
+    margin-bottom: 20px;
+}
+
+/* *edu Add scroll in table  */
+/* https://stackoverflow.com/questions/17067294/html-table-with-100-width-with-vertical-scroll-inside-tbody */
+table.sales-info-table-modal {
+    /* overflow: scroll; */
+    /* overflow-y: hidden; */
+    /* -ms-overflow-y: hidden; */
+    /* height: 100px; */
+}
+table.sales-info-table-modal tbody {
+    /* overflow: scroll !important; */
+    /* overflow-y: hidden; */
+    /* -ms-overflow-y: hidden;
+    /* height: 200px; */
+}
+
+.info-table-container {
+    /* height: 100px; */
+}
+
+tbody {
+    /* display: block; */
+    /* height: 100px; Just for the demo          */
+    /* overflow-y: auto; Trigger vertical scroll    */
+    /* overflow-x: hidden; Hide the horizontal scroll */
+    /* -ms-overflow-y: hidden; */
+    /* width: 100%; */
+}
+tbody tr {
+    /* width: 100%; */
+}

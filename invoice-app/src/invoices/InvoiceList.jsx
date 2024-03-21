@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Fragment, useCallback } from 'react';
+import * as React from "react";
+import { Fragment, useCallback } from "react";
 import {
     AutocompleteInput,
     BooleanField,
@@ -21,10 +21,9 @@ import {
     TextInput,
     TopToolbar,
     useListContext,
-} from 'react-admin';
-import { useMediaQuery, Divider, Tabs, Tab, Theme } from '@mui/material';
-import TabbedDatagrid from './components/TabbedDatagrid';
-
+} from "react-admin";
+import { useMediaQuery, Divider, Tabs, Tab, Theme } from "@mui/material";
+import TabbedDatagrid from "./components/TabbedDatagrid";
 
 const InvoiceListActions = () => (
     <TopToolbar>
@@ -35,13 +34,11 @@ const InvoiceListActions = () => (
     </TopToolbar>
 );
 
-
-
 const InvoiceList = () => (
     <List
-        actions={ <InvoiceListActions/> }
+        actions={<InvoiceListActions />}
         // filterDefaultValues={{ status: 'ordered' }}
-        sort={{ field: 'date', order: 'DESC' }}
+        sort={{ field: "date", order: "DESC" }}
         perPage={25}
         // filters={orderFilters}
         // actions={<ListActions />}
@@ -49,6 +46,5 @@ const InvoiceList = () => (
         <TabbedDatagrid />
     </List>
 );
-
 
 export default InvoiceList;
