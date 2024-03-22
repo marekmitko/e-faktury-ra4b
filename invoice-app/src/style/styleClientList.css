@@ -1,0 +1,10 @@
+.client-list-table .head-row .header-cell {
+    color: var(
+        --variant-plainColor,
+        rgba(var(--joy-palette-neutral-mainChannel) / 1)
+    );
+    font-weight: 400;
+    text-transform: capitalize;
+    background-color: transparent;
+    line-height: normal;
+}

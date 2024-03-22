@@ -1,5 +1,6 @@
 import * as React from "react";
-import "../../../new-invoice/invoice-create/style/styleInvoiceInfoModal.css";
+import "../../../../../style/styleInvoiceInfoModal.css";
+
 import { useEffect, useState, useCallback, Fragment } from "react";
 //Om NewImport
 import { styled } from "@mui/material/styles";
