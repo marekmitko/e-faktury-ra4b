@@ -63,8 +63,8 @@ const UserListFilter = [
 const buyerFilters = [<SearchInput source="q" alwaysOn />];
 
 const clientFilters = [
-    <SearchInput source="q" alwaysOn />,
-    <TextInput source="last_company" />,
+    <SearchInput source="q" alwaysOn sx={{ ml: { xs: 1 }, mr: { xs: -1 } }} />,
+    // <TextInput source="last_company" />,
     // <NullableBooleanInput source="has_ordered" />,
     // <NullableBooleanInput source="has_newsletter" defaultValue />,
     // <SegmentInput source="groups" />,
@@ -74,7 +74,8 @@ const ClientList = () => {
     const isSmall = useMediaQuery("(max-width:599px)");
     return (
         <InfiniteList
-            filters={isSmall ? clientFilters : undefined}
+            // filters={isSmall ? clientFilters : undefined}
+            filters={clientFilters}
             // filters={buyerFilters}
             sort={{ field: "last_company", order: "DESC" }}
             // <List
