@@ -8,3 +8,24 @@
     background-color: transparent;
     line-height: normal;
 }
+
+.mobile-client-grid .card-header .MuiCardHeader-title {
+    /* font-size: 1rem; */
+    font-weight: 500;
+}
+.mobile-client-grid .MuiCardHeader-title .email-link {
+    /* font-size: 1rem; */
+    font-weight: 500;
+}
+
+.mobile-client-grid .MuiCardHeader-subheader span {
+    font-weight: 600;
+    color: var(--mui-palette-primary-main);
+}
+
+.mobile-client-grid .phone-link span {
+    font-size: 1.25rem;
+}
+
+.mobile-client-grid .email-link span svg {
+}

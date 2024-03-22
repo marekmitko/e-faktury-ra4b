@@ -198,6 +198,16 @@ export const pl = {
         },
     },
     resources: {
+        segments: {
+            data: {
+                compulsive: "type1",
+                collector: "type2",
+                ordered_once: "type3",
+                regular: "reg",
+                returns: "return",
+                reviewer: "reviewer",
+            },
+        },
         dbclientlist: {
             name: "Kontrahent |||| Kontrahenci",
             contact: "Kontakt",
@@ -221,6 +231,12 @@ export const pl = {
             create: "Nowa Faktura",
         },
         buyersEfaktury: {
+            list: {
+                mobile: {
+                    no_org: "nr org.:",
+                    address: "adres",
+                },
+            },
             massage: {
                 delete_record: {
                     title: "Usuń nabywcę:",

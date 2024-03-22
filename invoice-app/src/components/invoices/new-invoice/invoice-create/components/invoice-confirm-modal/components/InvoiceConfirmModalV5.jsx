@@ -44,6 +44,7 @@ import { CreateInvoiceButtonV4 } from "./button/CreateInvoiceButtonV4";
 import { SvgIcon } from "@mui/joy";
 import { SalesInfoTableModal } from "./subcomponents/SalesInfoTableModal";
 import DateToString from "../../../efa-invoice-form/function/fnDateFormatOutputs";
+import { Hidden } from "@mui/material";
 const prefixObjectUser = createPrefixObjectKeys("buyer_");
 
 export default function InvoiceConfirmModalV5(props) {
@@ -147,7 +148,7 @@ export default function InvoiceConfirmModalV5(props) {
 
     return (
         <>
-            <JoyButton
+            {/* <JoyButton
                 variant="plain"
                 color="primary"
                 startDecorator={<NoteAddIcon />}
@@ -156,7 +157,7 @@ export default function InvoiceConfirmModalV5(props) {
                 {translate(
                     "myroot.form.label.button.invoiceConfirmModal.createInvoice"
                 )}
-            </JoyButton>
+            </JoyButton> */}
             <CreateInvoiceButtonV4 onClick={() => showModal()} />{" "}
             {/* //Om? toDo server connection & data transform  */}
             <JoyModal
