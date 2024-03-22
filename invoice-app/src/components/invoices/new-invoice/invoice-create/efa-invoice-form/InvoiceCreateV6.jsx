@@ -1,62 +1,28 @@
 import * as React from "react";
 import "../../../../../style/styleInvoiceInfoModal.css";
-
 import { useEffect, useState, useCallback, Fragment } from "react";
+import { G_Path } from "../../../../../constant";
 //Om NewImport
 import { styled } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Tab, { tabClasses } from "@mui/joy/Tab";
-import {
-    Button,
-    CssBaseline,
-    Container,
-    Card,
-    Grid,
-    CardContent,
-    Box,
-    CardHeader,
-    useMediaQuery,
-} from "@mui/material";
+import { Card, Box, useMediaQuery } from "@mui/material";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
-import {
-    useForm,
-    FormProvider,
-    useFormContext,
-    Controller,
-    useWatch,
-} from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { InvoiceCreateToolbar } from "./desktop/subcomponents/InvoiceCreateToolbar";
 import {
-    SimpleForm,
     useTranslate,
     RecordContextProvider,
-    Create,
     useResourceContext,
     useDataProvider,
-    useCreateController,
-    useGetOne,
-    useUpdate,
-    Title,
     useCreate,
-    useRecordContext,
     useNotify,
-    ArrayInput,
-    TextInput,
-    Form,
-    NumberInput,
-    Confirm,
-    SaveButton,
     FormGroupsProvider,
     useAugmentedForm,
-    TextField,
-    Datagrid,
-    List,
-    useGetList,
-    TitlePortal,
-    Count,
-    FunctionField,
+    ReferenceInput,
+    AutocompleteInput,
 } from "react-admin";
 
 import {
@@ -90,13 +56,10 @@ import MobiInvoiceHeader from "../components/efaV5/mobile-view/MobiInvoiceHeader
 import ClientCompanyCard from "./personal-cards/efa-V5-company-card/components/ClientCompanyCard";
 import SellerCompanyCard from "./personal-cards/efa-V5-company-card/components/SellerCompanyCard";
 import { SalesTableFormIterator } from "../components/efaV5/sales-form-iterator/sales-table/NewSalesTableFormIterator";
-import { ItemIndexChip } from "./components/index-item-row/ItemIndexChip";
-import {
-    SalesInfoTableV6,
-    SalesTableV6,
-} from "../components/efaV5/SalesInfoTableV6";
+import { SalesInfoTableV6 } from "../components/efaV5/SalesInfoTableV6";
 import MyCustomRangeDatePicker from "../components/header-data-group/MyCustomRangeDatePicker";
 import DateToString from "./function/fnDateFormatOutputs";
+import { CustomerAutoInput } from "./CustomerAutoInput";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -135,7 +98,6 @@ const ResourceName = () => {
     const resource = useResourceContext();
     return <>{resource}</>;
 };
-
 const buyersResourcePath = "buyersEfaktury";
 const userResourcePath = "data_user";
 
@@ -159,8 +121,8 @@ const InvoiceCreateV6 = (props) => {
         user_ref: user_company,
         choice_product_list: productOptions,
     };
-
     // { handleSubmit, reset, control }
+    console.log("_Path", G_Path);
     const methods = useForm({
         defaultValues: {
             date_of_creation: dv_dateOfCreation,
@@ -322,12 +284,13 @@ const InvoiceCreateV6 = (props) => {
                                             />
                                         </Grid2>
                                         <Grid2 xs={12} sm={6} md={6}>
+                                            <ReferenceInput
+                                                source="buyer_id"
+                                                reference={G_Path.customers}
+                                            >
+                                                <CustomerAutoInput />
+                                            </ReferenceInput>
                                             {/* Om? Do poprawy */}
-                                            <ClientCompanyCard
-                                                resourcePath={
-                                                    buyersResourcePath
-                                                }
-                                            />
                                         </Grid2>
                                     </Grid2>
                                 </Box>
