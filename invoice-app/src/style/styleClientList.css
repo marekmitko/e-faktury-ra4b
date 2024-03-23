@@ -29,3 +29,8 @@
 
 .mobile-client-grid .email-link span svg {
 }
+
+.autocomplete-input-customers .muiinputbase-root.muioutlinedinput-root .muioutlinedinput-notchedoutline fieldset legend.css-14lo706: {
+    width: calc(auto - 30px);
+    background-color: blue;
+}

@@ -109,3 +109,17 @@ tbody {
 tbody tr {
     /* width: 100%; */
 }
+/* fieldset */
+.autocomplete-input-customers
+    .MuiInputBase-root.MuiOutlinedInput-root
+    fieldset
+    legend.css-14lo706 {
+    max-width: 33%;
+}
+.autocomplete-input-customers
+    .MuiInputBase-root.MuiOutlinedInput-root
+    fieldset
+    legend.css-14lo706
+    .MuiTypography-root {
+    visibility: hidden;
+}

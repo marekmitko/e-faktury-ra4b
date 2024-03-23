@@ -280,6 +280,7 @@ export const pl = {
                     payment_method_date: "Płatność do:",
                     account_number: "Nr. konta:",
                     payment_date_placeholder: "DD-MM-RRRR",
+                    customer_autocomplete: "Szukaj Klienta",
                 },
                 modal: {
                     table_info: {
@@ -292,7 +293,7 @@ export const pl = {
                     },
                 },
             },
-            name: "faktura |||| faktur",
+            name: "faktura |||| faktury",
             create_menuItemLabel: "Nowa faktura",
             list_menuItemLabel: "Lista faktur",
             list: {

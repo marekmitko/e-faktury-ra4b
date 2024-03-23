@@ -7,18 +7,29 @@ import {
     DialogActions,
     DialogContent,
     TextField,
-} from '@mui/material';
+} from "@mui/material";
 
+import BuyerIcon from "@mui/icons-material/Person";
+import BuyerAddIcon from "@mui/icons-material/PersonAddAlt1";
 
-import BuyerIcon from '@mui/icons-material/Person';
-import BuyerAddIcon from '@mui/icons-material/PersonAddAlt1'; 
-
-import { SaveButton, TextInput, useRecordContext, AutocompleteInput, ReferenceInput, useCreateSuggestionContext, useCreate, SimpleForm, Create, useNotify, useRedirect, choices } from "react-admin";
+import {
+    SaveButton,
+    TextInput,
+    useRecordContext,
+    AutocompleteInput,
+    ReferenceInput,
+    useCreateSuggestionContext,
+    useCreate,
+    SimpleForm,
+    Create,
+    useNotify,
+    useRedirect,
+    choices,
+} from "react-admin";
 import { PersonalDataCard } from "../presonal-card-container/PersonalDataCard";
 import { BuyerDataFromLayout } from "../BuyerDataFormLayout";
 
-
-const db_buyer =  {
+const db_buyer = {
     id: "",
     company: "Test",
     fullname: "",
@@ -26,18 +37,19 @@ const db_buyer =  {
     address: {
         street: "",
         city: "",
-        codeCity: ""
-        },
+        codeCity: "",
+    },
     MVA: "",
-    telephoneNumber: ""
+    telephoneNumber: "",
 };
 
-
-
-
-
-
-export const ModalCreateNewClient = ({handleBuyerIdChange, onClose, selectedValue, open }) => {
+export const ModalCreateNewClient = ({
+    handleBuyerIdChange,
+    onClose,
+    selectedValue,
+    open,
+    children,
+}) => {
     // const { filter, onCancel, onCreate } = useCreateSuggestionContext();
     // const [value, setValue] = React.useState(filter || '');
     const [create] = useCreate();
@@ -45,63 +57,68 @@ export const ModalCreateNewClient = ({handleBuyerIdChange, onClose, selectedValu
     // const { onClose, selectedValue, open } = props;
 
     const handleClose = () => {
-            onClose(selectedValue);
+        onClose(selectedValue);
     };
 
     const handleListItemClick = (value) => {
-            onClose(value);
+        onClose(value);
     };
-
 
     const postSave = (data) => {
         // event.preventDefault();
         // data.company = value;
-        create('dbclientlist', {  data    },
-        {
-            onSuccess: (data) => {
-                // setValue('');
-                // onCreate(data);
-                // redirect(false);
-                onClose()
-            },
-        }
+        create(
+            "dbclientlist",
+            { data },
+            {
+                onSuccess: (data) => {
+                    // setValue('');
+                    // onCreate(data);
+                    // redirect(false);
+                    onClose();
+                },
+            }
         );
     };
 
-
-
-
     return (
-        <Dialog 
-        open={open} 
-        onClose={handleClose}
-        >
-            <PersonalDataCard  sx={12} sm={12} variant="outlined" headerIcon={<BuyerAddIcon />} headerTitle={"Nowy Nabywca"}>
-                <SimpleForm 
+        <Dialog open={open} onClose={handleClose}>
+            <PersonalDataCard
+                sx={12}
+                sm={12}
+                variant="outlined"
+                headerIcon={<BuyerAddIcon />}
+                headerTitle={"Nowy Nabywca"}
+            >
+                <SimpleForm
                     defaultValues={db_buyer}
-                    sx={{ display: "flex", alignContent: "stretch"}}
+                    sx={{ display: "flex", alignContent: "stretch" }}
                     onSubmit={postSave}
                     toolbar={
                         <DialogActions>
-                        <SaveButton 
-                            form="client_create_form" 
-                            // type="button"
-                            variant="text"
+                            <SaveButton
+                                form="client_create_form"
+                                // type="button"
+                                variant="text"
                             />
-                        <Button onClick={handleClose}>Cancel</Button>
-                    </DialogActions>
-                } 
-                id="client_create_form" 
+                            <Button onClick={handleClose}>Cancel</Button>
+                        </DialogActions>
+                    }
+                    id="client_create_form"
                 >
                     {/* <BuyerCard /> */}
-                    
+
                     <BuyerDataFromLayout>
-                        <TextInput default label="Company Name" source="company" fullWidth />
-                    </BuyerDataFromLayout >
-            
+                        <TextInput
+                            default
+                            label="Company Name"
+                            source="company"
+                            fullWidth
+                        />
+                    </BuyerDataFromLayout>
+                    {children}
                 </SimpleForm>
-                    </PersonalDataCard>
-            
+            </PersonalDataCard>
         </Dialog>
     );
 };

@@ -6,12 +6,14 @@ import { G_Path } from "../../../../../constant";
 import { styled } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Tab, { tabClasses } from "@mui/joy/Tab";
-import { Card, Box, useMediaQuery } from "@mui/material";
+import { Card, Box, useMediaQuery, Typography } from "@mui/material";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { InvoiceCreateToolbar } from "./desktop/subcomponents/InvoiceCreateToolbar";
+import PersonSearchIcon from "@mui/icons-material/PersonSearch";
+
 import {
     useTranslate,
     RecordContextProvider,
@@ -59,7 +61,7 @@ import { SalesTableFormIterator } from "../components/efaV5/sales-form-iterator/
 import { SalesInfoTableV6 } from "../components/efaV5/SalesInfoTableV6";
 import MyCustomRangeDatePicker from "../components/header-data-group/MyCustomRangeDatePicker";
 import DateToString from "./function/fnDateFormatOutputs";
-import { CustomerAutoInput } from "./CustomerAutoInput";
+import { CustomerAutoInput } from "../../../invoice-create/components/CustomerAutoInput";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -284,13 +286,7 @@ const InvoiceCreateV6 = (props) => {
                                             />
                                         </Grid2>
                                         <Grid2 xs={12} sm={6} md={6}>
-                                            <ReferenceInput
-                                                source="buyer_id"
-                                                reference={G_Path.customers}
-                                            >
-                                                <CustomerAutoInput />
-                                            </ReferenceInput>
-                                            {/* Om? Do poprawy */}
+                                            <CustomerAutoInput source="buyer_id" />
                                         </Grid2>
                                     </Grid2>
                                 </Box>
