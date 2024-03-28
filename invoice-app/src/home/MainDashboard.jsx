@@ -1,20 +1,57 @@
-import * as React from "react";
+// import Chart from "../../components/chart/Chart";
+// import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo";
+import "./styleMainDashboard.css";
+// import { userData } from "../../dummyData";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Title } from "react-admin";
-import JoyHeaderApp from "../.efa-v4/appbar/JoyHeaderApp";
-// import BoxTextInput from "../../../invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/subcomponent/BoxTextInput";
-// import InputBox from "../../../invoices/new-invoice/invoice-create/invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/InputBox";
+import SummaryInfoGroupBox from "./components/SummaryInfoGroupBox";
+import LargeWidget from "./components/LargeWidget";
+import SmallWidget from "./components/SmallWidget";
 
-export const CustomDashboard = (props) => (
-    <>
-        <Card> 
-            <Title title="e-faktury.no" />
-            <CardContent>Lorem ipsum sic tytrydolor amet...</CardContent>
-            {/* <InputBox /> */}
-        </Card>
-    </>
-);
+export default function MainDashboard() {
+    return (
+        <>
+            <Card>
+                <Title title="e-faktury.no" />
+                <div className="main-dashboard">
+                    <SummaryInfoGroupBox />
+                    {/* <Chart
+                // data={userData}
+                title="User Analytics"
+                grid
+                dataKey="Active User"
+            /> */}
+                    <div className="homeWidgets">
+                        <SmallWidget />
+                        <LargeWidget />
+
+                        {/* <SmallWidget /> */}
+                        {/* <LargeWidget /> */}
+                    </div>
+                </div>
+            </Card>
+        </>
+    );
+}
+
+// import * as React from "react";
+// import Card from "@mui/material/Card";
+// import CardContent from "@mui/material/CardContent";
+// import { Title } from "react-admin";
+// import JoyHeaderApp from "../.efa-v4/appbar/JoyHeaderApp";
+// // import BoxTextInput from "../../../invoices/new-invoice/invoice-create/invoice-form/subcomponents/personal-cards/buyer/subcomponent/BoxTextInput";
+// // import InputBox from "../../../invoices/new-invoice/invoice-create/invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/InputBox";
+
+// export const CustomDashboard = (props) => (
+//     <>
+//         <Card>
+//             <Title title="e-faktury.no" />
+//             <CardContent>Lorem ipsum sic tytrydolor amet...</CardContent>
+//             {/* <InputBox /> */}
+//         </Card>
+//     </>
+// );
 
 // import * as React from "react";
 // import { Card, CardContent, CardHeader, Box, Stack } from "@mui/material";

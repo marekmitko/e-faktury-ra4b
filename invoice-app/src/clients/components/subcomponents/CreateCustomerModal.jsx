@@ -8,7 +8,12 @@ import {
     Switch,
     Typography,
 } from "@mui/joy";
-import { SimpleForm, useCreate, useCreateSuggestionContext } from "react-admin";
+import {
+    SaveButton,
+    SimpleForm,
+    useCreate,
+    useCreateSuggestionContext,
+} from "react-admin";
 import { MQ_Breakpoint } from "../../../constant";
 import {
     DialogActions,
@@ -21,6 +26,7 @@ import JoyModalClose from "@mui/joy/ModalClose";
 import JoyModalDialog from "@mui/joy/ModalDialog";
 import ContentForm from "../ContentForm";
 import HeaderSimpleForm from "./HeaderSimpleForm";
+import ClientModalFormHeader from "../modal-subelements/ClientModalFormHeader";
 
 // import JoyModalOverflow from "@mui/joy/ModalOverflow";
 // export const ClientCreateButton = (props: any) => {
@@ -48,6 +54,7 @@ export const CreateCustomerModal = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log("data💠", data_record);
         // create(
         //     { data: data_newCustomer },
         //     {
@@ -86,18 +93,29 @@ export const CreateCustomerModal = (props) => {
             </Button> */}
 
             {/* <Dialog open onClose={onCancel}> */}
-            <JoyModal open={!!layout} onClose={() => setLayout(undefined)}>
+            <JoyModal
+                className="modal-joy-wrapper"
+                open={!!layout}
+                onClose={() => setLayout(undefined)}
+            >
                 {/* <ModalCreateNewClient
                 // selectedValue={selectedValue}
                 open={open}
                 onClose={handleClose}
             > */}
                 <JoyModalDialog layout={layout} sx={{ p: 0, m: 0 }}>
-                    <JoyModalClose onClick={onCancel} />
-                    <form onSubmit={handleSubmit}>
+                    <ClientModalFormHeader title="create" isSmall={isSmall} />
+                    <JoyModalClose
+                        onClick={onCancel}
+                        variant="plain"
+                        sx={{ marginTop: "-4px" }}
+                    />
+                    <form onSubmit={handleSubmit} id="my-wrapper-form">
                         <DialogContent
                             className="ModalContent"
                             sx={{
+                                m: 0,
+                                p: 0,
                                 "&.MuiDialogContent-root": {
                                     overflowY: "hidden",
                                 },
@@ -117,14 +135,19 @@ export const CreateCustomerModal = (props) => {
                                 // onSubmit={postSave}
                                 toolbar={
                                     <DialogActions>
-                                        {/* <SaveButton
-                        form="client_create_form"
-                        // type="button"
-                        variant="text"
-                    /> */}
-                                        <Button onClick={handleClose}>
+                                        <SaveButton
+                                            // onClick={(event) =>
+                                            //     console.log(event, "event") &&
+                                            //     alert("Saving...")
+                                            // }
+                                            form="client_create_form"
+                                            // form="my-wrapper-form"
+                                            // type="button"
+                                            variant="text"
+                                        />
+                                        {/* <Button onClick={handleClose}>
                                             Cancel
-                                        </Button>
+                                        </Button> */}
                                     </DialogActions>
                                 }
                                 id="client_create_form"

@@ -23,6 +23,7 @@ import { EfaDeleteActionButton } from "../reusable-components/button/confirm-act
 import EfaEditButton from "../reusable-components/button/EfaEditButton";
 import ListBulkActionButtons from "../reusable-components/button/bulk-action/ListBulkActionButtonBox";
 import ClientMobileGrid from "./ClientMobileGrid";
+import { MQ_Breakpoint } from "../constant";
 export const IconToClientList = SupervisorAccountIcon;
 
 const QuickFilter = ({ label }) => {
@@ -71,7 +72,7 @@ const clientFilters = [
 ];
 
 const ClientList = () => {
-    const isSmall = useMediaQuery("(max-width:599px)");
+    const isSmall = useMediaQuery(`${MQ_Breakpoint.isSmall}`);
     return (
         <InfiniteList
             // filters={isSmall ? clientFilters : undefined}

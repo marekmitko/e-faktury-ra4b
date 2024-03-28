@@ -11,6 +11,7 @@ import {
 import { G_Path, MQ_Breakpoint } from "../../constant";
 import { ClientCreateButton } from "../../components/invoices/new-invoice/invoice-create/efa-invoice-form/personal-cards/show/buyer-invoice-form/create-client-subform/ClientCreateButton";
 import ClientModalFullScreen from "./subcomponents/ClientModalFullScreen";
+import ClientModalFormHeader from "./modal-subelements/ClientModalFormHeader";
 
 export const CreateClientModal = () => {
     const { filter, onCancel, onCreate } = useCreateSuggestionContext();
@@ -32,12 +33,12 @@ export const CreateClientModal = () => {
         // );
     };
 
-    if (isSmall) return <ClientModalFullScreen />;
+    if (isSmall) return <ClientModalFullScreen title="create" />;
 
     return (
         <Dialog open onClose={onCancel}>
             <form onSubmit={handleSubmit}>
-                <DialogContent>
+                <DialogContent> 
                     <TextField
                         label="New category name"
                         value={value}

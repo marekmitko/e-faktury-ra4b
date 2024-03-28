@@ -47,7 +47,7 @@ export const ClientCreate = (props) => {
                 defaultValues={form.client} // validate={validateForm}
                 validate={validateClientCreateForm}
             >
-                <HeaderSimpleForm title="create" />
+                <HeaderSimpleForm title="create" sx={{ pt: 5 }} />
                 <ContentForm />
             </SimpleForm>
         </Create>

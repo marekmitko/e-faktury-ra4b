@@ -31,7 +31,7 @@ import { red } from "@mui/material/colors";
 import { MyOutlinedBox } from "./subcomponents/MyLabelCustom";
 import { G_Path } from "../../../../constant";
 import { CustomerAutoLabel } from "./subcomponents/CustomerAutoLabel";
-import { CreateClientModal } from "../../../../clients/components/CreateClientModal";
+import { CreateClientModal } from "../../../../clients/components/xCreateClientModal";
 import { ClientCreateButton } from "../../new-invoice/invoice-create/efa-invoice-form/personal-cards/show/buyer-invoice-form/create-client-subform/ClientCreateButton";
 import { ClientCreateModalButton } from "../../../../clients/components/subcomponents/ClientCreateModalButton";
 import { CreateCustomerModal } from "../../../../clients/components/subcomponents/CreateCustomerModal";

@@ -7,7 +7,7 @@ import {
     Box,
     SvgIcon,
 } from "@mui/joy";
-import { CardContent, Stack } from "@mui/material";
+import { CardContent, Stack, useMediaQuery } from "@mui/material";
 import {
     NumberInput,
     TextInput,
@@ -33,6 +33,7 @@ import MvaInputNumber from "./subcomponents/MvaInputNumber";
 import CircleIconChip from "../../reusable-components/CircleIconChip";
 import HeaderClientFormCreate from "./subcomponents/HeaderSimpleForm";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import { MQ_Breakpoint } from "../../constant";
 
 const Separator = (props) => <Box sx={{ pt: "1em" }} {...props} />;
 
@@ -41,10 +42,16 @@ const Separator = (props) => <Box sx={{ pt: "1em" }} {...props} />;
 
 export const ContentForm = () => {
     const translate = useTranslate();
+    const isSmall = useMediaQuery(`${MQ_Breakpoint.isSmall}`);
 
     return (
         <>
-            <Stack direction="row" gap={1} width="100%">
+            <Stack
+                direction="row"
+                gap={1}
+                width="100%"
+                sx={{ mb: isSmall ? -0.5 : "" }}
+            >
                 <CircleIconChip
                     icon={<DriveFileRenameOutlineIcon />}
                     iconSize="xl2"
@@ -58,7 +65,13 @@ export const ContentForm = () => {
                     fullWidth
                 />
             </Stack>
-            <Stack direction="row" spacing={2} width="100%" alignItems="center">
+            <Stack
+                direction="row"
+                spacing={2}
+                width="100%"
+                alignItems="center"
+                sx={{ pl: isSmall ? 1 : "", mb: isSmall ? -0.5 : "" }}
+            >
                 <MvaBooleanInput
                     sx={{ mt: 1.5, color: "neutral.600" }}
                     source="mva"
@@ -67,6 +80,7 @@ export const ContentForm = () => {
                 <NumberInput source="org_nr" variant="standard" fullWidth />
             </Stack>
             <SemiovalTitleChip
+                boxSx={{ display: isSmall ? "none" : "" }}
                 startDecorator={
                     <EmailRoundedIcon
                         sx={{
@@ -82,8 +96,13 @@ export const ContentForm = () => {
             >
                 {translate("myroot.myBuyersEfaktury.header.addres_section")}{" "}
             </SemiovalTitleChip>
-            <Separator />
-            <Stack direction="row" gap={1} width="100%">
+            <Separator sx={{ pt: isSmall ? 0 : "1em" }} />
+            <Stack
+                direction="row"
+                gap={1}
+                width="100%"
+                sx={{ mb: isSmall ? -0.5 : "" }}
+            >
                 <CircleIconChip
                     icon={<EditLocationOutlinedIcon />}
                     iconSize="xl2"
@@ -103,6 +122,7 @@ export const ContentForm = () => {
                 alignItems="center"
                 spacing={2}
                 width="100%"
+                sx={{ mb: isSmall ? -0.5 : "" }}
             >
                 <CircleIconChip
                     icon={<FmdGoodOutlinedIcon />}
@@ -111,7 +131,7 @@ export const ContentForm = () => {
                     boxSx={{ mt: -1.5 }}
                 />
                 <TextInput
-                    sx={{ minWidth: "25%" }}
+                    sx={{ maxWidth: "25%" }}
                     // validate={zipValidators}
                     isRequired
                     source="zip_code"
@@ -126,31 +146,59 @@ export const ContentForm = () => {
                 />
             </Stack>
             <SemiovalTitleChip
+                boxSx={{ display: isSmall ? "none" : "" }}
                 startDecorator={
                     <RecentActorsIcon
-                        sx={{ color: "primary.900", mb: -0.1, ml: 1.5, mr: 0 }}
+                        sx={{
+                            color: "primary.900",
+                            // mb: -0.001,
+                            ml: 1.5,
+                            mr: 0,
+                        }}
                     />
                 }
             >
                 {translate("myroot.myBuyersEfaktury.header.contact_section")}{" "}
             </SemiovalTitleChip>
-            <Separator />
-            <Stack direction="row" spacing={2} width="100%">
+            <Separator sx={{ pt: isSmall ? 0 : "1em" }} />
+            <Stack
+                direction="row"
+                spacing={2}
+                width="100%"
+                sx={{ mb: isSmall ? -0.5 : "" }}
+            >
                 <CircleIconChip
                     icon={<PersonPinCircleOutlinedIcon />}
                     iconSize="xl2"
                     circleSize="sm"
                     boxSx={{ mt: -1.5 }}
                 />
-                <TextInput source="lastname" fullWidth variant="standard" />
-                <TextInput source="firstname" fullWidth variant="standard" />
+                <TextInput
+                    source="lastname"
+                    fullWidth
+                    variant="standard"
+                    // helperText={false}
+                />
+                <TextInput
+                    source="firstname"
+                    fullWidth
+                    variant="standard"
+                    // helperText={false}
+                />
             </Stack>
-            <Stack direction="row" spacing={2} alignItems="center" width="100%">
+            <Stack
+                direction={isSmall ? "column" : "row"}
+                // direction="row"
+                spacing={isSmall ? 0 : 2}
+                alignItems="center"
+                width="100%"
+            >
                 <Stack
                     direction="row"
                     spacing={2}
                     alignItems="center"
                     width="100%"
+                    sx={{ mb: isSmall ? -0.5 : "" }}
                 >
                     <CircleIconChip
                         icon={<MarkAsUnreadOutlinedIcon />}

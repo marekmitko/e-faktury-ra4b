@@ -17,7 +17,6 @@ import jsonServerProvider from "ra-data-json-server";
 
 import { fetchJson } from "@app/config";
 import httpClient from "./config/providers/httpClient";
-import mydbProvider from "./config/providers/dataProviderCustom";
 
 import invoices from "./components/invoices";
 
@@ -37,7 +36,6 @@ import PeopleIcon from "@mui/icons-material/People";
 import { CustomAdmin } from "./Admin/CustoAdmin";
 
 import ReviewEdit from "./components/invoices/new-invoice/invoice-create/efa-invoice-form/invoices-list/custom-inner-form/CustomInnerFormCreate";
-import { RaV3_ProfileEdit } from "./users/RaV3_ProfileEdit";
 
 const hostname = window.location.hostname;
 // *see const dataProvider
@@ -60,8 +58,7 @@ function App(props) {
                 <CustomAdmin
                     // loginPage={Login}
                     // theme={CssVarsProvider}
-                    dataProvider={mydbProvider}
-                    // dataProvider={dbjsonProvider}
+                    dataProvider={dbjsonProvider}
                     i18nProvider={i18nProvider}
                 >
                     {/* <Resource name="issuedInvoices_list" options={{ label: 'Lista Faktur' }} label="Faktury" {...invoices}  edit={EditSimpleList} />   */}
@@ -94,45 +91,7 @@ function App(props) {
                     <CustomRoutes>
                         <Route path="/data_user" element={<MyProfile />} />
                     </CustomRoutes>
-                    <CustomRoutes>
-                        <Route
-                            path="/userProfile"
-                            element={<RaV3_ProfileEdit />}
-                        />
-                    </CustomRoutes>
-                    {/* {(permissions) => (
-                        <>
-                            {permissions ? (
-                                <Resource name="users" {...users} />
-                            ) : null}
-                            <CustomRoutes noLayout>
-                                <Route
-                                    path="/custom1"
-                                    element={
-                                        <CustomRouteNoLayout title="Posts from /custom1" />
-                                    }
-                                />
-                            </CustomRoutes>
-                            <CustomRoutes>
-                                <Route
-                                    path="/custom2"
-                                    element={
-                                        <CustomRouteLayout title="Posts from /custom2" />
-                                    }
-                                />
-                            </CustomRoutes>
-                        </>
-                    // )} */}
-                    {/* <CustomRoutes>
-                        <Route
-                            path="/custom3"
-                            element={
-                                <CustomRouteLayout title="Posts from /custom3" />
-                            }
-                        />
-                    </CustomRoutes> */}
                 </CustomAdmin>
-
                 {/* <CssVarsProvider> */}
                 {/* <Resource name="dbclientlist" options={{ label: 'Visitor V5' }} label="Visitor V5" list={ListGuesser} create={VisitorCreate}/>   */}
                 {/* <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} create={VisitorCreate} />
