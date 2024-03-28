@@ -38,6 +38,8 @@ import { CustomAdmin } from "./Admin/CustoAdmin";
 
 import ReviewEdit from "./components/invoices/new-invoice/invoice-create/efa-invoice-form/invoices-list/custom-inner-form/CustomInnerFormCreate";
 import { RaV3_ProfileEdit } from "./users/RaV3_ProfileEdit";
+import { G_Path } from "./constant";
+import AdminProfileEdit from "./users/new-profile/AdminProfileEdit";
 
 const hostname = window.location.hostname;
 // *see const dataProvider
@@ -96,8 +98,8 @@ function App(props) {
                     </CustomRoutes>
                     <CustomRoutes>
                         <Route
-                            path="/userProfile"
-                            element={<RaV3_ProfileEdit />}
+                            path={`/${G_Path.profile.admin}`}
+                            element={<AdminProfileEdit />}
                         />
                     </CustomRoutes>
                     {/* {(permissions) => (

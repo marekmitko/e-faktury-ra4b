@@ -12,24 +12,24 @@ import SmallWidget from "./components/SmallWidget";
 export default function MainDashboard() {
     return (
         <>
-            <Card>
+            <Card component="div">
                 <Title title="e-faktury.no" />
-                <div className="main-dashboard">
-                    <SummaryInfoGroupBox />
-                    {/* <Chart
+                {/* <div className="main-dashboard"> */}
+                <SummaryInfoGroupBox />
+                {/* <Chart
                 // data={userData}
                 title="User Analytics"
                 grid
                 dataKey="Active User"
             /> */}
-                    <div className="homeWidgets">
-                        <SmallWidget />
-                        <LargeWidget />
+                <div className="homeWidgets">
+                    <SmallWidget />
+                    <LargeWidget />
 
-                        {/* <SmallWidget /> */}
-                        {/* <LargeWidget /> */}
-                    </div>
+                    {/* <SmallWidget /> */}
+                    {/* <LargeWidget /> */}
                 </div>
+                {/* </div> */}
             </Card>
         </>
     );

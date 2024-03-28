@@ -198,6 +198,13 @@ export const pl = {
         },
     },
     resources: {
+        profile: {
+            admin: {
+                label: {
+                    edit_profile: "Edytuj Profil",
+                },
+            },
+        },
         segments: {
             data: {
                 compulsive: "type1",

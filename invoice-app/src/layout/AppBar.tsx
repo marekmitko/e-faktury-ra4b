@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PeopleIcon from "@mui/icons-material/People";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 // import Logo from './Logo';
 import Logo from "../components/appbar/components/subcomponent/EfaLogo";
@@ -26,19 +27,23 @@ import { G_Path } from "../constant";
 const UserProfileMenuItem = React.forwardRef((props, ref) => {
     const translate = useTranslate();
     const { onClose } = useUserMenu();
+    const path = "/" + `${G_Path.profile.admin}`;
+    console.log("G_Path🙈🔰", path);
     return (
         <MenuItem
             component={Link}
             // @ts-ignore
             ref={ref}
+            to={path}
             {...props}
-            to={`/${G_Path.profile}`}
             // onClick={onClose}
         >
             <ListItemIcon>
-                <PeopleIcon fontSize="small" />
+                <ManageAccountsIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText>{translate("pos.profil")}</ListItemText>
+            <ListItemText>
+                {translate("resources.profile.admin.label.edit_profile")}
+            </ListItemText>
         </MenuItem>
     );
 });

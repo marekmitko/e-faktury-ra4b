@@ -15,10 +15,11 @@ import {
     useNotify,
     SaveContextProvider,
     useGetIdentity,
+    Edit,
 } from "react-admin";
 
 const ProfileContext = createContext();
-
+ 
 export const ProfileProvider = ({ children }) => {
     const [profileVersion, setProfileVersion] = useState(0);
     const context = useMemo(
