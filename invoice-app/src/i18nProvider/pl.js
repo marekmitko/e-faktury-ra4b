@@ -198,11 +198,50 @@ export const pl = {
         },
     },
     resources: {
+        ustawienia_konta: {
+            fields: {
+                company: "Nazwa firmy",
+                surname: "Imię",
+                forename: "Nazwisko",
+                firstname: "Imię",
+                lastname: "Nazwisko",
+                org_nr: "Numer organizacyjny",
+                address: "Ulica",
+                zip_code: "Kod pocztowy",
+                place: "Miasto",
+                email: "Adres email",
+                phone: "Numer telefonu",
+                companyRepresentative: "Przedstawiciel",
+                is_company: "Entreprenoren er et selskap?",
+                mva: "MVA",
+            },
+        },
         profile: {
             admin: {
+                header: {
+                    top_header: "Edycja profilu",
+                    edit: "Edytuj dane wystawcy",
+                },
                 label: {
                     edit_profile: "Edytuj Profil",
                 },
+            },
+            fields: {
+                company: "Nazwa firmy",
+                surname: "Imię",
+                forename: "Nazwisko",
+                firstname: "Imię",
+                lastname: "Nazwisko",
+                org_nr: "Numer organizacyjny",
+                address: "Ulica",
+                zip_code: "Kod pocztowy",
+                place: "Miasto",
+                email: "Adres email",
+                phone: "Numer telefonu",
+                companyRepresentative: "Przedstawiciel",
+                is_company: "Entreprenoren er et selskap?",
+                mva: "MVA",
+                noBank: "Numer rachunku bankowego",
             },
         },
         segments: {

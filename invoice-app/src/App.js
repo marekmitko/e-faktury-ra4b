@@ -86,22 +86,13 @@ function App(props) {
                         icon={PeopleIcon}
                         // recordRepresentation={(record) =>(<span> `${record.company} Masło`</span>)}
                     />
-                    {/* <Resource name='dbTEST_client_list' options={{ label: 'client TEST' }} label="client_TEST"   {...clients} create={TESTInvoiceCreate}/> */}
-                    <Resource
-                        name="inner_form"
-                        list={ReviewEdit}
-                        options={{ label: "Inner Form" }}
-                        label="client_TEST"
-                    />
                     <CustomRoutes>
                         <Route path="/data_user" element={<MyProfile />} />
                     </CustomRoutes>
                     <CustomRoutes>
-                        <Route
-                            path={`/${G_Path.profile.admin}`}
-                            element={<AdminProfileEdit />}
-                        />
+                        <Route path="/profile" element={<AdminProfileEdit />} />
                     </CustomRoutes>
+
                     {/* {(permissions) => (
                         <>
                             {permissions ? (

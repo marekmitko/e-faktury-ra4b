@@ -1,6 +1,5 @@
 import jsonServerProvider from "ra-data-json-server";
 import httpClient from "./httpClient";
-import { withLifecycleCallbacks } from "react-admin";
 
 // https://codesandbox.io/p/sandbox/flamboyant-sky-86nxn2?file=%2Fsrc%2Findex.js
 
@@ -48,10 +47,22 @@ const addUserProfileOverrides = (dataProvider) => ({
 //  * That's not the most optimized way to store images in production, but it's
 //  * enough to illustrate the idea of data provider decoration.
 //  */
+const convertFileToBase64 = (file) =>
+    new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file.rawFile);
+    });
 
 const hostname = window.location.hostname;
 // *see const dataProvider
 // const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
+const customJsonProvider = jsonServerProvider(
+    "http://" + hostname + ":5000",
+    httpClient
+);
 
 export default addUserProfileOverrides(
     jsonServerProvider("http://" + hostname + ":5000", httpClient)

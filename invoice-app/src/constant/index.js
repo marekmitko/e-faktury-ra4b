@@ -2,10 +2,10 @@ export const G_Path = {
     // customers: "customers",
     customers: "buyersEfaktury",
     invoices: "e_faktury",
-    profile: { admin: "userProfile" },
+    profile: { admin: "profile" },
 };
 export const G_Admin = {
-    id: "Profile12356x",
+    id: "user2274",
 };
 
 export const MQ_Breakpoint = {

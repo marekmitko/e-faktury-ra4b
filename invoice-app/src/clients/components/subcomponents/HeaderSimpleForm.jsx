@@ -5,15 +5,19 @@ import { CardOverflow, Typography, Divider, SvgIcon, Box } from "@mui/joy";
 import CardContent from "@mui/joy/CardContent";
 
 const HeaderSimpleForm = (props) => {
+    const resourceContext = useResourceContext();
     const {
         iconColor = "primary.900",
         iconSx,
         icon = <AddHomeWorkRoundedIcon sx={iconSx} />,
         title,
         toolbar,
+        resource,
+        label,
     } = props;
+
     const translate = useTranslate();
-    const resource = useResourceContext();
+
     return (
         <Box
             width="115%"
@@ -59,8 +63,12 @@ const HeaderSimpleForm = (props) => {
                         >
                             {title
                                 ? translate(
-                                      `resources.${resource}.header.${title}`
+                                      `resources.${
+                                          resource ? resource : resourceContext
+                                      }.header.${title}`
                                   )
+                                : label
+                                ? translate(`${label}`)
                                 : ""}
                         </Typography>
                         {toolbar && (

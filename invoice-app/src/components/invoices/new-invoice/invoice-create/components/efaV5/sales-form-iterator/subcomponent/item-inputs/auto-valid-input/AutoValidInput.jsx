@@ -5,9 +5,8 @@ import Box from "@mui/material/Box";
 import { IsFilld } from "./isFilled";
 import { AutoHelperText } from "./AutoHelperText";
 import { CustomInput } from "./CustomInput";
-import FormControlUnstyled, {
-    useFormControlUnstyledContext,
-    } from '@mui/base/FormControlUnstyled';
+// 
+
 
 export default function AutoValidInput() {
 
@@ -36,10 +35,12 @@ export default function AutoValidInput() {
 
 export  function UseFormControl() {
     return (
-        <FormControlUnstyled defaultValue="" required>
+        <>
+        // <FormControlUnstyled defaultValue="" required>
             <CustomInput />
             <AutoHelperText />
-        </FormControlUnstyled>
+        // </FormControlUnstyled>
+            </>
     );
   }
   

@@ -1,19 +1,19 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: "development",
     entry: {
-        polyfills: './src/polyfills.ts',
-        index: './src/index.tsx',
+        polyfills: "./src/polyfills.ts",
+        index: "./src/index.tsx",
     },
     output: {
-        path: path.resolve(__dirname, './output'),
-        filename: '[id].bundle.js',
+        path: path.resolve(__dirname, "./output"),
+        filename: "[id].bundle.js",
     },
-    devtool: 'cheap-module-source-map',
+    devtool: "cheap-module-source-map",
     resolve: {
-        extensions: ['.ts', '.js', '.tsx', '.json'],
+        extensions: [".ts", ".js", ".tsx", ".json"],
     },
     module: {
         rules: [
@@ -21,7 +21,7 @@ module.exports = {
                 test: /\.(t|j)sx?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'ts-loader',
+                    loader: "ts-loader",
                     options: {
                         transpileOnly: true,
                     },
@@ -30,17 +30,17 @@ module.exports = {
             {
                 test: /\.html$/,
                 exclude: /node_modules/,
-                use: { loader: 'html-loader' },
+                use: { loader: "html-loader" },
             },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index-webpack.html',
+            template: "./index-webpack.html",
         }),
     ],
     devServer: {
-        host: '127.0.0.1',
+        host: "127.0.0.1",
         port: 8080,
     },
     stats: {
