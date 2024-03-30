@@ -198,6 +198,16 @@ export const pl = {
         },
     },
     resources: {
+        dashboard: {
+            label: {
+                card_info: {
+                    budget: "Suma faktur netto",
+                    progress: "Suma MVA",
+                    customer: "Suma zaległych wpłat",
+                    profit: "Suma faktur brutto",
+                },
+            },
+        },
         ustawienia_konta: {
             fields: {
                 company: "Nazwa firmy",

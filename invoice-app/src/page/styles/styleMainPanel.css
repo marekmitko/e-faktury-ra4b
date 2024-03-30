@@ -1,0 +1,38 @@
+.main-accent-icon .profit-circle {
+    color: rgb(11, 87, 208);
+}
+.main-accent-icon .customer-circle {
+    color: rgb(21, 183, 159);
+}
+.main-accent-icon .progress-circle {
+    color: rgb(251, 156, 12);
+}
+.main-accent-icon .budget-circle {
+    color: rgb(99, 91, 255);
+}
+.main-accent-icon {
+    font-size: 1.5rem;
+}
+
+.info-card.accent-icon .MuiTypography-overline {
+    line-height: normal;
+}
+.info-card.accent-icon .MuiTypography-h4 {
+    font-size: 2rem;
+}
+
+.info-card.accent-icon .title {
+    color: var(--mui-palette-text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+.info-card .MuiCardContent-root {
+    padding: 28px 24px;
+}
+
+.info-card.MuiPaper-root {
+    /* box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06); */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08); */
+    border-radius: 20px;
+}

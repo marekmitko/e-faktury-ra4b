@@ -8,10 +8,17 @@ import { Title } from "react-admin";
 import SummaryInfoGroupBox from "./components/SummaryInfoGroupBox";
 import LargeWidget from "./components/LargeWidget";
 import SmallWidget from "./components/SmallWidget";
+import Page from "../page/Page";
+import MainPanel from "../page/MainPanel";
 
 export default function MainDashboard() {
+    if (true) return <MainPanel />;
+
     return (
         <>
+            <Card component="div">
+                <MainPanel />
+            </Card>
             <Card component="div">
                 <Title title="e-faktury.no" />
                 {/* <div className="main-dashboard"> */}
@@ -30,6 +37,7 @@ export default function MainDashboard() {
                     {/* <LargeWidget /> */}
                 </div>
                 {/* </div> */}
+                <Page />
             </Card>
         </>
     );

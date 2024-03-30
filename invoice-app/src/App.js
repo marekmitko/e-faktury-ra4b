@@ -86,9 +86,9 @@ function App(props) {
                         icon={PeopleIcon}
                         // recordRepresentation={(record) =>(<span> `${record.company} Masło`</span>)}
                     />
-                    <CustomRoutes>
+                    {/* <CustomRoutes>
                         <Route path="/data_user" element={<MyProfile />} />
-                    </CustomRoutes>
+                    </CustomRoutes> */}
                     <CustomRoutes>
                         <Route path="/profile" element={<AdminProfileEdit />} />
                     </CustomRoutes>
