@@ -1,22 +1,10 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
-import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
-import Divider from "@mui/material/Divider";
-import { alpha, useTheme } from "@mui/material/styles";
-import { useRecordContext, useTranslate } from "react-admin";
-import { IconButton, Stack, useMediaQuery } from "@mui/material";
 import { useWatch } from "react-hook-form";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Collapse from "@mui/material/Collapse";
-import { MQ_isMedium } from "../../../components/invoices/new-invoice/invoice-create/components/efaV5/sales-form-iterator/useSalesFormIteratorStyles";
 import styled from "@emotion/styled";
 import CustomerIcon from "@mui/icons-material/HomeWork";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
-import BorderColorRoundedIcon from "@mui/icons-material/EditRounded";
 import AccentIconLabel from "../../icon/AccentIconLabel";
-import ChipLabel from "../../icon/ChipLabel";
-import AddHomeWorkIcon from "@mui/icons-material/AddHomeWork";
 
 const CustomArrowRightIcon = styled((props) => {
     const { expand, ...other } = props;
