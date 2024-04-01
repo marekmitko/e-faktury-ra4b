@@ -72,6 +72,7 @@ export const SalesInfoTableV6 = (props) => {
                         >
                             <InnerLinebox sxCSS={{ order: 1 }}>
                                 <JoyBox
+                                    className="innerJoyBox"
                                     sx={{
                                         // boxShadow: 'none',
                                         bgcolor: "transparent",
@@ -102,6 +103,7 @@ export const SalesInfoTableV6 = (props) => {
                                                 }}
                                             >
                                                 <JoyBox
+                                                    className="JoyBox-wrappper"
                                                     sx={{
                                                         flexBasis: "1 1 auto",
                                                     }}
@@ -114,7 +116,11 @@ export const SalesInfoTableV6 = (props) => {
                                                                 md: -1,
                                                                 lg: -1,
                                                             },
-                                                            boxShadow: 1,
+                                                            boxShadow:
+                                                                "0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06)",
+                                                            borderRadius:
+                                                                "20px",
+                                                            mx: "1px",
                                                         }}
                                                     />
                                                 </JoyBox>
@@ -128,6 +134,10 @@ export const SalesInfoTableV6 = (props) => {
                                                             md: 1,
                                                             lg: 1,
                                                         },
+                                                        boxShadow:
+                                                            "0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06)",
+                                                        borderRadius: "20px",
+                                                        mx: "1px",
                                                     }}
                                                 />
                                             </JoyBox>

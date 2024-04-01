@@ -1,3 +1,8 @@
+import { G_Path } from "../../../../../../../../constant";
+
+const translate_prefix = `resources.${G_Path.invoices}.create.sales_form_iterator.sales_table.header`;
+const translate_prefix_label = `resources.e_faktury.create.sales_form_iterator.sales_table.header`;
+
 export const data2 = {
     columns: [
         {
@@ -66,62 +71,71 @@ export const data = {
     fields: [
         {
             id: "id",
-            description: "item-id",
+            description: "item_id",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_id",
             class: "td-id",
             show: false,
         },
         {
             id: "lp",
             description: "lp",
-            label: "lp",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_no",
             class: "td-country",
             show: true,
         },
         {
             id: "sales-item-name",
-            description: "Sales Item Name",
+            description: "item_name",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_name",
             class: "td-sales-item-name",
             show: true,
         },
         {
             id: "sales-item-type",
-            description: "Type",
+            description: "item_type",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_type",
             class: "td-sales-item-type",
             show: true,
         },
         {
             id: "sales-item-vat-tax",
-            description: "VAT",
+            description: "item_tax",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_tax",
             class: "td-vat-tax",
             show: true,
         },
         {
             id: "sales-item-quantity",
-            description: "Qty",
+            description: "item_qty",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_qty",
             class: "td-sales-item-qty",
             show: true,
         },
         {
             id: "sales-item-price",
-            description: "Price",
+            description: "item_price",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_price",
             class: "td-sales-item-price",
             show: true,
         },
         {
             id: "item-sum-net_price",
-            description: "Sum Net",
+            description: "item_sum_net",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_sum_net",
             class: "td-sum-net",
             show: true,
         },
         {
             id: "item-sum-gross_price",
-            description: "Sum Gross",
+            description: "item_sum_gross",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_sum_gross",
             class: "td-sum-gross",
             show: true,
         },
         {
             id: "sales-item-remove",
             description: "",
+            label: "resources.e_faktury.create.sales_form_iterator.sales_table.header.item_remove",
             class: "td-button-remove",
             show: true,
         },

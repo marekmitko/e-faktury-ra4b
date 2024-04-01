@@ -62,53 +62,9 @@ export function MainPartCustomerCard(props) {
     // if (!children) return null;
     return (
         <>
-            {/* // <Card sx={sxCard} className="parsonal-card wrapper "> */}
-            {/* <CardHeader
-                sx={{
-                    backgroundColor:
-                        "var(--mui-palette-background-level1, #fafafa)",
-                    p: 1.25,
-                    pt: 0.5,
-                    pb: 0,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    "& .MuiCardHeader-action": {
-                        alignSelf: "center",
-                    },
-                }}
-                action={
-                    <Button
-                        disabled={buyerId ? false : true}
-                        sx={{ pr: 2 }}
-                        color="inherit"
-                        size="small"
-                        startIcon={
-                            <BorderColorRoundedIcon fontSize="var(--icon-fontSize-md)" />
-                            // <CustomArrowRightIcon />
-                        }
-                    >
-                        Edit
-                    </Button>
-                }
-                title={
-                    <AccentIconLabel
-                        icon={<CustomerIcon />}
-                        iconSize="1.25em"
-                        // iconSx
-                        cssIcon={{ padding: "2px" }}
-                        circleSize="xs"
-                        sx={{ ml: -0.25, fontSize: "1.15rem", pb: 0.25 }}
-                        // boxSx={{ mt: -1.5, pr: 1 }}
-                        label="myroot.form.label.header.buyer"
-                    />
-                }
-            />
-            <Divider /> */}
             <CardContent sx={{ minHeight: "57px", px: 1, pt: 0.1, pb: 0.5 }}>
                 {children}
             </CardContent>
-
-            {/* </Card> */}
         </>
     );
 }

@@ -42,11 +42,14 @@
 
 table.new__sales__table {
     border-spacing: 0;
-    border-radius: 8px;
+    /* border-radius: 8px; */
+    border-radius: 20px;
     background-color: #fff;
     /* width: 100%; */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
     /* table-layout: fixed; */
+    padding-bottom: 6px;
 }
 
 table.new__sales__table .sales__row__header th {
@@ -157,9 +160,11 @@ td.td-counter {
     table.new__sales__table tbody tr {
         background-color: #fff;
         border-spacing: 0;
-        border-radius: 8px;
+        /* border-radius: 8px; */
+        border-radius: 20px;
         /* width: 100%; */
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
 
         /* grid-template-columns: 100%; */
         display: grid;
@@ -184,12 +189,13 @@ td.td-counter {
         margin-left: -8px;
         width: calc(100% + 16px);
         padding: 7px 6px 2px 3px;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
 
         border-bottom-style: solid;
-        border-bottom-width: 2.4px;
+        border-bottom-width: 1px;
         border-bottom-color: var(--mui-palette-divider);
+        border-bottom-color: var(--mui-palette-background-level1, #fafafa);
 
         background-color: var(--mui-palette-background-level1, #fafafa);
         /* background-color: var(--mui-palette-neutral-softBg); */
@@ -247,7 +253,7 @@ td.td-counter {
         width: 100%;
     }
     td.td-sum.td-sum-gross {
-        border-radius: 0 0 6px 6px;
+        border-radius: 0 0 12.5px 12.5px;
     }
 
     /* style sales item header */
@@ -287,9 +293,9 @@ td.td-counter {
 
 /* sales item header container - mobi  */
 .item-header-container {
-    color: var(--mui-palette-neutral-600);
-    color: var(--mui-palette-primary-900);
-    font-weight: 500;
+    color: var(--mui-palette-neutral-900);
+    /* color: var(--mui-palette-primary-900); */
+    font-weight: 400;
 
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     text-transform: uppercase;
@@ -307,4 +313,8 @@ td.td-counter {
     /* text-align: center; */
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.new__sales__table .td-sales-item-price span div {
+    padding-top: 2px;
 }

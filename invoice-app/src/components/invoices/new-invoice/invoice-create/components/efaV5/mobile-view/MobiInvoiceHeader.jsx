@@ -45,11 +45,15 @@ export default function MobiInvoiceHeader(props) {
                     display: "flex",
                     p: 0,
                     m: 0,
-                    bgcolor: "background.level1",
+                    backgroundColor:
+                        "var(--mui-palette-background-level1, #fafafa)",
                     width: "100%",
                     // borderTopLeftRadius: '15px',
                     // borderTopRightRadius: '15px'
-                    borderBottom: `2px solid ${theme.vars.palette.divider}`,
+                    // borderBottom: `2px solid ${theme.vars.palette.divider}`,
+                    borderBottom: "1px solid",
+                    borderBottomColor:
+                        "var(--mui-palette-background-level1, #fafafa)",
                 })}
             >
                 <Box sx={{ display: "flex", margin: "0 0 0 auto", px: 1 }}>
@@ -64,7 +68,8 @@ export default function MobiInvoiceHeader(props) {
                             alignItems: "flex-start",
                             textTransform: "uppercase",
                             transform: "scale(0.85)",
-                            color: "neutral.600",
+                            color: "text.secondary",
+                            fontWeight: "400",
                         }}
                     >
                         {translate(
@@ -76,7 +81,7 @@ export default function MobiInvoiceHeader(props) {
                         level="body3"
                         sx={{
                             fontWeight: "500",
-                            color: "text.secondary",
+                            color: "neutral.900",
                             transform: "scale(0.85)",
                             textAlign: "left",
                         }}
@@ -90,6 +95,7 @@ export default function MobiInvoiceHeader(props) {
                     px: 1,
                     py: 0,
                     "&.MuiCardContent-root": { paddingBottom: 1 },
+                    width: "100%",
                 }}
             >
                 <Separator />

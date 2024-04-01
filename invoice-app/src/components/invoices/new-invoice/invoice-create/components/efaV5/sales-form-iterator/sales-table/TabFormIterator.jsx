@@ -107,7 +107,7 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                             {data_table.fields
                                 .filter((item) => item.show)
                                 .map((item) => {
-                                    if (item.description === "Price")
+                                    if (item.description === "item_price")
                                         return (
                                             <th
                                                 class={
@@ -126,7 +126,7 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                                         <th
                                             class={item.class ? item.class : ""}
                                         >
-                                            {item.description}
+                                            {translate(item.label)}
                                         </th>
                                     );
                                 })}

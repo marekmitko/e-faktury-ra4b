@@ -26,7 +26,6 @@ import {
     Typography,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import ItemsRendererOption from "./subcomponents/ItemsRendererOption";
 import { red } from "@mui/material/colors";
 import { MyOutlinedBox } from "./subcomponents/MyLabelCustom";
 import { G_Path } from "../../../../constant";
@@ -37,6 +36,7 @@ import { ClientCreateModalButton } from "../../../../clients/components/subcompo
 import { CreateCustomerModal } from "../../../../clients/components/subcomponents/CreateCustomerModal";
 import { PersonalCardWrapper } from "../../../../reusable-components/wrapper/PersonalCardWrapper";
 import DataDetailsWrapper from "../../../../reusable-components/wrapper/components/DataDetailsWrapper";
+import { ItemsRendererOption } from "./subcomponents/ItemsRendererOption";
 
 const initStyle = {
     "& .MuiInputBase-root.MuiOutlinedInput-root": {

@@ -4,7 +4,7 @@ import Button from "@mui/joy/Button";
 import List from "@mui/joy/List";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
-import { Divider } from "@mui/joy";
+import Divider from "@mui/material/Divider";
 // export default function ExampleFilterStatusCheckbox() {
 
 export default function LabelOptionCard({ children, label }) {
@@ -16,6 +16,7 @@ export default function LabelOptionCard({ children, label }) {
                 borderRadius: 2,
                 // minWidth: "250px",
                 bgcolor: "background.body",
+                borderRadius: "20px",
             }}
         >
             <Typography

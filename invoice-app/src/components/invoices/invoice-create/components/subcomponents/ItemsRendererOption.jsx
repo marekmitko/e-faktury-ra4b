@@ -22,7 +22,7 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AvatarField from "../../../../../clients/visitors/Mobile/AvatarField";
 
-const ItemsRendererOption = () => {
+export const ItemsRendererOption = () => {
     const record = useRecordContext();
     const translate = useTranslate();
     return (
@@ -102,4 +102,85 @@ const ItemsRendererOption = () => {
     );
 };
 
-export default ItemsRendererOption;
+export const ShowDataCustomerModal = (props) => {
+    // const record = useRecordContext();
+    const { record, children } = props;
+    console.log("🕹🕹🕹", record);
+    const translate = useTranslate();
+    return (
+        <Card
+            sx={{
+                width: "auto",
+                backgroundColor: "transparent",
+                padding: 0,
+                boxShadow: "none",
+                alignItems: "flex-end",
+                display: "flex",
+                flexDirection: "column",
+            }}
+        >
+            <CardHeader
+                className="card-header"
+                sx={{
+                    maxWidth: "310px",
+                    color: "neutral.900",
+                    fontWeight: "800",
+                    pt: 1,
+                    pb: 0,
+                }}
+                // title={`${record.company} ${record.last_name}`}
+                title={
+                    <Typography
+                        sx={{
+                            color: "neutral.900",
+                            fontWeight: "400",
+                            // display: "inline-flex",
+                        }}
+                    >
+                        {`${record.company}`}
+                    </Typography>
+                }
+                subheader={
+                    <>
+                        <span>
+                            {translate(
+                                "resources.buyersEfaktury.list.mobile.no_org"
+                            )}
+                            &nbsp;
+                            <Typography
+                                sx={{
+                                    color: "primary.900",
+                                    display: "inline-flex",
+                                }}
+                            >
+                                {`${record.org_nr}`}
+                            </Typography>
+                        </span>
+                    </>
+                }
+                avatar={children}
+                // action={<EditButton sx={{ color: "primary.900" }} />}
+            />
+            <CardContent sx={{ pt: 0, my: 0, pb: 0 }}>
+                <Typography variant="body2" sx={{ p: 0, mb: -1.5 }}>
+                    <EmojiTransportationIcon
+                        sx={{
+                            color: "primary.900",
+                            width: "1.25rem",
+                            height: "1.25rem",
+                            pb: 0,
+                            mb: "-2px",
+                            // mb: -1,
+                        }}
+                    />
+                    &nbsp;
+                    <span>
+                        {record.address ? `${record.address}` : ""}
+                        ,&nbsp;
+                        {record.place ? `${record.place}` : ""}
+                    </span>
+                </Typography>
+            </CardContent>
+        </Card>
+    );
+};

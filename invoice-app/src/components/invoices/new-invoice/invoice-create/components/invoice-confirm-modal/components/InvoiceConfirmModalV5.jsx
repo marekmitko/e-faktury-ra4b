@@ -44,8 +44,31 @@ import { CreateInvoiceButtonV4 } from "./button/CreateInvoiceButtonV4";
 import { SvgIcon } from "@mui/joy";
 import { SalesInfoTableModal } from "./subcomponents/SalesInfoTableModal";
 import DateToString from "../../../efa-invoice-form/function/fnDateFormatOutputs";
-import { Hidden } from "@mui/material";
+import { Hidden, Avatar, SxProps } from "@mui/material";
+import ItemsRendererOption, {
+    ShowDataCustomerModal,
+} from "../../../../../invoice-create/components/subcomponents/ItemsRendererOption";
+
 const prefixObjectUser = createPrefixObjectKeys("buyer_");
+
+const ModalAvatarField = (props) => {
+    const { size = "25", sx, record } = props;
+
+    if (!record) return null;
+    return (
+        <Avatar
+            src={`${record.avatar}?size=${size}x${size}`}
+            style={{
+                width: parseInt(size, 8),
+                height: parseInt(size, 8),
+                color: "#fff",
+                fontSize: "1rem",
+            }}
+            sx={sx}
+            alt={`${record.company}`}
+        />
+    );
+};
 
 export default function InvoiceConfirmModalV5(props) {
     const { ConfirmIcon = ActionCheck } = props;
@@ -213,13 +236,16 @@ export default function InvoiceConfirmModalV5(props) {
                             invoiceNo={myData.preInvoiceId}
                         />
                         <Divider sx={{ p: 0.1, mx: -2, mt: -0.5 }} />
-                        <BuyerInfoShow
+                        <ShowDataCustomerModal record={db_buyer}>
+                            <ModalAvatarField record={db_buyer} />
+                        </ShowDataCustomerModal>
+                        {/* <BuyerInfoShow
                             buyerName={buyerCompany}
                             taxpayerId={buyerOrgNo}
                             labelTaxpayerId={translate(
                                 "myroot.form.invoiceConfirmModal.buyerInfoShow.labelTaxpayerId"
                             )}
-                        />
+                        /> */}
                         <SalesInfoTableModal rows={productsArr} />
                         {/* <Divider sx={{ p: 0.08, mb: 1, ml: "45%", mr: 0.05 }} /> */}
                         <div style={{ width: "100%" }}>

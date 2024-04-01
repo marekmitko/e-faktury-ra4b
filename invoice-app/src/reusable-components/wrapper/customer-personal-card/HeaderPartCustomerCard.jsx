@@ -51,35 +51,35 @@ export function HeaderPartCustomerCard(props) {
                     alignSelf: "center",
                 },
             }}
-            action={
-                buyerId === null ? (
-                    <Button
-                        disabled={buyerId ? false : true}
-                        sx={{ pr: 2 }}
-                        color="inherit"
-                        size="small"
-                        startIcon={
-                            <AddHomeWorkIcon fontSize="var(--icon-fontSize-md)" />
-                            // <CustomArrowRightIcon />
-                        }
-                    >
-                        Add
-                    </Button>
-                ) : (
-                    <Button
-                        disabled={buyerId ? false : true}
-                        sx={{ pr: 2 }}
-                        color="inherit"
-                        size="small"
-                        startIcon={
-                            <BorderColorRoundedIcon fontSize="var(--icon-fontSize-md)" />
-                            // <CustomArrowRightIcon />
-                        }
-                    >
-                        Edit
-                    </Button>
-                )
-            }
+            // action={
+            //     buyerId === null ? (
+            //         <Button
+            //             disabled={buyerId ? false : true}
+            //             sx={{ pr: 2 }}
+            //             color="inherit"
+            //             size="small"
+            //             startIcon={
+            //                 <AddHomeWorkIcon fontSize="var(--icon-fontSize-md)" />
+            //                 // <CustomArrowRightIcon />
+            //             }
+            //         >
+            //             Add
+            //         </Button>
+            //     ) : (
+            //         <Button
+            //             disabled={buyerId ? false : true}
+            //             sx={{ pr: 2 }}
+            //             color="inherit"
+            //             size="small"
+            //             startIcon={
+            //                 <BorderColorRoundedIcon fontSize="var(--icon-fontSize-md)" />
+            //                 // <CustomArrowRightIcon />
+            //             }
+            //         >
+            //             Edit
+            //         </Button>
+            //     )
+            // }
             title={
                 <AccentIconLabel
                     icon={<CustomerIcon />}

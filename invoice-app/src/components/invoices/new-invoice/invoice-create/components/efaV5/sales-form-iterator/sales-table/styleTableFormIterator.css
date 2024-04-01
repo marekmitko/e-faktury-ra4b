@@ -1,113 +1,113 @@
 .sales__table.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 table.sales__table {
-  border-spacing: 0;
-  border-radius: 6px;
-  background-color: #fff;
-  width: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  table-layout: fixed;
-  width: 100%;
+    border-spacing: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    table-layout: fixed;
+    width: 100%;
 }
 
 table.sales__table thead tr th {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
 table.sales__table tr th {
-  padding: 16px;
-  color: #5f5f5f;
-  font-size: 13px;
-  font-weight: 500;
+    padding: 16px;
+    color: #5f5f5f;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 table.sales__table td {
-  padding: 16px;
-  font-size: 14px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1200px) {
-  table.sales__table {
-    background-color: transparent;
-    box-shadow: none;
-  }
+    table.sales__table {
+        background-color: transparent;
+        box-shadow: none;
+    }
 
-  table.sales__table thead {
-    display: none;
-  }
+    table.sales__table thead {
+        display: none;
+    }
 
-  table.sales__table tr {
-    display: block;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-radius: 4px;
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  }
+    table.sales__table tr {
+        display: block;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
 
-  table.sales__table td {
-    border: 0;
-    padding-top: 0;
-    font-weight: bold;
-    white-space: nowrap;
-  }
+    table.sales__table td {
+        border: 0;
+        padding-top: 0;
+        font-weight: bold;
+        white-space: nowrap;
+    }
 
-  table.sales__table td:before {
-    /* content: attr(data-th) ": "; */
-    font-weight: normal;
-  }
+    table.sales__table td:before {
+        /* content: attr(data-th) ": "; */
+        font-weight: normal;
+    }
 
-  table.sales__table tr {
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-  }
+    table.sales__table tr {
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+    }
 }
 table.sales__table tr td {
-  padding: 8px 3px;
+    padding: 8px 3px;
 }
 
 .counter-td {
-  /* background-color: #fafafa; */
-  max-width: 10px;
-  width: 30px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    /* background-color: #fafafa; */
+    max-width: 10px;
+    width: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .counter-container {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 @media (max-width: 900px) {
-  table.sales__table tr {
-    /* grid-template-columns: 50% 50%; */
-  }
+    table.sales__table tr {
+        /* grid-template-columns: 50% 50%; */
+    }
 }
 
 @media (max-width: 599px) {
-  table.sales__table tr {
-    grid-template-columns: 100%;
-    margin-top: 0px;
-    padding-top: 0px;
-  }
-  table.sales__table tr.sales-item-row .counter-td {
-    border-bottom: 2px solid var(--mui-palette-divider);
-    padding: 10px;
-  }
+    table.sales__table tr {
+        grid-template-columns: 100%;
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    table.sales__table tr.sales-item-row .counter-td {
+        border-bottom: 2px solid var(--mui-palette-divider);
+        padding: 10px;
+    }
 
-  table.sales__table tr.sales-item-row .remove-button-container {
-    flex-shrink: 0;
-  }
-  table.sales__table tr.sales-item-row td {
-    padding: 0 8px;
-  }
+    table.sales__table tr.sales-item-row .remove-button-container {
+        flex-shrink: 0;
+    }
+    table.sales__table tr.sales-item-row td {
+        padding: 0 8px;
+    }
 }

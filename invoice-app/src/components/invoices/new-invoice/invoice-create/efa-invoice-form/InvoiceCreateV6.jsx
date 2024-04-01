@@ -263,29 +263,32 @@ const InvoiceCreateV6 = (props) => {
                                         columnSpacing={1}
                                         rowSpacing={1}
                                     >
+                                        {" "}
                                         <Grid2 xs={12}>
-                                            <Card
-                                                className="parsonal-card wrapper"
-                                                sx={(theme) => ({
-                                                    // ...styledCardActivated,
-                                                    // border: `1px solid ${theme.vars.palette.divider}`,
-                                                })}
+                                            <Grid2
+                                                xs={12}
+                                                sm={12}
+                                                md={6}
+                                                lg={6}
+                                                xl={6}
                                             >
-                                                {is900PX ? (
+                                                <Card
+                                                    className="parsonal-card wrapper"
+                                                    sx={(theme) => ({
+                                                        // ...styledCardActivated,
+                                                        // border: `1px solid ${theme.vars.palette.divider}`,
+                                                    })}
+                                                >
                                                     <MobiInvoiceHeader
                                                         invoiceId={invoiceId}
                                                     />
-                                                ) : (
-                                                    <InvoiceHeader
-                                                        invoiceId={invoiceId}
-                                                    />
-                                                )}
-                                            </Card>
+                                                </Card>
+                                            </Grid2>
                                         </Grid2>
-                                        <Grid2 xs={12} sm={6} md={6}>
+                                        <Grid2 xs={12} sm={12} md={6}>
                                             <SellerFeatcherCard />
                                         </Grid2>
-                                        <Grid2 xs={12} sm={6} md={6}>
+                                        <Grid2 xs={12} sm={12} md={6}>
                                             <CustomerFullCard
                                                 source="buyer_id"
                                                 helperText={false}
@@ -295,8 +298,7 @@ const InvoiceCreateV6 = (props) => {
                                 </Box>
                                 <Separator />
                                 <SalesTableFormIterator />
-                                <SalesInfoTableV6 />
-                                {/* <SalesTableV5 /> */}
+                                <SalesInfoTableV6 /> 
                                 <AdditionalTableV5 />
 
                                 {/* validation             ....                .....  //toDo Warunki  */}

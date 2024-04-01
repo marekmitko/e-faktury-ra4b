@@ -29,7 +29,7 @@ import {
     useMediaQuery,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import ItemsRendererOption from "./subcomponents/ItemsRendererOption";
+import { ItemsRendererOption } from "./subcomponents/ItemsRendererOption";
 import { red } from "@mui/material/colors";
 import { MyOutlinedBox } from "./subcomponents/MyLabelCustom";
 import { G_Path, MQ_Breakpoint } from "../../../../constant";
@@ -53,7 +53,6 @@ const initStyle = {
             "& fieldset legend.css-14lo706": {
                 width: "calc(auto - 30px)",
                 marginLeft: "-40px!important",
-                backgroundColor: "red",
             },
         },
     },
@@ -133,17 +132,17 @@ export const CustomerFullCard = (props) => {
                             matchSuggestion={matchSuggestion}
                             // defaultValue="szuk"
 
-                            onCreate={() => {
-                                const newCategoryName = prompt(
-                                    "Enter a new category"
-                                );
-                                const newCategory = {
-                                    id: newCategoryName.toLowerCase(),
-                                    name: newCategoryName,
-                                };
-                                categories.push(newCategory);
-                                return newCategory;
-                            }}
+                            // onCreate={() => {
+                            //     const newCategoryName = prompt(
+                            //         "Enter a new category"
+                            //     );
+                            //     const newCategory = {
+                            //         id: newCategoryName.toLowerCase(),
+                            //         name: newCategoryName,
+                            //     };
+                            //     categories.push(newCategory);
+                            //     return newCategory;
+                            // }}
                             helperText={helperText}
                             sx={sx}
                             fullWidth

@@ -124,6 +124,10 @@ export const AdditionalTableV5 = (props) => {
                                                         md: "220px",
                                                         lg: "220px",
                                                     },
+                                                    boxShadow:
+                                                        "0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06)",
+                                                    borderRadius: "20px",
+                                                    mx: "1px",
                                                 }}
                                             >
                                                 {/* <JoyNoteboxV2 sxCSS={{   order: { xs: 1, sm: 1, md: -1, lg: -1 } , boxShadow: 1 }} /> */}
@@ -184,6 +188,10 @@ export const AdditionalTableV5 = (props) => {
                                                         md: "200px",
                                                         lg: "200px",
                                                     },
+                                                    boxShadow:
+                                                        "0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06)",
+                                                    borderRadius: "20px",
+                                                    mx: "1px",
                                                 }}
                                             >
                                                 <LabelOptionCard

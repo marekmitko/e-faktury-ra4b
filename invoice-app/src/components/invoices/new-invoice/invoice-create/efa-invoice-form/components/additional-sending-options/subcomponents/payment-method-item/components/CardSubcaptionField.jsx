@@ -77,10 +77,8 @@ export default function CardSubcaptionField({ watchName, label, show }) {
                             // bgcolor: 'transparent',
 
                             // borderBottomLeftRadius: 'calc(15px - var(--variant-borderWidth, 0px))',
-                            borderBottomLeftRadius:
-                                "calc(8px - var(--variant-borderWidth, 0px))",
-                            borderBottomRightRadius:
-                                "calc(8px - var(--variant-borderWidth, 0px))",
+                            borderBottomLeftRadius: "12.5px",
+                            borderBottomRightRadius: "12.5px",
                         }}
                     >
                         {/* <Grid container spacing={0.5}  alignItems="flex-end" > */}

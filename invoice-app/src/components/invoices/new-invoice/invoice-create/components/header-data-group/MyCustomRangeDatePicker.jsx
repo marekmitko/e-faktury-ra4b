@@ -145,6 +145,7 @@ const MyCustomRangeDatePicker = ({
             {/* <Box sx={{ width: '100%' }}> */}
 
             <Box
+                className="date-picker-header"
                 sx={{
                     gap: 1,
                     display: "flex",

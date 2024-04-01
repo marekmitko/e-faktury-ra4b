@@ -327,6 +327,30 @@ export const pl = {
         },
         e_faktury: {
             create: {
+                sales_form_iterator: {
+                    sales_table: {
+                        header: {
+                            item_id: "",
+                            item_no: "",
+                            item_name: "Przedmiot sprzedaży",
+                            item_type: "Typ",
+                            item_tax: "VAT",
+                            item_qty: "Ilość",
+                            item_price: "Cena",
+                            item_sum_net: "Suma netto: ",
+                            item_sum_gross: "Suma brutto: ",
+                            item_remove: "",
+                            itemGrossPrice: "brutto",
+                            itemNetPrice: "netto",
+                            switch_net_price: "Netto",
+                            switch_gross_price: "Brutto",
+                            sumPrice: "Suma",
+                            price_gross: "Gross",
+                            price_net: "Netto",
+                            switch_price_label: "Cena",
+                        },
+                    },
+                },
                 label: {
                     invoice_no: "Faktura nr: ",
                     date_payment_label: "Termin płatności",
