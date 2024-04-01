@@ -104,10 +104,10 @@ export function TogglePrice({ state, setState, prefix, netLabel, grossLabel }) {
                             >
                                 {state
                                     ? translate(
-                                          `${translate_prefix}.${netLabel}`
+                                          `${translate_prefix}.${grossLabel}`
                                       )
                                     : translate(
-                                          `${translate_prefix}.${grossLabel}`
+                                          `${translate_prefix}.${netLabel}`
                                       )}
                             </i>
                         </StyledTableCellClasses>
