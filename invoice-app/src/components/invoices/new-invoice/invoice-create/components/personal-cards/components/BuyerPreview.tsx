@@ -35,11 +35,11 @@ const BuyerPreview = <RecordType extends RaRecord = any>({
             <SimpleShowLayout record={data}>
                 <SubHeaderBuyer />
                 {/* <AddressDetailsBuyer prefixFirstRow="ul. " capitionLabel={translate('myroot.form.label.header.address')}   /> */}
-                <ContactDetailsBuyer
+                {/* <ContactDetailsBuyer
                     capitionLabel={translate(
                         "myroot.form.label.header.contact"
                     )}
-                />
+                /> */}
             </SimpleShowLayout>
         </ResourceContextProvider>
     );

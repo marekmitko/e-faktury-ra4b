@@ -59,7 +59,7 @@ export default function MainPanel() {
                     <TotalProfit
                         sx={{ height: "100%" }}
                         value="$15k"
-                        label="resources.dashboard.label.card_info.profi"
+                        label="resources.dashboard.label.card_info.profit"
                     />
                 </Grid>
                 <Grid lg={8} xs={12}>

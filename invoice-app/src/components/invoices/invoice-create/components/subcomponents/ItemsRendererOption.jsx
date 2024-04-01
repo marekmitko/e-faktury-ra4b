@@ -26,7 +26,14 @@ const ItemsRendererOption = () => {
     const record = useRecordContext();
     const translate = useTranslate();
     return (
-        <Card sx={{ background: "transparent", width: "100%", padding: 0 }}>
+        <Card
+            sx={{
+                width: "100%",
+                padding: 0,
+                boxShadow:
+                    "0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06)",
+            }}
+        >
             <CardHeader
                 className="card-header"
                 sx={{
@@ -36,14 +43,32 @@ const ItemsRendererOption = () => {
                     pb: 0,
                 }}
                 // title={`${record.company} ${record.last_name}`}
-                title={`${record.company}`}
+                title={
+                    <Typography
+                        sx={{
+                            color: "neutral.900",
+                            fontWeight: "400",
+                            // display: "inline-flex",
+                        }}
+                    >
+                        {`${record.company}`}
+                    </Typography>
+                }
                 subheader={
                     <>
                         <span>
                             {translate(
                                 "resources.buyersEfaktury.list.mobile.no_org"
                             )}
-                            &nbsp;{`${record.org_nr}`}
+                            &nbsp;
+                            <Typography
+                                sx={{
+                                    color: "primary.900",
+                                    display: "inline-flex",
+                                }}
+                            >
+                                {`${record.org_nr}`}
+                            </Typography>
                         </span>
                     </>
                 }

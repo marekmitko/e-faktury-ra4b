@@ -152,6 +152,7 @@ export const pl = {
                 },
                 header: {
                     show: "Pokaż",
+                    hidden: "Ukryj",
                     buyerCardHeader_supporting_text: "Podaj nabywcę",
                     newInvoice: "Nowa faktura",
                     prefixInovoiceNo: "nr:",
@@ -334,7 +335,7 @@ export const pl = {
                     checkbox_inv_email: "Wysłać na adres e-mail",
                     checkbox_ehf: "EHF Faktura",
                     payment_method_date: "Płatność do:",
-                    account_number: "Nr. konta:",
+                    account_number: "Nr konta:",
                     payment_date_placeholder: "DD-MM-RRRR",
                     customer_autocomplete: "Szukaj Klienta",
                 },

@@ -1,19 +1,19 @@
 import * as React from "react";
 import "../../../../../style/styleInvoiceInfoModal.css";
+import "./styles/styleInvoiceCreate.css";
 import { useEffect, useState, useCallback, Fragment } from "react";
 import { G_Path } from "../../../../../constant";
 //Om NewImport
 import { styled } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
+import SellerIcon from "@mui/icons-material/Store";
 import Tab, { tabClasses } from "@mui/joy/Tab";
-import { Card, Box, useMediaQuery, Typography } from "@mui/material";
+import { Card, Box, useMediaQuery, Container } from "@mui/material";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { InvoiceCreateToolbar } from "./desktop/subcomponents/InvoiceCreateToolbar";
-import PersonSearchIcon from "@mui/icons-material/PersonSearch";
-
 import {
     useTranslate,
     RecordContextProvider,
@@ -23,15 +23,13 @@ import {
     useNotify,
     FormGroupsProvider,
     useAugmentedForm,
-    ReferenceInput,
-    AutocompleteInput,
 } from "react-admin";
 
 import {
     transformArrayProducts,
     createPrefixObjectKeys,
 } from "../../../../../db/fnInvoiceForm";
-import { user_db } from "./bin2/defaultValuesInvoice";
+import { user_db } from "./defaultValuesInvoice";
 import InvoiceShowModal, {
     InvoiceShowModal2,
 } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
@@ -43,13 +41,9 @@ import { onSubmitModal } from "./function/onSubmitModal";
 import InvoiceConfirmModalV3 from "../invoice-confirm-modal/components/InvoiceConfirmModalV3";
 import { productOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
 import Header from "./desktop/invoice-ehf-box/invoice-headers";
-// import { CancelCreationButton } from '../components/invoice-confirm-modal/components/button/CancelCreationButton';
-// import { CreateInvoiceButton } from '../components/invoice-confirm-modal/components/button/CreateInvoiceButton';
 import InvoiceCreationFormToolbar from "../components/toolbar/InvoiceCreationFormToolbar";
 import InvoiceConfirmModalV5 from "../components/invoice-confirm-modal/components/InvoiceConfirmModalV5";
 import CreateInvoiceFormPageTitle from "../components/invoice-form-title/CreateInvoiceFormPageTitle";
-// import { StyledTableCellClasses } from './components/new-sales-table/components/sales-table-header/components/styledHeaderCellClasses';
-import { SalesTableV5 } from "../components/efaV5/SalesTableV5";
 import { AdditionalTableV5 } from "../components/efaV5/AdditionalTableV5";
 import { MQ_isMedium } from "./components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
 import { RaJoyPriceInput } from "../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput";
@@ -62,6 +56,10 @@ import { SalesInfoTableV6 } from "../components/efaV5/SalesInfoTableV6";
 import MyCustomRangeDatePicker from "../components/header-data-group/MyCustomRangeDatePicker";
 import DateToString from "./function/fnDateFormatOutputs";
 import { CustomerAutoInput } from "../../../invoice-create/components/CustomerAutoInput";
+import { PersonalCardWrapper } from "../../../../../reusable-components/wrapper/PersonalCardWrapper";
+import SellerFeatcherCard from "./personal-cards/card-profile/SellerFeatcherCard";
+import { CustomerAutoInputCard } from "../../../invoice-create/components/CustomerAutoInputCard";
+import { CustomerFullCard } from "../../../invoice-create/components/CustomerFullCard";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -132,7 +130,7 @@ const InvoiceCreateV6 = (props) => {
             date_submit: dv_dateSubmit,
             date_payment: dv_datePayment,
             preInvoiceId: invoiceId,
-            buyer_id: "",
+            buyer_id: null,
             payment_form: false,
             ehf: 0,
             // buyer_ref: "ass",
@@ -254,7 +252,8 @@ const InvoiceCreateV6 = (props) => {
                             {/* //Om */}
                             {/* <Container fixed //maxWidth="sm" 
                                 component="main" sx={{ width: '100%'}}> */}
-                            <Fragment>
+
+                            <Container maxWidth="xl" sx={{ py: "48px" }}>
                                 <Box sx={{ width: "100%" }}>
                                     <Grid2
                                         container
@@ -280,13 +279,13 @@ const InvoiceCreateV6 = (props) => {
                                             </Card>
                                         </Grid2>
                                         <Grid2 xs={12} sm={6} md={6}>
-                                            <SellerCompanyCard
-                                                resourcePath="data_user"
-                                                userId="user_1"
-                                            />
+                                            <SellerFeatcherCard />
                                         </Grid2>
                                         <Grid2 xs={12} sm={6} md={6}>
-                                            <CustomerAutoInput source="buyer_id" />
+                                            <CustomerFullCard
+                                                source="buyer_id"
+                                                helperText={false}
+                                            />
                                         </Grid2>
                                     </Grid2>
                                 </Box>
@@ -295,10 +294,10 @@ const InvoiceCreateV6 = (props) => {
                                 <SalesInfoTableV6 />
                                 {/* <SalesTableV5 /> */}
                                 <AdditionalTableV5 />
-                            </Fragment>
-                            {/* </Container> */}
-                            {/* //Om */}
-                            {/* <Container maxWidth="xl" component="main">
+
+                                {/* </Container> */}
+                                {/* //Om */}
+                                {/* <Container maxWidth="xl" component="main">
                                 <Grid
                                     container
                                     spacing={1}
@@ -323,41 +322,42 @@ const InvoiceCreateV6 = (props) => {
                                     )}
                                 </Grid>
                             </Container> */}
-                            {/* validation             ....                .....  //toDo Warunki  */}
-                            {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
-                            <div
-                                style={{ margin: "auto", padding: 0 }} // className={SalesFormIteratorClasses.clear}
-                            >
-                                {/* {!disabled && !(disableAdd && (disableClear || disableRemove)) && ( */}
-                                <Box>
-                                    {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
-                                    <Box
-                                        sx={{
-                                            pt: 2,
-                                            mb: 9,
-                                            // px: { xs: 4, sm: 8, md: 10, lg: 10 },  // className={SalesFormIteratorClasses.clear}
-                                            alignItems: "flex-end",
-                                        }}
-                                    >
-                                        <InvoiceCreationFormToolbar>
-                                            {/* <hr/> */}
-                                            <InvoiceConfirmModalV5
-                                                methods={methods} //setOpen={setOpen} open={open}
-                                                onChange={(data) => {
-                                                    // tutaj mógłbym poprosić o invoiceId z serwera
-                                                    console.info(
-                                                        "🟢🟢🟢ModalInput Change",
-                                                        data
-                                                    );
-                                                }}
-                                            />
-                                        </InvoiceCreationFormToolbar>
+                                {/* validation             ....                .....  //toDo Warunki  */}
+                                {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
+                                <div
+                                    style={{ margin: "auto", padding: 0 }} // className={SalesFormIteratorClasses.clear}
+                                >
+                                    {/* {!disabled && !(disableAdd && (disableClear || disableRemove)) && ( */}
+                                    <Box>
+                                        {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
+                                        <Box
+                                            sx={{
+                                                pt: 2,
+                                                mb: 9,
+                                                // px: { xs: 4, sm: 8, md: 10, lg: 10 },  // className={SalesFormIteratorClasses.clear}
+                                                alignItems: "flex-end",
+                                            }}
+                                        >
+                                            <InvoiceCreationFormToolbar>
+                                                {/* <hr/> */}
+                                                <InvoiceConfirmModalV5
+                                                    methods={methods} //setOpen={setOpen} open={open}
+                                                    onChange={(data) => {
+                                                        // tutaj mógłbym poprosić o invoiceId z serwera
+                                                        console.info(
+                                                            "🟢🟢🟢ModalInput Change",
+                                                            data
+                                                        );
+                                                    }}
+                                                />
+                                            </InvoiceCreationFormToolbar>
+                                        </Box>
+                                        {/* )} */}
                                     </Box>
                                     {/* )} */}
-                                </Box>
-                                {/* )} */}
-                            </div>
-                            {/* //*edu   <input   value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"    /> */}
+                                </div>
+                                {/* //*edu   <input   value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"    /> */}
+                            </Container>
                         </form>
                     </FormGroupsProvider>
                 </FormProvider>

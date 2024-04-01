@@ -68,7 +68,6 @@ export const InputTextSelectedTd = ({
     } = useInput(props);
     const { name } = field;
     // const options = props.choiceOptions;
-    console.log("inputprops", props);
     return (
         <td className={`${className ? className : ""}`}>
             <Box sx={{ ...sx }}>

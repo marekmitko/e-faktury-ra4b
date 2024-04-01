@@ -35,6 +35,8 @@ import { CreateClientModal } from "../../../../clients/components/xCreateClientM
 import { ClientCreateButton } from "../../new-invoice/invoice-create/efa-invoice-form/personal-cards/show/buyer-invoice-form/create-client-subform/ClientCreateButton";
 import { ClientCreateModalButton } from "../../../../clients/components/subcomponents/ClientCreateModalButton";
 import { CreateCustomerModal } from "../../../../clients/components/subcomponents/CreateCustomerModal";
+import { PersonalCardWrapper } from "../../../../reusable-components/wrapper/PersonalCardWrapper";
+import DataDetailsWrapper from "../../../../reusable-components/wrapper/components/DataDetailsWrapper";
 
 const initStyle = {
     "& .MuiInputBase-root.MuiOutlinedInput-root": {
@@ -61,7 +63,7 @@ const matchSuggestion = (filter, choice) => {
         choice.org_nr.toLowerCase().includes(filter.toLowerCase())
     );
 };
-export const CustomerAutoInput = (props) => {
+export const CustomerAutoInputCard = (props) => {
     const record = useRecordContext(props);
     if (!record || !props.source) {
         return null;
@@ -72,6 +74,36 @@ export const CustomerAutoInput = (props) => {
         { name: "Tech", id: "tech" },
         { name: "Lifestyle", id: "lifestyle" },
     ];
+    const { firstname, lastname, phone, email, zip_code, place, address } =
+        record;
+    const CustomerCardContent = () => (
+        <>
+            <DataDetailsWrapper capitionLabel="dsad">
+                <>
+                    {firstname && lastname ? `${firstname} ${lastname}` : ""}
+                    <br />
+                    {phone ? phone : ""}
+                    <br />
+                    {email ? email : ""}
+                </>
+            </DataDetailsWrapper>
+
+            <DataDetailsWrapper capitionLabel="adres">
+                {/* {prefixFirstRow ? prefixFirstRow : ""}{" "} */}
+                <>
+                    {address ? address : ""}
+                    <br />
+                    {zip_code ? zip_code : ""} {place ? place : ""}
+                    <br />
+                    {/* {prefixThirdRow && thirdRow
+                                ? prefixThirdRow
+                                : ""}{" "}
+                            {thirdRow ? thirdRow : ""} */}
+                </>
+            </DataDetailsWrapper>
+        </>
+    );
+
     return (
         <>
             <ReferenceInput
@@ -80,38 +112,43 @@ export const CustomerAutoInput = (props) => {
                 reference={G_Path.customers}
                 enableGetChoices={({ q }) => q && q.length >= 3}
             >
-                <AutocompleteInput
-                    // create={<CreateClientModal />}
-                    // create={<ClientCreateModalButton />}
-                    create={<CreateCustomerModal />}
-                    // create={<ClientCreateButton />}
-                    className="autocomplete-input-customers"
-                    source="buyer_id"
-                    variant="outlined"
-                    // choices={choices}
-                    label={
-                        <CustomerAutoLabel
-                            label={`resources.${G_Path.invoices}.create.label.customer_autocomplete`}
-                        />
-                    }
-                    optionText={optionText}
-                    inputText={inputText}
-                    matchSuggestion={matchSuggestion}
-                    // defaultValue="szuk"
+                <PersonalCardWrapper cardContent={<CustomerCardContent />}>
+                    {firstname}
+                    <AutocompleteInput
+                        // create={<CreateClientModal />}
+                        // create={<ClientCreateModalButton />}
+                        create={<CreateCustomerModal />}
+                        // create={<ClientCreateButton />}
+                        className="autocomplete-input-customers"
+                        source="buyer_id"
+                        variant="outlined"
+                        // choices={choices}
+                        label={
+                            <CustomerAutoLabel
+                                label={`resources.${G_Path.invoices}.create.label.customer_autocomplete`}
+                            />
+                        }
+                        optionText={optionText}
+                        inputText={inputText}
+                        matchSuggestion={matchSuggestion}
+                        // defaultValue="szuk"
 
-                    onCreate={() => {
-                        const newCategoryName = prompt("Enter a new category");
-                        const newCategory = {
-                            id: newCategoryName.toLowerCase(),
-                            name: newCategoryName,
-                        };
-                        categories.push(newCategory);
-                        return newCategory;
-                    }}
-                    helperText={helperText}
-                    sx={sx}
-                    fullWidth
-                />
+                        onCreate={() => {
+                            const newCategoryName = prompt(
+                                "Enter a new category"
+                            );
+                            const newCategory = {
+                                id: newCategoryName.toLowerCase(),
+                                name: newCategoryName,
+                            };
+                            categories.push(newCategory);
+                            return newCategory;
+                        }}
+                        helperText={helperText}
+                        sx={sx}
+                        fullWidth
+                    />
+                </PersonalCardWrapper>
             </ReferenceInput>
         </>
     );

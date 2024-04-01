@@ -6,15 +6,10 @@ import Divider from "@mui/joy/Divider";
 import CardContent from "@mui/joy/CardContent";
 import { useRecordContext } from "react-admin";
 
-export const AddressDetailsBuyer = ({
-    capitionLabel,
-    prefixFirstRow,
-    prefixThirdRow,
-    thirdRow,
-}) => {
+export const ContactDetailsBuyer = ({ capitionLabel, disabled }) => {
     const record = useRecordContext();
     if (!record) return null;
-    const { zip_code, place, address, id } = record;
+    const { phone, email, firstname, lastname, id } = record;
     return (
         <>
             {id && (
@@ -44,9 +39,9 @@ export const AddressDetailsBuyer = ({
                         }}
                     >
                         <Typography
-                            // level="body2"
+                            level="body2"
                             textColor="neutral.500"
-                            sx={{ fontWeight: "500", fontSize: "0.85rem" }}
+                            sx={{ fontWeight: "500" }}
                         >
                             {capitionLabel ? capitionLabel : ""}
                         </Typography>
@@ -57,17 +52,16 @@ export const AddressDetailsBuyer = ({
                             level="body1"
                             sx={{
                                 fontSize: "lg",
+                                color: disabled ? "neutral.600" : "",
                             }}
                         >
-                            {prefixFirstRow ? prefixFirstRow : ""}{" "}
-                            {address ? address : ""}
+                            {firstname && lastname
+                                ? `${firstname} ${lastname}`
+                                : ""}
                             <br />
-                            {zip_code ? zip_code : ""} {place ? place : ""}
+                            {phone ? phone : ""}
                             <br />
-                            {prefixThirdRow && thirdRow
-                                ? prefixThirdRow
-                                : ""}{" "}
-                            {thirdRow ? thirdRow : ""}
+                            {email ? email : ""}
                         </Typography>
                     </CardContent>
                 </Card>

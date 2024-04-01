@@ -12,48 +12,59 @@ export const ContactDetailsBuyer = ({ capitionLabel }) => {
     const { phone, email, firstname, lastname, id } = record;
     return (
         <>
-        { id &&
-            <Card
-                sx={{
-                // width: 300,
-                ml: 3,
-                mt: 1,
-                bgcolor: "initial",
-                boxShadow: "none",
-                border: "none",
-                "--Card-padding": "1px"
-                }}
-                orientation="horizontal"
-                variant="outlined"
-            >
-                <CardOverflow
-                variant="soft"
-                color="neutral"
-                sx={{
-                    px: 0.2,
-                    py: 1,
-                    writingMode: "vertical-rl",
-                    textAlign: "center",
-                    // letterSpacing: "-1px",
-                    textTransform: "uppercase"
-                }}
+            {id && (
+                <Card
+                    sx={{
+                        // width: 300,
+                        ml: 3,
+                        mt: 1,
+                        bgcolor: "initial",
+                        boxShadow: "none",
+                        border: "none",
+                        "--Card-padding": "1px",
+                    }}
+                    orientation="horizontal"
+                    variant="outlined"
                 >
-                    <Typography level="body2" textColor='neutral.500'
-                        sx={{ fontWeight: "500" }}
+                    <CardOverflow
+                        variant="soft"
+                        color="neutral"
+                        sx={{
+                            px: 0.2,
+                            py: 1,
+                            writingMode: "vertical-rl",
+                            textAlign: "center",
+                            // letterSpacing: "-1px",
+                            textTransform: "uppercase",
+                        }}
                     >
-                        { capitionLabel ? capitionLabel : "" }   
-                    </Typography>
-                </CardOverflow>
-                <Divider />
-                <CardContent sx={{ ml: 2, justifyContent: "center" }}>
-                <Typography level="body1" sx={{ fontSize: "lg" }}>
-                    { (firstname && lastname) ? `${firstname} ${lastname}` : "" }<br />
-                    { phone ? phone : "" }<br />
-                    { email ? email : "" }
-                </Typography>
-                </CardContent>
-            </Card>
-            }
+                        <Typography
+                            // level="body2"
+                            textColor="neutral.500"
+                            sx={{ fontWeight: "500", fontSize: "0.85rem" }}
+                        >
+                            {capitionLabel ? capitionLabel : ""}
+                        </Typography>
+                    </CardOverflow>
+                    <Divider />
+                    <CardContent sx={{ ml: 2, justifyContent: "center" }}>
+                        <Typography
+                            level="body1"
+                            sx={{
+                                fontSize: "lg",
+                            }}
+                        >
+                            {firstname && lastname
+                                ? `${firstname} ${lastname}`
+                                : ""}
+                            <br />
+                            {phone ? phone : ""}
+                            <br />
+                            {email ? email : ""}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            )}
         </>
     );
 };

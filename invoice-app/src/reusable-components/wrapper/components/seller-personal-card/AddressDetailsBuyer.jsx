@@ -11,6 +11,7 @@ export const AddressDetailsBuyer = ({
     prefixFirstRow,
     prefixThirdRow,
     thirdRow,
+    disabled,
 }) => {
     const record = useRecordContext();
     if (!record) return null;
@@ -44,9 +45,9 @@ export const AddressDetailsBuyer = ({
                         }}
                     >
                         <Typography
-                            // level="body2"
+                            level="body2"
                             textColor="neutral.500"
-                            sx={{ fontWeight: "500", fontSize: "0.85rem" }}
+                            sx={{ fontWeight: "500" }}
                         >
                             {capitionLabel ? capitionLabel : ""}
                         </Typography>
@@ -57,6 +58,7 @@ export const AddressDetailsBuyer = ({
                             level="body1"
                             sx={{
                                 fontSize: "lg",
+                                color: disabled ? "neutral.600" : "",
                             }}
                         >
                             {prefixFirstRow ? prefixFirstRow : ""}{" "}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Button,
     FormControl,
@@ -31,18 +31,17 @@ import ClientModalFormHeader from "../modal-subelements/ClientModalFormHeader";
 // import JoyModalOverflow from "@mui/joy/ModalOverflow";
 // export const ClientCreateButton = (props: any) => {
 export const CreateCustomerModal = (props) => {
-    const { filter, onCancel, onCreate } = useCreateSuggestionContext();
-    const [create] = useCreate();
-    const [value, setValue] = React.useState(filter || "");
-
-    const data_newCustomer = {};
-
     const { version, onChange, onClick } = props;
     const [open, setOpen] = React.useState(false); // Controls modal
 
-    const isSmall = useMediaQuery(MQ_Breakpoint.isSmall);
+    const { filter, onCancel, onCreate } = useCreateSuggestionContext();
+    const [create] = useCreate();
+    const [value, setValue] = React.useState(filter || "");
     const [layout, setLayout] = React.useState(undefined);
-    console.log("layoutUndefi🔰", layout);
+
+    const data_newCustomer = {};
+
+    const isSmall = useMediaQuery(MQ_Breakpoint.isSmall);
 
     if (isSmall && layout !== "fullscreen") setLayout("fullscreen");
     if (!isSmall && layout !== "center") setLayout("center");
@@ -71,9 +70,8 @@ export const CreateCustomerModal = (props) => {
         setOpen(true);
     };
 
-    const handleClose = (value) => {
+    const handleClose = () => {
         setOpen(false);
-        // setSelectedValue(value);
     };
     return (
         <>
@@ -96,6 +94,7 @@ export const CreateCustomerModal = (props) => {
             <JoyModal
                 className="modal-joy-wrapper"
                 open={!!layout}
+                // open={layout == undefined ? undefined : layout}
                 onClose={() => setLayout(undefined)}
             >
                 {/* <ModalCreateNewClient

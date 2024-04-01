@@ -6,14 +6,11 @@ import Divider from "@mui/joy/Divider";
 import CardContent from "@mui/joy/CardContent";
 import { useRecordContext } from "react-admin";
 
-export const AddressDetailsBuyer = ({
-    capitionLabel,
-    prefixFirstRow,
-    prefixThirdRow,
-    thirdRow,
-}) => {
-    const record = useRecordContext();
-    if (!record) return null;
+export const AddressDetailsBuyer = (props) => {
+    const { capitionLabel, prefixFirstRow, prefixThirdRow, thirdRow } = props;
+    const record = useRecordContext(props);
+    console.log("innner Data", record);
+    // if (!record) return null;
     const { zip_code, place, address, id } = record;
     return (
         <>
@@ -44,21 +41,16 @@ export const AddressDetailsBuyer = ({
                         }}
                     >
                         <Typography
-                            // level="body2"
+                            level="body2"
                             textColor="neutral.500"
-                            sx={{ fontWeight: "500", fontSize: "0.85rem" }}
+                            sx={{ fontWeight: "500" }}
                         >
                             {capitionLabel ? capitionLabel : ""}
                         </Typography>
                     </CardOverflow>
                     <Divider />
                     <CardContent sx={{ ml: 2, justifyContent: "center" }}>
-                        <Typography
-                            level="body1"
-                            sx={{
-                                fontSize: "lg",
-                            }}
-                        >
+                        <Typography level="body1" sx={{ fontSize: "lg" }}>
                             {prefixFirstRow ? prefixFirstRow : ""}{" "}
                             {address ? address : ""}
                             <br />

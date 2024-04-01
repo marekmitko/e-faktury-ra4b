@@ -3,16 +3,13 @@ import {
     Resource,
     // ListGuesser,
     ShowGuesser,
-    EditGuesser,
     CustomRoutes,
-    ListGuesser,
     Login,
 } from "react-admin";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { Route } from "react-router-dom";
 import { i18nProvider } from "./i18nProvider/i18nProvider";
 
-import simpleRestProvider from "ra-data-simple-rest";
 import jsonServerProvider from "ra-data-json-server";
 
 import { fetchJson } from "@app/config";
@@ -23,10 +20,6 @@ import invoices from "./components/invoices";
 
 import clients from "./clients";
 import new_invoices from "./invoices";
-import salesitem from "./components/sale-item";
-import MyAdmin from "./components/admin";
-import AppAdmin from "./components/admin/AppAdmin";
-import MyProfile from "./components/admin/users";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import { CssVarsProvider } from "@mui/joy/styles";
@@ -42,8 +35,6 @@ import { G_Path } from "./constant";
 import AdminProfileEdit from "./users/new-profile/AdminProfileEdit";
 
 const hostname = window.location.hostname;
-// *see const dataProvider
-// const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson );
 const dbjsonProvider = jsonServerProvider(
     "http://" + hostname + ":5000",
     httpClient
@@ -126,16 +117,6 @@ function App(props) {
                     </CustomRoutes> */}
                 </CustomAdmin>
 
-                {/* <CssVarsProvider> */}
-                {/* <Resource name="dbclientlist" options={{ label: 'Visitor V5' }} label="Visitor V5" list={ListGuesser} create={VisitorCreate}/>   */}
-                {/* <Resource name='dbclientlist' options={{ label: 'Lista kontrahentów' }} label="Kontrahenci"  {...clients} create={VisitorCreate} />
-                    <Resource name='invoicesEfaktury' options={{ label: 'efaktury' }} label="efaktury"  
-                        list={FormsCreate} 
-                        edit={PostCreate}   
-                        show={ShowGuesser} 
-                        create={FormsCreate}  
-                        icon={AbcIcon}
-                    />  */}
                 {/* </CssVarsProvider> */}
                 {/* </AppAdmin> */}
                 {/* </MyAdmin> */}

@@ -83,13 +83,13 @@ const AdminProfileEdit = ({ ...props }) => {
     const resource = `${G_Path.profile.admin}`;
     const translate = useTranslate();
     const isSmall = useMediaQuery(`${MQ_Breakpoint.isSmall}`);
+
     return (
         <>
             <Edit
                 // actions={<AdminPEditActions />}
                 // mutationMode="optimistic"
                 redirect={false} // I don't need any redirection here, there's no list page
-                id={admin_id} //Tak naprawdę nie mam idprofilu, ponieważ przechowuję profil w pamięci lokalnej, a gdybym go miał (z bazy danych), mój interfejs API mógłby go nie ujawnić i po prostu oczekiwać, że żądanie ładowania ( GET) i aktualizacji ( POSTlub PATCH) zostanie wykonane na serwerze https://api.com/metrasa np. Oznacza to, że mogę przekazać to, co mi się podoba, my-profilenp.
                 basePath={basePath}
                 resource={resource}
                 title="resources.profile.admin.header.top_header"
@@ -119,6 +119,7 @@ const AdminProfileEdit = ({ ...props }) => {
                 // transform={transform}
                 // disableAuthentication={disableAuthentication}
                 {...props}
+                id={admin_id} //Tak naprawdę nie mam idprofilu, ponieważ przechowuję profil w pamięci lokalnej, a gdybym go miał (z bazy danych), mój interfejs API mógłby go nie ujawnić i po prostu oczekiwać, że żądanie ładowania ( GET) i aktualizacji ( POSTlub PATCH) zostanie wykonane na serwerze https://api.com/metrasa np. Oznacza to, że mogę przekazać to, co mi się podoba, my-profilenp.
             >
                 <SimpleForm
                     sx={{ pt: 0, mt: 0, maxWidth: 500 }}
