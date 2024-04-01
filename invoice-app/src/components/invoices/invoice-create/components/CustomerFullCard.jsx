@@ -105,6 +105,12 @@ export const CustomerFullCard = (props) => {
                         setOpen={setOpen}
                         layout={layout}
                         setLayout={setLayout}
+                    />{" "}
+                    <Divider
+                        sx={{
+                            borderColor:
+                                "var(--mui-palette-background-level1, #fafafa)",
+                        }}
                     />
                     <MainPartCustomerCard>
                         <AutocompleteInput

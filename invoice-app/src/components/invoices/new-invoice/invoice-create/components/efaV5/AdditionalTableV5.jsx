@@ -34,11 +34,17 @@ import { useFormContext } from "react-hook-form";
 import AdditionalSendOptionBox from "../../efa-invoice-form/components/additional-sending-options/AdditionalSendOptionBox";
 import LabelOptionCard from "../../efa-invoice-form/components/additional-sending-options/subcomponents/LabelOptionCard";
 import PaymentMethodRadioGroup from "../../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/PaymentMethodRadioGroup";
-import { DateInput, NumberInput, useTranslate } from "react-admin";
+import {
+    DateInput,
+    NumberInput,
+    ReferenceInput,
+    useTranslate,
+} from "react-admin";
 import CardSubcaption from "../../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/components/CardSubcaption";
 import CardSubcaptionV2 from "../../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/components/CardSubcaptionV2";
 import resource from "../../../../../../clients";
 import CardSubcaptionField from "../../efa-invoice-form/components/additional-sending-options/subcomponents/payment-method-item/components/CardSubcaptionField";
+import { G_Path } from "../../../../../../constant";
 
 export const AdditionalTableV5 = (props) => {
     const { register, control, getValues, setValue } = useFormContext();
@@ -102,12 +108,15 @@ export const AdditionalTableV5 = (props) => {
                                         >
                                             <JoyBox
                                                 sx={{
+                                                    // display: "flex",
+                                                    // alignItems: "stretch",
+                                                    // maxHeight: "164.41px",
                                                     flex: is650px
                                                         ? ""
                                                         : "1 160px",
                                                     maxWidth: {
-                                                        md: "30%",
-                                                        lg: "20%",
+                                                        md: "35%",
+                                                        lg: "25%",
                                                     },
                                                     minWidth: {
                                                         xs: "200px",
@@ -128,12 +137,22 @@ export const AdditionalTableV5 = (props) => {
                                                     />
                                                     <Box //sx={{ transform: 'scale(0.9)', }}
                                                     >
+                                                        {/* <ReferenceInput
+                                                            label={false}
+                                                            source="user_id"
+                                                            reference={
+                                                                G_Path.profile
+                                                                    .admin
+                                                            }
+                                                        > */}
                                                         <CardSubcaptionField
-                                                            watchName="user_account_number"
+                                                            watchName="user_noBank"
+                                                            show="user_noBank"
                                                             label={
                                                                 "resources.e_faktury.create.label.account_number"
                                                             }
                                                         />
+                                                        {/* </ReferenceInput> */}
                                                         {/* <CardSubcaption
                                                             name="date_payment"
                                                             label={

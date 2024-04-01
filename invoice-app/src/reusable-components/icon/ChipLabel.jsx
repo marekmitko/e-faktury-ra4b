@@ -90,11 +90,26 @@ export default function ChipLabel(props) {
                     color="text.secondary"
                     variant="overline"
                     sx={{
-                        color: disabled ? "neutral.600" : "primary.900",
-                        fontSize: "0.85rem",
-                        fontWeight: "400",
-                        letterSpacing: "-0.1px",
-                        marginTop: "-1.5px",
+                        // color: disabled ? "neutral.600" : "primary.900",
+                        // fontSize: "0.85rem",
+                        // fontWeight: "400",
+                        // letterSpacing: "-0.1px",
+                        // marginTop: "-1.5px",
+
+                        fontWeight: !disabled ? "500" : "400",
+
+                        fontSize: ".85rem",
+                        // letterSpacing: "-0.25px",
+                        letterSpacing: !disabled ? "-0.25px" : "-0.2px",
+                        textTransform: "uppercase",
+                        px: 1,
+                        borderRadius: 1,
+                        // color: "text.secondary",
+                        color: !disabled
+                            ? "primary.900" //"rgba(var(--mui-palette-primary-mainChannel) / 1)"
+                            : "neutral.500",
+                        bgcolor: "transparent",
+                        mt: -0.125,
                     }}
                 >
                     {/* {label ? translate(`${label}`) : "NR ORG.:"} */}

@@ -23,8 +23,9 @@ import {
 import PaymentDueDateField from "./PaymentDueDateField";
 import DateToString from "../../../../../function/fnDateFormatOutputs";
 
-export default function CardSubcaptionField({ watchName, label }) {
+export default function CardSubcaptionField({ watchName, label, show }) {
     const translate = useTranslate();
+    const record = useRecordContext();
     // const dateInputController = useController({
     //     name: `${mySource}`,
     //     defaultValue: "",
@@ -37,6 +38,9 @@ export default function CardSubcaptionField({ watchName, label }) {
     // } = useController({ name, defaultValue: "" });
     const valueShow = useWatch({ name: watchName });
 
+    console.log("RECORD USER ", record);
+    const { user_db } = record;
+
     return (
         <>
             <Box
@@ -48,7 +52,8 @@ export default function CardSubcaptionField({ watchName, label }) {
                 <Box
                     sx={{
                         p: 1,
-                        //  mt: 1,
+                        pb: 0,
+                        mt: "5.62px",
                     }}
                 >
                     {/* <Grid container spacing={1}> */}
@@ -61,9 +66,10 @@ export default function CardSubcaptionField({ watchName, label }) {
                             justifyContent: "flex-end",
                             display: "flex",
                             p: "var(--Card-padding)",
-                            // gap: 1.5,
-                            // pb: 1,
-                            mb: -1,
+                            // pb: 0,
+                            // // gap: 1.5,
+                            // // pb: 1,
+                            // mb: -1,
                             // --mui-palette-neutral-plainHoverBg:
                             bgcolor: "neutral.50",
                             opacity: 0.98,
@@ -85,15 +91,17 @@ export default function CardSubcaptionField({ watchName, label }) {
                                 display: "flex",
                                 p: 0.5,
                                 alignItems: "center",
-                                justifyContent: "center",
-                                flexFlow: "row nowrap",
+                                // justifyContent: "center",
+                                flexWrap: "wrap",
+                                flexDirection: "row",
                                 mr: 0.5,
+                                width: "100%",
                             }}
                         >
                             <Box
                                 sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
+                                    display: "inline",
+                                    // flexDirection: "column",
                                 }}
                             >
                                 <Chip
@@ -114,10 +122,19 @@ export default function CardSubcaptionField({ watchName, label }) {
                                     {label ? translate(label) : ""}
                                 </Chip>
                             </Box>
-                            <Box sx={{ width: "100%", mr: -0.25 }}>
+                            <Box
+                                sx={
+                                    {
+                                        // width: "auto",
+                                        // mr: -0.25,
+                                        // minWidth: "200px",
+                                        // display: "inline",
+                                        // flexWrap: "nowrap",
+                                    }
+                                }
+                            >
                                 {/* {valueShow ? } */}
                                 <Typography
-                                    fullWidth
                                     // level="body2"
                                     fontWeight="500"
                                     sx={{
@@ -134,7 +151,8 @@ export default function CardSubcaptionField({ watchName, label }) {
                                         mt: -0.125,
                                     }}
                                 >
-                                    {valueShow ? valueShow : ""}
+                                    {/* {valueShow ? valueShow : ""} */}
+                                    {record ? user_db[`${show}`] : ""}
                                 </Typography>
                                 {/* <Input
                                     // {...dateInputController.field}

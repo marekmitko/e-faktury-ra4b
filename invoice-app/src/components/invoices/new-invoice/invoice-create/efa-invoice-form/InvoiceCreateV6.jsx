@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../../../../style/styleInvoiceInfoModal.css";
 import "./styles/styleInvoiceCreate.css";
-import { useEffect, useState, useCallback, Fragment } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { G_Path } from "../../../../../constant";
 //Om NewImport
 import { styled } from "@mui/material/styles";
@@ -9,6 +9,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import SellerIcon from "@mui/icons-material/Store";
 import Tab, { tabClasses } from "@mui/joy/Tab";
 import { Card, Box, useMediaQuery, Container } from "@mui/material";
+import CardContent from "@mui/material/CardContent";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -185,6 +186,8 @@ const InvoiceCreateV6 = (props) => {
         phoneNumber: user_db.user_phone,
         email: user_db.user_email,
         account_number: user_db.account_number,
+        noBank: user_db.noBank,
+        user_id: user_db.id,
     };
     const translate = useTranslate();
     const isMedium = useMediaQuery(`${MQ_isMedium}`);
@@ -262,9 +265,10 @@ const InvoiceCreateV6 = (props) => {
                                     >
                                         <Grid2 xs={12}>
                                             <Card
+                                                className="parsonal-card wrapper"
                                                 sx={(theme) => ({
-                                                    ...styledCardActivated,
-                                                    border: `1px solid ${theme.vars.palette.divider}`,
+                                                    // ...styledCardActivated,
+                                                    // border: `1px solid ${theme.vars.palette.divider}`,
                                                 })}
                                             >
                                                 {is900PX ? (
@@ -295,33 +299,6 @@ const InvoiceCreateV6 = (props) => {
                                 {/* <SalesTableV5 /> */}
                                 <AdditionalTableV5 />
 
-                                {/* </Container> */}
-                                {/* //Om */}
-                                {/* <Container maxWidth="xl" component="main">
-                                <Grid
-                                    container
-                                    spacing={1}
-                                    justifyContent="center"
-                                    alignItems="flex-end"
-                                >
-                                    {!isHidden && (
-                                        <>
-                                            <Grid item xs={12} sm={12} md={12}>
-                                                <RaJoyPriceInput
-                                                    source="product_price_MuiTESTyy"
-                                                    sx={{
-                                                        gridArea: "name",
-                                                        width: "100%",
-                                                        // visibility: entryPriceIsGross ? 'hidden' : 'visible',
-                                                        // display: entryPriceIsGross ? 'hidden' : ''
-                                                    }}
-                                                    label="myroot.form.label.inputbox_itemrow.netItem"
-                                                />
-                                            </Grid>
-                                        </>
-                                    )}
-                                </Grid>
-                            </Container> */}
                                 {/* validation             ....                .....  //toDo Warunki  */}
                                 {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
                                 <div

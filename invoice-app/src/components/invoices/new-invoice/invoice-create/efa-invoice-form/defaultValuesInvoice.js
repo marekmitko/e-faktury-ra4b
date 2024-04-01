@@ -2,7 +2,7 @@ import { createPrefixObjectKeys } from "../../../../../db/fnInvoiceForm";
 
 // note user_konto_nr: 15032603596 kunde_nr: 271
 const user = {
-    id: "user_123",
+    id: "user2274",
     company: "Efremtid sp. zoo",
     firstname: "Aleksander",
     lastname: "Mariański",
@@ -15,6 +15,7 @@ const user = {
     org_nr: 13446789,
     phone: " 123 456 789",
     account_number: "27 1140 2004 0000 3002 0135 5387",
+    noBank: "72 1140 2004 0000 0000 0135 5345",
 };
 
 //* createDefalutValues */

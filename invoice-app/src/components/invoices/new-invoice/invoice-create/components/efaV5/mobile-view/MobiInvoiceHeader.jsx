@@ -11,6 +11,7 @@ import { func } from "prop-types";
 import DatePickerGroup from "../../header-data-group/DatePickerGroup";
 import { useTranslate } from "react-admin";
 import MyCustomRangeDatePicker from "../../header-data-group/MyCustomRangeDatePicker";
+import { CardContent } from "@mui/material";
 
 const Separator = () => <Box pt="0.5em" />;
 
@@ -20,6 +21,7 @@ export default function MobiInvoiceHeader(props) {
         <Card
             sx={{
                 p: 0,
+                pb: 0,
                 m: 0,
                 borderBottomLeftRadius: 0,
                 borderBottomRightRadius: 0,
@@ -50,7 +52,7 @@ export default function MobiInvoiceHeader(props) {
                     borderBottom: `2px solid ${theme.vars.palette.divider}`,
                 })}
             >
-                <Box sx={{ display: "flex", margin: "0 0 0 auto" }}>
+                <Box sx={{ display: "flex", margin: "0 0 0 auto", px: 1 }}>
                     <Typography
                         component="span"
                         level="body2"
@@ -83,9 +85,16 @@ export default function MobiInvoiceHeader(props) {
                     </Typography>
                 </Box>
             </CardOverflow>
-            <Separator />
-            <DatePickerGroup />
-    
+            <CardContent
+                sx={{
+                    px: 1,
+                    py: 0,
+                    "&.MuiCardContent-root": { paddingBottom: 1 },
+                }}
+            >
+                <Separator />
+                <DatePickerGroup />
+            </CardContent>
         </Card>
     );
 }
