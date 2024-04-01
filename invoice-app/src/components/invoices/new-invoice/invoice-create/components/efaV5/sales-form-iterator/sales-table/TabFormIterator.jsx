@@ -119,6 +119,9 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                                                         entryPriceIsGross,
                                                         setEntryPriceOnGross,
                                                     }}
+                                                    prefix="switch_price_label"
+                                                    netLabel="switch_net_price"
+                                                    grossLabel="switch_gross_price"
                                                 />
                                             </th>
                                         );
@@ -178,7 +181,17 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                                                 )}
                                                 // visibility={isMedium ? "collapse" : "hidden"}
                                                 display={isMedium ? "" : "none"}
-                                            />
+                                            >
+                                                <SwitchNetOrGross
+                                                    {...{
+                                                        entryPriceIsGross,
+                                                        setEntryPriceOnGross,
+                                                    }}
+                                                    prefix="switch_price_label"
+                                                    netLabel="switch_net_price"
+                                                    grossLabel="switch_gross_price"
+                                                />
+                                            </MobileCounterTd>
                                             <td
                                                 class="td-counter"
                                                 style={{

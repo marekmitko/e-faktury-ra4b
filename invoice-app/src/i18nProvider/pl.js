@@ -348,6 +348,7 @@ export const pl = {
                             price_gross: "Gross",
                             price_net: "Netto",
                             switch_price_label: "Cena",
+                            switch_price_change: "Wprowadź",
                         },
                     },
                 },

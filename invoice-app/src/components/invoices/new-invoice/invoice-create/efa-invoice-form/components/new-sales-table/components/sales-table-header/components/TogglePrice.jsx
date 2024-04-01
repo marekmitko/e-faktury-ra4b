@@ -57,7 +57,7 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
     },
 }));
 
-export function TogglePrice({ state, setState }) {
+export function TogglePrice({ state, setState, prefix, netLabel, grossLabel }) {
     const translate = useTranslate();
 
     // BUG -> wyniesc do góry
@@ -91,11 +91,10 @@ export function TogglePrice({ state, setState }) {
                                 paddingRight: "25px",
                                 color: "#5f5f5f",
                                 fontSize: "13px",
+                                fontWeight: "500",
                             }}
                         >
-                            {translate(
-                                `${translate_prefix}.switch_price_label`
-                            )}
+                            {translate(`${translate_prefix}.${prefix}`)}
                             &nbsp;
                             <i
                                 style={{
@@ -105,10 +104,10 @@ export function TogglePrice({ state, setState }) {
                             >
                                 {state
                                     ? translate(
-                                          `${translate_prefix}.switch_gross_price`
+                                          `${translate_prefix}.${netLabel}`
                                       )
                                     : translate(
-                                          `${translate_prefix}.switch_net_price`
+                                          `${translate_prefix}.${grossLabel}`
                                       )}
                             </i>
                         </StyledTableCellClasses>

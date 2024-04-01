@@ -1,8 +1,11 @@
 import { any } from "prop-types";
 import * as React from "react";
 
+import { Card, Box, useMediaQuery, Container } from "@mui/material";
+
 export const MobileCounterTd = (props) => {
-    const { indexChip, removeButton, itemName, display, visibility } = props;
+    const { indexChip, removeButton, itemName, display, visibility, children } =
+        props;
     return (
         <td
             class="counter-td"
@@ -13,6 +16,9 @@ export const MobileCounterTd = (props) => {
                 <div class="item-header-container">
                     <span>{itemName}</span>
                 </div>
+                <Box className="item-switch-container">
+                    <div>{children}</div>
+                </Box>
                 <div class="item-remove-button-container">{removeButton}</div>
             </div>
         </td>
