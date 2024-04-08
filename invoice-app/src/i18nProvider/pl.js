@@ -26,7 +26,7 @@ export const pl = {
         validation: {
             required_field: "Pole wymagane",
             mva_num_org: "Podaj numer MVA",
-            zipcode_regex: "Użyj formatu: 0000",
+            zipcode_regex: "Format: 0000",
             email_regex: "Podaj poprawny adres email",
             num_org_minValue: "Podaj poprawdną wartość",
         },
@@ -365,6 +365,12 @@ export const pl = {
                     customer_autocomplete: "Szukaj Klienta",
                 },
                 modal: {
+                    label: {
+                        button: {
+                            save: "Zapisz",
+                            cancel: "Anuluj",
+                        },
+                    },
                     table_info: {
                         quantity_unit_name: " szt.",
                         header: {

@@ -1,11 +1,11 @@
-import { Toolbar, SaveButton, useRedirect, useNotify } from 'react-admin';
-import { useFormContext } from 'react-hook-form';
+import { Toolbar, useNotify } from "react-admin";
+import { useFormContext } from "react-hook-form";
 
-export default function InvoiceCreationFormToolbar({children}) {
+export default function InvoiceCreationFormToolbar({ children }) {
     const { reset } = useFormContext();
     const notify = useNotify();
     return (
-        <Toolbar sx={{ gap: '10px', justifyContent: 'flex-end' }}>
+        <Toolbar sx={{ gap: "10px", justifyContent: "flex-end" }}>
             {/* <SaveButton  label="SaveTable" 
                 // form="new-invoice-form"
             />
@@ -20,8 +20,8 @@ export default function InvoiceCreationFormToolbar({children}) {
                 type="button"
                 variant="text"
             /> */}
-            
-            { children ? children : null }
+
+            {children ? children : null}
         </Toolbar>
     );
 }

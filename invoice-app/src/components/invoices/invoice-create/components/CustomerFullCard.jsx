@@ -1,45 +1,24 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+
 import Divider from "@mui/material/Divider";
 
 import {
     AutocompleteInput,
-    EditButton,
-    NumberField,
     ReferenceInput,
     useRecordContext,
-    useResourceDefinitions,
-    useResourceDefinition,
     useTranslate,
-    useResourceContext,
-    useChoicesContext,
 } from "react-admin";
-import AvatarField from "../../../../clients/visitors/Mobile/AvatarField";
-import {
-    Box,
-    CardHeader,
-    InputAdornment,
-    TextField,
-    Typography,
-    useMediaQuery,
-} from "@mui/material";
+
+import { useMediaQuery } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ItemsRendererOption } from "./subcomponents/ItemsRendererOption";
-import { red } from "@mui/material/colors";
-import { MyOutlinedBox } from "./subcomponents/MyLabelCustom";
+
 import { G_Path, MQ_Breakpoint } from "../../../../constant";
 import { CustomerAutoLabel } from "./subcomponents/CustomerAutoLabel";
-import { CreateClientModal } from "../../../../clients/components/xCreateClientModal";
-import { ClientCreateButton } from "../../new-invoice/invoice-create/efa-invoice-form/personal-cards/show/buyer-invoice-form/create-client-subform/ClientCreateButton";
-import { ClientCreateModalButton } from "../../../../clients/components/subcomponents/ClientCreateModalButton";
-import { CreateCustomerModal } from "../../../../clients/components/subcomponents/CreateCustomerModal";
+import { CreateCustomerModal } from "../../../../clients/create-customer-in-modal/CreateCustomerModal";
 import { PersonalCardWrapper } from "../../../../reusable-components/wrapper/PersonalCardWrapper";
-import DataDetailsWrapper from "../../../../reusable-components/wrapper/components/DataDetailsWrapper";
 import { CollapsePartCustomerCard } from "../../../../reusable-components/wrapper/customer-personal-card/CollapsePartCustomerCard";
 import { MainPartCustomerCard } from "../../../../reusable-components/wrapper/customer-personal-card/MainPartCustomerCard";
 import SelectedChoiceContext from "../../new-invoice/invoice-create/efa-invoice-form/personal-cards/card-profile/SelectedChoiceContext";
@@ -57,11 +36,6 @@ const initStyle = {
         },
     },
 };
-
-const choices = [
-    { id: 123, first_name: "Leo", last_name: "Tolstoi", avatar: "/penguin" },
-    { id: 456, first_name: "Jane", last_name: "Austen", avatar: "/panda" },
-];
 
 const optionText = <ItemsRendererOption />;
 // const inputText = (choice) => `${choice.company} ${choice.org_nr}`;
@@ -90,8 +64,14 @@ export const CustomerFullCard = (props) => {
     }
     const { source, helperText, sx } = props;
 
+    // const hendlerClosedList = (value) => {
+    //     return false;
+    // };
+
     return (
         <>
+            {/* <input type="button" onChange={hendlerClosedList(true)} /> */}
+
             <ReferenceInput
                 label={false}
                 source={source}
@@ -104,7 +84,7 @@ export const CustomerFullCard = (props) => {
                         setOpen={setOpen}
                         layout={layout}
                         setLayout={setLayout}
-                    />{" "}
+                    />
                     <Divider
                         sx={{
                             borderColor:
@@ -114,9 +94,22 @@ export const CustomerFullCard = (props) => {
                     <MainPartCustomerCard>
                         <AutocompleteInput
                             // size="large"
-                            // create={<CreateClientModal />}
-                            // create={<ClientCreateModalButton />}
-                            create={<CreateCustomerModal />}
+                            create={
+                                <CreateCustomerModal />
+                                // <CreateCategory />
+                            }
+                            // onCreate={(filter) => {
+                            //     const newCategoryName = window.prompt(
+                            //         "Enter a new category",
+                            //         filter
+                            //     );
+                            //     const newCategory = {
+                            //         id: categories.length + 1,
+                            //         name: newCategoryName,
+                            //     };
+                            //     categories.push(newCategory);
+                            //     return newCategory;
+                            // }}
                             // create={<ClientCreateButton />}
                             className="autocomplete-input-customers"
                             source="buyer_id"
@@ -132,17 +125,6 @@ export const CustomerFullCard = (props) => {
                             matchSuggestion={matchSuggestion}
                             // defaultValue="szuk"
 
-                            // onCreate={() => {
-                            //     const newCategoryName = prompt(
-                            //         "Enter a new category"
-                            //     );
-                            //     const newCategory = {
-                            //         id: newCategoryName.toLowerCase(),
-                            //         name: newCategoryName,
-                            //     };
-                            //     categories.push(newCategory);
-                            //     return newCategory;
-                            // }}
                             helperText={helperText}
                             sx={sx}
                             fullWidth

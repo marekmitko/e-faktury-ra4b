@@ -49,24 +49,31 @@ const SelectBtn = ({ namefield, choiceOptions }) => (
     </Box>
 );
 
-export const InputTextSelectedTd = ({
-    choiceOptions,
-    sx,
-    InputProps,
-    label,
-    placeholder,
-    variant,
-    className,
-    ...props
-}) => {
+export const InputTextSelectedTd = (props) => {
+    const {
+        choiceOptions,
+        sx,
+        InputProps,
+        label,
+        placeholder,
+        variant,
+        className,
+        // onChange,
+        // onBlur,
+        // source,
+        // onFocus,
+        ...rest
+    } = props;
     const translate = useTranslate();
+
     const {
         field,
         fieldState: { isTouched, invalid, error },
         formState: { isSubmitted },
-        // isRequired
+        isRequired,
+        // } = useInput({ onChange, onBlur, source, onFocus, ...rest });
     } = useInput(props);
-    const { name } = field;
+
     // const options = props.choiceOptions;
     return (
         <td className={`${className ? className : ""}`}>
@@ -74,9 +81,11 @@ export const InputTextSelectedTd = ({
                 <TextField
                     sx={{ width: "100%" }}
                     {...field}
+                    // inputRef={field.ref}
+                    // name={source}
                     variant={variant ? variant : "outlined"}
                     label={translate(label)}
-                    required
+                    required={isRequired}
                     placeholder={translate(placeholder)}
                     autoComplete="off"
                     InputProps={{
@@ -89,7 +98,7 @@ export const InputTextSelectedTd = ({
                             >
                                 {
                                     <SelectBtn
-                                        namefield={field ? name : ""}
+                                        namefield={field ? field.name : ""}
                                         choiceOptions={
                                             choiceOptions ? choiceOptions : {}
                                         }
@@ -102,7 +111,7 @@ export const InputTextSelectedTd = ({
                         // }
                         // value: 'fs'
                     }}
-                    {...props}
+                    {...rest}
                 />
 
                 {/* <CustomInputSelected id="component-outlined"

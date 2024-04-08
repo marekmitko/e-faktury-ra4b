@@ -1,18 +1,9 @@
 import * as React from "react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
-
-import { Box, Card, Divider, Typography } from "@mui/joy";
-import { jsx, css } from "@emotion/react";
-import {
-    ArrayInput,
-    Create,
-    NumberInput,
-    Form,
-    Title,
-    useTranslate,
-    TextInput,
-} from "react-admin";
+import { Box } from "@mui/joy";
+// import { jsx, css } from "@emotion/react";
+import { ArrayInput, NumberInput, useTranslate } from "react-admin";
 
 import {
     MQ_isMinimal,
@@ -32,13 +23,24 @@ import {
 import MobiRemoveItemButton from "../sales-item/mobile-view/components/sales-item-row/subcomponent/MobiRemoveItemButton";
 import { InputTextSelectedTd } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelectedTd";
 import SelectInputItemTd from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItemTd";
-import { useFormContext } from "react-hook-form";
 
-const InputNumberTd = (props) => (
-    <td className="input-quantity-sales-item">
-        <NumberInput fullWidth step={1} {...props} />
-    </td>
-);
+const number =
+    (message = "Must be a number") =>
+    (value) =>
+        value && isNaN(Number(value)) ? message : undefined;
+
+const required = () => (value) =>
+    value ? undefined : "myroot.validation.required";
+
+const validateQuantityNumber = [required(), number()];
+//
+const InputNumberTd = (props) => {
+    return (
+        <td className="input-quantity-sales-item">
+            <NumberInput fullWidth step={1} {...props} />
+        </td>
+    );
+};
 
 const CustomNumberTd = (props) => {
     const { source, isMedium, entryPriceIsGross, defaultValue } = props;
@@ -77,20 +79,10 @@ const CustomNumberTd = (props) => {
 };
 
 const nameSalesIteratorForm = "products";
-const required = () => (value) =>
-    value ? undefined : "myroot.validation.required";
+
 // https://blog.logrocket.com/guide-mui-grid-system/
 
 const OptionRecord = { choice_product_list: productOptions };
-
-const sxTotalCard = {
-    // flexDirection: { xs: 'row', md: 'column' },
-    // minWidth: 'auto',
-    gap: 1, //maxHeight : 'min-content'
-};
-
-// export const globalArea = `" name name name type type count tax price price "`;
-export const globalArea = `"name type count tax price "`;
 
 const vumberInputValidation = [required()];
 
@@ -119,9 +111,9 @@ export const SalesTableFormIterator = (props) => {
             <ArrayInput
                 className="array"
                 label={false}
-                // source={nameSalesIteratorForm}
-                source="products"
+                source={`${nameSalesIteratorForm}`}
                 fullWidth
+                {...props}
             >
                 <TabFormIterator
                     //   getItemLabel={(index) => <ItemIndexChip index={++index} />}
@@ -168,23 +160,11 @@ export const SalesTableFormIterator = (props) => {
                         label="resources.e_faktury.list.input.placeholder.sales_item_tax"
                     />
                     <InputNumberTd
-                        defaultValue="3"
                         source="product_count"
                         label="myroot.form.label.inputbox_itemrow.qtyItem"
-                        helperText={false}
-                        sx={{
-                            mt: 1,
-                            //   mt: 0.5,
-                            //gridArea: 'count', '& input': { mr: -1 }, mt: 1,
-                            // '& .MuiInputLabel-root': {
-                            //     textTransform: 'uppercase',
-                            //     letterSpacing: '-0.5px',
-                            //     marginRight: '-50px',
-                            //     backgroundColor: 'inherit',
-                            //     pr: -1
-                            //     // transform: 'scale(0.95)'
-                            // }
-                        }}
+                        // helperText={false}
+                        validate={validateQuantityNumber}
+                        sx={{ mt: 1 }}
                         variant={isMedium ? "outlined" : "outlined"}
                         placeholder={translate(
                             "resources.e_faktury.list.input.placeholder.sales_item_qty"

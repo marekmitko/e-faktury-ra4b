@@ -24,6 +24,10 @@ import {
     useNotify,
     FormGroupsProvider,
     useAugmentedForm,
+    ArrayInput,
+    SimpleFormIterator,
+    TextInput,
+    NumberInput,
 } from "react-admin";
 
 import {
@@ -109,7 +113,7 @@ const InvoiceCreateV6 = (props) => {
     // const { form, formHandleSubmit } = useAugmentedForm(props);
 
     // const { id } = props;
-    console.log("ID💨💨", props.id);
+    // console.log("ID💨💨", props.id);
 
     const invoiceId = getInvoiceId();
     const navigate = useNavigate();
@@ -123,7 +127,6 @@ const InvoiceCreateV6 = (props) => {
         choice_product_list: productOptions,
     };
     // { handleSubmit, reset, control }
-    console.log("_Path", G_Path);
     const methods = useForm({
         defaultValues: {
             date_of_creation: dv_dateOfCreation,
@@ -143,12 +146,12 @@ const InvoiceCreateV6 = (props) => {
             ...user_db,
             products: [
                 {
-                    product_name: "",
+                    product_name: null,
                     product_count: 1,
                     product_price_brutto: null,
                     product_price_netto: null,
                     product_vat: null,
-                    product_type: "",
+                    product_type: null,
                 },
             ],
         },
@@ -297,28 +300,23 @@ const InvoiceCreateV6 = (props) => {
                                     </Grid2>
                                 </Box>
                                 <Separator />
+
                                 <SalesTableFormIterator />
-                                <SalesInfoTableV6 /> 
+                                <SalesInfoTableV6 />
                                 <AdditionalTableV5 />
 
-                                {/* validation             ....                .....  //toDo Warunki  */}
-                                {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
                                 <div
                                     style={{ margin: "auto", padding: 0 }} // className={SalesFormIteratorClasses.clear}
                                 >
-                                    {/* {!disabled && !(disableAdd && (disableClear || disableRemove)) && ( */}
                                     <Box>
-                                        {/* {fields.length > 0 && !disableClear && !disableRemove && ( */}
                                         <Box
                                             sx={{
                                                 pt: 2,
                                                 mb: 9,
-                                                // px: { xs: 4, sm: 8, md: 10, lg: 10 },  // className={SalesFormIteratorClasses.clear}
                                                 alignItems: "flex-end",
                                             }}
                                         >
                                             <InvoiceCreationFormToolbar>
-                                                {/* <hr/> */}
                                                 <InvoiceConfirmModalV5
                                                     methods={methods} //setOpen={setOpen} open={open}
                                                     onChange={(data) => {
@@ -335,7 +333,6 @@ const InvoiceCreateV6 = (props) => {
                                     </Box>
                                     {/* )} */}
                                 </div>
-                                {/* //*edu   <input   value="createItem"     style={{ backgroundColor: "white", color: "blue" }}      type="submit"    /> */}
                             </Container>
                         </form>
                     </FormGroupsProvider>

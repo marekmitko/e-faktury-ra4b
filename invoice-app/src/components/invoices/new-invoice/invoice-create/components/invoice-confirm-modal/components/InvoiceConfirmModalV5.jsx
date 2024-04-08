@@ -3,12 +3,8 @@ import Box from "@mui/joy/Box";
 import JoyButton from "@mui/joy/Button";
 import JoyModal from "@mui/joy/Modal";
 import JoyModalClose from "@mui/joy/ModalClose";
-import JoyTypography from "@mui/joy/Typography";
 import JoySheet from "@mui/joy/Sheet";
-import JoyCard from "@mui/joy/Card";
-import { useFormContext, useForm } from "react-hook-form";
-// import { transformArrayProducts, createPrefixObjectKeys } from '../../../../../../db/fnInvoiceForm';
-// import MyButton from '@mui/material/Button';
+import { useFormContext } from "react-hook-form";
 import {
     useCreate,
     useGetOne,
@@ -17,16 +13,10 @@ import {
     useRedirect,
     useTranslate,
 } from "react-admin";
-import BuyerModalShow from "./bin/BuyerModalShow";
-import MuiButton from "@mui/material/Button";
 import JoyModalDialog from "@mui/joy/ModalDialog";
 import { ModalTitle } from "./subcomponents/ModalTitle";
 import Divider from "@mui/joy/Divider";
-import NoteAddIcon from "@mui/icons-material/NoteAdd";
-import BuyerInfoShow from "./subcomponents/BuyerInfoShow";
-import TotalSalesInfoShow from "./subcomponents/TotalSalesInfoShow";
 import PaymentInfoShow from "./subcomponents/PaymentInfoShow";
-import { ModalToolbar } from "./subcomponents/ModalToolbar";
 import ActionCheck from "@mui/icons-material/CheckCircle";
 import { useNavigate } from "react-router";
 import {
@@ -39,7 +29,6 @@ import {
     createPrefixObjectKeys,
     transformArrayProducts,
 } from "../../../../../../../db/fnInvoiceForm";
-import { CreateInvoiceButton } from "./button/CreateInvoiceButton";
 import { CreateInvoiceButtonV4 } from "./button/CreateInvoiceButtonV4";
 import { SvgIcon } from "@mui/joy";
 import { SalesInfoTableModal } from "./subcomponents/SalesInfoTableModal";
@@ -91,9 +80,6 @@ export default function InvoiceConfirmModalV5(props) {
         buyer_error,
     } = useGetOne("buyersEfaktury", { id: myData.buyer_id });
 
-    console.log("my_data_buyer2💙", { ...db_buyer });
-    console.log("dataForm🔰", { ...myData });
-
     const buyerCompany = myData.buyer_id ? db_buyer.company : "";
     const buyerOrgNo = myData.buyer_id ? db_buyer.org_nr : "";
 
@@ -116,7 +102,6 @@ export default function InvoiceConfirmModalV5(props) {
         //     ...dataBuerTransform,
         // };
 
-        console.log("💫db_buyer", db_buyer);
         delete db_buyer["buyer_id"];
         const dataBuerTransform = myData ? prefixObjectUser(db_buyer) : {};
         delete dataBuerTransform["buyer_buyer_id"];
@@ -145,7 +130,6 @@ export default function InvoiceConfirmModalV5(props) {
         // const lda = () => {
         create(
             "e_faktury",
-            // "issuedInvoices_list",
             { data: output },
             {
                 onSuccess: () => {
@@ -181,8 +165,8 @@ export default function InvoiceConfirmModalV5(props) {
                     "myroot.form.label.button.invoiceConfirmModal.createInvoice"
                 )}
             </JoyButton> */}
-            <CreateInvoiceButtonV4 onClick={() => showModal()} />{" "}
-            {/* //Om? toDo server connection & data transform  */}
+            <CreateInvoiceButtonV4 onClick={() => showModal()} />
+
             <JoyModal
                 aria-labelledby="modal-title"
                 aria-describedby="modal-desc"
@@ -275,7 +259,7 @@ export default function InvoiceConfirmModalV5(props) {
                                 pt: 2,
                             }}
                         >
-                            <Box
+                            {/* <Box
                                 sx={{
                                     display: "flex",
                                     gap: 1,
@@ -283,51 +267,7 @@ export default function InvoiceConfirmModalV5(props) {
                                     p: 0,
                                     m: 0,
                                 }}
-                            >
-                                <JoyButton
-                                    variant="solid"
-                                    startDecorator={
-                                        <SvgIcon fontSize="md">
-                                            <ConfirmIcon />
-                                        </SvgIcon>
-                                    }
-                                    // type="submit" form="new-invoice-form" // Om? toDo nie wiem czy mi to potrzebne
-                                    onClick={handleIssueConfirmedInvoice}
-                                    sx={{
-                                        textTransform: "uppercase",
-                                        backgroundColor: "primary.900",
-                                    }}
-                                >
-                                    {translate(
-                                        "myroot.form.label.button.invoiceConfirmModal.issueConfirmedInvoice"
-                                    )}
-                                </JoyButton>
-                                <Divider
-                                    orientation="vertical"
-                                    sx={{ mx: 1, px: 0.05 }}
-                                />
-                                <JoyButton
-                                    onClick={handleIssueConfirmedInvoice}
-                                    variant="plain" //color="primary.800"
-                                    // startDecorator={<NoteAddIcon />}
-                                    // onClick={hideModal}
-                                    type="button" // Om? toDo tu był problem
-                                    form="new-invoice-form"
-                                    startDecorator={
-                                        <SvgIcon fontSize="md">
-                                            <ConfirmIcon />{" "}
-                                        </SvgIcon>
-                                    }
-                                    sx={{
-                                        textTransform: "uppercase",
-                                        color: "primary.900",
-                                    }}
-                                >
-                                    {translate(
-                                        "myroot.form.label.button.invoiceConfirmModal.issueConfirmedInvoiceAndAddNew"
-                                    )}
-                                </JoyButton>
-                            </Box>
+                            > */}
                             <JoyButton
                                 variant="plain"
                                 color="danger"
@@ -338,6 +278,50 @@ export default function InvoiceConfirmModalV5(props) {
                                     "myroot.form.label.button.invoiceConfirmModal.cancelIssueInvoice"
                                 )}
                             </JoyButton>
+                            <Divider
+                                orientation="vertical"
+                                sx={{ mx: 1, px: 0.05 }}
+                            />
+                            {/* <JoyButton
+                                    onClick={handleIssueConfirmedInvoice}
+                                    variant="plain" //color="primary.800"
+                                    // startDecorator={<NoteAddIcon />}
+                                    // onClick={hideModal}
+                                    type="button" // Om? toDo tu był problem
+                                    form="new-invoice-form"
+                                    startDecorator={
+                                        <SvgIcon fontSize="md">
+                                            <ConfirmIcon />
+                                        </SvgIcon>
+                                    }
+                                    sx={{
+                                        textTransform: "uppercase",
+                                        color: "primary.900",
+                                    }}
+                                >
+                                    {translate(
+                                        "myroot.form.label.button.invoiceConfirmModal.issueConfirmedInvoiceAndAddNew"
+                                    )}
+                                </JoyButton> */}
+                            <JoyButton
+                                variant="solid"
+                                startDecorator={
+                                    <SvgIcon fontSize="md">
+                                        <ConfirmIcon />
+                                    </SvgIcon>
+                                }
+                                // type="submit" form="new-invoice-form" // Om? toDo nie wiem czy mi to potrzebne
+                                onClick={handleIssueConfirmedInvoice}
+                                sx={{
+                                    textTransform: "uppercase",
+                                    backgroundColor: "primary.900",
+                                }}
+                            >
+                                {translate(
+                                    "myroot.form.label.button.invoiceConfirmModal.issueConfirmedInvoice"
+                                )}
+                            </JoyButton>
+                            {/* </Box> */}
                         </Box>
                     </JoyModalDialog>
                 </JoySheet>

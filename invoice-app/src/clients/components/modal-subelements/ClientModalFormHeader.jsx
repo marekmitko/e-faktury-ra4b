@@ -61,7 +61,6 @@ const ClientModalFormHeader = (props) => {
                         </Box>
                     )}
                 </CardContent>
-                <Divider inset="context" />
             </CardOverflow>
         </Box>
     );

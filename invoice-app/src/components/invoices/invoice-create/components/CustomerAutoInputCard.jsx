@@ -33,7 +33,7 @@ import { CustomerAutoLabel } from "./subcomponents/CustomerAutoLabel";
 import { CreateClientModal } from "../../../../clients/components/xCreateClientModal";
 import { ClientCreateButton } from "../../new-invoice/invoice-create/efa-invoice-form/personal-cards/show/buyer-invoice-form/create-client-subform/ClientCreateButton";
 import { ClientCreateModalButton } from "../../../../clients/components/subcomponents/ClientCreateModalButton";
-import { CreateCustomerModal } from "../../../../clients/components/subcomponents/CreateCustomerModal";
+import { CreateCustomerModal } from "../../../../clients/create-customer-in-modal/CreateCustomerModal";
 import { PersonalCardWrapper } from "../../../../reusable-components/wrapper/PersonalCardWrapper";
 import DataDetailsWrapper from "../../../../reusable-components/wrapper/components/DataDetailsWrapper";
 import { ItemsRendererOption } from "./subcomponents/ItemsRendererOption";
@@ -115,6 +115,7 @@ export const CustomerAutoInputCard = (props) => {
                 <PersonalCardWrapper cardContent={<CustomerCardContent />}>
                     {firstname}
                     <AutocompleteInput
+                        openOnFocus={false}
                         // create={<CreateClientModal />}
                         // create={<ClientCreateModalButton />}
                         create={<CreateCustomerModal />}
