@@ -8,25 +8,9 @@ import {
     getTotalTax,
 } from "./logic/getCostResult ";
 import { useFormContext, useWatch } from "react-hook-form";
-import { nameSalesIteratorForm } from "../../../mobile/spanning-sales-table/mobile-form-iterator/MobiForm";
-import {
-    CardContent,
-    Card,
-    Typography,
-    AspectRatio,
-    Box,
-    Chip,
-} from "@mui/joy";
-import { Paper } from "@mui/material";
-import { borderRadius } from "@mui/system";
-
-const locale = {
-    en: "en-US",
-    pl: "pl",
-};
-const currency = {
-    pl: "PLN",
-};
+// import { nameSalesIteratorForm } from "../../../mobile/spanning-sales-table/mobile-form-iterator/MobiForm";
+import { CardContent, Card, Typography, AspectRatio, Box } from "@mui/joy";
+const nameSalesIteratorForm = "products";
 
 export default function TotalCostCardV2(props) {
     const { currencySymbol, sxCSS } = props;

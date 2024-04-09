@@ -1,20 +1,16 @@
 import * as React from "react";
+import { useState, useCallback } from "react";
 import "../../../../../style/styleInvoiceInfoModal.css";
 import "./styles/styleInvoiceCreate.css";
-import { useEffect, useState, useCallback } from "react";
-import { G_Path } from "../../../../../constant";
 //Om NewImport
-import { styled } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import SellerIcon from "@mui/icons-material/Store";
-import Tab, { tabClasses } from "@mui/joy/Tab";
+// import SellerIcon from "@mui/icons-material/Store";
+// import Tab, { tabClasses } from "@mui/joy/Tab";
 import { Card, Box, useMediaQuery, Container } from "@mui/material";
-import CardContent from "@mui/material/CardContent";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import { useParams, useNavigate } from "react-router-dom";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { useForm, FormProvider } from "react-hook-form";
-import { InvoiceCreateToolbar } from "./desktop/subcomponents/InvoiceCreateToolbar";
+// import { InvoiceCreateToolbar } from "./desktop/subcomponents/InvoiceCreateToolbar";
 import {
     useTranslate,
     RecordContextProvider,
@@ -24,46 +20,40 @@ import {
     useNotify,
     FormGroupsProvider,
     useAugmentedForm,
-    ArrayInput,
-    SimpleFormIterator,
-    TextInput,
-    NumberInput,
 } from "react-admin";
 
-import {
-    transformArrayProducts,
-    createPrefixObjectKeys,
-} from "../../../../../db/fnInvoiceForm";
+// import {
+//     transformArrayProducts,
+//     createPrefixObjectKeys,
+// } from "../../../../../db/fnInvoiceForm";
 import { user_db } from "./defaultValuesInvoice";
-import InvoiceShowModal, {
-    InvoiceShowModal2,
-} from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
-import { ConfirmButton } from "../invoice-confirm-modal/efa-invoice-show/ConfirmButton";
-import { set } from "lodash";
+// import InvoiceShowModal, {
+//     InvoiceShowModal2,
+// } from "../invoice-confirm-modal/efa-invoice-show/InvoiceShowModal";
+// import { ConfirmButton } from "../invoice-confirm-modal/efa-invoice-show/ConfirmButton";
+// import { set } from "lodash";
 import dayjs from "dayjs";
-import { onSubmitModal } from "./function/onSubmitModal";
 // import { ConfirmCreateButton } from "../invoice-confirm-modal/ConfirmCreateButton";
-import InvoiceConfirmModalV3 from "../invoice-confirm-modal/components/InvoiceConfirmModalV3";
 import { productOptions } from "../invoice-form/subcomponents/sales-table/spanning-sales-table/item-sales-row/options_select_input";
-import Header from "./desktop/invoice-ehf-box/invoice-headers";
+// import Header from "./desktop/invoice-ehf-box/invoice-headers";
 import InvoiceCreationFormToolbar from "../components/toolbar/InvoiceCreationFormToolbar";
 import InvoiceConfirmModalV5 from "../components/invoice-confirm-modal/components/InvoiceConfirmModalV5";
 import CreateInvoiceFormPageTitle from "../components/invoice-form-title/CreateInvoiceFormPageTitle";
 import { AdditionalTableV5 } from "../components/efaV5/AdditionalTableV5";
 import { MQ_isMedium } from "./components/new-sales-table/components/sales-form-iterator/useSalesFormIteratorStyles";
-import { RaJoyPriceInput } from "../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput";
-import InvoiceHeader from "../components/efaV5/view/InvoiceHeader";
+// import { RaJoyPriceInput } from "../components/efaV5/sales-form-iterator/sales-item/mobile-view/components/joy/RaJoyPriceInput";
+// import InvoiceHeader from "../components/efaV5/view/InvoiceHeader";
 import MobiInvoiceHeader from "../components/efaV5/mobile-view/MobiInvoiceHeader";
-import ClientCompanyCard from "./personal-cards/efa-V5-company-card/components/ClientCompanyCard";
-import SellerCompanyCard from "./personal-cards/efa-V5-company-card/components/SellerCompanyCard";
+// import ClientCompanyCard from "./personal-cards/efa-V5-company-card/components/ClientCompanyCard";
+// import SellerCompanyCard from "./personal-cards/efa-V5-company-card/components/SellerCompanyCard";
 import { SalesTableFormIterator } from "../components/efaV5/sales-form-iterator/sales-table/NewSalesTableFormIterator";
 import { SalesInfoTableV6 } from "../components/efaV5/SalesInfoTableV6";
-import MyCustomRangeDatePicker from "../components/header-data-group/MyCustomRangeDatePicker";
-import DateToString from "./function/fnDateFormatOutputs";
-import { CustomerAutoInput } from "../../../invoice-create/components/CustomerAutoInput";
-import { PersonalCardWrapper } from "../../../../../reusable-components/wrapper/PersonalCardWrapper";
+// import MyCustomRangeDatePicker from "../components/header-data-group/MyCustomRangeDatePicker";
+// import DateToString from "./function/fnDateFormatOutputs";
+// import { CustomerAutoInput } from "../../../invoice-create/components/CustomerAutoInput";
+// import { PersonalCardWrapper } from "../../../../../reusable-components/wrapper/PersonalCardWrapper";
 import SellerFeatcherCard from "./personal-cards/card-profile/SellerFeatcherCard";
-import { CustomerAutoInputCard } from "../../../invoice-create/components/CustomerAutoInputCard";
+// import { CustomerAutoInputCard } from "../../../invoice-create/components/binCustomerAutoInputCard";
 import { CustomerFullCard } from "../../../invoice-create/components/CustomerFullCard";
 
 // const Item = styled(Paper)(({ theme }) => ({

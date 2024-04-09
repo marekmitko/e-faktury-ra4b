@@ -1,24 +1,20 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
+// import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-
 import Divider from "@mui/material/Divider";
-
 import {
     AutocompleteInput,
     ReferenceInput,
     useRecordContext,
     useTranslate,
 } from "react-admin";
-
 import { useMediaQuery } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+// import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ItemsRendererOption } from "./subcomponents/ItemsRendererOption";
-
 import { G_Path, MQ_Breakpoint } from "../../../../constant";
 import { CustomerAutoLabel } from "./subcomponents/CustomerAutoLabel";
 import { CreateCustomerModal } from "../../../../clients/create-customer-in-modal/CreateCustomerModal";
-import { PersonalCardWrapper } from "../../../../reusable-components/wrapper/PersonalCardWrapper";
+// import { PersonalCardWrapper } from "../../../../reusable-components/wrapper/PersonalCardWrapper";
 import { CollapsePartCustomerCard } from "../../../../reusable-components/wrapper/customer-personal-card/CollapsePartCustomerCard";
 import { MainPartCustomerCard } from "../../../../reusable-components/wrapper/customer-personal-card/MainPartCustomerCard";
 import SelectedChoiceContext from "../../new-invoice/invoice-create/efa-invoice-form/personal-cards/card-profile/SelectedChoiceContext";
