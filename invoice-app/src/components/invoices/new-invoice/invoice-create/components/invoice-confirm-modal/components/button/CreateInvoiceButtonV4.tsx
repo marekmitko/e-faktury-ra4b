@@ -1,16 +1,17 @@
 import * as React from "react";
 import JoyButton from "@mui/joy/Button";
 import { IconButtonWithTooltip, useTranslate } from "react-admin";
-import JoyChip from "@mui/joy/Chip";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+// import JoyChip from "@mui/joy/Chip";
+// import AddCircleIcon from "@mui/icons-material/AddCircle";
 import NoteAddOutlinedIcon from "@mui/icons-material/NoteAddOutlined";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import { useWatch } from "react-hook-form";
+// import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import { useFormState, useWatch } from "react-hook-form";
 // import EditNoteIcon from '@mui/icons-material/EditNote'; //toDo zrobić akutalizację do mui-v5
 //*
 
 export const CreateInvoiceButtonV4 = (props: any) => {
     const buyer_id = useWatch({ name: "buyer_id" });
+    const { isValid } = useFormState();
     const { onClick } = props;
     const translate = useTranslate();
     const [buttonState, setButtonState] = React.useState<{
@@ -37,14 +38,21 @@ export const CreateInvoiceButtonV4 = (props: any) => {
     const handleOnPrepared =
         (onClick: any) => (event: React.FormEvent<HTMLFormElement>) => {
             // event.preventDefault();
-            setButtonState((current) => ({ ...current, status: "loading" }));
+
+            setButtonState((current) => ({
+                ...current,
+                status: "loading",
+            }));
             try {
                 // Replace timeout with real backend operation
+
                 try {
-                    setTimeout(() => {
-                        setButtonState({ status: "compiled" });
-                        onClick(event);
-                    }, 1500);
+                    if (isValid) {
+                        setTimeout(() => {
+                            setButtonState({ status: "compiled" });
+                            onClick(event);
+                        }, 1500);
+                    } else setButtonState({ status: "failure" });
                     // throw new Error("oops");
                     //   } catch (ex) {
                     //     console.error("inner", ex.message);
@@ -69,7 +77,10 @@ export const CreateInvoiceButtonV4 = (props: any) => {
             {...props}
         > */}
             <JoyButton //toDo Add LoadingIcon - async
-                disabled={buyer_id === null ? true : false}
+                // disabled={buyer_id === null ? true : false}
+                disabled={buyer_id === null || buyer_id === undefined}
+                type="submit"
+                form="new-invoice-form"
                 // disabled={loading}
                 // onClick={handleConfirm}
                 // className={clsx('ra-confirm', {

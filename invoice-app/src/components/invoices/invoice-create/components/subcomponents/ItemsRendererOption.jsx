@@ -1,31 +1,31 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
+// import CardActions from "@mui/material/CardActions";
 import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import PersonSearchIcon from "@mui/icons-material/PersonSearch";
+// import AccountCircle from "@mui/icons-material/AccountCircle";
+// import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 
 import {
-    AutocompleteInput,
-    EditButton,
+    // AutocompleteInput,
+    // EditButton,
     NumberField,
     useRecordContext,
     useTranslate,
 } from "react-admin";
 import {
     CardHeader,
-    InputAdornment,
-    TextField,
+    // InputAdornment,
+    // TextField,
     Typography,
 } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+// import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AvatarField from "../../../../../clients/visitors/Mobile/AvatarField";
 
 export const ItemsRendererOption = () => {
     const record = useRecordContext();
     const translate = useTranslate();
-    return (
+    return record ? (
         <Card
             sx={{
                 width: "100%",
@@ -51,7 +51,7 @@ export const ItemsRendererOption = () => {
                             // display: "inline-flex",
                         }}
                     >
-                        {`${record.company}`}
+                        {record?.company ? `${record.company}` : ""}
                     </Typography>
                 }
                 subheader={
@@ -99,15 +99,17 @@ export const ItemsRendererOption = () => {
                 </Typography>
             </CardContent>
         </Card>
+    ) : (
+        ""
     );
 };
 
 export const ShowDataCustomerModal = (props) => {
     // const record = useRecordContext();
     const { record, children } = props;
-    console.log("🕹🕹🕹", record);
+    // console.log("🕹🕹🕹", record);
     const translate = useTranslate();
-    return (
+    return record ? (
         <Card
             sx={{
                 width: "auto",
@@ -137,7 +139,7 @@ export const ShowDataCustomerModal = (props) => {
                             // display: "inline-flex",
                         }}
                     >
-                        {`${record.company}`}
+                        {record?.company ? `${record.company}` : ""}
                     </Typography>
                 }
                 subheader={
@@ -153,12 +155,12 @@ export const ShowDataCustomerModal = (props) => {
                                     display: "inline-flex",
                                 }}
                             >
-                                {`${record.org_nr}`}
+                                {record?.org_nr ? `${record.org_nr}` : ""}
                             </Typography>
                         </span>
                     </>
                 }
-                avatar={children}
+                avatar={children ? children : ""}
                 // action={<EditButton sx={{ color: "primary.900" }} />}
             />
             <CardContent sx={{ pt: 0, my: 0, pb: 0 }}>
@@ -175,12 +177,14 @@ export const ShowDataCustomerModal = (props) => {
                     />
                     &nbsp;
                     <span>
-                        {record.address ? `${record.address}` : ""}
+                        {record?.address ? `${record.address}` : ""}
                         ,&nbsp;
-                        {record.place ? `${record.place}` : ""}
+                        {record?.place ? `${record.place}` : ""}
                     </span>
                 </Typography>
             </CardContent>
         </Card>
+    ) : (
+        ""
     );
 };

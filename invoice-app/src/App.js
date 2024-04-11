@@ -4,25 +4,25 @@ import {
     // ListGuesser,
     ShowGuesser,
     CustomRoutes,
-    Login,
+    // Login,
 } from "react-admin";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { Route } from "react-router-dom";
 import { i18nProvider } from "./i18nProvider/i18nProvider";
 
-import jsonServerProvider from "ra-data-json-server";
+// import jsonServerProvider from "ra-data-json-server";
 
-import { fetchJson } from "@app/config";
-import httpClient from "./config/providers/httpClient";
+// import { fetchJson } from "@app/config";
+// import httpClient from "./config/providers/httpClient";
 import mydbProvider from "./config/providers/dataProviderCustom";
 
 import invoices from "./components/invoices";
 
 import clients from "./clients";
 import new_invoices from "./invoices";
-import { ReactQueryDevtools } from "react-query/devtools";
+// import { ReactQueryDevtools } from "react-query/devtools";
 
-import { CssVarsProvider } from "@mui/joy/styles";
+// import { CssVarsProvider } from "@mui/joy/styles";
 
 import { EditSimpleList } from "./components/invoices/invoice-list/INVOICE-e-faktury/EditSimpleList";
 import CssVarJoyProvider from "./joy-theme-provider/JoyThemeProvider";
@@ -32,10 +32,10 @@ import { CustomAdmin } from "./Admin/CustoAdmin";
 import AdminProfileEdit from "./users/new-profile/AdminProfileEdit";
 
 const hostname = window.location.hostname;
-const dbjsonProvider = jsonServerProvider(
-    "http://" + hostname + ":5000",
-    httpClient
-);
+// const dbjsonProvider = jsonServerProvider(
+//     "http://" + hostname + ":5000",
+//     httpClient
+// );
 
 // const dbjsonProvider = jsonServerProvider('https://fantastic-pancake-5rw5gwvq4v5h774p-5000.app.github.dev', httpClient);
 // const dbjsonProvider = jsonServerProvider('https://studious-enigma-grg64gxq449cpvvp-5000.app.github.dev', httpClient);

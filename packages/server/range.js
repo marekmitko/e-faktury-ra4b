@@ -1,5 +1,5 @@
 module.exports = (req, res, next) => {
-    res.header("Access-Control-Expose-Headers","Content-Range")
-    res.header('Content-Range', 'posts 0-10/200')
-    next()
-  }
+    res.header("Access-Control-Expose-Headers", "Content-Range");
+    res.header("Content-Range", "e_faktury 0-10/200");
+    next();
+};

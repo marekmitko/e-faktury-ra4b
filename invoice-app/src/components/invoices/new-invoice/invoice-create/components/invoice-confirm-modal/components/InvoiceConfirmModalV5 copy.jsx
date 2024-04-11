@@ -64,9 +64,8 @@ export default function InvoiceConfirmModalV5(props) {
     const { ConfirmIcon = ActionCheck } = props;
     const { getValues } = useFormContext();
     const translate = useTranslate();
-    // const formState = useFormState();
-    // console.log("ERROR-❌1️⃣📌", formState);
-    const { isValid } = useFormState();
+    const formState = useFormState();
+    console.log("ERROR-❌1️⃣📌", formState);
 
     const [isModalVisible, setModalVisible] = React.useState(false);
 
@@ -87,9 +86,7 @@ export default function InvoiceConfirmModalV5(props) {
     const buyerCompany = myData.buyer_id ? db_buyer.company : "";
     const buyerOrgNo = myData.buyer_id ? db_buyer.org_nr : "";
 
-    const productsArr = dataForm?.products
-        ? transformArrayProducts(dataForm.products)
-        : "";
+    const productsArr = transformArrayProducts(dataForm.products);
 
     const notify = useNotify();
     // const notify = useNotifyIsFormInvalid();
@@ -134,20 +131,20 @@ export default function InvoiceConfirmModalV5(props) {
         delete output["dataBuyer"]; //Om? Czy to jest dobre - pierwszy raz się spotkałem
         delete output["preInvoiceId"];
 
-        // create(
-        //     "e_faktury",
-        //     { data: output },
-        //     {
-        //         onSuccess: () => {
-        //             // const invoice_id =
-        //             // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
-        //             // const record = useRecordContext
-        //             // navigate("/issuedInvoices_list");
-        //             navigate("/e_faktury");
-        //             notify("Twoja faktura została utworzona pomyślnie"); // Om? tu ma byc ten srednik?
-        //         },
-        //     }
-        // );
+        create(
+            "e_faktury",
+            { data: output },
+            {
+                onSuccess: () => {
+                    // const invoice_id =
+                    // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
+                    // const record = useRecordContext
+                    // navigate("/issuedInvoices_list");
+                    navigate("/e_faktury");
+                    notify("Twoja faktura została utworzona pomyślnie"); // Om? tu ma byc ten srednik?
+                },
+            }
+        );
     }; // Om? tu ma byc ten srednik?
     // };
     if (error) {
@@ -158,10 +155,6 @@ export default function InvoiceConfirmModalV5(props) {
     //*edu //toDo po cholere jest ten Callback i czy nie powinienem tutaj wszystkich zmiennych do tego opakować
     const totalNetCost = setTotalSumNetValue(myData.products);
     const totalGrossCost = setTotalSum(dataForm.products);
-
-    const handleShowModal = () => {
-        if (isValid) return showModal();
-    };
 
     return (
         <>
@@ -177,10 +170,7 @@ export default function InvoiceConfirmModalV5(props) {
                     "myroot.form.label.button.invoiceConfirmModal.createInvoice"
                 )} */}
             </JoyButton>
-            <CreateInvoiceButtonV4
-                // onClick={() => (isValid ? showModal() : "")}
-                onClick={handleShowModal}
-            />
+            <CreateInvoiceButtonV4 onClick={() => showModal()} />
 
             <JoyModal
                 aria-labelledby="modal-title"
@@ -244,8 +234,8 @@ export default function InvoiceConfirmModalV5(props) {
                                 "myroot.form.invoiceConfirmModal.buyerInfoShow.labelTaxpayerId"
                             )}
                         /> */}
-                        <SalesInfoTableModal rows={productsArr} />
-
+                        {/* <SalesInfoTableModal rows={productsArr} /> */}
+                        {/* <Divider sx={{ p: 0.08, mb: 1, ml: "45%", mr: 0.05 }} /> */}
                         <div style={{ width: "100%" }}>
                             <Box
                                 sx={{
@@ -290,7 +280,6 @@ export default function InvoiceConfirmModalV5(props) {
                                         "myroot.form.label.button.invoiceConfirmModal.cancelIssueInvoice"
                                     )}
                                 </JoyButton>
-                                {/* <JoyButton onClick={outputTest}>"?"</JoyButton> */}
                                 <Divider
                                     orientation="vertical"
                                     sx={{ mx: 1, px: 0.05 }}

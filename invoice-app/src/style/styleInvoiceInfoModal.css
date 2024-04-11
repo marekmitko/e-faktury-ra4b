@@ -14,7 +14,7 @@ table.sales-info-table-modal {
     font-weight: 300;
     width: 100%;
 }
-.sales-info-table-modal .table-head {
+.sales-info-table-modal .table-head td {
     background-color: var(--mui-palette-background-level1, #fafafa);
     /* background-color: transparent; */
 }

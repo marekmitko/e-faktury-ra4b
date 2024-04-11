@@ -97,8 +97,9 @@ export function SellerPersonalCard(props) {
                 sx={{
                     minHeight: "57px",
                     px: 1,
-                    pt: 0.5,
-                    pb: 0.75,
+                    py: 0,
+                    mt: -0.25,
+                    pb: 0.25,
                 }}
             >
                 <TextInput

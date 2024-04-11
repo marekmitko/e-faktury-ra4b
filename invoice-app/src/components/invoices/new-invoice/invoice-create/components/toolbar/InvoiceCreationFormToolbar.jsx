@@ -21,7 +21,7 @@ export default function InvoiceCreationFormToolbar({ children }) {
                 variant="text"
             /> */}
 
-            {children ? children : null}
+            {children}
         </Toolbar>
     );
 }

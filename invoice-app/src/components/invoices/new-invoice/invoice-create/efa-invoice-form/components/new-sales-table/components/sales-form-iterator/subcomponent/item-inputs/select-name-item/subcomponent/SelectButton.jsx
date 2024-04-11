@@ -89,7 +89,7 @@ export default function SelectButton({
                         maxWidth: "1px",
                         textAlign: "right",
                     }}
-                    defaultValue={defaultValue ? `${defaultValue}` : null}
+                    defaultValue={defaultValue ? `${defaultValue}` : ""}
                     // labelId="demo-controlled-open-select-label"
                     // id="demo-controlled-open-select"
                     open={open}

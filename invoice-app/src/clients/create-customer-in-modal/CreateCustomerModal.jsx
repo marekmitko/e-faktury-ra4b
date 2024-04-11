@@ -68,7 +68,8 @@ export const CreateCustomerModal = (props) => {
                     setValue("");
                     onCreate(data);
                     // setFocus("products.0.product_name");
-                    setFocus("products.0.product_count");
+                    // setFocus("products.0.product_count");
+                    setFocus("products.0.product_name");
                     setLayout(undefined);
                 },
             }

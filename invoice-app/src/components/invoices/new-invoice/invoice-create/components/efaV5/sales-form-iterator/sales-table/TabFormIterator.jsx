@@ -100,17 +100,18 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
     return fields ? (
         <SimpleFormIteratorContext.Provider value={context}>
             {/* <ResponsiveTable columns={data2.columns} data={data2.data} /> */}
-            <div class="sales__table container">
-                <table class="new__sales__table">
+            <div className="sales__table container">
+                <table className="new__sales__table">
                     <thead>
-                        <tr class="sales__row__header">
+                        <tr className="sales__row__header">
                             {data_table.fields
                                 .filter((item) => item.show)
-                                .map((item) => {
+                                .map((item, index) => {
                                     if (item.description === "item_price")
                                         return (
                                             <th
-                                                class={
+                                                key={`${item.description}_${index}`}
+                                                className={
                                                     item.class ? item.class : ""
                                                 }
                                             >
@@ -127,7 +128,8 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                                         );
                                     return (
                                         <th
-                                            class={item.class ? item.class : ""}
+                                            key={`${item.description}_${index}`}
+                                            className={item.class ? item.class : ""}
                                         >
                                             {translate(item.label)}
                                         </th>
@@ -138,80 +140,69 @@ export const TabFormIterator = React.forwardRef((props, ref) => {
                     <tbody>
                         {fields.map((member, index) => {
                             return (
-                                <>
-                                    <tr class="sales-item-row" key={index}>
-                                        <TabFormIteratorItemRow
-                                            key={member.id}
-                                            disabled={disabled}
-                                            disableRemove={
-                                                isMedium ? false : disableRemove
-                                            }
-                                            disableReordering={
-                                                disableReordering
-                                            }
-                                            fields={fields}
-                                            getItemLabel={getItemLabel}
-                                            index={index}
-                                            member={`${source}.${index}`}
-                                            onRemoveField={removeField}
-                                            onReorder={handleReorder}
-                                            record={
-                                                (records && records[index]) ||
-                                                {}
+                                <tr className="sales-item-row" key={`${member.id}`}>
+                                    <TabFormIteratorItemRow
+                                        // key={member.id}
+                                        disabled={disabled}
+                                        disableRemove={
+                                            isMedium ? false : disableRemove
+                                        }
+                                        disableReordering={disableReordering}
+                                        fields={fields}
+                                        getItemLabel={getItemLabel}
+                                        index={index}
+                                        member={`${source}.${index}`}
+                                        onRemoveField={removeField}
+                                        onReorder={handleReorder}
+                                        record={
+                                            (records && records[index]) || {}
+                                        }
+                                        removeButton={removeButton}
+                                        reOrderButtons={reOrderButtons}
+                                        resource={resource}
+                                        source={source}
+                                        // ref={userMyRef}
+                                        inline={inline}
+                                        entryPriceIsGross={entryPriceIsGross}
+                                    >
+                                        <MobileCounterTd
+                                            indexChip={
+                                                <ItemIndexChip index={index} />
                                             }
                                             removeButton={removeButton}
-                                            reOrderButtons={reOrderButtons}
-                                            resource={resource}
-                                            source={source}
-                                            // ref={userMyRef}
-                                            inline={inline}
-                                            entryPriceIsGross={
-                                                entryPriceIsGross
-                                            }
+                                            itemName={translate(
+                                                "resources.e_faktury.list.header.sales_item"
+                                            )}
+                                            // visibility={isMedium ? "collapse" : "hidden"}
+                                            display={isMedium ? "" : "none"}
                                         >
-                                            <MobileCounterTd
-                                                indexChip={
+                                            <SwitchNetOrGross
+                                                {...{
+                                                    entryPriceIsGross,
+                                                    setEntryPriceOnGross,
+                                                }}
+                                                prefix="switch_price_label"
+                                                netLabel="switch_net_price"
+                                                grossLabel="switch_gross_price"
+                                            />
+                                        </MobileCounterTd>
+                                        <td
+                                            className="td-counter"
+                                            style={{
+                                                display: isMedium ? "none" : "",
+                                            }}
+                                        >
+                                            <div className="counter-container">
+                                                <div>
                                                     <ItemIndexChip
                                                         index={index}
                                                     />
-                                                }
-                                                removeButton={removeButton}
-                                                itemName={translate(
-                                                    "resources.e_faktury.list.header.sales_item"
-                                                )}
-                                                // visibility={isMedium ? "collapse" : "hidden"}
-                                                display={isMedium ? "" : "none"}
-                                            >
-                                                <SwitchNetOrGross
-                                                    {...{
-                                                        entryPriceIsGross,
-                                                        setEntryPriceOnGross,
-                                                    }}
-                                                    prefix="switch_price_label"
-                                                    netLabel="switch_net_price"
-                                                    grossLabel="switch_gross_price"
-                                                />
-                                            </MobileCounterTd>
-                                            <td
-                                                class="td-counter"
-                                                style={{
-                                                    display: isMedium
-                                                        ? "none"
-                                                        : "",
-                                                }}
-                                            >
-                                                <div class="counter-container">
-                                                    <div>
-                                                        <ItemIndexChip
-                                                            index={index}
-                                                        />
-                                                    </div>
                                                 </div>
-                                            </td>
-                                            {children}
-                                        </TabFormIteratorItemRow>
-                                    </tr>
-                                </>
+                                            </div>
+                                        </td>
+                                        {children}
+                                    </TabFormIteratorItemRow>
+                                </tr>
                             );
                         })}
                     </tbody>

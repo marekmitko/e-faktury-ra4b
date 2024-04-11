@@ -1,0 +1,50 @@
+/* https://stackoverflow.com/questions/17067294/html-table-with-100-width-with-vertical-scroll-inside-tbody */
+/* https://jsfiddle.net/5cnjmspd/1/ */
+
+/* https://stackoverflow.com/questions/19794211/horizontal-scroll-on-overflow-of-table */
+
+.info-table-container table.sales-info-table-modal {
+    /* display: flex !important;
+    flex-direction: column;
+    overflow: hidden; */
+    width: 100%;
+    display: block;
+}
+.info-table-container .sales-info-table-modal .table-head {
+    /* display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit; */
+    display: inline-block;
+    width: 100%;
+    height: 27px;
+    border: 2px solid red;
+}
+.info-table-container .sales-info-table-modal .table-body {
+    /* position: relative;
+    padding: 0 7px 7px 4px;
+    margin: 0px 7px 4px 0;
+    max-height: 200px;
+    overflow-y: scroll; */
+
+    /* display: block;
+    max-height: -moz-fit-content;
+    max-height: fit-content;
+    margin: auto 0; */
+    /* overflow-x: none; */
+    /* overflow-y: scroll;
+    white-space: nowrap;  */
+
+    height: 200px;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+.info-table-container .sales-info-table-modal .table-body tr,
+.info-table-container .sales-info-table-modal .table-head tr {
+    /* display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+    width: 100%; */
+}

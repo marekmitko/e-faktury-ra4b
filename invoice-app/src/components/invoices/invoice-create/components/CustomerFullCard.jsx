@@ -2,6 +2,7 @@ import * as React from "react";
 // import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
+import CardContent from "@mui/material/CardContent";
 import {
     AutocompleteInput,
     ReferenceInput,
@@ -16,7 +17,7 @@ import { CustomerAutoLabel } from "./subcomponents/CustomerAutoLabel";
 import { CreateCustomerModal } from "../../../../clients/create-customer-in-modal/CreateCustomerModal";
 // import { PersonalCardWrapper } from "../../../../reusable-components/wrapper/PersonalCardWrapper";
 import { CollapsePartCustomerCard } from "../../../../reusable-components/wrapper/customer-personal-card/CollapsePartCustomerCard";
-import { MainPartCustomerCard } from "../../../../reusable-components/wrapper/customer-personal-card/MainPartCustomerCard";
+// import { MainPartCustomerCard } from "../../../../reusable-components/wrapper/customer-personal-card/MainPartCustomerCard";
 import SelectedChoiceContext from "../../new-invoice/invoice-create/efa-invoice-form/personal-cards/card-profile/SelectedChoiceContext";
 import { AddressDetailsBuyer } from "../../../../reusable-components/wrapper/components/seller-personal-card/AddressDetailsBuyer";
 import { ContactDetailsBuyer } from "../../../../reusable-components/wrapper/components/seller-personal-card/ContactDetailsBuyer";
@@ -50,11 +51,6 @@ export const CustomerFullCard = (props) => {
     const record = useRecordContext(props);
     const translate = useTranslate();
 
-    const categories = [
-        { name: "Tech", id: "tech" },
-        { name: "Lifestyle", id: "lifestyle" },
-    ];
-
     if (!record || !props.source) {
         return null;
     }
@@ -69,7 +65,8 @@ export const CustomerFullCard = (props) => {
             {/* <input type="button" onChange={hendlerClosedList(true)} /> */}
 
             <ReferenceInput
-                label={false}
+                // label={false}
+                label=""
                 source={source}
                 reference={G_Path.customers}
                 enableGetChoices={({ q }) => q && q.length >= 3}
@@ -87,7 +84,10 @@ export const CustomerFullCard = (props) => {
                                 "var(--mui-palette-background-level1, #fafafa)",
                         }}
                     />
-                    <MainPartCustomerCard>
+                    {/* <MainPartCustomerCard> */}
+                    <CardContent
+                        sx={{ minHeight: "57px", px: 1, pt: 0.1, pb: 0.5 }}
+                    >
                         <AutocompleteInput
                             // size="large"
                             create={
@@ -125,7 +125,8 @@ export const CustomerFullCard = (props) => {
                             sx={sx}
                             fullWidth
                         />
-                    </MainPartCustomerCard>
+                    </CardContent>
+                    {/* </MainPartCustomerCard> */}
                     <Divider />
                     <SelectedChoiceContext>
                         <CollapsePartCustomerCard>

@@ -3,10 +3,10 @@ import {
     Edit,
     TextInput,
     SimpleForm,
-    required,
-    useTranslate, 
+    // required,
+    // useTranslate,
     Toolbar,
-    SaveButton, 
+    SaveButton,
     useEditContext,
 } from "react-admin";
 import { G_Admin, G_Path, MQ_Breakpoint } from "../../constant";
@@ -16,9 +16,9 @@ import { ListItemButton } from "@mui/joy";
 import { Box, Stack, useMediaQuery } from "@mui/material";
 import CircleIconChip from "../../reusable-components/CircleIconChip";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import { pick } from "lodash";
-import { ResetTvRounded } from "@mui/icons-material";
+// import { ResetTvRounded } from "@mui/icons-material";
 
 export const usePickSaveContext = (context) => {
     const value = useMemo(
@@ -74,7 +74,7 @@ const AdminProfileEdit = ({ ...props }) => {
     const admin_id = `${G_Admin.id}`;
     const basePath = `/${G_Path.profile.admin}`;
     const resource = `${G_Path.profile.admin}`;
-    const translate = useTranslate();
+    // const translate = useTranslate();
     const isSmall = useMediaQuery(`${MQ_Breakpoint.isSmall}`);
 
     return (

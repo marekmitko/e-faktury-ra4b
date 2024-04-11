@@ -1,44 +1,44 @@
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
+// import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Divider from "@mui/material/Divider";
-import { alpha, useTheme } from "@mui/material/styles";
-import ArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import ArrowClockwiseIcon from "@mui/icons-material/History";
+// import CardHeader from "@mui/material/CardHeader";
+// import Divider from "@mui/material/Divider";
+// import { alpha, useTheme } from "@mui/material/styles";
+// import ArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+// import ArrowClockwiseIcon from "@mui/icons-material/History";
 
 import {
-    Labeled,
-    TextField,
-    useChoicesContext,
+    // Labeled,
+    // TextField,
+    // useChoicesContext,
     useRecordContext,
-    RecordContextProvider,
+    // RecordContextProvider,
     useTranslate,
 } from "react-admin";
-import { IconButton, Stack, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { useWatch } from "react-hook-form";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import { MQ_isMedium } from "../../../components/invoices/new-invoice/invoice-create/components/efaV5/sales-form-iterator/useSalesFormIteratorStyles";
 import styled from "@emotion/styled";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 
-import BorderColorRoundedIcon from "@mui/icons-material/EditRounded";
+// import BorderColorRoundedIcon from "@mui/icons-material/EditRounded";
 import ChipLabel from "../../icon/ChipLabel";
 
-const ExpandMore = styled((props) => {
-    const { expand, ...other } = props;
-    return <IconButton size="small" sx={{ mt: 1 }} {...other} />;
-})(({ theme, expand }) => ({
-    transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-    marginRight: "auto",
-    marginLeft: "0px",
-    transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-    }),
-}));
+// const ExpandMore = styled((props) => {
+//     const { expand, ...other } = props;
+//     return <IconButton size="small" sx={{ mt: 1 }} {...other} />;
+// })(({ theme, expand }) => ({
+//     transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+//     marginRight: "auto",
+//     marginLeft: "0px",
+//     transition: theme.transitions.create("transform", {
+//         duration: theme.transitions.duration.shortest,
+//     }),
+// }));
 
 const CustomArrowRightIcon = styled((props) => {
     const { expand, ...other } = props;
@@ -56,7 +56,9 @@ const CustomArrowRightIcon = styled((props) => {
 // import { Chart } from "@/components/core/chart";
 
 export function CollapsePartCustomerCard(props) {
-    const { children, title, icon, subtitle, sxCard, cardContent } = props;
+    const {
+        children, //title, icon, subtitle, sxCard, cardContent
+    } = props;
     const [expanded, setExpanded] = useState(false);
     const translate = useTranslate();
     const record = useRecordContext();
@@ -69,9 +71,7 @@ export function CollapsePartCustomerCard(props) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-    const isMedium = useMediaQuery(`${MQ_isMedium}`);
-
-    console.log("isMedium◀◀", isMedium);
+    // const isMedium = useMediaQuery(`${MQ_isMedium}`);
 
     if (!children) return null;
     return (

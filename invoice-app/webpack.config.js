@@ -13,7 +13,7 @@ module.exports = {
     },
     devtool: "cheap-module-source-map",
     resolve: {
-        extensions: [".ts", ".js", ".tsx", ".json"],
+        extensions: [".ts", ".js", ".tsx", ".jsx", ".json"],
     },
     module: {
         rules: [

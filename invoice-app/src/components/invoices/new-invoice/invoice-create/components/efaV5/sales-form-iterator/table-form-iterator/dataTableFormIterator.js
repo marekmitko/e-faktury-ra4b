@@ -1,7 +1,7 @@
 import { G_Path } from "../../../../../../../../constant";
 
-const translate_prefix = `resources.${G_Path.invoices}.create.sales_form_iterator.sales_table.header`;
-const translate_prefix_label = `resources.e_faktury.create.sales_form_iterator.sales_table.header`;
+// const translate_prefix = `resources.${G_Path.invoices}.create.sales_form_iterator.sales_table.header`;
+// const translate_prefix_label = `resources.e_faktury.create.sales_form_iterator.sales_table.header`;
 
 export const data2 = {
     columns: [

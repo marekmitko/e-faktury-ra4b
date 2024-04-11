@@ -1,26 +1,22 @@
-import { Title, useGetOne, useTranslate } from 'react-admin';
-import ArticleIcon from '@mui/icons-material/Article';
-
+import {
+    Title, // useGetOne, useTranslate
+} from "react-admin";
+// import ArticleIcon from "@mui/icons-material/Article";
 
 const CreateInvoiceFormPageTitle = ({ id }) => {
     // const { data, loading } = useGetOne('articles', { id });
-    const translate = useTranslate();
+
     return (
         <>
             <Title
-                // title={  <><ArticleIcon />{translate('myroot.custom_ra.page.createInvoiceFormPageTitle')}</>} 
-                title='myroot.custom_ra.page.createInvoiceFormPageTitle'
-                defaultTitle={<ArticleIcon />}
+                // title={  <><ArticleIcon />{translate('myroot.custom_ra.page.createInvoiceFormPageTitle')}</>}
+                title="myroot.custom_ra.page.createInvoiceFormPageTitle"
+                // defaultTitle={<ArticleIcon />}
             />
             {/* {!loading && <div>{data.body}</div>} */}
         </>
     );
 };
-
-
-
-
-
 
 // https://marmelab.com/react-admin/Title.html
 
@@ -29,7 +25,7 @@ const CreateInvoiceFormPageTitle = ({ id }) => {
 //     return (
 //         <>
 //             <Title
-//                 title={data && <><ArticleIcon />{data.title}</>} 
+//                 title={data && <><ArticleIcon />{data.title}</>}
 //                 defaultTitle={<ArticleIcon />}
 //             />
 //             {!loading && <div>{data.body}</div>}
@@ -37,6 +33,4 @@ const CreateInvoiceFormPageTitle = ({ id }) => {
 //     );
 // };
 
-
-
-export default CreateInvoiceFormPageTitle; 
+export default CreateInvoiceFormPageTitle;

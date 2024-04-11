@@ -47,8 +47,8 @@ const AccentIconLabel = (props) => {
                     aria-label="recipe"
                 >
                     <SvgIcon
-                        fontSize={`${iconSize}`}
-                        sx={{ color: `${iconColor}`, ...cssIcon }}
+                        // fontSize={`${iconSize}`}
+                        sx={{ color: `${iconColor}`, ...cssIcon, fontSize: `${iconSize}` }}
                     >
                         {icon}
                     </SvgIcon>

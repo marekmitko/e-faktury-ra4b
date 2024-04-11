@@ -1,14 +1,13 @@
 import * as React from "react";
 // import InputLabel from "@mui/material/InputLabel";
-import { choices, useInput, useTranslate } from "react-admin";
+import { ResettableTextField, choices, useInput, useTranslate } from "react-admin";
 import SelectButton from "./subcomponent/SelectButton";
-import { CustomInputSelected } from "./subcomponent/CustomInputSelected";
+// import { CustomInputSelected } from "./subcomponent/CustomInputSelected";
 import {
-    Stack,
     Divider,
     Box,
-    FormControl,
-    InputLabel,
+    // FormControl,
+    // InputLabel,
     TextField,
     InputAdornment,
 } from "@mui/material";
@@ -33,6 +32,7 @@ const SelectBtn = ({ namefield, choiceOptions }) => (
         }}
     >
         <SelectButton
+            defaultValue={""}
             sxCSS={{
                 display: "flex",
                 alignItems: "center",
@@ -84,9 +84,9 @@ export const InputTextSelectedTd = (props) => {
                     // inputRef={field.ref}
                     // name={source}
                     variant={variant ? variant : "outlined"}
-                    label={translate(label)}
+                    label={label ? translate(label) : ""}
                     required={isRequired}
-                    placeholder={translate(placeholder)}
+                    placeholder={placeholder ? translate(placeholder) : ""}
                     autoComplete="off"
                     InputProps={{
                         // ...InputProps,
@@ -98,6 +98,7 @@ export const InputTextSelectedTd = (props) => {
                             >
                                 {
                                     <SelectBtn
+                                        defaultValue=""
                                         namefield={field ? field.name : ""}
                                         choiceOptions={
                                             choiceOptions ? choiceOptions : {}
@@ -111,7 +112,7 @@ export const InputTextSelectedTd = (props) => {
                         // }
                         // value: 'fs'
                     }}
-                    {...rest}
+                    {...props}
                 />
 
                 {/* <CustomInputSelected id="component-outlined"
@@ -122,7 +123,7 @@ export const InputTextSelectedTd = (props) => {
                     // error={(!isTouched) ? false :  true }
                     {...props}
                     />
-               */}
+               */}  
             </Box>
         </td>
     );

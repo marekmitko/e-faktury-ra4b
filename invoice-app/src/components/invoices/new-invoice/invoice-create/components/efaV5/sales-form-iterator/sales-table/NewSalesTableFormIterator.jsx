@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import { Box } from "@mui/joy";
 // import { jsx, css } from "@emotion/react";
-import { ArrayInput, NumberInput, useTranslate } from "react-admin";
+import { ArrayInput, NumberInput, TextInput, useTranslate } from "react-admin";
 
 import {
     MQ_isMinimal,
@@ -23,6 +23,7 @@ import {
 import MobiRemoveItemButton from "../sales-item/mobile-view/components/sales-item-row/subcomponent/MobiRemoveItemButton";
 import { InputTextSelectedTd } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelectedTd";
 import SelectInputItemTd from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-item/SelectInputItemTd";
+import { InputTextSelectedTdNew } from "../../../../efa-invoice-form/components/new-sales-table/components/sales-form-iterator/subcomponent/item-inputs/select-name-item/InputTextSelectedTdNew";
 
 const number =
     (message = "Must be a number") =>
@@ -90,6 +91,13 @@ const vumberInputValidation = [required()];
 
 const Separator = () => <Box pt="1em" />;
 
+const maxLength =
+    (max, message = "Too short") =>
+    (value) =>
+        value && value.length > max ? message : undefined;
+
+const validateFirstName = [required(), maxLength(1000)];
+
 export const SalesTableFormIterator = (props) => {
     // xs, extra-small: 0px
     // sm, small: 600px
@@ -97,12 +105,7 @@ export const SalesTableFormIterator = (props) => {
     // lg, large: 1200px
     // xl, extra-large: 1536px
 
-    const isMinimal = useMediaQuery(`${MQ_isMinimal}`);
-    const isXSmall = useMediaQuery(`${MQ_isXSmall}`);
-    const isSmall = useMediaQuery(`${MQ_isSmall}`);
     const isMedium = useMediaQuery(`${MQ_isMedium}`);
-    const isLarge = useMediaQuery(`${MQ_isLarge}`);
-    const is650px = useMediaQuery("(max-width:650px)");
 
     const [entryPriceIsGross, setEntryPriceOnGross] = useState(false);
     const translate = useTranslate();
@@ -121,19 +124,19 @@ export const SalesTableFormIterator = (props) => {
                     entryPriceIsGross={entryPriceIsGross}
                     setEntryPriceOnGross={setEntryPriceOnGross}
                 >
-                    <InputTextSelectedTd
+                    <InputTextSelectedTdNew
+                        fullWidth
                         className="input-sales-item-name"
-                        // label="myroot.form.label.inputbox_itemrow.itemNameField"
-                        // label="adsd"
                         source="product_name"
                         choiceOptions={OptionRecord.choice_product_list}
                         sx={{ gridArea: "name" }}
-                        // placeholder="myroot.form.label.inputbox_itemrow.itemNameField"
-                        placeholder={translate(
-                            "resources.e_faktury.list.input.placeholder.sales_item_name"
-                        )}
+                        // placeholder={translate(
+                        //     "resources.e_faktury.list.input.placeholder.sales_item_name"
+                        // )}
+                        validate={validateFirstName}
                     />
                     <SelectInputItemTd
+                        validate={validateFirstName}
                         className="sales-type-item"
                         source="product_type"
                         // label="myroot.form.label.inputbox_itemrow.typeItem"
@@ -147,6 +150,7 @@ export const SalesTableFormIterator = (props) => {
                         label="resources.e_faktury.list.input.placeholder.sales_item_type"
                     />
                     <SelectInputItemTd
+                        validate={validateFirstName}
                         className="tax-vat-item"
                         source="product_vat"
                         // label="myroot.form.label.inputbox_itemrow.taxItem"
@@ -162,7 +166,7 @@ export const SalesTableFormIterator = (props) => {
                     <InputNumberTd
                         source="product_count"
                         label="myroot.form.label.inputbox_itemrow.qtyItem"
-                        // helperText={false}
+                        helperText={false}
                         validate={validateQuantityNumber}
                         sx={{ mt: 1 }}
                         variant={isMedium ? "outlined" : "outlined"}

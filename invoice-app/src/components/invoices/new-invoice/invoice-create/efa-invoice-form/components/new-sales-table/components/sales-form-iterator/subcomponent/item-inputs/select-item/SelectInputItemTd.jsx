@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect, useMemo } from "react";
+// import { useState, useEffect, useMemo } from "react";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,20 +7,27 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { useTranslate, useInput } from "react-admin";
 import { Box } from "@mui/joy";
-import { width } from "@mui/system";
+import { useWatch } from "react-hook-form";
+// import { width } from "@mui/system";
 
 // function SelectItemOption({field, ...props}) {
-export function SelectInputItemTd({
-    options,
-    label,
-    variantLabel,
-    variant,
-    defaultValue,
-    sx,
-    className,
-    placeholder,
-    ...props
-}) {
+export function SelectInputItemTd(props) {
+    const {
+        options,
+        label,
+        variantLabel,
+        variant,
+        defaultValue,
+        sx,
+        className,
+        placeholder,
+        parse,
+        resource,
+        source,
+        validate,
+        // format,
+        ...rest
+    } = props;
     const translate = useTranslate();
 
     // https://stackoverflow.com/questions/66722593/how-to-set-defaultvalue-after-some-delay-on-react-select-with-react-hook-form
@@ -33,16 +40,29 @@ export function SelectInputItemTd({
     // const saveData = (form_data) => {
     //     console.log("form_data", form_data);
     // };
-
     const {
         field,
         fieldState: { isTouched, invalid, error },
         formState: { isSubmitted },
-    } = useInput(props);
+        id,
+        isRequired,
+    } = useInput({
+        // defaultValue,
+        // format,
+        parse,
+        resource,
+        source,
+        // type: "text",
+        validate,
+        // onBlur,
+        // onChange,
+        ...rest,
+    });
 
+    const valueInput = useWatch({ name: `${id}` });
     // label={ typeItem.field.value ? "myroot.form.label.inputbox_itemrow.typeItem" : "Wprowadź typ"}
     // sx={{ minWidth: 100 }} defaultValue="placeholder" options={typeOptions}
-
+    // console.log("valueInput💠", valueInput);
     return (
         <td className={`${className ? className : ""}`}>
             <Box sx={sx}>
@@ -51,20 +71,39 @@ export function SelectInputItemTd({
                         variant={variant ? variant : "standard"}
                         // id="demo-simple-select-autowidth-label"
                         id="demo-select-small-label"
+                        error={
+                            ((isTouched || isSubmitted) && invalid) ||
+                            (isTouched && valueInput === null) ||
+                            (isTouched && valueInput === "") ||
+                            (isTouched && valueInput === undefined)
+                        }
                     >
-                        {translate(label)}
+                        {label && !error
+                            ? translate(label)
+                            : `Podaj ${translate(label)}`}
                     </InputLabel>
                     <Select
-                        required
+                        required={isRequired}
                         // color="success"
-                        // error={isError ? false : true}
-                        defaultValue={defaultValue ? `${defaultValue}` : null}
+                        error={
+                            ((isTouched || isSubmitted) && invalid) ||
+                            (isTouched && valueInput === null) ||
+                            (isTouched && valueInput === "") ||
+                            (isTouched && valueInput === undefined)
+                        }
+                        // error={error ? true : false}
+                        defaultValue={defaultValue ? `${defaultValue}` : ""}
                         labelId="demo-select-small-label"
                         id="demo-select-small"
                         // labelId="demo-simple-select-autowidth-label"
                         // id="demo-simple-select-autowidth-label"
                         value={field.value}
-                        label={translate(label)}
+                        // label={label ? translate(label) : ""}
+                        label={
+                            label && !error
+                                ? translate(label)
+                                : `Podaj ${translate(label)}`
+                        }
                         onChange={field.onChange}
                         variant={variant ? variant : "standard"}
                         autoWidth
@@ -78,7 +117,7 @@ export function SelectInputItemTd({
                                               key={`${id}_idx${index}`}
                                               value={value}
                                           >
-                                              <em>{name}</em>
+                                              <em>{name ? name : ""}</em>
                                           </MenuItem>
                                       );
                                   return (
@@ -90,7 +129,7 @@ export function SelectInputItemTd({
                                       </MenuItem>
                                   );
                               })
-                            : null}
+                            : ""}
                     </Select>
                 </FormControl>
             </Box>

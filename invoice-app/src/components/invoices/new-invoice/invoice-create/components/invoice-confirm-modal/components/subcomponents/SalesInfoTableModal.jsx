@@ -1,6 +1,7 @@
 import * as React from "react";
+// import "./styleSalesInfoTableModal.css";
 import Table from "@mui/joy/Table";
-import Divider from "@mui/material/Divider";
+// import Divider from "@mui/material/Divider";
 import { useTranslate } from "react-admin";
 import { formatCurrency } from "../../../../efa-invoice-form/components/new-sales-table/components/total-cost-result-table/logic/getCostResult ";
 
@@ -16,7 +17,8 @@ import { formatCurrency } from "../../../../efa-invoice-form/components/new-sale
 
 export const SalesInfoTableModal = ({ rows }) => {
     const translate = useTranslate();
-    return (
+
+    return Object.entries(rows).length ? (
         <div className="info-table-container">
             <Table
                 className="sales-info-table-modal"
@@ -59,35 +61,35 @@ export const SalesInfoTableModal = ({ rows }) => {
                     </tr>
                 </thead>
                 <tbody className="table-body">
-                    {true
-                        ? rows.map((row, idx) => {
-                              // if(rows.length  === (idx+1 )) return (null);
-                              return (
-                                  <tr
-                                      className="body-row"
-                                      key={`_${idx}_${row.product_name}`}
-                                  >
-                                      <td className="body-cell item-name">
-                                          {row.product_name}
-                                      </td>
-                                      <td className="body-cell item-quantity">
-                                          {row.product_count}
-                                          {/* {translate(
-                                          "resources.e_faktury.create.modal.table_info.quantity_unit_name"
+                    {rows.map((row, idx) => {
+                        // if(rows.length  === (idx+1 )) return (null);
+                        return (
+                            <tr
+                                className="body-row"
+                                key={`_${idx}_${row.product_name}`}
+                            >
+                                <td className="body-cell item-name">
+                                    {row.product_name}
+                                </td>
+                                <td className="body-cell item-quantity">
+                                    {row.product_count}
+                                    {/* {translate(
+                                              "resources.e_faktury.create.modal.table_info.quantity_unit_name"
                                       )} */}
-                                      </td>
-                                      <td className="body-cell item-value">
-                                          {formatCurrency(
-                                              row.product_count *
-                                                  row.product_price_brutto
-                                          )}
-                                      </td>
-                                  </tr>
-                              );
-                          })
-                        : ""}
+                                </td>
+                                <td className="body-cell item-value">
+                                    {formatCurrency(
+                                        row.product_count *
+                                            row.product_price_brutto
+                                    )}
+                                </td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </Table>
         </div>
+    ) : (
+        ""
     );
 };
