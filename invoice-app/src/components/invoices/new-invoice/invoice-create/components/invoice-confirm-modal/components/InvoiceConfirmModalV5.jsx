@@ -133,21 +133,23 @@ export default function InvoiceConfirmModalV5(props) {
         console.log("output", output);
         delete output["dataBuyer"]; //Om? Czy to jest dobre - pierwszy raz się spotkałem
         delete output["preInvoiceId"];
+        delete output["choice_product_list"];
+        delete output["user_db"];
 
-        // create(
-        //     "e_faktury",
-        //     { data: output },
-        //     {
-        //         onSuccess: () => {
-        //             // const invoice_id =
-        //             // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
-        //             // const record = useRecordContext
-        //             // navigate("/issuedInvoices_list");
-        //             navigate("/e_faktury");
-        //             notify("Twoja faktura została utworzona pomyślnie"); // Om? tu ma byc ten srednik?
-        //         },
-        //     }
-        // );
+        create(
+            "e_faktury",
+            { data: output },
+            {
+                onSuccess: () => {
+                    // const invoice_id =
+                    // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci?file=/src/posts/AddCommentButton.js:36-40
+                    // const record = useRecordContext
+                    // navigate("/issuedInvoices_list");
+                    navigate("/e_faktury");
+                    notify("Twoja faktura została utworzona pomyślnie"); // Om? tu ma byc ten srednik?
+                },
+            }
+        );
     }; // Om? tu ma byc ten srednik?
     // };
     if (error) {
@@ -275,7 +277,8 @@ export default function InvoiceConfirmModalV5(props) {
                                 sx={{
                                     display: "flex",
                                     gap: 1,
-                                    justifyContent: "flex-start",
+                                    // justifyContent: "flex-start",
+                                    justifyContent: "space-between",
                                     p: 0,
                                     m: 0,
                                 }}
@@ -295,7 +298,7 @@ export default function InvoiceConfirmModalV5(props) {
                                     orientation="vertical"
                                     sx={{ mx: 1, px: 0.05 }}
                                 />
-                                <JoyButton
+                                {/* <JoyButton
                                     // onClick={handleIssueConfirmedInvoice}
                                     variant="plain" //color="primary.800"
                                     // startDecorator={<NoteAddIcon />}
@@ -311,14 +314,13 @@ export default function InvoiceConfirmModalV5(props) {
                                         textTransform: "uppercase",
                                         color: "primary.900",
                                     }}
-                                >
-                                    {"TESTOWY"}
-                                    {/* {translate(
+                                >  
+                                    {translate(
                                     "myroot.form.label.button.invoiceConfirmModal.issueConfirmedInvoiceAndAddNew"
-                                )} */}
-                                </JoyButton>
+                                )}
+                                </JoyButton> */}
                                 <JoyButton
-                                    variant="soft"
+                                    // variant="splainoft"
                                     startDecorator={
                                         <SvgIcon fontSize="md">
                                             <ConfirmIcon />

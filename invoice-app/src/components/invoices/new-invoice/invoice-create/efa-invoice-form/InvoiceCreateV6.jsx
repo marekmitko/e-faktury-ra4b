@@ -91,6 +91,7 @@ const InvoiceCreateV6 = (props) => {
         user_db,
         user_ref: user_company,
         choice_product_list: productOptions,
+        date_submit: dv_dateSubmit,
         products: [
             {
                 product_name: null,
@@ -197,7 +198,6 @@ const InvoiceCreateV6 = (props) => {
 
     const onSubmitTEST = (data) =>
         console.info("1️⃣👍🏻Submit onSubmitTEST", data);
-        
 
     return (
         <>

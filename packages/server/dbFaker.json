@@ -97921,6 +97921,37 @@
       "buyer_email": "studio@meetco.dev",
       "buyer_phone": "500555502",
       "id": "VHrG6cl"
+    },
+    {
+      "user_ref": "Efremtid sp. zoo",
+      "date_submit": "2024-04-11",
+      "products": [
+        {
+          "product_name": "membran",
+          "product_count": 1,
+          "product_price_brutto": "431.25",
+          "product_price_netto": "345",
+          "product_vat": 125,
+          "product_type": "goods"
+        }
+      ],
+      "date_payment": "0NaN-aN-aN",
+      "buyer_id": "itUmvHV",
+      "comments": "",
+      "payment_form": null,
+      "company": "Efremtid sp. zoo",
+      "date_of_sending": "2024-04-11T20:33:24.255Z",
+      "buyer_company": "meetco.dev Marek Mitko",
+      "buyer_mva": false,
+      "buyer_org_nr": 987456321,
+      "buyer_address": "Księcia Witolda 49",
+      "buyer_zip_code": "5000",
+      "buyer_place": "Wrocław",
+      "buyer_lastname": "Mitko",
+      "buyer_firstname": "Marek",
+      "buyer_email": "studio@meetco.dev",
+      "buyer_phone": "500555502",
+      "id": "QM77NOV"
     }
   ]
 }
